@@ -23,10 +23,8 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 # 
-# $Id: GNUmakefile 1044 2006-12-22 10:08:12Z ed $
-# 
 
-VERSION:=	r$(shell svn info | grep '^Revision: ' | sed -e 's/^Revision: //')
+VERSION:=	HEAD
 
 PREFIX?=	/usr/local
 OS:=		$(shell uname)
