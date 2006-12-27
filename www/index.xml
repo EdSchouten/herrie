@@ -67,16 +67,16 @@ SIZE (herrie-1.1.tar.gz) = 42802</pre>
 	<h3>Anonymous repository access</h3>
 
 	<p>Herrie's latest sourcecode can be downloaded using
-	Subversion. The following command downloads the latest
+	Git. The following command downloads the latest
 	sourcecode:</p>
 
-	<pre>svn co http://svn.il.fontys.nl/herrie/trunk/herrie</pre>
+	<pre>git clone http://g-rave.nl/git/herrie</pre>
 
 	<p>It is also possible to <a
-	href="http://viewvc.il.fontys.nl/bin/cgi/viewvc.cgi/herrie/trunk/herrie/">take
-	a look at the sourcecode</a> or <a
-	href="http://viewvc.il.fontys.nl/bin/cgi/viewvc.cgi/herrie/trunk/herrie.tar.gz?view=tar">download
-	the trunk</a>, without using Subversion, using ViewVC.</p>
+	href="http://g-rave.nl/gitweb?p=herrie">take a look at the
+	sourcecode</a> or <a
+	href="http://g-rave.nl/gitweb?p=herrie;a=snapshot">download the
+	trunk</a>, without using Git, using Gitweb.</p>
 
 	<h2>Using Herrie</h2>
 
