@@ -1,0 +1,112 @@
+Hello and thanks for downloading Herrie!
+
+This document will discuss a small set of subjects that will help you
+install and use Herrie, but also ways to contact the developers to
+report bugs and such.
+
+- What is Herrie?
+- How should I pronounce it?
+- What kind of platforms will it run on?
+- What are the dependencies of Herrie?
+- How do I compile and install Herrie?
+- I've installed it - now what?
+- How do I contact you (report bugs, ask questions, etc)?
+
+What is Herrie?
+~~~~~~~~~~~~~~~
+Herrie is a minimalistic music player that uses the command line. It is
+written to support a variety of operating systems, audio subsystems and
+file formats, including playlists.
+
+Herrie has a split-screen user interface, with a playlist at the top of
+the screen and a file browser at the bottom. When tracks are added to
+the playlist, Herrie automatically consumes them one by one. It is thus
+an application that allows you to batch music for playback.
+
+How should I pronounce it?
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Herrie is actually a Dutch word. Its meaning is similar to the English
+word 'clamor' (loud noise). Just pronounce it as the English given name
+'Harry' and you are a long way.
+
+What kind of platforms will it run on?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Herrie should compile without a flaw on the following operating systems:
+
+- FreeBSD - 4.x and higher
+- Linux - 2.2.x and higher
+- Mac OS X - using MacPorts
+- NetBSD - only tested on 3.x
+- OpenBSD
+- Cygwin
+
+The application has been tested on little and big endian platforms, so
+the chances are high it should just work on your obscure hardware as
+well. At least Intel x86, SPARC and PowerPC should work.
+
+What are the dependencies of Herrie?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Herrie is written in C and uses a lot of functions found in the GLib
+library. It also uses some libraries for audio decompression and such.
+Below is a list of libraries you should install prior to compiling
+Herrie:
+
+- gettext
+- glib
+- libao
+- libcurl
+- libid3tag
+- libmad
+- libsndfile
+- libvorbisfile
+- ncurses or pdcurses (`XCurses')
+- openssl
+
+Please note that some dependencies can be disabled. OpenSSL and cURL are
+only needed when compiling with AudioScrobbler support. LibAO is only
+needed when compiled with LibAO audio output support.
+
+How do I compile and install Herrie?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Herrie ships with a GNU Makefile that allows you to compile Herrie in a
+hopefully easy fashion. The Makefile also contains a set of switches to
+disable various functions.
+
+Below is a list of configuration switches:
+
+- NO_LOCKUP=yes     disables chroot()/setuid() support
+- NO_MP3=yes        disables support for MP3 audio playback
+- NO_SCROBBLER=yes  disables AudioScrobbler support
+- NO_SNDFILE=yes    disables support for libsndfile formats
+- NO_TRANS=yes      disables gettext support (translations)
+- NO_VORBIS=yes     disables support for Ogg Vorbis playback
+- XCURSES=yes       build as an X11 application using XCurses
+
+It is also possible to compile Herrie with support for a variety of
+audio output frameworks:
+
+- AUDIO_OUTPUT=oss	Open Sound System (Linux and xBSD)
+- AUDIO_OUTPUT=ao	LibAO (may break when combined with chroot)
+
+The following commands will compile and install Herrie without MP3 and
+AudioScrobbler support:
+
+	$ make NO_MP3=yes NO_SCROBBLER=yes
+	$ sudo make install
+
+Please notice that 'make' is called 'gmake' on operating systems that
+already ship their own one (xBSD, Solaris, etc).
+
+I've installed it - now what?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Herrie also comes with a manual page. The manual page contains some more
+information about its basic usage and a list of configuration file
+switches and keyboard bindings. Please take a look at it.
+
+How do I contact you (report bugs, ask questions, etc)?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+When something goes wrong or when you have something to tell us, you can
+contact us on IRC, but also by email. Please visit our website to obtain
+more information on how to contact us:
+
+	http://g-rave.nl/projects/herrie/

@@ -1,0 +1,325 @@
+/*
+ * Copyright (c) 2006 Ed Schouten <ed@fxq.nl>
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ * $Id: config.c 964 2006-12-13 08:43:27Z ed $
+ */
+/**
+ * @file config.c
+ */
+
+#include <glib.h>
+
+#include <stdio.h>
+#include <string.h>
+#include <curses.h>
+
+#include "config.h"
+#include "gui.h"
+
+/**
+ * @brief Structure containing a single configuration entry of Herrie
+ */
+struct config_entry {
+	/**
+	 * @brief Name it can be located at
+	 */
+	const char	*name;
+	/**
+	 * @brief Default value
+	 */
+	const char	*defval;
+	/**
+	 * @brief Function to validate when set
+	 */
+	int		(*validator)(char *val);
+	/**
+	 * @brief Current value if not equal to the default
+	 */
+	char		*curval;
+};
+
+/* Config switch validators */
+static int valid_bool(char *val);
+#ifdef BUILD_SCROBBLER
+static int valid_md5(char *val);
+#endif /* BUILD_SCROBBLER */
+static int valid_color(char *val);
+
+/*
+ * List of available configuration switches. Keep this list sorted at
+ * all time; the config lookups have been optimised to expect an
+ * alphabetical lookup. Looking up switches starting with 'z' will take
+ * longer than 'a'.
+ */
+/**
+ * @brief List of configuration switches.
+ */
+static struct config_entry configlist[] = {
+	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
+#ifdef __OpenBSD__
+	{ "audio.output.oss.device",	"/dev/audio",	NULL,		NULL },
+#else /* !__OpenBSD__ */
+	{ "audio.output.oss.device",	"/dev/dsp",	NULL,		NULL },
+#endif /* __OpenBSD__ */
+	{ "gui.browser.defaultpath",	"",		NULL,		NULL },
+	{ "gui.color.bar.bg",		"blue",		valid_color,	NULL },
+	{ "gui.color.bar.fg",		"white",	valid_color,	NULL },
+	{ "gui.color.block.bg",		"black",	valid_color,	NULL },
+	{ "gui.color.block.fg",		"white",	valid_color,	NULL },
+	{ "gui.color.deselect.bg",	"white",	valid_color,	NULL },
+	{ "gui.color.deselect.fg",	"black",	valid_color,	NULL },
+	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
+	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
+#ifdef BUILD_SCROBBLER
+	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },
+	{ "scrobbler.password",		"",		valid_md5,	NULL },
+	{ "scrobbler.username",		"",		NULL,		NULL },
+#endif /* BUILD_SCROBBLER */
+	{ "vfs.dir.hide_dotfiles",	"yes",		valid_bool,	NULL },
+#ifdef BUILD_LOCKUP
+	{ "vfs.lockup.chroot",		"",		NULL,		NULL },
+	{ "vfs.lockup.user",		"",		NULL,		NULL },
+#endif /* BUILD_LOCKUP */
+};
+/**
+ * @brief The amount of configuration switches available.
+ */
+#define CONFIGENTRIES (sizeof(configlist) / sizeof(struct config_entry)) 
+
+/**
+ * @brief Search for an entry in the configlist by name.
+ */
+static struct config_entry *
+config_search(char *opt)
+{
+	int i, c;
+
+	for (i = 0; i < CONFIGENTRIES; i++) {
+		c = strcmp(opt, configlist[i].name);
+
+		if (c == 0)
+			/* Found it */
+			return (&configlist[i]);
+		else if (c < 0)
+			/* We're already too far */
+			break;
+	}
+
+	/* Not found */
+	return (NULL);
+}
+
+int
+config_setopt(char *opt, char *val)
+{
+	struct config_entry *ent;
+	char *newval = NULL;
+
+	if ((ent = config_search(opt)) == NULL)
+		return (-1);
+	
+	if (strcmp(val, ent->defval) != 0) {
+		/* Just unset the value when it's the default */
+
+		if (ent->validator != NULL) {
+			/* Do not set invalid values */
+			if (ent->validator(val) != 0)
+				return (-1);
+		}
+		newval = g_strdup(val);
+	}
+
+	/* Free the current contents */
+	g_free(ent->curval);
+	ent->curval = newval;
+
+	return (0);
+}
+
+const char *
+config_getopt(char *opt)
+{
+	struct config_entry *ent;
+	
+	ent = config_search(opt);
+	g_assert(ent != NULL);
+	
+	/* Return the default if it is unset */
+	return (ent->curval ? ent->curval : ent->defval);
+}
+
+void
+config_load(char *file)
+{
+	GIOChannel *cio;
+	GString *cln;
+	gsize eol;
+	char *filename, *cln_val;
+
+	if (file == NULL) {
+		/* Use the standard configuration file */
+		filename = g_build_filename(g_get_home_dir(),
+		    "." APP_NAME, "config", NULL);
+		cio = g_io_channel_new_file(filename, "r", NULL);
+		g_free(filename);
+	} else {
+		/* Use an explicit configuration file */
+		cio = g_io_channel_new_file(file, "r", NULL);
+	}
+	
+	if (cio == NULL)
+		return;
+	cln = g_string_sized_new(64);
+
+	while (g_io_channel_read_line_string(cio, cln, &eol, NULL)
+	    == G_IO_STATUS_NORMAL) {
+		g_string_truncate(cln, eol);
+
+		/* Split at the : and set the option */
+		cln_val = strchr(cln->str, '=');
+		if (cln_val != NULL) {
+			/* Split the option and value */
+			*cln_val++ = '\0';
+			config_setopt(cln->str, cln_val);
+		}
+	}
+
+	g_io_channel_unref(cio);
+	g_string_free(cln, TRUE);
+}
+
+/**
+ * @brief Convert a "yes"/"no" string to a boolean value.
+ */
+static int
+string_to_bool(const char *val)
+{
+	if (strcmp(val, "yes") == 0)
+		return (1);
+	else if (strcmp(val, "no") == 0)
+		return (0);
+	else
+		return (-1);
+}
+
+/**
+ * @brief Convert a color name to a Curses color code.
+ */
+static int
+string_to_curses_color(const char *val)
+{
+	if (strcmp(val, "black") == 0)
+		return (COLOR_BLACK);
+	else if (strcmp(val, "red") == 0)
+		return (COLOR_RED);
+	else if (strcmp(val, "green") == 0)
+		return (COLOR_GREEN);
+	else if (strcmp(val, "yellow") == 0)
+		return (COLOR_YELLOW);
+	else if (strcmp(val, "blue") == 0)
+		return (COLOR_BLUE);
+	else if (strcmp(val, "magenta") == 0)
+		return (COLOR_MAGENTA);
+	else if (strcmp(val, "cyan") == 0)
+		return (COLOR_CYAN);
+	else if (strcmp(val, "white") == 0)
+		return (COLOR_WHITE);
+	
+	return (-1);
+}
+
+/*
+ * Configuration value validation
+ */
+
+/**
+ * @brief Determine if a boolean string is valid
+ */
+static int valid_bool(char *val)
+{
+	return (string_to_bool(val) == -1);
+}
+
+#ifdef BUILD_SCROBBLER
+/**
+ * @brief Determine if a string containing an MD5 hash is valid
+ */
+static int
+valid_md5(char *val)
+{
+	int i;
+
+	if (val[0] == '\0')
+		return (0);
+	
+	for (i = 0; i < 32; i++) {
+		/* Silently convert hash to lowercase */
+		val[i] = g_ascii_tolower(val[i]);
+
+		if (!g_ascii_isxdigit(val[i]))
+			/* Invalid character found */
+			return (-1);
+	}
+
+	if (val[i] != '\0')
+		/* String too long */
+		return (-1);
+
+	return (0);
+}
+#endif /* BUILD_SCROBBLER */
+
+/**
+ * @brief Determine if a color string is valid
+ */
+static int
+valid_color(char *val)
+{
+	return ((string_to_curses_color(val) == -1) ? -1 : 0);
+}
+
+/*
+ * Configuration value translations
+ */
+
+int
+config_getopt_bool(char *val)
+{
+	int bval;
+	
+	bval = string_to_bool(config_getopt(val));
+	g_assert(bval != -1);
+	return (bval);
+}
+
+int
+config_getopt_color(char *val)
+{
+	int col;
+	
+	col = string_to_curses_color(config_getopt(val));
+	g_assert(col >= 0);
+	return (col);
+}

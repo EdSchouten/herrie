@@ -1,0 +1,37 @@
+# $Id: Portfile 1056 2006-12-22 13:34:26Z ed $
+
+PortSystem 1.0
+name		herrie
+version		1.1
+categories	audio
+maintainers	ed@fxq.nl
+description	Small command line interface music player
+long_description \
+	Herrie is a minimalistic music player that uses the command \
+	line. It is written to support a variety of operating systems, \
+	audio subsystems and file formats, including playlists. \
+	\
+	Herrie has a split-screen user interface, with a playlist at \
+	the top of the screen and a file browser at the bottom. When \
+	tracks are added to the playlist, Herrie automatically \
+	consumes them one by one. It is thus an application that \
+	allows you to batch music for playback. \
+	\
+	Herrie also has some more exotic features, including support \
+	for AudioScrobbler and the ability to chroot() itself into a \
+	directory.
+homepage	http://g-rave.nl/projects/${name}/
+platforms	darwin
+master_sites	http://www.il.fontys.nl/~ed/projects/${name}/distfiles/ \
+		http://www.stack.nl/~ed/projects/${name}/distfiles/
+checksums	md5 1c28876ae36737ca3f3d6d2d2f037435 \
+		sha1 d5eeba54ea7ed4b40de870d28af14faa1e4b5615
+
+depends_lib	port:glib2 port:libao port:libid3tag port:libmad \
+		port:libsndfile port:libvorbis
+depends_build	bin:pkg-config:pkgconfig port:gettext
+
+use_configure	no
+build.dir	${worksrcpath}/src
+build.args	PREFIX=${prefix}
+destroot.args	PREFIX=${destroot}${prefix}

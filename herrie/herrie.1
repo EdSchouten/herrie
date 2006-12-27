@@ -1,0 +1,257 @@
+.\"
+.\" Copyright (c) 2006 Ed Schouten <ed@fxq.nl>
+.\" All rights reserved.
+.\" 
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\" 
+.\" THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.\" $Id: herrie.1 1040 2006-12-20 22:12:28Z ed $
+.\"
+.TH HERRIE 1 "August 19, 2006" "Ed Schouten"
+
+.SH NAME
+herrie \- interactive music playlist player
+
+.SH SYNOPSIS
+.B herrie
+[-v] [-c configfile] [file ...]
+
+.SH DESCRIPTION
+.B herrie
+is a command line music player. It supports multiple audio file formats
+(including MP3 and Ogg Vorbis) and has the ability to send playback
+statistics to AudioScrobbler.
+.PP
+.B herrie
+uses the concept of a playlist to batch music for playback. The playlist
+is shown at the top of the screen. Once tracks get added to the
+playlist, the application consumes the tracks one by one from the top of
+the playlist. Playback suspends when the playlist gets empty. Tracks can
+be added to the playlist by browsing through the file browser, which
+resides at the bottom of the screen.
+.PP
+The following command line options are available:
+.TP
+.B -v
+Display version information and a list of supported file formats.
+.TP
+.B -c configfile
+By default,
+.B herrie
+searches in
+.I ~/.herrie/config
+for configuration options. The
+.B -c
+options forces
+.B herrie
+to parse the specified file instead of the default one.
+
+.SH CONFIGURATION SWITCHES
+.b herrie
+may be configured by storing options in a configuration file. Options
+must be stored in the following format:
+.TP
+.B key=value
+.PP
+Below is a list of switches, including their default values:
+.TP
+.B audio.output.ao.driver=
+The name of the driver that LibAO should use for audio playback.
+.TP
+.B audio.output.oss.device=/dev/dsp
+The OSS DSP device, used for audio playback. On OpenBSD, this value will
+be set to
+.B /dev/audio
+by default.
+.TP
+.B gui.browser.defaultpath=
+On startup, the current directory is shown in the file browser. When
+this option is set, it tries to open that specific directory first.
+.TP
+.B gui.color.bar.bg=blue
+The background color of the bars (the status bar at the top of the
+screen and the directory name bar in the middle). Valid colors are
+black, red, green, yellow, blue, magenta, cyan and white.
+.TP
+.B gui.color.bar.fg=white
+The foreground color of the bars.
+.TP
+.B gui.color.block.bg=black
+The background color of the blocks (the playlist, the file browser and
+the message prompt at the bottom).
+.TP
+.B gui.color.block.fg=white
+The foreground color of the blocks.
+.TP
+.B gui.color.deselect.bg=white
+The background color of a selected item of an inactive window (the
+background color of a selection in the file browser when the playlist is
+selected, for example).
+.TP
+.B gui.color.deselect.fg=black
+The foreground color of a selected item of an inactive window.
+.TP
+.B gui.color.select.bg=cyan
+The background color of a selected item of an active window.
+.TP
+.B gui.color.select.fg=black
+The foreground color of a selected item of an active window.
+.TP
+.B scrobbler.hostname=post.audioscrobbler.com
+The hostname the AudioScrobbler client uses when authenticating.
+.TP
+.B scrobbler.password=
+The password the Audioscrobbler client uses when authenticating. Please
+note that this switch
+.I must
+contain an MD5 hash. Use the following command to generate such a hash:
+.B
+echo -n 'p4ssw0rd' | md5
+.TP
+.B scrobbler.username=
+The username the AudioScrobbler client uses when authenticating.
+.TP
+.B vfs.dir.hide_dotfiles=yes
+Hide files in directories with a filename starting with a dot.
+.TP
+.B vfs.lockup.chroot=
+Lock the application's filebrowser in a directory. Please note that this
+switch has a lot of downsides. The AudioScrobbler client will not be
+able to resolve hostnames, as
+.I /etc/resolv.conf
+is abscent. Setting
+.B scrobbler.hostname
+to the numerical IPv4 address of the AudioScrobbler submission server
+fixes this issue. Please note that
+.B herrie
+must be launched as
+.I root
+for this switch to work. It is advised to set
+.B vfs.lockup.user
+as well.
+.TP
+.B vfs.lockup.user=
+Change the effective user of the application to the specified user.
+
+.SH KEYBOARD BINDINGS
+Both the file browser and the playlist share some common keyboard
+bindings:
+.TP
+.B j or down arrow
+Move the selection one entry down.
+.TP
+.B k or up arrow
+Move the selection one entry up.
+.TP
+.B ^F, page down or spacebar
+Move the selection one page down.
+.TP
+.B ^B or page up
+Move the selection one page up.
+.TP
+.B g or home
+Move the selection to the top.
+.TP
+.B G or end
+Move the selection to the bottom.
+.TP
+.B /
+Search the entries for a specified search string and select the first
+matching entry below the current selection. If no match is found,
+the search will continue at the top of the list.
+.TP
+.B n
+Perform another search for the last entered search string.
+.PP
+There are also some bindings that only apply to the playlist:
+.TP
+.B d
+Remove the currently selected song from the playlist.
+.TP
+.B D
+Remove all songs from the playlist.
+.TP
+.B r
+Randomize the playlist.
+.TP
+.B [
+Move the currently selected song upward.
+.TP
+.B ]
+Move the currently selected song downward.
+.PP
+The file browser also has some bindings that allow you to traverse the
+file system or add files, directories or playlists (M3U and PLS) to the
+playlist:
+.TP
+.B a
+Add items after the current selected item in the playlist.
+.TP
+.B A
+Add items at the end of the playlist.
+.TP
+.B i
+Add items before the current selected item in the playlist.
+.TP
+.B I
+Add items at the beginning of the playlist.
+.TP
+.B h or left arrow
+Go one directory up.
+.TP
+.B l or right arrow
+Enter the selected directory.
+.TP
+.B c
+Change the current directory by entering a pathname. This pathname may
+be relative to the current directory.
+.PP
+And last but not least, there are also some general keyboard bindings:
+.TP
+.B <
+Seek 5 seconds backward.
+.TP
+.B >
+Seek 5 seconds forward.
+.TP
+.B p
+Pause the current song. When
+.B p
+is pressed again, playback is resumed. Sending the signal
+.B SIGUSR1
+to the application will do the same.
+.TP
+.B q
+Quit the application.
+.TP
+.B s
+Skip the current song and continue with the next one. Sending the signal
+.B SIGUSR2
+to the application will do the same.
+.TP
+.B ^W or tab
+Switch the focus from the playlist to the file browser or vice versa.
+
+.SH AUTHORS
+.B herrie
+is maintained by Ed Schouten <ed@fxq.nl>. Please visit
+.I http://g-rave.nl/projects/herrie/
+for more information, documentation and developer notes.

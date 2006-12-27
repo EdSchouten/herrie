@@ -1,0 +1,77 @@
+Herrie 1.1 -> 1.2:
+- Include <stdlib.h> for setproctitle() on Open/NetBSD
+- Move makefile to the root of the tarball
+- Add switch to compile with XCurses
+
+Herrie 1.0.2 -> 1.1 "Christmas Edition":
+- Don't expand pathname of symlinks
+- Large rewrite of entire playlist/filebrowser code
+- Show scrolling percentage above playlist and filebrowser
+- Allow tracks to be paused and skipped with SIGUSR1 and SIGUSR2
+- Enable setproctitle() on NetBSD and OpenBSD as well
+- Revive Herrie 0.3 MP3 code, with seeking
+
+Herrie 1.0.1 -> 1.0.2:
+- Add ^W to delete complete words when entering search query
+- Add ^U to delete entire input when entering search query
+- Add 'c' in filebrowser to change the directory by entering the pathname
+- Show cursor when answering questions or filling in the search query
+- Discard refreshes when the playback time hasn't changed
+- Massively improve randomizing performance
+
+Herrie 1.0 -> 1.0.1:
+- Make Vorbis tag parsing less strict (match case insensitive)
+- Fix OSS and terminal resizing on OpenBSD
+- Fix terminal resizing in SIGWINCH wrapper while in chroot()
+
+Herrie 0.7 -> 1.0:
+- Prevent whitespace in filebrowser and playlist as much as possible
+- Document more sourcecode with Doxygen
+- Display an error message when opening an audio file fails
+
+Herrie 0.6 -> 0.7:
+- Remove all the Windows bits, add Cygwin support
+- Hopefully revive the Solaris port
+- Finally a more sane MP3 decoder
+- Show hours separately when track length exceeds one hour
+
+Herrie 0.5 -> 0.6:
+- Make the AudioScrobbler thread wait a little longer when the server is down
+- Remove a lot of possible race conditions on startup and shutdown
+- Add a LibAO audio output driver
+- Proper support for Mac OS X
+- Raise priority in the playback thread to prevent hickups
+- Fix CR+NL handling and allow absolute paths in playlists
+- Fix deadlock when searching the playlist
+
+Herrie 0.4 -> 0.5:
+- Split off header files to make abstraction in Herrie more clear
+- Fix the gettext code to allow translations of the application
+- Add '[' and ']' which allow you to move songs up and down in the playlist
+- Make the statbar less flickery
+- Don't double-fclose() MP3 files - patch from Bjorge Dijkstra
+
+Herrie 0.3 -> 0.4:
+- Fix HTTP escaping in AudioScrobbler submissions
+- Add Mutt-like search feature
+- Make Herrie work with older versions of glib (2.6.x for example)
+- Fix libsndfile code on big endian platforms
+- Move libmad/libid3tag code to a separate library - libmp3file
+- Improve M3U support - read titles from #EXTINF lines
+- Add PLS support
+
+Herrie 0.2 -> 0.3:
+- Glibify even more parts of the source code
+- Add 'delete all' button (D)
+- Add seeking and progress to libsndfile code
+
+Herrie 0.1 -> 0.2:
+- Improve error messages when playq fails to initialize
+- Remove Auto* and use a regular GNU Makefile
+- Fix GCC 2.95 compatibility (FreeBSD 4.x)
+- Add AudioScrobbler
+- Add message bar at the bottom of the screen
+- Add manual page
+
+Herrie 0.0 -> 0.1:
+- Initial release

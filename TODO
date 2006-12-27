@@ -1,0 +1,34 @@
+Below is a list of items that could (should?) be added to Herrie's
+sourcecode. Feel free to implement them. Patches are, as always, very
+welcome.
+
+Graphical user interface:
+- Add curses mouse support
+- Allow numeric multipliers just like vi
+- Add copy/paste functionality to playlist
+
+Scrobbler:
+- Allow Scrobbler queue to be dumped on closure (send them next time)
+- Resolve 'post.audioscrobbler.com' before chroot()
+
+Audio abstraction:
+- Add support for volume control
+- Fully implement more audio file formats
+- Web streaming
+- CD playback
+  - CDDB
+- 5.1 support?
+
+Virtual filesystem:
+- Network addresses (for web streaming)
+
+Documentation:
+- Usage guide
+- Write a developers guide?
+
+In general:
+- Make Herrie UTF-8 aware
+  - Scrobbler code does not properly escape > 0x7f
+  - Store strings in struct audio_file's tag as wide characters
+  - Experiment with ncursesw library
+  - Still remain portable...? (use glib functions?)
