@@ -2,6 +2,7 @@ Herrie 1.1 -> 1.2:
 - Include <stdlib.h> for setproctitle() on Open/NetBSD
 - Move makefile to the root of the tarball
 - Add switch to compile with XCurses
+- Add dependencies file to record header file deps
 
 Herrie 1.0.2 -> 1.1 "Christmas Edition":
 - Don't expand pathname of symlinks
