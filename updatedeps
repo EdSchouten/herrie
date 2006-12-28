@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd herrie/src
+fastdep *.c > ../depends.mak
