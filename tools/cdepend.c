@@ -42,16 +42,59 @@ struct dependency {
 	struct dependency	*next;
 };
 
-static void
+struct file *filelist = NULL;
+
+static struct file *
+file_lookup(const char *filename)
+{
+	struct file *cur;
+
+	for (cur = filelist; cur != NULL; cur = cur->next) {
+		if (strcmp(filename, cur->filename) == 0)
+			return (cur);
+	}
+
+	return (NULL);
+}
+
+static struct file *
 file_add(const char *filename)
 {
 	FILE *rf;
+	struct file *ret, *df;
+	char *line, *end;
+	size_t len;
 
-	rf = fopen(filename, "r");
+	if ((ret = file_lookup(filename)) != NULL)
+		return (ret);
+
+	rf = fopen(filename, "rt");
 	if (rf == NULL) {
 		fprintf(stderr, "Cannot open %s: %s\n", filename,
 		    strerror(errno));
 	}
+
+	/* Allocate a new file and add it to the file list */
+	ret = malloc(sizeof(struct file));
+	ret->filename = strdup(filename);
+	ret->firstdep = NULL;
+	ret->next = filelist;
+	filelist = ret;
+
+	/* Look for deps in the file */
+	while ((line = fgetln(rf, &len)) != NULL) {
+		if (strncmp(line, "#include \"", 10) == 0) {
+			line += 10;
+			if ((end = memchr(line, '"', len)) == NULL)
+				continue;
+			*end = '\0';
+
+			df = file_add(line);
+		}
+	}
+	
+	fclose(rf);
+	return (ret);
 }
 
 static void
@@ -68,8 +111,14 @@ main(int argc, char *argv[])
 		usage();
 
 	/* Analyze all input files */
-	while (--argc >= 0)
+	while (--argc > 0)
 		file_add(argv[argc]);
+	
+	/* XXX */
+	struct file *cur;
+	for (cur = filelist; cur != NULL; cur = cur->next) {
+		printf("%s\n", cur->filename);
+	}
 	
 	return (0);
 }
