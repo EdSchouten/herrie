@@ -5,12 +5,12 @@ audio_format_vorbis.o: audio_format_vorbis.c audio_format.h audio.h audio_output
 audio_output_ao.o: audio_output_ao.c audio_output.h audio.h config.h
 audio_output_oss.o: audio_output_oss.c audio_output.h audio.h config.h trans.h
 config.o: config.c config.h gui.h audio.h
-gui_browser.o: gui_browser.c config.h gui_internal.h audio.h gui.h vfs.h gui_vfslist.h playq.h trans.h
-gui_draw.o: gui_draw.c config.h gui_internal.h audio.h gui.h vfs.h
-gui_input.o: gui_input.c trans.h playq.h vfs.h gui_internal.h audio.h gui.h
-gui_msgbar.o: gui_msgbar.c gui_internal.h audio.h gui.h vfs.h trans.h
-gui_playq.o: gui_playq.c gui_internal.h audio.h gui.h vfs.h gui_vfslist.h playq.h trans.h
-gui_vfslist.o: gui_vfslist.c gui_vfslist.h gui_internal.h audio.h gui.h vfs.h trans.h
+gui_browser.o: gui_browser.c config.h gui_internal.h gui.h audio.h vfs.h gui_vfslist.h playq.h trans.h
+gui_draw.o: gui_draw.c config.h gui_internal.h gui.h audio.h vfs.h
+gui_input.o: gui_input.c trans.h playq.h vfs.h gui_internal.h gui.h audio.h
+gui_msgbar.o: gui_msgbar.c gui_internal.h gui.h audio.h vfs.h trans.h
+gui_playq.o: gui_playq.c gui_internal.h gui.h audio.h vfs.h gui_vfslist.h playq.h trans.h
+gui_vfslist.o: gui_vfslist.c gui_vfslist.h gui_internal.h gui.h audio.h vfs.h trans.h
 herrie.o: herrie.c audio_output.h audio.h config.h gui.h playq.h vfs.h scrobbler.h trans.h
 playq.o: playq.c audio.h audio_output.h gui.h playq.h vfs.h trans.h
 scrobbler.o: scrobbler.c config.h gui.h audio.h scrobbler.h scrobbler_internal.h trans.h

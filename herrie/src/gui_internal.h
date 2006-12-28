@@ -36,7 +36,6 @@
 #include <curses.h>
 #endif /* BUILD_XCURSES */
 
-#include "audio.h"
 #include "gui.h"
 #include "vfs.h"
 
