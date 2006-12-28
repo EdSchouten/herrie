@@ -92,7 +92,7 @@ The following commands will compile and install Herrie without MP3 and
 AudioScrobbler support:
 
 	$ make NO_MP3=yes NO_SCROBBLER=yes
-	$ sudo make install
+	$ sudo make NO_MP3=yes NO_SCROBBLER=yes install
 
 Please notice that 'make' is called 'gmake' on operating systems that
 already ship their own one (xBSD, Solaris, etc).
