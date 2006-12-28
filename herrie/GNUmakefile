@@ -146,7 +146,4 @@ clean:
 
 herrie$(BINARY_EXT): $(HERRIE_OBJ)
 
-# maintainers only: regenerate header deps
-depends:
-	(cd src; fastdep *.c) > depends.mak
 include depends.mak

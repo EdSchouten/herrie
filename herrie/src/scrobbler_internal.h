@@ -30,8 +30,6 @@
 #ifndef _SCROBBLER_INTERNAL_H_
 #define _SCROBBLER_INTERNAL_H_
 
-#include "scrobbler.h"
-
 /**
  * @brief Local storage structure of AudioScrobbler thread.
  */

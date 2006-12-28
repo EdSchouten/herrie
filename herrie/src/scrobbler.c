@@ -34,6 +34,7 @@
 
 #include "config.h"
 #include "gui.h"
+#include "scrobbler.h"
 #include "scrobbler_internal.h"
 #include "trans.h"
 

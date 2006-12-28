@@ -5,5 +5,7 @@ then
 	echo "usage: $0 version"
 fi
 
+echo "Warning: don't forget to run ./updatedeps!"
+
 git archive --format=tar --prefix="herrie-$1/" HEAD:herrie |
     gzip -9 > "herrie-$1.tar.gz"

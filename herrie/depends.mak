@@ -13,9 +13,9 @@ gui_playq.o: gui_playq.c gui_internal.h audio.h gui.h vfs.h gui_vfslist.h playq.
 gui_vfslist.o: gui_vfslist.c gui_vfslist.h gui_internal.h audio.h gui.h vfs.h trans.h
 herrie.o: herrie.c audio_output.h audio.h config.h gui.h playq.h vfs.h scrobbler.h trans.h
 playq.o: playq.c audio.h audio_output.h gui.h playq.h vfs.h trans.h
-scrobbler.o: scrobbler.c config.h gui.h audio.h scrobbler_internal.h scrobbler.h trans.h
-scrobbler_hash.o: scrobbler_hash.c scrobbler_internal.h scrobbler.h audio.h
-scrobbler_send.o: scrobbler_send.c config.h scrobbler_internal.h scrobbler.h audio.h
+scrobbler.o: scrobbler.c config.h gui.h audio.h scrobbler.h scrobbler_internal.h trans.h
+scrobbler_hash.o: scrobbler_hash.c scrobbler_internal.h
+scrobbler_send.o: scrobbler_send.c config.h scrobbler_internal.h
 vfs.o: vfs.c config.h trans.h vfs.h vfs_modules.h
 vfs_dir.o: vfs_dir.c config.h vfs_modules.h vfs.h
 vfs_file.o: vfs_file.c vfs_modules.h vfs.h
