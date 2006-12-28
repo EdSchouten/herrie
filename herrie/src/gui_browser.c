@@ -43,7 +43,7 @@ static WINDOW *win_dirname;
 /**
  * @brief Reference to VFS object that is currently shown.
  */
-static struct vfsref *vr_curdir;
+static struct vfsref *vr_curdir = NULL;
 /**
  * @brief Reference to window used as the file browser.
  */
@@ -86,6 +86,7 @@ gui_browser_init(void)
 	win_browser = gui_vfslist_new(0);
 	gui_vfslist_setfocus(win_browser, 1);
 	gui_vfslist_setcallback(win_browser, gui_browser_dirname_refresh);
+	gui_browser_dirname_refresh();
 
 	defdir = config_getopt("gui.browser.defaultpath");
 	if (defdir[0] != '\0') {
