@@ -125,7 +125,7 @@ HERRIE_OBJ+=	audio.o audio_output_$(AUDIO_OUTPUT).o config.o \
 		gui_playq.o gui_vfslist.o herrie.o playq.o vfs.o \
 		vfs_dir.o vfs_file.o vfs_playlist.o
 
-.PHONY: all install uninstall clean
+.PHONY: all install uninstall clean depends
 
 all: herrie$(BINARY_EXT) herrie.1 $(LOCALES:%=%.mo)
 
@@ -145,4 +145,8 @@ clean:
 	msgfmt -o $@ $<
 
 herrie$(BINARY_EXT): $(HERRIE_OBJ)
-	$(CC) -o herrie$(BINARY_EXT) $(HERRIE_OBJ) $(LDFLAGS)
+
+# maintainers only: regenerate header deps
+depends:
+	(cd src; fastdep *.c) > depends.mak
+include depends.mak
