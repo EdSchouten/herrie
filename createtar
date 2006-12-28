@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ $# != 1 ]
+then
+	echo "usage: $0 version"
+fi
+
+git archive --format=tar --prefix="herrie-$1/" HEAD:herrie |
+    gzip -9 > "herrie-$1.tar.gz"
