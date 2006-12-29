@@ -23,17 +23,18 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-/**
- * @file trans.h
- */
 
-#ifndef _TRANS_H_
-#define _TRANS_H_
-
+#include <glib.h>
 #ifdef BUILD_TRANS
 #include <glib/gi18n.h>
 #else /* !BUILD_TRANS */
 #define _(str) str
 #endif /* BUILD_TRANS */
 
-#endif /* !_TRANS_H_ */
+#include <sys/types.h>
+#include <ctype.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
