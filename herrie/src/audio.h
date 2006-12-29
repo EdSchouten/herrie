@@ -30,9 +30,6 @@
 #ifndef _AUDIO_H_
 #define _AUDIO_H_
 
-#include <sys/types.h>
-#include <stdio.h>
-
 struct audio_format;
 
 /**

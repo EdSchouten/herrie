@@ -27,12 +27,6 @@
  * @file herrie.c
  */
 
-#include <glib.h>
-
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
 #ifdef BUILD_TRANS
 #include <locale.h>
 #endif /* BUILD_TRANS */
@@ -42,7 +36,6 @@
 #include "gui.h"
 #include "playq.h"
 #include "scrobbler.h"
-#include "trans.h"
 #include "vfs.h"
 
 /**

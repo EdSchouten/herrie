@@ -27,12 +27,6 @@
  * @file audio_output_oss.c
  */
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-
-#include <glib.h>
-
 #include <sys/ioctl.h>
 #ifdef __OpenBSD__
 #include <soundcard.h>
@@ -42,7 +36,6 @@
 
 #include "audio_output.h"
 #include "config.h"
-#include "trans.h"
 
 /**
  * @brief File descriptor of the audio device handle.

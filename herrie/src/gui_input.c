@@ -27,21 +27,16 @@
  * @file gui_input.c
  */
 
-#include <glib.h>
-
-#include <ctype.h>
 #include <signal.h>
 #if defined(SIGWINCH) && defined(G_THREADS_IMPL_POSIX)
 #include <pthread.h>
 #endif /* SIGWINCH && G_THREADS_IMPL_POSIX */
 #ifdef BUILD_GUI_SIGWINCH_WRAPPER
 #include <sys/ioctl.h>
-#include <unistd.h>
 #endif /* BUILD_GUI_SIGWINCH_WRAPPER */
 
-#include "trans.h"
-#include "playq.h"
 #include "gui_internal.h"
+#include "playq.h"
 
 /**
  * @brief The focus is on the browser.

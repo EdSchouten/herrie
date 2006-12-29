@@ -27,13 +27,7 @@
  * @file gui_vfslist.c
  */
 
-#include <glib.h>
-
-#include <ctype.h>
-#include <string.h>
-
 #include "gui_vfslist.h"
-#include "trans.h"
 
 /**
  * @brief Make sure the cursor resides inside the viewport. Move the

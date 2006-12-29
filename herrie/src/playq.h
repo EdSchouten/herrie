@@ -30,8 +30,6 @@
 #ifndef _PLAYQ_H_
 #define _PLAYQ_H_
 
-#include <glib.h>
-
 #include "vfs.h"
 
 /**

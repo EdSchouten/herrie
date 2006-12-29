@@ -27,7 +27,6 @@
  * @file scrobbler_hash.c
  */
 
-#include <sys/types.h>
 #include <openssl/md5.h>
 
 #include "scrobbler_internal.h"

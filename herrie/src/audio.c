@@ -27,8 +27,6 @@
  * @file audio.c
  */
 
-#include <glib.h>
-
 #include "audio.h"
 #include "audio_format.h"
 

@@ -27,10 +27,6 @@
  * @file audio_format_vorbis.c
  */
 
-#include <glib.h>
-
-#include <string.h>
-
 #include <vorbis/codec.h>
 #include <vorbis/vorbisfile.h>
 

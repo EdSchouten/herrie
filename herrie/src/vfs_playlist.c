@@ -27,12 +27,6 @@
  * @file vfs_playlist.c
  */
 
-#include <glib.h>
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "vfs_modules.h"
 
 /**

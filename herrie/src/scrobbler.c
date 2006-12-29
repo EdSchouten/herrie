@@ -27,16 +27,12 @@
  * @file scrobbler.c
  */
 
-#include <glib.h>
-
-#include <string.h>
 #include <time.h>
 
 #include "config.h"
 #include "gui.h"
 #include "scrobbler.h"
 #include "scrobbler_internal.h"
-#include "trans.h"
 
 /**
  * @brief Flag indicating if the AudioScrobbler thread has already been

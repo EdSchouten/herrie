@@ -27,9 +27,6 @@
  * @file audio_format_sndfile.c
  */
 
-#include <glib.h>
-
-#include <unistd.h>
 #include <sndfile.h>
 
 #include "audio_format.h"

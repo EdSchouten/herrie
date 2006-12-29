@@ -30,8 +30,6 @@
 #ifndef _VFS_H_
 #define _VFS_H_
 
-#include <glib.h>
-
 struct vfsref;
 
 /**

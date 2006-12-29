@@ -27,11 +27,6 @@
  * @file vfs_dir.c
  */
 
-#include <glib.h>
-
-#include <stdio.h>
-#include <string.h>
-
 #include "config.h"
 #include "vfs_modules.h"
 

@@ -27,17 +27,12 @@
  * @file vfs.c
  */
 
-#include <glib.h>
-
-#include <string.h>
-#include <unistd.h>
 #include <sys/stat.h>
 #ifdef BUILD_LOCKUP
 #include <pwd.h>
 #endif /* BUILD_LOCKUP */
 
 #include "config.h"
-#include "trans.h"
 #include "vfs.h"
 #include "vfs_modules.h"
 

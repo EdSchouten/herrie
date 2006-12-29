@@ -27,11 +27,6 @@
  * @file scrobbler_send.c
  */
 
-#include <glib.h>
-
-#include <stdlib.h>
-#include <string.h>
-
 #include <curl/curl.h>
 #include <curl/easy.h>
 

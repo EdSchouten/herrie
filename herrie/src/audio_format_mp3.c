@@ -27,13 +27,6 @@
  * @file audio_format_mp3.c
  */
 
-#include <glib.h>
-
-#include <sys/types.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-
 #include <mad.h>
 #include <id3tag.h>
 

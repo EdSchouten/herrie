@@ -27,14 +27,11 @@
  * @file gui_browser.c
  */
 
-#include <string.h>
-
 #include "config.h"
 #include "gui_internal.h"
 #include "gui_vfslist.h"
 #include "playq.h"
 #include "vfs.h"
-#include "trans.h"
 
 /**
  * @brief Reference to window with pathname of current folder.

@@ -116,7 +116,7 @@ endif
 CFLAGS+=	$(shell pkg-config --cflags glib-2.0 gthread-2.0) \
 		-I$(PREFIX)/include -DAUDIO_OUTPUT=\"$(AUDIO_OUTPUT)\" \
 		-DAPP_NAME=\"herrie\" -DAPP_VERSION=\"$(VERSION)\" \
-		-Wall -Werror -Wmissing-prototypes
+		-Wall -Werror -Wmissing-prototypes -include src/stdinc.h
 LDFLAGS+=	$(shell pkg-config --libs glib-2.0 gthread-2.0) \
 		-L$(PREFIX)/lib
 

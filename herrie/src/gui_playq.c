@@ -27,16 +27,9 @@
  * @file gui_playq.c
  */
 
-#include <glib.h>
-
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 #include "gui_internal.h"
 #include "gui_vfslist.h"
 #include "playq.h"
-#include "trans.h"
 
 /**
  * @brief Playback time currently displayed, used to compare and discard

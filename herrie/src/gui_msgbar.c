@@ -27,12 +27,7 @@
  * @file gui_msgbar.c
  */
 
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-
 #include "gui_internal.h"
-#include "trans.h"
 
 /**
  * @brief Priority of the current message in the message bar.

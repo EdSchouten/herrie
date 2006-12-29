@@ -27,14 +27,9 @@
  * @file config.c
  */
 
-#include <glib.h>
-
-#include <stdio.h>
-#include <string.h>
-#include <curses.h>
-
 #include "config.h"
-#include "gui.h"
+/* XXX: curses color codes */
+#include "gui_internal.h"
 
 /**
  * @brief Structure containing a single configuration entry of Herrie
