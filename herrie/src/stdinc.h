@@ -31,6 +31,13 @@
 #define _(str) str
 #endif /* BUILD_TRANS */
 
+/* Older Glib's don't have GSlice yet */
+#ifndef g_slice_new
+#define g_slice_new(type)	g_malloc(sizeof(type))
+#define g_slice_new0(type)	g_malloc0(sizeof(type))
+#define g_slice_free(type,obj)	g_free(obj)
+#endif /* !g_slice_new */
+
 #include <sys/types.h>
 #include <ctype.h>
 #include <fcntl.h>
