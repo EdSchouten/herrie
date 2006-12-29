@@ -90,99 +90,96 @@ struct gui_vfslist {
 /**
  * @brief Allocate and initialize a new gui_vfslist.
  */
-struct gui_vfslist	*gui_vfslist_new(int shownumbers);
+struct gui_vfslist *gui_vfslist_new(int shownumbers);
 /**
  * @brief Deallocate a gui_vfslist.
  */
-void			gui_vfslist_destroy(struct gui_vfslist *gv);
+void gui_vfslist_destroy(struct gui_vfslist *gv);
 /**
  * @brief Set the list that should be shown in the dialog.
  */
-void			gui_vfslist_setlist(struct gui_vfslist *gv,
-			    struct vfslist *vl);
+void gui_vfslist_setlist(struct gui_vfslist *gv, struct vfslist *vl);
 /**
  * @brief Move the dialog to a specified position in the terminal.
  */
-void			gui_vfslist_move(struct gui_vfslist *gv,
-			    int x, int y, int width, int height);
+void gui_vfslist_move(struct gui_vfslist *gv, int x, int y,
+    int width, int height);
 /**
  * @brief Focus or unfocus the dialog. This causes the selected item to
  *        change its color.
  */
-void			gui_vfslist_setfocus(struct gui_vfslist *gv, int focus);
+void gui_vfslist_setfocus(struct gui_vfslist *gv, int focus);
 /**
  * @brief Change which item is currently selected.
  */
-void			gui_vfslist_setselected(struct gui_vfslist *gv,
-			    struct vfsref *vr, unsigned int index);
+void gui_vfslist_setselected(struct gui_vfslist *gv, struct vfsref *vr,
+    unsigned int index);
 /**
  * @brief Read which item is currently selected.
  */
-#define			gui_vfslist_getselected(gv)	((gv)->vr_selected)
+#define gui_vfslist_getselected(gv)	((gv)->vr_selected)
 /**
  * @brief Read the index number of the currently selected item.
  */
-#define			gui_vfslist_getselectedidx(gv)	((gv)->idx_selected)
+#define gui_vfslist_getselectedidx(gv)	((gv)->idx_selected)
 
 /**
  * @brief Move the cursor one item up.
  */
-void			gui_vfslist_cursor_up(struct gui_vfslist *gv);
+void gui_vfslist_cursor_up(struct gui_vfslist *gv);
 /**
  * @brief Move the cursor one item down.
  */
-void			gui_vfslist_cursor_down(struct gui_vfslist *gv,
-			    int silent);
+void gui_vfslist_cursor_down(struct gui_vfslist *gv, int silent);
 /**
  * @brief Move the cursor to the top of the list.
  */
-void			gui_vfslist_cursor_top(struct gui_vfslist *gv);
+void gui_vfslist_cursor_top(struct gui_vfslist *gv);
 /**
  * @brief Move the cursor to the bottom of the list.
  */
-void			gui_vfslist_cursor_bottom(struct gui_vfslist *gv);
+void gui_vfslist_cursor_bottom(struct gui_vfslist *gv);
 /**
  * @brief Move the cursor one page up.
  */
-void			gui_vfslist_cursor_pageup(struct gui_vfslist *gv);
+void gui_vfslist_cursor_pageup(struct gui_vfslist *gv);
 /**
  * @brief Move the cursor one page down.
  */
-void			gui_vfslist_cursor_pagedown(struct gui_vfslist *gv);
+void gui_vfslist_cursor_pagedown(struct gui_vfslist *gv);
 /**
  * @brief Return the percentage string.
  */
-#define			gui_vfslist_getpercentage(gv)	((gv)->percent)
+#define gui_vfslist_getpercentage(gv)		((gv)->percent)
 /**
  * @brief Set a callback that is run each time the dialog is refreshed.
  */
-#define			gui_vfslist_setcallback(gv,func) ((gv)->callback = (func))
+#define gui_vfslist_setcallback(gv,func)	((gv)->callback = (func))
 /**
  * @brief Notify the gui_vfslist that an item is about to be removed
  *        from the list.
  */
-void			gui_vfslist_notify_pre_removal(struct gui_vfslist *gv,
-			    unsigned int index);
+void gui_vfslist_notify_pre_removal(struct gui_vfslist *gv,
+    unsigned int index);
 /**
  * @brief Notify the gui_vfslist that an item has been inserted to the
  *        list.
  */
-void			gui_vfslist_notify_post_insertion(struct gui_vfslist *gv,
-			    unsigned int index);
+void gui_vfslist_notify_post_insertion(struct gui_vfslist *gv,
+    unsigned int index);
 /**
  * @brief Notify the gui_vfslist that the list has been randomized.
  */
-void			gui_vfslist_notify_post_randomization(
-			    struct gui_vfslist *gv);
+void gui_vfslist_notify_post_randomization( struct gui_vfslist *gv);
 /**
  * @brief Notify the gui_vfslist that all changes to the list itself are
  *        finished. This causes the list to be redrawn.
  */
-void			gui_vfslist_notify_done(struct gui_vfslist *gv);
+void gui_vfslist_notify_done(struct gui_vfslist *gv);
 /**
  * @brief Change the selection to the first item that matches the
  *        globally defined search string gui_input_cursearch.
  */
-void			gui_vfslist_searchnext(struct gui_vfslist *gv);
+void gui_vfslist_searchnext(struct gui_vfslist *gv);
 
 #endif /* !_GUI_VFSLIST_H_ */
