@@ -371,7 +371,7 @@ scrobbler_spawn(void)
 		return;
 	
 	/* Connection local storage */
-	scd = g_malloc0(sizeof(struct scrobbler_condata));
+	scd = g_slice_new0(struct scrobbler_condata);
 	scd->username = scrobbler_http_escape(su);
 	scd->password = sp;
 	

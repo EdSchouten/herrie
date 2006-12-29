@@ -93,7 +93,7 @@ audio_open(const char *filename)
 	struct audio_file *out = NULL;
 	int i;
 
-	out = g_malloc0(sizeof(struct audio_file));
+	out = g_slice_new0(struct audio_file);
 	
 	out->fp = fopen(filename, "rb");
 	if (out->fp == NULL)
@@ -118,7 +118,7 @@ audio_open(const char *filename)
 	return (out);
 
 bad:
-	g_free(out);
+	g_slice_free(struct audio_file, out);
 	return (NULL);
 }
 
@@ -129,7 +129,7 @@ audio_close(struct audio_file *fd)
 	if (fd->fp != NULL)
 		fclose(fd->fp);
 
-	g_free(fd);
+	g_slice_free(struct audio_file, fd);
 }
 
 size_t

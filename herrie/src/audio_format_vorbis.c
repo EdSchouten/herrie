@@ -78,9 +78,9 @@ vorbis_open(struct audio_file *fd)
 	OggVorbis_File *vfp;
 	vorbis_info *info;
 
-	vfp = g_malloc(sizeof(OggVorbis_File));
+	vfp = g_slice_new(OggVorbis_File);
 	if (ov_open(fd->fp, vfp, NULL, 0) != 0) {
-		g_free(vfp);
+		g_slice_free(OggVorbis_File, vfp);
 		return (-1);
 	}
 
@@ -102,7 +102,7 @@ vorbis_close(struct audio_file *fd)
 	OggVorbis_File *vfp = fd->drv_data;
 
 	ov_clear(vfp);
-	g_free(vfp);
+	g_slice_free(OggVorbis_File, vfp);
 
 	/* libvorbisfile already closes the file for us */
 	fd->fp = NULL;

@@ -331,7 +331,7 @@ mp3_open(struct audio_file *fd)
 		return (-1);
 	mp3_readtags(fd);
 
-	data = g_malloc(sizeof(struct mp3_drv_data));
+	data = g_slice_new(struct mp3_drv_data);
 	fd->drv_data = (void *)data;
 
 	mp3_rewind(fd);
@@ -349,7 +349,7 @@ mp3_close(struct audio_file *fd)
 	mad_stream_finish(&data->mstream);
 	mad_synth_finish(&data->msynth);
 
-	g_free(data);
+	g_slice_free(struct mp3_drv_data, data);
 }
 
 size_t
