@@ -28,11 +28,11 @@
  */
 
 #include <sys/ioctl.h>
-#ifdef __OpenBSD__
+#if defined(__NetBSD__) || defined(__OpenBSD__)
 #include <soundcard.h>
-#else /* !__OpenBSD__ */
+#else /* !(__NetBSD__ || __OpenBSD__) */
 #include <sys/soundcard.h>
-#endif /* __OpenBSD__ */
+#endif /* __NetBSD__ || __OpenBSD__ */
 
 #include "audio_output.h"
 #include "config.h"

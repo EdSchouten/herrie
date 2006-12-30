@@ -71,11 +71,11 @@ static int valid_color(char *val);
  */
 static struct config_entry configlist[] = {
 	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
-#ifdef __OpenBSD__
+#if defined(__NetBSD__) || defined(__OpenBSD__)
 	{ "audio.output.oss.device",	"/dev/audio",	NULL,		NULL },
-#else /* !__OpenBSD__ */
+#else /* !(__NetBSD__ || __OpenBSD__) */
 	{ "audio.output.oss.device",	"/dev/dsp",	NULL,		NULL },
-#endif /* __OpenBSD__ */
+#endif /* __NetBSD__ || __OpenBSD__ */
 	{ "gui.browser.defaultpath",	"",		NULL,		NULL },
 	{ "gui.color.bar.bg",		"blue",		valid_color,	NULL },
 	{ "gui.color.bar.fg",		"white",	valid_color,	NULL },
