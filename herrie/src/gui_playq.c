@@ -296,11 +296,12 @@ gui_playq_song_remove(void)
 
 	PLAYQ_LOCK;
 	vr = gui_vfslist_getselected(win_playq);
-	if (vr != NULL)
+	if (vr != NULL) {
 		playq_song_fast_remove(vr,
 		    gui_vfslist_getselectedidx(win_playq));
-	else
+	} else {
 		gui_msgbar_warn(_("There are no songs."));
+	}
 	PLAYQ_UNLOCK;
 }
 

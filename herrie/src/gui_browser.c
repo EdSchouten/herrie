@@ -245,6 +245,8 @@ gui_browser_playq_add_tail(void)
 	if (vr != NULL) {
 		playq_song_add_tail(vr);
 		gui_vfslist_cursor_down(win_browser, 1);
+	} else {
+		gui_msgbar_warn(_("There are no songs."));
 	}
 }
 
@@ -257,6 +259,8 @@ gui_browser_playq_add_head(void)
 	if (vr != NULL) {
 		playq_song_add_head(vr);
 		gui_vfslist_cursor_down(win_browser, 1);
+	} else {
+		gui_msgbar_warn(_("There are no songs."));
 	}
 }
 
@@ -269,6 +273,8 @@ gui_browser_playq_add_after(void)
 	if (vr != NULL) {
 		gui_playq_song_add_after(vr);
 		gui_vfslist_cursor_down(win_browser, 1);
+	} else {
+		gui_msgbar_warn(_("There are no songs."));
 	}
 }
 
@@ -281,6 +287,8 @@ gui_browser_playq_add_before(void)
 	if (vr != NULL) {
 		gui_playq_song_add_before(vr);
 		gui_vfslist_cursor_down(win_browser, 1);
+	} else {
+		gui_msgbar_warn(_("There are no songs."));
 	}
 }
 
