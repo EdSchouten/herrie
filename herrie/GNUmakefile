@@ -56,6 +56,11 @@ endif
 ifeq ($(OS),OpenBSD)
 AUDIO_OUTPUT=	oss
 endif
+ifeq ($(OS),SunOS)
+CFLAGS+=	-I$(PREFIX)/include/ncurses
+PREFIX=		/opt/sfw
+NO_TRANS=	yes
+endif
 ifneq (,$(findstring CYGWIN,$(OS)))
 BINARY_EXT=	.exe
 PREFIX=		/usr
@@ -106,7 +111,11 @@ ifdef XCURSES
 CFLAGS+=	-DBUILD_XCURSES
 LDFLAGS+=	-lXCurses
 else
+ifeq ($(OS),SunOS)
+LDFLAGS+=	-lncurses
+else
 LDFLAGS+=	-lcurses
+endif
 endif
 
 # libao dies with -Wstrict-prototypes - fixed in trunk
