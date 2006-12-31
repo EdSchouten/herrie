@@ -31,25 +31,21 @@
 #define _CONFIG_H_
 
 /**
- * @brief Set a value to a configuration switch
+ * @brief Load the configuration from disk
  */
-int		config_setopt(char *opt, char *val);
+void		config_load(const char *file);
+
 /**
  * @brief Return the value of a configuration switch
  */
-const char	*config_getopt(char *opt);
-/**
- * @brief Load the configuration from disk
- */
-void		config_load(char *file);
-
+const char	*config_getopt(const char *opt);
 /**
  * @brief Return a value translated to boolean
  */
-int		config_getopt_bool(char *val);
+int		config_getopt_bool(const char *val);
 /**
  * @brief Return a value translated to curses color code
  */
-int		config_getopt_color(char *val);
+int		config_getopt_color(const char *val);
 
 #endif /* !_CONFIG_H_ */

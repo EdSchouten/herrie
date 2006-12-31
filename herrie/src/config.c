@@ -32,176 +32,6 @@
 #include "gui_internal.h"
 
 /**
- * @brief Structure containing a single configuration entry of Herrie
- */
-struct config_entry {
-	/**
-	 * @brief Name it can be located at
-	 */
-	const char	*name;
-	/**
-	 * @brief Default value
-	 */
-	const char	*defval;
-	/**
-	 * @brief Function to validate when set
-	 */
-	int		(*validator)(char *val);
-	/**
-	 * @brief Current value if not equal to the default
-	 */
-	char		*curval;
-};
-
-/* Config switch validators */
-static int valid_bool(char *val);
-#ifdef BUILD_SCROBBLER
-static int valid_md5(char *val);
-#endif /* BUILD_SCROBBLER */
-static int valid_color(char *val);
-
-/*
- * List of available configuration switches. Keep this list sorted at
- * all time; the config lookups have been optimised to expect an
- * alphabetical lookup. Looking up switches starting with 'z' will take
- * longer than 'a'.
- */
-/**
- * @brief List of configuration switches.
- */
-static struct config_entry configlist[] = {
-	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
-#if defined(__NetBSD__) || defined(__OpenBSD__)
-	{ "audio.output.oss.device",	"/dev/audio",	NULL,		NULL },
-#else /* !(__NetBSD__ || __OpenBSD__) */
-	{ "audio.output.oss.device",	"/dev/dsp",	NULL,		NULL },
-#endif /* __NetBSD__ || __OpenBSD__ */
-	{ "gui.browser.defaultpath",	"",		NULL,		NULL },
-	{ "gui.color.bar.bg",		"blue",		valid_color,	NULL },
-	{ "gui.color.bar.fg",		"white",	valid_color,	NULL },
-	{ "gui.color.block.bg",		"black",	valid_color,	NULL },
-	{ "gui.color.block.fg",		"white",	valid_color,	NULL },
-	{ "gui.color.deselect.bg",	"white",	valid_color,	NULL },
-	{ "gui.color.deselect.fg",	"black",	valid_color,	NULL },
-	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
-	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
-#ifdef BUILD_SCROBBLER
-	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },
-	{ "scrobbler.password",		"",		valid_md5,	NULL },
-	{ "scrobbler.username",		"",		NULL,		NULL },
-#endif /* BUILD_SCROBBLER */
-	{ "vfs.dir.hide_dotfiles",	"yes",		valid_bool,	NULL },
-	{ "vfs.lockup.chroot",		"",		NULL,		NULL },
-	{ "vfs.lockup.user",		"",		NULL,		NULL },
-};
-/**
- * @brief The amount of configuration switches available.
- */
-#define NUM_SWITCHES (sizeof(configlist) / sizeof(struct config_entry)) 
-
-/**
- * @brief Search for an entry in the configlist by name.
- */
-static struct config_entry *
-config_search(char *opt)
-{
-	int i, c;
-
-	for (i = 0; i < NUM_SWITCHES; i++) {
-		c = strcmp(opt, configlist[i].name);
-
-		if (c == 0)
-			/* Found it */
-			return (&configlist[i]);
-		else if (c < 0)
-			/* We're already too far */
-			break;
-	}
-
-	/* Not found */
-	return (NULL);
-}
-
-int
-config_setopt(char *opt, char *val)
-{
-	struct config_entry *ent;
-	char *newval = NULL;
-
-	if ((ent = config_search(opt)) == NULL)
-		return (-1);
-	
-	if (strcmp(val, ent->defval) != 0) {
-		/* Just unset the value when it's the default */
-
-		if (ent->validator != NULL) {
-			/* Do not set invalid values */
-			if (ent->validator(val) != 0)
-				return (-1);
-		}
-		newval = g_strdup(val);
-	}
-
-	/* Free the current contents */
-	g_free(ent->curval);
-	ent->curval = newval;
-
-	return (0);
-}
-
-const char *
-config_getopt(char *opt)
-{
-	struct config_entry *ent;
-	
-	ent = config_search(opt);
-	g_assert(ent != NULL);
-	
-	/* Return the default if it is unset */
-	return (ent->curval ? ent->curval : ent->defval);
-}
-
-void
-config_load(char *file)
-{
-	GIOChannel *cio;
-	GString *cln;
-	gsize eol;
-	char *filename, *cln_val;
-
-	if (file == NULL) {
-		/* Use the standard configuration file */
-		filename = g_build_filename(g_get_home_dir(),
-		    "." APP_NAME, "config", NULL);
-		cio = g_io_channel_new_file(filename, "r", NULL);
-		g_free(filename);
-	} else {
-		/* Use an explicit configuration file */
-		cio = g_io_channel_new_file(file, "r", NULL);
-	}
-	
-	if (cio == NULL)
-		return;
-	cln = g_string_sized_new(64);
-
-	while (g_io_channel_read_line_string(cio, cln, &eol, NULL)
-	    == G_IO_STATUS_NORMAL) {
-		g_string_truncate(cln, eol);
-
-		/* Split at the : and set the option */
-		cln_val = strchr(cln->str, '=');
-		if (cln_val != NULL) {
-			/* Split the option and value */
-			*cln_val++ = '\0';
-			config_setopt(cln->str, cln_val);
-		}
-	}
-
-	g_io_channel_unref(cio);
-	g_string_free(cln, TRUE);
-}
-
-/**
  * @brief Convert a "yes"/"no" string to a boolean value.
  */
 static int
@@ -253,6 +83,15 @@ static int valid_bool(char *val)
 	return (string_to_bool(val) == -1);
 }
 
+/**
+ * @brief Determine if a color string is valid
+ */
+static int
+valid_color(char *val)
+{
+	return ((string_to_curses_color(val) == -1) ? -1 : 0);
+}
+
 #ifdef BUILD_SCROBBLER
 /**
  * @brief Determine if a string containing an MD5 hash is valid
@@ -283,20 +122,177 @@ valid_md5(char *val)
 #endif /* BUILD_SCROBBLER */
 
 /**
- * @brief Determine if a color string is valid
+ * @brief Structure containing a single configuration entry of Herrie
+ */
+struct config_entry {
+	/**
+	 * @brief Name it can be located at
+	 */
+	const char	*name;
+	/**
+	 * @brief Default value
+	 */
+	const char	*defval;
+	/**
+	 * @brief Function to validate when set
+	 */
+	int		(*validator)(char *val);
+	/**
+	 * @brief Current value if not equal to the default
+	 */
+	char		*curval;
+};
+
+/*
+ * List of available configuration switches. Keep this list sorted at
+ * all time; the config lookups have been optimised to expect an
+ * alphabetical lookup. Looking up switches starting with 'z' will take
+ * longer than 'a'.
+ */
+/**
+ * @brief List of configuration switches.
+ */
+static struct config_entry configlist[] = {
+	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
+#if defined(__NetBSD__) || defined(__OpenBSD__)
+	{ "audio.output.oss.device",	"/dev/audio",	NULL,		NULL },
+#else /* !(__NetBSD__ || __OpenBSD__) */
+	{ "audio.output.oss.device",	"/dev/dsp",	NULL,		NULL },
+#endif /* __NetBSD__ || __OpenBSD__ */
+	{ "gui.browser.defaultpath",	"",		NULL,		NULL },
+	{ "gui.color.bar.bg",		"blue",		valid_color,	NULL },
+	{ "gui.color.bar.fg",		"white",	valid_color,	NULL },
+	{ "gui.color.block.bg",		"black",	valid_color,	NULL },
+	{ "gui.color.block.fg",		"white",	valid_color,	NULL },
+	{ "gui.color.deselect.bg",	"white",	valid_color,	NULL },
+	{ "gui.color.deselect.fg",	"black",	valid_color,	NULL },
+	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
+	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
+#ifdef BUILD_SCROBBLER
+	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },
+	{ "scrobbler.password",		"",		valid_md5,	NULL },
+	{ "scrobbler.username",		"",		NULL,		NULL },
+#endif /* BUILD_SCROBBLER */
+	{ "vfs.dir.hide_dotfiles",	"yes",		valid_bool,	NULL },
+	{ "vfs.lockup.chroot",		"",		NULL,		NULL },
+	{ "vfs.lockup.user",		"",		NULL,		NULL },
+};
+/**
+ * @brief The amount of configuration switches available.
+ */
+#define NUM_SWITCHES (sizeof(configlist) / sizeof(struct config_entry)) 
+
+/**
+ * @brief Search for an entry in the configlist by name.
+ */
+static struct config_entry *
+config_search(const char *opt)
+{
+	int i, c;
+
+	for (i = 0; i < NUM_SWITCHES; i++) {
+		c = strcmp(opt, configlist[i].name);
+
+		if (c == 0)
+			/* Found it */
+			return (&configlist[i]);
+		else if (c < 0)
+			/* We're already too far */
+			break;
+	}
+
+	/* Not found */
+	return (NULL);
+}
+
+/**
+ * @brief Set a value to a configuration switch
  */
 static int
-valid_color(char *val)
+config_setopt(const char *opt, char *val)
 {
-	return ((string_to_curses_color(val) == -1) ? -1 : 0);
+	struct config_entry *ent;
+	char *newval = NULL;
+
+	if ((ent = config_search(opt)) == NULL)
+		return (-1);
+	
+	if (strcmp(val, ent->defval) != 0) {
+		/* Just unset the value when it's the default */
+
+		if (ent->validator != NULL) {
+			/* Do not set invalid values */
+			if (ent->validator(val) != 0)
+				return (-1);
+		}
+		newval = g_strdup(val);
+	}
+
+	/* Free the current contents */
+	g_free(ent->curval);
+	ent->curval = newval;
+
+	return (0);
 }
 
 /*
- * Configuration value translations
+ * Public configuration file functions
  */
 
+void
+config_load(const char *file)
+{
+	GIOChannel *cio;
+	GString *cln;
+	gsize eol;
+	char *filename, *cln_val;
+
+	if (file == NULL) {
+		/* Use the standard configuration file */
+		filename = g_build_filename(g_get_home_dir(),
+		    "." APP_NAME, "config", NULL);
+		cio = g_io_channel_new_file(filename, "r", NULL);
+		g_free(filename);
+	} else {
+		/* Use an explicit configuration file */
+		cio = g_io_channel_new_file(file, "r", NULL);
+	}
+	
+	if (cio == NULL)
+		return;
+	cln = g_string_sized_new(64);
+
+	while (g_io_channel_read_line_string(cio, cln, &eol, NULL)
+	    == G_IO_STATUS_NORMAL) {
+		g_string_truncate(cln, eol);
+
+		/* Split at the : and set the option */
+		cln_val = strchr(cln->str, '=');
+		if (cln_val != NULL) {
+			/* Split the option and value */
+			*cln_val++ = '\0';
+			config_setopt(cln->str, cln_val);
+		}
+	}
+
+	g_io_channel_unref(cio);
+	g_string_free(cln, TRUE);
+}
+
+const char *
+config_getopt(const char *opt)
+{
+	struct config_entry *ent;
+	
+	ent = config_search(opt);
+	g_assert(ent != NULL);
+	
+	/* Return the default if it is unset */
+	return (ent->curval ? ent->curval : ent->defval);
+}
+
 int
-config_getopt_bool(char *val)
+config_getopt_bool(const char *val)
 {
 	int bval;
 	
@@ -306,7 +302,7 @@ config_getopt_bool(char *val)
 }
 
 int
-config_getopt_color(char *val)
+config_getopt_color(const char *val)
 {
 	int col;
 	
