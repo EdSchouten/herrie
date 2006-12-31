@@ -146,7 +146,7 @@ audio_read(struct audio_file *fd, void *buf)
 void
 audio_seek(struct audio_file *fd, int len)
 {
-	if ((len != 0) && (fd->drv->seek != NULL)) {
+	if (len != 0) {
 		fd->drv->seek(fd, len);
 #ifdef BUILD_SCROBBLER
 		scrobbler_notify_seek(fd);
