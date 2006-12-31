@@ -98,9 +98,6 @@ HERRIE_OBJ+=	scrobbler.o scrobbler_hash.o scrobbler_send.o
 CFLAGS+=	$(shell curl-config --cflags) -DBUILD_SCROBBLER
 LDFLAGS+=	$(shell curl-config --libs) -lssl
 endif
-ifndef NO_LOCKUP
-CFLAGS+=	-DBUILD_LOCKUP
-endif
 ifndef NO_TRANS
 CFLAGS+=	-DBUILD_TRANS -DTRANSDIR=\"$(TRANSDIR)\"
 LOCALES=	nl

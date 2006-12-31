@@ -28,9 +28,7 @@
  */
 
 #include <sys/stat.h>
-#ifdef BUILD_LOCKUP
 #include <pwd.h>
-#endif /* BUILD_LOCKUP */
 
 #include "config.h"
 #include "vfs.h"
@@ -56,7 +54,6 @@ static struct vfsmodule modules[] = {
  */
 #define NUM_MODULES (sizeof(modules) / sizeof(struct vfsmodule))
 
-#ifdef BUILD_LOCKUP
 int
 vfs_lockup(void)
 {
@@ -99,7 +96,6 @@ vfs_lockup(void)
 
 	return (0);
 }
-#endif /* BUILD_LOCKUP */
 
 /**
  * @brief Deallocates the data structures for a VFS entity

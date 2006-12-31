@@ -129,10 +129,8 @@ main(int argc, char *argv[])
 #ifdef CLOSE_STDERR
 	devnull = open("/dev/null", O_WRONLY);
 #endif /* CLOSE_STDERR */
-#ifdef BUILD_LOCKUP
 	if (vfs_lockup() != 0)
 		return (-1);
-#endif /* BUILD_LOCKUP */
 
 	/* Initialize the locks */
 	g_thread_init(NULL);

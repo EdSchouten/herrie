@@ -274,13 +274,11 @@ struct vfsref {
 	struct vfsref *prev;
 };
 
-#ifdef BUILD_LOCKUP
 /**
  * @brief Try to lock the application in a specified directory on
  *        startup.
  */
 int	vfs_lockup(void);
-#endif /* BUILD_LOCKUP */
 
 /**
  * @brief Create a VFS reference from a filename. The name argument is

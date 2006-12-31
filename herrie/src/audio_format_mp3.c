@@ -265,6 +265,9 @@ mp3_fixed_to_short(mad_fixed_t fixed)
 	return (sample);
 }
 
+/**
+ * @brief Rewind the current audio file handle to the beginning.
+ */
 static void
 mp3_rewind(struct audio_file *fd)
 {
@@ -282,6 +285,9 @@ mp3_rewind(struct audio_file *fd)
 	mad_timer_reset(&data->mtimer);
 }
 
+/**
+ * @brief Calculate the length of the current audio file.
+ */
 static void
 mp3_calc_length(struct audio_file *fd)
 {
