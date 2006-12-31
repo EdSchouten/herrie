@@ -4,6 +4,7 @@ Herrie 1.1 -> 1.2:
 - Add switch to compile with XCurses
 - Add dependencies file to record header file deps
 - Restore our Glib GSlice fallback macros
+- Improve Solaris Makefile defaults
 
 Herrie 1.0.2 -> 1.1 "Christmas Edition":
 - Don't expand pathname of symlinks
