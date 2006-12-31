@@ -97,7 +97,7 @@ static struct config_entry configlist[] = {
 /**
  * @brief The amount of configuration switches available.
  */
-#define CONFIGENTRIES (sizeof(configlist) / sizeof(struct config_entry)) 
+#define NUM_SWITCHES (sizeof(configlist) / sizeof(struct config_entry)) 
 
 /**
  * @brief Search for an entry in the configlist by name.
@@ -107,7 +107,7 @@ config_search(char *opt)
 {
 	int i, c;
 
-	for (i = 0; i < CONFIGENTRIES; i++) {
+	for (i = 0; i < NUM_SWITCHES; i++) {
 		c = strcmp(opt, configlist[i].name);
 
 		if (c == 0)
