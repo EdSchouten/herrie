@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cd herrie/src
+xgettext -k_ *.c
+
+for i in nl
+do
+	msgmerge ../lang/$i.po messages.po > tmp.po
+	mv tmp.po ../lang/$i.po
+done
+
+rm messages.po
