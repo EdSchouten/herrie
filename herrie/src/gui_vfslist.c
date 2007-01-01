@@ -223,7 +223,7 @@ gui_vfslist_setlist(struct gui_vfslist *gv, struct vfslist *vl)
 int
 gui_vfslist_warn_isempty(struct gui_vfslist *gv)
 {
-	if (gv->list == NULL || vfs_list_empty(gv->list)) {
+	if (gv->vr_selected == NULL) {
 		gui_msgbar_warn(_("There are no songs."));
 		return (1);
 	} else {
