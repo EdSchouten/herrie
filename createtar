@@ -19,5 +19,7 @@ git archive --format=tar --prefix="herrie-$1/" HEAD:herrie |
     gzip -9 > $TARBALL
 
 ls -l $TARBALL
-echo "don't forget to run ./updatedeps!"
+md5 $TARBALL
+sha256 $TARBALL
 
+echo "don't forget to run ./updatedeps!"
