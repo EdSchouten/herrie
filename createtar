@@ -3,10 +3,21 @@
 if [ $# != 1 ]
 then
 	echo "usage: $0 version"
+	exit 1
 fi
 
-echo "Warning: don't forget to run ./updatedeps!"
+TARBALL="www/distfiles/herrie-$1.tar.gz"
+
+if [ -e $TARBALL ]
+then
+	echo "$TARBALL: file already exists"
+	exit 1
+fi
 
 mkdir -p www/distfiles
 git archive --format=tar --prefix="herrie-$1/" HEAD:herrie |
-    gzip -9 > "www/distfiles/herrie-$1.tar.gz"
+    gzip -9 > $TARBALL
+
+ls -l $TARBALL
+echo "don't forget to run ./updatedeps!"
+
