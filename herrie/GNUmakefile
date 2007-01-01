@@ -24,7 +24,7 @@
 # SUCH DAMAGE.
 # 
 
-VERSION=	1.2-rc
+VERSION=	1.2
 
 PREFIX?=	/usr/local
 OS:=		$(shell uname)
