@@ -295,12 +295,10 @@ gui_playq_song_remove(void)
 	struct vfsref *vr;
 
 	PLAYQ_LOCK;
-	vr = gui_vfslist_getselected(win_playq);
-	if (vr != NULL) {
+	if (!gui_vfslist_warn_isempty(win_playq)) {
+		vr = gui_vfslist_getselected(win_playq);
 		playq_song_fast_remove(vr,
 		    gui_vfslist_getselectedidx(win_playq));
-	} else {
-		gui_msgbar_warn(_("There are no songs."));
 	}
 	PLAYQ_UNLOCK;
 }
@@ -309,10 +307,8 @@ void
 gui_playq_song_remove_all(void)
 {
 	/* Don't care about locking here */
-	if (vfs_list_empty(&playq_list)) {
-		gui_msgbar_warn(_("There are no songs."));
+	if (gui_vfslist_warn_isempty(win_playq))
 		return;
-	}
 
 	if (gui_input_askyesno(_("Remove all songs from the playlist?")) == 0)
 		playq_song_remove_all();
@@ -322,10 +318,8 @@ void
 gui_playq_song_randomize(void)
 {
 	/* Don't care about locking here */
-	if (vfs_list_empty(&playq_list)) {
-		gui_msgbar_warn(_("There are no songs."));
+	if (gui_vfslist_warn_isempty(win_playq))
 		return;
-	}
 
 	if (gui_input_askyesno(_("Randomize the playlist?")) == 0)
 		playq_song_randomize();
@@ -373,15 +367,16 @@ gui_playq_song_moveup(void)
 	struct vfsref *vr_selected;
 
 	PLAYQ_LOCK;
-	vr_selected = gui_vfslist_getselected(win_playq);
-	if (vr_selected == NULL)
-		gui_msgbar_warn(_("There are no songs."));
-	else if (vr_selected == vfs_list_first(&playq_list))
-		gui_msgbar_warn(_("The song is already at the top "
-		    "of the playlist."));
-	else
-		playq_song_fast_moveup(vr_selected,
-		    gui_vfslist_getselectedidx(win_playq));
+	if (!gui_vfslist_warn_isempty(win_playq)) {
+		vr_selected = gui_vfslist_getselected(win_playq);
+		if (vr_selected == vfs_list_first(&playq_list)) {
+			gui_msgbar_warn(_("The song is already at the "
+			    "top of the playlist."));
+		} else {
+			playq_song_fast_moveup(vr_selected,
+			    gui_vfslist_getselectedidx(win_playq));
+		}
+	}
 	PLAYQ_UNLOCK;
 }
 
@@ -391,15 +386,16 @@ gui_playq_song_movedown(void)
 	struct vfsref *vr_selected;
 
 	PLAYQ_LOCK;
-	vr_selected = gui_vfslist_getselected(win_playq);
-	if (vr_selected == NULL)
-		gui_msgbar_warn(_("There are no songs."));
-	else if (vr_selected == vfs_list_last(&playq_list))
-		gui_msgbar_warn(_("The song is already at the bottom "
-		    "of the playlist."));
-	else
-		playq_song_fast_movedown(vr_selected,
-		    gui_vfslist_getselectedidx(win_playq));
+	if (!gui_vfslist_warn_isempty(win_playq)) {
+		vr_selected = gui_vfslist_getselected(win_playq);
+		if (vr_selected == vfs_list_last(&playq_list)) {
+			gui_msgbar_warn(_("The song is already at the "
+			    "bottom of the playlist."));
+		} else {
+			playq_song_fast_movedown(vr_selected,
+			    gui_vfslist_getselectedidx(win_playq));
+		}
+	}
 	PLAYQ_UNLOCK;
 }
 
