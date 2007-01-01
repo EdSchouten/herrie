@@ -20,7 +20,8 @@ long_description \
 	directory.
 homepage	http://g-rave.nl/projects/${name}/
 platforms	darwin
-master_sites	http://www.il.fontys.nl/~ed/projects/${name}/distfiles/ \
+master_sites	http://g-rave.nl/projects/${name}/distfiles/ \
+		http://www.il.fontys.nl/~ed/projects/${name}/distfiles/ \
 		http://www.stack.nl/~ed/projects/${name}/distfiles/
 checksums	md5 78b6dfe16db6c1f2e5e060e97503e1ec \
 		sha1 3e9982ddadecf6f247964f4a70481fcfa3e8be29
