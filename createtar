@@ -7,5 +7,6 @@ fi
 
 echo "Warning: don't forget to run ./updatedeps!"
 
+mkdir -p www/distfiles
 git archive --format=tar --prefix="herrie-$1/" HEAD:herrie |
     gzip -9 > "www/distfiles/herrie-$1.tar.gz"
