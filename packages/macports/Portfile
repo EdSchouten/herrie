@@ -1,6 +1,6 @@
 PortSystem 1.0
 name		herrie
-version		1.1
+version		1.2
 categories	audio
 maintainers	ed@fxq.nl
 description	Small command line interface music player
@@ -22,14 +22,13 @@ homepage	http://g-rave.nl/projects/${name}/
 platforms	darwin
 master_sites	http://www.il.fontys.nl/~ed/projects/${name}/distfiles/ \
 		http://www.stack.nl/~ed/projects/${name}/distfiles/
-checksums	md5 1c28876ae36737ca3f3d6d2d2f037435 \
-		sha1 d5eeba54ea7ed4b40de870d28af14faa1e4b5615
+checksums	md5 78b6dfe16db6c1f2e5e060e97503e1ec \
+		sha1 3e9982ddadecf6f247964f4a70481fcfa3e8be29
 
 depends_lib	port:glib2 port:libao port:libid3tag port:libmad \
 		port:libsndfile port:libvorbis
 depends_build	bin:pkg-config:pkgconfig port:gettext
 
 use_configure	no
-build.dir	${worksrcpath}/src
 build.args	PREFIX=${prefix}
 destroot.args	PREFIX=${destroot}${prefix}
