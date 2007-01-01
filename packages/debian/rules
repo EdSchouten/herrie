@@ -12,14 +12,14 @@ build: build-stamp
 
 build-stamp:
 	dh_testdir
-	$(MAKE) -C src
+	$(MAKE)
 	touch $@
 
 clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp
-	-$(MAKE) -C src clean
+	-$(MAKE) clean
 	dh_clean 
 
 install: build
@@ -27,7 +27,7 @@ install: build
 	dh_testroot
 	dh_clean -k 
 	dh_installdirs
-	$(MAKE) -C src PREFIX=$(CURDIR)/debian/herrie/usr install
+	$(MAKE) PREFIX=$(CURDIR)/debian/herrie/usr install
 
 binary: build install
 	dh_testdir
