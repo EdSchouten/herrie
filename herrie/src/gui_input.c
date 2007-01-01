@@ -80,8 +80,8 @@ gui_input_getch(void)
 	if (ch == KEY_SELECT)
 		return (KEY_END);
 
-	/* ^? backspace */
-	if (ch == 0x7f)
+	/* ^H or ^? backspace */
+	if (ch == 0x08 || ch == 0x7f)
 		return (KEY_BACKSPACE);
 	
 	/* Valid character */

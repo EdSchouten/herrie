@@ -1,3 +1,9 @@
+herrie (1.2-1) unstable; urgency=low
+
+  * Bump to 1.2: Small cleanups, mostly related to the build structure
+
+ -- Ed Schouten <ed@fxq.nl>  Sun, 1 Jan 2007 17:04:10 +0100
+
 herrie (1.1-1) unstable; urgency=low
 
   * Bump to 1.1: Lots of cleanups, but also some improvements:
