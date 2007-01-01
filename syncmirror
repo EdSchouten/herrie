@@ -1,3 +1,4 @@
 #!/bin/sh
+rsync -a www/distfiles/ palm.hoeg.nl:html/g-rave.nl/public/projects/herrie/distfiles
 rsync -a www/distfiles/ charm.il.fontys.nl:/web/ed/projects/herrie/distfiles
 rsync -a www/distfiles/ snail.stack.nl:/alcoholism/html/ed/projects/herrie/distfiles
