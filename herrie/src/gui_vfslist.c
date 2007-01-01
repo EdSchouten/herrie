@@ -214,7 +214,22 @@ void
 gui_vfslist_setlist(struct gui_vfslist *gv, struct vfslist *vl)
 {
 	gv->list = vl;
-	gui_vfslist_cursor_top(gv);
+	gv->vr_top = gv->vr_selected = vfs_list_first(gv->list);
+	gv->idx_top = gv->idx_selected = (gv->vr_selected != NULL) ? 1 : 0;
+
+	gui_vfslist_refresh(gv);
+}
+
+int
+gui_vfslist_warn_isempty(struct gui_vfslist *gv)
+{
+	if (gv->list == NULL || vfs_list_empty(gv->list)) {
+		gui_msgbar_warn(_("There are no songs."));
+		return (1);
+	} else {
+		g_assert(gv->vr_selected != NULL);
+		return (0);
+	}
 }
 
 void
@@ -256,16 +271,17 @@ gui_vfslist_cursor_up(struct gui_vfslist *gv)
 {
 	struct vfsref *vr;
 
-	if (gv->vr_selected != NULL) {
-		vr = vfs_list_prev(gv->vr_selected);
-		if (vr != NULL) {
-			gv->vr_selected = vr;
-			gv->idx_selected--;
+	if (gui_vfslist_warn_isempty(gv))
+		return;
 
-			gui_vfslist_refresh(gv);
-		} else {
-			gui_msgbar_warn(_("You are at the first song."));
-		}
+	vr = vfs_list_prev(gv->vr_selected);
+	if (vr != NULL) {
+		gv->vr_selected = vr;
+		gv->idx_selected--;
+
+		gui_vfslist_refresh(gv);
+	} else {
+		gui_msgbar_warn(_("You are at the first song."));
 	}
 }
 
@@ -273,41 +289,43 @@ void
 gui_vfslist_cursor_down(struct gui_vfslist *gv, int silent)
 {
 	struct vfsref *vr;
+	
+	if (gui_vfslist_warn_isempty(gv))
+		return;
 
-	if (gv->vr_selected != NULL) {
-		vr = vfs_list_next(gv->vr_selected);
-		if (vr != NULL) {
-			gv->vr_selected = vr;
-			gv->idx_selected++;
+	vr = vfs_list_next(gv->vr_selected);
+	if (vr != NULL) {
+		gv->vr_selected = vr;
+		gv->idx_selected++;
 
-			gui_vfslist_refresh(gv);
-		} else if (!silent) {
-			gui_msgbar_warn(_("You are at the last song."));
-		}
+		gui_vfslist_refresh(gv);
+	} else if (!silent) {
+		gui_msgbar_warn(_("You are at the last song."));
 	}
 }
 
 void
 gui_vfslist_cursor_top(struct gui_vfslist *gv)
 {
-	if (gv->list != NULL) {
-		gv->vr_top = gv->vr_selected = vfs_list_first(gv->list);
-		gv->idx_top = gv->idx_selected =
-		    (gv->vr_selected != NULL) ? 1 : 0;
+	if (gui_vfslist_warn_isempty(gv))
+		return;
 
-		gui_vfslist_refresh(gv);
-	}
+	gv->vr_top = gv->vr_selected = vfs_list_first(gv->list);
+	gv->idx_top = gv->idx_selected = (gv->vr_selected != NULL) ? 1 : 0;
+
+	gui_vfslist_refresh(gv);
 }
 
 void
 gui_vfslist_cursor_bottom(struct gui_vfslist *gv)
 {
-	if (gv->list != NULL) {
-		gv->vr_selected = vfs_list_last(gv->list);
-		gv->idx_selected = vfs_list_items(gv->list);
+	if (gui_vfslist_warn_isempty(gv))
+		return;
 
-		gui_vfslist_refresh(gv);
-	}
+	gv->vr_selected = vfs_list_last(gv->list);
+	gv->idx_selected = vfs_list_items(gv->list);
+
+	gui_vfslist_refresh(gv);
 }
 
 void
@@ -315,7 +333,7 @@ gui_vfslist_cursor_pageup(struct gui_vfslist *gv)
 {
 	int i;
 
-	if (gv->idx_top <= 1)
+	if (gui_vfslist_warn_isempty(gv))
 		return;
 
 	/* Cursor = bottom of the screen */
@@ -346,6 +364,9 @@ gui_vfslist_cursor_pagedown(struct gui_vfslist *gv)
 {
 	int i;
 	struct vfsref *vr_toptmp = gv->vr_top;
+
+	if (gui_vfslist_warn_isempty(gv))
+		return;
 
 	/* A la vi: page down minus two */
 	for (i = 2; i < gv->winheight && gv->vr_top != NULL; i++) {
@@ -521,11 +542,8 @@ gui_vfslist_searchnext(struct gui_vfslist *gv)
 		return;
 	}
 
-	if (gv->vr_selected == NULL) {
-		/* Playlist is empty */
-		gui_msgbar_warn(_("There are no songs."));
+	if (gui_vfslist_warn_isempty(gv))
 		return;
-	}
 
 	/* Step 1: search from selection to end */
 	for (vr = vfs_list_next(gv->vr_selected), idx = gv->idx_selected + 1;

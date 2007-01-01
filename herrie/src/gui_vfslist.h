@@ -100,6 +100,10 @@ void gui_vfslist_destroy(struct gui_vfslist *gv);
  */
 void gui_vfslist_setlist(struct gui_vfslist *gv, struct vfslist *vl);
 /**
+ * @brief Warn the user when the list is empty.
+ */
+int gui_vfslist_warn_isempty(struct gui_vfslist *gv);
+/**
  * @brief Move the dialog to a specified position in the terminal.
  */
 void gui_vfslist_move(struct gui_vfslist *gv, int x, int y,
