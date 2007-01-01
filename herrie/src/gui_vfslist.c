@@ -227,7 +227,6 @@ gui_vfslist_warn_isempty(struct gui_vfslist *gv)
 		gui_msgbar_warn(_("There are no songs."));
 		return (1);
 	} else {
-		g_assert(gv->vr_selected != NULL);
 		return (0);
 	}
 }
