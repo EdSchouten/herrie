@@ -1,0 +1,3 @@
+#!/bin/sh
+rsync -a --delete www/distfiles/ charm.il.fontys.nl:/web/ed/projects/herrie/distfiles
+rsync -a --delete www/distfiles/ snail.stack.nl:/alcoholism/html/ed/projects/herrie/distfiles
