@@ -54,6 +54,7 @@ PREFIX=		/usr/pkg
 AUDIO_OUTPUT=	oss
 endif
 ifeq ($(OS),OpenBSD)
+MANDIR=		$(PREFIX)/man
 AUDIO_OUTPUT=	oss
 endif
 ifeq ($(OS),SunOS)
