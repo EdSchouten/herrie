@@ -129,7 +129,7 @@ do {									\
 static char *
 scrobbler_http_escape(const char *str)
 {
-	const char *c;
+	const unsigned char *c;
 	const char allowed[] = "-_.!~*'()";
 	GString *ret;
 
