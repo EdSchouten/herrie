@@ -54,6 +54,7 @@ PREFIX=		/usr/pkg
 AUDIO_OUTPUT=	oss
 endif
 ifeq ($(OS),OpenBSD)
+MANDIR=		$(PREFIX)/man
 AUDIO_OUTPUT=	oss
 endif
 ifeq ($(OS),SunOS)
@@ -133,10 +134,10 @@ HERRIE_OBJ+=	audio.o audio_output_$(AUDIO_OUTPUT).o config.o \
 
 .PHONY: all install uninstall clean depends
 
-all: herrie$(BINARY_EXT) herrie.1 $(LOCALES:%=%.mo)
+all: herrie herrie.1 $(LOCALES:%=%.mo)
 
 install: all
-	install -s herrie$(BINARY_EXT) $(PREFIX)/bin/herrie$(BINARY_EXT)
+	install -s herrie $(PREFIX)/bin/herrie$(BINARY_EXT)
 	install -m 444 herrie.1 $(MANDIR)/man1/herrie.1
 	$(foreach lang,$(LOCALES), \
 		mkdir -p $(TRANSDIR)/$(lang)/LC_MESSAGES)
@@ -145,11 +146,11 @@ install: all
 		    $(TRANSDIR)/$(lang)/LC_MESSAGES/herrie.mo)
 
 clean:
-	rm -f herrie$(BINARY_EXT) *.o *.mo *.core
+	rm -f herrie *.o *.mo *.core
 
 %.mo: %.po
 	msgfmt -o $@ $<
 
-herrie$(BINARY_EXT): $(HERRIE_OBJ)
+herrie: $(HERRIE_OBJ)
 
 include depends.mak

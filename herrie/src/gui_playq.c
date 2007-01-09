@@ -120,17 +120,40 @@ gui_playq_destroy(void)
 static void
 gui_playq_statbar_song(struct audio_file *fd)
 {
+#ifdef BUILD_UTF8
 	const char *artist, *title;
+#else /* !BUILD_UTF8 */
+	char *artist, *title;
+#endif /* BUILD_UTF8 */
 
 	if (fd == NULL) {
 		g_string_assign(str_song, _("Idle"));
 	} else {
+#ifdef BUILD_UTF8
+		/* Display strings as UTF-8 */
 		artist = fd->tag.artist ? fd->tag.artist :
 		    _("Unknown artist");
 		title = fd->tag.title ? fd->tag.title :
 		    _("Unknown song");
 		g_string_printf(str_song, _("Playing %s - %s"),
 		    artist, title);
+#else /* !BUILD_UTF8 */
+		/* Smash strings down to ISO-8859-1 */
+		if (fd->tag.artist != NULL)
+			artist = g_convert(fd->tag.artist, -1,
+			    "ISO-8859-1", "UTF-8", NULL, NULL, NULL);
+		else
+			artist = g_strdup(_("Unknown artist"));
+		if (fd->tag.title != NULL)
+			title = g_convert(fd->tag.title, -1,
+			    "ISO-8859-1", "UTF-8", NULL, NULL, NULL);
+		else
+			title = g_strdup(_("Unknown song"));
+		g_string_printf(str_song, _("Playing %s - %s"),
+		    artist, title);
+		g_free(artist);
+		g_free(title);
+#endif /* BUILD_UTF8 */
 	}
 }
 

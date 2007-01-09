@@ -147,7 +147,7 @@ mp3_readtags(struct audio_file *fd)
 		if (id3_field_getnstrings(&tag->frames[i]->fields[1]) != 0) {
 			str = id3_field_getstrings(&tag->frames[i]->fields[1], 0);
 			if (str != NULL)
-				*dst = (char*)id3_ucs4_latin1duplicate(str);
+				*dst = (char*)id3_ucs4_utf8duplicate(str);
 		}
 	}
 	

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-01 01:47+0100\n"
-"PO-Revision-Date: 2007-01-01 01:47+0100\n"
+"POT-Creation-Date: 2007-01-08 15:43+0100\n"
+"PO-Revision-Date: 2007-01-08 15:43+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -51,36 +51,36 @@ msgstr "ja"
 msgid "no"
 msgstr "nee"
 
-#: gui_playq.c:126
+#: gui_playq.c:130
 msgid "Idle"
 msgstr "Inactief"
 
-#: gui_playq.c:129
+#: gui_playq.c:135 gui_playq.c:146
 msgid "Unknown artist"
 msgstr "Onbekende artiest"
 
-#: gui_playq.c:131
+#: gui_playq.c:137 gui_playq.c:151
 msgid "Unknown song"
 msgstr "Onbekend nummer"
 
-#: gui_playq.c:132
+#: gui_playq.c:138 gui_playq.c:152
 #, c-format
 msgid "Playing %s - %s"
 msgstr "Bezig met %s - %s afspelen"
 
-#: gui_playq.c:313
+#: gui_playq.c:336
 msgid "Remove all songs from the playlist?"
 msgstr "Alle nummers uit de afspeellijst verwijderen?"
 
-#: gui_playq.c:324
+#: gui_playq.c:347
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:373
+#: gui_playq.c:396
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:392
+#: gui_playq.c:415
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 
@@ -88,23 +88,23 @@ msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 msgid "There are no songs."
 msgstr "Er zijn geen nummers."
 
-#: gui_vfslist.c:284
+#: gui_vfslist.c:283
 msgid "You are at the first song."
 msgstr "Je bent bij het eerste nummer."
 
-#: gui_vfslist.c:303
+#: gui_vfslist.c:302
 msgid "You are at the last song."
 msgstr "Je bent bij het laatste nummer."
 
-#: gui_vfslist.c:541
+#: gui_vfslist.c:540
 msgid "No search pattern."
 msgstr "Geen zoekpatroon."
 
-#: gui_vfslist.c:560
+#: gui_vfslist.c:559
 msgid "Search wrapped to top."
 msgstr "Zoekopdracht naar boven verplaatst."
 
-#: gui_vfslist.c:565
+#: gui_vfslist.c:564
 msgid "Not found."
 msgstr "Niet gevonden."
 
