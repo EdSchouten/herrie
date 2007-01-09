@@ -71,19 +71,19 @@ struct audio_file {
 	int time_cur;
 
 	/**
-	 * @brief Information about the song acquired from the file
+	 * @brief Information about the song acquired from the file.
 	 */
 	struct {
 		/**
-		 * @brief Name of the artist
+		 * @brief Name of the artist, stored in UTF-8.
 		 */
 		char *artist;
 		/**
-		 * @brief Name of the song
+		 * @brief Name of the song, stored in UTF-8.
 		 */
 		char *title;
 		/**
-		 * @brief Name of the album
+		 * @brief Name of the album, stored in UTF-8.
 		 */
 		char *album;
 	} tag;
