@@ -129,7 +129,7 @@ do {									\
 static char *
 scrobbler_http_escape(const char *str)
 {
-	const unsigned char *c;
+	const char *c;
 	const char allowed[] = "-_.!~*'()";
 	GString *ret;
 
@@ -145,7 +145,8 @@ scrobbler_http_escape(const char *str)
 			g_string_append_c(ret, *c);
 		else
 			/* Reserved or unwise character */
-			g_string_append_printf(ret, "%%%02hhx", *c);
+			g_string_append_printf(ret, "%%%02hhx",
+			    (const unsigned char)*c);
 	}
 
 	return g_string_free(ret, FALSE);
