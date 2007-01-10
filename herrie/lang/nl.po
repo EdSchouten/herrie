@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-10 08:05+0100\n"
-"PO-Revision-Date: 2007-01-10 08:05+0100\n"
+"POT-Creation-Date: 2007-01-10 09:25+0100\n"
+"PO-Revision-Date: 2007-01-10 09:25+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -44,11 +44,11 @@ msgstr "Zoeken naar"
 msgid "Quit %s?"
 msgstr "%s afsluiten?"
 
-#: gui_input.c:310 herrie.c:64
+#: gui_input.c:310 main.c:64
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:310 herrie.c:66
+#: gui_input.c:310 main.c:66
 msgid "no"
 msgstr "nee"
 
@@ -109,19 +109,19 @@ msgstr "Zoekopdracht naar boven verplaatst."
 msgid "Not found."
 msgstr "Niet gevonden."
 
-#: herrie.c:61
+#: main.c:61
 msgid "audio output"
 msgstr "geluidsuitvoer"
 
-#: herrie.c:62
+#: main.c:62
 msgid "support for audioscrobbler"
 msgstr "ondersteuning voor audioscrobbler"
 
-#: herrie.c:68
+#: main.c:68
 msgid "supported audio file formats"
 msgstr "ondersteunde geluidsformaten"
 
-#: herrie.c:80
+#: main.c:80
 msgid "usage"
 msgstr "gebruik"
 
