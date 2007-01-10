@@ -11,7 +11,7 @@ gui_input.o: stdinc.h gui_input.c gui_internal.h stdinc.h gui.h stdinc.h audio.h
 gui_msgbar.o: stdinc.h gui_msgbar.c gui_internal.h stdinc.h gui.h stdinc.h audio.h stdinc.h vfs.h
 gui_playq.o: stdinc.h gui_playq.c gui_internal.h stdinc.h gui.h stdinc.h audio.h stdinc.h vfs.h stdinc.h gui_vfslist.h stdinc.h playq.h
 gui_vfslist.o: stdinc.h gui_vfslist.c gui_vfslist.h stdinc.h gui_internal.h stdinc.h gui.h stdinc.h audio.h stdinc.h vfs.h
-herrie.o: stdinc.h herrie.c audio_output.h stdinc.h audio.h stdinc.h config.h stdinc.h gui.h stdinc.h playq.h stdinc.h vfs.h stdinc.h scrobbler.h
+main.o: stdinc.h main.c audio_output.h stdinc.h audio.h stdinc.h config.h stdinc.h gui.h stdinc.h playq.h stdinc.h vfs.h stdinc.h scrobbler.h
 playq.o: stdinc.h playq.c audio.h stdinc.h audio_output.h stdinc.h gui.h stdinc.h playq.h stdinc.h vfs.h
 scrobbler.o: stdinc.h scrobbler.c config.h stdinc.h gui.h stdinc.h audio.h stdinc.h scrobbler.h stdinc.h scrobbler_internal.h
 scrobbler_hash.o: stdinc.h scrobbler_hash.c scrobbler_internal.h

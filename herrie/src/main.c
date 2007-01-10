@@ -24,7 +24,7 @@
  * SUCH DAMAGE.
  */
 /**
- * @file herrie.c
+ * @file main.c
  */
 
 #ifdef BUILD_TRANS
