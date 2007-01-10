@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-08 15:43+0100\n"
-"PO-Revision-Date: 2007-01-08 15:43+0100\n"
+"POT-Creation-Date: 2007-01-10 08:05+0100\n"
+"PO-Revision-Date: 2007-01-10 08:05+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -39,15 +39,16 @@ msgstr "Naar de map gaan mislukt."
 msgid "Search for"
 msgstr "Zoeken naar"
 
-#: gui_input.c:137
-msgid "Quit herrie?"
-msgstr "Herrie afsluiten?"
+#: gui_input.c:140
+#, c-format
+msgid "Quit %s?"
+msgstr "%s afsluiten?"
 
-#: gui_input.c:303 herrie.c:64
+#: gui_input.c:310 herrie.c:64
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:303 herrie.c:66
+#: gui_input.c:310 herrie.c:66
 msgid "no"
 msgstr "nee"
 
@@ -129,28 +130,28 @@ msgstr "gebruik"
 msgid "Failed to open \"%s\" for playback."
 msgstr "Openen voor afspelen van \"%s\" mislukt."
 
-#: scrobbler.c:299
+#: scrobbler.c:300
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Succesvol geauthoriseerd bij AudioScrobbler."
 
-#: scrobbler.c:306
+#: scrobbler.c:307
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Authoriseren bij AudioScrobbler mislukt."
 
-#: scrobbler.c:322
+#: scrobbler.c:323
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Succesvol 1 nummer opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:326
+#: scrobbler.c:327
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Succesvol %d nummers opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:332
+#: scrobbler.c:333
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
 
-#: scrobbler.c:335
+#: scrobbler.c:336
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 

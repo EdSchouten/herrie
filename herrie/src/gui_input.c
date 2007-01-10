@@ -134,7 +134,14 @@ gui_input_search(void)
 static int
 gui_input_quit(void)
 {
-	return gui_input_askyesno(_("Quit herrie?"));
+	int ret;
+	char *msg;
+
+	msg = g_strdup_printf(_("Quit %s?"), APP_NAME);
+	ret = gui_input_askyesno(msg);
+	g_free(msg);
+
+	return (ret);
 }
 
 /**
