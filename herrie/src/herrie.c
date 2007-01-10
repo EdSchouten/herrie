@@ -39,7 +39,7 @@
 #include "vfs.h"
 
 /**
- * @brief Display the application version and compile-time options
+ * @brief Display the application version and compile-time options.
  */
 static void
 version(void)
@@ -71,7 +71,7 @@ version(void)
 }
 
 /**
- * @brief Display the command line usage flags
+ * @brief Display the command line usage flags.
  */
 static void
 usage(void)
@@ -82,7 +82,7 @@ usage(void)
 }
 
 /**
- * @brief Startup routine for Herrie
+ * @brief Startup routine for the application.
  */
 int
 main(int argc, char *argv[])

@@ -122,23 +122,24 @@ valid_md5(char *val)
 #endif /* BUILD_SCROBBLER */
 
 /**
- * @brief Structure containing a single configuration entry of Herrie
+ * @brief Structure containing a single configuration entry of the
+ *        application.
  */
 struct config_entry {
 	/**
-	 * @brief Name it can be located at
+	 * @brief Name it can be located at.
 	 */
 	const char	*name;
 	/**
-	 * @brief Default value
+	 * @brief Default value.
 	 */
 	const char	*defval;
 	/**
-	 * @brief Function to validate when set
+	 * @brief Function to validate when set.
 	 */
 	int		(*validator)(char *val);
 	/**
-	 * @brief Current value if not equal to the default
+	 * @brief Current value if not equal to the default.
 	 */
 	char		*curval;
 };
