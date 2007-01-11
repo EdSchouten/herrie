@@ -91,7 +91,11 @@ void
 gui_playq_init(void)
 {
 	win_statbar = newwin(1, 0, 0, 0);
-	wbkgdset(win_statbar, COLOR_PAIR(GUI_COLOR_BAR));
+	if (has_colors())
+		wbkgdset(win_statbar, COLOR_PAIR(GUI_COLOR_BAR));
+	else
+		wbkgdset(win_statbar, A_REVERSE);
+
 	str_time = g_string_sized_new(24);
 	str_song = g_string_sized_new(128);
 

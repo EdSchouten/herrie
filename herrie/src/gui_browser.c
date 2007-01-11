@@ -78,7 +78,10 @@ gui_browser_init(void)
 	char *cwd;
 
 	win_dirname = newwin(1, 0, gui_size_browser_dirname_top, 0);
-	wbkgdset(win_dirname, COLOR_PAIR(GUI_COLOR_BAR));
+	if (has_colors())
+		wbkgdset(win_dirname, COLOR_PAIR(GUI_COLOR_BAR));
+	else
+		wbkgdset(win_dirname, A_REVERSE);
 
 	win_browser = gui_vfslist_new(0);
 	gui_vfslist_setfocus(win_browser, 1);

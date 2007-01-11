@@ -46,7 +46,11 @@ void
 gui_msgbar_init(void)
 {
 	win_msgbar = newwin(1, 0, gui_size_msgbar_top, 0);
-	wbkgdset(win_msgbar, COLOR_PAIR(GUI_COLOR_BAR));
+	if (has_colors())
+		wbkgdset(win_msgbar, COLOR_PAIR(GUI_COLOR_BAR));
+	else
+		wbkgdset(win_msgbar, A_REVERSE);
+
 	message = g_string_sized_new(32);
 
 	/* Hide the cursor by default */
