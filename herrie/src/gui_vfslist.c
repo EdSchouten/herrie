@@ -155,9 +155,8 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 		/* Small whitespace on the left, or > when black & white */
 		if ((vr == gv->vr_selected) && !has_colors()) {
 			if (gv->winfocused)
-				mvwaddch(gv->win, i, 0, '>');
-			else
-				mvwaddch(gv->win, i, 0, '-');
+				wattron(gv->win, A_BOLD);
+			mvwaddch(gv->win, i, 0, '>');
 		} else {
 			mvwaddch(gv->win, i, 0, ' ');
 		}
@@ -177,6 +176,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 			waddch(gv->win, mark);
 
 		wbkgdset(gv->win, COLOR_PAIR(GUI_COLOR_BLOCK));
+		wattroff(gv->win, A_BOLD);
 
 		vr = vfs_list_next(vr);
 		idx++;
