@@ -152,5 +152,6 @@ clean:
 	msgfmt -o $@ $<
 
 herrie: $(HERRIE_OBJ)
+	$(CC) $(LDFLAGS) -o $@ $^
 
 include depends.mak
