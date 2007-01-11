@@ -130,7 +130,7 @@ LDFLAGS+=	$(shell pkg-config --libs glib-2.0 gthread-2.0) \
 HERRIE_OBJ+=	audio.o audio_output_$(AUDIO_OUTPUT).o config.o \
 		gui_browser.o gui_draw.o gui_input.o gui_msgbar.o \
 		gui_playq.o gui_vfslist.o main.o playq.o vfs.o \
-		vfs_dir.o vfs_file.o vfs_playlist.o
+		vfs_regular.o vfs_playlist.o
 
 .PHONY: all install uninstall clean depends
 

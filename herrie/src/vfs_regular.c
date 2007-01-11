@@ -31,6 +31,12 @@
 #include "vfs_modules.h"
 
 int
+vfs_file_open(struct vfsent *ve, int isdir)
+{
+	return (isdir);
+}
+
+int
 vfs_dir_open(struct vfsent *ve, int isdir)
 {
 	return (!isdir);
