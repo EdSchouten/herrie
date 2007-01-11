@@ -42,6 +42,10 @@ void gui_draw_init_pre(void);
  */
 void gui_draw_init_post(void);
 /**
+ * @brief Do a fast abort of the GUI.
+ */
+void gui_draw_init_abort(void);
+/**
  * @brief Destroy the curses GUI.
  */
 void gui_draw_destroy(void);

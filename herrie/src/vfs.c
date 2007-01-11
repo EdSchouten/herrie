@@ -54,7 +54,7 @@ static struct vfsmodule modules[] = {
  */
 #define NUM_MODULES (sizeof(modules) / sizeof(struct vfsmodule))
 
-int
+const char *
 vfs_lockup(void)
 {
 	const char *root;
@@ -64,37 +64,33 @@ vfs_lockup(void)
 	user = config_getopt("vfs.lockup.user");
 	if (user[0] != '\0') {
 		pw = getpwnam(user);
-		if (pw == NULL) {
-			g_printerr(_("Unknown user: %s\n"), user);
-			return (-1);
-		}
+		if (pw == NULL)
+			return g_strdup_printf(
+			    _("Unknown user: %s\n"), user);
 	}
 
 	root = config_getopt("vfs.lockup.chroot");
 	if (root[0] != '\0') {
 		/* Try to lock ourselves in */
-		if (chroot(root) != 0) {
-			g_printerr(_("Unable to chroot in %s\n"), root);
-			return (-1);
-		}
+		if (chroot(root) != 0)
+			return g_strdup_printf(
+			    _("Unable to chroot in %s\n"), root);
 
 		chdir("/");
 	}
 
 	if (pw != NULL) {
-		if (setgid(pw->pw_gid) != 0) {
-			g_printerr(_("Unable to change to group %d\n"),
+		if (setgid(pw->pw_gid) != 0)
+			return g_strdup_printf(
+			    _("Unable to change to group %d\n"),
 			    (int)pw->pw_gid);
-			return (-1);
-		}
-		if (setuid(pw->pw_uid) != 0) {
-			g_printerr(_("Unable to change to user %d\n"),
+		if (setuid(pw->pw_uid) != 0)
+			return g_strdup_printf(
+			    _("Unable to change to user %d\n"),
 			    (int)pw->pw_uid);
-			return (-1);
-		}
 	}
 
-	return (0);
+	return (NULL);
 }
 
 /**

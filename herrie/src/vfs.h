@@ -276,9 +276,9 @@ struct vfsref {
 
 /**
  * @brief Try to lock the application in a specified directory on
- *        startup.
+ *        startup. This function returns an error message.
  */
-int	vfs_lockup(void);
+const char	*vfs_lockup(void);
 
 /**
  * @brief Create a VFS reference from a filename. The name argument is

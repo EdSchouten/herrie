@@ -77,6 +77,12 @@ gui_draw_init_post(void)
 }
 
 void
+gui_draw_init_abort(void)
+{
+	endwin();
+}
+
+void
 gui_draw_destroy(void)
 {
 	GUI_LOCK;

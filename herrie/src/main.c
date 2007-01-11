@@ -89,6 +89,7 @@ main(int argc, char *argv[])
 {
 	int ch, i, show_version = 0;
 	char *configfile = NULL, *cwd;
+	const char *errmsg;
 	struct vfsref *vr;
 #ifdef CLOSE_STDERR
 	int devnull;
@@ -129,8 +130,11 @@ main(int argc, char *argv[])
 #ifdef CLOSE_STDERR
 	devnull = open("/dev/null", O_WRONLY);
 #endif /* CLOSE_STDERR */
-	if (vfs_lockup() != 0)
-		return (-1);
+	if ((errmsg = vfs_lockup()) != NULL) {
+		gui_draw_init_abort();
+		g_printerr(errmsg);
+		return (1);
+	}
 
 	/* Initialize the locks */
 	g_thread_init(NULL);

@@ -2,6 +2,7 @@ Herrie 1.2 -> 1.3:
 - Use UTF-8 for MP3 tags, just like we do with Ogg Vorbis - found by Bertrand Janin
 - Improve black and white terminal support
 - Force refresh with ^L - fixes dtach support
+- Don't leave terminal broken when chroot/setuid fails
 
 Herrie 1.1 -> 1.2:
 - Include <stdlib.h> for setproctitle() on Open/NetBSD
