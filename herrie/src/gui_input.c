@@ -70,7 +70,8 @@ gui_input_getch(void)
 
 	do {
 		ch = getch();
-		if (ch == KEY_RESIZE) {
+		/* Redraw everything when we get KEY_RESIZE or ^L */
+		if (ch == KEY_RESIZE || ch == 0x0c) {
 			gui_draw_resize();
 			ch = ERR;
 		}
