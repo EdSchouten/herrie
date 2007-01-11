@@ -361,7 +361,7 @@ playq_song_randomize(void)
 		goto done;
 
 	/* Generate a shadow list */
-	vrlist = g_malloc(remaining * sizeof(struct vfsref *));
+	vrlist = g_new(struct vfsref *, remaining);
 	vfs_list_foreach(&playq_list, vr)
 		vrlist[idx++] = vr;
 	vfs_list_init(&playq_list);

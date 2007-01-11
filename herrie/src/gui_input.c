@@ -127,7 +127,6 @@ gui_input_search(void)
 		gui_playq_searchnext();
 }
 
-
 /**
  * @brief Prompt the user with a message to confirm termination of the
  *        application.
