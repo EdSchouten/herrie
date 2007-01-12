@@ -110,3 +110,26 @@ gui_draw_resize(void)
 	gui_browser_resize();
 	gui_draw_async_done();
 }
+
+int
+gui_draw_color_number(const char *name)
+{
+	if (strcmp(name, "black") == 0)
+		return (COLOR_BLACK);
+	else if (strcmp(name, "red") == 0)
+		return (COLOR_RED);
+	else if (strcmp(name, "green") == 0)
+		return (COLOR_GREEN);
+	else if (strcmp(name, "yellow") == 0)
+		return (COLOR_YELLOW);
+	else if (strcmp(name, "blue") == 0)
+		return (COLOR_BLUE);
+	else if (strcmp(name, "magenta") == 0)
+		return (COLOR_MAGENTA);
+	else if (strcmp(name, "cyan") == 0)
+		return (COLOR_CYAN);
+	else if (strcmp(name, "white") == 0)
+		return (COLOR_WHITE);
+	
+	return (-1);
+}

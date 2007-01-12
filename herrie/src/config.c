@@ -28,8 +28,7 @@
  */
 
 #include "config.h"
-/* XXX: curses color codes */
-#include "gui_internal.h"
+#include "gui.h"
 
 /**
  * @brief Convert a "yes"/"no" string to a boolean value.
@@ -43,32 +42,6 @@ string_to_bool(const char *val)
 		return (0);
 	else
 		return (-1);
-}
-
-/**
- * @brief Convert a color name to a Curses color code.
- */
-static int
-string_to_curses_color(const char *val)
-{
-	if (strcmp(val, "black") == 0)
-		return (COLOR_BLACK);
-	else if (strcmp(val, "red") == 0)
-		return (COLOR_RED);
-	else if (strcmp(val, "green") == 0)
-		return (COLOR_GREEN);
-	else if (strcmp(val, "yellow") == 0)
-		return (COLOR_YELLOW);
-	else if (strcmp(val, "blue") == 0)
-		return (COLOR_BLUE);
-	else if (strcmp(val, "magenta") == 0)
-		return (COLOR_MAGENTA);
-	else if (strcmp(val, "cyan") == 0)
-		return (COLOR_CYAN);
-	else if (strcmp(val, "white") == 0)
-		return (COLOR_WHITE);
-	
-	return (-1);
 }
 
 /*
@@ -89,7 +62,7 @@ static int valid_bool(char *val)
 static int
 valid_color(char *val)
 {
-	return ((string_to_curses_color(val) == -1) ? -1 : 0);
+	return ((gui_draw_color_number(val) == -1) ? -1 : 0);
 }
 
 #ifdef BUILD_SCROBBLER
@@ -308,7 +281,7 @@ config_getopt_color(const char *val)
 {
 	int col;
 	
-	col = string_to_curses_color(config_getopt(val));
+	col = gui_draw_color_number(config_getopt(val));
 	g_assert(col >= 0);
 	return (col);
 }

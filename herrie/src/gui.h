@@ -49,6 +49,10 @@ void gui_draw_init_abort(void);
  * @brief Destroy the curses GUI.
  */
 void gui_draw_destroy(void);
+/**
+ * @brief Return the Curses color number for a given color string.
+ */
+int gui_draw_color_number(const char *name);
 
 /**
  * @brief Mask certain signals that are only need by the GUI. Call this
