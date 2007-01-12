@@ -56,9 +56,8 @@ gui_draw_init_post(void)
 	raw();
 	refresh();
 
-	gui_draw_colors = config_getopt_bool("gui.color.enabled");
-	if (!has_colors())
-		gui_draw_colors = 0;
+	gui_draw_colors =
+	    config_getopt_bool("gui.color.enabled") && has_colors();
 
 	if (gui_draw_colors) {
 		start_color();
