@@ -187,10 +187,6 @@ struct vfsmodule {
 	 */
 	int	(*vopen)(struct vfsent *ve, int isdir);
 	/**
-	 * @brief Detach the VFS module to a VFS entity
-	 */
-	void	(*vclose)(struct vfsent *ve);
-	/**
 	 * @brief Populate the VFS entity with its childs
 	 */
 	int	(*vpopulate)(struct vfsent *ve);

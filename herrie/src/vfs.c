@@ -39,14 +39,14 @@
  *        and functions.
  */
 static struct vfsmodule modules[] = {
-	{ vfs_m3u_open, NULL, vfs_m3u_populate, 0, 0, VFS_SORT_LAST, '@' },
-	{ vfs_pls_open, NULL, vfs_pls_populate, 0, 0, VFS_SORT_LAST, '@' },
+	{ vfs_m3u_open, vfs_m3u_populate, 0, 0, VFS_SORT_LAST, '@' },
+	{ vfs_pls_open, vfs_pls_populate, 0, 0, VFS_SORT_LAST, '@' },
 	/*
 	 * Leave these two rules at the bottom of the list. They have
 	 * the weakest matching rules.
 	 */
-	{ vfs_dir_open, NULL, vfs_dir_populate, 1, 0, VFS_SORT_FIRST, G_DIR_SEPARATOR },
-	{ vfs_file_open, NULL, NULL, 1, 1, VFS_SORT_LAST, '\0' },
+	{ vfs_dir_open, vfs_dir_populate, 1, 0, VFS_SORT_FIRST, G_DIR_SEPARATOR },
+	{ vfs_file_open, NULL, 1, 1, VFS_SORT_LAST, '\0' },
 };
 /**
  * @brief The number of virtual file system modules currently available
@@ -247,9 +247,6 @@ vfs_close(struct vfsref *vr)
 			vfs_list_remove(vfs_population(vr), cur);
 			vfs_close(cur);
 		}
-
-		if (vr->ent->vmod->vclose != NULL)
-			vr->ent->vmod->vclose(vr->ent);
 		
 		vfs_dealloc(vr->ent);
 	}
