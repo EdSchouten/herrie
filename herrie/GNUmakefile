@@ -24,6 +24,7 @@
 # SUCH DAMAGE.
 # 
 
+APP_NAME=	herrie
 VERSION=	1.2
 
 PREFIX?=	/usr/local
@@ -85,22 +86,22 @@ endif
 
 # Tunables
 ifndef NO_MP3
-HERRIE_OBJ+=	audio_format_mp3.o
+OBJS+=		audio_format_mp3.o
 CFLAGS+=	-DBUILD_MP3
 LDFLAGS+=	-lmad -lid3tag
 endif
 ifndef NO_VORBIS
-HERRIE_OBJ+=	audio_format_vorbis.o
+OBJS+=		audio_format_vorbis.o
 CFLAGS+=	-DBUILD_VORBIS
 LDFLAGS+=	-lvorbisfile -lvorbis -logg
 endif
 ifndef NO_SNDFILE
-HERRIE_OBJ+=	audio_format_sndfile.o
+OBJS+=		audio_format_sndfile.o
 CFLAGS+=	-DBUILD_SNDFILE
 LDFLAGS+=	-lsndfile
 endif
 ifndef NO_SCROBBLER
-HERRIE_OBJ+=	scrobbler.o scrobbler_hash.o scrobbler_send.o
+OBJS+=		scrobbler.o scrobbler_hash.o scrobbler_send.o
 CFLAGS+=	$(shell curl-config --cflags) -DBUILD_SCROBBLER
 LDFLAGS+=	$(shell curl-config --libs) -lssl
 endif
@@ -119,39 +120,38 @@ LDFLAGS+=	-lcurses
 endif
 endif
 
+OBJS+=		audio.o audio_output_$(AUDIO_OUTPUT).o config.o \
+		gui_browser.o gui_draw.o gui_input.o gui_msgbar.o \
+		gui_playq.o gui_vfslist.o main.o playq.o vfs.o \
+		vfs_regular.o vfs_playlist.o
 # libao dies with -Wstrict-prototypes - fixed in trunk
 CFLAGS+=	$(shell pkg-config --cflags glib-2.0 gthread-2.0) \
 		-I$(PREFIX)/include -DAUDIO_OUTPUT=\"$(AUDIO_OUTPUT)\" \
-		-DAPP_NAME=\"herrie\" -DAPP_VERSION=\"$(VERSION)\" \
+		-DAPP_NAME=\"$(APP_NAME)\" -DAPP_VERSION=\"$(VERSION)\" \
 		-Wall -Werror -Wmissing-prototypes -include src/stdinc.h
 LDFLAGS+=	$(shell pkg-config --libs glib-2.0 gthread-2.0) \
 		-L$(PREFIX)/lib
 
-HERRIE_OBJ+=	audio.o audio_output_$(AUDIO_OUTPUT).o config.o \
-		gui_browser.o gui_draw.o gui_input.o gui_msgbar.o \
-		gui_playq.o gui_vfslist.o main.o playq.o vfs.o \
-		vfs_regular.o vfs_playlist.o
-
 .PHONY: all install uninstall clean depends
 
-all: herrie herrie.1 $(LOCALES:%=%.mo)
+all: $(APP_NAME) $(APP_NAME).1 $(LOCALES:%=%.mo)
 
 install: all
-	install -s herrie $(PREFIX)/bin/herrie$(BINARY_EXT)
-	install -m 444 herrie.1 $(MANDIR)/man1/herrie.1
+	install -s $(APP_NAME) $(PREFIX)/bin/$(APP_NAME)$(BINARY_EXT)
+	install -m 444 $(APP_NAME).1 $(MANDIR)/man1/$(APP_NAME).1
 	$(foreach lang,$(LOCALES), \
 		mkdir -p $(TRANSDIR)/$(lang)/LC_MESSAGES)
 	$(foreach lang,$(LOCALES), \
 		install -m 444 $(lang).mo \
-		    $(TRANSDIR)/$(lang)/LC_MESSAGES/herrie.mo)
+		    $(TRANSDIR)/$(lang)/LC_MESSAGES/$(APP_NAME).mo)
 
 clean:
-	rm -f herrie *.o *.mo *.core
+	rm -f $(APP_NAME) *.o *.mo *.core
 
 %.mo: %.po
 	msgfmt -o $@ $<
 
-herrie: $(HERRIE_OBJ)
+$(APP_NAME): $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
 
 include depends.mak
