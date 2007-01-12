@@ -153,7 +153,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 		}
 
 		/* Small whitespace on the left, or > when black & white */
-		if ((vr == gv->vr_selected) && !has_colors()) {
+		if ((vr == gv->vr_selected) && !gui_draw_colors) {
 			if (gv->winfocused)
 				wattron(gv->win, A_BOLD);
 			mvwaddch(gv->win, i, 0, '>');

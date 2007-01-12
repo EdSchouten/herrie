@@ -40,6 +40,10 @@
 #include "vfs.h"
 
 /**
+ * @brief Determine whether our terminal is black or white or color.
+ */
+extern int gui_draw_colors;
+/**
  * @brief Refresh the curses GUI after a terminal resize.
  */
 void gui_draw_resize(void);

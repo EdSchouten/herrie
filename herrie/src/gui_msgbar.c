@@ -46,7 +46,7 @@ void
 gui_msgbar_init(void)
 {
 	win_msgbar = newwin(1, 0, gui_size_msgbar_top, 0);
-	if (has_colors())
+	if (gui_draw_colors)
 		wbkgdset(win_msgbar, COLOR_PAIR(GUI_COLOR_BAR));
 	else
 		wbkgdset(win_msgbar, A_REVERSE);

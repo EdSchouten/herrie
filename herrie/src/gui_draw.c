@@ -31,6 +31,7 @@
 #include "gui_internal.h"
 
 GMutex *gui_lock;
+int gui_draw_colors;
 
 void
 gui_draw_init_pre(void)
@@ -48,7 +49,6 @@ gui_draw_init_post(void)
 #ifdef PDCURSES
 	PDC_set_title(APP_NAME);
 #endif /* PDCURSES */
-	start_color();
 	nonl();
 	cbreak();
 	noecho();
@@ -56,7 +56,13 @@ gui_draw_init_post(void)
 	raw();
 	refresh();
 
-	if (has_colors()) {
+	gui_draw_colors = config_getopt_bool("gui.color.enabled");
+	if (!has_colors())
+		gui_draw_colors = 0;
+
+	if (gui_draw_colors) {
+		start_color();
+
 		init_pair(GUI_COLOR_BAR,
 		    config_getopt_color("gui.color.bar.fg"),
 		    config_getopt_color("gui.color.bar.bg"));

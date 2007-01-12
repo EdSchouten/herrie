@@ -167,6 +167,7 @@ static struct config_entry configlist[] = {
 	{ "gui.color.block.fg",		"white",	valid_color,	NULL },
 	{ "gui.color.deselect.bg",	"white",	valid_color,	NULL },
 	{ "gui.color.deselect.fg",	"black",	valid_color,	NULL },
+	{ "gui.color.enabled",		"yes",		valid_bool,	NULL },
 	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
 	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
 #ifdef BUILD_SCROBBLER
