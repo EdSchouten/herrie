@@ -270,7 +270,8 @@ gui_input_sighandler(int signal)
 void
 gui_input_loop(void)
 {
-	int ch, i;
+	int ch;
+	unsigned int i;
 
 	signal(SIGUSR1, gui_input_sighandler);
 	signal(SIGUSR2, gui_input_sighandler);
@@ -366,8 +367,8 @@ char *
 gui_input_askstring(char *question, char *defstr)
 {
 	GString *msg;
-	int origlen, newlen, clearfirst = 0;
-	int c;
+	unsigned int origlen, newlen;
+	int c, clearfirst = 0;
 	char *ret = NULL;
 
 	msg = g_string_new(question);

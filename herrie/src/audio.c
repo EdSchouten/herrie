@@ -89,7 +89,7 @@ struct audio_file *
 audio_open(const char *filename)
 {
 	struct audio_file *out = NULL;
-	int i;
+	unsigned int i;
 
 	out = g_slice_new0(struct audio_file);
 	

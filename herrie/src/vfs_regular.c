@@ -47,7 +47,7 @@ vfs_dir_populate(struct vfsent *ve)
 {
 	GDir *dir;
 	const char *sfn;
-	struct vfsref *new, *scur;
+	struct vfsref *nvr, *svr;
 	int hide_dotfiles;
 
 	hide_dotfiles = config_getopt_bool("vfs.dir.hide_dotfiles");
@@ -60,25 +60,25 @@ vfs_dir_populate(struct vfsent *ve)
 		if (hide_dotfiles && sfn[0] == '.')
 			continue;
 
-		if ((new = vfs_open(sfn, NULL, ve->filename)) == NULL)
+		if ((nvr = vfs_open(sfn, NULL, ve->filename)) == NULL)
 			continue;
 
 		/*
 		 * Add the items to the tailq in a sorted manner.
 		 */
-		vfs_list_foreach(&ve->population, scur) {
+		vfs_list_foreach(&ve->population, svr) {
 			/* Store the file if the sorting priority is lower */
-			if (vfs_sortorder(new) < vfs_sortorder(scur) ||
+			if (vfs_sortorder(nvr) < vfs_sortorder(svr) ||
 			    /* Or if they are the same and the filename is lower */
-			    (vfs_sortorder(new) == vfs_sortorder(scur) &&
-			    strcasecmp(vfs_name(new), vfs_name(scur)) < 0)) {
-				vfs_list_insert_before(&ve->population, new, scur);
+			    (vfs_sortorder(nvr) == vfs_sortorder(svr) &&
+			    strcasecmp(vfs_name(nvr), vfs_name(svr)) < 0)) {
+				vfs_list_insert_before(&ve->population, nvr, svr);
 				break;
 			}
 		}
 
-		if (scur == NULL)
-			vfs_list_insert_tail(&ve->population, new);
+		if (svr == NULL)
+			vfs_list_insert_tail(&ve->population, nvr);
 	}
 
 	g_dir_close(dir);

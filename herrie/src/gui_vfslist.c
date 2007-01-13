@@ -66,11 +66,10 @@ gui_vfslist_cursor_adjust(struct gui_vfslist *gv)
  * @brief Calculate what width the column with the index numbers should
  *        have, based on the amount of songs in the playlist.
  */
-static int
+static unsigned int
 gui_vfslist_idxcol_width(struct gui_vfslist *gv)
 {
-	int len;
-	unsigned int idx;
+	unsigned int len, idx;
 
 	if (gv->list == NULL)
 		return (0);
@@ -114,8 +113,7 @@ gui_vfslist_percent(struct gui_vfslist *gv)
 static void
 gui_vfslist_refresh(struct gui_vfslist *gv)
 {
-	int i, idxw, idxmaxw = 0;
-	unsigned int idx;
+	unsigned int i, idx, idxw, idxmaxw = 0;
 	char num[16], mark;
 	struct vfsref *vr;
 
@@ -330,7 +328,7 @@ gui_vfslist_cursor_bottom(struct gui_vfslist *gv)
 void
 gui_vfslist_cursor_pageup(struct gui_vfslist *gv)
 {
-	int i;
+	unsigned int i;
 
 	if (gui_vfslist_warn_isempty(gv))
 		return;
@@ -361,7 +359,7 @@ gui_vfslist_cursor_pageup(struct gui_vfslist *gv)
 void
 gui_vfslist_cursor_pagedown(struct gui_vfslist *gv)
 {
-	int i;
+	unsigned int i;
 	struct vfsref *vr_toptmp = gv->vr_top;
 
 	if (gui_vfslist_warn_isempty(gv))

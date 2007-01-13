@@ -163,7 +163,8 @@ static struct config_entry configlist[] = {
 static struct config_entry *
 config_search(const char *opt)
 {
-	int i, c;
+	unsigned int i;
+	int c;
 
 	for (i = 0; i < NUM_SWITCHES; i++) {
 		c = strcmp(opt, configlist[i].name);

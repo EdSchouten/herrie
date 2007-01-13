@@ -174,7 +174,7 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 	struct vfsent *ve;
 	struct vfsref *vr;
 	struct stat fs;
-	int i;
+	unsigned int i;
 
 	fn = vfs_path_concat(basepath, filename);
 	if (fn == NULL)

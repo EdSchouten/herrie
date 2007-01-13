@@ -110,7 +110,8 @@ done:	rewind(fp);
 static void
 mp3_readtags(struct audio_file *fd)
 {
-	int tmpfd, i;
+	int tmpfd;
+	unsigned int i;
 	off_t orig_off;
 	struct id3_file *id3f;
 	struct id3_tag *tag;
@@ -226,7 +227,7 @@ mp3_read_frame(struct audio_file *fd)
 			/* Load it back in */
 			mad_stream_buffer(&data->mstream, data->buf_input,
 			    buflen);
-			data->mstream.error = 0;
+			data->mstream.error = MAD_ERROR_NONE;
 		}
 
 		if (mad_header_decode(&data->mheader, &data->mstream) == 0) {

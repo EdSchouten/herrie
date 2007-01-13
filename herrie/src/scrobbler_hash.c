@@ -46,7 +46,7 @@ tohexadecimal(char val)
 void
 scrobbler_hash(struct scrobbler_condata *scd)
 {
-	int i;
+	unsigned int i;
 	unsigned char bin_res[16];
 	MD5_CTX ctx;
 

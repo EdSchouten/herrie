@@ -155,7 +155,7 @@ scrobbler_http_escape(const char *str)
 void
 scrobbler_notify_read(struct audio_file *fd, int eof)
 {
-	struct scrobbler_entry *new;
+	struct scrobbler_entry *nse;
 	int len;
 
 	if (!scrobbler_enabled)
@@ -190,15 +190,15 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 		return;
 
 	/* Place the track in our queue */
-	new = g_slice_new(struct scrobbler_entry);
-	new->artist = scrobbler_http_escape(fd->tag.artist);
-	new->title = scrobbler_http_escape(fd->tag.title);
-	new->album = scrobbler_http_escape(fd->tag.album);
-	new->length = len;
-	new->time = time(NULL);
+	nse = g_slice_new(struct scrobbler_entry);
+	nse->artist = scrobbler_http_escape(fd->tag.artist);
+	nse->title = scrobbler_http_escape(fd->tag.title);
+	nse->album = scrobbler_http_escape(fd->tag.album);
+	nse->length = len;
+	nse->time = time(NULL);
 
 	g_mutex_lock(scrobbler_lock);
-	scrobbler_queue_insert_tail(new);
+	scrobbler_queue_insert_tail(nse);
 	g_cond_signal(scrobbler_avail);
 	g_mutex_unlock(scrobbler_lock);
 }

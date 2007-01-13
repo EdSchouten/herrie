@@ -71,7 +71,7 @@ static volatile int		do_seek;
 static void *
 playq_runner_thread(void *unused)
 {
-	struct vfsref		*new;
+	struct vfsref		*nvr;
 	struct audio_file	*cur;
 	char			*errmsg;
 
@@ -80,7 +80,7 @@ playq_runner_thread(void *unused)
 	do {
 		/* Wait until there's a song available */
 		PLAYQ_LOCK;
-		while ((new = vfs_list_first(&playq_list)) == NULL) {
+		while ((nvr = vfs_list_first(&playq_list)) == NULL) {
 			/* Change the current status to idle */
 			gui_playq_song_update(NULL, 0);
 
@@ -91,20 +91,20 @@ playq_runner_thread(void *unused)
 			}
 		}
 		gui_playq_notify_pre_removal(1);
-		vfs_list_remove(&playq_list, new);
+		vfs_list_remove(&playq_list, nvr);
 		gui_playq_notify_done();
 		PLAYQ_UNLOCK;
 
-		if ((cur = audio_open(vfs_filename(new))) == NULL) {
+		if ((cur = audio_open(vfs_filename(nvr))) == NULL) {
 			/* Skip broken songs */
 			errmsg = g_strdup_printf(
 			    _("Failed to open \"%s\" for playback."),
-			    vfs_name(new));
+			    vfs_name(nvr));
 			gui_msgbar_warn(errmsg);
 			g_free(errmsg);
 			continue;
 		}
-		vfs_close(new);
+		vfs_close(nvr);
 
 		gui_playq_song_update(cur, 0);
 

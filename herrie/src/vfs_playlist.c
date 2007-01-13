@@ -52,7 +52,7 @@ vfs_playlist_check_ext(char *name, char *ext)
 static int
 vfs_playlist_add_tail(struct vfsent *ve, char *fn, char *title, char *dirname)
 {
-	struct vfsref *new;
+	struct vfsref *nvr;
 #if G_DIR_SEPARATOR != '\\'
 	char *c;
 	
@@ -62,10 +62,10 @@ vfs_playlist_add_tail(struct vfsent *ve, char *fn, char *title, char *dirname)
 			*c = G_DIR_SEPARATOR;
 	}
 #endif
-	new = vfs_open(fn, title, dirname);
+	nvr = vfs_open(fn, title, dirname);
 
-	if (new != NULL) {
-		vfs_list_insert_tail(&ve->population, new);
+	if (nvr != NULL) {
+		vfs_list_insert_tail(&ve->population, nvr);
 		return (0);
 	} else {
 		return (1);
