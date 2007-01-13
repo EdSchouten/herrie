@@ -210,7 +210,7 @@ struct vfsmodule {
 	 */
 #define VFS_SORT_LAST	255
 	/**
-	 * @brief Order in which files should be sorted in the browser
+	 * @brief Order in which files should be sorted in vfs_dir
 	 */
 	unsigned char sortorder;
 
