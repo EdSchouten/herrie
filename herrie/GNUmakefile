@@ -128,7 +128,8 @@ OBJS+=		audio.o audio_output_$(AUDIO_OUTPUT).o config.o \
 CFLAGS+=	$(shell pkg-config --cflags glib-2.0 gthread-2.0) \
 		-I$(PREFIX)/include -DAUDIO_OUTPUT=\"$(AUDIO_OUTPUT)\" \
 		-DAPP_NAME=\"$(APP_NAME)\" -DAPP_VERSION=\"$(VERSION)\" \
-		-Wall -Werror -Wmissing-prototypes -include src/stdinc.h
+		-Wall -Wsign-compare -Werror -Wmissing-prototypes \
+		-include src/stdinc.h
 LDFLAGS+=	$(shell pkg-config --libs glib-2.0 gthread-2.0) \
 		-L$(PREFIX)/lib
 
