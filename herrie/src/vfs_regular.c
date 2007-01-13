@@ -24,7 +24,7 @@
  * SUCH DAMAGE.
  */
 /**
- * @file vfs_dir.c
+ * @file vfs_regular.c
  */
 
 #include "config.h"
