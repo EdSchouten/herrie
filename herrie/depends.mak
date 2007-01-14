@@ -2,7 +2,7 @@ audio.o: stdinc.h audio.c audio.h audio_format.h
 audio_format_mp3.o: stdinc.h audio_format_mp3.c audio_format.h audio.h audio_output.h
 audio_format_sndfile.o: stdinc.h audio_format_sndfile.c audio_format.h audio.h audio_output.h
 audio_format_vorbis.o: stdinc.h audio_format_vorbis.c audio_format.h audio.h audio_output.h
-audio_output_ao.o: stdinc.h audio_output_ao.c audio_output.h audio.h config.h
+audio_output_ao.o: stdinc.h audio_output_ao.c audio_output.h audio.h config.h gui.h
 audio_output_oss.o: stdinc.h audio_output_oss.c audio_output.h audio.h config.h
 config.o: stdinc.h config.c config.h gui.h audio.h
 gui_browser.o: stdinc.h gui_browser.c config.h gui_internal.h gui.h audio.h vfs.h gui_vfslist.h playq.h

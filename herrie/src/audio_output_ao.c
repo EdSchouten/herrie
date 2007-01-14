@@ -31,6 +31,7 @@
 
 #include "audio_output.h"
 #include "config.h"
+#include "gui.h"
 
 /**
  * @brief Handle to an audio device handle if one has already been opened.
@@ -82,8 +83,10 @@ audio_output_play(struct audio_file *fd)
 		}
 
 		devptr = ao_open_live(drvnum, &devfmt, NULL);
-		if (devptr == NULL)
+		if (devptr == NULL) {
+			gui_msgbar_warn(_("Cannot open the audio device."));
 			return (0);
+		}
 	}
 
 	if (ao_play(devptr, buf, len) == 0) {
