@@ -34,6 +34,7 @@
 #include <sys/soundcard.h>
 #endif /* __NetBSD__ || __OpenBSD__ */
 
+#include "audio_file.h"
 #include "audio_output.h"
 #include "config.h"
 
@@ -75,7 +76,7 @@ audio_output_play(struct audio_file *fd)
 	char buf[AUDIO_OUTPUT_BUFLEN];
 	int len;
 
-	if ((len = audio_read(fd, buf)) == 0)
+	if ((len = audio_file_read(fd, buf)) == 0)
 		return (0);
 
 	if (cur_srate != fd->srate || cur_channels != fd->channels) {
