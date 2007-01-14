@@ -156,6 +156,49 @@ gui_input_cursong_seek_forward(void)
 	playq_cursong_seek(5, 1);
 }
 
+static void
+gui_input_cursong_seek_jump(void)
+{
+	char *str;
+	int total = 0, split = 0, digit = 0, value;
+
+	str = gui_input_askstring(_("Jump to position"), NULL);
+	if (str == NULL)
+		return;
+	
+	for (; *str != '\0'; str++) {
+		if (*str == ':') {
+			if (split > 1)
+				goto bad;
+			split++;
+			digit = 0;
+		} else if ((value = g_ascii_digit_value(*str)) != -1) {
+			/* Regular digit */
+			if (split > 0) {
+				if (digit > 1)
+					goto bad;
+				if (digit == 0 && value >= 6)
+					goto bad;
+			}
+			total *= (digit == 0) ? 6 : 10;
+			total += value;
+			digit++;
+		} else {
+			/* Illegal character */
+			goto bad;
+		}
+	}
+
+	if (split > 0 && digit != 2)
+		goto bad;
+
+	playq_cursong_seek(total, 0);
+	goto done;
+
+bad:	gui_msgbar_warn(_("Bad time format."));
+done:	g_free(str);
+}
+
 /**
  * @brief A simple binding from a keyboard character input to a function.
  */
@@ -181,6 +224,7 @@ static struct gui_binding kbdbindings[] = {
 	/* Application-wide keyboard bindings */
 	{ -1, '<',			gui_input_cursong_seek_backward, },
 	{ -1, '>',			gui_input_cursong_seek_forward, },
+	{ -1, 'J',			gui_input_cursong_seek_jump, }, /* ^J */
 	{ -1, 'p',			playq_cursong_pause, },
 	{ -1, 'q',			NULL }, /* Quit the application */
 	{ -1, 's',			playq_cursong_skip },
