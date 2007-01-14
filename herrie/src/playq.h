@@ -46,7 +46,7 @@ void playq_spawn(void);
 void playq_shutdown(void);
 
 /**
- * @brier Seek the current played song.
+ * @brief Seek the current played song.
  */
 void playq_cursong_seek(int len, int rel);
 /**
