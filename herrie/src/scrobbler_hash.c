@@ -35,7 +35,7 @@
  * @brief Convert a numerical value to a hexadecimal character.
  */
 static char
-tohexadecimal(char val)
+toxdigit(char val)
 {
 	if (val < 10)
 		return (val + '0');
@@ -62,7 +62,7 @@ scrobbler_hash(struct scrobbler_condata *scd)
 	 * Convert the result back to hexadecimal string
 	 */
 	for (i = 0; i < sizeof bin_res; i++) {
-		scd->response[i * 2] = tohexadecimal(bin_res[i] >> 4);
-		scd->response[i * 2 + 1] = tohexadecimal(bin_res[i] & 0x0f);
+		scd->response[i * 2] = toxdigit(bin_res[i] >> 4);
+		scd->response[i * 2 + 1] = toxdigit(bin_res[i] & 0x0f);
 	}
 }
