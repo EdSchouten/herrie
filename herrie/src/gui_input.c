@@ -178,12 +178,12 @@ gui_input_cursong_seek_jump(void)
 		return;
 	
 	for (t = str; *t != '\0'; t++) {
-		if (*str == ':') {
+		if (*t == ':') {
 			if (split > 1)
 				goto bad;
 			split++;
 			digit = 0;
-		} else if ((value = g_ascii_digit_value(*str)) != -1) {
+		} else if ((value = g_ascii_digit_value(*t)) != -1) {
 			/* Regular digit */
 			if (split > 0) {
 				if (digit > 1)
