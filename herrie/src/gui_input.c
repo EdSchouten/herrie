@@ -113,7 +113,7 @@ gui_input_search(void)
 	char *str;
 
 	/* Allow the user to enter a search string */
-	str = gui_input_askstring(_("Search for"), gui_input_cursearch);
+	str = gui_input_askstring(_("Search for"), gui_input_cursearch, NULL);
 	if (str == NULL)
 		return;
 
@@ -173,7 +173,7 @@ gui_input_cursong_seek_jump(void)
 	char *str, *t;
 	int total = 0, split = 0, digit = 0, value;
 
-	str = gui_input_askstring(_("Jump to position"), NULL);
+	str = gui_input_askstring(_("Jump to position"), NULL, "1234567890:");
 	if (str == NULL)
 		return;
 	
@@ -195,8 +195,7 @@ gui_input_cursong_seek_jump(void)
 			total += value;
 			digit++;
 		} else {
-			/* Illegal character */
-			goto bad;
+			g_assert_not_reached();
 		}
 	}
 
@@ -431,7 +430,7 @@ gui_input_trimword(GString *gs)
 }
 
 char *
-gui_input_askstring(char *question, char *defstr)
+gui_input_askstring(char *question, char *defstr, char *allowed)
 {
 	GString *msg;
 	unsigned int origlen, newlen;
@@ -472,13 +471,16 @@ gui_input_askstring(char *question, char *defstr)
 			g_string_truncate(msg, MAX(newlen, origlen));
 			break;
 		default:
-			if (!g_ascii_iscntrl(c)) {
-				if (clearfirst) {
-					g_string_truncate(msg, origlen);
-					clearfirst = 0;
-				}
-				g_string_append_c(msg, c);
+			if ((allowed != NULL && strchr(allowed, c) == NULL) ||
+			    g_ascii_iscntrl(c)) {
+				/* Character is not allowed */
+				break;
 			}
+			if (clearfirst) {
+				g_string_truncate(msg, origlen);
+				clearfirst = 0;
+			}
+			g_string_append_c(msg, c);
 		}
 	}
 

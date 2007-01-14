@@ -303,7 +303,7 @@ gui_browser_chdir(void)
 	char *path;
 	struct vfsref *vr;
 
-	path = gui_input_askstring(_("Change directory"), NULL);
+	path = gui_input_askstring(_("Change directory"), NULL, NULL);
 	if (path == NULL)
 		return;
 

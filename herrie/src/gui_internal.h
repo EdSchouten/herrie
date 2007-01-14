@@ -109,7 +109,7 @@ int gui_input_askyesno(const char *question);
  * @brief Display a string input question at the bottom of the screen
  *        and return the user response.
  */
-char *gui_input_askstring(char *question, char *defstr);
+char *gui_input_askstring(char *question, char *defstr, char *allowed);
 /**
  * @brief Indicator of the current search string.
  */
