@@ -29,6 +29,7 @@
 
 #include <ao/ao.h>
 
+#include "audio_file.h"
 #include "audio_output.h"
 #include "config.h"
 #include "gui.h"

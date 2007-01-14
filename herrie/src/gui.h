@@ -30,7 +30,7 @@
 #ifndef _GUI_H_
 #define _GUI_H_
 
-#include "audio_file.h"
+struct audio_file;
 
 /**
  * @brief Initialize the curses GUI.

@@ -27,6 +27,7 @@
  * @file gui_playq.c
  */
 
+#include "audio_file.h"
 #include "gui_internal.h"
 #include "gui_vfslist.h"
 #include "playq.h"
