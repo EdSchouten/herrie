@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-14 12:59+0100\n"
-"PO-Revision-Date: 2007-01-14 12:59+0100\n"
+"POT-Creation-Date: 2007-01-14 20:07+0100\n"
+"PO-Revision-Date: 2007-01-14 20:07+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -48,11 +48,19 @@ msgstr "Zoeken naar"
 msgid "Quit %s?"
 msgstr "%s afsluiten?"
 
-#: gui_input.c:311 main.c:64
+#: gui_input.c:165
+msgid "Jump to position"
+msgstr "Spring naar positie"
+
+#: gui_input.c:198
+msgid "Bad time format."
+msgstr "Ongeldig tijdformaat."
+
+#: gui_input.c:367 main.c:64
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:311 main.c:66
+#: gui_input.c:367 main.c:66
 msgid "no"
 msgstr "nee"
 
@@ -129,7 +137,7 @@ msgstr "ondersteunde geluidsformaten"
 msgid "usage"
 msgstr "gebruik"
 
-#: playq.c:101
+#: playq.c:105
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Openen voor afspelen van \"%s\" mislukt."
