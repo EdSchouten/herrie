@@ -1,0 +1,4 @@
+*.mo
+*.o
+.gdb_history
+herrie
