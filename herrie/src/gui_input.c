@@ -183,8 +183,9 @@ gui_input_cursong_seek_jump(void)
 				goto bad;
 			split++;
 			digit = 0;
-		} else if ((value = g_ascii_digit_value(*t)) != -1) {
+		} else {
 			/* Regular digit */
+			value = g_ascii_digit_value(*t);
 			if (split > 0) {
 				if (digit > 1)
 					goto bad;
@@ -194,8 +195,6 @@ gui_input_cursong_seek_jump(void)
 			total *= (digit == 0) ? 6 : 10;
 			total += value;
 			digit++;
-		} else {
-			g_assert_not_reached();
 		}
 	}
 
