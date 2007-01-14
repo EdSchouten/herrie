@@ -154,7 +154,7 @@ gui_input_cursong_seek_backward(void)
 	playq_cursong_seek(-5, 1);
 }
 
-/*
+/**
  * @brief Instruct the playlist to seek the current song 5 seconds
  *        forward.
  */
@@ -164,7 +164,7 @@ gui_input_cursong_seek_forward(void)
 	playq_cursong_seek(5, 1);
 }
 
-/*
+/**
  * @brief Ask the user to specify a position to seek the current song to.
  */
 static void
