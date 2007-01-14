@@ -170,14 +170,14 @@ gui_input_cursong_seek_forward(void)
 static void
 gui_input_cursong_seek_jump(void)
 {
-	char *str;
+	char *str, *t;
 	int total = 0, split = 0, digit = 0, value;
 
 	str = gui_input_askstring(_("Jump to position"), NULL);
 	if (str == NULL)
 		return;
 	
-	for (; *str != '\0'; str++) {
+	for (t = str; *t != '\0'; t++) {
 		if (*str == ':') {
 			if (split > 1)
 				goto bad;
@@ -207,7 +207,7 @@ gui_input_cursong_seek_jump(void)
 	goto done;
 
 bad:	gui_msgbar_warn(_("Bad time format."));
-done:	g_free(str);
+done:	g_free(t);
 }
 
 /**
