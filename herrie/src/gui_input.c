@@ -207,7 +207,7 @@ gui_input_cursong_seek_jump(void)
 	goto done;
 
 bad:	gui_msgbar_warn(_("Bad time format."));
-done:	g_free(t);
+done:	g_free(str);
 }
 
 /**
