@@ -37,7 +37,8 @@
 #endif /* BUILD_XCURSES */
 
 #include "gui.h"
-#include "vfs.h"
+
+struct vfsref;
 
 /**
  * @brief Determine whether our terminal is black or white or color.

@@ -30,7 +30,7 @@
 #ifndef _PLAYQ_H_
 #define _PLAYQ_H_
 
-#include "vfs.h"
+struct vfsref;
 
 /**
  * @brief Initialize the playlist locking.

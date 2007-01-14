@@ -31,6 +31,7 @@
 #include "audio_output.h"
 #include "gui.h"
 #include "playq.h"
+#include "vfs.h"
 
 struct vfslist playq_list = VFSLIST_INITIALIZER;
 
