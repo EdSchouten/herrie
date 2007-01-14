@@ -54,7 +54,7 @@ struct audio_format {
 	/**
 	 * @brief The format's seek call.
 	 */
-	void	(*seek)(struct audio_file *fd, int len);
+	void	(*seek)(struct audio_file *fd, int len, int rel);
 };
 
 /*
@@ -144,10 +144,10 @@ audio_file_read(struct audio_file *fd, void *buf)
 }
 
 void
-audio_file_seek(struct audio_file *fd, int len)
+audio_file_seek(struct audio_file *fd, int len, int rel)
 {
 	if (len != 0) {
-		fd->drv->seek(fd, len);
+		fd->drv->seek(fd, len, rel);
 #ifdef BUILD_SCROBBLER
 		scrobbler_notify_seek(fd);
 #endif /* BUILD_SCROBBLER */

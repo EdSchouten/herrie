@@ -115,6 +115,6 @@ size_t audio_file_read(struct audio_file *fd, void *buf);
 /**
  * @brief Call the seek function in the audio_file struct if available.
  */
-void audio_file_seek(struct audio_file *fd, int len);
+void audio_file_seek(struct audio_file *fd, int len, int rel);
 
 #endif /* !_AUDIO_FILE_H_ */

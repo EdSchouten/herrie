@@ -118,12 +118,17 @@ vorbis_read(struct audio_file *fd, void *buf)
 }
 
 void
-vorbis_seek(struct audio_file *fd, int len)
+vorbis_seek(struct audio_file *fd, int len, int rel)
 {
 	double npos;
 	OggVorbis_File *vfp = fd->drv_data;
 
-	npos = ov_time_tell(vfp) + len;
+	npos = len;
+	if (rel) {
+		/* Perform a relative seek. */
+		npos += ov_time_tell(vfp);
+	}
+
 	npos = CLAMP(npos, 0, ov_time_total(vfp, -1));
 
 	ov_time_seek(vfp, npos);

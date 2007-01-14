@@ -48,7 +48,7 @@ size_t mp3_read(struct audio_file *fd, void *buf);
 /**
  * @brief Seek the mp3 file a relatime amount of seconds.
  */
-void mp3_seek(struct audio_file *fd, int len);
+void mp3_seek(struct audio_file *fd, int len, int rel);
 #endif /* BUILD_MP3 */
 
 #ifdef BUILD_SNDFILE
@@ -67,7 +67,7 @@ size_t sndfile_read(struct audio_file *fd, void *buf);
 /**
  * @brief Seek a relative amount in seconds in the current file handle.
  */
-void sndfile_seek(struct audio_file *fd, int len);
+void sndfile_seek(struct audio_file *fd, int len, int rel);
 #endif /* BUILD_SNDFILE */
 
 #ifdef BUILD_VORBIS
@@ -86,7 +86,7 @@ size_t vorbis_read(struct audio_file *fd, void *buf);
 /**
  * @brief Seek a relative amount in seconds in the current file handle.
  */
-void vorbis_seek(struct audio_file *fd, int len);
+void vorbis_seek(struct audio_file *fd, int len, int rel);
 #endif /* BUILD_VORBIS */
 
 #endif /* !_AUDIO_FORMAT_H_ */

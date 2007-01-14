@@ -123,7 +123,7 @@ playq_runner_thread(void *unused)
 			}
 
 			if (do_seek != 0) {
-				audio_file_seek(cur, do_seek);
+				audio_file_seek(cur, do_seek, 1);
 				do_seek = 0;
 			}
 

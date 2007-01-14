@@ -402,20 +402,24 @@ done:
 }
 
 void
-mp3_seek(struct audio_file *fd, int len)
+mp3_seek(struct audio_file *fd, int len, int rel)
 {
 	struct mp3_drv_data *data = fd->drv_data;
-	int newtime;
 	off_t newpos;
 
+	if (rel) {
+		/* Relative seek */
+		len += fd->time_cur;
+	}
+
 	/* Calculate the new relative position */
-	newtime = CLAMP(len + fd->time_cur, 0, fd->time_len);
-	newpos = ((double)newtime / fd->time_len) * data->flen;
+	len = CLAMP(len, 0, fd->time_len);
+	newpos = ((double)len / fd->time_len) * data->flen;
 	
 	/* Seek to the new position */
 	mp3_rewind(fd);
 	fseek(fd->fp, newpos, SEEK_SET);
-	data->mtimer.seconds = newtime;
+	data->mtimer.seconds = len;
 	data->mtimer.fraction = 0;
 	fd->time_cur = data->mtimer.seconds;
 }
