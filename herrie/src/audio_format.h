@@ -30,7 +30,7 @@
 #ifndef _AUDIO_FORMAT_H_
 #define _AUDIO_FORMAT_H_
 
-#include "audio.h"
+#include "audio_file.h"
 
 #ifdef BUILD_MP3
 /**

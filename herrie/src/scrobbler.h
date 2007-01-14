@@ -30,7 +30,7 @@
 #ifndef _SCROBBLER_H_
 #define _SCROBBLER_H_
 
-#include "audio.h"
+#include "audio_file.h"
 
 /**
  * @brief Initialize locking for the AudioScrobbler submission thread.

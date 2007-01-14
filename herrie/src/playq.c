@@ -27,7 +27,7 @@
  * @file playq.c
  */
 
-#include "audio.h"
+#include "audio_file.h"
 #include "audio_output.h"
 #include "gui.h"
 #include "playq.h"
@@ -95,7 +95,7 @@ playq_runner_thread(void *unused)
 		gui_playq_notify_done();
 		PLAYQ_UNLOCK;
 
-		if ((cur = audio_open(vfs_filename(nvr))) == NULL) {
+		if ((cur = audio_file_open(vfs_filename(nvr))) == NULL) {
 			/* Skip broken songs */
 			errmsg = g_strdup_printf(
 			    _("Failed to open \"%s\" for playback."),
@@ -123,14 +123,14 @@ playq_runner_thread(void *unused)
 			}
 
 			if (do_seek != 0) {
-				audio_seek(cur, do_seek);
+				audio_file_seek(cur, do_seek);
 				do_seek = 0;
 			}
 
 			gui_playq_song_update(cur, 1);
-		} while (!do_quit && !do_skip && (audio_output_play(cur) > 0));
+		} while (!do_quit && !do_skip && audio_output_play(cur) > 0);
 
-		audio_close(cur);
+		audio_file_close(cur);
 	} while (!do_quit);
 done:
 	return (NULL);

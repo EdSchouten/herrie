@@ -30,7 +30,7 @@
 #ifndef _AUDIO_OUTPUT_H_
 #define _AUDIO_OUTPUT_H_
 
-#include "audio.h"
+struct audio_file;
 
 /**
  * @brief Open the sound device for audio output.
