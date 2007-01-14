@@ -46,13 +46,9 @@ void playq_spawn(void);
 void playq_shutdown(void);
 
 /**
- * @brief Seek the current played song five seconds forward.
+ * @brier Seek the current played song.
  */
-void playq_cursong_seek_forward(void);
-/**
- * @brief Seek the current played song five seconds backward.
- */
-void playq_cursong_seek_backward(void);
+void playq_cursong_seek(int len, int rel);
 /**
  * @brief Skip the current song as if it were finished.
  */

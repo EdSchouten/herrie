@@ -60,9 +60,13 @@ static volatile int		do_skip;
  */
 static volatile int		do_quit;
 /**
- * @brief Order the playback thread to seek within the current song.
+ * @brief Amount of seconds which the current song should seek.
  */
-static volatile int		do_seek;
+static volatile int		do_seek_pos;
+/**
+ * @brief Flag to determine a positive or relative seek will be called.
+ */
+static volatile int		do_seek_rel;
 
 /**
  * @brief Infinitely play music in the playlist, honouring the do_
@@ -108,7 +112,7 @@ playq_runner_thread(void *unused)
 
 		gui_playq_song_update(cur, 0);
 
-		do_pause = do_skip = do_seek = 0;
+		do_pause = do_skip = do_seek_pos = do_seek_rel = 0;
 
 		do  {
 			if (do_pause) {
@@ -122,9 +126,9 @@ playq_runner_thread(void *unused)
 				PLAYQ_UNLOCK;
 			}
 
-			if (do_seek != 0) {
-				audio_file_seek(cur, do_seek, 1);
-				do_seek = 0;
+			if (do_seek_pos != 0 || !do_seek_rel) {
+				audio_file_seek(cur, do_seek_pos, do_seek_rel);
+				do_seek_pos = do_seek_rel = 0;
 			}
 
 			gui_playq_song_update(cur, 1);
@@ -206,25 +210,14 @@ playq_song_add_tail(struct vfsref *vr)
 /**
  * @brief Seek the current song by a certain amount of time.
  */
-static void
-playq_cursong_seek(int len)
+void
+playq_cursong_seek(int len, int rel)
 {
-	do_seek += len;
+	do_seek_pos = len;
+	do_seek_rel = rel;
 	/* We could be paused */
 	do_pause = 0;
 	g_cond_signal(playq_wakeup);
-}
-
-void
-playq_cursong_seek_forward(void)
-{
-	playq_cursong_seek(5);
-}
-
-void
-playq_cursong_seek_backward(void)
-{
-	playq_cursong_seek(-5);
 }
 
 void

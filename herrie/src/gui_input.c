@@ -144,6 +144,18 @@ gui_input_quit(void)
 	return (ret);
 }
 
+static void
+gui_input_cursong_seek_backward(void)
+{
+	playq_cursong_seek(-5, 1);
+}
+
+static void
+gui_input_cursong_seek_forward(void)
+{
+	playq_cursong_seek(5, 1);
+}
+
 /**
  * @brief A simple binding from a keyboard character input to a function.
  */
@@ -167,8 +179,8 @@ struct gui_binding {
  */
 static struct gui_binding kbdbindings[] = {
 	/* Application-wide keyboard bindings */
-	{ -1, '<',			playq_cursong_seek_backward, },
-	{ -1, '>',			playq_cursong_seek_forward, },
+	{ -1, '<',			gui_input_cursong_seek_backward, },
+	{ -1, '>',			gui_input_cursong_seek_forward, },
 	{ -1, 'p',			playq_cursong_pause, },
 	{ -1, 'q',			NULL }, /* Quit the application */
 	{ -1, 's',			playq_cursong_skip },
