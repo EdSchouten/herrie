@@ -147,7 +147,7 @@ install: all
 		    $(TRANSDIR)/$(lang)/LC_MESSAGES/$(APP_NAME).mo)
 
 clean:
-	rm -f $(APP_NAME) *.o *.mo *.core
+	rm -f $(APP_NAME) .gdb_history *.o *.mo *.core
 
 %.mo: %.po
 	msgfmt -o $@ $<

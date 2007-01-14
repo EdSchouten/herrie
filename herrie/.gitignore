@@ -1,3 +1,4 @@
+*.core
 *.mo
 *.o
 .gdb_history
