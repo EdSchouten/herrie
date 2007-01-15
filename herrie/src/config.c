@@ -51,7 +51,8 @@ string_to_bool(const char *val)
 /**
  * @brief Determine if a boolean string is valid
  */
-static int valid_bool(char *val)
+static int
+valid_bool(char *val)
 {
 	return (string_to_bool(val) == -1);
 }
