@@ -27,8 +27,4 @@ Documentation:
 - Write a developers guide?
 
 In general:
-- Make Herrie UTF-8 aware
-  - Scrobbler code does not properly escape > 0x7f
-  - Store strings in struct audio_file's tag as wide characters
-  - Experiment with ncursesw library
-  - Still remain portable...? (use glib functions?)
+- UTF-8 support for terminal

@@ -33,41 +33,39 @@
 #include "playq.h"
 #include "vfs.h"
 
-struct vfslist playq_list = VFSLIST_INITIALIZER;
-
-GMutex 				*playq_lock;
+struct vfslist		playq_list = VFSLIST_INITIALIZER;
+GMutex 			*playq_lock;
 /**
  * @brief Conditional variable used to kick the playq alive when it was
  *        waiting for a new song to be added to the playlist or when
  *        paused.
  */
-static GCond			*playq_wakeup;
-
+static GCond		*playq_wakeup;
 /**
  * @brief Reference to playback thread.
  */
-static GThread			*playq_runner;
+static GThread		*playq_runner;
 
 /**
  * @brief Order the playback thread to pause itself.
  */
-static volatile int		do_pause;
+static volatile int	do_pause;
 /**
  * @brief Order the playback thread to skip the current song.
  */
-static volatile int		do_skip;
+static volatile int	do_skip;
 /**
  * @brief Order the playback thread to shut itself down.
  */
-static volatile int		do_quit;
+static volatile int	do_quit;
 /**
  * @brief Amount of seconds which the current song should seek.
  */
-static volatile int		do_seek_pos;
+static volatile int	do_seek_pos;
 /**
  * @brief Flag to determine a positive or relative seek will be called.
  */
-static volatile int		do_seek_rel;
+static volatile int	do_seek_rel;
 
 /**
  * @brief Infinitely play music in the playlist, honouring the do_
