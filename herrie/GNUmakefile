@@ -153,7 +153,7 @@ clean:
 	msgfmt -o $@ $<
 
 %.gz: %
-	cat $< | gzip -9 > $@
+	gzip -9 < $< > $@
 
 $(APP_NAME): $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
