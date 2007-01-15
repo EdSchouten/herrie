@@ -216,7 +216,8 @@ gui_input_cursong_seek_jump(void)
 	if (split > 0 && digit != 2)
 		goto bad;
 
-	total *= relative;
+	if (relative != 0)
+		total *= relative;
 	playq_cursong_seek(total, relative);
 	goto done;
 
