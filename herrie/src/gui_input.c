@@ -173,7 +173,8 @@ gui_input_cursong_seek_jump(void)
 	char *str, *t;
 	int total = 0, split = 0, digit = 0, value, relative;
 
-	t = str = gui_input_askstring(_("Jump to position"), NULL, "1234567890:+-");
+	t = str = gui_input_askstring(_("Jump to position"), NULL,
+	    "1234567890:+-");
 	if (str == NULL)
 		return;
 
