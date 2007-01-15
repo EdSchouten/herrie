@@ -1,4 +1,4 @@
-audio_file.o: stdinc.h audio_file.c audio_file.h audio_format.h
+audio_file.o: stdinc.h audio_file.c audio_file.h audio_format.h vfs.h
 audio_format_mp3.o: stdinc.h audio_format_mp3.c audio_format.h audio_file.h audio_output.h
 audio_format_sndfile.o: stdinc.h audio_format_sndfile.c audio_format.h audio_file.h audio_output.h
 audio_format_vorbis.o: stdinc.h audio_format_vorbis.c audio_format.h audio_file.h audio_output.h
