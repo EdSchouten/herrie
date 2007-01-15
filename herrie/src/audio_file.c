@@ -146,10 +146,10 @@ audio_file_read(struct audio_file *fd, void *buf)
 void
 audio_file_seek(struct audio_file *fd, int len, int rel)
 {
-	if (len != 0) {
-		fd->drv->seek(fd, len, rel);
+	g_assert(len != 0 || rel == 0);
+
+	fd->drv->seek(fd, len, rel);
 #ifdef BUILD_SCROBBLER
-		scrobbler_notify_seek(fd);
+	scrobbler_notify_seek(fd);
 #endif /* BUILD_SCROBBLER */
-	}
 }

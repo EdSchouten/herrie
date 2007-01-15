@@ -113,7 +113,8 @@ playq_runner_thread(void *unused)
 
 		gui_playq_song_update(cur, 0);
 
-		do_pause = do_skip = do_seek_pos = do_seek_rel = 0;
+		do_pause = do_skip = do_seek_pos = 0;
+		do_seek_rel = 1;
 
 		do  {
 			if (do_pause) {
@@ -127,9 +128,10 @@ playq_runner_thread(void *unused)
 				PLAYQ_UNLOCK;
 			}
 
-			if (do_seek_pos != 0 || !do_seek_rel) {
+			if (do_seek_pos != 0 || do_seek_rel == 0) {
 				audio_file_seek(cur, do_seek_pos, do_seek_rel);
-				do_seek_pos = do_seek_rel = 0;
+				do_seek_pos = 0;
+				do_seek_rel = 1;
 			}
 
 			gui_playq_song_update(cur, 1);
