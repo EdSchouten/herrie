@@ -101,7 +101,10 @@ gui_msgbar_flush(void)
 	GUI_UNLOCK;
 }
 
-void
+/**
+ * @brief Update the text in the message bar.
+ */
+static void
 gui_msgbar_update(const char *msg, int prio, int cursor)
 {
 	GUI_LOCK;
@@ -121,4 +124,16 @@ gui_msgbar_update(const char *msg, int prio, int cursor)
 
 	curs_set(cursor);
 	gui_msgbar_refresh();
+}
+
+void
+gui_msgbar_warn(const char *msg)
+{
+	gui_msgbar_update(msg, 0, 0);
+}
+
+void
+gui_msgbar_ask(const char *msg)
+{
+	gui_msgbar_update(msg, 1, 1);
 }

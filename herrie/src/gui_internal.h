@@ -145,6 +145,13 @@ void gui_msgbar_refresh(void);
  * @brief Flush the text in the message bar.
  */
 void gui_msgbar_flush(void);
+/**
+ * @brief Show a message in the message bar that will only be
+ *        overwritten by other messages with this priority. This
+ *        routine will also unhide the cursor and show it right after
+ *        the message.
+ */
+void gui_msgbar_ask(const char *msg);
 
 /*
  * gui_playq

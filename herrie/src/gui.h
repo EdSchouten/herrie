@@ -66,21 +66,10 @@ void gui_input_sigmask(void);
 void gui_input_loop(void);
 
 /**
- * @brief Update the text in the message bar.
- */
-void gui_msgbar_update(const char *msg, int prio, int cursor);
-/**
  * @brief Show a message in the message bar that will be overwritten
  *        when another message is show.
  */
-#define gui_msgbar_warn(msg)	gui_msgbar_update((msg), 0, 0)
-/**
- * @brief Show a message in the message bar that will only be
- *        overwritten by other messages with this priority. This
- *        routine will also unhide the cursor and show it right after
- *        the message.
- */
-#define gui_msgbar_ask(msg)	gui_msgbar_update((msg), 1, 1)
+void gui_msgbar_warn(const char *msg);
 
 /**
  * @brief Set the name of the song and time showed in the status bar
