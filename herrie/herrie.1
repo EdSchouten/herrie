@@ -122,8 +122,9 @@ The foreground color of a selected item of an active window.
 The hostname the AudioScrobbler client uses when authenticating.
 .TP
 .B scrobbler.password=
-The password the Audioscrobbler client uses when authenticating. Please
-note that this switch
+The password the Audioscrobbler client uses when authenticating. Make
+sure your configuration file isn't world readable when specifying this
+switch in your configuration file. Please note that this switch
 .I must
 contain an MD5 hash. Use the following command to generate such a hash:
 .B
