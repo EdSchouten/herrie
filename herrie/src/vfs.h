@@ -196,6 +196,11 @@ struct vfsmodule {
 	FILE	*(*vhandle)(struct vfsent *ve);
 
 	/**
+	 * @brief Does not need an on-disk file
+	 */
+	char	pseudo;
+
+	/**
 	 * @brief Recurse through this object when the parent is recursed
 	 */
 	char	recurse;

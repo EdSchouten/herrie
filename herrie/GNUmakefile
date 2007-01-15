@@ -123,7 +123,7 @@ endif
 OBJS+=		audio_file.o audio_output_$(AUDIO_OUTPUT).o config.o \
 		gui_browser.o gui_draw.o gui_input.o gui_msgbar.o \
 		gui_playq.o gui_vfslist.o main.o playq.o vfs.o \
-		vfs_regular.o vfs_playlist.o
+		vfs_http.o vfs_playlist.o vfs_regular.o
 # libao dies with -Wstrict-prototypes - fixed in trunk
 CFLAGS+=	$(shell pkg-config --cflags glib-2.0 gthread-2.0) \
 		-I$(PREFIX)/include -DAUDIO_OUTPUT=\"$(AUDIO_OUTPUT)\" \

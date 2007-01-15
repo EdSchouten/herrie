@@ -39,14 +39,15 @@
  *        and functions.
  */
 static struct vfsmodule modules[] = {
-	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, VFS_SORT_LAST, '@' },
-	{ vfs_pls_open, vfs_pls_populate, NULL, 0, VFS_SORT_LAST, '@' },
+	{ vfs_http_open, NULL, vfs_http_handle, 1, 1, VFS_SORT_LAST, '^' },
+	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
+	{ vfs_pls_open, vfs_pls_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
 	/*
 	 * Leave these two rules at the bottom of the list. They have
 	 * the weakest matching rules.
 	 */
-	{ vfs_dir_open, vfs_dir_populate, NULL, 1, VFS_SORT_FIRST, G_DIR_SEPARATOR },
-	{ vfs_file_open, NULL, vfs_file_handle, 1, VFS_SORT_LAST, '\0' },
+	{ vfs_dir_open, vfs_dir_populate, NULL, 0, 1, VFS_SORT_FIRST, G_DIR_SEPARATOR },
+	{ vfs_file_open, NULL, vfs_file_handle, 0, 1, VFS_SORT_LAST, '\0' },
 };
 /**
  * @brief The number of virtual file system modules currently available
@@ -175,14 +176,21 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 	struct vfsref *vr;
 	struct stat fs;
 	unsigned int i;
+	int pseudo = 0;
 
 	fn = vfs_path_concat(basepath, filename);
 	if (fn == NULL)
 		return (NULL);
 
 	/* We only allow files and directories */
-	if (stat(fn, &fs) != 0 ||
-	    (!S_ISREG(fs.st_mode) && !S_ISDIR(fs.st_mode))) {
+	if (stat(fn, &fs) != 0) {
+		/* Could be a network stream */
+		pseudo = 1;
+		/* Don't prepend the dirnames */
+		g_free(fn);
+		fn = g_strdup(filename);
+	} else if (!S_ISREG(fs.st_mode) && !S_ISDIR(fs.st_mode)) {
+		/* Device nodes and such */
 		g_free(fn);
 		return (NULL);
 	}
@@ -203,6 +211,8 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 
 	/* Try to find a matching VFS module */
 	for (i = 0; i < NUM_MODULES; i++) {
+		if (pseudo && !modules[i].pseudo)
+			continue;
 		if (modules[i].vopen(ve, S_ISDIR(fs.st_mode)) == 0) {
 			ve->vmod = &modules[i];
 			break;

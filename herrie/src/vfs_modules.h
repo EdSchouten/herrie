@@ -54,6 +54,15 @@ int	vfs_file_open(struct vfsent *ve, int isdir);
 FILE	*vfs_file_handle(struct vfsent *ve);
 
 /**
+ * @brief Test whether the current node contains a HTTP address.
+ */
+int	vfs_http_open(struct vfsent *ve, int isdir);
+/**
+ * @brief Return a filehandle to a HTTP audio stream.
+ */
+FILE	*vfs_http_handle(struct vfsent *ve);
+
+/**
  * @brief Test whether the current node is an M3U file.
  */
 int	vfs_m3u_open(struct vfsent *ve, int isdir);
