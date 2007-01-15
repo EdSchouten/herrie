@@ -135,11 +135,11 @@ LDFLAGS+=	$(shell pkg-config --libs glib-2.0 gthread-2.0) \
 
 .PHONY: all install uninstall clean depends
 
-all: $(APP_NAME) $(APP_NAME).1 $(LOCALES:%=%.mo)
+all: $(APP_NAME) $(APP_NAME).1.gz $(LOCALES:%=%.mo)
 
 install: all
 	install -s $(APP_NAME) $(PREFIX)/bin/$(APP_NAME)$(BINARY_EXT)
-	install -m 444 $(APP_NAME).1 $(MANDIR)/man1/$(APP_NAME).1
+	install -m 444 $(APP_NAME).1.gz $(MANDIR)/man1/
 	$(foreach lang,$(LOCALES), \
 		mkdir -p $(TRANSDIR)/$(lang)/LC_MESSAGES)
 	$(foreach lang,$(LOCALES), \
@@ -151,6 +151,9 @@ clean:
 
 %.mo: %.po
 	msgfmt -o $@ $<
+
+%.gz: %
+	cat $< | gzip -9 > $@
 
 $(APP_NAME): $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
