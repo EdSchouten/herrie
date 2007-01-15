@@ -48,6 +48,10 @@ int	vfs_dir_populate(struct vfsent *ve);
  *        audio files?)
  */
 int	vfs_file_open(struct vfsent *ve, int isdir);
+/**
+ * @brief Create a file handle to the file
+ */
+FILE	*vfs_file_handle(struct vfsent *ve);
 
 /**
  * @brief Test whether the current node is an M3U file.

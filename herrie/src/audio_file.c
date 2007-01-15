@@ -29,6 +29,7 @@
 
 #include "audio_file.h"
 #include "audio_format.h"
+#include "vfs.h"
 
 #ifdef BUILD_SCROBBLER
 #include "scrobbler.h"
@@ -86,14 +87,14 @@ static struct audio_format formats[] = {
 #define NUM_FORMATS (sizeof(formats) / sizeof(struct audio_format))
 
 struct audio_file *
-audio_file_open(const char *filename)
+audio_file_open(struct vfsref *vr)
 {
 	struct audio_file *out = NULL;
 	unsigned int i;
 
 	out = g_slice_new0(struct audio_file);
 	
-	out->fp = fopen(filename, "rb");
+	out->fp = vfs_handle(vr);
 	if (out->fp == NULL)
 		goto bad;
 

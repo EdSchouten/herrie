@@ -31,6 +31,7 @@
 #define _AUDIO_FILE_H_
 
 struct audio_format;
+struct vfsref;
 
 /**
  * @brief The data needed about an audio file.
@@ -99,9 +100,9 @@ struct audio_file {
 
 /**
  * @brief Fill an audio_file struct with the appropiate information
- * 	and function calls, and open the file handle.
+ *        and function calls, and open the file handle.
  */
-struct audio_file *audio_file_open(const char *filename);
+struct audio_file *audio_file_open(struct vfsref *vr);
 /**
  * @brief Clean up the given audio_file struct and close the file handle.
  */

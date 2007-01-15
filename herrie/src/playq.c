@@ -98,7 +98,7 @@ playq_runner_thread(void *unused)
 		gui_playq_notify_done();
 		PLAYQ_UNLOCK;
 
-		if ((cur = audio_file_open(vfs_filename(nvr))) == NULL) {
+		if ((cur = audio_file_open(nvr)) == NULL) {
 			/* Skip broken songs */
 			errmsg = g_strdup_printf(
 			    _("Failed to open \"%s\" for playback."),

@@ -39,14 +39,14 @@
  *        and functions.
  */
 static struct vfsmodule modules[] = {
-	{ vfs_m3u_open, vfs_m3u_populate, 0, 0, VFS_SORT_LAST, '@' },
-	{ vfs_pls_open, vfs_pls_populate, 0, 0, VFS_SORT_LAST, '@' },
+	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, VFS_SORT_LAST, '@' },
+	{ vfs_pls_open, vfs_pls_populate, NULL, 0, VFS_SORT_LAST, '@' },
 	/*
 	 * Leave these two rules at the bottom of the list. They have
 	 * the weakest matching rules.
 	 */
-	{ vfs_dir_open, vfs_dir_populate, 1, 0, VFS_SORT_FIRST, G_DIR_SEPARATOR },
-	{ vfs_file_open, NULL, 1, 1, VFS_SORT_LAST, '\0' },
+	{ vfs_dir_open, vfs_dir_populate, NULL, 1, VFS_SORT_FIRST, G_DIR_SEPARATOR },
+	{ vfs_file_open, NULL, vfs_file_handle, 1, VFS_SORT_LAST, '\0' },
 };
 /**
  * @brief The number of virtual file system modules currently available

@@ -36,6 +36,12 @@ vfs_file_open(struct vfsent *ve, int isdir)
 	return (isdir);
 }
 
+FILE *
+vfs_file_handle(struct vfsent *ve)
+{
+	return fopen(ve->filename, "rb");
+}
+
 int
 vfs_dir_open(struct vfsent *ve, int isdir)
 {

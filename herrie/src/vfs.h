@@ -190,16 +190,15 @@ struct vfsmodule {
 	 * @brief Populate the VFS entity with its childs
 	 */
 	int	(*vpopulate)(struct vfsent *ve);
+	/**
+	 * @brief Return a FILE* to the file on disk
+	 */
+	FILE	*(*vhandle)(struct vfsent *ve);
 
 	/**
 	 * @brief Recurse through this object when the parent is recursed
 	 */
 	char	recurse;
-
-	/**
-	 * @brief Entity represents a file that is a regular media file
-	 */
-	char	playable;
 
 	/**
 	 * @brief Sorting number of items that should appear at the top
@@ -315,7 +314,11 @@ void		vfs_unfold(struct vfslist *vl, struct vfsref *vr);
 /**
  * @brief Determine if a VFS entity is playable audio.
  */
-#define vfs_playable(vr)	((vr)->ent->vmod->playable)
+#define vfs_playable(vr)	((vr)->ent->vmod->vhandle != NULL)
+/**
+ * @brief Open a new filehandle to the entity.
+ */
+#define vfs_handle(vr)		((vr)->ent->vmod->vhandle((vr)->ent))
 /**
  * @brief Determine if the VFS entity can have population.
  */
