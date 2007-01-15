@@ -171,21 +171,33 @@ static void
 gui_input_cursong_seek_jump(void)
 {
 	char *str, *t;
-	int total = 0, split = 0, digit = 0, value;
+	int total = 0, split = 0, digit = 0, value, relative;
 
-	str = gui_input_askstring(_("Jump to position"), NULL, "1234567890:");
+	t = str = gui_input_askstring(_("Jump to position"), NULL, "1234567890:+-");
 	if (str == NULL)
 		return;
+
+	switch (*t) {
+	case '+':
+		relative = 1;
+		t++;
+		break;
+	case '-':
+		relative = -1;
+		t++;
+		break;
+	default:
+		relative = 0;
+	}
 	
-	for (t = str; *t != '\0'; t++) {
+	for (; *t != '\0'; t++) {
 		if (*t == ':') {
-			if (split > 1)
+			if (digit == 0 || split > 1)
 				goto bad;
 			split++;
 			digit = 0;
-		} else {
+		} else if ((value = g_ascii_digit_value(*t)) != -1) {
 			/* Regular digit */
-			value = g_ascii_digit_value(*t);
 			if (split > 0) {
 				if (digit > 1)
 					goto bad;
@@ -195,13 +207,17 @@ gui_input_cursong_seek_jump(void)
 			total *= (digit == 0) ? 6 : 10;
 			total += value;
 			digit++;
+		} else {
+			/* '+' or '-' in the middle */
+			goto bad;
 		}
 	}
 
 	if (split > 0 && digit != 2)
 		goto bad;
 
-	playq_cursong_seek(total, 0);
+	total *= relative;
+	playq_cursong_seek(total, relative);
 	goto done;
 
 bad:	gui_msgbar_warn(_("Bad time format."));
