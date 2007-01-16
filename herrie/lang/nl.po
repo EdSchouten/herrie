@@ -2,19 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-14 20:07+0100\n"
-"PO-Revision-Date: 2007-01-14 20:07+0100\n"
+"POT-Creation-Date: 2007-01-16 16:38+0100\n"
+"PO-Revision-Date: 2007-01-16 16:38+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:87
+#: audio_output_ao.c:88
 msgid "Cannot open the audio device."
 msgstr "Kan het geluidsapparaat niet openen."
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:62
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan geluidsapparaat \"%s\" niet openen.\n"
@@ -48,52 +48,52 @@ msgstr "Zoeken naar"
 msgid "Quit %s?"
 msgstr "%s afsluiten?"
 
-#: gui_input.c:165
+#: gui_input.c:176
 msgid "Jump to position"
 msgstr "Spring naar positie"
 
-#: gui_input.c:198
+#: gui_input.c:225
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:367 main.c:64
+#: gui_input.c:394 main.c:64
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:367 main.c:66
+#: gui_input.c:394 main.c:66
 msgid "no"
 msgstr "nee"
 
-#: gui_playq.c:134
+#: gui_playq.c:135
 msgid "Idle"
 msgstr "Inactief"
 
-#: gui_playq.c:139 gui_playq.c:150
+#: gui_playq.c:140 gui_playq.c:151
 msgid "Unknown artist"
 msgstr "Onbekende artiest"
 
-#: gui_playq.c:141 gui_playq.c:155
+#: gui_playq.c:142 gui_playq.c:156
 msgid "Unknown song"
 msgstr "Onbekend nummer"
 
-#: gui_playq.c:142 gui_playq.c:156
+#: gui_playq.c:143 gui_playq.c:157
 #, c-format
 msgid "Playing %s - %s"
 msgstr "Bezig met %s - %s afspelen"
 
-#: gui_playq.c:340
+#: gui_playq.c:341
 msgid "Remove all songs from the playlist?"
 msgstr "Alle nummers uit de afspeellijst verwijderen?"
 
-#: gui_playq.c:351
+#: gui_playq.c:352
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:400
+#: gui_playq.c:401
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:419
+#: gui_playq.c:420
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 
@@ -137,7 +137,7 @@ msgstr "ondersteunde geluidsformaten"
 msgid "usage"
 msgstr "gebruik"
 
-#: playq.c:105
+#: playq.c:104
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Openen voor afspelen van \"%s\" mislukt."
@@ -167,22 +167,26 @@ msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 
-#: vfs.c:69
+#: vfs.c:70
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Onbekende gebruiker: %s\n"
 
-#: vfs.c:77
+#: vfs.c:78
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Onmogelijk om te chroot'en naar %s\n"
 
-#: vfs.c:85
+#: vfs.c:86
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Onmogelijk om naar groep %d te veranderen\n"
 
-#: vfs.c:89
+#: vfs.c:90
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Onmogelijk om naar gebruiker %d te veranderen\n"
+
+#: vfs_http.c:88
+msgid "Connection timed out."
+msgstr "Verbinding verloren."

@@ -17,5 +17,6 @@ scrobbler.o: stdinc.h scrobbler.c config.h gui.h scrobbler.h audio_file.h scrobb
 scrobbler_hash.o: stdinc.h scrobbler_hash.c scrobbler_internal.h
 scrobbler_send.o: stdinc.h scrobbler_send.c config.h scrobbler_internal.h
 vfs.o: stdinc.h vfs.c config.h vfs.h vfs_modules.h
+vfs_http.o: stdinc.h vfs_http.c gui.h vfs_modules.h vfs.h
 vfs_playlist.o: stdinc.h vfs_playlist.c vfs_modules.h vfs.h
 vfs_regular.o: stdinc.h vfs_regular.c config.h vfs_modules.h vfs.h
