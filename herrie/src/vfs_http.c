@@ -110,8 +110,8 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 			if (maxfd != -1) {
 				sret = select(maxfd + 1, &rfds, &wfds,
 				    &efds, &timeout);
-				if (sret == 0) {
-				}
+				if (sret <= 0)
+					goto bad;
 			}
 			cret = curl_multi_perform(hs->conm, &handles);
 			if (handles == 0)
