@@ -98,7 +98,7 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 	char *errmsg;
 	int handles, left = len, copylen, maxfd, sret;
 	fd_set rfds, wfds, efds;
-	CURLMcode cret = CURLM_CALL_MULTI_PERFORM;
+	CURLMcode cret;
 
 	while (left > 0) {
 		if (hs->bufptr == hs->buflen) {
