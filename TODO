@@ -19,9 +19,6 @@ Audio abstraction:
   - CDDB
 - 5.1 support?
 
-Virtual filesystem:
-- Network addresses (for web streaming)
-
 Documentation:
 - Usage guide
 - Write a developers guide?
