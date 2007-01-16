@@ -85,21 +85,16 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 			if (maxfd != -1) {
 				sret = select(maxfd + 1, &rfds, &wfds, &efds, &timeout);
 				if (sret == 0) {
-					errmsg = g_strdup_printf(
-					    _("Connection with \"%s\" timed out."),
-					    hs->url);
-					gui_msgbar_warn(errmsg);
-					g_free(errmsg);
-					return (0);
 				}
 			}
 			cret = curl_multi_perform(hs->conm, &handles);
-			if (cret == CURLM_CALL_MULTI_PERFORM)
+			if (handles == 0)
+				goto bad;
+			if (cret == CURLM_CALL_MULTI_PERFORM ||
+			    hs->bufptr == hs->buflen)
 				continue;
 			if (cret != CURLM_OK)
-				return (0);
-			if (hs->bufptr == hs->buflen)
-				continue;
+				goto bad;
 		}
 
 		copylen = MIN(left, hs->buflen - hs->bufptr);
@@ -110,6 +105,13 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 	}
 
 	return (len);
+
+bad:	/* Bail out with an error message */
+	errmsg = g_strdup_printf(
+	    _("Connection with \"%s\" lost."), hs->url);
+	gui_msgbar_warn(errmsg);
+	g_free(errmsg);
+	return (0);
 }
 
 static int
