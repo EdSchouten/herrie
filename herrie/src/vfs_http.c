@@ -66,8 +66,13 @@ vfs_http_incoming(void *ptr, size_t size, size_t nmemb, void *cookie)
  * FILE * wrapper
  */
 
+#ifdef __GLIBC__
+static ssize_t
+vfs_http_readfn(void *cookie, char *buf, size_t len)
+#else /* !__GLIBC__ */
 static int
 vfs_http_readfn(void *cookie, char *buf, int len)
+#endif /* __GLIBC__ */
 {
 	struct httpstream *hs = cookie;
 	struct timeval timeout = { 5, 0 };
@@ -81,9 +86,11 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 			FD_ZERO(&rfds);
 			FD_ZERO(&wfds);
 			FD_ZERO(&efds);
-			curl_multi_fdset(hs->conm, &rfds, &wfds, &efds, &maxfd);
+			curl_multi_fdset(hs->conm, &rfds, &wfds, &efds,
+			    &maxfd);
 			if (maxfd != -1) {
-				sret = select(maxfd + 1, &rfds, &wfds, &efds, &timeout);
+				sret = select(maxfd + 1, &rfds, &wfds,
+				    &efds, &timeout);
 				if (sret == 0) {
 				}
 			}
@@ -142,6 +149,10 @@ vfs_http_handle(struct vfsent *ve)
 {
 	struct httpstream *hs;
 	FILE *ret;
+#ifdef __GLIBC__
+	cookie_io_functions_t iofn =  {
+	    vfs_http_readfn, NULL, NULL, vfs_http_closefn };
+#endif /* __GLIBC__ */
 
 	/* Allocate the datastructure */
 	hs = g_slice_new(struct httpstream);
@@ -158,7 +169,13 @@ vfs_http_handle(struct vfsent *ve)
 	hs->conm = curl_multi_init();
 	curl_multi_add_handle(hs->conm, hs->con);
 
+#ifdef __GLIBC__
+	/* glibc systems should have fopencookie() */
+	ret = fopencookie(hs, "rb", iofn);
+#else /* !__GLIBC__ */
+	/* BSD's */
 	ret = funopen(hs, vfs_http_readfn, NULL, NULL, vfs_http_closefn);
+#endif /* __GLIBC__ */
 
 	return (ret);
 }
