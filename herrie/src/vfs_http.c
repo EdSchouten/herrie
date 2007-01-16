@@ -184,6 +184,7 @@ vfs_http_handle(struct vfsent *ve)
 	hs->con = curl_easy_init();
 	hs->url = g_strdup(ve->filename);
 	curl_easy_setopt(hs->con, CURLOPT_URL, hs->url);
+	curl_easy_setopt(hs->con, CURLOPT_CONNECTTIMEOUT, 5);
 
 	curl_easy_setopt(hs->con, CURLOPT_WRITEFUNCTION, vfs_http_incoming);
 	curl_easy_setopt(hs->con, CURLOPT_WRITEDATA, hs);
