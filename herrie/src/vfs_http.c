@@ -30,6 +30,7 @@
 #include <curl/curl.h>
 #include <curl/easy.h>
 
+#include "gui.h"
 #include "vfs_modules.h"
 
 #define HTTPBUFSIZ	2048
@@ -70,9 +71,10 @@ static int
 vfs_http_readfn(void *cookie, char *buf, int len)
 {
 	struct httpstream *hs = cookie;
-	int handles, left = len, copylen, maxfd;
+	struct timeval timeout = { 5, 0 };
+	int handles, left = len, copylen, maxfd, sret;
 	fd_set rfds, wfds, efds;
-	CURLMcode ret = CURLM_CALL_MULTI_PERFORM;
+	CURLMcode cret = CURLM_CALL_MULTI_PERFORM;
 
 	while (left > 0) {
 		if (hs->bufptr == hs->buflen) {
@@ -80,12 +82,17 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 			FD_ZERO(&wfds);
 			FD_ZERO(&efds);
 			curl_multi_fdset(hs->conm, &rfds, &wfds, &efds, &maxfd);
-			if (maxfd != -1)
-				select(maxfd + 1, &rfds, &wfds, &efds, NULL);
-			ret = curl_multi_perform(hs->conm, &handles);
-			if (ret == CURLM_CALL_MULTI_PERFORM)
+			if (maxfd != -1) {
+				sret = select(maxfd + 1, &rfds, &wfds, &efds, &timeout);
+				if (sret == 0) {
+					gui_msgbar_warn(_("Connection timed out."));
+					return (0);
+				}
+			}
+			cret = curl_multi_perform(hs->conm, &handles);
+			if (cret == CURLM_CALL_MULTI_PERFORM)
 				continue;
-			if (ret != CURLM_OK)
+			if (cret != CURLM_OK)
 				return (0);
 			if (hs->bufptr == hs->buflen)
 				continue;
@@ -104,6 +111,11 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 static int
 vfs_http_closefn(void *cookie)
 {
+	struct httpstream *hs = cookie;
+
+	curl_multi_cleanup(hs->conm);
+	curl_easy_cleanup(hs->con);
+	g_slice_free(struct httpstream, hs);
 
 	return (0);
 }
@@ -122,7 +134,6 @@ FILE *
 vfs_http_handle(struct vfsent *ve)
 {
 	struct httpstream *hs;
-	//struct curl_slist *slist = NULL;
 	FILE *ret;
 
 	/* Allocate the datastructure */
