@@ -87,8 +87,9 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 				continue;
 			if (ret != CURLM_OK)
 				return (0);
+			if (hs->bufptr == hs->buflen)
+				continue;
 		}
-		g_assert(hs->bufptr != hs->buflen);
 
 		copylen = MIN(left, hs->buflen - hs->bufptr);
 		memcpy(buf, hs->bufptr, copylen);
