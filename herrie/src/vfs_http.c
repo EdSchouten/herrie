@@ -24,7 +24,7 @@
  * SUCH DAMAGE.
  */
 /**
- * @file vfs_regular.c
+ * @file vfs_http.c
  */
 
 #include <curl/curl.h>
