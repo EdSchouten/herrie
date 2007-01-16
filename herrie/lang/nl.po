@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-16 16:38+0100\n"
-"PO-Revision-Date: 2007-01-16 16:38+0100\n"
+"POT-Creation-Date: 2007-01-16 16:43+0100\n"
+"PO-Revision-Date: 2007-01-16 16:43+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -187,6 +187,7 @@ msgstr "Onmogelijk om naar groep %d te veranderen\n"
 msgid "Unable to change to user %d\n"
 msgstr "Onmogelijk om naar gebruiker %d te veranderen\n"
 
-#: vfs_http.c:88
-msgid "Connection timed out."
-msgstr "Verbinding verloren."
+#: vfs_http.c:89
+#, c-format
+msgid "Connection with \"%s\" timed out."
+msgstr "Verbinding met \"%s\" verlopen."

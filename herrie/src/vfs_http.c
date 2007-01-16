@@ -71,6 +71,7 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 {
 	struct httpstream *hs = cookie;
 	struct timeval timeout = { 5, 0 };
+	char *errmsg;
 	int handles, left = len, copylen, maxfd, sret;
 	fd_set rfds, wfds, efds;
 	CURLMcode cret = CURLM_CALL_MULTI_PERFORM;
@@ -84,7 +85,11 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 			if (maxfd != -1) {
 				sret = select(maxfd + 1, &rfds, &wfds, &efds, &timeout);
 				if (sret == 0) {
-					gui_msgbar_warn(_("Connection timed out."));
+					errmsg = g_strdup_printf(
+					    _("Connection with \"%s\" timed out."),
+					    hs->url);
+					gui_msgbar_warn(errmsg);
+					g_free(errmsg);
 					return (0);
 				}
 			}
@@ -114,6 +119,7 @@ vfs_http_closefn(void *cookie)
 
 	curl_multi_cleanup(hs->conm);
 	curl_easy_cleanup(hs->con);
+	g_free(hs->url);
 	g_slice_free(struct httpstream, hs);
 
 	return (0);
