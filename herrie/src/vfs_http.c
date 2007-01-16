@@ -33,20 +33,40 @@
 #include "gui.h"
 #include "vfs_modules.h"
 
+/**
+ * @brief Datastructure with HTTP stream buffer.
+ */
 struct httpstream {
-	/* Curl connection */
+	/**
+	 * @brief URL of current connection.
+	 */
 	char		*url;
+	/**
+	 * @brief CURL 'easy' connection.
+	 */
 	CURL		*con;
+	/**
+	 * @brief CURL 'multi' connection.
+	 */
 	CURLM		*conm;
 
-	/* Data buffers */
+	/**
+	 * @brief Pointer to current read position in the buffer.
+	 */
 	char		*bufptr;
+	/**
+	 * @brief Pointer to where the buffer's contents end.
+	 */
 	char		*buflen;
+	/**
+	 * @brief Temporary buffer to store fetched data.
+	 */
 	char		buf[CURL_MAX_WRITE_SIZE];
 };
 
-/*
- * CURL routines
+/**
+ * @brief Callback function that copies packet contents to httpstream
+ *        structure.
  */
 static size_t
 vfs_http_incoming(void *ptr, size_t size, size_t nmemb, void *cookie)
@@ -62,10 +82,9 @@ vfs_http_incoming(void *ptr, size_t size, size_t nmemb, void *cookie)
 	return (len);
 }
 
-/*
- * FILE * wrapper
+/**
+ * @brief fread() routine for HTTP streams.
  */
-
 #ifdef __GLIBC__
 static ssize_t
 vfs_http_readfn(void *cookie, char *buf, size_t len)
@@ -121,6 +140,9 @@ bad:	/* Bail out with an error message */
 	return (0);
 }
 
+/**
+ * @brief fclose() routine for HTTP streams.
+ */
 static int
 vfs_http_closefn(void *cookie)
 {
