@@ -172,7 +172,7 @@ gui_playq_statbar_time(struct audio_file *fd)
 {
 	int ntc, ntl;
 
-	if (fd == NULL || fd->stream) {
+	if (fd == NULL) {
 		ntc = ntl = -1;
 	} else {
 		ntc = fd->time_cur;
