@@ -70,6 +70,10 @@ struct audio_file {
 	 * @brief Position we are at in the file in seconds.
 	 */
 	int time_cur;
+	/**
+	 * @brief File is a stream (no seeking).
+	 */
+	int stream;
 
 	/**
 	 * @brief Information about the song acquired from the file.

@@ -99,7 +99,8 @@ audio_file_open(struct vfsref *vr)
 		goto bad;
 
 	for (i = 0; i < NUM_FORMATS; i++) {
-		rewind(out->fp);
+		if (fseek(out->fp, 0, SEEK_SET) != 0)
+			out->stream = 1;
 
 		if (formats[i].open(out) == 0) {
 			/* Assign the format to the file */
@@ -149,8 +150,10 @@ audio_file_seek(struct audio_file *fd, int len, int rel)
 {
 	g_assert(len != 0 || rel == 0);
 
-	fd->drv->seek(fd, len, rel);
+	if (!fd->stream) {
+		fd->drv->seek(fd, len, rel);
 #ifdef BUILD_SCROBBLER
-	scrobbler_notify_seek(fd);
+		scrobbler_notify_seek(fd);
 #endif /* BUILD_SCROBBLER */
+	}
 }

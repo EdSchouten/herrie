@@ -39,6 +39,11 @@ sndfile_open(struct audio_file *fd)
 	SF_INFO info;
 	int fno;
 
+	if (fd->stream) {
+		/* Not yet */
+		return (-1);
+	}
+
 	/* Rewind the file to the beginning */
 	fno = fileno(fd->fp);
 	lseek(fno, 0, SEEK_SET);

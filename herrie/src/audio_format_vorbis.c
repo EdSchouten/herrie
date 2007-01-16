@@ -74,6 +74,11 @@ vorbis_open(struct audio_file *fd)
 	OggVorbis_File *vfp;
 	vorbis_info *info;
 
+	if (fd->stream) {
+		/* Not yet */
+		return (-1);
+	}
+
 	vfp = g_slice_new(OggVorbis_File);
 	if (ov_open(fd->fp, vfp, NULL, 0) != 0) {
 		g_slice_free(OggVorbis_File, vfp);

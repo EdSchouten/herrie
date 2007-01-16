@@ -326,16 +326,20 @@ mp3_open(struct audio_file *fd)
 {
 	struct mp3_drv_data *data;
 
+
 	/* Don't match other files */
-	if (mp3_match(fd->fp) != 0)
-		return (-1);
-	mp3_readtags(fd);
+	if (!fd->stream) {
+		if (mp3_match(fd->fp) != 0)
+			return (-1);
+		mp3_readtags(fd);
+	}
 
 	data = g_slice_new(struct mp3_drv_data);
 	fd->drv_data = (void *)data;
 
 	mp3_rewind(fd);
-	mp3_calc_length(fd);
+	if (!fd->stream)
+		mp3_calc_length(fd);
 	
 	return (0);
 }
