@@ -139,7 +139,8 @@ audio_file_read(struct audio_file *fd, void *buf)
 
 	ret = fd->drv->read(fd, buf);
 #ifdef BUILD_SCROBBLER
-	scrobbler_notify_read(fd, (ret == 0));
+	if (!fd->stream)
+		scrobbler_notify_read(fd, (ret == 0));
 #endif /* BUILD_SCROBBLER */
 
 	return (ret);
