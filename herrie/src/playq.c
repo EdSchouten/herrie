@@ -115,7 +115,7 @@ playq_runner_thread(void *unused)
 		do_seek_rel = 1;
 
 		do  {
-			if (do_pause) {
+			if (!cur->stream && do_pause) {
 				/*
 				 * XXX: We must specify a mutex when
 				 * waiting for a conditional variable.
