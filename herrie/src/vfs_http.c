@@ -33,8 +33,6 @@
 #include "gui.h"
 #include "vfs_modules.h"
 
-#define HTTPBUFSIZ	2048
-
 struct httpstream {
 	/* Curl connection */
 	char		*url;
@@ -60,6 +58,7 @@ vfs_http_incoming(void *ptr, size_t size, size_t nmemb, void *cookie)
 	memcpy(hs->buf, ptr, size * nmemb);
 	hs->bufptr = hs->buf;
 	hs->buflen = hs->buf + len;
+
 	return (len);
 }
 
