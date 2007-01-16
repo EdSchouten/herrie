@@ -85,6 +85,11 @@ endif
 endif
 
 # Tunables
+ifndef NO_HTTP
+OBJS+=		vfs_http.o
+CFLAGS+=	-DBUILD_HTTP
+CURL=		yes
+endif
 ifndef NO_MP3
 OBJS+=		audio_format_mp3.o
 CFLAGS+=	-DBUILD_MP3
@@ -102,12 +107,17 @@ LDFLAGS+=	-lsndfile
 endif
 ifndef NO_SCROBBLER
 OBJS+=		scrobbler.o scrobbler_hash.o scrobbler_send.o
-CFLAGS+=	$(shell curl-config --cflags) -DBUILD_SCROBBLER
-LDFLAGS+=	$(shell curl-config --libs) -lssl
+CFLAGS+=	-DBUILD_SCROBBLER
+LDFLAGS+=	-lssl
+CURL=		yes
 endif
 ifndef NO_TRANS
 CFLAGS+=	-DBUILD_TRANS -DTRANSDIR=\"$(TRANSDIR)\"
 LOCALES=	nl
+endif
+ifdef CURL
+CFLAGS+=	$(shell curl-config --cflags) -DBUILD_SCROBBLER
+LDFLAGS+=	$(shell curl-config --libs) -lssl
 endif
 ifdef XCURSES
 CFLAGS+=	-DBUILD_XCURSES
@@ -123,7 +133,7 @@ endif
 OBJS+=		audio_file.o audio_output_$(AUDIO_OUTPUT).o config.o \
 		gui_browser.o gui_draw.o gui_input.o gui_msgbar.o \
 		gui_playq.o gui_vfslist.o main.o playq.o vfs.o \
-		vfs_http.o vfs_playlist.o vfs_regular.o
+		vfs_playlist.o vfs_regular.o
 # libao dies with -Wstrict-prototypes - fixed in trunk
 CFLAGS+=	$(shell pkg-config --cflags glib-2.0 gthread-2.0) \
 		-I$(PREFIX)/include -DAUDIO_OUTPUT=\"$(AUDIO_OUTPUT)\" \

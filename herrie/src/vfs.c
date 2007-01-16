@@ -39,7 +39,9 @@
  *        and functions.
  */
 static struct vfsmodule modules[] = {
+#ifdef BUILD_HTTP
 	{ vfs_http_open, NULL, vfs_http_handle, 1, 1, VFS_SORT_LAST, '^' },
+#endif /* BUILD_HTTP */
 	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
 	{ vfs_pls_open, vfs_pls_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
 	/*

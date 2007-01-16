@@ -74,6 +74,7 @@ disable various functions.
 
 Below is a list of configuration switches:
 
+- NO_HTTP=yes       disables HTTP audio stream support
 - NO_MP3=yes        disables support for MP3 audio playback
 - NO_SCROBBLER=yes  disables AudioScrobbler support
 - NO_SNDFILE=yes    disables support for libsndfile formats

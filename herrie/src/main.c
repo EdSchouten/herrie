@@ -47,6 +47,7 @@ version(void)
 	g_printerr(APP_NAME " " APP_VERSION "\n"
 		"%s: " AUDIO_OUTPUT "\n"
 		"%s: %s\n"
+		"%s: %s\n"
 		"%s:\n"
 #ifdef BUILD_VORBIS
 		"- Ogg Vorbis\n"
@@ -65,6 +66,12 @@ version(void)
 #else /* !BUILD_SCROBBLER */
 		_("no"),
 #endif /* BUILD_SCROBBLER */
+		_("support for http streams"),
+#ifdef BUILD_HTTP
+		_("yes"),
+#else /* !BUILD_HTTP */
+		_("no"),
+#endif /* BUILD_HTTP */
 		_("supported audio file formats"));
 
 	exit(0);
