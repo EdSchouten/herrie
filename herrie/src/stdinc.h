@@ -47,7 +47,7 @@
 #ifdef BUILD_TRANS
 #include <locale.h>
 #endif /* BUILD_TRANS */
-#ifdef G_THREADS_IMPL_POSIX)
+#ifdef G_THREADS_IMPL_POSIX
 #include <pthread.h>
 #endif /* G_THREADS_IMPL_POSIX */
 #include <pwd.h>
