@@ -158,11 +158,8 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 	struct scrobbler_entry *nse;
 	int len;
 
-	if (!scrobbler_enabled)
-		return;
-
-	/* We already processed the song */
-	if (fd->_scrobbler_done)
+	/* Don't accept streams or submit songs twice */
+	if (!scrobbler_enabled || fd->stream || fd->_scrobbler_done)
 		return;
 	
 	if (eof) {
