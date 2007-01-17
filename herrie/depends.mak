@@ -12,7 +12,7 @@ gui_msgbar.o: stdinc.h gui_msgbar.c gui_internal.h gui.h
 gui_playq.o: stdinc.h gui_playq.c audio_file.h gui_internal.h gui.h gui_vfslist.h vfs.h playq.h
 gui_vfslist.o: stdinc.h gui_vfslist.c gui_vfslist.h gui_internal.h gui.h vfs.h
 main.o: stdinc.h main.c audio_output.h config.h gui.h playq.h scrobbler.h audio_file.h vfs.h
-playq.o: stdinc.h playq.c audio_file.h audio_output.h gui.h playq.h vfs.h
+playq.o: stdinc.h playq.c audio_file.h audio_output.h config.h gui.h playq.h vfs.h
 scrobbler.o: stdinc.h scrobbler.c config.h gui.h scrobbler.h audio_file.h scrobbler_internal.h
 scrobbler_hash.o: stdinc.h scrobbler_hash.c scrobbler_internal.h
 scrobbler_send.o: stdinc.h scrobbler_send.c config.h scrobbler_internal.h

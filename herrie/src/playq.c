@@ -29,6 +29,7 @@
 
 #include "audio_file.h"
 #include "audio_output.h"
+#include "config.h"
 #include "gui.h"
 #include "playq.h"
 #include "vfs.h"
@@ -77,8 +78,11 @@ playq_runner_thread(void *unused)
 	struct vfsref		*nvr;
 	struct audio_file	*cur;
 	char			*errmsg;
+	int			repeat;
 
 	gui_input_sigmask();
+
+	repeat = config_getopt_bool("playq.repeat");
 
 	do {
 		/* Wait until there's a song available */
@@ -98,16 +102,23 @@ playq_runner_thread(void *unused)
 		gui_playq_notify_done();
 		PLAYQ_UNLOCK;
 
-		if ((cur = audio_file_open(nvr)) == NULL) {
+		cur = audio_file_open(nvr);
+		if (cur == NULL) {
 			/* Skip broken songs */
 			errmsg = g_strdup_printf(
 			    _("Failed to open \"%s\" for playback."),
 			    vfs_name(nvr));
 			gui_msgbar_warn(errmsg);
 			g_free(errmsg);
-			continue;
+		} else if (repeat) {
+			/* Place it back */
+			playq_song_add_tail(nvr);
 		}
 		vfs_close(nvr);
+		if (cur == NULL) {
+			/* Try next item */
+			continue;
+		}
 
 		gui_playq_song_update(cur, 0);
 
