@@ -139,8 +139,7 @@ OBJS+=		audio_file.o audio_output_$(AUDIO_OUTPUT).o config.o \
 CFLAGS+=	$(shell pkg-config --cflags glib-2.0 gthread-2.0) \
 		-I$(PREFIX)/include -DAUDIO_OUTPUT=\"$(AUDIO_OUTPUT)\" \
 		-DAPP_NAME=\"$(APP_NAME)\" -DAPP_VERSION=\"$(VERSION)\" \
-		-Wall -Wsign-compare -Werror -Wmissing-prototypes \
-		-include src/stdinc.h
+		-Wall -Wsign-compare -Werror -Wmissing-prototypes
 LDFLAGS+=	$(shell pkg-config --libs glib-2.0 gthread-2.0) \
 		-L$(PREFIX)/lib
 
@@ -158,7 +157,12 @@ install: all
 		    $(TRANSDIR)/$(lang)/LC_MESSAGES/$(APP_NAME).mo)
 
 clean:
-	rm -f *.core *.gz *.mo *.o $(APP_NAME) .gdb_history
+	rm -f *.core *.gz *.mo *.o src/*.gch $(APP_NAME) .gdb_history
+
+%.gch: %
+	-$(CC) $(CFLAGS) $<
+%.o: %.c
+	$(CC) -c $(CFLAGS) -include src/stdinc.h $<
 
 %.mo: %.po
 	msgfmt -o $@ $<

@@ -27,11 +27,6 @@
  * @file vfs.c
  */
 
-#include <sys/stat.h>
-#include <pwd.h>
-#include <netinet/in.h>
-#include <resolv.h>
-
 #include "config.h"
 #include "vfs.h"
 #include "vfs_modules.h"

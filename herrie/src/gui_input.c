@@ -27,14 +27,6 @@
  * @file gui_input.c
  */
 
-#include <signal.h>
-#if defined(SIGWINCH) && defined(G_THREADS_IMPL_POSIX)
-#include <pthread.h>
-#endif /* SIGWINCH && G_THREADS_IMPL_POSIX */
-#ifdef BUILD_GUI_SIGWINCH_WRAPPER
-#include <sys/ioctl.h>
-#endif /* BUILD_GUI_SIGWINCH_WRAPPER */
-
 #include "gui_internal.h"
 #include "playq.h"
 

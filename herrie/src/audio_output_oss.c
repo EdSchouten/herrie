@@ -27,7 +27,6 @@
  * @file audio_output_oss.c
  */
 
-#include <sys/ioctl.h>
 #if defined(__NetBSD__) || defined(__OpenBSD__)
 #include <soundcard.h>
 #else /* !(__NetBSD__ || __OpenBSD__) */

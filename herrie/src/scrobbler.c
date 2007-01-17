@@ -27,8 +27,6 @@
  * @file scrobbler.c
  */
 
-#include <time.h>
-
 #include "config.h"
 #include "gui.h"
 #include "scrobbler.h"

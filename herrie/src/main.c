@@ -27,10 +27,6 @@
  * @file main.c
  */
 
-#ifdef BUILD_TRANS
-#include <locale.h>
-#endif /* BUILD_TRANS */
-
 #include "audio_output.h"
 #include "config.h"
 #include "gui.h"
