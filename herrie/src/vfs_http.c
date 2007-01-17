@@ -74,6 +74,7 @@ vfs_http_incoming(void *ptr, size_t size, size_t nmemb, void *cookie)
 	struct httpstream *hs = cookie;
 	size_t len;
 
+	/* We just assume the buffer is completely drained */
 	len = size * nmemb;
 	memcpy(hs->buf, ptr, size * nmemb);
 	hs->bufptr = hs->buf;
@@ -108,11 +109,13 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 			curl_multi_fdset(hs->conm, &rfds, &wfds, &efds,
 			    &maxfd);
 			if (maxfd != -1) {
+				/* Wait for data to arrive */
 				sret = select(maxfd + 1, &rfds, &wfds,
 				    &efds, &timeout);
 				if (sret <= 0)
 					goto bad;
 			}
+			/* Fetch data from socket */
 			cret = curl_multi_perform(hs->conm, &handles);
 			if (handles == 0)
 				goto bad;
@@ -123,6 +126,7 @@ vfs_http_readfn(void *cookie, char *buf, int len)
 				goto bad;
 		}
 
+		/* Perform a copyout of the buffer */
 		copylen = MIN(left, hs->buflen - hs->bufptr);
 		memcpy(buf, hs->bufptr, copylen);
 		left -= copylen;
@@ -172,7 +176,7 @@ vfs_http_handle(struct vfsent *ve)
 	struct httpstream *hs;
 	FILE *ret;
 #ifdef __GLIBC__
-	cookie_io_functions_t iofn =  {
+	cookie_io_functions_t iofn = {
 	    vfs_http_readfn, NULL, NULL, vfs_http_closefn };
 #endif /* __GLIBC__ */
 
