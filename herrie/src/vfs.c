@@ -29,6 +29,8 @@
 
 #include <sys/stat.h>
 #include <pwd.h>
+#include <netinet/in.h>
+#include <resolv.h>
 
 #include "config.h"
 #include "vfs.h"
@@ -74,6 +76,8 @@ vfs_lockup(void)
 
 	root = config_getopt("vfs.lockup.chroot");
 	if (root[0] != '\0') {
+		/* Already load the resolv.conf */
+		res_init();
 		/* Try to lock ourselves in */
 		if (chroot(root) != 0)
 			return g_strdup_printf(

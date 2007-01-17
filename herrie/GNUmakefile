@@ -39,6 +39,7 @@ VPATH=		lang:src
 # Operating system specific options
 ifeq ($(OS),Darwin)
 CFLAGS+=	-DBUILD_GUI_SIGWINCH_WRAPPER
+LDFLAGS+=	-lresolv
 PREFIX=		/opt/local
 endif
 ifeq ($(OS),FreeBSD)
