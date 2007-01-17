@@ -110,14 +110,19 @@ playq_runner_thread(void *unused)
 			    vfs_name(nvr));
 			gui_msgbar_warn(errmsg);
 			g_free(errmsg);
+			vfs_close(nvr);
+			continue;
 		} else if (repeat) {
 			/* Place it back */
-			playq_song_add_tail(nvr);
-		}
-		vfs_close(nvr);
-		if (cur == NULL) {
-			/* Try next item */
-			continue;
+			PLAYQ_LOCK;
+			vfs_list_insert_tail(&playq_list, nvr);
+			gui_playq_notify_post_insertion(
+			    vfs_list_items(&playq_list));
+			gui_playq_notify_done();
+			PLAYQ_UNLOCK;
+		} else {
+			/* Trash it */
+			vfs_close(nvr);
 		}
 
 		gui_playq_song_update(cur, 0);
