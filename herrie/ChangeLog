@@ -6,6 +6,7 @@ Herrie 1.2 -> 1.3:
 - Show a message when the libao code cannot open the device
 - Add absolute seeking with 'J'
 - Add support for HTTP files and streams
+- Initialize the resolver before chroot()
 
 Herrie 1.1 -> 1.2:
 - Include <stdlib.h> for setproctitle() on Open/NetBSD

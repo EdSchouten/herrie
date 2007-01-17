@@ -9,7 +9,6 @@ Graphical user interface:
 
 Scrobbler:
 - Allow Scrobbler queue to be dumped on closure (send them next time)
-- Resolve 'post.audioscrobbler.com' before chroot()
 
 Audio abstraction:
 - Add support for volume control
