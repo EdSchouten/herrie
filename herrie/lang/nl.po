@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-18 09:48+0100\n"
-"PO-Revision-Date: 2007-01-18 09:48+0100\n"
+"POT-Creation-Date: 2007-01-18 16:16+0100\n"
+"PO-Revision-Date: 2007-01-18 16:16+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -148,8 +148,8 @@ msgstr "Openen voor afspelen van \"%s\" mislukt."
 
 #: playq.c:269
 #, c-format
-msgid "Repeat: %s."
-msgstr "Herhaling: %s."
+msgid "Repeat: %s"
+msgstr "Herhaling: %s"
 
 #: playq.c:270
 msgid "on"

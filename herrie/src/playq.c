@@ -266,7 +266,7 @@ playq_repeat_toggle(void)
 
 	do_repeat = !do_repeat;
 
-	msg = g_strdup_printf(_("Repeat: %s."),
+	msg = g_strdup_printf(_("Repeat: %s"),
 	    do_repeat ? _("on") : _("off"));
 	gui_msgbar_warn(msg);
 	g_free(msg);
