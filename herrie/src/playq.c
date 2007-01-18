@@ -45,35 +45,26 @@ static GCond		*playq_wakeup;
  * @brief Reference to playback thread.
  */
 static GThread		*playq_runner;
-
 /**
- * @brief Order the playback thread to pause itself.
+ * @brief Flags the playback thread should honour. Writing to them
+ *        should be locked down.
  */
-static volatile int	do_pause;
-/**
- * @brief Order the playback thread to skip the current song.
- */
-static volatile int	do_skip;
-/**
- * @brief Order the playback thread to shut itself down.
- */
-static volatile int	do_quit;
+static volatile int	playq_flags;
+#define PF_QUIT		0x01
+#define PF_PAUSE	0x02
+#define PF_REPEAT	0x04
+#define PF_SEEK_ABS	0x08
+#define PF_SEEK_REL	0x10
+#define PF_SEEK		(PF_SEEK_ABS|PF_SEEK_REL)
+#define PF_SKIP		0x20
 /**
  * @brief Amount of seconds which the current song should seek.
  */
-static volatile int	do_seek_pos;
-/**
- * @brief Flag to determine a positive or relative seek will be called.
- */
-static volatile int	do_seek_rel;
-/**
- * @brief Add songs back to the tail of the playlist when opened.
- */
-static volatile int	do_repeat;
+static volatile int	playq_seek_time;
 
 /**
- * @brief Infinitely play music in the playlist, honouring the do_
- *        flags.
+ * @brief Infinitely play music in the playlist, honouring the
+ *        playq_flags.
  */
 static void *
 playq_runner_thread(void *unused)
@@ -92,7 +83,7 @@ playq_runner_thread(void *unused)
 			gui_playq_song_update(NULL, 0);
 
 			g_cond_wait(playq_wakeup, playq_lock);
-			if (do_quit) {
+			if (playq_flags & PF_QUIT) {
 				PLAYQ_UNLOCK;
 				goto done;
 			}
@@ -112,7 +103,7 @@ playq_runner_thread(void *unused)
 			g_free(errmsg);
 			vfs_close(nvr);
 			continue;
-		} else if (do_repeat) {
+		} else if (playq_flags & PF_REPEAT) {
 			/* Place it back */
 			PLAYQ_LOCK;
 			vfs_list_insert_tail(&playq_list, nvr);
@@ -127,32 +118,35 @@ playq_runner_thread(void *unused)
 
 		gui_playq_song_update(cur, 0);
 
-		do_pause = do_skip = do_seek_pos = 0;
-		do_seek_rel = 1;
+		PLAYQ_LOCK;
+		playq_flags &= ~(PF_PAUSE|PF_SKIP|PF_SEEK);
+		PLAYQ_UNLOCK;
 
 		do  {
-			if (!cur->stream && do_pause) {
-				/*
-				 * XXX: We must specify a mutex when
-				 * waiting for a conditional variable.
-				 */
+			if (playq_flags & PF_PAUSE && !cur->stream) {
+				/* Wait to be waken up */
 				PLAYQ_LOCK;
-				while (do_pause && !do_quit)
-					g_cond_wait(playq_wakeup, playq_lock);
+				g_cond_wait(playq_wakeup, playq_lock);
+				PLAYQ_UNLOCK;
+			} else {
+				/* Play a part of the audio file */
+				if (audio_output_play(cur) <= 0)
+					break;
+			}
+
+			if (playq_flags & PF_SEEK) {
+				audio_file_seek(cur, playq_seek_time,
+				    playq_flags & PF_SEEK_REL);
+				PLAYQ_LOCK;
+				playq_flags &= ~PF_SEEK;
 				PLAYQ_UNLOCK;
 			}
 
-			if (do_seek_pos != 0 || do_seek_rel == 0) {
-				audio_file_seek(cur, do_seek_pos, do_seek_rel);
-				do_seek_pos = 0;
-				do_seek_rel = 1;
-			}
-
 			gui_playq_song_update(cur, 1);
-		} while (!do_quit && !do_skip && audio_output_play(cur) > 0);
+		} while (!(playq_flags & (PF_QUIT|PF_SKIP)));
 
 		audio_file_close(cur);
-	} while (!do_quit);
+	} while (!(playq_flags & PF_QUIT));
 done:
 	return (NULL);
 }
@@ -167,7 +161,7 @@ playq_init(void)
 void
 playq_spawn(void)
 {
-	do_quit = 0;
+	playq_flags = 0;
 	playq_runner = g_thread_create_full(playq_runner_thread, NULL,
 	    0, 1, TRUE, G_THREAD_PRIORITY_URGENT, NULL);
 }
@@ -175,7 +169,9 @@ playq_spawn(void)
 void
 playq_shutdown(void)
 {
-	do_quit = 1;
+	PLAYQ_LOCK;
+	playq_flags = PF_QUIT;
+	PLAYQ_UNLOCK;
 	g_cond_signal(playq_wakeup);
 	g_thread_join(playq_runner);
 }
@@ -230,44 +226,51 @@ playq_song_add_tail(struct vfsref *vr)
 void
 playq_cursong_seek(int len, int rel)
 {
-	do_seek_pos = len;
-	do_seek_rel = rel;
-	/* We could be paused */
-	do_pause = 0;
+	int fl;
+
+	fl = rel ? PF_SEEK_REL : PF_SEEK_ABS;
+	PLAYQ_LOCK;
+	playq_flags = (playq_flags & ~PF_SEEK) | fl;
+	playq_seek_time = len;
+	PLAYQ_UNLOCK;
+
 	g_cond_signal(playq_wakeup);
 }
 
 void
 playq_cursong_skip(void)
 {
-	do_skip = 1;
-	/* We could be paused */
-	do_pause = 0;
+	PLAYQ_LOCK;
+	/* Unpause as well */
+	playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
+	PLAYQ_UNLOCK;
+
 	g_cond_signal(playq_wakeup);
 }
 
 void
 playq_cursong_pause(void)
 {
-	if (do_pause) {
-		/* Kick it back alive */
-		do_pause = 0;
-		g_cond_signal(playq_wakeup);
-	} else {
-		/* Pause on next read */
-		do_pause = 1;
-	}
+	PLAYQ_LOCK;
+	/* Toggle the pause flag */
+	playq_flags ^= PF_PAUSE;
+	PLAYQ_UNLOCK;
+
+	g_cond_signal(playq_wakeup);
 }
 
 void
 playq_repeat_toggle(void)
 {
 	char *msg;
+	int repeat;
 
-	do_repeat = !do_repeat;
+	PLAYQ_LOCK;
+	repeat = (playq_flags ^= PF_REPEAT) & PF_REPEAT;
+	PLAYQ_UNLOCK;
 
 	msg = g_strdup_printf(_("Repeat: %s"),
-	    do_repeat ? _("on") : _("off"));
+	    repeat ? _("on") : _("off"));
 	gui_msgbar_warn(msg);
 	g_free(msg);
 }
