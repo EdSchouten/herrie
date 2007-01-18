@@ -24,6 +24,24 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/ioctl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <ctype.h>
+#include <fcntl.h>
+#ifdef BUILD_TRANS
+#include <locale.h>
+#endif /* BUILD_TRANS */
+#include <pwd.h>
+#include <resolv.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+
 #include <glib.h>
 #ifdef BUILD_TRANS
 #include <glib/gi18n.h>
@@ -38,23 +56,6 @@
 #define g_slice_free(type,obj)	g_free(obj)
 #endif /* !g_slice_new */
 
-#include <netinet/in.h>
-#include <sys/ioctl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <ctype.h>
-#include <fcntl.h>
-#ifdef BUILD_TRANS
-#include <locale.h>
-#endif /* BUILD_TRANS */
 #ifdef G_THREADS_IMPL_POSIX
 #include <pthread.h>
 #endif /* G_THREADS_IMPL_POSIX */
-#include <pwd.h>
-#include <resolv.h>
-#include <signal.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
