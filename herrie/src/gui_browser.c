@@ -78,6 +78,7 @@ gui_browser_init(void)
 	char *cwd;
 
 	win_dirname = newwin(1, 0, gui_size_browser_dirname_top, 0);
+	clearok(win_dirname, TRUE);
 	if (gui_draw_colors)
 		wbkgdset(win_dirname, COLOR_PAIR(GUI_COLOR_BAR));
 	else

@@ -236,6 +236,7 @@ gui_vfslist_move(struct gui_vfslist *gv,
 	GUI_LOCK;
 	if (gv->win == NULL) {
 		gv->win = newwin(height, width, y, x);
+		clearok(gv->win, TRUE);
 	} else {
 		wresize(gv->win, height, width);
 		mvwin(gv->win, y, x);

@@ -237,6 +237,7 @@ void
 gui_playq_init(void)
 {
 	win_statbar = newwin(1, 0, 0, 0);
+	clearok(win_statbar, TRUE);
 	if (gui_draw_colors)
 		wbkgdset(win_statbar, COLOR_PAIR(GUI_COLOR_BAR));
 	else
