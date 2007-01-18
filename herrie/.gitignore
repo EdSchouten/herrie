@@ -1,6 +1,7 @@
 *.core
-*.gz
 *.mo
 *.o
 .gdb_history
 herrie
+herrie.1.gz
+src/stdinc.h.gch

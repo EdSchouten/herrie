@@ -143,7 +143,7 @@ CFLAGS+=	$(shell pkg-config --cflags glib-2.0 gthread-2.0) \
 LDFLAGS+=	$(shell pkg-config --libs glib-2.0 gthread-2.0) \
 		-L$(PREFIX)/lib
 
-.PHONY: all install uninstall clean depends
+.PHONY: all install uninstall distclean clean depends
 
 all: $(APP_NAME) $(APP_NAME).1.gz $(LOCALES:%=%.mo)
 
@@ -157,7 +157,10 @@ install: all
 		    $(TRANSDIR)/$(lang)/LC_MESSAGES/$(APP_NAME).mo)
 
 clean:
-	rm -f *.core *.gz *.mo *.o src/*.gch $(APP_NAME) .gdb_history
+	rm -f *.core *.mo *.o .gdb_history
+
+distclean: clean
+	rm -f src/stdinc.h.gch $(APP_NAME) $(APP_NAME).1.gz
 
 %.gch: %
 	-$(CC) $(CFLAGS) $<

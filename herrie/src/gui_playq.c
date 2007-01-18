@@ -44,9 +44,13 @@ static int time_cur = 0;
 static int time_len = 0;
 /**
  * @brief Buffer containing a string representation of the playback time
- *        of the current song in the form of "  [x:xx/y:yy]".
+ *        of the current song in the form of " [x:xx/y:yy]".
  */
 static GString *str_time;
+/**
+ * @brief Pointer to string containing playback status.
+ */
+static const char *str_status = NULL;
 /**
  * @brief Buffer containing a string representation of the artist and
  *        title of the current song.
@@ -62,63 +66,6 @@ static WINDOW *win_statbar;
 static struct gui_vfslist *win_playq;
 
 /**
- * @brief Refresh the bar above the playlist to show the correct title
- *        and time of the current track and the percentage of the
- *        playlist.
- */
-static void
-gui_playq_statbar_refresh(void)
-{
-	const char *percent;
-	int plen;
-
-	GUI_LOCK;
-	/* Blank it */
-	werase(win_statbar);
-	
-	/* Put the content back */
-	mvwaddstr(win_statbar, 0, 1, str_song->str);
-	percent = gui_vfslist_getpercentage(win_playq);
-	plen = strlen(percent);
-	mvwaddstr(win_statbar, 0, COLS - str_time->len - plen, str_time->str);
-	mvwaddstr(win_statbar, 0, COLS - plen, percent);
-
-	/* And draw it */
-	wrefresh(win_statbar);
-	GUI_UNLOCK;
-}
-
-void
-gui_playq_init(void)
-{
-	win_statbar = newwin(1, 0, 0, 0);
-	if (gui_draw_colors)
-		wbkgdset(win_statbar, COLOR_PAIR(GUI_COLOR_BAR));
-	else
-		wbkgdset(win_statbar, A_REVERSE);
-
-	str_time = g_string_sized_new(24);
-	str_song = g_string_sized_new(128);
-
-	win_playq = gui_vfslist_new(1);
-	gui_vfslist_setcallback(win_playq, gui_playq_statbar_refresh);
-	gui_vfslist_setlist(win_playq, &playq_list);
-	gui_vfslist_move(win_playq, 0, 1, COLS, gui_size_playq_height);
-
-	gui_playq_song_update(NULL, 0);
-}
-
-void
-gui_playq_destroy(void)
-{
-	delwin(win_statbar);
-	gui_vfslist_destroy(win_playq);
-
-	g_string_free(str_time, TRUE);
-	g_string_free(str_song, TRUE);
-}
-
-/**
  * @brief Fills the str_song with the artist and song value of the audio
  *        file.
  */
@@ -132,7 +79,7 @@ gui_playq_statbar_song(struct audio_file *fd)
 #endif /* BUILD_UTF8 */
 
 	if (fd == NULL) {
-		g_string_assign(str_song, _("Idle"));
+		g_string_assign(str_song, "");
 	} else {
 #ifdef BUILD_UTF8
 		/* Display strings as UTF-8 */
@@ -140,7 +87,7 @@ gui_playq_statbar_song(struct audio_file *fd)
 		    _("Unknown artist");
 		title = fd->tag.title ? fd->tag.title :
 		    _("Unknown song");
-		g_string_printf(str_song, _("Playing %s - %s"),
+		g_string_printf(str_song, "%s - %s",
 		    artist, title);
 #else /* !BUILD_UTF8 */
 		/* Smash strings down to ISO-8859-1 */
@@ -154,12 +101,35 @@ gui_playq_statbar_song(struct audio_file *fd)
 			    "ISO-8859-1", "UTF-8", NULL, NULL, NULL);
 		else
 			title = g_strdup(_("Unknown song"));
-		g_string_printf(str_song, _("Playing %s - %s"),
+		g_string_printf(str_song, "%s - %s",
 		    artist, title);
 		g_free(artist);
 		g_free(title);
 #endif /* BUILD_UTF8 */
 	}
+}
+
+static int
+gui_playq_statbar_status(struct audio_file *fd, int paused)
+{
+	const char *nstat;
+	int ret;
+
+	if (fd == NULL) {
+		nstat = _("Idle");
+	} else {
+		if (paused)
+			nstat = _("Paused");
+		else
+			nstat = _("Playing");
+	}
+
+	/* Only redraw when the status has changed */
+	ret = (nstat == str_status);
+	str_status = nstat;
+	g_assert(str_status != NULL);
+
+	return (ret);
 }
 
 /**
@@ -190,13 +160,13 @@ gui_playq_statbar_time(struct audio_file *fd)
 		if (fd->time_len < 3600 && fd->time_cur < 3600) {
 			/* Only show minutes and seconds */
 			g_string_printf(str_time,
-			    "  [%u:%02u/%u:%02u]",
+			    " [%u:%02u/%u:%02u]",
 			    time_cur / 60, time_cur % 60,
 			    time_len / 60, time_len % 60);
 		} else {
 			/* Show hours as well */
 			g_string_printf(str_time,
-			    "  [%u:%02u:%02u/%u:%02u:%02u]",
+			    " [%u:%02u:%02u/%u:%02u:%02u]",
 			    time_cur / 3600, (time_cur / 60) % 60,
 			    time_cur % 60, time_len / 3600,
 			    (time_len / 60) % 60, time_len % 60);
@@ -206,24 +176,98 @@ gui_playq_statbar_time(struct audio_file *fd)
 	return (0);
 }
 
-void
-gui_playq_song_update(struct audio_file *fd, int timeonly)
+static int
+gui_playq_song_set(struct audio_file *fd, int paused, int timeonly)
 {
-	int changed = 0;
+	int unneeded = 0;
 
 	GUI_LOCK;
 	if (!timeonly) {
 		gui_playq_statbar_song(fd);
-		changed = 1;
+		unneeded = 0;
 	}
 	if (gui_playq_statbar_time(fd) == 0)
-		changed = 1;
+		unneeded = 0;
+	if (gui_playq_statbar_status(fd, paused) == 0)
+		unneeded = 0;
 	GUI_UNLOCK;
 
-	if (changed) {
+	return unneeded;
+}
+
+/**
+ * @brief Refresh the bar above the playlist to show the correct title
+ *        and time of the current track and the percentage of the
+ *        playlist.
+ */
+static void
+gui_playq_statbar_refresh(void)
+{
+	const char *percent;
+	int slen, plen;
+
+	GUI_LOCK;
+	/* Blank it */
+	werase(win_statbar);
+
+	/* Put the content back */
+	mvwaddstr(win_statbar, 0, 1, str_status);
+	slen = strlen(str_status);
+	mvwaddch(win_statbar, 0, slen + 2, '|');
+	
+	mvwaddstr(win_statbar, 0, slen + 4, str_song->str);
+
+	percent = gui_vfslist_getpercentage(win_playq);
+	plen = strlen(percent);
+	mvwaddstr(win_statbar, 0, COLS - str_time->len - plen, str_time->str);
+	mvwaddstr(win_statbar, 0, COLS - plen, percent);
+
+	/* And draw it */
+	wrefresh(win_statbar);
+	GUI_UNLOCK;
+}
+
+void
+gui_playq_init(void)
+{
+	win_statbar = newwin(1, 0, 0, 0);
+	if (gui_draw_colors)
+		wbkgdset(win_statbar, COLOR_PAIR(GUI_COLOR_BAR));
+	else
+		wbkgdset(win_statbar, A_REVERSE);
+
+	str_time = g_string_sized_new(24);
+	str_song = g_string_sized_new(128);
+
+	gui_playq_song_set(NULL, 0, 0);
+
+	win_playq = gui_vfslist_new(1);
+	gui_vfslist_setcallback(win_playq, gui_playq_statbar_refresh);
+	gui_vfslist_setlist(win_playq, &playq_list);
+	gui_vfslist_move(win_playq, 0, 1, COLS, gui_size_playq_height);
+}
+
+void
+gui_playq_destroy(void)
+{
+	delwin(win_statbar);
+	gui_vfslist_destroy(win_playq);
+
+	g_string_free(str_time, TRUE);
+	g_string_free(str_song, TRUE);
+}
+
+void
+gui_playq_song_update(struct audio_file *fd, int paused, int timeonly)
+{
+	int unneeded;
+
+	unneeded = gui_playq_song_set(fd, paused, timeonly);
+	if (!unneeded) {
 #if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
 		/* Print same message in ps(1) */
-		setproctitle("%s%s", str_song->str, str_time->str);
+		setproctitle("%s%s%s", str_status, str_song->str,
+		    str_time->str);
 #endif /* __FreeBSD__ || __NetBSD__ || __OpenBSD__ */
 	
 		gui_playq_statbar_refresh();

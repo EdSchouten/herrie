@@ -9,6 +9,7 @@ Herrie 1.2 -> 1.3:
 - Initialize the resolver before chroot()
 - Add keyboard binding to repeat the playlist
 - Don't unpause when seeking
+- Show 'Paused' instead of 'Playing' when the song is paused
 
 Herrie 1.1 -> 1.2:
 - Include <stdlib.h> for setproctitle() on Open/NetBSD

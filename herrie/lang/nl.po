@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-18 16:16+0100\n"
-"PO-Revision-Date: 2007-01-18 16:16+0100\n"
+"POT-Creation-Date: 2007-01-18 18:26+0100\n"
+"PO-Revision-Date: 2007-01-18 18:26+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -64,36 +64,39 @@ msgstr "ja"
 msgid "no"
 msgstr "nee"
 
-#: gui_playq.c:135
-msgid "Idle"
-msgstr "Inactief"
-
-#: gui_playq.c:140 gui_playq.c:151
+#: gui_playq.c:87 gui_playq.c:98
 msgid "Unknown artist"
 msgstr "Onbekende artiest"
 
-#: gui_playq.c:142 gui_playq.c:156
+#: gui_playq.c:89 gui_playq.c:103
 msgid "Unknown song"
 msgstr "Onbekend nummer"
 
-#: gui_playq.c:143 gui_playq.c:157
-#, c-format
-msgid "Playing %s - %s"
-msgstr "Bezig met %s - %s afspelen"
+#: gui_playq.c:119
+msgid "Idle"
+msgstr "Inactief"
 
-#: gui_playq.c:341
+#: gui_playq.c:122
+msgid "Paused"
+msgstr "Gepauzeerd"
+
+#: gui_playq.c:124
+msgid "Playing"
+msgstr "Afspelen"
+
+#: gui_playq.c:385
 msgid "Remove all songs from the playlist?"
 msgstr "Alle nummers uit de afspeellijst verwijderen?"
 
-#: gui_playq.c:352
+#: gui_playq.c:396
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:401
+#: gui_playq.c:445
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:420
+#: gui_playq.c:464
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 
@@ -141,21 +144,21 @@ msgstr "ondersteunde geluidsformaten"
 msgid "usage"
 msgstr "gebruik"
 
-#: playq.c:109
+#: playq.c:100
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Openen voor afspelen van \"%s\" mislukt."
 
-#: playq.c:269
+#: playq.c:276
 #, c-format
 msgid "Repeat: %s"
 msgstr "Herhaling: %s"
 
-#: playq.c:270
+#: playq.c:277
 msgid "on"
 msgstr "aan"
 
-#: playq.c:270
+#: playq.c:277
 msgid "off"
 msgstr "uit"
 

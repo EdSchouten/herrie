@@ -80,7 +80,7 @@ playq_runner_thread(void *unused)
 		PLAYQ_LOCK;
 		while ((nvr = vfs_list_first(&playq_list)) == NULL) {
 			/* Change the current status to idle */
-			gui_playq_song_update(NULL, 0);
+			gui_playq_song_update(NULL, 0, 0);
 
 			g_cond_wait(playq_wakeup, playq_lock);
 			if (playq_flags & PF_QUIT) {
@@ -103,7 +103,11 @@ playq_runner_thread(void *unused)
 			g_free(errmsg);
 			vfs_close(nvr);
 			continue;
-		} else if (playq_flags & PF_REPEAT) {
+		}
+
+		gui_playq_song_update(cur, 0, 0);
+		
+		if (playq_flags & PF_REPEAT) {
 			/* Place it back */
 			PLAYQ_LOCK;
 			vfs_list_insert_tail(&playq_list, nvr);
@@ -116,19 +120,21 @@ playq_runner_thread(void *unused)
 			vfs_close(nvr);
 		}
 
-		gui_playq_song_update(cur, 0);
-
 		PLAYQ_LOCK;
 		playq_flags &= ~(PF_PAUSE|PF_SKIP|PF_SEEK);
 		PLAYQ_UNLOCK;
 
 		do  {
 			if (playq_flags & PF_PAUSE && !cur->stream) {
+				gui_playq_song_update(cur, 1, 1);
+
 				/* Wait to be waken up */
 				PLAYQ_LOCK;
 				g_cond_wait(playq_wakeup, playq_lock);
 				PLAYQ_UNLOCK;
 			} else {
+				gui_playq_song_update(cur, 0, 1);
+
 				/* Play a part of the audio file */
 				if (audio_output_play(cur) <= 0)
 					break;
@@ -141,8 +147,6 @@ playq_runner_thread(void *unused)
 				playq_flags &= ~PF_SEEK;
 				PLAYQ_UNLOCK;
 			}
-
-			gui_playq_song_update(cur, 1);
 		} while (!(playq_flags & (PF_QUIT|PF_SKIP)));
 
 		audio_file_close(cur);
