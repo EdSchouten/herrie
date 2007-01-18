@@ -120,10 +120,6 @@ The background color of a selected item of an active window.
 .B gui.color.select.fg=black
 The foreground color of a selected item of an active window.
 .TP
-.B playq.repeat=no
-Place songs back at the end of the playlist after they have been opened
-successfully, causing the playlist to repeat.
-.TP
 .B scrobbler.hostname=post.audioscrobbler.com
 The hostname the AudioScrobbler client uses when authenticating.
 .TP
@@ -192,7 +188,7 @@ Remove the currently selected song from the playlist.
 .B D
 Remove all songs from the playlist.
 .TP
-.B r
+.B R
 Randomize the playlist.
 .TP
 .B [
@@ -248,6 +244,11 @@ to the application will do the same.
 .TP
 .B q
 Quit the application.
+.TP
+.B r
+Switch repeat on and off. When this option is enabled, songs that have
+been successfully opened will be added to the end of the playlist,
+causing the playlist to repeat.
 .TP
 .B s
 Skip the current song and continue with the next one. Sending the signal

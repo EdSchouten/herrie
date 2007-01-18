@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-16 19:47+0100\n"
-"PO-Revision-Date: 2007-01-16 17:47+0100\n"
+"POT-Creation-Date: 2007-01-18 09:48+0100\n"
+"PO-Revision-Date: 2007-01-18 09:48+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr "Kan het geluidsapparaat niet openen."
 
-#: audio_output_oss.c:62
+#: audio_output_oss.c:61
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan geluidsapparaat \"%s\" niet openen.\n"
@@ -39,28 +39,28 @@ msgstr "Verplaats van map"
 msgid "Unable to enter the directory."
 msgstr "Naar de map gaan mislukt."
 
-#: gui_input.c:116
+#: gui_input.c:108
 msgid "Search for"
 msgstr "Zoeken naar"
 
-#: gui_input.c:140
+#: gui_input.c:132
 #, c-format
 msgid "Quit %s?"
 msgstr "%s afsluiten?"
 
-#: gui_input.c:176
+#: gui_input.c:168
 msgid "Jump to position"
 msgstr "Spring naar positie"
 
-#: gui_input.c:225
+#: gui_input.c:217
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:394 main.c:65 main.c:71
+#: gui_input.c:387 main.c:61 main.c:67
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:394 main.c:67 main.c:73
+#: gui_input.c:387 main.c:63 main.c:69
 msgid "no"
 msgstr "nee"
 
@@ -121,77 +121,90 @@ msgstr "Zoekopdracht naar boven verplaatst."
 msgid "Not found."
 msgstr "Niet gevonden."
 
-#: main.c:62
+#: main.c:58
 msgid "audio output"
 msgstr "geluidsuitvoer"
 
-#: main.c:63
+#: main.c:59
 msgid "support for audioscrobbler"
 msgstr "ondersteuning voor audioscrobbler"
 
-#: main.c:69
+#: main.c:65
 msgid "support for http streams"
 msgstr "ondersteuning voor http streams"
 
-#: main.c:75
+#: main.c:71
 msgid "supported audio file formats"
 msgstr "ondersteunde geluidsformaten"
 
-#: main.c:87
+#: main.c:83
 msgid "usage"
 msgstr "gebruik"
 
-#: playq.c:104
+#: playq.c:109
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Openen voor afspelen van \"%s\" mislukt."
 
-#: scrobbler.c:300
+#: playq.c:269
+#, c-format
+msgid "Repeat: %s."
+msgstr "Herhaling: %s."
+
+#: playq.c:270
+msgid "on"
+msgstr "aan"
+
+#: playq.c:270
+msgid "off"
+msgstr "uit"
+
+#: scrobbler.c:295
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Succesvol geauthoriseerd bij AudioScrobbler."
 
-#: scrobbler.c:307
+#: scrobbler.c:302
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Authoriseren bij AudioScrobbler mislukt."
 
-#: scrobbler.c:323
+#: scrobbler.c:318
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Succesvol 1 nummer opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:327
+#: scrobbler.c:322
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Succesvol %d nummers opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:333
+#: scrobbler.c:328
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
 
-#: scrobbler.c:336
+#: scrobbler.c:331
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 
-#: vfs.c:72
+#: vfs.c:69
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Onbekende gebruiker: %s\n"
 
-#: vfs.c:80
+#: vfs.c:79
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Onmogelijk om te chroot'en naar %s\n"
 
-#: vfs.c:88
+#: vfs.c:87
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Onmogelijk om naar groep %d te veranderen\n"
 
-#: vfs.c:92
+#: vfs.c:91
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Onmogelijk om naar gebruiker %d te veranderen\n"
 
-#: vfs_http.c:137
+#: vfs_http.c:141
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr "Verbinding met \"%s\" verloren."

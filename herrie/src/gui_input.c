@@ -246,6 +246,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, 'J',			gui_input_cursong_seek_jump, }, /* ^J */
 	{ -1, 'p',			playq_cursong_pause, },
 	{ -1, 'q',			NULL }, /* Quit the application */
+	{ -1, 'r',			playq_repeat_toggle },
 	{ -1, 's',			playq_cursong_skip },
 	{ -1, '\t', 			gui_input_switchfocus },
 	{ -1, 0x17, 			gui_input_switchfocus }, /* ^W */
@@ -285,7 +286,7 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_PLAYQ, 'j',		gui_playq_cursor_down },
 	{ GUI_FOCUS_PLAYQ, 'k',		gui_playq_cursor_up },
 	{ GUI_FOCUS_PLAYQ, 'n',		gui_playq_searchnext },
-	{ GUI_FOCUS_PLAYQ, 'r',		gui_playq_song_randomize },
+	{ GUI_FOCUS_PLAYQ, 'R',		gui_playq_song_randomize },
 	{ GUI_FOCUS_PLAYQ, '[',		gui_playq_song_moveup },
 	{ GUI_FOCUS_PLAYQ, ']',		gui_playq_song_movedown },
 	{ GUI_FOCUS_PLAYQ, 0x02,	gui_playq_cursor_pageup }, /* ^B */

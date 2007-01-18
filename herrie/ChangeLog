@@ -7,7 +7,7 @@ Herrie 1.2 -> 1.3:
 - Add absolute seeking with 'J'
 - Add support for HTTP files and streams
 - Initialize the resolver before chroot()
-- Add configuration switch to repeat the playlist
+- Add keyboard binding to repeat the playlist
 
 Herrie 1.1 -> 1.2:
 - Include <stdlib.h> for setproctitle() on Open/NetBSD

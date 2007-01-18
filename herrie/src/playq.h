@@ -58,6 +58,10 @@ void playq_cursong_skip(void);
  *        state.
  */
 void playq_cursong_pause(void);
+/**
+ * @brief Toggle whether repeat is turned on or off.
+ */
+void playq_repeat_toggle(void);
 
 /**
  * @brief Lock queue and add a file or directory to the head of the

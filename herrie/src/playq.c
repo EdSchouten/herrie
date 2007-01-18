@@ -29,7 +29,6 @@
 
 #include "audio_file.h"
 #include "audio_output.h"
-#include "config.h"
 #include "gui.h"
 #include "playq.h"
 #include "vfs.h"
@@ -67,6 +66,10 @@ static volatile int	do_seek_pos;
  * @brief Flag to determine a positive or relative seek will be called.
  */
 static volatile int	do_seek_rel;
+/**
+ * @brief Add songs back to the tail of the playlist when opened.
+ */
+static volatile int	do_repeat;
 
 /**
  * @brief Infinitely play music in the playlist, honouring the do_
@@ -78,11 +81,8 @@ playq_runner_thread(void *unused)
 	struct vfsref		*nvr;
 	struct audio_file	*cur;
 	char			*errmsg;
-	int			repeat;
 
 	gui_input_sigmask();
-
-	repeat = config_getopt_bool("playq.repeat");
 
 	do {
 		/* Wait until there's a song available */
@@ -112,7 +112,7 @@ playq_runner_thread(void *unused)
 			g_free(errmsg);
 			vfs_close(nvr);
 			continue;
-		} else if (repeat) {
+		} else if (do_repeat) {
 			/* Place it back */
 			PLAYQ_LOCK;
 			vfs_list_insert_tail(&playq_list, nvr);
@@ -257,6 +257,19 @@ playq_cursong_pause(void)
 		/* Pause on next read */
 		do_pause = 1;
 	}
+}
+
+void
+playq_repeat_toggle(void)
+{
+	char *msg;
+
+	do_repeat = !do_repeat;
+
+	msg = g_strdup_printf(_("Repeat: %s."),
+	    do_repeat ? _("on") : _("off"));
+	gui_msgbar_warn(msg);
+	g_free(msg);
 }
 
 void
