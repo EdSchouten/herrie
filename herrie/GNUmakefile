@@ -162,7 +162,7 @@ clean:
 distclean: clean
 	rm -f src/stdinc.h.gch $(APP_NAME) $(APP_NAME).1.gz
 
-%.gch: %
+%.h.gch: %.h
 	-$(CC) $(CFLAGS) $<
 %.o: %.c
 	$(CC) -c $(CFLAGS) -include src/stdinc.h $<
