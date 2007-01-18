@@ -50,12 +50,33 @@ static GThread		*playq_runner;
  *        should be locked down.
  */
 static volatile int	playq_flags;
+/**
+ * @brief Quit the playback thread.
+ */
 #define PF_QUIT		0x01
+/**
+ * @brief Pause the current song.
+ */
 #define PF_PAUSE	0x02
+/**
+ * @brief Add songs to the tail of the playlist after being opened.
+ */
 #define PF_REPEAT	0x04
+/**
+ * @brief Perform an absolute seek.
+ */
 #define PF_SEEK_ABS	0x08
+/**
+ * @brief Perform a relative seek.
+ */
 #define PF_SEEK_REL	0x10
+/**
+ * @brief Test whether a seek is performed at all.
+ */
 #define PF_SEEK		(PF_SEEK_ABS|PF_SEEK_REL)
+/**
+ * @brief Skip to the next song.
+ */
 #define PF_SKIP		0x20
 /**
  * @brief Amount of seconds which the current song should seek.

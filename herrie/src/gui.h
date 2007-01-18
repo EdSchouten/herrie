@@ -72,7 +72,7 @@ void gui_input_loop(void);
 void gui_msgbar_warn(const char *msg);
 
 /**
- * @brief Set the name of the song and time showed in the status bar
+ * @brief Update the status bar with information about the current song.
  */
 void gui_playq_song_update(struct audio_file *fd, int paused, int timeonly);
 /**

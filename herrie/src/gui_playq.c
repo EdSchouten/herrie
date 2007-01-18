@@ -109,6 +109,9 @@ gui_playq_statbar_song(struct audio_file *fd)
 	}
 }
 
+/**
+ * @brief Set str_status to the current playback status.
+ */
 static int
 gui_playq_statbar_status(struct audio_file *fd, int paused)
 {
@@ -176,6 +179,9 @@ gui_playq_statbar_time(struct audio_file *fd)
 	return (0);
 }
 
+/**
+ * @brief Set the name of the song and time showed in the status bar.
+ */
 static int
 gui_playq_song_set(struct audio_file *fd, int paused, int timeonly)
 {
