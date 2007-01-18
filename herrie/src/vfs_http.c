@@ -40,28 +40,28 @@ struct httpstream {
 	/**
 	 * @brief URL of current connection.
 	 */
-	char		*url;
+	char	*url;
 	/**
 	 * @brief CURL 'easy' connection.
 	 */
-	CURL		*con;
+	CURL	*con;
 	/**
 	 * @brief CURL 'multi' connection.
 	 */
-	CURLM		*conm;
+	CURLM	*conm;
 
 	/**
 	 * @brief Pointer to current read position in the buffer.
 	 */
-	char		*bufptr;
+	char	*bufptr;
 	/**
 	 * @brief Pointer to where the buffer's contents end.
 	 */
-	char		*buflen;
+	char	*buflen;
 	/**
 	 * @brief Temporary buffer to store fetched data.
 	 */
-	char		buf[CURL_MAX_WRITE_SIZE];
+	char	buf[CURL_MAX_WRITE_SIZE];
 };
 
 /**
