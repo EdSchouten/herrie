@@ -374,7 +374,7 @@ gui_input_loop(void)
 			}
 		}
 
-		gui_msgbar_refresh();
+		gui_draw_done();
 	}
 }
 

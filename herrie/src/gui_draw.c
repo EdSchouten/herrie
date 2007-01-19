@@ -79,6 +79,7 @@ gui_draw_init_post(void)
 	gui_msgbar_init();
 	gui_playq_init();
 	gui_browser_init();
+	gui_draw_done();
 }
 
 void
@@ -108,7 +109,7 @@ gui_draw_resize(void)
 	gui_msgbar_resize();
 	gui_playq_resize();
 	gui_browser_resize();
-	gui_draw_async_done();
+	gui_draw_done();
 }
 
 int
@@ -132,4 +133,13 @@ gui_draw_color_number(const char *name)
 		return (COLOR_WHITE);
 	
 	return (-1);
+}
+
+void
+gui_draw_done(void)
+{
+	gui_msgbar_refresh();
+	GUI_LOCK;
+	doupdate();
+	GUI_UNLOCK;
 }

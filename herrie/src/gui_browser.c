@@ -66,7 +66,7 @@ gui_browser_dirname_refresh(void)
 	percent = gui_vfslist_getpercentage(win_browser);
 	plen = strlen(percent);
 	mvwaddstr(win_dirname, 0, COLS - plen, percent);
-	wrefresh(win_dirname);
+	wnoutrefresh(win_dirname);
 
 	GUI_UNLOCK;
 }

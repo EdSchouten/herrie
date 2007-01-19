@@ -138,9 +138,9 @@ void gui_msgbar_resize(void);
  */
 void gui_msgbar_refresh(void);
 /**
- * @brief Restore the cursor position after another thread updated the GUI.
+ * @brief Write all altered data back to the physical terminal.
  */
-#define gui_draw_async_done() gui_msgbar_refresh()
+void gui_draw_done(void);
 /**
  * @brief Flush the text in the message bar.
  */
