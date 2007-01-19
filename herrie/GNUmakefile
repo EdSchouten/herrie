@@ -84,6 +84,10 @@ CFLAGS+=	-DBUILD_GUI_SIGWINCH_WRAPPER
 LDFLAGS+=	-lossaudio
 endif
 endif
+ifeq ($(AUDIO_OUTPUT),sdl)
+CFLAGS+=	$(shell sdl-config --cflags)
+LDFLAGS+=	$(shell sdl-config --libs)
+endif
 
 # Tunables
 ifndef NO_HTTP
