@@ -207,8 +207,11 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 	if (name != NULL) {
 		/* Set a predefined name */
 		ve->name = g_strdup(name);
+	} else if (pseudo) {
+		/* Pseudo file - just copy the URL */
+		ve->name = g_strdup(ve->filename);
 	} else {
-		/* Retreive it from the filename */
+		/* Get the basename from the filename */
 		ve->name = g_path_get_basename(ve->filename);
 	}
 
