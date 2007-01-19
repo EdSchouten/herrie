@@ -185,7 +185,7 @@ gui_playq_statbar_time(struct audio_file *fd)
 static int
 gui_playq_song_set(struct audio_file *fd, int paused, int timeonly)
 {
-	int unneeded = 0;
+	int unneeded = 1;
 
 	GUI_LOCK;
 	if (!timeonly) {
