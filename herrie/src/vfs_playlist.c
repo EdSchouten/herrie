@@ -53,14 +53,10 @@ static int
 vfs_playlist_add_tail(struct vfsent *ve, char *fn, char *title, char *dirname)
 {
 	struct vfsref *nvr;
+
 #if G_DIR_SEPARATOR != '\\'
-	char *c;
-	
 	/* Convert to proper separator */
-	for (c = fn; *c != '\0'; c++) {
-		if (*c == '\\')
-			*c = G_DIR_SEPARATOR;
-	}
+	g_strdelimit(fn, "\\", G_DIR_SEPARATOR);
 #endif
 	nvr = vfs_open(fn, title, dirname);
 
