@@ -120,7 +120,9 @@ vfs_path_concat(const char *dir, const char *file)
 		/* We already have an absolute path */
 		npath = g_string_new(file);
 	} else if (dir != NULL) {
-		g_assert(g_path_is_absolute(dir));
+		/* Basedir should be absolute */
+		if (!g_path_is_absolute(dir))
+			return (NULL);
 
 		/* Use the predefined basedir */
 		tmp1 = g_build_filename(dir, file, NULL);
