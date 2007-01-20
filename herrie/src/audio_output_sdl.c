@@ -62,7 +62,6 @@ audio_output_open(void)
 	}
 
 	curfmt.format = AUDIO_S16LSB,
-	curfmt.samples = AUDIO_OUTPUT_BUFLEN / 4;
 	curfmt.callback = audio_output_write;
 
 	return (0);
@@ -86,6 +85,8 @@ audio_output_play(struct audio_file *fd)
 
 		curfmt.freq = fd->srate;
 		curfmt.channels = fd->channels;
+		curfmt.samples = AUDIO_OUTPUT_BUFLEN /
+		    (2 * curfmt.channels);
 
 		if (SDL_OpenAudio(&curfmt, NULL) != 0) {
 			gui_msgbar_warn(_("Cannot open the audio device."));
