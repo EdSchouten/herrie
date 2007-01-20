@@ -28,7 +28,7 @@
  */
 
 #include <SDL.h>
-#include <SDL_Audio.h>
+#include <SDL_audio.h>
 
 #include "audio_file.h"
 #include "audio_output.h"
@@ -111,6 +111,8 @@ audio_output_play(struct audio_file *fd)
 			gui_msgbar_warn(_("Cannot open the audio device."));
 			return (0);
 		}
+
+		g_assert(curfmt.size == AUDIO_OUTPUT_BUFLEN);
 	}
 
 	SDL_PauseAudio(0);
