@@ -53,10 +53,11 @@ Herrie:
 
 - gettext
 - glib
-- libao
+- libao (optional)
 - libcurl
 - libid3tag
 - libmad
+- libsdl (audio - optional)
 - libsndfile
 - libvorbisfile
 - ncurses or pdcurses (`XCurses')
@@ -87,6 +88,7 @@ audio output frameworks:
 
 - AUDIO_OUTPUT=oss	Open Sound System (Linux and xBSD)
 - AUDIO_OUTPUT=ao	LibAO (may break when combined with chroot)
+- AUDIO_OUTPUT=sdl	LibSDL Audio (experimental)
 
 The following commands will compile and install Herrie without MP3 and
 AudioScrobbler support:
