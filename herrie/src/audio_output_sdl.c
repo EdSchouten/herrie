@@ -36,7 +36,8 @@
 
 SDL_AudioSpec	curfmt;
 Uint8		buf[AUDIO_OUTPUT_BUFLEN];
-size_t		buflen;
+size_t		buflen = 0;
+GMutex		*buflock;
 GCond		*bufcond;
 
 static void
@@ -45,12 +46,16 @@ audio_output_write(void *data, Uint8 *stream, int len)
 	if (buflen != 0) {
 		SDL_MixAudio(stream, buf, buflen, SDL_MIX_MAXVOLUME);
 		buflen = 0;
+		g_cond_signal(bufcond);
 	}
 }
 
 int
 audio_output_open(void)
 {
+	buflock = g_mutex_new();
+	bufcond = g_cond_new();
+
 	if (SDL_InitSubSystem(SDL_INIT_AUDIO) != 0)
 		/* XXX: show error */
 		return (1);
@@ -65,6 +70,11 @@ audio_output_open(void)
 int
 audio_output_play(struct audio_file *fd)
 {
+	g_mutex_lock(buflock);
+	if (buflen != 0)
+		g_cond_wait(bufcond, buflock);
+	g_mutex_unlock(buflock);
+
 	if ((buflen = audio_file_read(fd, buf)) == 0)
 		return (0);
 
@@ -83,7 +93,7 @@ audio_output_play(struct audio_file *fd)
 	SDL_PauseAudio(0);
 
 	//gui_msgbar_warn(_("Woot."));
-	return (buflen);
+	return (1);
 }
 
 void
