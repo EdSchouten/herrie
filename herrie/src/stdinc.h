@@ -34,7 +34,9 @@
 #include <locale.h>
 #endif /* BUILD_TRANS */
 #include <pwd.h>
+#ifndef __CYGWIN__
 #include <resolv.h>
+#endif /* !__CYGWIN__ */
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>

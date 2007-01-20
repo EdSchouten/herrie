@@ -71,8 +71,10 @@ vfs_lockup(void)
 
 	root = config_getopt("vfs.lockup.chroot");
 	if (root[0] != '\0') {
+#ifndef __CYGWIN__
 		/* Already load the resolv.conf */
 		res_init();
+#endif /* !__CYGWIN__ */
 		/* Try to lock ourselves in */
 		if (chroot(root) != 0)
 			return g_strdup_printf(

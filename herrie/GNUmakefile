@@ -180,6 +180,6 @@ distclean: clean
 	gzip -9 < $< > $@
 
 $(APP_NAME): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) $^ $(LDFLAGS) -o $@
 
 include depends.mak
