@@ -56,12 +56,13 @@ audio_output_open(void)
 	buflock = g_mutex_new();
 	bufcond = g_cond_new();
 
-	if (SDL_InitSubSystem(SDL_INIT_AUDIO) != 0)
-		/* XXX: show error */
+	if (SDL_InitSubSystem(SDL_INIT_AUDIO) != 0) {
+		g_printerr(_("Cannot intialize SDL audio subsystem.\n"));
 		return (1);
+	}
 
 	curfmt.format = AUDIO_S16LSB,
-	curfmt.size = AUDIO_OUTPUT_BUFLEN;
+	curfmt.samples = AUDIO_OUTPUT_BUFLEN / 4;
 	curfmt.callback = audio_output_write;
 
 	return (0);
@@ -70,12 +71,14 @@ audio_output_open(void)
 int
 audio_output_play(struct audio_file *fd)
 {
+	int rlen;
+
 	g_mutex_lock(buflock);
 	if (buflen != 0)
 		g_cond_wait(bufcond, buflock);
 	g_mutex_unlock(buflock);
 
-	if ((buflen = audio_file_read(fd, buf)) == 0)
+	if ((rlen = buflen = audio_file_read(fd, buf)) == 0)
 		return (0);
 
 	if (curfmt.freq != fd->srate || curfmt.channels != fd->channels) {
@@ -92,8 +95,7 @@ audio_output_play(struct audio_file *fd)
 
 	SDL_PauseAudio(0);
 
-	//gui_msgbar_warn(_("Woot."));
-	return (1);
+	return (rlen);
 }
 
 void
