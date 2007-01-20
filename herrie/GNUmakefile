@@ -62,11 +62,13 @@ endif
 ifeq ($(OS),SunOS)
 CFLAGS+=	-I$(PREFIX)/include/ncurses
 PREFIX=		/opt/sfw
+NO_HTTP=	yes
 NO_TRANS=	yes
 endif
 ifneq (,$(findstring CYGWIN,$(OS)))
 BINARY_EXT=	.exe
 PREFIX=		/usr
+NO_HTTP=	yes
 endif 
 
 # Audio output specific options
