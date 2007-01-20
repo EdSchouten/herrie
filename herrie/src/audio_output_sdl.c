@@ -34,12 +34,31 @@
 #include "audio_output.h"
 #include "gui.h"
 
+/**
+ * @brief Format currently used for playback.
+ */
 SDL_AudioSpec	curfmt;
+/**
+ * @brief Buffer with decoded audio data.
+ */
 Uint8		buf[AUDIO_OUTPUT_BUFLEN];
+/**
+ * @brief Amount of data still present in the audio buffer.
+ */
 size_t		buflen = 0;
+/**
+ * @brief Lock used for the buffer length.
+ */
 GMutex		*buflock;
+/**
+ * @brief Conditional used for notifying that new data can be written.
+ */
 GCond		*bufcond;
 
+/**
+ * @brief SDL Audio callback function which writes data to the audio
+ *        device.
+ */
 static void
 audio_output_write(void *data, Uint8 *stream, int len)
 {
