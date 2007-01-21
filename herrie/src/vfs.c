@@ -57,6 +57,7 @@ static struct vfsmodule modules[] = {
 const char *
 vfs_lockup(void)
 {
+#ifdef G_OS_UNIX
 	const char *root;
 	const char *user;
 	struct passwd *pw = NULL;
@@ -93,6 +94,7 @@ vfs_lockup(void)
 			    _("Unable to change to user %d\n"),
 			    (int)pw->pw_uid);
 	}
+#endif /* G_OS_UNIX */
 
 	return (NULL);
 }
