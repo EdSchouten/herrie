@@ -54,7 +54,7 @@ gui_draw_init_post(void)
 	noecho();
 	keypad(stdscr, TRUE);
 	raw();
-	refresh();
+	wnoutrefresh(stdscr);
 
 	gui_draw_colors =
 	    config_getopt_bool("gui.color.enabled") && has_colors();
@@ -104,7 +104,7 @@ void
 gui_draw_resize(void)
 {
 	GUI_LOCK;
-	refresh();
+	wnoutrefresh(stdscr);
 	GUI_UNLOCK;
 	gui_msgbar_resize();
 	gui_playq_resize();
