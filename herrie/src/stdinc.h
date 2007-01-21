@@ -24,10 +24,8 @@
  * SUCH DAMAGE.
  */
 
-#include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <netinet/in.h>
 #include <ctype.h>
 #include <fcntl.h>
 #ifdef BUILD_TRANS
@@ -58,6 +56,8 @@
 #include <pthread.h>
 #endif /* G_THREADS_IMPL_POSIX */
 #ifdef G_OS_UNIX
+#include <sys/ioctl.h>
+#include <netinet/in.h>
 #include <pwd.h>
 #ifndef __CYGWIN__
 #include <resolv.h>
