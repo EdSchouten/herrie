@@ -315,6 +315,7 @@ gui_input_sigmask(void)
 #endif /* SIGWINCH && G_THREADS_IMPL_POSIX */
 }
 
+#ifdef G_OS_UNIX
 /**
  * @brief Handler of all incoming signals with a custom action.
  */
@@ -342,6 +343,7 @@ gui_input_sighandler(int signal)
 #endif /* BUILD_GUI_SIGWINCH_WRAPPER */
 	}
 }
+#endif /* G_OS_UNIX */
 
 void
 gui_input_loop(void)
@@ -349,11 +351,13 @@ gui_input_loop(void)
 	int ch;
 	unsigned int i;
 
+#ifdef G_OS_UNIX
 	signal(SIGUSR1, gui_input_sighandler);
 	signal(SIGUSR2, gui_input_sighandler);
 #ifdef BUILD_GUI_SIGWINCH_WRAPPER
 	signal(SIGWINCH, gui_input_sighandler);
 #endif /* BUILD_GUI_SIGWINCH_WRAPPER */
+#endif /* G_OS_UNIX */
 
 	for (;;) {
 		ch = gui_input_getch();
