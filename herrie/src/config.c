@@ -66,7 +66,6 @@ valid_color(char *val)
 	return ((gui_draw_color_number(val) == -1) ? -1 : 0);
 }
 
-#ifdef BUILD_SCROBBLER
 /**
  * @brief Determine if a string containing an MD5 hash is valid
  */
@@ -93,7 +92,6 @@ valid_md5(char *val)
 
 	return (0);
 }
-#endif /* BUILD_SCROBBLER */
 
 /**
  * @brief Structure containing a single configuration entry of the
