@@ -124,6 +124,8 @@ main(int argc, char *argv[])
 
 	config_load(configfile);
 
+	g_thread_init(NULL);
+
 	if (audio_output_open() != 0)
 		return (-1);
 
@@ -140,7 +142,6 @@ main(int argc, char *argv[])
 	}
 
 	/* Initialize the locks */
-	g_thread_init(NULL);
 #ifdef BUILD_SCROBBLER
 	scrobbler_init();
 #endif /* BUILD_SCROBBLER */

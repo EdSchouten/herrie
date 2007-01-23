@@ -326,7 +326,6 @@ mp3_open(struct audio_file *fd)
 {
 	struct mp3_drv_data *data;
 
-
 	/* Don't match other files */
 	if (!fd->stream) {
 		if (mp3_match(fd->fp) != 0)

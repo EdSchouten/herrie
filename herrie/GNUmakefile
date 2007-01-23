@@ -25,7 +25,7 @@
 # 
 
 APP_NAME=	herrie
-VERSION=	1.2
+VERSION=	1.3
 
 PREFIX?=	/usr/local
 OS:=		$(shell uname)
@@ -62,11 +62,13 @@ endif
 ifeq ($(OS),SunOS)
 CFLAGS+=	-I$(PREFIX)/include/ncurses
 PREFIX=		/opt/sfw
+NO_HTTP=	yes
 NO_TRANS=	yes
 endif
 ifneq (,$(findstring CYGWIN,$(OS)))
 BINARY_EXT=	.exe
 PREFIX=		/usr
+NO_HTTP=	yes
 endif 
 
 # Audio output specific options
@@ -83,6 +85,10 @@ ifeq ($(OS),OpenBSD)
 CFLAGS+=	-DBUILD_GUI_SIGWINCH_WRAPPER
 LDFLAGS+=	-lossaudio
 endif
+endif
+ifeq ($(AUDIO_OUTPUT),sdl)
+CFLAGS+=	$(shell sdl-config --cflags)
+LDFLAGS+=	$(shell sdl-config --libs)
 endif
 
 # Tunables
@@ -174,6 +180,6 @@ distclean: clean
 	gzip -9 < $< > $@
 
 $(APP_NAME): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) $^ $(LDFLAGS) -o $@
 
 include depends.mak

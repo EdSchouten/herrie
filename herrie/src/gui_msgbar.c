@@ -87,7 +87,7 @@ gui_msgbar_refresh(void)
 	if (win_msgbar != NULL) {
 		werase(win_msgbar);
 		mvwaddstr(win_msgbar, 0, 1, message->str);
-		wrefresh(win_msgbar);
+		wnoutrefresh(win_msgbar);
 	}
 	GUI_UNLOCK;
 }
@@ -100,6 +100,8 @@ gui_msgbar_flush(void)
 	message_prio = -1;
 	curs_set(0);
 	GUI_UNLOCK;
+
+	gui_msgbar_refresh();
 }
 
 /**
@@ -125,6 +127,7 @@ gui_msgbar_update(const char *msg, int prio, int cursor)
 
 	curs_set(cursor);
 	gui_msgbar_refresh();
+	gui_draw_done();
 }
 
 void

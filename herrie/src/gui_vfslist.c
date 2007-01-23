@@ -180,7 +180,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 		idx++;
 	}
 
-	wrefresh(gv->win);
+	wnoutrefresh(gv->win);
 	GUI_UNLOCK;
 
 	gui_vfslist_percent(gv);

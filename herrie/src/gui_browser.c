@@ -42,6 +42,11 @@ static WINDOW *win_dirname;
  */
 static struct vfsref *vr_curdir = NULL;
 /**
+ * @brief List we use when displaying a file instead of a directory,
+ *        containing only the file itself.
+ */
+static struct vfslist vl_flist;
+/**
  * @brief Reference to window used as the file browser.
  */
 static struct gui_vfslist *win_browser;
@@ -66,7 +71,7 @@ gui_browser_dirname_refresh(void)
 	percent = gui_vfslist_getpercentage(win_browser);
 	plen = strlen(percent);
 	mvwaddstr(win_dirname, 0, COLS - plen, percent);
-	wrefresh(win_dirname);
+	wnoutrefresh(win_dirname);
 
 	GUI_UNLOCK;
 }
@@ -302,6 +307,7 @@ void
 gui_browser_chdir(void)
 {
 	char *path;
+	int dir = 0;
 	struct vfsref *vr;
 
 	path = gui_input_askstring(_("Change directory"), NULL, NULL);
@@ -317,19 +323,34 @@ gui_browser_chdir(void)
 	}
 	g_free(path);
 
-	if (vr == NULL || vfs_populate(vr) != 0) {
-		/* Invalid pathname */
-		gui_msgbar_warn(_("Unable to enter the directory."));
+	if (vr != NULL) {
+		if (vfs_populate(vr) == 0)
+			dir = 1;
+		else if (!vfs_playable(vr))
+			goto bad;
 
-		if (vr != NULL)
-			vfs_close(vr);
-	} else {
-		/* Successfully opened */
+		/* Replace old directory */
 		if (vr_curdir != NULL)
 			vfs_close(vr_curdir);
 		vr_curdir = vr;
-		gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
+
+		if (dir) {
+			/* Go inside the directory */
+			gui_vfslist_setlist(win_browser,
+			    vfs_population(vr));
+		} else {
+			/* Create a fake directory */
+			vfs_list_init(&vl_flist);
+			vfs_list_insert_tail(&vl_flist, vr);
+			gui_vfslist_setlist(win_browser, &vl_flist);
+		}
+
+		return;
 	}
+
+bad:	gui_msgbar_warn(_("Unable to display the file or directory."));
+	if (vr != NULL)
+		vfs_close(vr);
 }
 
 void

@@ -57,6 +57,7 @@ static struct vfsmodule modules[] = {
 const char *
 vfs_lockup(void)
 {
+#ifdef G_OS_UNIX
 	const char *root;
 	const char *user;
 	struct passwd *pw = NULL;
@@ -71,8 +72,10 @@ vfs_lockup(void)
 
 	root = config_getopt("vfs.lockup.chroot");
 	if (root[0] != '\0') {
+#ifndef __CYGWIN__
 		/* Already load the resolv.conf */
 		res_init();
+#endif /* !__CYGWIN__ */
 		/* Try to lock ourselves in */
 		if (chroot(root) != 0)
 			return g_strdup_printf(
@@ -91,6 +94,7 @@ vfs_lockup(void)
 			    _("Unable to change to user %d\n"),
 			    (int)pw->pw_uid);
 	}
+#endif /* G_OS_UNIX */
 
 	return (NULL);
 }
@@ -120,7 +124,9 @@ vfs_path_concat(const char *dir, const char *file)
 		/* We already have an absolute path */
 		npath = g_string_new(file);
 	} else if (dir != NULL) {
-		g_assert(g_path_is_absolute(dir));
+		/* Basedir should be absolute */
+		if (!g_path_is_absolute(dir))
+			return (NULL);
 
 		/* Use the predefined basedir */
 		tmp1 = g_build_filename(dir, file, NULL);
@@ -205,8 +211,11 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 	if (name != NULL) {
 		/* Set a predefined name */
 		ve->name = g_strdup(name);
+	} else if (pseudo) {
+		/* Pseudo file - just copy the URL */
+		ve->name = g_strdup(ve->filename);
 	} else {
-		/* Retreive it from the filename */
+		/* Get the basename from the filename */
 		ve->name = g_path_get_basename(ve->filename);
 	}
 

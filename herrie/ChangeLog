@@ -10,6 +10,9 @@ Herrie 1.2 -> 1.3:
 - Add keyboard binding to repeat the playlist
 - Don't unpause when seeking
 - Show 'Paused' instead of 'Playing' when the song is paused
+- Prevent more unneeded terminal I/O
+- Allow single files (or URL's) to be displayed with 'c'
+- Add experimental SDL Audio output code
 
 Herrie 1.1 -> 1.2:
 - Include <stdlib.h> for setproctitle() on Open/NetBSD

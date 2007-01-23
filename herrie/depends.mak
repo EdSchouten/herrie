@@ -4,6 +4,7 @@ audio_format_sndfile.o: stdinc.h.gch audio_format_sndfile.c audio_format.h audio
 audio_format_vorbis.o: stdinc.h.gch audio_format_vorbis.c audio_format.h audio_file.h audio_output.h
 audio_output_ao.o: stdinc.h.gch audio_output_ao.c audio_file.h audio_output.h config.h gui.h
 audio_output_oss.o: stdinc.h.gch audio_output_oss.c audio_file.h audio_output.h config.h
+audio_output_sdl.o: stdinc.h.gch audio_output_sdl.c audio_file.h audio_output.h gui.h
 config.o: stdinc.h.gch config.c config.h gui.h
 gui_browser.o: stdinc.h.gch gui_browser.c config.h gui_internal.h gui.h gui_vfslist.h vfs.h playq.h
 gui_draw.o: stdinc.h.gch gui_draw.c config.h gui_internal.h gui.h

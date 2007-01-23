@@ -33,16 +33,6 @@
 #include "playq.h"
 
 /**
- * @brief Playback time currently displayed, used to compare and discard
- *        redundant screen refreshes.
- */
-static int time_cur = 0;
-/**
- * @brief Track length currently displayed, used to compare and discard
- *        redundant screen refreshes.
- */
-static int time_len = 0;
-/**
  * @brief Buffer containing a string representation of the playback time
  *        of the current song in the form of " [x:xx/y:yy]".
  */
@@ -112,27 +102,17 @@ gui_playq_statbar_song(struct audio_file *fd)
 /**
  * @brief Set str_status to the current playback status.
  */
-static int
+static void
 gui_playq_statbar_status(struct audio_file *fd, int paused)
 {
-	const char *nstat;
-	int ret;
-
 	if (fd == NULL) {
-		nstat = _("Idle");
+		str_status = _("Idle");
 	} else {
 		if (paused)
-			nstat = _("Paused");
+			str_status = _("Paused");
 		else
-			nstat = _("Playing");
+			str_status = _("Playing");
 	}
-
-	/* Only redraw when the status has changed */
-	ret = (nstat == str_status);
-	str_status = nstat;
-	g_assert(str_status != NULL);
-
-	return (ret);
 }
 
 /**
@@ -140,65 +120,41 @@ gui_playq_statbar_status(struct audio_file *fd, int paused)
  *        audio file. It also checks if the times are the same as
  *        before, useful to discard useless refreshes.
  */
-static int
+static void
 gui_playq_statbar_time(struct audio_file *fd)
 {
-	int ntc, ntl;
-
 	if (fd == NULL) {
-		ntc = ntl = -1;
-	} else {
-		ntc = fd->time_cur;
-		ntl = fd->time_len;
-	}
-	if (ntc == time_cur && ntl == time_len)
-		return (1);
-	
-	time_cur = ntc;
-	time_len = ntl;
-
-	if (time_cur == -1 && time_len == -1) {
 		g_string_assign(str_time, "");
 	} else {
 		if (fd->time_len < 3600 && fd->time_cur < 3600) {
 			/* Only show minutes and seconds */
 			g_string_printf(str_time,
 			    " [%u:%02u/%u:%02u]",
-			    time_cur / 60, time_cur % 60,
-			    time_len / 60, time_len % 60);
+			    fd->time_cur / 60, fd->time_cur % 60,
+			    fd->time_len / 60, fd->time_len % 60);
 		} else {
 			/* Show hours as well */
 			g_string_printf(str_time,
 			    " [%u:%02u:%02u/%u:%02u:%02u]",
-			    time_cur / 3600, (time_cur / 60) % 60,
-			    time_cur % 60, time_len / 3600,
-			    (time_len / 60) % 60, time_len % 60);
+			    fd->time_cur / 3600, (fd->time_cur / 60) % 60,
+			    fd->time_cur % 60, fd->time_len / 3600,
+			    (fd->time_len / 60) % 60, fd->time_len % 60);
 		}
 	}
-
-	return (0);
 }
 
 /**
  * @brief Set the name of the song and time showed in the status bar.
  */
-static int
+static void
 gui_playq_song_set(struct audio_file *fd, int paused, int timeonly)
 {
-	int unneeded = 0;
-
 	GUI_LOCK;
-	if (!timeonly) {
+	if (!timeonly)
 		gui_playq_statbar_song(fd);
-		unneeded = 0;
-	}
-	if (gui_playq_statbar_time(fd) == 0)
-		unneeded = 0;
-	if (gui_playq_statbar_status(fd, paused) == 0)
-		unneeded = 0;
+	gui_playq_statbar_time(fd);
+	gui_playq_statbar_status(fd, paused);
 	GUI_UNLOCK;
-
-	return unneeded;
 }
 
 /**
@@ -229,7 +185,7 @@ gui_playq_statbar_refresh(void)
 	mvwaddstr(win_statbar, 0, COLS - plen, percent);
 
 	/* And draw it */
-	wrefresh(win_statbar);
+	wnoutrefresh(win_statbar);
 	GUI_UNLOCK;
 }
 
@@ -267,19 +223,15 @@ gui_playq_destroy(void)
 void
 gui_playq_song_update(struct audio_file *fd, int paused, int timeonly)
 {
-	int unneeded;
+	gui_playq_song_set(fd, paused, timeonly);
 
-	unneeded = gui_playq_song_set(fd, paused, timeonly);
-	if (!unneeded) {
 #if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
-		/* Print same message in ps(1) */
-		setproctitle("%s%s%s", str_status, str_song->str,
-		    str_time->str);
+	/* Print same message in ps(1) */
+	setproctitle("%s%s%s", str_status, str_song->str, str_time->str);
 #endif /* __FreeBSD__ || __NetBSD__ || __OpenBSD__ */
 	
-		gui_playq_statbar_refresh();
-		gui_draw_async_done();
-	}
+	gui_playq_statbar_refresh();
+	gui_draw_done();
 }
 
 void
@@ -317,7 +269,7 @@ void
 gui_playq_notify_done(void)
 {
 	gui_vfslist_notify_done(win_playq);
-	gui_draw_async_done();
+	gui_draw_done();
 }
 
 void

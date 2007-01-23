@@ -66,7 +66,6 @@ valid_color(char *val)
 	return ((gui_draw_color_number(val) == -1) ? -1 : 0);
 }
 
-#ifdef BUILD_SCROBBLER
 /**
  * @brief Determine if a string containing an MD5 hash is valid
  */
@@ -93,7 +92,6 @@ valid_md5(char *val)
 
 	return (0);
 }
-#endif /* BUILD_SCROBBLER */
 
 /**
  * @brief Structure containing a single configuration entry of the
@@ -144,11 +142,9 @@ static struct config_entry configlist[] = {
 	{ "gui.color.enabled",		"yes",		valid_bool,	NULL },
 	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
 	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
-#ifdef BUILD_SCROBBLER
 	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },
 	{ "scrobbler.password",		"",		valid_md5,	NULL },
 	{ "scrobbler.username",		"",		NULL,		NULL },
-#endif /* BUILD_SCROBBLER */
 	{ "vfs.dir.hide_dotfiles",	"yes",		valid_bool,	NULL },
 	{ "vfs.lockup.chroot",		"",		NULL,		NULL },
 	{ "vfs.lockup.user",		"",		NULL,		NULL },

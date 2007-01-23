@@ -49,6 +49,10 @@ extern int gui_draw_colors;
  */
 void gui_draw_resize(void);
 /**
+ * @brief Write all altered data back to the physical terminal.
+ */
+void gui_draw_done(void);
+/**
  * @brief The mutex that locks the GUI down.
  */
 extern GMutex *gui_lock;
@@ -137,10 +141,6 @@ void gui_msgbar_resize(void);
  * @brief Redraw the message bar after its contents have been altered.
  */
 void gui_msgbar_refresh(void);
-/**
- * @brief Restore the cursor position after another thread updated the GUI.
- */
-#define gui_draw_async_done() gui_msgbar_refresh()
 /**
  * @brief Flush the text in the message bar.
  */
