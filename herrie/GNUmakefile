@@ -40,19 +40,19 @@ VPATH=		lang:src
 ifeq ($(OS),Darwin)
 CFLAGS+=	-DBUILD_GUI_SIGWINCH_WRAPPER
 LDFLAGS+=	-lresolv
-PREFIX?=	/opt/local
+PREFIX=	/opt/local
 endif
 ifeq ($(OS),FreeBSD)
-MANDIR?=	$(PREFIX)/man
+MANDIR=		$(PREFIX)/man
 AUDIO_OUTPUT=	oss
 endif
 ifeq ($(OS),Linux)
 CFLAGS+=	-D_GNU_SOURCE
-PREFIX?=	/usr
+PREFIX=		/usr
 AUDIO_OUTPUT=	oss
 endif
 ifeq ($(OS),NetBSD)
-PREFIX?=	/usr/pkg
+PREFIX=		/usr/pkg
 AUDIO_OUTPUT=	oss
 endif
 ifeq ($(OS),OpenBSD)
@@ -61,13 +61,13 @@ AUDIO_OUTPUT=	oss
 endif
 ifeq ($(OS),SunOS)
 CFLAGS+=	-I$(PREFIX)/include/ncurses
-PREFIX?=	/opt/sfw
+PREFIX=		/opt/sfw
 NO_HTTP=	yes
 NO_TRANS=	yes
 endif
 ifneq (,$(findstring CYGWIN,$(OS)))
 BINARY_EXT=	.exe
-PREFIX?=	/usr
+PREFIX=		/usr
 NO_HTTP=	yes
 endif 
 
