@@ -110,7 +110,7 @@ all: $APP_NAME $APP_NAME.1.gz
 clean:
 	rm -f *.core *.o .gdb_history
 distclean: clean
-	rm -f $APP_NAME $APP_NAME.1.gz *.mo
+	rm -f $APP_NAME $APP_NAME.1.gz *.mo Makefile
 install:
 	install -s $APP_NAME $PREFIX/bin/$APP_NAME
 	install -m 444 $APP_NAME.1.gz $MANDIR/man1/
