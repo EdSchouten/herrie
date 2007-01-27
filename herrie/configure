@@ -70,9 +70,10 @@ done
 # Standard options
 CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
-    -DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -include src/stdinc.h"
+    -DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -I$PREFIX/include \
+    -include src/stdinc.h"
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
-    -lcurses"
+    -L$PREFIX/lib -lcurses"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
     gui_input gui_msgbar gui_playq gui_vfslist main playq vfs \
     vfs_playlist vfs_regular"
