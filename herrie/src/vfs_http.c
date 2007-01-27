@@ -29,6 +29,7 @@
 
 #include <curl/curl.h>
 #include <curl/easy.h>
+#include <curl/multi.h>
 
 #include "gui.h"
 #include "vfs_modules.h"

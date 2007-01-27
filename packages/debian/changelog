@@ -1,3 +1,9 @@
+herrie (1.3-1) unstable; urgency=low
+
+  * Bump to 1.3: Lot of long standing bugs have been removed. HTTP audio support added.
+
+ -- Ed Schouten <ed@fxq.nl>  Sun, 24 Jan 2007 21:14:00 +0100
+
 herrie (1.2-1) unstable; urgency=low
 
   * Bump to 1.2: Small cleanups, mostly related to the build structure

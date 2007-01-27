@@ -29,8 +29,8 @@ VERSION=	1.3
 
 PREFIX?=	/usr/local
 OS:=		$(shell uname)
-MANDIR=		$(PREFIX)/share/man
-TRANSDIR=	$(PREFIX)/share/locale
+MANDIR?=	$(PREFIX)/share/man
+TRANSDIR?=	$(PREFIX)/share/locale
 
 AUDIO_OUTPUT=	ao
 
@@ -40,7 +40,7 @@ VPATH=		lang:src
 ifeq ($(OS),Darwin)
 CFLAGS+=	-DBUILD_GUI_SIGWINCH_WRAPPER
 LDFLAGS+=	-lresolv
-PREFIX=		/opt/local
+PREFIX=	/opt/local
 endif
 ifeq ($(OS),FreeBSD)
 MANDIR=		$(PREFIX)/man
