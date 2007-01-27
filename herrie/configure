@@ -33,7 +33,7 @@ CFG_HTTP=yes
 CFG_MP3=yes
 CFG_SCROBBLER=yes
 CFG_SNDFILE=yes
-CFG_TRANS=yes
+CFG_TRANS=nl
 CFG_VORBIS=yes
 [ "$CC" = "" ] && CC=cc
 
@@ -45,9 +45,11 @@ Darwin)
 	CFLAGS="$CFLAGS -DBUILD_GUI_SIGWINCH_WRAPPER"
 	LDFLAGS="$LDFLAGS -lresolv"
 	[ "$PREFIX" = "" ] && PREFIX=/opt/local
+	MANDIR=$PREFIX/share/man
 	;;
 FreeBSD)
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
+	MANDIR=$PREFIX/man
 	;;
 *)
 	echo "Error: Unknown operating system."
@@ -102,16 +104,23 @@ do
 done
 cat > Makefile << EOF
 CFLAGS=$CFLAGS
-all: $APP_NAME
+LDFLAGS=$LDFLAGS
+OBJS=$OBJS
+all: $APP_NAME $APP_NAME.1.gz
 clean:
 	rm -f *.o
 distclean: clean
-	rm -f $APP_NAME
+	rm -f $APP_NAME $APP_NAME.1.gz
 install:
 	install -s $APP_NAME $PREFIX/bin/$APP_NAME
-$APP_NAME: $OBJS
-	$CC $OBJS $LDFLAGS -o $APP_NAME
+	install -m 444 $APP_NAME.1.gz $MANDIR/man1/
+$APP_NAME: \$(OBJS)
+	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME
 %.o: src/%.c
 	$CC -c \$< \$(CFLAGS) -include src/stdinc.h -o \$@
+%.mo: lang/%.po
+	msgfmt -o \$@ \$<
+%.gz: %
+	gzip -9 < \$< > \$@
 EOF
 cat depends.mak >> Makefile
