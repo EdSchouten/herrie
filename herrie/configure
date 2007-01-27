@@ -35,7 +35,6 @@ CFG_SCROBBLER=yes
 CFG_SNDFILE=yes
 CFG_TRANS=nl
 CFG_VORBIS=yes
-[ "$CC" = "" ] && CC=cc
 
 # Operating system defaults
 OS=`uname`
@@ -69,14 +68,22 @@ do
 done
 
 # Standard options
+CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
+    -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
+    -DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -include src/stdinc.h"
+LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
+    -lcurses"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
     gui_input gui_msgbar gui_playq gui_vfslist main playq vfs \
     vfs_playlist vfs_regular"
-CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
-    -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
-    -DAUDIO_OUTPUT=\\\"$CFG_AO\\\""
-LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
-    -lcurses"
+
+# Tunables
+if [ "$CFG_MP3" != "" ]
+then
+	CFLAGS="$CFLAGS -DBUILD_MP3"
+	LDFLAGS="$LDFLAGS -lmad -lid3tag"
+	SRCS="$SRCS audio_format_mp3"
+fi
 
 # Audio output options
 case $CFG_AO in
@@ -115,12 +122,12 @@ install:
 	install -s $APP_NAME $PREFIX/bin/$APP_NAME
 	install -m 444 $APP_NAME.1.gz $MANDIR/man1/
 $APP_NAME: \$(OBJS)
-	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME
+	\$(CC) \$(OBJS) \$(LDFLAGS) -o $APP_NAME
+herrie.1.gz: herrie.1
+	gzip -9 < \$< > \$@
 %.o: src/%.c
-	$CC -c \$< \$(CFLAGS) -include src/stdinc.h -o \$@
+	\$(CC) -c \$< \$(CFLAGS) -o \$@
 %.mo: lang/%.po
 	msgfmt -o \$@ \$<
-%.gz: %
-	gzip -9 < \$< > \$@
 EOF
 cat depends.mak >> Makefile
