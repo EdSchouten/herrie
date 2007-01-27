@@ -124,8 +124,8 @@ install:
 	install -m 444 $APP_NAME.1.gz $MANDIR/man1/
 $APP_NAME: \$(OBJS)
 	\$(CC) \$(OBJS) \$(LDFLAGS) -o $APP_NAME
-herrie.1.gz: herrie.1
-	gzip -9 < \$< > \$@
+$APP_NAME.1.gz: $APP_NAME.1
+	gzip -9 < $APP_NAME.1 > $APP_NAME.1.gz
 %.o: src/%.c
 	\$(CC) -c \$< \$(CFLAGS) -o \$@
 %.mo: lang/%.po
