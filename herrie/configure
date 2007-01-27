@@ -114,3 +114,4 @@ $APP_NAME: $OBJS
 %.o: src/%.c
 	$CC -c \$< \$(CFLAGS) -include src/stdinc.h -o \$@
 EOF
+cat depends.mak >> Makefile
