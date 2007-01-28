@@ -203,7 +203,7 @@ done
 echo "Configuration:"
 echo "- Installing $APP_NAME in $BINDIR"
 echo "- Installing manual page in $MANDIR"
-[ "$CFG_TRANS" != "" ] && echo "- Installing translations in $MANDIR"
+[ "$CFG_TRANS" != "" ] && echo "- Installing translations in $TRANSDIR"
 echo "- Using $CFG_AO audio output"
 [ "$CFG_HTTP" != "" ] && echo "- Support for HTTP streams"
 [ "$CFG_MP3" != "" ] && echo "- Support for MP3"
