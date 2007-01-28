@@ -202,12 +202,12 @@ sdl)
 	;;
 esac
 
-OBJS=""
+unset OBJS
 for i in $SRCS
 do
 	OBJS="$OBJS $i.o"
 done
-LINGUAS=""
+unset LINGUAS
 for i in $CFG_TRANS
 do
 	LINGUAS="$LINGUAS $i.mo"
