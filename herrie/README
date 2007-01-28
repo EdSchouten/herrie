@@ -69,35 +69,29 @@ needed when compiled with LibAO audio output support.
 
 How do I compile and install Herrie?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Herrie ships with a GNU Makefile that allows you to compile Herrie in a
-hopefully easy fashion. The Makefile also contains a set of switches to
-disable various functions.
+Herrie ships with a shellscript called `configure' which generates a
+Makefile for your specific system. Arguments can be passed to the
+configure script to change certain parameters:
 
-Below is a list of configuration switches:
+- no_http       Disable support for HTTP audio streams
+- no_mp3        Disable MP3 audio file support
+- no_scrobbler  Disable AudioScrobbler support
+- no_sndfile    Disable libsndfile linkage (Wave/FLAC support)
+- no_trans      Disable translations
+- no_vorbis     Disable Ogg Vorbis support
 
-- NO_HTTP=yes       disables HTTP audio stream support
-- NO_MP3=yes        disables support for MP3 audio playback
-- NO_SCROBBLER=yes  disables AudioScrobbler support
-- NO_SNDFILE=yes    disables support for libsndfile formats
-- NO_TRANS=yes      disables gettext support (translations)
-- NO_VORBIS=yes     disables support for Ogg Vorbis playback
-- XCURSES=yes       build as an X11 application using XCurses
+- ao            Use libao audio output
+- oss           Use Open Sound System output
+- sdl           Use LibSDL audio output
 
-It is also possible to compile Herrie with support for a variety of
-audio output frameworks:
+There are also some environment variables which also have influence on
+the generated Makefile:
 
-- AUDIO_OUTPUT=oss	Open Sound System (Linux and xBSD)
-- AUDIO_OUTPUT=ao	LibAO (may break when combined with chroot)
-- AUDIO_OUTPUT=sdl	LibSDL Audio (experimental)
+- CFLAGS        Prepend compiler flags
+- LDFLAGS       Prepend linkage flags
+- PREFIX	Change installation prefix
 
-The following commands will compile and install Herrie without MP3 and
-AudioScrobbler support:
-
-	$ make NO_MP3=yes NO_SCROBBLER=yes
-	$ sudo make NO_MP3=yes NO_SCROBBLER=yes install
-
-Please notice that 'make' is called 'gmake' on operating systems that
-already ship their own one (xBSD, Solaris, etc).
+After running `./configure', a simple 'make; make install' will suffice.
 
 I've installed it - now what?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
