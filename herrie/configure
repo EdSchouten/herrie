@@ -224,7 +224,7 @@ echo "- Using $CFG_AO audio output"
 [ "$CFG_SNDFILE" != "" ] && echo "- Support for libsndfile"
 [ "$CFG_VORBIS" != "" ] && echo "- Support for Ogg Vorbis"
 
-cat > Makefile << EOF
+(cat << EOF
 CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
 OBJS=$OBJS
@@ -239,10 +239,10 @@ install: $APP_NAME $APP_NAME.1.gz $LINGUAS
 EOF
 for i in $CFG_TRANS
 do
-	echo "	mkdir -p $TRANSDIR/$i/LC_MESSAGES" >> Makefile
-	echo "	install -m 444 $i.mo $TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo" >> Makefile
+	echo "	mkdir -p $TRANSDIR/$i/LC_MESSAGES"
+	echo "	install -m 444 $i.mo $TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 done
-cat >> Makefile << EOF
+cat << EOF
 $APP_NAME: \$(OBJS)
 	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME
 $APP_NAME.1.gz: $APP_NAME.1
@@ -251,14 +251,14 @@ EOF
 . ./depends
 for i in $SRCS
 do
-	echo "$i.o: Makefile src/$i.c src/stdinc.h `eval echo \\\$DEPENDS_\$i`" >> Makefile
-	echo "	$CC -c src/$i.c \$(CFLAGS) -o $i.o" >> Makefile
+	echo "$i.o: Makefile src/$i.c src/stdinc.h `eval echo \\\$DEPENDS_\$i`"
+	echo "	$CC -c src/$i.c \$(CFLAGS) -o $i.o"
 done
 for i in $CFG_TRANS
 do
-	echo "$i.mo: lang/$i.po" >> Makefile
-	echo "	msgfmt -o $i.mo lang/$i.po" >> Makefile
-done
+	echo "$i.mo: lang/$i.po"
+	echo "	msgfmt -o $i.mo lang/$i.po"
+done) > Makefile
 
 echo
 echo "Run \`make' to compile $APP_NAME"
