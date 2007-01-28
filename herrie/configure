@@ -29,7 +29,7 @@ APP_NAME=herrie
 APP_VERSION=1.3
 
 # Default compilation switches
-CFG_AO=oss
+CFG_AO=ao
 CFG_HTTP=yes
 CFG_MP3=yes
 CFG_SCROBBLER=yes
@@ -41,21 +41,25 @@ MANDIR=
 # Operating system defaults
 OS=`uname`
 case $OS in
+*CYGWIN*)
+	unset CFG_HTTP
+	[ "$PREFIX" = "" ] && PREFIX=/usr
+	;;
 Darwin)
-	CFG_AO=ao
 	CFLAGS="$CFLAGS -DBUILD_GUI_SIGWINCH_WRAPPER"
 	LDFLAGS="$LDFLAGS -lresolv"
 	[ "$PREFIX" = "" ] && PREFIX=/opt/local
 	;;
 FreeBSD)
+	CFG_AO=oss
 	MANDIR=$PREFIX/man
 	;;
 Linux)
+	CFG_AO=oss
 	CFLAGS="$CFLAGS -D_GNU_SOURCE"
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 SunOS)
-	CFG_AO=ao
 	unset CFG_HTTP
 	unset CFG_TRANS
 	[ "$PREFIX" = "" ] && PREFIX=/opt/sfw
