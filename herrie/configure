@@ -153,6 +153,11 @@ then
 	LDFLAGS="$LDFLAGS -lsndfile"
 	SRCS="$SRCS audio_format_sndfile"
 fi
+# Translation support
+if [ "$CFG_TRANS" != "" ]
+then
+	CFLAGS="$CFLAGS -DBUILD_TRANS -DTRANSDIR=\\\"$TRANSDIR\\\""
+fi
 # Ogg Vorbis support
 if [ "$CFG_VORBIS" != "" ]
 then
