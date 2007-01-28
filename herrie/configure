@@ -219,9 +219,10 @@ $APP_NAME: \$(OBJS)
 $APP_NAME.1.gz: $APP_NAME.1
 	gzip -9 < $APP_NAME.1 > $APP_NAME.1.gz
 EOF
+. depends
 for i in $SRCS
 do
-	echo "$i.o: src/$i.c" >> Makefile
+	echo "$i.o: `eval echo \\\$DEPENDS_\$i` src/stdinc.h" >> Makefile
 	echo "	$CC -c src/$i.c \$(CFLAGS) -o $i.o" >> Makefile
 done
 for i in $CFG_TRANS
