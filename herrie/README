@@ -87,6 +87,7 @@ configure script to change certain parameters:
 There are also some environment variables which also have influence on
 the generated Makefile:
 
+- CC            C compiler
 - CFLAGS        Prepend compiler flags
 - LDFLAGS       Prepend linkage flags
 - PREFIX	Change installation prefix

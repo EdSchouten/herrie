@@ -62,6 +62,7 @@ esac
 BINDIR=$PREFIX/bin
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
+[ "$CC" = "" ] && CC=cc
 
 # Command line options
 while [ $# -gt 0 ]
@@ -214,14 +215,14 @@ do
 done
 cat >> Makefile << EOF
 $APP_NAME: \$(OBJS)
-	\$(CC) \$(OBJS) \$(LDFLAGS) -o $APP_NAME
+	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME
 $APP_NAME.1.gz: $APP_NAME.1
 	gzip -9 < $APP_NAME.1 > $APP_NAME.1.gz
 EOF
 for i in $SRCS
 do
 	echo "$i.o: src/$i.c" >> Makefile
-	echo "	\$(CC) -c src/$i.c \$(CFLAGS) -o $i.o" >> Makefile
+	echo "	$CC -c src/$i.c \$(CFLAGS) -o $i.o" >> Makefile
 done
 for i in $CFG_TRANS
 do
