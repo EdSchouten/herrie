@@ -234,13 +234,13 @@ clean:
 distclean: clean
 	rm -f $APP_NAME $APP_NAME.1.gz *.mo Makefile
 install: $APP_NAME $APP_NAME.1.gz $LINGUAS
-	install -s $APP_NAME $BINDIR/
-	install -m 444 $APP_NAME.1.gz $MANDIR/man1/
+	install -s $APP_NAME \$(DESTROOT)$BINDIR/
+	install -m 444 $APP_NAME.1.gz \$(DESTROOT)$MANDIR/man1/
 EOF
 for i in $CFG_TRANS
 do
-	echo "	mkdir -p $TRANSDIR/$i/LC_MESSAGES"
-	echo "	install -m 444 $i.mo $TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
+	echo "	mkdir -p \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES"
+	echo "	install -m 444 $i.mo \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 done
 cat << EOF
 $APP_NAME: \$(OBJS)
