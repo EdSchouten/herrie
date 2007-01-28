@@ -80,6 +80,20 @@ do
 	no_vorbis)
 		unset CFG_VORBIS
 		;;
+
+	ao)
+		CFG_AO=ao
+		;;
+	oss)
+		CFG_AO=oss
+		;;
+	sdl)
+		CFG_AO=sdl
+		;;
+
+	*)
+		echo "Error: unknown option: $1"
+		exit 1
 	esac
 
 	shift
