@@ -48,17 +48,24 @@ Darwin)
 	[ "$PREFIX" = "" ] && PREFIX=/opt/local
 	;;
 FreeBSD)
-	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	MANDIR=$PREFIX/man
 	;;
 Linux)
 	CFLAGS="$CFLAGS -D_GNU_SOURCE"
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
+SunOS)
+	CFG_AO=ao
+	unset CFG_HTTP
+	unset CFG_TRANS
+	[ "$PREFIX" = "" ] && PREFIX=/opt/sfw
+	CFLAGS="$CFLAGS -I$PREFIX/include/ncurses"
+	;;
 *)
 	echo "Error: Unknown operating system."
 	exit 1
 esac
+[ "$PREFIX" = "" ] && PREFIX=/usr/local
 BINDIR=$PREFIX/bin
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
@@ -219,7 +226,7 @@ $APP_NAME: \$(OBJS)
 $APP_NAME.1.gz: $APP_NAME.1
 	gzip -9 < $APP_NAME.1 > $APP_NAME.1.gz
 EOF
-. depends
+. ./depends
 for i in $SRCS
 do
 	echo "$i.o: src/$i.c src/stdinc.h `eval echo \\\$DEPENDS_\$i`" >> Makefile
