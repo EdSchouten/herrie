@@ -118,6 +118,7 @@ done
 
 # Standard options
 CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
+    -Wall -Wsign-compare -Werror -Wmissing-prototypes \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -I$PREFIX/include \
     -include src/stdinc.h"
