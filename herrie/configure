@@ -62,6 +62,15 @@ Linux)
 	CFLAGS="$CFLAGS -D_GNU_SOURCE"
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
+NetBSD)
+	CFG_AO=oss
+	[ "$PREFIX" = "" ] && PREFIX=/usr/pkg
+	;;
+OpenBSD)
+	CFG_AO=oss
+	CFLAGS="$CFLAGS -DBUILD_GUI_SIGWINCH_WRAPPER"
+	MANDIR=$PREFIX/man
+	;;
 SunOS)
 	unset CFG_HTTP
 	unset CFG_TRANS
