@@ -55,6 +55,7 @@ FreeBSD)
 	echo "Error: Unknown operating system."
 	exit 1
 esac
+TRANSDIR=$PREFIX/share/locale
 
 # Command line options
 while [ $# -gt 0 ]
@@ -71,6 +72,9 @@ do
 		;;
 	no_sndfile)
 		unset CFG_SNDFILE
+		;;
+	no_trans)
+		unset CFG_TRANS
 		;;
 	no_vorbis)
 		unset CFG_VORBIS
@@ -153,18 +157,30 @@ for i in $SRCS
 do
 	OBJS="$OBJS $i.o"
 done
+LINGUAS=""
+for i in $CFG_TRANS
+do
+	LINGUAS="$LINGUAS $i.mo"
+done
 cat > Makefile << EOF
 CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
 OBJS=$OBJS
-all: $APP_NAME $APP_NAME.1.gz
+all: $APP_NAME $APP_NAME.1.gz $LINGUAS
 clean:
 	rm -f *.core *.o .gdb_history
 distclean: clean
 	rm -f $APP_NAME $APP_NAME.1.gz *.mo Makefile
-install: $APP_NAME $APP_NAME.1.gz
+install: $APP_NAME $APP_NAME.1.gz $LINGUAS
 	install -s $APP_NAME $PREFIX/bin/
 	install -m 444 $APP_NAME.1.gz $MANDIR/man1/
+EOF
+for i in $CFG_TRANS
+do
+	echo "	mkdir $TRANSDIR/$i/LC_MESSAGES" >> Makefile
+	echo "	install -m 444 $i.mo $TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo" >> Makefile
+done
+cat >> Makefile << EOF
 $APP_NAME: \$(OBJS)
 	\$(CC) \$(OBJS) \$(LDFLAGS) -o $APP_NAME
 $APP_NAME.1.gz: $APP_NAME.1
@@ -174,4 +190,9 @@ for i in $SRCS
 do
 	echo "$i.o: src/$i.c" >> Makefile
 	echo "	\$(CC) -c src/$i.c \$(CFLAGS) -o $i.o" >> Makefile
+done
+for i in $CFG_TRANS
+do
+	echo "$i.mo: lang/$i.po" >> Makefile
+	echo "	msgfmt -o $i.mo lang/$i.po" >> Makefile
 done
