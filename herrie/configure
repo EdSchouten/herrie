@@ -36,6 +36,7 @@ CFG_SCROBBLER=yes
 CFG_SNDFILE=yes
 CFG_TRANS=nl
 CFG_VORBIS=yes
+MANDIR=
 
 # Operating system defaults
 OS=`uname`
@@ -45,17 +46,21 @@ Darwin)
 	CFLAGS="$CFLAGS -DBUILD_GUI_SIGWINCH_WRAPPER"
 	LDFLAGS="$LDFLAGS -lresolv"
 	[ "$PREFIX" = "" ] && PREFIX=/opt/local
-	MANDIR=$PREFIX/share/man
 	;;
 FreeBSD)
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	MANDIR=$PREFIX/man
+	;;
+Linux)
+	CFLAGS="$CFLAGS -D_GNU_SOURCE"
+	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 *)
 	echo "Error: Unknown operating system."
 	exit 1
 esac
 BINDIR=$PREFIX/bin
+[ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
 
 # Command line options
