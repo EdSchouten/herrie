@@ -177,7 +177,7 @@ install: $APP_NAME $APP_NAME.1.gz $LINGUAS
 EOF
 for i in $CFG_TRANS
 do
-	echo "	mkdir $TRANSDIR/$i/LC_MESSAGES" >> Makefile
+	echo "	mkdir -p $TRANSDIR/$i/LC_MESSAGES" >> Makefile
 	echo "	install -m 444 $i.mo $TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo" >> Makefile
 done
 cat >> Makefile << EOF
