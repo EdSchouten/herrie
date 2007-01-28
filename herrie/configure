@@ -168,12 +168,10 @@ install: $APP_NAME $APP_NAME.1.gz
 $APP_NAME: \$(OBJS)
 	\$(CC) \$(OBJS) \$(LDFLAGS) -o $APP_NAME
 $APP_NAME.1.gz: $APP_NAME.1
-	gzip -9 < \$< > \$@
-%.mo: lang/%.po
-	msgfmt -o \$@ \$<
+	gzip -9 < $APP_NAME.1 > $APP_NAME.1.gz
 EOF
-while read LINE
+for i in $SRCS
 do
-	echo $LINE >> Makefile
-	echo "	\$(CC) -c \$< \$(CFLAGS) -o \$@" >> Makefile
-done < depends.mak
+	echo "$i.o: src/$i.c" >> Makefile
+	echo "	\$(CC) -c src/$i.c \$(CFLAGS) -o $i.o" >> Makefile
+done
