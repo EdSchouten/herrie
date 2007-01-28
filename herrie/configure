@@ -55,6 +55,7 @@ FreeBSD)
 	echo "Error: Unknown operating system."
 	exit 1
 esac
+BINDIR=$PREFIX/bin
 TRANSDIR=$PREFIX/share/locale
 
 # Command line options
@@ -162,6 +163,18 @@ for i in $CFG_TRANS
 do
 	LINGUAS="$LINGUAS $i.mo"
 done
+
+echo "Configuration:"
+echo "- Installing $APP_NAME in $BINDIR"
+echo "- Installing manual page in $MANDIR"
+[ "$CFG_TRANS" != "" ] && echo "- Installing translations in $MANDIR"
+echo "- Using $CFG_AO audio output"
+[ "$CFG_HTTP" != "" ] && echo "- Support for HTTP streams"
+[ "$CFG_MP3" != "" ] && echo "- Support for MP3"
+[ "$CFG_SCROBBLER" != "" ] && echo "- Support for AudioScrobbler"
+[ "$CFG_SNDFILE" != "" ] && echo "- Support for libsndfile"
+[ "$CFG_VORBIS" != "" ] && echo "- Support for Ogg Vorbis"
+
 cat > Makefile << EOF
 CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
@@ -172,7 +185,7 @@ clean:
 distclean: clean
 	rm -f $APP_NAME $APP_NAME.1.gz *.mo Makefile
 install: $APP_NAME $APP_NAME.1.gz $LINGUAS
-	install -s $APP_NAME $PREFIX/bin/
+	install -s $APP_NAME $BINDIR/
 	install -m 444 $APP_NAME.1.gz $MANDIR/man1/
 EOF
 for i in $CFG_TRANS
@@ -196,3 +209,6 @@ do
 	echo "$i.mo: lang/$i.po" >> Makefile
 	echo "	msgfmt -o $i.mo lang/$i.po" >> Makefile
 done
+
+echo
+echo "Run \`make' to compile $APP_NAME"
