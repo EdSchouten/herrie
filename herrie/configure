@@ -36,7 +36,7 @@ CFG_SCROBBLER=yes
 CFG_SNDFILE=yes
 CFG_TRANS=nl
 CFG_VORBIS=yes
-MANDIR=
+unset MANDIR
 
 # Operating system defaults
 OS=`uname`
