@@ -41,7 +41,7 @@ MANDIR=
 # Operating system defaults
 OS=`uname`
 case $OS in
-*CYGWIN*)
+CYGWIN*)
 	unset CFG_HTTP
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
