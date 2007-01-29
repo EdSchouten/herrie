@@ -223,6 +223,10 @@ CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
 OBJS=$OBJS
 all: $APP_NAME $APP_NAME.1.gz $LINGUAS
+$APP_NAME: \$(OBJS)
+	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME
+$APP_NAME.1.gz: $APP_NAME.1
+	gzip -9 < $APP_NAME.1 > $APP_NAME.1.gz
 clean:
 	rm -f *.core *.o .gdb_history
 distclean: clean
@@ -236,12 +240,6 @@ do
 	echo "	mkdir -p \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES"
 	echo "	install -m 444 $i.mo \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 done
-cat << EOF
-$APP_NAME: \$(OBJS)
-	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME
-$APP_NAME.1.gz: $APP_NAME.1
-	gzip -9 < $APP_NAME.1 > $APP_NAME.1.gz
-EOF
 . ./depends
 for i in $SRCS
 do
