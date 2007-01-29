@@ -110,14 +110,8 @@ do
 		unset CFG_VORBIS
 		;;
 
-	ao)
-		CFG_AO=ao
-		;;
-	oss)
-		CFG_AO=oss
-		;;
-	sdl)
-		CFG_AO=sdl
+	ao|oss|sdl)
+		CFG_AO=$1
 		;;
 
 	*)
