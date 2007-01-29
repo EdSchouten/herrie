@@ -231,7 +231,7 @@ clean:
 	rm -f *.core *.o .gdb_history
 distclean: clean
 	rm -f $APP_NAME $APP_NAME.1.gz *.mo Makefile
-install: $APP_NAME $APP_NAME.1.gz $LINGUAS
+install: all
 	install -s $APP_NAME \$(DESTROOT)$BINDIR/
 	install -m 444 $APP_NAME.1.gz \$(DESTROOT)$MANDIR/man1/
 EOF
