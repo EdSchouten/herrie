@@ -81,6 +81,7 @@ SunOS)
 	echo "Error: Unknown operating system."
 	exit 1
 esac
+SRCDIR=`dirname $0`
 [ "$PREFIX" = "" ] && PREFIX=/usr/local
 BINDIR=$PREFIX/bin
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
@@ -127,7 +128,7 @@ CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -Wall -Wsign-compare -Werror -Wmissing-prototypes \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -I$PREFIX/include \
-    -include src/stdinc.h"
+    -include $SRCDIR/src/stdinc.h"
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
     -L$PREFIX/lib -lcurses"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
@@ -225,8 +226,8 @@ OBJS=$OBJS
 all: $APP_NAME $APP_NAME.1.gz $LINGUAS
 $APP_NAME: \$(OBJS)
 	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME
-$APP_NAME.1.gz: $APP_NAME.1
-	gzip -9 < $APP_NAME.1 > $APP_NAME.1.gz
+$APP_NAME.1.gz: $SRCDIR/$APP_NAME.1
+	gzip -9 < $SRCDIR/$APP_NAME.1 > $APP_NAME.1.gz
 clean:
 	rm -f *.core *.o .gdb_history
 distclean: clean
@@ -240,16 +241,21 @@ do
 	echo "	mkdir -p \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES"
 	echo "	install -m 444 $i.mo \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 done
-. ./depends
+. $SRCDIR/depends
 for i in $SRCS
 do
-	echo "$i.o: Makefile src/$i.c src/stdinc.h `eval echo \\\$DEPENDS_\$i`"
-	echo "	$CC -c src/$i.c \$(CFLAGS) -o $i.o"
+	unset DEPS
+	for j in `eval echo \\\$DEPENDS_\$i`
+	do
+		DEPS=" $SRCDIR/$j"
+	done
+	echo "$i.o: Makefile $SRCDIR/src/$i.c $SRCDIR/src/stdinc.h $DEPS"
+	echo "	$CC -c $SRCDIR/src/$i.c \$(CFLAGS) -o $i.o"
 done
 for i in $CFG_TRANS
 do
-	echo "$i.mo: lang/$i.po"
-	echo "	msgfmt -o $i.mo lang/$i.po"
+	echo "$i.mo: $SRCDIR/lang/$i.po"
+	echo "	msgfmt -o $i.mo $SRCDIR/lang/$i.po"
 done) > Makefile
 
 echo
