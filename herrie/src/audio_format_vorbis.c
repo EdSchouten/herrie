@@ -60,11 +60,11 @@ vorbis_read_comments(struct audio_file *fd)
 		}
 
 		if (strcasecmp(tag, "artist") == 0)
-			fd->tag.artist = value;
+			fd->tag.artist = g_strdup(value);
 		else if (strcasecmp(tag, "title") == 0)
-			fd->tag.title = value;
+			fd->tag.title = g_strdup(value);
 		else if (strcasecmp(tag, "album") == 0)
-			fd->tag.album = value;
+			fd->tag.album = g_strdup(value);
 	}
 }
 

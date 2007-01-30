@@ -115,6 +115,10 @@ audio_file_open(struct vfsref *vr)
 		goto bad;
 	}
 
+	/* No tag - just use the display name then */
+	if (out->tag.title == NULL)
+		out->tag.title = g_strdup(vfs_name(vr));
+
 	return (out);
 
 bad:
@@ -129,6 +133,9 @@ audio_file_close(struct audio_file *fd)
 	if (fd->fp != NULL)
 		fclose(fd->fp);
 
+	g_free(fd->tag.artist);
+	g_free(fd->tag.title);
+	g_free(fd->tag.album);
 	g_slice_free(struct audio_file, fd);
 }
 
