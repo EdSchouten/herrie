@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: herrie 1.2\n"
+"Project-Id-Version: herrie 1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-22 22:22+0000\n"
-"PO-Revision-Date: 2007-01-22 22:22+0100\n"
+"POT-Creation-Date: 2007-01-30 20:52+0100\n"
+"PO-Revision-Date: 2007-01-30 20:52+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -68,39 +68,31 @@ msgstr "ja"
 msgid "no"
 msgstr "nee"
 
-#: gui_playq.c:77 gui_playq.c:88
-msgid "Unknown artist"
-msgstr "Onbekende artiest"
-
-#: gui_playq.c:79 gui_playq.c:93
-msgid "Unknown song"
-msgstr "Onbekend nummer"
-
-#: gui_playq.c:109
+#: gui_playq.c:110
 msgid "Idle"
 msgstr "Inactief"
 
-#: gui_playq.c:112
+#: gui_playq.c:113
 msgid "Paused"
 msgstr "Gepauzeerd"
 
-#: gui_playq.c:114
+#: gui_playq.c:115
 msgid "Playing"
 msgstr "Afspelen"
 
-#: gui_playq.c:344
+#: gui_playq.c:345
 msgid "Remove all songs from the playlist?"
 msgstr "Alle nummers uit de afspeellijst verwijderen?"
 
-#: gui_playq.c:355
+#: gui_playq.c:356
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:404
+#: gui_playq.c:405
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:423
+#: gui_playq.c:424
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 
@@ -211,7 +203,7 @@ msgstr "Onmogelijk om naar groep %d te veranderen\n"
 msgid "Unable to change to user %d\n"
 msgstr "Onmogelijk om naar gebruiker %d te veranderen\n"
 
-#: vfs_http.c:141
+#: vfs_http.c:142
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr "Verbinding met \"%s\" verloren."
