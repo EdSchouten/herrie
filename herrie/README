@@ -84,6 +84,8 @@ configure script to change certain parameters:
 - oss           Use Open Sound System output
 - sdl           Use LibSDL audio output
 
+- xcurses       Build application against XCurses (PDCurses)
+
 There are also some environment variables which also have influence on
 the generated Makefile:
 

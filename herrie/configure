@@ -39,6 +39,8 @@ CFG_SCROBBLER=yes
 CFG_SNDFILE=yes
 CFG_TRANS=nl
 CFG_VORBIS=yes
+CFG_CURSES_HEADER=ncurses
+CFG_CURSES_LIB=ncurses
 unset MANDIR
 
 # Operating system defaults
@@ -115,6 +117,11 @@ do
 	ao|oss|sdl)
 		CFG_AO=$1
 		;;
+	
+	xcurses)
+		CFG_CURSES_HEADER=xcurses
+		CFG_CURSES_LIB=XCurses
+		;;
 
 	*)
 		echo "Error: unknown option: $1"
@@ -129,9 +136,10 @@ CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -Wall -Wsign-compare -Werror -Wmissing-prototypes \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -I$PREFIX/include \
+    -DCURSES_HEADER=\"<$CFG_CURSES_HEADER.h>\" \
     -include $SRCDIR/src/stdinc.h"
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
-    -L$PREFIX/lib -lcurses"
+    -L$PREFIX/lib -l$CFG_CURSES_LIB"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
     gui_input gui_msgbar gui_playq gui_vfslist main playq vfs \
     vfs_playlist vfs_regular"
@@ -213,6 +221,7 @@ echo "Configuration:"
 echo "- Installing $APP_NAME in $BINDIR"
 echo "- Installing manual page in $MANDIR"
 [ "$CFG_TRANS" != "" ] && echo "- Installing translations in $TRANSDIR"
+echo "- Using -l$CFG_CURSES_LIB and <$CFG_CURSES_HEADER.h>"
 echo "- Using $CFG_AO audio output"
 [ "$CFG_HTTP" != "" ] && echo "- Support for HTTP streams"
 [ "$CFG_MP3" != "" ] && echo "- Support for MP3"

@@ -30,11 +30,7 @@
 #ifndef _GUI_INTERNAL_H_
 #define _GUI_INTERNAL_H_
 
-#ifdef BUILD_XCURSES
-#include <xcurses.h>
-#else /* !BUILD_XCURSES */
-#include <curses.h>
-#endif /* BUILD_XCURSES */
+#include CURSES_HEADER
 
 #include "gui.h"
 
