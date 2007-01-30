@@ -247,7 +247,7 @@ do
 	unset DEPS
 	for j in `eval echo \\\$DEPENDS_\$i`
 	do
-		DEPS=" $SRCDIR/$j"
+		DEPS=" $SRCDIR/src/$j"
 	done
 	echo "$i.o: Makefile $SRCDIR/src/$i.c $SRCDIR/src/stdinc.h $DEPS"
 	echo "	$CC -c $SRCDIR/src/$i.c \$(CFLAGS) -o $i.o"
