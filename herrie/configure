@@ -55,6 +55,7 @@ Darwin)
 	;;
 FreeBSD)
 	CFG_AO=oss
+	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	MANDIR=$PREFIX/man
 	;;
 Linux)
@@ -69,6 +70,7 @@ NetBSD)
 OpenBSD)
 	CFG_AO=oss
 	CFLAGS="$CFLAGS -DBUILD_GUI_SIGWINCH_WRAPPER"
+	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	MANDIR=$PREFIX/man
 	;;
 SunOS)
@@ -82,7 +84,6 @@ SunOS)
 	exit 1
 esac
 SRCDIR=`dirname $0`
-[ "$PREFIX" = "" ] && PREFIX=/usr/local
 BINDIR=$PREFIX/bin
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
