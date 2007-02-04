@@ -13,10 +13,14 @@ Scrobbler:
 Audio abstraction:
 - Add support for volume control
 - Fully implement more audio file formats
+  - Apple Lossless
 - Web streaming
 - CD playback
   - CDDB
 - 5.1 support?
+
+Virtual filesystem:
+- Add some kind of 'recursive' VFS: playlists on HTTP
 
 Documentation:
 - Usage guide
