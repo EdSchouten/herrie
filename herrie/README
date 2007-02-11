@@ -33,12 +33,13 @@ What kind of platforms will it run on?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Herrie should compile without a flaw on the following operating systems:
 
-- FreeBSD - 4.x and higher
-- Linux - 2.2.x and higher
-- Mac OS X - using MacPorts
-- NetBSD - only tested on 3.x
-- OpenBSD
 - Cygwin
+- FreeBSD
+- Linux
+- Mac OS X (Darwin)
+- NetBSD
+- OpenBSD
+- Solaris
 
 The application has been tested on little and big endian platforms, so
 the chances are high it should just work on your obscure hardware as
@@ -63,9 +64,9 @@ Herrie:
 - ncurses or pdcurses (`XCurses')
 - openssl
 
-Please note that some dependencies can be disabled. OpenSSL and cURL are
-only needed when compiling with AudioScrobbler support. LibAO is only
-needed when compiled with LibAO audio output support.
+Please note that some dependencies can be disabled. OpenSSL and cURL are only
+needed when compiling with AudioScrobbler or HTTP support. LibAO and SDL are
+only needed when building the `ao' or `sdl' audio output driver.
 
 How do I compile and install Herrie?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
