@@ -39,7 +39,6 @@ CFG_TRANS=nl
 CFG_VORBIS=yes
 CFG_CURSES_HEADER=ncurses
 CFG_CURSES_LIB=ncurses
-unset MANDIR
 
 # Operating system defaults
 OS=`uname`
@@ -56,7 +55,7 @@ Darwin)
 FreeBSD)
 	CFG_AO=oss
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
-	MANDIR=$PREFIX/man
+	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
 	;;
 Linux)
 	CFG_AO=oss
@@ -71,7 +70,7 @@ OpenBSD)
 	CFG_AO=oss
 	CFG_SIGWINCH=yes
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
-	MANDIR=$PREFIX/man
+	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
 	;;
 SunOS)
 	unset CFG_HTTP
@@ -80,8 +79,8 @@ SunOS)
 	CFLAGS="$CFLAGS -I$PREFIX/include/ncurses"
 	;;
 *)
-	echo "Error: Unknown operating system."
-	exit 1
+	echo "Warning: unknown operating system"
+	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 esac
 SRCDIR=`dirname $0`
 BINDIR=$PREFIX/bin
