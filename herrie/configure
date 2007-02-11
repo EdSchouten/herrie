@@ -86,7 +86,7 @@ SRCDIR=`dirname $0`
 BINDIR=$PREFIX/bin
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
-[ "$CC" = "" ] && CC=cc
+[ "$CC" = "" ] && CC=gcc
 
 # Command line options
 while [ $# -gt 0 ]
