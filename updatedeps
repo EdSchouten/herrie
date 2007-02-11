@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd herrie/src
-fastdep *.c | perl -pe 's/^\t//; s/\\\n//;' | perl -pe 's/^(.*?)\.o: .*?\.c /DEPENDS_$1="/; s/$/"/' > ../depends

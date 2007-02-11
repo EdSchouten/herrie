@@ -22,4 +22,4 @@ ls -l $TARBALL
 md5 $TARBALL
 sha256 $TARBALL
 
-echo "don't forget to run ./updatedeps!"
+echo "don't forget to run ./updatestuff!"
