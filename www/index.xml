@@ -28,20 +28,20 @@
 
 	<h3>Source tarballs</h3>
 
-	<p>Herrie 1.3 is available for download at one of the three
+	<p>Herrie 1.4 is available for download at one of the three
 	following locations:</p>
 
 	<ul>
-		<li><a href="distfiles/herrie-1.3.tar.gz">g-rave.nl</a></li>
-		<li><a href="http://www.il.fontys.nl/~ed/projects/herrie/distfiles/herrie-1.3.tar.gz">Dispuut Interlink</a></li>
-		<li><a href="http://www.stack.nl/~ed/projects/herrie/distfiles/herrie-1.3.tar.gz">MCGV Stack</a></li>
+		<li><a href="distfiles/herrie-1.4.tar.gz">g-rave.nl</a></li>
+		<li><a href="http://www.il.fontys.nl/~ed/projects/herrie/distfiles/herrie-1.4.tar.gz">Dispuut Interlink</a></li>
+		<li><a href="http://www.stack.nl/~ed/projects/herrie/distfiles/herrie-1.4.tar.gz">MCGV Stack</a></li>
 	</ul>
 
 	<p>Below are the checksums for the tarball:</p>
 
-	<pre>MD5 (herrie-1.3.tar.gz) = 39402125831e5ffbad29d90790048bad
-SHA256 (herrie-1.3.tar.gz) = 90ef7bdc5bdea84c869c5434c6908cfe90f0d4d90a4b4a409df570160b9156f7
-SIZE (herrie-1.3.tar.gz) = 46752</pre>
+	<pre>MD5 (herrie-1.4.tar.gz) = 1ef247bfb75fdac7844773e4a3f72650
+SHA256 (herrie-1.4.tar.gz) = 08b62c954102bea5cafa649e1e0cae212a556d4d3cc1b0d30f7fc6e242c54f4f
+SIZE (herrie-1.4.tar.gz) = 47302</pre>
 
 	<h3>Package managers</h3>
 
