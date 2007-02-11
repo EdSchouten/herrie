@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+cd herrie/src
+
+# Update depends file
+fastdep *.c | perl -pe 's/^\t//; s/\\\n//;' | perl -pe 's/^(.*?)\.o: .*?\.c /DEPENDS_$1="/; s/$/"/' > ../depends
+
+# Update translations
+xgettext -k_ *.c
+for i in nl
+do
+	msgmerge ../lang/$i.po messages.po > tmp.po
+	mv tmp.po ../lang/$i.po
+done
+
+rm messages.po
