@@ -59,7 +59,6 @@ FreeBSD)
 	;;
 Linux)
 	CFG_AO=oss
-	CFLAGS="$CFLAGS -D_GNU_SOURCE"
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 NetBSD)

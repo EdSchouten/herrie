@@ -24,6 +24,9 @@
  * SUCH DAMAGE.
  */
 
+/* Linux needs this */
+#define _GNU_SOURCE
+
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <sys/types.h>
