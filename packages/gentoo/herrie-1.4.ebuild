@@ -16,12 +16,14 @@ DEPEND="sys-libs/ncurses
 		vorbis? ( media-libs/libvorbis )"
 
 src_compile() {
-	use ao && MAKEOPTS="${MAKEOPTS} AUDIO_OUTPUT=ao"
-	use mad || MAKEOPTS="${MAKEOPTS} NO_MP3=YES"
-	use scrobbler || MAKEOPTS="${MAKEOPTS} NO_SCROBBLER=YES"
-	use sndfile || MAKEOPTS="${MAKEOPTS} NO_SNDFILE=YES"
-	use vorbis || MAKEOPTS="${MAKEOPTS} NO_VORBIS=YES"
-	emake ${MAKEOPTS}
+	use ao && EXTRA_CONF="${EXTRA_CONF} ao"
+	use mad || EXTRA_CONF="${EXTRA_CONF} no_mp3"
+	use scrobbler || EXTRA_CONF="${EXTRA_CONF} no_scrobbler"
+	use sndfile || EXTRA_CONF="${EXTRA_CONF} no_sndfile"
+	use vorbis || EXTRA_CONF="${EXTRA_CONF} no_vorbis"
+	
+	./configure ${EXTRA_CONF} || die "configure failed"
+	emake || die "make failed"
 }
 
 src_install() {
