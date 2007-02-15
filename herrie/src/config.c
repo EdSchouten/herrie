@@ -63,7 +63,7 @@ valid_bool(char *val)
 static int
 valid_color(char *val)
 {
-	return ((gui_draw_color_number(val) == -1) ? -1 : 0);
+	return (gui_draw_color_number(val) < -1);
 }
 
 /**
@@ -280,6 +280,6 @@ config_getopt_color(const char *val)
 	int col;
 	
 	col = gui_draw_color_number(config_getopt(val));
-	g_assert(col >= 0);
+	g_assert(col >= -1);
 	return (col);
 }

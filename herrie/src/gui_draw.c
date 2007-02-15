@@ -61,6 +61,9 @@ gui_draw_init_post(void)
 
 	if (gui_draw_colors) {
 		start_color();
+#ifdef NCURSES_VERSION
+		use_default_colors();
+#endif /* NCURSES_VERSION */
 
 		init_pair(GUI_COLOR_BAR,
 		    config_getopt_color("gui.color.bar.fg"),
@@ -131,8 +134,12 @@ gui_draw_color_number(const char *name)
 		return (COLOR_CYAN);
 	else if (strcmp(name, "white") == 0)
 		return (COLOR_WHITE);
+#ifdef NCURSES_VERSION
+	else if (strcmp(name, "default") == 0)
+		return (-1);
+#endif /* NCURSES_VERSION */
 	
-	return (-1);
+	return (-2);
 }
 
 void
