@@ -117,6 +117,23 @@ gui_playq_statbar_status(struct audio_file *fd, int paused)
 }
 
 /**
+ * @brief Append a formatted string representation of a timestamp to a
+ *        string.
+ */
+static void
+gui_playq_statbar_time_calc(GString *str, unsigned int time)
+{
+	if (time < 3600)
+		/* Only show minutes and seconds */
+		g_string_append_printf(str, "%u:%02u",
+		    time / 60, time % 60);
+	else
+		/* Show hours as well */
+		g_string_append_printf(str, "%u:%02u:%02u",
+		    time / 3600, (time / 60) % 60, time % 60);
+}
+
+/**
  * @brief Fills the str_time with the time value of the audio file.
  *        audio file. It also checks if the times are the same as
  *        before, useful to discard useless refreshes.
@@ -127,20 +144,13 @@ gui_playq_statbar_time(struct audio_file *fd)
 	if (fd == NULL) {
 		g_string_assign(str_time, "");
 	} else {
-		if (fd->time_len < 3600 && fd->time_cur < 3600) {
-			/* Only show minutes and seconds */
-			g_string_printf(str_time,
-			    " [%u:%02u/%u:%02u]",
-			    fd->time_cur / 60, fd->time_cur % 60,
-			    fd->time_len / 60, fd->time_len % 60);
-		} else {
-			/* Show hours as well */
-			g_string_printf(str_time,
-			    " [%u:%02u:%02u/%u:%02u:%02u]",
-			    fd->time_cur / 3600, (fd->time_cur / 60) % 60,
-			    fd->time_cur % 60, fd->time_len / 3600,
-			    (fd->time_len / 60) % 60, fd->time_len % 60);
+		g_string_assign(str_time, " [");
+		gui_playq_statbar_time_calc(str_time, fd->time_cur);
+		if (fd->time_len != 0) {
+			g_string_append_c(str_time, '/');
+			gui_playq_statbar_time_calc(str_time, fd->time_len);
 		}
+		g_string_append_c(str_time, ']');
 	}
 }
 
