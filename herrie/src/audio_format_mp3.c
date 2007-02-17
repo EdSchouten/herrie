@@ -416,7 +416,7 @@ mp3_seek(struct audio_file *fd, int len, int rel)
 	}
 
 	/* Calculate the new relative position */
-	len = CLAMP(len, 0, fd->time_len);
+	len = CLAMP(len, 0, (int)fd->time_len);
 	newpos = ((double)len / fd->time_len) * data->flen;
 	
 	/* Seek to the new position */
