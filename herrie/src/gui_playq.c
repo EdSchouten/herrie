@@ -167,7 +167,7 @@ static void
 gui_playq_statbar_refresh(void)
 {
 	const char *percent;
-	int slen, plen;
+	int plen;
 
 	GUI_LOCK;
 	/* Blank it */
@@ -175,10 +175,8 @@ gui_playq_statbar_refresh(void)
 
 	/* Put the content back */
 	mvwaddstr(win_statbar, 0, 1, str_status);
-	slen = strlen(str_status);
-	mvwaddch(win_statbar, 0, slen + 2, '|');
-	
-	mvwaddstr(win_statbar, 0, slen + 4, str_song->str);
+	waddstr(win_statbar, " | ");
+	waddstr(win_statbar, str_song->str);
 
 	percent = gui_vfslist_getpercentage(win_playq);
 	plen = strlen(percent);
