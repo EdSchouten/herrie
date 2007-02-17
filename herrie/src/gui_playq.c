@@ -228,7 +228,7 @@ gui_playq_song_update(struct audio_file *fd, int paused, int timeonly)
 
 #if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
 	/* Print same message in ps(1) */
-	setproctitle("%s%s%s", str_status, str_song->str, str_time->str);
+	setproctitle("%s %s%s", str_status, str_song->str, str_time->str);
 #endif /* __FreeBSD__ || __NetBSD__ || __OpenBSD__ */
 	
 	gui_playq_statbar_refresh();
