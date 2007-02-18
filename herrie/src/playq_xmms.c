@@ -41,14 +41,13 @@ playq_xmms_givenext(void)
 		/* Next track after current one */
 		vfs_unmark(cursong);
 		cursong = vfs_list_next(cursong);
-	} else if (nextsong != NULL) {
+	} else {
 		/* Stored position */
 		cursong = nextsong;
-	} else {
-		return (NULL);
 	}
 
-	g_assert(cursong != NULL);
+	if (cursong == NULL)
+		return (NULL);
 	nextsong = vfs_list_next(cursong);
 
 	vfs_mark(cursong);

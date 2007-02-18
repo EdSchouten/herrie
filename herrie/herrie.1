@@ -84,11 +84,6 @@ by default.
 On startup, the current directory is shown in the file browser. When
 this option is set, it tries to open that specific directory first.
 .TP
-.B gui.color.enabled=yes
-Draw the application using colors when the terminal supports it. When
-disabled, the application is forced to draw itself as if it were used
-with a monochrome terminal.
-.TP
 .B gui.color.bar.bg=blue
 The background color of the bars (the status bar at the top of the
 screen and the directory name bar in the middle). Valid colors are
@@ -113,11 +108,33 @@ selected, for example).
 .B gui.color.deselect.fg=black
 The foreground color of a selected item of an inactive window.
 .TP
+.B gui.color.enabled=yes
+Draw the application using colors when the terminal supports it. When
+disabled, the application is forced to draw itself as if it were used
+with a monochrome terminal.
+.TP
+.B gui.color.marked.fg=black
+The foreground color of the item that is currenty played. It is only
+used when
+.B playq.xmms
+is enabled.
+.TP
+.B gui.color.marked.bg=red
+The background color of the item that is currenty played. It is only
+used when
+.B playq.xmms
+is enabled.
+.TP
 .B gui.color.select.bg=cyan
 The background color of a selected item of an active window.
 .TP
 .B gui.color.select.fg=black
 The foreground color of a selected item of an active window.
+.TP
+.B playq.xmms=no
+Make the playlist at the top of the screen XMMS-like. Songs aren't
+started automatically until they are manually selected. Tracks aren't
+removed from the playlist.
 .TP
 .B scrobbler.hostname=post.audioscrobbler.com
 The hostname the AudioScrobbler client uses when authenticating.
@@ -189,6 +206,14 @@ Remove all songs from the playlist.
 .TP
 .B R
 Randomize the playlist.
+.TP
+.B S
+Start the selected song for playback. This button only works when
+.B playq.xmms=yes
+is specified in the configuration file. When this option is not enabled,
+it has the same functionality as the
+.B s
+button.
 .TP
 .B [
 Move the currently selected song upward.
