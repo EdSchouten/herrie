@@ -79,7 +79,7 @@ version(void)
 static void
 usage(void)
 {
-	g_printerr("%s: " APP_NAME " [-vp] [-c configfile] "
+	g_printerr("%s: " APP_NAME " [-pv] [-c configfile] "
 	    "[file ...]\n", _("usage"));
 	exit(1);
 }
@@ -104,7 +104,7 @@ main(int argc, char *argv[])
 	textdomain(APP_NAME);
 #endif /* BUILD_TRANS */
 
-	while ((ch = getopt(argc, argv, "cpv:")) != -1) {
+	while ((ch = getopt(argc, argv, "c:pv")) != -1) {
 		switch (ch) {
 		case 'c':
 			configfile = optarg;
