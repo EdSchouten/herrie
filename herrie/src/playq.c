@@ -33,15 +33,39 @@
 #include "gui.h"
 #include "playq_modules.h"
 
+/**
+ * @brief Routines that should be used to control the playlist.
+ */
 struct playq_funcs {
+	/**
+	 * @brief Give a song that should be played.
+	 */
 	struct vfsref *(*give)(void);
+	/**
+	 * @brief Report that playback thread is going idle.
+	 */
 	void (*idle)(void);
+	/**
+	 * @brief Select a specific song for playback.
+	 */
 	void (*select)(struct vfsref *vr);
+	/**
+	 * @brief Specify that the next song should be played.
+	 */
 	int (*next)(void);
+	/**
+	 * @brief Specify that the previous song should be played.
+	 */
 	int (*prev)(void);
+	/**
+	 * @brief Notify that a song is about to be removed.
+	 */
 	void (*notify_pre_removal)(struct vfsref *vr);
 };
 
+/**
+ * @brief Traditional Herrie-style playlist handling.
+ */
 static struct playq_funcs herrie_funcs = {
 	playq_herrie_give,
 	playq_herrie_idle,
@@ -50,6 +74,9 @@ static struct playq_funcs herrie_funcs = {
 	playq_herrie_prev,
 	playq_herrie_notify_pre_removal,
 };
+/**
+ * @brief XMMS-style playlist handling.
+ */
 static struct playq_funcs xmms_funcs = {
 	playq_xmms_give,
 	playq_xmms_idle,
@@ -58,6 +85,9 @@ static struct playq_funcs xmms_funcs = {
 	playq_xmms_prev,
 	playq_xmms_notify_pre_removal,
 };
+/**
+ * @brief Currenty used playlist handling routines.
+ */
 static struct playq_funcs *funcs = &herrie_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
