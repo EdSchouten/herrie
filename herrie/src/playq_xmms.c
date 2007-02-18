@@ -30,19 +30,26 @@
 #include "gui.h"
 #include "playq_modules.h"
 
-static struct vfsref *cursong = NULL, *nextsong = NULL;
+static struct vfsref *cursong = NULL, *nextsong = NULL, *selectsong = NULL;
 
 struct vfsref *
 playq_xmms_givenext(void)
 {
 	struct vfsref *vr = NULL;
 
-	if (cursong != NULL) {
-		/* Next track after current one */
+	if (cursong != NULL)
+		/* Unmark it */
 		vfs_unmark(cursong);
+
+	if (selectsong != NULL) {
+		/* Selected song has the highest priority */
+		cursong = selectsong;
+		selectsong = NULL;
+	} else if (cursong != NULL) {
+		/* Song after current song */
 		cursong = vfs_list_next(cursong);
 	} else {
-		/* Stored position */
+		/* Backup stored position */
 		cursong = nextsong;
 	}
 
@@ -62,7 +69,7 @@ playq_xmms_givenext(void)
 void
 playq_xmms_select(struct vfsref *vr)
 {
-	nextsong = vr;
+	selectsong = vr;
 }
 
 void
@@ -73,4 +80,6 @@ playq_xmms_notify_pre_removal(struct vfsref *vr)
 		cursong = NULL;
 	if (nextsong == vr)
 		nextsong = vfs_list_next(nextsong);
+	
+	g_assert(selectsong != vr);
 }
