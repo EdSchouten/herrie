@@ -37,18 +37,22 @@ playq_xmms_givenext(void)
 {
 	struct vfsref *vr = NULL;
 
-	if (cursong != NULL)
-		vfs_unmark(cursong);
-
-	/* Move on to the next track */
-	cursong = nextsong;
-	if (cursong != NULL)
-		nextsong = vfs_list_next(cursong);
-
 	if (cursong != NULL) {
-		vfs_mark(cursong);
-		vr = vfs_dup(cursong);
+		/* Next track after current one */
+		vfs_unmark(cursong);
+		cursong = vfs_list_next(cursong);
+	} else if (nextsong != NULL) {
+		/* Stored position */
+		cursong = nextsong;
+	} else {
+		return (NULL);
 	}
+
+	g_assert(cursong != NULL);
+	nextsong = vfs_list_next(cursong);
+
+	vfs_mark(cursong);
+	vr = vfs_dup(cursong);
 
 	/* Update markers */
 	gui_playq_notify_done();
