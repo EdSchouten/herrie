@@ -253,6 +253,7 @@ vfs_dup(struct vfsref *vr)
 
 	vr = g_slice_new(struct vfsref);
 	vr->ent = ve;
+	vr->marked = 0;
 
 	return (vr);
 }
