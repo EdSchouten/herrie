@@ -81,9 +81,12 @@ void
 playq_xmms_idle(void)
 {
 	if (cursong != NULL) {
+		/* Remove left-over marking */
 		vfs_unmark(cursong);
 		gui_playq_notify_done();
 	}
+	/* Make sure we can't start again */
+	cursong = nextsong = selectsong = NULL;
 }
 
 void
