@@ -313,7 +313,7 @@ vfs_write_playlist(struct vfslist *vl, struct vfsref *vr,
     const char *filename)
 {
 	const char *base;
-	char *fn;
+	char *fn, *nfn;
 	FILE *fio;
 	struct vfsref *cvr, *rvr = NULL;
 	unsigned int idx = 1;
@@ -323,7 +323,12 @@ vfs_write_playlist(struct vfslist *vl, struct vfsref *vr,
 	fn = vfs_path_concat(base, filename);
 	if (fn == NULL)
 		return (NULL);
-	/* XXX: check for .pls extension */
+	if (!g_str_has_suffix(fn, ".pls")) {
+		/* Append .pls extension */
+		nfn = g_strdup_printf("%s.pls", fn);
+		g_free(nfn);
+		fn = nfn;
+	}
 	fio = fopen(fn, "w");
 	if (fio == NULL)
 		goto done;

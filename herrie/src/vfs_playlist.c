@@ -30,22 +30,6 @@
 #include "vfs_modules.h"
 
 /**
- * @brief Check if the extension of the given filename matches.
- */
-static int
-vfs_playlist_check_ext(char *name, char *ext)
-{
-	size_t fnlen, extlen;
-
-	fnlen = strlen(name);
-	extlen = strlen(ext);
-	if (fnlen < extlen)
-		return (-1);
-	
-	return strcasecmp(ext, &name[fnlen - extlen]);
-}
-
-/**
  * @brief Open a VFS entry by relative Win32 pathname and add it to the
  *        tail of the current entry.
  */
@@ -76,7 +60,7 @@ int
 vfs_pls_open(struct vfsent *ve, int isdir)
 {
 	/* In order to speed up the process, we only match *.pls */
-	if (isdir || vfs_playlist_check_ext(ve->name, ".pls") != 0)
+	if (isdir || !g_str_has_suffix(ve->name, ".pls"))
 		return (-1);
 
 	return (0);
@@ -163,7 +147,7 @@ int
 vfs_m3u_open(struct vfsent *ve, int isdir)
 {
 	/* In order to speed up the process, we only match *.m3u */
-	if (isdir || vfs_playlist_check_ext(ve->name, ".m3u") != 0)
+	if (isdir || !g_str_has_suffix(ve->name, ".m3u"))
 		return (-1);
 
 	return (0);
