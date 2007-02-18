@@ -35,10 +35,6 @@
  */
 static struct vfsref *cursong = NULL;
 /**
- * @brief Song that should be played next.
- */
-static struct vfsref *nextsong = NULL;
-/**
  * @brief Used-specified song that should be played next.
  */
 static struct vfsref *selectsong = NULL;
@@ -59,14 +55,9 @@ playq_xmms_give(void)
 	} else if (cursong != NULL) {
 		/* Song after current song */
 		cursong = vfs_list_next(cursong);
-	} else {
-		/* Backup stored position */
-		cursong = nextsong;
 	}
 
 	if (cursong != NULL) {
-		nextsong = vfs_list_next(cursong);
-
 		vfs_mark(cursong);
 		vr = vfs_dup(cursong);
 	}
@@ -86,7 +77,7 @@ playq_xmms_idle(void)
 		gui_playq_notify_done();
 	}
 	/* Make sure we can't start again */
-	cursong = nextsong = selectsong = NULL;
+	cursong = selectsong = NULL;
 }
 
 void
@@ -100,8 +91,6 @@ playq_xmms_next(void)
 {
 	if (cursong != NULL)
 		selectsong = vfs_list_next(cursong);
-	else if (nextsong != NULL)
-		selectsong = nextsong;
 
 	return (selectsong == NULL);
 }
@@ -109,23 +98,11 @@ playq_xmms_next(void)
 int
 playq_xmms_prev(void)
 {
-	struct vfsref *vr;
-
 	if (cursong != NULL)
 		/* Before current song */
-		vr = cursong;
-	else if (nextsong != NULL)
-		/* Current song got deleted - before next song */
-		vr = nextsong;
-	else
-		return (-1);
+		selectsong = vfs_list_prev(cursong);
 
-	/* Go one item back */
-	selectsong = vfs_list_prev(vr);
-	if (selectsong == NULL)
-		return (-1);
-
-	return (0);
+	return (selectsong == NULL);
 }
 
 void
@@ -134,8 +111,6 @@ playq_xmms_notify_pre_removal(struct vfsref *vr)
 	/* Remove dangling pointers */
 	if (cursong == vr)
 		cursong = NULL;
-	if (nextsong == vr)
-		nextsong = vfs_list_next(nextsong);
 	
 	g_assert(selectsong != vr);
 }
