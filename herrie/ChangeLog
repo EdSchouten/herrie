@@ -1,5 +1,6 @@
 Herrie 1.4 -> 1.5:
 - Add support for the color 'default', which is the terminal default
+- Add Turkish translation - thanks to Eren Turkay
 
 Herrie 1.3 -> 1.4:
 - Add 'configure' script which creates a really compatible Makefile
