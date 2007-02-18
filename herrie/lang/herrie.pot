@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 17:15+0100\n"
+"POT-Creation-Date: 2007-02-18 20:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,6 +49,14 @@ msgstr ""
 msgid "Unable to display the file or directory."
 msgstr ""
 
+#: gui_browser.c:368
+msgid "Write playlist to file"
+msgstr ""
+
+#: gui_browser.c:377
+msgid "Unable to write playlist."
+msgstr ""
+
 #: gui_input.c:108
 msgid "Search for"
 msgstr ""
@@ -66,11 +74,11 @@ msgstr ""
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:395 main.c:61 main.c:67
+#: gui_input.c:396 main.c:61 main.c:67
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:395 main.c:63 main.c:69
+#: gui_input.c:396 main.c:63 main.c:69
 msgid "no"
 msgstr ""
 
