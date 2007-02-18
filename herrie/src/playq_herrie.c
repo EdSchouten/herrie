@@ -27,6 +27,7 @@
  * @file playq_herrie.c
  */
 
+#include "gui.h"
 #include "playq_modules.h"
 
 struct vfsref *
@@ -41,7 +42,16 @@ playq_herrie_give(void)
 
 	/* Remove it from the list */
 	nvr = vfs_dup(vr);
-	playq_song_fast_remove(vr, 1);
+	gui_playq_notify_pre_removal(1);
+	vfs_list_remove(&playq_list, vr);
+	if (playq_repeat) {
+		/* Add it back to the tail */
+		vfs_list_insert_tail(&playq_list, vr);
+		gui_playq_notify_post_insertion(vfs_list_items(&playq_list));
+		gui_playq_notify_done();
+	} else {
+		vfs_close(vr);
+	}
 
 	return (nvr);
 }
