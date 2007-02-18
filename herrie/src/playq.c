@@ -281,7 +281,7 @@ playq_cursong_seek(int len, int rel)
 }
 
 void
-playq_cursong_skip(void)
+playq_cursong_next(void)
 {
 	PLAYQ_LOCK;
 	/* Unpause as well */

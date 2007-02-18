@@ -243,11 +243,12 @@ static struct gui_binding kbdbindings[] = {
 	/* Application-wide keyboard bindings */
 	{ -1, '<',			gui_input_cursong_seek_backward, },
 	{ -1, '>',			gui_input_cursong_seek_forward, },
+	{ -1, 'b',			playq_cursong_next },
+	{ -1, 'c',			playq_cursong_pause, },
 	{ -1, 'J',			gui_input_cursong_seek_jump, }, /* ^J */
-	{ -1, 'p',			playq_cursong_pause, },
 	{ -1, 'q',			NULL }, /* Quit the application */
 	{ -1, 'r',			playq_repeat_toggle },
-	{ -1, 's',			playq_cursong_skip },
+	{ -1, 'x',			gui_playq_song_select },
 	{ -1, '\t', 			gui_input_switchfocus },
 	{ -1, 0x17, 			gui_input_switchfocus }, /* ^W */
 	{ -1, '/',			gui_input_search },
@@ -256,7 +257,7 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_BROWSER, ' ',	gui_browser_cursor_pagedown },
 	{ GUI_FOCUS_BROWSER, 'a',	gui_browser_playq_add_after },
 	{ GUI_FOCUS_BROWSER, 'A',	gui_browser_playq_add_tail },
-	{ GUI_FOCUS_BROWSER, 'c',	gui_browser_chdir },
+	{ GUI_FOCUS_BROWSER, 'C',	gui_browser_chdir },
 	{ GUI_FOCUS_BROWSER, 'G',	gui_browser_cursor_bottom },
 	{ GUI_FOCUS_BROWSER, 'g',	gui_browser_cursor_top },
 	{ GUI_FOCUS_BROWSER, 'h',	gui_browser_dir_parent },
@@ -287,7 +288,6 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_PLAYQ, 'k',		gui_playq_cursor_up },
 	{ GUI_FOCUS_PLAYQ, 'n',		gui_playq_searchnext },
 	{ GUI_FOCUS_PLAYQ, 'R',		gui_playq_song_randomize },
-	{ GUI_FOCUS_PLAYQ, 'S',		gui_playq_song_select },
 	{ GUI_FOCUS_PLAYQ, '[',		gui_playq_song_moveup },
 	{ GUI_FOCUS_PLAYQ, ']',		gui_playq_song_movedown },
 	{ GUI_FOCUS_PLAYQ, 0x02,	gui_playq_cursor_pageup }, /* ^B */
@@ -332,7 +332,7 @@ gui_input_sighandler(int signal)
 		playq_cursong_pause();
 		break;
 	case SIGUSR2:
-		playq_cursong_skip();
+		playq_cursong_next();
 		break;
 #ifdef BUILD_GUI_SIGWINCH_WRAPPER
 	case SIGWINCH:
@@ -376,6 +376,7 @@ gui_input_loop(void)
 					return;
 			} else {
 				kbdbindings[i].func();
+				break;
 			}
 		}
 
