@@ -36,15 +36,20 @@ herrie \- interactive music playlist player
 .B herrie
 is a command line music player. It supports multiple audio file formats
 (including MP3 and Ogg Vorbis) and has the ability to send playback
-statistics to AudioScrobbler.
+statistics to AudioScrobbler. The word `herrie' is Dutch for `clamor'.
 .PP
 .B herrie
-uses the concept of a playlist to batch music for playback. The playlist
-is shown at the top of the screen. Once tracks get added to the
-playlist, the application consumes the tracks one by one from the top of
-the playlist. Playback suspends when the playlist gets empty. Tracks can
-be added to the playlist by browsing through the file browser, which
-resides at the bottom of the screen.
+uses a split-screen user interface: a playlist at the top and a
+filebrowser at the bottom. Though the user has been quite consistent
+over time, the behaviour of the playlist has changed a lot. Before
+version 1.5, the playlist was a list of batched songs. Songs got
+automatically opened and removed when they got added to the top of the
+list. This behaviour is refered to as `party mode'.
+.PP
+Recent versions of
+.B herrie
+use an XMMS-like playlist. After adding songs to the playlist, any song
+can be started, without moving it to the top of the playlist.
 .PP
 The following command line options are available:
 .TP
@@ -65,7 +70,8 @@ This switch causes
 to start up in party mode.
 .B herrie
 will only start playing the first song in the playlist. Songs are
-automatically deleted. This behaviour matches the functionality of
+automatically deleted. This behaviour roughly matches the functionality
+of
 .B herrie
 before version 1.5.
 .TP
