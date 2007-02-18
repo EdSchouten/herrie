@@ -15,4 +15,4 @@ do
 	mv tmp.po ../lang/$i.po
 done
 
-rm messages.po
+mv messages.po ../herrie.pot

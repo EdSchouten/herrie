@@ -1,0 +1,215 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-02-18 11:14+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: audio_output_ao.c:88 audio_output_sdl.c:111
+msgid "Cannot open the audio device."
+msgstr ""
+
+#: audio_output_oss.c:61
+#, c-format
+msgid "Cannot open audio device \"%s\".\n"
+msgstr ""
+
+#: audio_output_sdl.c:79
+msgid "Cannot intialize SDL audio subsystem.\n"
+msgstr ""
+
+#: gui_browser.c:112
+msgid "Unable to open initial directory."
+msgstr ""
+
+#: gui_browser.c:217
+msgid "Unable to enter the parent directory."
+msgstr ""
+
+#: gui_browser.c:232
+msgid "Unable to enter the selected directory."
+msgstr ""
+
+#: gui_browser.c:313
+msgid "Change directory"
+msgstr ""
+
+#: gui_browser.c:351
+msgid "Unable to display the file or directory."
+msgstr ""
+
+#: gui_input.c:108
+msgid "Search for"
+msgstr ""
+
+#: gui_input.c:132
+#, c-format
+msgid "Quit %s?"
+msgstr ""
+
+#: gui_input.c:168
+msgid "Jump to position"
+msgstr ""
+
+#: gui_input.c:217
+msgid "Bad time format."
+msgstr ""
+
+#: gui_input.c:391 main.c:61 main.c:67
+msgid "yes"
+msgstr ""
+
+#: gui_input.c:391 main.c:63 main.c:69
+msgid "no"
+msgstr ""
+
+#: gui_playq.c:110
+msgid "Idle"
+msgstr ""
+
+#: gui_playq.c:113
+msgid "Paused"
+msgstr ""
+
+#: gui_playq.c:115
+msgid "Playing"
+msgstr ""
+
+#: gui_playq.c:353
+msgid "Remove all songs from the playlist?"
+msgstr ""
+
+#: gui_playq.c:364
+msgid "Randomize the playlist?"
+msgstr ""
+
+#: gui_playq.c:413
+msgid "The song is already at the top of the playlist."
+msgstr ""
+
+#: gui_playq.c:432
+msgid "The song is already at the bottom of the playlist."
+msgstr ""
+
+#: gui_vfslist.c:225
+msgid "There are no songs."
+msgstr ""
+
+#: gui_vfslist.c:282
+msgid "You are at the first song."
+msgstr ""
+
+#: gui_vfslist.c:301
+msgid "You are at the last song."
+msgstr ""
+
+#: gui_vfslist.c:539
+msgid "No search pattern."
+msgstr ""
+
+#: gui_vfslist.c:558
+msgid "Search wrapped to top."
+msgstr ""
+
+#: gui_vfslist.c:563
+msgid "Not found."
+msgstr ""
+
+#: main.c:58
+msgid "audio output"
+msgstr ""
+
+#: main.c:59
+msgid "support for audioscrobbler"
+msgstr ""
+
+#: main.c:65
+msgid "support for http streams"
+msgstr ""
+
+#: main.c:71
+msgid "supported audio file formats"
+msgstr ""
+
+#: main.c:83
+msgid "usage"
+msgstr ""
+
+#: playq.c:121
+#, c-format
+msgid "Failed to open \"%s\" for playback."
+msgstr ""
+
+#: playq.c:297
+#, c-format
+msgid "Repeat: %s"
+msgstr ""
+
+#: playq.c:298
+msgid "on"
+msgstr ""
+
+#: playq.c:298
+msgid "off"
+msgstr ""
+
+#: scrobbler.c:295
+msgid "Successfully authorized at AudioScrobbler."
+msgstr ""
+
+#: scrobbler.c:302
+msgid "Failed to authorize at AudioScrobbler."
+msgstr ""
+
+#: scrobbler.c:318
+msgid "Successfully sent 1 song to AudioScrobbler."
+msgstr ""
+
+#: scrobbler.c:322
+#, c-format
+msgid "Successfully sent %d songs to AudioScrobbler."
+msgstr ""
+
+#: scrobbler.c:328
+msgid "Invalid AudioScrobbler username/password."
+msgstr ""
+
+#: scrobbler.c:331
+msgid "Failed to submit songs to AudioScrobbler."
+msgstr ""
+
+#: vfs.c:70
+#, c-format
+msgid "Unknown user: %s\n"
+msgstr ""
+
+#: vfs.c:82
+#, c-format
+msgid "Unable to chroot in %s\n"
+msgstr ""
+
+#: vfs.c:90
+#, c-format
+msgid "Unable to change to group %d\n"
+msgstr ""
+
+#: vfs.c:94
+#, c-format
+msgid "Unable to change to user %d\n"
+msgstr ""
+
+#: vfs_http.c:142
+#, c-format
+msgid "Connection with \"%s\" lost."
+msgstr ""
