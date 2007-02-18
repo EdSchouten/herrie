@@ -226,8 +226,10 @@ playq_init(void)
 	playq_lock = g_mutex_new();
 	playq_wakeup = g_cond_new();
 
-	if (config_getopt_bool("playq.xmms"))
+	if (config_getopt_bool("playq.xmms")) {
 		funcs = &xmms_funcs;
+		playq_repeat = 1;
+	}
 }
 
 void
