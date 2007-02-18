@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 10:31+0100\n"
-"PO-Revision-Date: 2007-02-18 10:31+0100\n"
+"POT-Creation-Date: 2007-02-18 10:50+0100\n"
+"PO-Revision-Date: 2007-02-18 10:50+0100\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,28 +45,28 @@ msgstr "Dizin değiştir"
 msgid "Unable to display the file or directory."
 msgstr "Dosya veya dizin gösterilemiyor"
 
-#: gui_input.c:108
+#: gui_input.c:109
 msgid "Search for"
 msgstr "Ara"
 
-#: gui_input.c:132
+#: gui_input.c:133
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:168
+#: gui_input.c:169
 msgid "Jump to position"
 msgstr "Spring naar positie"
 
-#: gui_input.c:217
+#: gui_input.c:218
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:391 main.c:61 main.c:67
+#: gui_input.c:392 main.c:61 main.c:67
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:391 main.c:63 main.c:69
+#: gui_input.c:392 main.c:63 main.c:69
 msgid "no"
 msgstr "hayır"
 
@@ -82,19 +82,19 @@ msgstr "Durduruldu"
 msgid "Playing"
 msgstr "Çalınıyor"
 
-#: gui_playq.c:343
+#: gui_playq.c:353
 msgid "Remove all songs from the playlist?"
 msgstr "Tüm parçaları listeden sil?"
 
-#: gui_playq.c:354
+#: gui_playq.c:364
 msgid "Randomize the playlist?"
 msgstr "Parça listesini karıştır?"
 
-#: gui_playq.c:403
+#: gui_playq.c:413
 msgid "The song is already at the top of the playlist."
 msgstr "Parça zaten parça listesinin en üstünde."
 
-#: gui_playq.c:422
+#: gui_playq.c:432
 msgid "The song is already at the bottom of the playlist."
 msgstr "Parça zaten parça listesinin en altında."
 
@@ -209,9 +209,3 @@ msgstr "%d kullanıcısına değiştirme başarısız\n"
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr "\"%s\" ile olan bağlantı kaybedildi."
-
-#~ msgid "Unknown artist"
-#~ msgstr "Bilinmeyen sanatçı"
-
-#~ msgid "Unknown song"
-#~ msgstr "Bilinmeyen parça"

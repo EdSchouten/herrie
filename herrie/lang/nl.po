@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 10:31+0100\n"
-"PO-Revision-Date: 2007-02-18 10:31+0100\n"
+"POT-Creation-Date: 2007-02-18 10:50+0100\n"
+"PO-Revision-Date: 2007-02-18 10:50+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -43,28 +43,28 @@ msgstr "Verplaats van map"
 msgid "Unable to display the file or directory."
 msgstr "Het weergeven van het bestand of de map mislukt."
 
-#: gui_input.c:108
+#: gui_input.c:109
 msgid "Search for"
 msgstr "Zoeken naar"
 
-#: gui_input.c:132
+#: gui_input.c:133
 #, c-format
 msgid "Quit %s?"
 msgstr "%s afsluiten?"
 
-#: gui_input.c:168
+#: gui_input.c:169
 msgid "Jump to position"
 msgstr "Spring naar positie"
 
-#: gui_input.c:217
+#: gui_input.c:218
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:391 main.c:61 main.c:67
+#: gui_input.c:392 main.c:61 main.c:67
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:391 main.c:63 main.c:69
+#: gui_input.c:392 main.c:63 main.c:69
 msgid "no"
 msgstr "nee"
 
@@ -80,19 +80,19 @@ msgstr "Gepauzeerd"
 msgid "Playing"
 msgstr "Afspelen"
 
-#: gui_playq.c:343
+#: gui_playq.c:353
 msgid "Remove all songs from the playlist?"
 msgstr "Alle nummers uit de afspeellijst verwijderen?"
 
-#: gui_playq.c:354
+#: gui_playq.c:364
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:403
+#: gui_playq.c:413
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:422
+#: gui_playq.c:432
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 
