@@ -30,7 +30,18 @@
 #include "gui.h"
 #include "playq_modules.h"
 
-static struct vfsref *cursong = NULL, *nextsong = NULL, *selectsong = NULL;
+/**
+ * @brief Currently played song.
+ */
+static struct vfsref *cursong = NULL;
+/**
+ * @brief Song that should be played next.
+ */
+static struct vfsref *nextsong = NULL;
+/**
+ * @brief Used-specified song that should be played next.
+ */
+static struct vfsref *selectsong = NULL;
 
 struct vfsref *
 playq_xmms_give(void)

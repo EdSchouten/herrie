@@ -272,6 +272,10 @@ struct vfsref {
 	 * @brief Pointer to the previous item in the VFS list.
 	 */
 	struct vfsref *prev;
+	/**
+	 * @brief Indicator that this reference should be drawn in a
+	 *        different color in the browser/playlist.
+	 */
 	int marked;
 };
 
@@ -346,8 +350,17 @@ void		vfs_unfold(struct vfslist *vl, struct vfsref *vr);
  * @brief Return a pointer to the VFS list inside the VFS reference.
  */
 #define vfs_population(vr)	(&(vr)->ent->population)
+/**
+ * @brief Return whether the current reference is marked.
+ */
 #define vfs_marked(vr)		((vr)->marked != 0)
+/**
+ * @brief Mark the current reference.
+ */
 #define vfs_mark(vr)		((vr)->marked = 1)
+/**
+ * @brief Unmark the current reference.
+ */
 #define vfs_unmark(vr)		((vr)->marked = 0)
 
 #endif /* !_VFS_H_ */
