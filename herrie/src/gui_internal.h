@@ -326,5 +326,9 @@ void gui_browser_chdir(void);
  * @brief Focus or unfocus the filebrowser.
  */
 void gui_browser_setfocus(int focus);
+/**
+ * @brief Write the playlist to a file.
+ */
+void gui_browser_write_playlist(void);
 
 #endif /* !_GUI_INTERNAL_H_ */

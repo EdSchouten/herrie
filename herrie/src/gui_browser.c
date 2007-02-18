@@ -358,3 +358,30 @@ gui_browser_setfocus(int focus)
 {
 	gui_vfslist_setfocus(win_browser, focus);
 }
+
+void
+gui_browser_write_playlist(void)
+{
+	char *fn;
+	struct vfsref *vr;
+
+	fn = gui_input_askstring(_("Write playlist to file"), NULL, NULL);
+	if (fn == NULL)
+		return;
+	PLAYQ_LOCK;
+	vr = vfs_write_playlist(&playq_list, vr_curdir, fn);
+	PLAYQ_UNLOCK;
+	g_free(fn);
+
+	if (vr == NULL)
+		gui_msgbar_warn(_("Unable to write playlist."));
+	vfs_populate(vr);
+
+	/* Replace old directory */
+	if (vr_curdir != NULL)
+		vfs_close(vr_curdir);
+	vr_curdir = vr;
+
+	/* Go inside the directory */
+	gui_vfslist_setlist(win_browser, vfs_population(vr));
+}

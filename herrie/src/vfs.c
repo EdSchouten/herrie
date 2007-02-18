@@ -307,3 +307,40 @@ vfs_unfold(struct vfslist *vl, struct vfsref *vr)
 		}
 	}
 }
+
+struct vfsref *
+vfs_write_playlist(struct vfslist *vl, struct vfsref *vr,
+    const char *filename)
+{
+	const char *base;
+	char *fn;
+	FILE *fio;
+	struct vfsref *cvr, *rvr = NULL;
+	unsigned int idx = 1;
+
+	if (vr != NULL)
+		base = vfs_filename(vr);
+	fn = vfs_path_concat(base, filename);
+	if (fn == NULL)
+		return (NULL);
+	/* XXX: check for .pls extension */
+	fio = fopen(fn, "w");
+	if (fio == NULL)
+		goto done;
+	
+	fprintf(fio, "[playlist]\nNumberOfEntries=%u\n",
+	    vfs_list_items(vl));
+	vfs_list_foreach(vl, cvr) {
+		/* XXX: make paths relative */
+		fprintf(fio, "File%u=%s\nTitle%u=%s\n",
+		    idx, vfs_filename(cvr),
+		    idx, vfs_name(cvr));
+		idx++;
+	}
+	fclose(fio);
+
+	rvr = vfs_open(fn, NULL, NULL);
+	g_assert(rvr != NULL);
+done:	g_free(fn);
+	return (rvr);
+}

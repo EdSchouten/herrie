@@ -314,6 +314,11 @@ int		vfs_populate(struct vfsref *vr);
  */
 void		vfs_unfold(struct vfslist *vl, struct vfsref *vr);
 /**
+ * @brief Write a VFS list to a PLS file on disk.
+ */
+struct vfsref	*vfs_write_playlist(struct vfslist *vl,
+    struct vfsref *vr, const char *filename);
+/**
  * @brief Get the friendly name of the current VFS reference.
  */
 #define vfs_name(vr) 		((const char *)(vr)->ent->name)
