@@ -248,8 +248,8 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, 'J',			gui_input_cursong_seek_jump, }, /* ^J */
 	{ -1, 'q',			NULL }, /* Quit the application */
 	{ -1, 'r',			playq_repeat_toggle },
-	{ -1, 's',			gui_browser_write_playlist },
 	{ -1, 'v',			playq_cursong_stop, },
+	{ -1, 'w',			gui_browser_write_playlist },
 	{ -1, 'x',			gui_playq_song_select },
 	{ -1, 'z',			playq_cursong_prev },
 	{ -1, '\t', 			gui_input_switchfocus },
