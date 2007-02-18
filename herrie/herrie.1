@@ -30,7 +30,7 @@ herrie \- interactive music playlist player
 
 .SH SYNOPSIS
 .B herrie
-[-v] [-c configfile] [file ...]
+[-pv] [-c configfile] [file ...]
 
 .SH DESCRIPTION
 .B herrie
@@ -48,9 +48,6 @@ resides at the bottom of the screen.
 .PP
 The following command line options are available:
 .TP
-.B -v
-Display version information and a list of supported file formats.
-.TP
 .B -c configfile
 By default,
 .B herrie
@@ -61,6 +58,19 @@ for configuration options. The
 options forces
 .B herrie
 to parse the specified file instead of the default one.
+.TP
+.B -p
+This switch causes
+.B herrie
+to start up in party mode.
+.B herrie
+will only start playing the first song in the playlist. Songs are
+automatically deleted. This behaviour matches the functionality of
+.B herrie
+before version 1.5.
+.TP
+.B -v
+Display version information and a list of supported file formats.
 
 .SH CONFIGURATION SWITCHES
 .b herrie
@@ -114,16 +124,12 @@ disabled, the application is forced to draw itself as if it were used
 with a monochrome terminal.
 .TP
 .B gui.color.marked.fg=black
-The foreground color of the item that is currenty played. It is only
-used when
-.B playq.xmms
-is enabled.
+The foreground color of the item that is currenty played. It is not
+used when in party mode.
 .TP
 .B gui.color.marked.bg=red
-The background color of the item that is currenty played. It is only
-used when
-.B playq.xmms
-is enabled.
+The background color of the item that is currenty played. It is not
+used when in party mode.
 .TP
 .B gui.color.select.bg=cyan
 The background color of a selected item of an active window.
@@ -131,10 +137,10 @@ The background color of a selected item of an active window.
 .B gui.color.select.fg=black
 The foreground color of a selected item of an active window.
 .TP
-.B playq.xmms=no
-Make the playlist at the top of the screen XMMS-like. Tracks aren't
-removed from the playlist and a random track can be started, instead of
-only the first one.
+.B playq.party=no
+Always start
+.B herrie
+in party mode.
 .TP
 .B scrobbler.hostname=post.audioscrobbler.com
 The hostname the AudioScrobbler client uses when authenticating.
@@ -276,11 +282,8 @@ causing the playlist to repeat.
 Stop playback.
 .TP
 .B x
-When
-.B playq.xmms=yes
-is specified in the configuration file, the selected song will be
-started for playback. When the option is disabled, it will start the
-first song in the playlist.
+When in party mode, it starts playback of the first song in the
+playlist. When not in party mode, it starts the selected song.
 .TP
 .B z
 Go to the previous song.
