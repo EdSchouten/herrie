@@ -373,8 +373,10 @@ gui_browser_write_playlist(void)
 	PLAYQ_UNLOCK;
 	g_free(fn);
 
-	if (vr == NULL)
+	if (vr == NULL) {
 		gui_msgbar_warn(_("Unable to write playlist."));
+		return;
+	}
 	vfs_populate(vr);
 
 	/* Replace old directory */
