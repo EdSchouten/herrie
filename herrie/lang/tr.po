@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 11:10+0100\n"
-"PO-Revision-Date: 2007-02-18 11:10+0100\n"
+"POT-Creation-Date: 2007-02-18 17:15+0100\n"
+"PO-Revision-Date: 2007-02-18 17:15+0100\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -62,11 +62,11 @@ msgstr "Konuma git"
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:391 main.c:61 main.c:67
+#: gui_input.c:395 main.c:61 main.c:67
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:391 main.c:63 main.c:69
+#: gui_input.c:395 main.c:63 main.c:69
 msgid "no"
 msgstr "hayır"
 
@@ -98,27 +98,27 @@ msgstr "Parça zaten parça listesinin en üstünde."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Parça zaten parça listesinin en altında."
 
-#: gui_vfslist.c:225
+#: gui_vfslist.c:228
 msgid "There are no songs."
 msgstr "Hiç parça yok"
 
-#: gui_vfslist.c:282
+#: gui_vfslist.c:285
 msgid "You are at the first song."
 msgstr "İlk parçadasınız."
 
-#: gui_vfslist.c:301
+#: gui_vfslist.c:304
 msgid "You are at the last song."
 msgstr "Son parçadasınız."
 
-#: gui_vfslist.c:539
+#: gui_vfslist.c:542
 msgid "No search pattern."
 msgstr "Arama kalıbı yok"
 
-#: gui_vfslist.c:558
+#: gui_vfslist.c:561
 msgid "Search wrapped to top."
 msgstr "Arama üste kaydırıldı."
 
-#: gui_vfslist.c:563
+#: gui_vfslist.c:566
 msgid "Not found."
 msgstr "Bulunamadı"
 
@@ -142,21 +142,21 @@ msgstr "desteklenen ses dosyası biçimleri"
 msgid "usage"
 msgstr "kullanım"
 
-#: playq.c:121
+#: playq.c:176
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Tekrarlamak içn \"%s\" açılamadı."
 
-#: playq.c:297
+#: playq.c:366
 #, c-format
 msgid "Repeat: %s"
 msgstr "Tekrarla: %s"
 
-#: playq.c:298
+#: playq.c:367
 msgid "on"
 msgstr "açık"
 
-#: playq.c:298
+#: playq.c:367
 msgid "off"
 msgstr "kapalı"
 
