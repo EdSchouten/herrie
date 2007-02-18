@@ -237,9 +237,8 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 
 	/* Return reference object */
 	ve->refcount = 1;
-	vr = g_slice_new(struct vfsref);
+	vr = g_slice_new0(struct vfsref);
 	vr->ent = ve;
-	vr->marked = 0;
 	return (vr);
 }
 
@@ -251,9 +250,8 @@ vfs_dup(struct vfsref *vr)
 	ve = vr->ent;
 	g_atomic_int_inc(&ve->refcount);
 
-	vr = g_slice_new(struct vfsref);
+	vr = g_slice_new0(struct vfsref);
 	vr->ent = ve;
-	vr->marked = 0;
 
 	return (vr);
 }
