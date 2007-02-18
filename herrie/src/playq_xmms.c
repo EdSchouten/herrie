@@ -42,8 +42,8 @@ playq_xmms_givenext(void)
 
 	/* Move on to the next track */
 	cursong = nextsong;
-	if (nextsong != NULL)
-		nextsong = vfs_list_next(nextsong);
+	if (cursong != NULL)
+		nextsong = vfs_list_next(cursong);
 
 	if (cursong != NULL) {
 		vfs_mark(cursong);
@@ -60,4 +60,13 @@ void
 playq_xmms_select(struct vfsref *vr)
 {
 	nextsong = vr;
+}
+
+void
+playq_xmms_notify_pre_removal(struct vfsref *vr)
+{
+	if (cursong == vr)
+		cursong = NULL;
+	if (nextsong == vr)
+		nextsong = vfs_list_next(nextsong);
 }

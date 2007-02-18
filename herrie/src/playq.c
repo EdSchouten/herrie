@@ -35,17 +35,20 @@
 struct playq_funcs {
 	struct vfsref *(*givenext)(void);
 	void (*select)(struct vfsref *vr);
+	void (*notify_pre_removal)(struct vfsref *vr);
 };
 
 #if 0
 static struct playq_funcs herrie_funcs = {
 	playq_herrie_givenext,
 	playq_herrie_select,
+	playq_herrie_notify_pre_removal,
 };
 #endif
 static struct playq_funcs xmms_funcs = {
 	playq_xmms_givenext,
 	playq_xmms_select,
+	playq_xmms_notify_pre_removal,
 };
 static struct playq_funcs *funcs = &xmms_funcs;
 
@@ -316,6 +319,7 @@ playq_repeat_toggle(void)
 void
 playq_song_fast_remove(struct vfsref *vr, unsigned int index)
 {
+	funcs->notify_pre_removal(vr);
 	gui_playq_notify_pre_removal(index);
 	vfs_list_remove(&playq_list, vr);
 	vfs_close(vr);
@@ -380,7 +384,7 @@ void
 playq_song_fast_movedown(struct vfsref *vr, unsigned int index)
 {
 	struct vfsref *nvr;
-	
+
 	/* Remove the item below */
 	nvr = vfs_list_next(vr);
 	gui_playq_notify_pre_removal(index + 1);
@@ -409,6 +413,7 @@ playq_song_remove_all(void)
 
 	PLAYQ_LOCK;
 	while ((vr = vfs_list_first(&playq_list)) != NULL) {
+		funcs->notify_pre_removal(vr);
 		gui_playq_notify_pre_removal(1);
 		vfs_list_remove(&playq_list, vr);
 		vfs_close(vr);

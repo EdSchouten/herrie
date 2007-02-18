@@ -49,5 +49,11 @@ playq_herrie_givenext(void)
 void
 playq_herrie_select(struct vfsref *vr)
 {
-	/* XXX: remove and play next? */
+	/* n/a */
+}
+
+void
+playq_herrie_notify_pre_removal(struct vfsref *vr)
+{
+	/* n/a */
 }
