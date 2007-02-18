@@ -326,7 +326,7 @@ vfs_write_playlist(struct vfslist *vl, struct vfsref *vr,
 	if (!g_str_has_suffix(fn, ".pls")) {
 		/* Append .pls extension */
 		nfn = g_strdup_printf("%s.pls", fn);
-		g_free(nfn);
+		g_free(fn);
 		fn = nfn;
 	}
 	fio = fopen(fn, "w");
