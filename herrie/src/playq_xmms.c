@@ -46,12 +46,12 @@ playq_xmms_givenext(void)
 		cursong = nextsong;
 	}
 
-	if (cursong == NULL)
-		return (NULL);
-	nextsong = vfs_list_next(cursong);
+	if (cursong != NULL) {
+		nextsong = vfs_list_next(cursong);
 
-	vfs_mark(cursong);
-	vr = vfs_dup(cursong);
+		vfs_mark(cursong);
+		vr = vfs_dup(cursong);
+	}
 
 	/* Update markers */
 	gui_playq_notify_done();
@@ -68,6 +68,7 @@ playq_xmms_select(struct vfsref *vr)
 void
 playq_xmms_notify_pre_removal(struct vfsref *vr)
 {
+	/* Remove dangling pointers */
 	if (cursong == vr)
 		cursong = NULL;
 	if (nextsong == vr)
