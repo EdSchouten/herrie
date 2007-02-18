@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 17:15+0100\n"
-"PO-Revision-Date: 2007-02-18 17:15+0100\n"
+"POT-Creation-Date: 2007-02-18 20:05+0100\n"
+"PO-Revision-Date: 2007-02-18 21:07+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,6 +45,14 @@ msgstr "Dizin değiştir"
 msgid "Unable to display the file or directory."
 msgstr "Dosya veya dizin gösterilemiyor"
 
+#: gui_browser.c:368
+msgid "Write playlist to file"
+msgstr "Parça listesini dosyaya yaz"
+
+#: gui_browser.c:377
+msgid "Unable to write playlist."
+msgstr "Parça listesini yazma başarısız"
+
 #: gui_input.c:108
 msgid "Search for"
 msgstr "Ara"
@@ -62,11 +70,11 @@ msgstr "Konuma git"
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:395 main.c:61 main.c:67
+#: gui_input.c:396 main.c:61 main.c:67
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:395 main.c:63 main.c:69
+#: gui_input.c:396 main.c:63 main.c:69
 msgid "no"
 msgstr "hayır"
 
