@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 10:50+0100\n"
-"PO-Revision-Date: 2007-02-18 10:50+0100\n"
+"POT-Creation-Date: 2007-02-18 11:10+0100\n"
+"PO-Revision-Date: 2007-02-18 11:10+0100\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,28 +45,28 @@ msgstr "Dizin değiştir"
 msgid "Unable to display the file or directory."
 msgstr "Dosya veya dizin gösterilemiyor"
 
-#: gui_input.c:109
+#: gui_input.c:108
 msgid "Search for"
 msgstr "Ara"
 
-#: gui_input.c:133
+#: gui_input.c:132
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:169
+#: gui_input.c:168
 msgid "Jump to position"
-msgstr "Spring naar positie"
+msgstr "Konuma git"
 
-#: gui_input.c:218
+#: gui_input.c:217
 msgid "Bad time format."
-msgstr "Ongeldig tijdformaat."
+msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:392 main.c:61 main.c:67
+#: gui_input.c:391 main.c:61 main.c:67
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:392 main.c:63 main.c:69
+#: gui_input.c:391 main.c:63 main.c:69
 msgid "no"
 msgstr "hayır"
 

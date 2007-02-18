@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 10:50+0100\n"
-"PO-Revision-Date: 2007-02-18 10:50+0100\n"
+"POT-Creation-Date: 2007-02-18 11:10+0100\n"
+"PO-Revision-Date: 2007-02-18 11:10+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -43,28 +43,28 @@ msgstr "Verplaats van map"
 msgid "Unable to display the file or directory."
 msgstr "Het weergeven van het bestand of de map mislukt."
 
-#: gui_input.c:109
+#: gui_input.c:108
 msgid "Search for"
 msgstr "Zoeken naar"
 
-#: gui_input.c:133
+#: gui_input.c:132
 #, c-format
 msgid "Quit %s?"
 msgstr "%s afsluiten?"
 
-#: gui_input.c:169
+#: gui_input.c:168
 msgid "Jump to position"
 msgstr "Spring naar positie"
 
-#: gui_input.c:218
+#: gui_input.c:217
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:392 main.c:61 main.c:67
+#: gui_input.c:391 main.c:61 main.c:67
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:392 main.c:63 main.c:69
+#: gui_input.c:391 main.c:63 main.c:69
 msgid "no"
 msgstr "nee"
 
