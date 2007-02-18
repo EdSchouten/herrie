@@ -29,6 +29,7 @@
 
 #include "audio_file.h"
 #include "audio_output.h"
+#include "config.h"
 #include "gui.h"
 #include "playq_modules.h"
 
@@ -38,19 +39,17 @@ struct playq_funcs {
 	void (*notify_pre_removal)(struct vfsref *vr);
 };
 
-#if 0
 static struct playq_funcs herrie_funcs = {
 	playq_herrie_givenext,
 	playq_herrie_select,
 	playq_herrie_notify_pre_removal,
 };
-#endif
 static struct playq_funcs xmms_funcs = {
 	playq_xmms_givenext,
 	playq_xmms_select,
 	playq_xmms_notify_pre_removal,
 };
-static struct playq_funcs *funcs = &xmms_funcs;
+static struct playq_funcs *funcs = &herrie_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
 GMutex 			*playq_lock;
@@ -197,6 +196,9 @@ playq_init(void)
 {
 	playq_lock = g_mutex_new();
 	playq_wakeup = g_cond_new();
+
+	if (config_getopt_bool("playq.xmms"))
+		funcs = &xmms_funcs;
 }
 
 void
