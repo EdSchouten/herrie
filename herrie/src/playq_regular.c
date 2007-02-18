@@ -24,7 +24,7 @@
  * SUCH DAMAGE.
  */
 /**
- * @file playq_xmms.c
+ * @file playq_regular.c
  */
 
 #include "gui.h"
@@ -40,7 +40,7 @@ static struct vfsref *cursong = NULL;
 static struct vfsref *selectsong = NULL;
 
 struct vfsref *
-playq_xmms_give(void)
+playq_regular_give(void)
 {
 	struct vfsref *vr = NULL;
 
@@ -72,7 +72,7 @@ playq_xmms_give(void)
 }
 
 void
-playq_xmms_idle(void)
+playq_regular_idle(void)
 {
 	if (cursong != NULL) {
 		/* Remove left-over marking */
@@ -84,13 +84,13 @@ playq_xmms_idle(void)
 }
 
 void
-playq_xmms_select(struct vfsref *vr)
+playq_regular_select(struct vfsref *vr)
 {
 	selectsong = vr;
 }
 
 int
-playq_xmms_next(void)
+playq_regular_next(void)
 {
 	if (cursong != NULL) {
 		selectsong = vfs_list_next(cursong);
@@ -102,7 +102,7 @@ playq_xmms_next(void)
 }
 
 int
-playq_xmms_prev(void)
+playq_regular_prev(void)
 {
 	if (cursong != NULL) {
 		selectsong = vfs_list_prev(cursong);
@@ -114,7 +114,7 @@ playq_xmms_prev(void)
 }
 
 void
-playq_xmms_notify_pre_removal(struct vfsref *vr)
+playq_regular_notify_pre_removal(struct vfsref *vr)
 {
 	/* Remove dangling pointers */
 	if (cursong == vr)

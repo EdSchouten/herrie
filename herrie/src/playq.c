@@ -66,29 +66,29 @@ struct playq_funcs {
 /**
  * @brief Traditional Herrie-style playlist handling.
  */
-static struct playq_funcs herrie_funcs = {
-	playq_herrie_give,
-	playq_herrie_idle,
-	playq_herrie_select,
-	playq_herrie_next,
-	playq_herrie_prev,
-	playq_herrie_notify_pre_removal,
+static struct playq_funcs party_funcs = {
+	playq_party_give,
+	playq_party_idle,
+	playq_party_select,
+	playq_party_next,
+	playq_party_prev,
+	playq_party_notify_pre_removal,
 };
 /**
  * @brief XMMS-style playlist handling.
  */
-static struct playq_funcs xmms_funcs = {
-	playq_xmms_give,
-	playq_xmms_idle,
-	playq_xmms_select,
-	playq_xmms_next,
-	playq_xmms_prev,
-	playq_xmms_notify_pre_removal,
+static struct playq_funcs regular_funcs = {
+	playq_regular_give,
+	playq_regular_idle,
+	playq_regular_select,
+	playq_regular_next,
+	playq_regular_prev,
+	playq_regular_notify_pre_removal,
 };
 /**
  * @brief Currenty used playlist handling routines.
  */
-static struct playq_funcs *funcs = &herrie_funcs;
+static struct playq_funcs *funcs = &regular_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
 GMutex 			*playq_lock;
@@ -107,7 +107,7 @@ static GThread		*playq_runner;
  *        should be locked down.
  */
 static volatile int	playq_flags = 0;
-int			playq_repeat = 0;
+int			playq_repeat = 1;
 /**
  * @brief Quit the playback thread.
  */
@@ -221,14 +221,14 @@ done:
 }
 
 void
-playq_init(void)
+playq_init(int party)
 {
 	playq_lock = g_mutex_new();
 	playq_wakeup = g_cond_new();
 
-	if (config_getopt_bool("playq.xmms")) {
-		funcs = &xmms_funcs;
-		playq_repeat = 1;
+	if (party || config_getopt_bool("playq.party")) {
+		funcs = &party_funcs;
+		playq_repeat = 0;
 	}
 }
 

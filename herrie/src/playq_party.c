@@ -24,14 +24,14 @@
  * SUCH DAMAGE.
  */
 /**
- * @file playq_herrie.c
+ * @file playq_party.c
  */
 
 #include "gui.h"
 #include "playq_modules.h"
 
 struct vfsref *
-playq_herrie_give(void)
+playq_party_give(void)
 {
 	struct vfsref *vr, *nvr;
 
@@ -57,28 +57,28 @@ playq_herrie_give(void)
 }
 
 void
-playq_herrie_idle(void)
+playq_party_idle(void)
 {
 }
 
 void
-playq_herrie_select(struct vfsref *vr)
+playq_party_select(struct vfsref *vr)
 {
 }
 
 int
-playq_herrie_next(void)
+playq_party_next(void)
 {
 	return vfs_list_empty(&playq_list);
 }
 
 int
-playq_herrie_prev(void)
+playq_party_prev(void)
 {
 	return (-1);
 }
 
 void
-playq_herrie_notify_pre_removal(struct vfsref *vr)
+playq_party_notify_pre_removal(struct vfsref *vr)
 {
 }

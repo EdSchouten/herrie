@@ -79,7 +79,7 @@ version(void)
 static void
 usage(void)
 {
-	g_printerr("%s: " APP_NAME " [-v] [-c configfile] "
+	g_printerr("%s: " APP_NAME " [-vp] [-c configfile] "
 	    "[file ...]\n", _("usage"));
 	exit(1);
 }
@@ -90,7 +90,7 @@ usage(void)
 int
 main(int argc, char *argv[])
 {
-	int ch, i, show_version = 0;
+	int ch, i, show_version = 0, party = 0;
 	char *configfile = NULL, *cwd;
 	const char *errmsg;
 	struct vfsref *vr;
@@ -104,13 +104,16 @@ main(int argc, char *argv[])
 	textdomain(APP_NAME);
 #endif /* BUILD_TRANS */
 
-	while ((ch = getopt(argc, argv, "vc:")) != -1) {
+	while ((ch = getopt(argc, argv, "cpv:")) != -1) {
 		switch (ch) {
-		case 'v':
-			show_version = 1;
-			break;
 		case 'c':
 			configfile = optarg;
+			break;
+		case 'p':
+			party = 1;
+			break;
+		case 'v':
+			show_version = 1;
 			break;
 		default:
 			usage();
@@ -145,7 +148,7 @@ main(int argc, char *argv[])
 #ifdef BUILD_SCROBBLER
 	scrobbler_init();
 #endif /* BUILD_SCROBBLER */
-	playq_init();
+	playq_init(party);
 
 	/* Draw all the windows */
 	gui_draw_init_post();
