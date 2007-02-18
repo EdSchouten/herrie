@@ -139,7 +139,10 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 			break;
 		}
 
-		if (vr == gv->vr_selected) {
+		if (vfs_marked(vr)) {
+			wbkgdset(gv->win,
+			    COLOR_PAIR(GUI_COLOR_MARKED));
+		} else if (vr == gv->vr_selected) {
 			if (gv->winfocused)
 				wbkgdset(gv->win,
 				    COLOR_PAIR(GUI_COLOR_SELECT));

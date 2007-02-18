@@ -440,6 +440,18 @@ gui_playq_song_movedown(void)
 }
 
 void
+gui_playq_song_select(void)
+{
+	PLAYQ_LOCK;
+	if (!gui_vfslist_warn_isempty(win_playq)) {
+		playq_song_fast_select(
+		    gui_vfslist_getselected(win_playq),
+		    gui_vfslist_getselectedidx(win_playq));
+	}
+	PLAYQ_UNLOCK;
+}
+
+void
 gui_playq_searchnext(void)
 {
 	PLAYQ_LOCK;

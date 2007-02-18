@@ -272,6 +272,7 @@ struct vfsref {
 	 * @brief Pointer to the previous item in the VFS list.
 	 */
 	struct vfsref *prev;
+	int marked;
 };
 
 /**
@@ -345,5 +346,8 @@ void		vfs_unfold(struct vfslist *vl, struct vfsref *vr);
  * @brief Return a pointer to the VFS list inside the VFS reference.
  */
 #define vfs_population(vr)	(&(vr)->ent->population)
+#define vfs_marked(vr)		((vr)->marked != 0)
+#define vfs_mark(vr)		((vr)->marked = 1)
+#define vfs_unmark(vr)		((vr)->marked = 0)
 
 #endif /* !_VFS_H_ */

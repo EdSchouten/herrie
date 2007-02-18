@@ -46,10 +46,8 @@ playq_herrie_givenext(void)
 	return (nvr);
 }
 
-#if 0
 void
-playq_herrie_song_remove(struct vfsref *vr, unsigned int index)
+playq_herrie_select(struct vfsref *vr)
 {
-	/* Not applicable */
+	/* XXX: remove and play next? */
 }
-#endif

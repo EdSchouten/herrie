@@ -287,6 +287,7 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_PLAYQ, 'k',		gui_playq_cursor_up },
 	{ GUI_FOCUS_PLAYQ, 'n',		gui_playq_searchnext },
 	{ GUI_FOCUS_PLAYQ, 'R',		gui_playq_song_randomize },
+	{ GUI_FOCUS_PLAYQ, 'S',		gui_playq_song_select },
 	{ GUI_FOCUS_PLAYQ, '[',		gui_playq_song_moveup },
 	{ GUI_FOCUS_PLAYQ, ']',		gui_playq_song_movedown },
 	{ GUI_FOCUS_PLAYQ, 0x02,	gui_playq_cursor_pageup }, /* ^B */

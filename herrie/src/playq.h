@@ -127,5 +127,6 @@ void playq_song_fast_moveup(struct vfsref *vr, unsigned int index);
  * @brief Move the specified song one position down.
  */
 void playq_song_fast_movedown(struct vfsref *vr, unsigned int index);
+void playq_song_fast_select(struct vfsref *vr, unsigned int index);
 
 #endif /* !_PLAYQ_H_ */

@@ -100,6 +100,7 @@ extern GMutex *gui_lock;
  * @brief Curses colour code used to draw unfocused selections.
  */
 #define GUI_COLOR_DESELECT		5
+#define GUI_COLOR_MARKED		6
 
 /**
  * @brief Display a standard Yes/No question at the bottom of the screen
@@ -222,6 +223,7 @@ void gui_playq_song_moveup(void);
  * @brief Move the currently selected song one down.
  */
 void gui_playq_song_movedown(void);
+void gui_playq_song_select(void);
 /**
  * @brief Search for the next item matching gui_input_cursearch in the
  *        playlist.

@@ -34,17 +34,20 @@
 
 struct playq_funcs {
 	struct vfsref *(*givenext)(void);
+	void (*select)(struct vfsref *vr);
 };
 
-static struct playq_funcs herrie_funcs = {
-	playq_herrie_givenext
-};
 #if 0
-static struct playq_funcs xmms_funcs = {
-	playq_xmms_givenext
+static struct playq_funcs herrie_funcs = {
+	playq_herrie_givenext,
+	playq_herrie_select,
 };
 #endif
-static struct playq_funcs *funcs = &herrie_funcs;
+static struct playq_funcs xmms_funcs = {
+	playq_xmms_givenext,
+	playq_xmms_select,
+};
+static struct playq_funcs *funcs = &xmms_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
 GMutex 			*playq_lock;
@@ -387,6 +390,16 @@ playq_song_fast_movedown(struct vfsref *vr, unsigned int index)
 	vfs_list_insert_before(&playq_list, nvr, vr);
 	gui_playq_notify_post_insertion(index);
 	gui_playq_notify_done();
+}
+
+void
+playq_song_fast_select(struct vfsref *vr, unsigned int index)
+{
+	funcs->select(vr);
+
+	/* Now go to the next song */
+	playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
+	g_cond_signal(playq_wakeup);
 }
 
 void

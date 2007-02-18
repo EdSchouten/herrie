@@ -77,6 +77,9 @@ gui_draw_init_post(void)
 		init_pair(GUI_COLOR_DESELECT,
 		    config_getopt_color("gui.color.deselect.fg"),
 		    config_getopt_color("gui.color.deselect.bg"));
+		init_pair(GUI_COLOR_MARKED,
+		    config_getopt_color("gui.color.marked.fg"),
+		    config_getopt_color("gui.color.marked.bg"));
 	}
 
 	gui_msgbar_init();

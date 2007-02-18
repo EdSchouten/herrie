@@ -239,6 +239,7 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 	ve->refcount = 1;
 	vr = g_slice_new(struct vfsref);
 	vr->ent = ve;
+	vr->marked = 0;
 	return (vr);
 }
 

@@ -27,10 +27,37 @@
  * @file playq_xmms.c
  */
 
+#include "gui.h"
 #include "playq_modules.h"
+
+static struct vfsref *cursong = NULL, *nextsong = NULL;
 
 struct vfsref *
 playq_xmms_givenext(void)
 {
-	return (NULL);
+	struct vfsref *vr = NULL;
+
+	if (cursong != NULL)
+		vfs_unmark(cursong);
+
+	/* Move on to the next track */
+	cursong = nextsong;
+	if (nextsong != NULL)
+		nextsong = vfs_list_next(nextsong);
+
+	if (cursong != NULL) {
+		vfs_mark(cursong);
+		vr = vfs_dup(cursong);
+	}
+
+	/* Update markers */
+	gui_playq_notify_done();
+
+	return (vr);
+}
+
+void
+playq_xmms_select(struct vfsref *vr)
+{
+	nextsong = vr;
 }

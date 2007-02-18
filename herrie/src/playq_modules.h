@@ -34,6 +34,9 @@
 #include "vfs.h"
 
 struct vfsref *playq_herrie_givenext(void);
+void playq_herrie_select(struct vfsref *vr);
+
 struct vfsref *playq_xmms_givenext(void);
+void playq_xmms_select(struct vfsref *vr);
 
 #endif /* !_PLAYQ_MODULES_H_ */
