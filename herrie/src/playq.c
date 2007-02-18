@@ -30,8 +30,21 @@
 #include "audio_file.h"
 #include "audio_output.h"
 #include "gui.h"
-#include "playq.h"
-#include "vfs.h"
+#include "playq_modules.h"
+
+struct playq_funcs {
+	struct vfsref *(*givenext)(void);
+};
+
+static struct playq_funcs herrie_funcs = {
+	playq_herrie_givenext
+};
+#if 0
+static struct playq_funcs xmms_funcs = {
+	playq_xmms_givenext
+};
+#endif
+static struct playq_funcs *funcs = &herrie_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
 GMutex 			*playq_lock;
@@ -99,7 +112,7 @@ playq_runner_thread(void *unused)
 	do {
 		/* Wait until there's a song available */
 		PLAYQ_LOCK;
-		while ((nvr = vfs_list_first(&playq_list)) == NULL) {
+		while ((nvr = funcs->givenext()) == NULL) {
 			/* Change the current status to idle */
 			gui_playq_song_update(NULL, 0, 0);
 
@@ -109,9 +122,6 @@ playq_runner_thread(void *unused)
 				goto done;
 			}
 		}
-		gui_playq_notify_pre_removal(1);
-		vfs_list_remove(&playq_list, nvr);
-		gui_playq_notify_done();
 		PLAYQ_UNLOCK;
 
 		cur = audio_file_open(nvr);

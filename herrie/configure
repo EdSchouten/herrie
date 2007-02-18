@@ -138,8 +138,8 @@ CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
     -L$PREFIX/lib -l$CFG_CURSES_LIB"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
-    gui_input gui_msgbar gui_playq gui_vfslist main playq vfs \
-    vfs_playlist vfs_regular"
+    gui_input gui_msgbar gui_playq gui_vfslist main playq playq_herrie \
+    playq_xmms vfs vfs_playlist vfs_regular"
 
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
