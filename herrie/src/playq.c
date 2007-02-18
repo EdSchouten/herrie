@@ -106,7 +106,8 @@ static GThread		*playq_runner;
  * @brief Flags the playback thread should honour. Writing to them
  *        should be locked down.
  */
-static volatile int	playq_flags;
+static volatile int	playq_flags = 0;
+int			playq_repeat = 0;
 /**
  * @brief Quit the playback thread.
  */
@@ -115,10 +116,6 @@ static volatile int	playq_flags;
  * @brief Pause the current song.
  */
 #define PF_PAUSE	0x02
-/**
- * @brief Add songs to the tail of the playlist after being opened.
- */
-#define PF_REPEAT	0x04
 /**
  * @brief Perform an absolute seek.
  */
@@ -182,20 +179,9 @@ playq_runner_thread(void *unused)
 			continue;
 		}
 
+		/* Trash it */
+		vfs_close(nvr);
 		gui_playq_song_update(cur, 0, 0);
-		
-		if (playq_flags & PF_REPEAT) {
-			/* Place it back */
-			PLAYQ_LOCK;
-			vfs_list_insert_tail(&playq_list, nvr);
-			gui_playq_notify_post_insertion(
-			    vfs_list_items(&playq_list));
-			gui_playq_notify_done();
-			PLAYQ_UNLOCK;
-		} else {
-			/* Trash it */
-			vfs_close(nvr);
-		}
 
 		PLAYQ_LOCK;
 		playq_flags &= ~(PF_PAUSE|PF_SKIP|PF_SEEK);
@@ -245,7 +231,6 @@ playq_init(void)
 void
 playq_spawn(void)
 {
-	playq_flags = 0;
 	playq_runner = g_thread_create_full(playq_runner_thread, NULL,
 	    0, 1, TRUE, G_THREAD_PRIORITY_URGENT, NULL);
 }
@@ -371,14 +356,11 @@ void
 playq_repeat_toggle(void)
 {
 	char *msg;
-	int repeat;
 
-	PLAYQ_LOCK;
-	repeat = (playq_flags ^= PF_REPEAT) & PF_REPEAT;
-	PLAYQ_UNLOCK;
+	playq_repeat = !playq_repeat;
 
 	msg = g_strdup_printf(_("Repeat: %s"),
-	    repeat ? _("on") : _("off"));
+	    playq_repeat ? _("on") : _("off"));
 	gui_msgbar_warn(msg);
 	g_free(msg);
 }

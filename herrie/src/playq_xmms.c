@@ -55,6 +55,9 @@ playq_xmms_give(void)
 	} else if (cursong != NULL) {
 		/* Song after current song */
 		cursong = vfs_list_next(cursong);
+		/* We've reached the end */
+		if (cursong == NULL && playq_repeat)
+			cursong = vfs_list_first(&playq_list);
 	}
 
 	if (cursong != NULL) {
@@ -89,8 +92,11 @@ playq_xmms_select(struct vfsref *vr)
 int
 playq_xmms_next(void)
 {
-	if (cursong != NULL)
+	if (cursong != NULL) {
 		selectsong = vfs_list_next(cursong);
+		if (selectsong == NULL)
+			selectsong = vfs_list_first(&playq_list);
+	}
 
 	return (selectsong == NULL);
 }
@@ -98,9 +104,11 @@ playq_xmms_next(void)
 int
 playq_xmms_prev(void)
 {
-	if (cursong != NULL)
-		/* Before current song */
+	if (cursong != NULL) {
 		selectsong = vfs_list_prev(cursong);
+		if (selectsong == NULL)
+			selectsong = vfs_list_last(&playq_list);
+	}
 
 	return (selectsong == NULL);
 }

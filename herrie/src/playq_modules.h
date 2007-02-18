@@ -33,6 +33,8 @@
 #include "playq.h"
 #include "vfs.h"
 
+extern int playq_repeat;
+
 /**
  * @brief Herrie's routine to fetch the next song from the playlist
  *        (always the first song).
