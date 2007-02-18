@@ -50,10 +50,16 @@ void playq_shutdown(void);
  */
 void playq_cursong_seek(int len, int rel);
 /**
- * @brief Skip the current song as if it were finished.
+ * @brief Continue to the next song.
  */
 void playq_cursong_next(void);
+/**
+ * @brief Go back to the previous song.
+ */
 void playq_cursong_prev(void);
+/**
+ * @brief Stop playback.
+ */
 void playq_cursong_stop(void);
 /**
  * @brief Pause or unpause the current song, depending on its current
@@ -129,6 +135,9 @@ void playq_song_fast_moveup(struct vfsref *vr, unsigned int index);
  * @brief Move the specified song one position down.
  */
 void playq_song_fast_movedown(struct vfsref *vr, unsigned int index);
+/**
+ * @brief Switch playback to a specific song.
+ */
 void playq_song_fast_select(struct vfsref *vr, unsigned int index);
 
 #endif /* !_PLAYQ_H_ */

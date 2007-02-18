@@ -33,18 +33,57 @@
 #include "playq.h"
 #include "vfs.h"
 
+/**
+ * @brief Herrie's routine to fetch the next song from the playlist
+ *        (always the first song).
+ */
 struct vfsref *playq_herrie_give(void);
-void playq_herrie_select(struct vfsref *vr);
+/**
+ * @brief Herrie's idle indication function.
+ */
 void playq_herrie_idle(void);
+/**
+ * @brief Herrie's song selection routine (bogus with Herrie, because we
+ *        always start the first song).
+ */
+void playq_herrie_select(struct vfsref *vr);
+/**
+ * @brief Herrie's routine to switch to the next function.
+ */
 int playq_herrie_next(void);
+/**
+ * @brief Herrie's routine to switch to the previous function.
+ */
 int playq_herrie_prev(void);
+/**
+ * @brief Herrie's notification that a song is about to be deleted.
+ */
 void playq_herrie_notify_pre_removal(struct vfsref *vr);
 
+/**
+ * @brief XMMS-like function that retreives the next song from the
+ *        playlist.
+ */
 struct vfsref *playq_xmms_give(void);
+/**
+ * @brief XMMS-like function to notify that playback is going idle.
+ */
 void playq_xmms_idle(void);
+/**
+ * @brief XMMS-like function to start playback of a specific song.
+ */
 void playq_xmms_select(struct vfsref *vr);
+/**
+ * @brief XMMS-like function that switches playback to the next song.
+ */
 int playq_xmms_next(void);
+/**
+ * @brief XMMS-like function that switches playback to the previous song.
+ */
 int playq_xmms_prev(void);
+/**
+ * @brief XMMS-like notification that a song is about to be deleted.
+ */
 void playq_xmms_notify_pre_removal(struct vfsref *vr);
 
 #endif /* !_PLAYQ_MODULES_H_ */
