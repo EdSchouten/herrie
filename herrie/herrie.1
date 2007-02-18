@@ -207,14 +207,6 @@ Remove all songs from the playlist.
 .B R
 Randomize the playlist.
 .TP
-.B S
-Start the selected song for playback. This button only works when
-.B playq.xmms=yes
-is specified in the configuration file. When this option is not enabled,
-it has the same functionality as the
-.B s
-button.
-.TP
 .B [
 Move the currently selected song upward.
 .TP
@@ -256,16 +248,21 @@ Seek 5 seconds backward.
 .B >
 Seek 5 seconds forward.
 .TP
-.B J
-Seek to a specific position. When the inserted time is prepended with a + or
--, the seek is performed relative.
+.B b
+Go to the next song. Sending the signal
+.B SIGUSR2
+to the application will do the same.
 .TP
-.B p
+.B c
 Pause the current song. When
-.B p
+.B c
 is pressed again, playback is resumed. Sending the signal
 .B SIGUSR1
 to the application will do the same.
+.TP
+.B J
+Seek to a specific position. When the inserted time is prepended with a + or
+-, the seek is performed relative.
 .TP
 .B q
 Quit the application.
@@ -275,10 +272,18 @@ Switch repeat on and off. When this option is enabled, songs that have
 been successfully opened will be added to the end of the playlist,
 causing the playlist to repeat.
 .TP
-.B s
-Skip the current song and continue with the next one. Sending the signal
-.B SIGUSR2
-to the application will do the same.
+.B v
+Stop playback.
+.TP
+.B x
+When
+.B playq.xmms=yes
+is specified in the configuration file, the selected song will be
+started for playback. When the option is disabled, it will start the
+first song in the playlist.
+.TP
+.B z
+Go to the previous song.
 .TP
 .B ^L
 Force the application to redraw itself.
