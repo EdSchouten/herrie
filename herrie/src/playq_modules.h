@@ -33,6 +33,9 @@
 #include "playq.h"
 #include "vfs.h"
 
+/**
+ * @brief Flag whether repeat is turned on by the user.
+ */
 extern int playq_repeat;
 
 /**
