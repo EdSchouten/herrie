@@ -148,6 +148,8 @@ playq_runner_thread(void *unused)
 	struct audio_file	*cur;
 	char			*errmsg;
 
+	playq_flags = PF_PAUSE;
+
 	gui_input_sigmask();
 
 	do {
