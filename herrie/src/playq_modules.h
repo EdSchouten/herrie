@@ -39,6 +39,7 @@ void playq_herrie_notify_pre_removal(struct vfsref *vr);
 
 struct vfsref *playq_xmms_givenext(void);
 void playq_xmms_select(struct vfsref *vr);
+void playq_xmms_previous(void);
 void playq_xmms_notify_pre_removal(struct vfsref *vr);
 
 #endif /* !_PLAYQ_MODULES_H_ */

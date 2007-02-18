@@ -73,6 +73,26 @@ playq_xmms_select(struct vfsref *vr)
 }
 
 void
+playq_xmms_previous(void)
+{
+	struct vfsref *vr;
+
+	if (cursong != NULL)
+		/* Before current song */
+		vr = cursong;
+	else if (nextsong != NULL)
+		/* Current song got deleted - before next song */
+		vr = nextsong;
+	else
+		return;
+
+	/* Go one item back */
+	selectsong = vfs_list_prev(vr);
+	if (selectsong == NULL)
+		selectsong = vr;
+}
+
+void
 playq_xmms_notify_pre_removal(struct vfsref *vr)
 {
 	/* Remove dangling pointers */

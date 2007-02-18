@@ -36,17 +36,20 @@
 struct playq_funcs {
 	struct vfsref *(*givenext)(void);
 	void (*select)(struct vfsref *vr);
+	void (*previous)(void);
 	void (*notify_pre_removal)(struct vfsref *vr);
 };
 
 static struct playq_funcs herrie_funcs = {
 	playq_herrie_givenext,
 	playq_herrie_select,
+	NULL,
 	playq_herrie_notify_pre_removal,
 };
 static struct playq_funcs xmms_funcs = {
 	playq_xmms_givenext,
 	playq_xmms_select,
+	playq_xmms_previous,
 	playq_xmms_notify_pre_removal,
 };
 static struct playq_funcs *funcs = &herrie_funcs;
@@ -290,6 +293,20 @@ playq_cursong_next(void)
 	PLAYQ_UNLOCK;
 
 	g_cond_signal(playq_wakeup);
+}
+
+void
+playq_cursong_previous(void)
+{
+	if (funcs->previous != NULL) {
+		PLAYQ_LOCK;
+		funcs->previous();
+		/* Unpause as well */
+		playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
+		PLAYQ_UNLOCK;
+
+		g_cond_signal(playq_wakeup);
+	}
 }
 
 void
