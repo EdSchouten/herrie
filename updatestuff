@@ -9,7 +9,7 @@ fastdep *.c | perl -pe 's/^\t//; s/\\\n//;' | perl -pe 's/^(.*?)\.o: .*?\.c /DEP
 
 # Update translations
 xgettext -k_ *.c
-for i in nl
+for i in nl tr
 do
 	msgmerge ../lang/$i.po messages.po > tmp.po
 	mv tmp.po ../lang/$i.po
