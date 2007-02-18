@@ -35,6 +35,7 @@
 
 struct playq_funcs {
 	struct vfsref *(*give)(void);
+	void (*idle)(void);
 	void (*select)(struct vfsref *vr);
 	int (*next)(void);
 	int (*prev)(void);
@@ -43,6 +44,7 @@ struct playq_funcs {
 
 static struct playq_funcs herrie_funcs = {
 	playq_herrie_give,
+	playq_herrie_idle,
 	playq_herrie_select,
 	playq_herrie_next,
 	playq_herrie_prev,
@@ -50,6 +52,7 @@ static struct playq_funcs herrie_funcs = {
 };
 static struct playq_funcs xmms_funcs = {
 	playq_xmms_give,
+	playq_xmms_idle,
 	playq_xmms_select,
 	playq_xmms_next,
 	playq_xmms_prev,
@@ -126,6 +129,7 @@ playq_runner_thread(void *unused)
 		while (playq_flags & PF_PAUSE ||
 		    (nvr = funcs->give()) == NULL) {
 			/* Change the current status to idle */
+			funcs->idle();
 			gui_playq_song_update(NULL, 0, 0);
 
 			g_cond_wait(playq_wakeup, playq_lock);

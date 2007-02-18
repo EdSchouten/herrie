@@ -67,6 +67,15 @@ playq_xmms_give(void)
 }
 
 void
+playq_xmms_idle(void)
+{
+	if (cursong != NULL) {
+		vfs_unmark(cursong);
+		gui_playq_notify_done();
+	}
+}
+
+void
 playq_xmms_select(struct vfsref *vr)
 {
 	selectsong = vr;

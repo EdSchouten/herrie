@@ -47,6 +47,11 @@ playq_herrie_give(void)
 }
 
 void
+playq_herrie_idle(void)
+{
+}
+
+void
 playq_herrie_select(struct vfsref *vr)
 {
 }
