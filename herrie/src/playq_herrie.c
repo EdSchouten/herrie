@@ -48,10 +48,10 @@ playq_herrie_give(void)
 		/* Add it back to the tail */
 		vfs_list_insert_tail(&playq_list, vr);
 		gui_playq_notify_post_insertion(vfs_list_items(&playq_list));
-		gui_playq_notify_done();
 	} else {
 		vfs_close(vr);
 	}
+	gui_playq_notify_done();
 
 	return (nvr);
 }
