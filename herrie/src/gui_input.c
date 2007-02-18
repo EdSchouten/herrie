@@ -250,7 +250,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, 'r',			playq_repeat_toggle },
 	{ -1, 'v',			playq_cursong_stop, },
 	{ -1, 'x',			gui_playq_song_select },
-	{ -1, 'z',			playq_cursong_previous },
+	{ -1, 'z',			playq_cursong_prev },
 	{ -1, '\t', 			gui_input_switchfocus },
 	{ -1, 0x17, 			gui_input_switchfocus }, /* ^W */
 	{ -1, '/',			gui_input_search },

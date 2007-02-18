@@ -33,13 +33,16 @@
 #include "playq.h"
 #include "vfs.h"
 
-struct vfsref *playq_herrie_givenext(void);
+struct vfsref *playq_herrie_give(void);
 void playq_herrie_select(struct vfsref *vr);
+int playq_herrie_next(void);
+int playq_herrie_prev(void);
 void playq_herrie_notify_pre_removal(struct vfsref *vr);
 
-struct vfsref *playq_xmms_givenext(void);
+struct vfsref *playq_xmms_give(void);
 void playq_xmms_select(struct vfsref *vr);
-void playq_xmms_previous(void);
+int playq_xmms_next(void);
+int playq_xmms_prev(void);
 void playq_xmms_notify_pre_removal(struct vfsref *vr);
 
 #endif /* !_PLAYQ_MODULES_H_ */

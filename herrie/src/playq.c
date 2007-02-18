@@ -34,22 +34,25 @@
 #include "playq_modules.h"
 
 struct playq_funcs {
-	struct vfsref *(*givenext)(void);
+	struct vfsref *(*give)(void);
 	void (*select)(struct vfsref *vr);
-	void (*previous)(void);
+	int (*next)(void);
+	int (*prev)(void);
 	void (*notify_pre_removal)(struct vfsref *vr);
 };
 
 static struct playq_funcs herrie_funcs = {
-	playq_herrie_givenext,
+	playq_herrie_give,
 	playq_herrie_select,
-	NULL,
+	playq_herrie_next,
+	playq_herrie_prev,
 	playq_herrie_notify_pre_removal,
 };
 static struct playq_funcs xmms_funcs = {
-	playq_xmms_givenext,
+	playq_xmms_give,
 	playq_xmms_select,
-	playq_xmms_previous,
+	playq_xmms_next,
+	playq_xmms_prev,
 	playq_xmms_notify_pre_removal,
 };
 static struct playq_funcs *funcs = &herrie_funcs;
@@ -121,7 +124,7 @@ playq_runner_thread(void *unused)
 		/* Wait until there's a song available */
 		PLAYQ_LOCK;
 		while (playq_flags & PF_PAUSE ||
-		    (nvr = funcs->givenext()) == NULL) {
+		    (nvr = funcs->give()) == NULL) {
 			/* Change the current status to idle */
 			gui_playq_song_update(NULL, 0, 0);
 
@@ -288,25 +291,24 @@ void
 playq_cursong_next(void)
 {
 	PLAYQ_LOCK;
-	/* Unpause as well */
-	playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
+	if (funcs->next() == 0) {
+		/* Unpause as well */
+		playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
+		g_cond_signal(playq_wakeup);
+	}
 	PLAYQ_UNLOCK;
-
-	g_cond_signal(playq_wakeup);
 }
 
 void
-playq_cursong_previous(void)
+playq_cursong_prev(void)
 {
-	if (funcs->previous != NULL) {
-		PLAYQ_LOCK;
-		funcs->previous();
+	PLAYQ_LOCK;
+	if (funcs->prev() == 0) {
 		/* Unpause as well */
 		playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
-		PLAYQ_UNLOCK;
-
 		g_cond_signal(playq_wakeup);
 	}
+	PLAYQ_UNLOCK;
 }
 
 void

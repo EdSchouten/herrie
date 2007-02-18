@@ -53,7 +53,7 @@ void playq_cursong_seek(int len, int rel);
  * @brief Skip the current song as if it were finished.
  */
 void playq_cursong_next(void);
-void playq_cursong_previous(void);
+void playq_cursong_prev(void);
 void playq_cursong_stop(void);
 /**
  * @brief Pause or unpause the current song, depending on its current

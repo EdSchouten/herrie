@@ -33,7 +33,7 @@
 static struct vfsref *cursong = NULL, *nextsong = NULL, *selectsong = NULL;
 
 struct vfsref *
-playq_xmms_givenext(void)
+playq_xmms_give(void)
 {
 	struct vfsref *vr = NULL;
 
@@ -72,8 +72,19 @@ playq_xmms_select(struct vfsref *vr)
 	selectsong = vr;
 }
 
-void
-playq_xmms_previous(void)
+int
+playq_xmms_next(void)
+{
+	if (cursong != NULL)
+		selectsong = vfs_list_next(cursong);
+	else if (nextsong != NULL)
+		selectsong = nextsong;
+
+	return (selectsong == NULL);
+}
+
+int
+playq_xmms_prev(void)
 {
 	struct vfsref *vr;
 
@@ -84,12 +95,14 @@ playq_xmms_previous(void)
 		/* Current song got deleted - before next song */
 		vr = nextsong;
 	else
-		return;
+		return (-1);
 
 	/* Go one item back */
 	selectsong = vfs_list_prev(vr);
 	if (selectsong == NULL)
-		selectsong = vr;
+		return (-1);
+
+	return (0);
 }
 
 void

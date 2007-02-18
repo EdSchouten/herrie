@@ -30,7 +30,7 @@
 #include "playq_modules.h"
 
 struct vfsref *
-playq_herrie_givenext(void)
+playq_herrie_give(void)
 {
 	struct vfsref *vr, *nvr;
 
@@ -49,11 +49,21 @@ playq_herrie_givenext(void)
 void
 playq_herrie_select(struct vfsref *vr)
 {
-	/* n/a */
+}
+
+int
+playq_herrie_next(void)
+{
+	return vfs_list_empty(&playq_list);
+}
+
+int
+playq_herrie_prev(void)
+{
+	return (-1);
 }
 
 void
 playq_herrie_notify_pre_removal(struct vfsref *vr)
 {
-	/* n/a */
 }
