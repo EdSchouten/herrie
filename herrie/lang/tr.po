@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 20:05+0100\n"
-"PO-Revision-Date: 2007-02-18 21:07+0200\n"
+"POT-Creation-Date: 2007-02-19 11:522+0100\n"
+"PO-Revision-Date: 2007-02-19 11:52+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ses aygıtı \"%s\" açılamadı.\n"
 
 #: audio_output_sdl.c:79
-msgid "Cannot intialize SDL audio subsystem.\n"
+msgid "Cannot initialize SDL audio subsystem.\n"
 msgstr "SDL ses sistemi başlatılamıyor\n"
 
 #: gui_browser.c:112

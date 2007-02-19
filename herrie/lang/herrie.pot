@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 20:05+0100\n"
+"POT-Creation-Date: 2007-02-19 11:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid "Cannot open audio device \"%s\".\n"
 msgstr ""
 
 #: audio_output_sdl.c:79
-msgid "Cannot intialize SDL audio subsystem.\n"
+msgid "Cannot initialize SDL audio subsystem.\n"
 msgstr ""
 
 #: gui_browser.c:112

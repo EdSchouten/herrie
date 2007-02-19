@@ -76,7 +76,7 @@ audio_output_open(void)
 	bufcond = g_cond_new();
 
 	if (SDL_InitSubSystem(SDL_INIT_AUDIO) != 0) {
-		g_printerr(_("Cannot intialize SDL audio subsystem.\n"));
+		g_printerr(_("Cannot initialize SDL audio subsystem.\n"));
 		return (1);
 	}
 

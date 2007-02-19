@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 20:05+0100\n"
-"PO-Revision-Date: 2007-02-18 20:05+0100\n"
+"POT-Creation-Date: 2007-02-19 11:52+0100\n"
+"PO-Revision-Date: 2007-02-19 11:52+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan geluidsapparaat \"%s\" niet openen.\n"
 
 #: audio_output_sdl.c:79
-msgid "Cannot intialize SDL audio subsystem.\n"
+msgid "Cannot initialize SDL audio subsystem.\n"
 msgstr "Kan het SDL geluids subsysteem niet initialiseren.\n"
 
 #: gui_browser.c:112
