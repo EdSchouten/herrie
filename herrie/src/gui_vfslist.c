@@ -139,10 +139,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 			break;
 		}
 
-		if (vfs_marked(vr)) {
-			wbkgdset(gv->win,
-			    COLOR_PAIR(GUI_COLOR_MARKED));
-		} else if (vr == gv->vr_selected) {
+		if (vr == gv->vr_selected) {
 			if (gv->winfocused)
 				wbkgdset(gv->win,
 				    COLOR_PAIR(GUI_COLOR_SELECT));
@@ -151,6 +148,9 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 				    COLOR_PAIR(GUI_COLOR_DESELECT));
 
 			g_assert(idx == gv->idx_selected);
+		} else if (vfs_marked(vr)) {
+			wbkgdset(gv->win,
+			    COLOR_PAIR(GUI_COLOR_MARKED));
 		}
 
 		/* Small whitespace on the left, or > when black & white */
