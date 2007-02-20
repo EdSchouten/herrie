@@ -139,19 +139,18 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 			break;
 		}
 
-		if (vr == gv->vr_selected) {
-			if (gv->winfocused)
-				wbkgdset(gv->win,
-				    COLOR_PAIR(GUI_COLOR_SELECT));
-			else
-				wbkgdset(gv->win,
-				    COLOR_PAIR(GUI_COLOR_DESELECT));
+		/* Sanity check */
+		g_assert(vr != gv->vr_selected || idx == gv->idx_selected);
 
-			g_assert(idx == gv->idx_selected);
-		} else if (vfs_marked(vr)) {
-			wbkgdset(gv->win,
-			    COLOR_PAIR(GUI_COLOR_MARKED));
-		}
+		if (vr == gv->vr_selected && gv->winfocused)
+			/* Selected */
+			wbkgdset(gv->win, COLOR_PAIR(GUI_COLOR_SELECT));
+		else if (vfs_marked(vr))
+			/* Marked */
+			wbkgdset(gv->win, COLOR_PAIR(GUI_COLOR_MARKED));
+		else if (vr == gv->vr_selected)
+			/* Selected, but inactive */
+			wbkgdset(gv->win, COLOR_PAIR(GUI_COLOR_DESELECT));
 
 		/* Small whitespace on the left, or > when black & white */
 		if ((vr == gv->vr_selected) && !gui_draw_colors) {
