@@ -165,7 +165,8 @@ fi
 # Modplug support
 if [ "$CFG_MODPLUG" != "" ]
 then
-	CFLAGS="$CFLAGS `pkg-config --cflags libmodplug` -DBUILD_MODPLUG"
+	CFLAGS="$CFLAGS -DBUILD_MODPLUG"
+	CFLAGS_audio_format_modplug="`pkg-config --cflags libmodplug`"
 	LDFLAGS="$LDFLAGS `pkg-config --libs libmodplug`"
 	SRCS="$SRCS audio_format_modplug"
 fi
@@ -275,7 +276,7 @@ do
 		DEPS="$DEPS $SRCDIR/src/$j.h"
 	done
 	echo "$i.o: Makefile $SRCDIR/src/$i.c $SRCDIR/src/stdinc.h $DEPS"
-	echo "	$CC -c $SRCDIR/src/$i.c \$(CFLAGS) -o $i.o"
+	echo "	$CC -c $SRCDIR/src/$i.c \$(CFLAGS) `eval echo \\\$CFLAGS_\$i` -o $i.o"
 done
 for i in $CFG_TRANS
 do
