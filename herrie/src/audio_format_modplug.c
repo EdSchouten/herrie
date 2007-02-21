@@ -80,14 +80,20 @@ modplug_init(void)
 }
 
 int
-modplug_open(struct audio_file *fd)
+modplug_open(struct audio_file *fd, const char *ext)
 {
 	struct modplug_drv_data *data;
 
-	if (fd->stream) {
-		/* If only we could memory map the internet... */
+	/* libmodplug doesn't have good magic. Match by extension */
+	if (ext == NULL)
 		return (-1);
-	}
+	if (strcmp(ext, "mod") != 0 && strcmp(ext, "s3m") != 0 &&
+	    strcmp(ext, "it") != 0 && strcmp(ext, "xm") != 0)
+		return (-1);
+
+	/* If only we could memory map the internet... */
+	if (fd->stream)
+		return (-1);
 
 	data = g_slice_new(struct modplug_drv_data);
 

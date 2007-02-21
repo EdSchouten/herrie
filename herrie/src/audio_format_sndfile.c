@@ -33,7 +33,7 @@
 #include "audio_output.h"
 
 int
-sndfile_open(struct audio_file *fd)
+sndfile_open(struct audio_file *fd, const char *ext)
 {
 	SNDFILE *hnd;
 	SF_INFO info;

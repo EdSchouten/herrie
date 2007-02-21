@@ -69,7 +69,7 @@ vorbis_read_comments(struct audio_file *fd)
 }
 
 int
-vorbis_open(struct audio_file *fd)
+vorbis_open(struct audio_file *fd, const char *ext)
 {
 	OggVorbis_File *vfp;
 	vorbis_info *info;

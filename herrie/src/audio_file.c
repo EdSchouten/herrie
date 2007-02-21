@@ -43,7 +43,7 @@ struct audio_format {
 	/**
 	 * @brief The format's open call.
 	 */
-	int	(*open)(struct audio_file *fd);
+	int	(*open)(struct audio_file *fd, const char *ext);
 	/**
 	 * @brief The format's close call.
 	 */
@@ -92,6 +92,7 @@ static struct audio_format formats[] = {
 struct audio_file *
 audio_file_open(struct vfsref *vr)
 {
+	const char *ext;
 	struct audio_file *out = NULL;
 	unsigned int i;
 
@@ -101,11 +102,15 @@ audio_file_open(struct vfsref *vr)
 	if (out->fp == NULL)
 		goto bad;
 
+	/* Store file extension */
+	if ((ext = strrchr(vfs_filename(vr), '.')) != NULL)
+		ext++;
+
 	for (i = 0; i < NUM_FORMATS; i++) {
 		if (fseek(out->fp, 0, SEEK_SET) != 0)
 			out->stream = 1;
 
-		if (formats[i].open(out) == 0) {
+		if (formats[i].open(out, ext) == 0) {
 			/* Assign the format to the file */
 			out->drv = &formats[i];
 			break;

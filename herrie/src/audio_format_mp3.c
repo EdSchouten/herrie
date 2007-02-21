@@ -322,7 +322,7 @@ done:
  */
 
 int
-mp3_open(struct audio_file *fd)
+mp3_open(struct audio_file *fd, const char *ext)
 {
 	struct mp3_drv_data *data;
 

@@ -36,7 +36,7 @@
 /**
  * @brief Open a modplug file.
  */
-int modplug_open(struct audio_file *fd);
+int modplug_open(struct audio_file *fd, const char *ext);
 /**
  * @brief Close and clean up the modplug file.
  */
@@ -55,7 +55,7 @@ void modplug_seek(struct audio_file *fd, int len, int rel);
 /**
  * @brief Open an mp3 file.
  */
-int mp3_open(struct audio_file *fd);
+int mp3_open(struct audio_file *fd, const char *ext);
 /**
  * @brief Close and clean up the mp3 file.
  */
@@ -74,7 +74,7 @@ void mp3_seek(struct audio_file *fd, int len, int rel);
 /**
  * @brief Open a soundfile.
  */
-int sndfile_open(struct audio_file *fd);
+int sndfile_open(struct audio_file *fd, const char *ext);
 /**
  * @brief Close the soundfile.
  */
@@ -93,7 +93,7 @@ void sndfile_seek(struct audio_file *fd, int len, int rel);
 /**
  * @brief Open an Ogg Vorbis file.
  */
-int vorbis_open(struct audio_file *fd);
+int vorbis_open(struct audio_file *fd, const char *ext);
 /**
  * @brief Close and clean up the Ogg Vorbis file.
  */
