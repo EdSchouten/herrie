@@ -205,7 +205,7 @@ fi
 # Audio output options
 case $CFG_AO in
 ao)
-	CFLAGS_main="$CFLAGS -DCLOSE_STDERR"
+	CFLAGS_main="-DCLOSE_STDERR"
 	LDFLAGS="$LDFLAGS -lao"
 	;;
 oss)
