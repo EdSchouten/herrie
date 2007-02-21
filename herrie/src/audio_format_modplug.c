@@ -39,6 +39,18 @@ struct modplug_drv_data {
 	ModPlugFile	*modplug;
 };
 
+static void
+modplug_init(void)
+{
+	ModPlug_Settings mset;
+
+	ModPlug_GetSettings(&mset);
+	mset.mChannels = 2;
+	mset.mBits = 16;
+	mset.mFrequency = 44100;
+	ModPlug_SetSettings(&mset);
+}
+
 int
 modplug_open(struct audio_file *fd)
 {
@@ -49,7 +61,7 @@ modplug_open(struct audio_file *fd)
 		return (-1);
 	}
 
-	fd->drv_data = data = g_slice_new(struct modplug_drv_data);
+	data = g_slice_new(struct modplug_drv_data);
 
 	/* Calculate file length */
 	fseek(fd->fp, 0, SEEK_END);
@@ -62,8 +74,13 @@ modplug_open(struct audio_file *fd)
 		goto free;
 
 	/* Now feed it to modplug */
+	modplug_init();
 	data->modplug = ModPlug_Load(data->map_base, data->map_len);
 	if (data->modplug != NULL) {
+		fd->drv_data = data;
+		fd->srate = 44100;
+		fd->channels = 2;
+
 		fd->time_len = ModPlug_GetLength(data->modplug) / 1000;
 		fd->tag.title = g_strdup(ModPlug_GetName(data->modplug));
 		return (0);
