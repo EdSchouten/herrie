@@ -33,16 +33,40 @@
 #include "audio_format.h"
 #include "audio_output.h"
 
+/**
+ * @brief Sample rate we want to use.
+ */
 #define SAMPLERATE	44100
+/**
+ * @brief The number of bytes used by a single frame.
+ */
 #define BYTESPERSAMPLE	4
 
+/**
+ * @brief Private data for libmodplug stored in the audio file structure.
+ */
 struct modplug_drv_data {
+	/**
+	 * @brief Base address of our memory map.
+	 */
 	void		*map_base;
+	/**
+	 * @brief Length of our memory map.
+	 */
 	size_t		map_len;
+	/**
+	 * @brief libmodplug handle.
+	 */
 	ModPlugFile	*modplug;
+	/**
+	 * @brief Decoded sample offset.
+	 */
 	off_t		sample;
 };
 
+/**
+ * @brief Set proper parameters in the Modplug library.
+ */
 static void
 modplug_init(void)
 {
