@@ -314,6 +314,7 @@ vfs_write_playlist(struct vfslist *vl, struct vfsref *vr,
 {
 	const char *base;
 	char *fn, *nfn;
+	size_t cmplen;
 	FILE *fio;
 	struct vfsref *cvr, *rvr = NULL;
 	unsigned int idx = 1;
@@ -333,12 +334,21 @@ vfs_write_playlist(struct vfslist *vl, struct vfsref *vr,
 	if (fio == NULL)
 		goto done;
 	
+	/* Directory name length of .pls filename */
+	base = strrchr(fn, G_DIR_SEPARATOR);
+	g_assert(base != NULL);
+	cmplen = base - fn + 1;
+
 	fprintf(fio, "[playlist]\nNumberOfEntries=%u\n",
 	    vfs_list_items(vl));
 	vfs_list_foreach(vl, cvr) {
-		/* XXX: make paths relative */
+		/* Skip directory name when relative is possible */
+		base = vfs_filename(cvr);
+		if (strncmp(fn, base, cmplen) == 0)
+			base += cmplen;
+
 		fprintf(fio, "File%u=%s\nTitle%u=%s\n",
-		    idx, vfs_filename(cvr),
+		    idx, base,
 		    idx, vfs_name(cvr));
 		idx++;
 	}
