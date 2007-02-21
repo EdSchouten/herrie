@@ -343,12 +343,6 @@ playq_cursong_prev(void)
 void
 playq_cursong_stop(void)
 {
-	/* Don't stop - autostart would go on */
-	if (funcs->autostart) {
-		playq_cursong_next();
-		return;
-	}
-
 	PLAYQ_LOCK;
 	/* Stop playback */
 	playq_flags |= PF_SKIP | PF_PAUSE;
