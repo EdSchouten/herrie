@@ -61,6 +61,10 @@ struct playq_funcs {
 	 * @brief Notify that a song is about to be removed.
 	 */
 	void (*notify_pre_removal)(struct vfsref *vr);
+	/**
+	 * @brief Start when adding first song to the playlist.
+	 */
+	int autostart;
 };
 
 /**
@@ -73,6 +77,7 @@ static struct playq_funcs party_funcs = {
 	playq_party_next,
 	playq_party_prev,
 	playq_party_notify_pre_removal,
+	1,
 };
 /**
  * @brief XMMS-style playlist handling.
@@ -84,6 +89,7 @@ static struct playq_funcs regular_funcs = {
 	playq_regular_next,
 	playq_regular_prev,
 	playq_regular_notify_pre_removal,
+	0,
 };
 /**
  * @brief Currenty used playlist handling routines.
@@ -155,7 +161,7 @@ playq_runner_thread(void *unused)
 	do {
 		/* Wait until there's a song available */
 		PLAYQ_LOCK;
-		while (playq_flags & PF_PAUSE ||
+		while ((!funcs->autostart && playq_flags & PF_PAUSE) ||
 		    (nvr = funcs->give()) == NULL) {
 			/* Change the current status to idle */
 			funcs->idle();
