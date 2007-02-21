@@ -58,6 +58,7 @@ Herrie:
 - libcurl
 - libid3tag
 - libmad
+- libmodplug
 - libsdl (audio - optional)
 - libsndfile
 - libvorbisfile
@@ -75,6 +76,7 @@ Makefile for your specific system. Arguments can be passed to the
 configure script to change certain parameters:
 
 - no_http       Disable support for HTTP audio streams
+- no_modplug    Disable libmodplug linkage
 - no_mp3        Disable MP3 audio file support
 - no_scrobbler  Disable AudioScrobbler support
 - no_sndfile    Disable libsndfile linkage (Wave/FLAC support)
