@@ -344,8 +344,10 @@ void
 playq_cursong_stop(void)
 {
 	/* Don't stop - autostart would go on */
-	if (funcs->autostart)
+	if (funcs->autostart) {
+		playq_cursong_next();
 		return;
+	}
 
 	PLAYQ_LOCK;
 	/* Stop playback */
