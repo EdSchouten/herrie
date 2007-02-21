@@ -81,10 +81,12 @@ playq_regular_idle(void)
 	}
 }
 
-void
+int
 playq_regular_select(struct vfsref *vr)
 {
 	selectsong = vr;
+
+	return (0);
 }
 
 int

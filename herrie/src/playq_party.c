@@ -61,9 +61,10 @@ playq_party_idle(void)
 {
 }
 
-void
+int
 playq_party_select(struct vfsref *vr)
 {
+	return (-1);
 }
 
 int

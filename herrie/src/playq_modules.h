@@ -51,7 +51,7 @@ void playq_party_idle(void);
  * @brief Herrie's song selection routine (bogus with Herrie, because we
  *        always start the first song).
  */
-void playq_party_select(struct vfsref *vr);
+int playq_party_select(struct vfsref *vr);
 /**
  * @brief Herrie's routine to switch to the next function.
  */
@@ -77,7 +77,7 @@ void playq_regular_idle(void);
 /**
  * @brief XMMS-like function to start playback of a specific song.
  */
-void playq_regular_select(struct vfsref *vr);
+int playq_regular_select(struct vfsref *vr);
 /**
  * @brief XMMS-like function that switches playback to the next song.
  */

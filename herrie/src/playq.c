@@ -48,7 +48,7 @@ struct playq_funcs {
 	/**
 	 * @brief Select a specific song for playback.
 	 */
-	void (*select)(struct vfsref *vr);
+	int (*select)(struct vfsref *vr);
 	/**
 	 * @brief Specify that the next song should be played.
 	 */
@@ -343,6 +343,10 @@ playq_cursong_prev(void)
 void
 playq_cursong_stop(void)
 {
+	/* Don't stop - autostart would go on */
+	if (funcs->autostart)
+		return;
+
 	PLAYQ_LOCK;
 	/* Stop playback */
 	playq_flags |= PF_SKIP | PF_PAUSE;
@@ -458,7 +462,8 @@ playq_song_fast_movedown(struct vfsref *vr, unsigned int index)
 void
 playq_song_fast_select(struct vfsref *vr, unsigned int index)
 {
-	funcs->select(vr);
+	if (funcs->select(vr) != 0)
+		return;
 
 	/* Now go to the next song */
 	playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
