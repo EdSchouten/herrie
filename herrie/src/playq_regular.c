@@ -79,8 +79,6 @@ playq_regular_idle(void)
 		vfs_unmark(cursong);
 		gui_playq_notify_done();
 	}
-	/* Make sure we can't start again */
-	cursong = selectsong = NULL;
 }
 
 void
