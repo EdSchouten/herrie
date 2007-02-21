@@ -32,6 +32,25 @@
 
 #include "audio_file.h"
 
+#ifdef BUILD_MODPLUG
+/**
+ * @brief Open a modplug file.
+ */
+int modplug_open(struct audio_file *fd);
+/**
+ * @brief Close and clean up the modplug file.
+ */
+void modplug_close(struct audio_file *fd);
+/**
+ * @brief Read data from the modplug file and place it in buf.
+ */
+size_t modplug_read(struct audio_file *fd, void *buf);
+/**
+ * @brief Seek the modplug file a relatime amount of seconds.
+ */
+void modplug_seek(struct audio_file *fd, int len, int rel);
+#endif /* BUILD_MP3 */
+
 #ifdef BUILD_MP3
 /**
  * @brief Open an mp3 file.

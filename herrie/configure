@@ -31,6 +31,7 @@ APP_VERSION=1.4
 # Default compilation switches
 CFG_AO=ao
 CFG_HTTP=yes
+CFG_MODPLUG=yes
 CFG_MP3=yes
 CFG_SCROBBLER=yes
 unset CFG_SIGWINCH
@@ -93,6 +94,9 @@ do
 	case $1 in
 	no_http)
 		unset CFG_HTTP
+		;;
+	no_modplug)
+		unset CFG_MODPLUG
 		;;
 	no_mp3)
 		unset CFG_MP3
@@ -157,6 +161,13 @@ then
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
 	LDFLAGS="$LDFLAGS `curl-config --libs`"
+fi
+# Modplug support
+if [ "$CFG_MODPLUG" != "" ]
+then
+	CFLAGS="$CFLAGS `pkg-config --cflags libmodplug` -DBUILD_MODPLUG"
+	LDFLAGS="$LDFLAGS `pkg-config --libs libmodplug`"
+	SRCS="$SRCS audio_format_modplug"
 fi
 # MP3 support
 if [ "$CFG_MP3" != "" ]
@@ -227,6 +238,7 @@ echo "- Installing manual page in $MANDIR"
 echo "- Using -l$CFG_CURSES_LIB and <$CFG_CURSES_HEADER.h>"
 echo "- Using $CFG_AO audio output"
 [ "$CFG_HTTP" != "" ] && echo "- Support for HTTP streams"
+[ "$CFG_MODPLUG" != "" ] && echo "- Support for libmodplug"
 [ "$CFG_MP3" != "" ] && echo "- Support for MP3"
 [ "$CFG_SCROBBLER" != "" ] && echo "- Support for AudioScrobbler"
 [ "$CFG_SNDFILE" != "" ] && echo "- Support for libsndfile"
