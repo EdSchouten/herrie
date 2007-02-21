@@ -33,10 +33,14 @@
 #include "audio_format.h"
 #include "audio_output.h"
 
+#define SAMPLERATE	44100
+#define BYTESPERSAMPLE	4
+
 struct modplug_drv_data {
 	void		*map_base;
 	size_t		map_len;
 	ModPlugFile	*modplug;
+	off_t		sample;
 };
 
 static void
@@ -47,7 +51,7 @@ modplug_init(void)
 	ModPlug_GetSettings(&mset);
 	mset.mChannels = 2;
 	mset.mBits = 16;
-	mset.mFrequency = 44100;
+	mset.mFrequency = SAMPLERATE;
 	ModPlug_SetSettings(&mset);
 }
 
@@ -77,8 +81,9 @@ modplug_open(struct audio_file *fd)
 	modplug_init();
 	data->modplug = ModPlug_Load(data->map_base, data->map_len);
 	if (data->modplug != NULL) {
+		data->sample = 0;
 		fd->drv_data = data;
-		fd->srate = 44100;
+		fd->srate = SAMPLERATE;
 		fd->channels = 2;
 
 		fd->time_len = ModPlug_GetLength(data->modplug) / 1000;
@@ -105,11 +110,28 @@ size_t
 modplug_read(struct audio_file *fd, void *buf)
 {
 	struct modplug_drv_data *data = fd->drv_data;
+	int len;
 
-	return ModPlug_Read(data->modplug, buf, AUDIO_OUTPUT_BUFLEN);
+	len = ModPlug_Read(data->modplug, buf, AUDIO_OUTPUT_BUFLEN);
+	data->sample += len / BYTESPERSAMPLE;
+	fd->time_cur = data->sample / SAMPLERATE;
+
+	return (len);
 }
 
 void
 modplug_seek(struct audio_file *fd, int len, int rel)
 {
+	struct modplug_drv_data *data = fd->drv_data;
+	size_t off;
+
+	off = len * SAMPLERATE;
+	if (rel)
+		off += data->sample;
+	/* Don't seek out of reach */
+	off = CLAMP(off, 0, (fd->time_len - 1) * SAMPLERATE);
+
+	ModPlug_Seek(data->modplug, (off * 10) / (SAMPLERATE / 100));
+	data->sample = off;
+	fd->time_cur = data->sample / SAMPLERATE;
 }
