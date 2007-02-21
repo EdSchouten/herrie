@@ -70,7 +70,7 @@ playq_party_select(struct vfsref *vr)
 int
 playq_party_next(void)
 {
-	return vfs_list_empty(&playq_list);
+	return (0);
 }
 
 int
