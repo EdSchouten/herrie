@@ -70,12 +70,12 @@ static struct audio_format formats[] = {
 #ifdef BUILD_VORBIS
 	{ vorbis_open, vorbis_close, vorbis_read, vorbis_seek },
 #endif /* !BUILD_VORBIS */
-#ifdef BUILD_MODPLUG
-	{ modplug_open, modplug_close, modplug_read, modplug_seek },
-#endif /* !BUILD_MODPLUG*/
 #ifdef BUILD_MP3
 	{ mp3_open, mp3_close, mp3_read, mp3_seek },
 #endif /* !BUILD_MP3 */
+#ifdef BUILD_MODPLUG
+	{ modplug_open, modplug_close, modplug_read, modplug_seek },
+#endif /* !BUILD_MODPLUG*/
 #ifdef BUILD_SNDFILE
 	/*
 	 * Keep this entry at the bottom - it does evil stuff with raw
