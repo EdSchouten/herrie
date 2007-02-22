@@ -51,6 +51,9 @@ version(void)
 #ifdef BUILD_MP3
 		"- MP3\n"
 #endif /* BUILD_MP3 */
+#ifdef BUILD_MODPLUG
+		"- libmodplug\n"
+#endif /* BUILD_MODPLUG */
 #ifdef BUILD_SNDFILE
 		"- libsndfile\n"
 #endif /* BUILD_SNDFILE */
