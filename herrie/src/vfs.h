@@ -25,7 +25,7 @@
  */
 /**
  * @file vfs.h
- * Virtual filesystem.
+ * @brief Virtual filesystem.
  */
 
 #ifndef _VFS_H_

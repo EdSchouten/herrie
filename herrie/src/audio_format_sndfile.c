@@ -25,7 +25,7 @@
  */
 /**
  * @file audio_format_sndfile.c
- * libsndfile decompression routines.
+ * @brief libsndfile decompression routines.
  */
 
 #include <sndfile.h>

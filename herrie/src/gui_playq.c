@@ -25,7 +25,7 @@
  */
 /**
  * @file gui_playq.c
- * Playlist management for textual user interface.
+ * @brief Playlist management for textual user interface.
  */
 
 #include "audio_file.h"

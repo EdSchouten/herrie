@@ -25,7 +25,7 @@
  */
 /**
  * @file vfs_playlist.c
- * M3U and PLS playlist file access.
+ * @brief M3U and PLS playlist file access.
  */
 
 #include "vfs_modules.h"

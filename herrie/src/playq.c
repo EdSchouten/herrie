@@ -25,7 +25,7 @@
  */
 /**
  * @file playq.c
- * Playlist handling.
+ * @brief Playlist handling.
  */
 
 #include "audio_file.h"

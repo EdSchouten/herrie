@@ -25,7 +25,7 @@
  */
 /**
  * @file vfs.c
- * Virtual filesystem.
+ * @brief Virtual filesystem.
  */
 
 #include "config.h"

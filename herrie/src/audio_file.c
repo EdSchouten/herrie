@@ -25,7 +25,7 @@
  */
 /**
  * @file audio_file.c
- * Generic access and decoding of audio file formats.
+ * @brief Generic access and decoding of audio file formats.
  */
 
 #include "audio_file.h"

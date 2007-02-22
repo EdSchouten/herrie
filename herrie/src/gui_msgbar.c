@@ -25,7 +25,7 @@
  */
 /**
  * @file gui_msgbar.c
- * Message logging for textual user interface.
+ * @brief Message logging for textual user interface.
  */
 
 #include "gui_internal.h"

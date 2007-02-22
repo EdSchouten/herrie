@@ -25,7 +25,7 @@
  */
 /**
  * @file scrobbler.h
- * AudioScrobbler submission.
+ * @brief AudioScrobbler submission.
  */
 
 #ifndef _SCROBBLER_H_

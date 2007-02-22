@@ -25,7 +25,7 @@
  */
 /**
  * @file audio_format.h
- * Audio file format specific decompression routines.
+ * @brief Audio file format specific decompression routines.
  */
 
 #ifndef _AUDIO_FORMAT_H_

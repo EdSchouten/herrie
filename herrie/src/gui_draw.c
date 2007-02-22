@@ -25,7 +25,7 @@
  */
 /**
  * @file gui_draw.c
- * Initialization, destruction and rendering functions for interface.
+ * @brief Initialization, destruction and rendering functions for interface.
  */
 
 #include "config.h"

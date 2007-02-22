@@ -25,7 +25,7 @@
  */
 /**
  * @file vfs_http.c
- * HTTP file access.
+ * @brief HTTP file access.
  */
 
 #include <curl/curl.h>
