@@ -25,6 +25,7 @@
  */
 /**
  * @file scrobbler_hash.c
+ * AudioScrobbler password hashing.
  */
 
 #include <openssl/md5.h>

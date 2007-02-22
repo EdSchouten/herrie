@@ -25,6 +25,7 @@
  */
 /**
  * @file config.h
+ * Configuration file handling.
  */
 
 #ifndef _CONFIG_H_

@@ -25,6 +25,7 @@
  */
 /**
  * @file audio_format_modplug.c
+ * libmodplug decompression routines.
  */
 
 #include <sys/mman.h>

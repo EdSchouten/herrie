@@ -25,6 +25,7 @@
  */
 /**
  * @file main.c
+ * Application startup routine.
  */
 
 #include "audio_output.h"

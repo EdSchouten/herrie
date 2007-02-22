@@ -25,6 +25,7 @@
  */
 /**
  * @file config.c
+ * Configuration file handling.
  */
 
 #include "config.h"

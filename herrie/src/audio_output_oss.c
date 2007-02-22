@@ -25,6 +25,7 @@
  */
 /**
  * @file audio_output_oss.c
+ * OSS audio output driver.
  */
 
 #if defined(__NetBSD__) || defined(__OpenBSD__)

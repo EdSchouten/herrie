@@ -25,6 +25,7 @@
  */
 /**
  * @file audio_format_mp3.c
+ * MP3 decompression routines.
  */
 
 #include <mad.h>

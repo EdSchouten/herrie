@@ -25,6 +25,7 @@
  */
 /**
  * @file gui_internal.h
+ * Internal textual user interface routines.
  */
 
 #ifndef _GUI_INTERNAL_H_

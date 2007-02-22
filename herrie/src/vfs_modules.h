@@ -25,6 +25,7 @@
  */
 /**
  * @file vfs_modules.h
+ * Virtual filesystem access modules.
  */
 
 #ifndef _VFS_MODULES_H_

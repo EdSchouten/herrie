@@ -25,6 +25,7 @@
  */
 /**
  * @file audio_file.h
+ * Generic access and decoding of audio file formats.
  */
 
 #ifndef _AUDIO_FILE_H_
