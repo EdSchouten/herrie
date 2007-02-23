@@ -146,7 +146,7 @@ gui_playq_statbar_time(struct audio_file *fd)
 	} else {
 		g_string_assign(str_time, " [");
 		gui_playq_statbar_time_calc(str_time, fd->time_cur);
-		if (fd->time_len != 0) {
+		if (!fd->stream) {
 			g_string_append_c(str_time, '/');
 			gui_playq_statbar_time_calc(str_time, fd->time_len);
 		}
