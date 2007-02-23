@@ -25,6 +25,7 @@
  */
 /**
  * @file playq_regular.c
+ * @brief XMMS-style playlist handling.
  */
 
 #include "gui.h"

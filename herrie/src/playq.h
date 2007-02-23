@@ -25,6 +25,7 @@
  */
 /**
  * @file playq.h
+ * @brief Playlist handling.
  */
 
 #ifndef _PLAYQ_H_

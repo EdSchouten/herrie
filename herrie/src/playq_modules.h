@@ -25,6 +25,7 @@
  */
 /**
  * @file playq_modules.h
+ * @brief Custom playlist behaviour routines.
  */
 
 #ifndef _PLAYQ_MODULES_H_

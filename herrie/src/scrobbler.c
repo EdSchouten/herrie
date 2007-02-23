@@ -25,6 +25,7 @@
  */
 /**
  * @file scrobbler.c
+ * @brief AudioScrobbler submission queue.
  */
 
 #include "config.h"

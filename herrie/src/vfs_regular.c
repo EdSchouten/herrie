@@ -25,6 +25,7 @@
  */
 /**
  * @file vfs_regular.c
+ * @brief Regular on-disk file and directory access.
  */
 
 #include "config.h"

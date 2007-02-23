@@ -25,6 +25,7 @@
  */
 /**
  * @file audio_output_ao.c
+ * @brief libao audio output driver.
  */
 
 #include <ao/ao.h>

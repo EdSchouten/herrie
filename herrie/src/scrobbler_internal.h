@@ -25,6 +25,7 @@
  */
 /**
  * @file scrobbler_internal.h
+ * @brief Internal AudioScrobbler routines.
  */
 
 #ifndef _SCROBBLER_INTERNAL_H_

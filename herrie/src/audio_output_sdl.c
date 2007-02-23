@@ -25,6 +25,7 @@
  */
 /**
  * @file audio_output_sdl.c
+ * @brief LibSDL audio output driver.
  */
 
 #include <SDL.h>

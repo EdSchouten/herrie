@@ -25,6 +25,7 @@
  */
 /**
  * @file gui_input.c
+ * @brief Keyboard and signal input for user interface.
  */
 
 #include "gui_internal.h"

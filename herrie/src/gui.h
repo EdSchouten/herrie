@@ -25,6 +25,7 @@
  */
 /**
  * @file gui.h
+ * @brief Public textual user interface control routines.
  */
 
 #ifndef _GUI_H_

@@ -25,6 +25,7 @@
  */
 /**
  * @file scrobbler_send.c
+ * @brief AudioScrobbler network submission.
  */
 
 #include <curl/curl.h>

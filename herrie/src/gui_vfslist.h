@@ -25,6 +25,7 @@
  */
 /**
  * @file gui_vfslist.h
+ * @brief Generic directory/playlist display for textual user interface.
  */
 
 #ifndef _GUI_VFSLIST_H_

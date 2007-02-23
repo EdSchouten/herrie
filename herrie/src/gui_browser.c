@@ -25,6 +25,7 @@
  */
 /**
  * @file gui_browser.c
+ * @brief File browser in textual user interface.
  */
 
 #include "config.h"

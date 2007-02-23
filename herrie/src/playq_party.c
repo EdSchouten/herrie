@@ -25,6 +25,7 @@
  */
 /**
  * @file playq_party.c
+ * @brief Party-mode playlist handling.
  */
 
 #include "gui.h"

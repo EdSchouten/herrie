@@ -25,6 +25,7 @@
  */
 /**
  * @file audio_format_vorbis.c
+ * @brief Ogg Vorbis decompression routines.
  */
 
 #include <vorbis/codec.h>

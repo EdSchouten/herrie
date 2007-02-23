@@ -25,6 +25,7 @@
  */
 /**
  * @file config.h
+ * @brief Configuration file handling.
  */
 
 #ifndef _CONFIG_H_

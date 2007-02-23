@@ -136,9 +136,9 @@ done
 CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -Wall -Wsign-compare -Werror -Wmissing-prototypes \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
-    -DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -I$PREFIX/include \
-    -DCURSES_HEADER='<$CFG_CURSES_HEADER.h>' \
+    -I$PREFIX/include -DCURSES_HEADER='<$CFG_CURSES_HEADER.h>' \
     -include $SRCDIR/src/stdinc.h"
+CFLAGS_main="-DAUDIO_OUTPUT=\\\"$CFG_AO\\\""
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
     -L$PREFIX/lib -l$CFG_CURSES_LIB"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
@@ -192,7 +192,8 @@ fi
 # Translation support
 if [ "$CFG_TRANS" != "" ]
 then
-	CFLAGS="$CFLAGS -DBUILD_TRANS -DTRANSDIR=\\\"$TRANSDIR\\\""
+	CFLAGS="$CFLAGS -DBUILD_TRANS"
+	CFLAGS_main="$CFLAGS_main -DTRANSDIR=\\\"$TRANSDIR\\\""
 fi
 # Ogg Vorbis support
 if [ "$CFG_VORBIS" != "" ]
@@ -205,7 +206,7 @@ fi
 # Audio output options
 case $CFG_AO in
 ao)
-	CFLAGS_main="-DCLOSE_STDERR"
+	CFLAGS_main="$CFLAGS_main -DCLOSE_STDERR"
 	LDFLAGS="$LDFLAGS -lao"
 	;;
 oss)

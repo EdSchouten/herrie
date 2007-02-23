@@ -25,6 +25,7 @@
  */
 /**
  * @file audio_output.h
+ * @brief Audio output abstraction.
  */
 
 #ifndef _AUDIO_OUTPUT_H_
