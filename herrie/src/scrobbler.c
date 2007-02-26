@@ -125,11 +125,11 @@ scrobbler_queue_insert_tail(struct scrobbler_entry *se)
 static inline void
 scrobbler_queue_remove_head(void)
 {
-	if (scrobbler_queue_first != NULL) {
-		if (scrobbler_queue_first == scrobbler_queue_last)
-			scrobbler_queue_last = NULL;
-		scrobbler_queue_first = scrobbler_queue_first->next;
-	}
+	g_assert(scrobbler_queue_first != NULL);
+
+	if (scrobbler_queue_first == scrobbler_queue_last)
+		scrobbler_queue_last = NULL;
+	scrobbler_queue_first = scrobbler_queue_first->next;
 }
 
 /**
@@ -269,7 +269,6 @@ scrobbler_queue_remove(int amount)
 	g_mutex_lock(scrobbler_lock);
 	for (i = amount; i > 0; i--) {
 		ent = scrobbler_queue_first;
-		g_assert(ent != NULL);
 		scrobbler_queue_remove_head();
 
 		g_free(ent->artist);
