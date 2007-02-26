@@ -249,13 +249,17 @@ static inline void
 vfs_list_remove(struct vfslist *vl, struct vfsref *vr)
 {
 	if (vr->next == NULL) {
+		/* Item was the last in the list */
 		vl->last = vr->prev;
 	} else {
+		/* There is an item after this one */
 		vr->next->prev = vr->prev;
 	}
 	if (vr->prev == NULL) {
+		/* Item was the first in the list */
 		vl->first = vr->next;
 	} else {
+		/* There is an item before this one */
 		vr->prev->next = vr->next;
 	}
 	vl->items--;
@@ -271,8 +275,10 @@ vfs_list_insert_head(struct vfslist *vl, struct vfsref *vr)
 	vr->next = vl->first;
 	vl->first = vr;
 	if (vr->next != NULL) {
+		/* Item is stored before other ones */
 		vr->next->prev = vr;
 	} else {
+		/* New item is only item in the list */
 		vl->last = vr;
 	}
 	vl->items++;
@@ -288,8 +294,10 @@ vfs_list_insert_tail(struct vfslist *vl, struct vfsref *vr)
 	vr->next = NULL;
 	vl->last = vr;
 	if (vr->prev != NULL) {
+		/* Item is stored after other ones */
 		vr->prev->next = vr;
 	} else {
+		/* New item is only item in the list */
 		vl->first = vr;
 	}
 	vl->items++;
@@ -306,8 +314,10 @@ vfs_list_insert_before(struct vfslist *vl, struct vfsref *nvr,
 	nvr->next = lvr;
 	lvr->prev = nvr;
 	if (nvr->prev != NULL) {
+		/* Store item between two others */
 		nvr->prev->next = nvr;
 	} else {
+		/* New item is added before the first one */
 		vl->first = nvr;
 	}
 	vl->items++;
@@ -324,8 +334,10 @@ vfs_list_insert_after(struct vfslist *vl, struct vfsref *nvr,
 	nvr->next = lvr->next;
 	lvr->next = nvr;
 	if (nvr->next != NULL) {
+		/* Store item between two others */
 		nvr->next->prev = nvr;
 	} else {
+		/* New item is added after the first one */
 		vl->last = nvr;
 	}
 	vl->items++;
