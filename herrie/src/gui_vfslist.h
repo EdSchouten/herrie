@@ -119,14 +119,24 @@ void gui_vfslist_setfocus(struct gui_vfslist *gv, int focus);
  */
 void gui_vfslist_setselected(struct gui_vfslist *gv, struct vfsref *vr,
     unsigned int index);
+
 /**
  * @brief Read which item is currently selected.
  */
-#define gui_vfslist_getselected(gv)	((gv)->vr_selected)
+static inline struct vfsref *
+gui_vfslist_getselected(struct gui_vfslist *gv)
+{
+	return (gv->vr_selected);
+}
+
 /**
  * @brief Read the index number of the currently selected item.
  */
-#define gui_vfslist_getselectedidx(gv)	((gv)->idx_selected)
+static inline unsigned int
+gui_vfslist_getselectedidx(struct gui_vfslist *gv)
+{
+	return (gv->idx_selected);
+}
 
 /**
  * @brief Move the cursor one item up.
@@ -152,14 +162,25 @@ void gui_vfslist_cursor_pageup(struct gui_vfslist *gv);
  * @brief Move the cursor one page down.
  */
 void gui_vfslist_cursor_pagedown(struct gui_vfslist *gv);
+
 /**
  * @brief Return the percentage string.
  */
-#define gui_vfslist_getpercentage(gv)		((gv)->percent)
+static inline const char *
+gui_vfslist_getpercentage(struct gui_vfslist *gv)
+{
+	return (gv->percent);
+}
+
 /**
  * @brief Set a callback that is run each time the dialog is refreshed.
  */
-#define gui_vfslist_setcallback(gv,func)	((gv)->callback = (func))
+static inline void
+gui_vfslist_setcallback(struct gui_vfslist *gv, void (*func)(void))
+{
+	gv->callback = func;
+}
+
 /**
  * @brief Notify the gui_vfslist that an item is about to be removed
  *        from the list.

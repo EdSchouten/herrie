@@ -31,6 +31,13 @@
 #ifndef _VFS_H_
 #define _VFS_H_
 
+/*
+ * All structures mentioned in this file are only directly dereferenced
+ * in the VFS itself, so we could remove their declaration to a private
+ * header file. The problem is that this results in worse performance,
+ * especially on the vfs_list_* functions.
+ */
+
 struct vfsref;
 
 /**
@@ -50,131 +57,6 @@ struct vfslist {
 	 */
 	unsigned int items;
 };
-
-/**
- * @brief Contents of an empty VFS list structure.
- */
-#define VFSLIST_INITIALIZER { NULL, NULL, 0 }
-
-/**
- * @brief Run-time initialize a VFS list structure.
- */
-#define vfs_list_init(vl)						\
-do {									\
-	(vl)->first = (vl)->last = NULL;				\
-	(vl)->items = 0;						\
-} while (0)
-/**
- * @brief Return the first item in a VFS list.
- */
-#define vfs_list_first(vl)	((vl)->first)
-/**
- * @brief Return the last item in a VFS list.
- */
-#define vfs_list_last(vl)	((vl)->last)
-/**
- * @brief Return whether the VFS list is empty or not.
- */
-#define vfs_list_empty(vl)	(vfs_list_first(vl) == NULL)
-/**
- * @brief Return the amount of items in the VFS list.
- */
-#define vfs_list_items(vl)	((vl)->items)
-/**
- * @brief Return the next item in the VFS list.
- */
-#define vfs_list_next(vr)	((vr)->next)
-/**
- * @brief Return the preivous item in the VFS list.
- */
-#define vfs_list_prev(vr)	((vr)->prev)
-/**
- * @brief Loop through all items in the VFS list.
- */
-#define vfs_list_foreach(vl, vr) \
-	for (vr = vfs_list_first(vl); vr != NULL; vr = vfs_list_next(vr))
-/**
- * @brief Reverse loop through all items in the VFS list.
- */
-#define vfs_list_foreach_reverse(vl, vr) \
-	for (vr = vfs_list_last(vl); vr != NULL; vr = vfs_list_prev(vr))
-/**
- * @brief Remove the VFS reference from the VFS list.
- */
-#define vfs_list_remove(vl, vr) \
-do {									\
-	if (vfs_list_next(vr) == NULL) {				\
-		vfs_list_last(vl) = vfs_list_prev(vr);			\
-	} else {							\
-		vfs_list_prev(vfs_list_next(vr)) = vfs_list_prev(vr);	\
-	}								\
-	if (vfs_list_prev(vr) == NULL) {				\
-		vfs_list_first(vl) = vfs_list_next(vr);			\
-	} else {							\
-		vfs_list_next(vfs_list_prev(vr)) = vfs_list_next(vr);	\
-	}								\
-	vfs_list_items(vl)--;						\
-} while (0)
-/**
- * @brief Insert the VFS reference at the head of the VFS list.
- */
-#define vfs_list_insert_head(vl, vr) \
-do {									\
-	vfs_list_prev(vr) = NULL;					\
-	vfs_list_next(vr) = vfs_list_first(vl);				\
-	vfs_list_first(vl) = (vr);					\
-	if (vfs_list_next(vr) != NULL) {				\
-		vfs_list_prev(vfs_list_next(vr)) = (vr);		\
-	} else {							\
-		vfs_list_last(vl) = (vr);				\
-	}								\
-	vfs_list_items(vl)++;						\
-} while (0)
-/**
- * @brief Insert the VFS reference at the tail of the VFS list.
- */
-#define vfs_list_insert_tail(vl, vr) \
-do {									\
-	vfs_list_prev(vr) = vfs_list_last(vl);				\
-	vfs_list_next(vr) = NULL;					\
-	vfs_list_last(vl) = (vr);					\
-	if (vfs_list_prev(vr) != NULL) {				\
-		vfs_list_next(vfs_list_prev(vr)) = (vr);		\
-	} else {							\
-		vfs_list_first(vl) = (vr);				\
-	}								\
-	vfs_list_items(vl)++;						\
-} while (0)
-/**
- * @brief Insert the VFS reference before another one in the VFS list.
- */
-#define vfs_list_insert_before(vl, nvr, lvr) \
-do {									\
-	vfs_list_prev(nvr) = vfs_list_prev(lvr);			\
-	vfs_list_next(nvr) = (lvr);					\
-	vfs_list_prev(lvr) = (nvr);					\
-	if (vfs_list_prev(nvr) != NULL) {				\
-		vfs_list_next(vfs_list_prev(nvr)) = (nvr);		\
-	} else {							\
-		vfs_list_first(vl) = (nvr);				\
-	}								\
-	vfs_list_items(vl)++;						\
-} while (0)
-/**
- * @brief Insert the VFS reference after another one in the VFS list.
- */
-#define vfs_list_insert_after(vl, nvr, lvr) \
-do {									\
-	vfs_list_prev(nvr) = (lvr);					\
-	vfs_list_next(nvr) = vfs_list_next(lvr);			\
-	vfs_list_next(lvr) = (nvr);					\
-	if (vfs_list_next(nvr) != NULL) {				\
-		vfs_list_prev(vfs_list_next(nvr)) = (nvr);		\
-	} else {							\
-		vfs_list_last(vl) = (nvr);				\
-	}								\
-	vfs_list_items(vl)++;						\
-} while (0)
 
 struct vfsent;
 
@@ -281,6 +163,175 @@ struct vfsref {
 };
 
 /**
+ * @brief Contents of an empty VFS list structure.
+ */
+#define VFSLIST_INITIALIZER { NULL, NULL, 0 }
+
+/**
+ * @brief Run-time initialize a VFS list structure.
+ */
+static inline void
+vfs_list_init(struct vfslist *vl)
+{
+	vl->first = vl->last = NULL;
+	vl->items = 0;
+}
+
+/**
+ * @brief Return the first item in a VFS list.
+ */
+static inline struct vfsref *
+vfs_list_first(struct vfslist *vl)
+{
+	return (vl->first);
+}
+
+/**
+ * @brief Return the last item in a VFS list.
+ */
+static inline struct vfsref *
+vfs_list_last(struct vfslist *vl)
+{
+	return (vl->last);
+}
+
+/**
+ * @brief Return whether the VFS list is empty or not.
+ */
+static inline int
+vfs_list_empty(struct vfslist *vl)
+{
+	return (vl->first == NULL);
+}
+
+/**
+ * @brief Return the amount of items in the VFS list.
+ */
+static inline unsigned int
+vfs_list_items(struct vfslist *vl)
+{
+	return (vl->items);
+}
+
+/**
+ * @brief Return the next item in the VFS list.
+ */
+static inline struct vfsref *
+vfs_list_next(struct vfsref *vr)
+{
+	return (vr->next);
+}
+
+/**
+ * @brief Return the preivous item in the VFS list.
+ */
+static inline struct vfsref *
+vfs_list_prev(struct vfsref *vr)
+{
+	return (vr->prev);
+}
+
+/**
+ * @brief Loop through all items in the VFS list.
+ */
+#define vfs_list_foreach(vl, vr) \
+	for (vr = vfs_list_first(vl); vr != NULL; vr = vfs_list_next(vr))
+/**
+ * @brief Reverse loop through all items in the VFS list.
+ */
+#define vfs_list_foreach_reverse(vl, vr) \
+	for (vr = vfs_list_last(vl); vr != NULL; vr = vfs_list_prev(vr))
+
+/**
+ * @brief Remove the VFS reference from the VFS list.
+ */
+static inline void
+vfs_list_remove(struct vfslist *vl, struct vfsref *vr)
+{
+	if (vr->next == NULL) {
+		vl->last = vr->prev;
+	} else {
+		vr->next->prev = vr->prev;
+	}
+	if (vr->prev == NULL) {
+		vl->first = vr->next;
+	} else {
+		vr->prev->next = vr->next;
+	}
+	vl->items--;
+}
+
+/**
+ * @brief Insert the VFS reference at the head of the VFS list.
+ */
+static inline void
+vfs_list_insert_head(struct vfslist *vl, struct vfsref *vr)
+{
+	vr->prev = NULL;
+	vr->next = vl->first;
+	vl->first = vr;
+	if (vr->next != NULL) {
+		vr->next->prev = vr;
+	} else {
+		vl->last = vr;
+	}
+	vl->items++;
+}
+
+/**
+ * @brief Insert the VFS reference at the tail of the VFS list.
+ */
+static inline void
+vfs_list_insert_tail(struct vfslist *vl, struct vfsref *vr)
+{
+	vr->prev = vl->last;
+	vr->next = NULL;
+	vl->last = vr;
+	if (vr->prev != NULL) {
+		vr->prev->next = vr;
+	} else {
+		vl->first = vr;
+	}
+	vl->items++;
+}
+
+/**
+ * @brief Insert the VFS reference before another one in the VFS list.
+ */
+static inline void
+vfs_list_insert_before(struct vfslist *vl, struct vfsref *nvr,
+    struct vfsref *lvr)
+{
+	nvr->prev = lvr->prev;
+	nvr->next = lvr;
+	lvr->prev = nvr;
+	if (nvr->prev != NULL) {
+		nvr->prev->next = nvr;
+	} else {
+		vl->first = nvr;
+	}
+	vl->items++;
+}
+
+/**
+ * @brief Insert the VFS reference after another one in the VFS list.
+ */
+static inline void
+vfs_list_insert_after(struct vfslist *vl, struct vfsref *nvr,
+    struct vfsref *lvr)
+{
+	nvr->prev = lvr;
+	nvr->next = lvr->next;
+	lvr->next = nvr;
+	if (nvr->next != NULL) {
+		nvr->next->prev = nvr;
+	} else {
+		vl->last = nvr;
+	}
+	vl->items++;
+}
+
+/**
  * @brief Try to lock the application in a specified directory on
  *        startup. This function returns an error message.
  */
@@ -319,54 +370,114 @@ void		vfs_unfold(struct vfslist *vl, struct vfsref *vr);
  */
 struct vfsref	*vfs_write_playlist(struct vfslist *vl,
     struct vfsref *vr, const char *filename);
+
 /**
  * @brief Get the friendly name of the current VFS reference.
  */
-#define vfs_name(vr) 		((const char *)(vr)->ent->name)
+static inline const char *
+vfs_name(struct vfsref *vr)
+{
+	return (vr->ent->name);
+}
+
 /**
  * @brief Get the full pathname of the current VFS reference.
  */
-#define vfs_filename(vr)	((const char *)(vr)->ent->filename)
+static inline const char *
+vfs_filename(struct vfsref *vr)
+{
+	return (vr->ent->filename);
+}
+
 /**
  * @brief Determine if a VFS entity is playable audio.
  */
-#define vfs_playable(vr)	((vr)->ent->vmod->vhandle != NULL)
+static inline int
+vfs_playable(struct vfsref *vr)
+{
+	return (vr->ent->vmod->vhandle != NULL);
+}
+
 /**
  * @brief Open a new filehandle to the entity.
  */
-#define vfs_handle(vr)		((vr)->ent->vmod->vhandle((vr)->ent))
+static inline FILE *
+vfs_handle(struct vfsref *vr)
+{
+	return vr->ent->vmod->vhandle(vr->ent);
+}
+
 /**
  * @brief Determine if the VFS entity can have population.
  */
-#define vfs_populatable(vr)	((vr)->ent->vmod->vpopulate != NULL)
+static inline int
+vfs_populatable(struct vfsref *vr)
+{
+	return (vr->ent->vmod->vpopulate != NULL);
+}
+
 /**
  * @brief Get the character that should be used to mark the file with in
  *        the filebrowser.
  */
-#define vfs_marking(vr)		((vr)->ent->vmod->marking)
+static inline char
+vfs_marking(struct vfsref *vr)
+{
+	return (vr->ent->vmod->marking);
+}
+
 /**
  * @brief Get the sorting priority of the current object.
  */
-#define vfs_sortorder(vr)	((vr)->ent->vmod->sortorder)
+static inline unsigned char
+vfs_sortorder(struct vfsref *vr)
+{
+	return (vr->ent->vmod->sortorder);
+}
+
 /**
  * @brief Determine if we should recurse this object.
  */
-#define vfs_recurse(vr)		((vr)->ent->vmod->recurse)
+static inline char
+vfs_recurse(struct vfsref *vr)
+{
+	return (vr->ent->vmod->recurse);
+}
+
 /**
  * @brief Return a pointer to the VFS list inside the VFS reference.
  */
-#define vfs_population(vr)	(&(vr)->ent->population)
+static inline struct vfslist *
+vfs_population(struct vfsref *vr)
+{
+	return (&vr->ent->population);
+}
+
 /**
  * @brief Return whether the current reference is marked.
  */
-#define vfs_marked(vr)		((vr)->marked != 0)
+static inline int
+vfs_marked(struct vfsref *vr)
+{
+	return (vr->marked != 0);
+}
+
 /**
  * @brief Mark the current reference.
  */
-#define vfs_mark(vr)		((vr)->marked = 1)
+static inline void
+vfs_mark(struct vfsref *vr)
+{
+	vr->marked = 1;
+}
+
 /**
  * @brief Unmark the current reference.
  */
-#define vfs_unmark(vr)		((vr)->marked = 0)
+static inline void
+vfs_unmark(struct vfsref *vr)
+{
+	vr->marked = 0;
+}
 
 #endif /* !_VFS_H_ */

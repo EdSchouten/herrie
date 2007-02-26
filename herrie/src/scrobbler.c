@@ -95,32 +95,42 @@ static struct scrobbler_entry *scrobbler_queue_first = NULL;
  * @brief Last item in the Scrobbler queue.
  */
 static struct scrobbler_entry *scrobbler_queue_last = NULL;
+
 /**
  * @brief Next item in the Scrobbler queue.
  */
-#define scrobbler_queue_next(se)	((se)->next)
+static inline struct scrobbler_entry *
+scrobbler_queue_next(struct scrobbler_entry *se)
+{
+	return (se->next);
+}
+
 /**
  * @brief Place a new item in our Scrobbler queue.
  */
-#define scrobbler_queue_insert_tail(se)					\
-do {									\
-	scrobbler_queue_next(se) = NULL;				\
-	if (scrobbler_queue_last != NULL)				\
-		scrobbler_queue_last->next = (se);			\
-	else								\
-		scrobbler_queue_first = (se);				\
-	scrobbler_queue_last = (se);					\
-} while (0)
+static inline void
+scrobbler_queue_insert_tail(struct scrobbler_entry *se)
+{
+	se->next = NULL;
+	if (scrobbler_queue_last != NULL)
+		scrobbler_queue_last->next = se;
+	else
+		scrobbler_queue_first = se;
+	scrobbler_queue_last = se;
+}
+
 /**
  * @brief Remove the first item from our Scrobbler queue.
  */
-#define scrobbler_queue_remove_head()					\
-do {									\
-	if (scrobbler_queue_first != NULL)				\
-		if (scrobbler_queue_first == scrobbler_queue_last)	\
-			scrobbler_queue_last = NULL;			\
-		scrobbler_queue_first = scrobbler_queue_first->next;	\
-} while (0)
+static inline void
+scrobbler_queue_remove_head(void)
+{
+	if (scrobbler_queue_first != NULL) {
+		if (scrobbler_queue_first == scrobbler_queue_last)
+			scrobbler_queue_last = NULL;
+		scrobbler_queue_first = scrobbler_queue_first->next;
+	}
+}
 
 /**
  * @brief Escape a string according to HTTP/1.1.

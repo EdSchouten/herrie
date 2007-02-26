@@ -46,10 +46,15 @@ void scrobbler_spawn(void);
  *        been performed.
  */
 void scrobbler_notify_read(struct audio_file *fd, int eof);
+
 /**
  * @brief Notify the AudioScrobbler thread that a seek on the file has
  *        been performed.
  */
-#define scrobbler_notify_seek(fd) (fd->_scrobbler_done = 1)
+static inline void
+scrobbler_notify_seek(struct audio_file *fd)
+{
+	fd->_scrobbler_done = 1;
+}
 
 #endif /* !_SCROBBLER_H_ */
