@@ -250,6 +250,7 @@ vfs_list_remove(struct vfslist *vl, struct vfsref *vr)
 {
 	if (vr->next == NULL) {
 		/* Item was the last in the list */
+		g_assert(vl->last == vr);
 		vl->last = vr->prev;
 	} else {
 		/* There is an item after this one */
@@ -257,6 +258,7 @@ vfs_list_remove(struct vfslist *vl, struct vfsref *vr)
 	}
 	if (vr->prev == NULL) {
 		/* Item was the first in the list */
+		g_assert(vl->first == vr);
 		vl->first = vr->next;
 	} else {
 		/* There is an item before this one */
