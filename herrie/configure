@@ -179,7 +179,7 @@ fi
 # SIGWINCH wrapper
 if [ "$CFG_SIGWINCH" != "" ]
 then
-	CFLAGS="$CFLAGS -DBUILD_GUI_SIGWINCH_WRAPPER"
+	CFLAGS_gui_input="-DBUILD_GUI_SIGWINCH_WRAPPER"
 fi
 # libsndfile support
 if [ "$CFG_SNDFILE" != "" ]
