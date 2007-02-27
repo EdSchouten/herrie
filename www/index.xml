@@ -65,10 +65,9 @@ SIZE (herrie-1.5.tar.gz) = 53159</pre>
 	<pre>git clone git://g-rave.nl/herrie</pre>
 
 	<p>It is also possible to <a
-	href="/gitweb?p=herrie;a=tree">take a look at the
-	sourcecode</a> or <a
-	href="/gitweb?p=herrie;a=snapshot">download the
-	trunk</a>, without using Git, using Gitweb.</p>
+	href="/gitweb?p=herrie;a=tree;f=herrie/src">take a look at the
+	sourcecode</a> or <a href="/gitweb?p=herrie;a=snapshot">download
+	the trunk</a>, without using Git, using Gitweb.</p>
 
 	<h2>Using Herrie</h2>
 
