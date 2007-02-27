@@ -26,7 +26,7 @@
 # 
 
 APP_NAME=herrie
-APP_VERSION=1.4
+APP_VERSION=1.5
 
 # Default compilation switches
 CFG_AO=ao
