@@ -39,6 +39,7 @@
  */
 
 struct vfsref;
+struct vfsent;
 
 /**
  * @brief List structure that can contain a lot of VFS references.
@@ -57,8 +58,6 @@ struct vfslist {
 	 */
 	unsigned int items;
 };
-
-struct vfsent;
 
 /**
  * @brief Module representing a type of file or directory on disk, containing
