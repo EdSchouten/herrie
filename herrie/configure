@@ -49,7 +49,6 @@ CYGWIN*)
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 Darwin)
-	CFG_SIGWINCH=yes
 	LDFLAGS="$LDFLAGS -lresolv"
 	[ "$PREFIX" = "" ] && PREFIX=/opt/local
 	;;
