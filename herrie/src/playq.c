@@ -506,15 +506,15 @@ playq_song_randomize(void)
 		vrlist[idx++] = vr;
 	vfs_list_init(&playq_list);
 
-	for (; remaining != 0; remaining--) {
+	do {
 		/* Pick a random item from the beginning */
 		idx = g_random_int_range(0, remaining);
 		
 		/* Add it to the list */
 		vfs_list_insert_tail(&playq_list, vrlist[idx]);
 		/* Remove fragmentation  */
-		vrlist[idx] = vrlist[remaining - 1];
-	}
+		vrlist[idx] = vrlist[--remaining];
+	} while (remaining != 0);
 
 	/* Trash the shadow list */
 	g_free(vrlist);
