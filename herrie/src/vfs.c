@@ -314,7 +314,7 @@ struct vfsref *
 vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
     const char *filename)
 {
-	const char *base;
+	const char *base = NULL;
 	char *fn, *nfn;
 	size_t cmplen;
 	FILE *fio;
