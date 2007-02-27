@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-19 11:52+0100\n"
+"POT-Creation-Date: 2007-02-27 20:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,97 +16,97 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:88 audio_output_sdl.c:111
+#: audio_output_ao.c:89 audio_output_sdl.c:112
 msgid "Cannot open the audio device."
 msgstr ""
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:62
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr ""
 
-#: audio_output_sdl.c:79
+#: audio_output_sdl.c:80
 msgid "Cannot initialize SDL audio subsystem.\n"
 msgstr ""
 
-#: gui_browser.c:112
+#: gui_browser.c:113
 msgid "Unable to open initial directory."
 msgstr ""
 
-#: gui_browser.c:217
+#: gui_browser.c:218
 msgid "Unable to enter the parent directory."
 msgstr ""
 
-#: gui_browser.c:232
+#: gui_browser.c:233
 msgid "Unable to enter the selected directory."
 msgstr ""
 
-#: gui_browser.c:313
+#: gui_browser.c:314
 msgid "Change directory"
 msgstr ""
 
-#: gui_browser.c:351
+#: gui_browser.c:352
 msgid "Unable to display the file or directory."
 msgstr ""
 
-#: gui_browser.c:368
+#: gui_browser.c:369
 msgid "Write playlist to file"
 msgstr ""
 
-#: gui_browser.c:377
+#: gui_browser.c:378
 msgid "Unable to write playlist."
 msgstr ""
 
-#: gui_input.c:108
+#: gui_input.c:109
 msgid "Search for"
 msgstr ""
 
-#: gui_input.c:132
+#: gui_input.c:133
 #, c-format
 msgid "Quit %s?"
 msgstr ""
 
-#: gui_input.c:168
+#: gui_input.c:169
 msgid "Jump to position"
 msgstr ""
 
-#: gui_input.c:217
+#: gui_input.c:218
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:396 main.c:61 main.c:67
+#: gui_input.c:397 main.c:65 main.c:71
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:396 main.c:63 main.c:69
+#: gui_input.c:397 main.c:67 main.c:73
 msgid "no"
 msgstr ""
 
-#: gui_playq.c:110
+#: gui_playq.c:111
 msgid "Idle"
 msgstr ""
 
-#: gui_playq.c:113
+#: gui_playq.c:114
 msgid "Paused"
 msgstr ""
 
-#: gui_playq.c:115
+#: gui_playq.c:116
 msgid "Playing"
 msgstr ""
 
-#: gui_playq.c:353
+#: gui_playq.c:354
 msgid "Remove all songs from the playlist?"
 msgstr ""
 
-#: gui_playq.c:364
+#: gui_playq.c:365
 msgid "Randomize the playlist?"
 msgstr ""
 
-#: gui_playq.c:413
+#: gui_playq.c:414
 msgid "The song is already at the top of the playlist."
 msgstr ""
 
-#: gui_playq.c:432
+#: gui_playq.c:433
 msgid "The song is already at the bottom of the playlist."
 msgstr ""
 
@@ -134,90 +134,90 @@ msgstr ""
 msgid "Not found."
 msgstr ""
 
-#: main.c:58
+#: main.c:62
 msgid "audio output"
 msgstr ""
 
-#: main.c:59
+#: main.c:63
 msgid "support for audioscrobbler"
 msgstr ""
 
-#: main.c:65
+#: main.c:69
 msgid "support for http streams"
 msgstr ""
 
-#: main.c:71
+#: main.c:75
 msgid "supported audio file formats"
 msgstr ""
 
-#: main.c:83
+#: main.c:87
 msgid "usage"
 msgstr ""
 
-#: playq.c:176
+#: playq.c:183
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr ""
 
-#: playq.c:366
+#: playq.c:373
 #, c-format
 msgid "Repeat: %s"
 msgstr ""
 
-#: playq.c:367
+#: playq.c:374
 msgid "on"
 msgstr ""
 
-#: playq.c:367
+#: playq.c:374
 msgid "off"
 msgstr ""
 
-#: scrobbler.c:295
+#: scrobbler.c:305
 msgid "Successfully authorized at AudioScrobbler."
 msgstr ""
 
-#: scrobbler.c:302
+#: scrobbler.c:312
 msgid "Failed to authorize at AudioScrobbler."
 msgstr ""
 
-#: scrobbler.c:318
+#: scrobbler.c:328
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr ""
 
-#: scrobbler.c:322
+#: scrobbler.c:332
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr ""
 
-#: scrobbler.c:328
+#: scrobbler.c:338
 msgid "Invalid AudioScrobbler username/password."
 msgstr ""
 
-#: scrobbler.c:331
+#: scrobbler.c:341
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr ""
 
-#: vfs.c:70
+#: vfs.c:71
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr ""
 
-#: vfs.c:82
+#: vfs.c:83
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr ""
 
-#: vfs.c:90
+#: vfs.c:91
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr ""
 
-#: vfs.c:94
+#: vfs.c:95
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr ""
 
-#: vfs_http.c:142
+#: vfs_http.c:143
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr ""
