@@ -244,17 +244,18 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 }
 
 struct vfsref *
-vfs_dup(struct vfsref *vr)
+vfs_dup(const struct vfsref *vr)
 {
 	struct vfsent *ve;
+	struct vfsref *rvr;
 
 	ve = vr->ent;
 	g_atomic_int_inc(&ve->refcount);
 
-	vr = g_slice_new0(struct vfsref);
-	vr->ent = ve;
+	rvr = g_slice_new0(struct vfsref);
+	rvr->ent = ve;
 
-	return (vr);
+	return (rvr);
 }
 
 void
@@ -264,8 +265,8 @@ vfs_close(struct vfsref *vr)
 
 	if (g_atomic_int_dec_and_test(&vr->ent->refcount)) {
 		/* Deallocate the underlying vfsent */
-		while ((cur = vfs_list_first(vfs_population(vr))) != NULL) {
-			vfs_list_remove(vfs_population(vr), cur);
+		while ((cur = vfs_list_first(&vr->ent->population)) != NULL) {
+			vfs_list_remove(&vr->ent->population, cur);
 			vfs_close(cur);
 		}
 		
@@ -277,7 +278,7 @@ vfs_close(struct vfsref *vr)
 }
 
 int
-vfs_populate(struct vfsref *vr)
+vfs_populate(const struct vfsref *vr)
 {
 	/* Some object cannot be populated */
 	if (!vfs_populatable(vr))
@@ -291,7 +292,7 @@ vfs_populate(struct vfsref *vr)
 }
 
 void
-vfs_unfold(struct vfslist *vl, struct vfsref *vr)
+vfs_unfold(struct vfslist *vl, const struct vfsref *vr)
 {
 	struct vfsref *cvr;
 
@@ -302,7 +303,7 @@ vfs_unfold(struct vfslist *vl, struct vfsref *vr)
 	} else {
 		/* See if we can recurse it */
 		vfs_populate(vr);
-		vfs_list_foreach(vfs_population(vr), cvr) {
+		vfs_list_foreach(&vr->ent->population, cvr) {
 			if (vfs_recurse(cvr))
 				vfs_unfold(vl, cvr);
 		}

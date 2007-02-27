@@ -180,7 +180,7 @@ vfs_list_init(struct vfslist *vl)
  * @brief Return the first item in a VFS list.
  */
 static inline struct vfsref *
-vfs_list_first(struct vfslist *vl)
+vfs_list_first(const struct vfslist *vl)
 {
 	return (vl->first);
 }
@@ -189,7 +189,7 @@ vfs_list_first(struct vfslist *vl)
  * @brief Return the last item in a VFS list.
  */
 static inline struct vfsref *
-vfs_list_last(struct vfslist *vl)
+vfs_list_last(const struct vfslist *vl)
 {
 	return (vl->last);
 }
@@ -198,7 +198,7 @@ vfs_list_last(struct vfslist *vl)
  * @brief Return whether the VFS list is empty or not.
  */
 static inline int
-vfs_list_empty(struct vfslist *vl)
+vfs_list_empty(const struct vfslist *vl)
 {
 	return (vl->first == NULL);
 }
@@ -207,7 +207,7 @@ vfs_list_empty(struct vfslist *vl)
  * @brief Return the amount of items in the VFS list.
  */
 static inline unsigned int
-vfs_list_items(struct vfslist *vl)
+vfs_list_items(const struct vfslist *vl)
 {
 	return (vl->items);
 }
@@ -216,7 +216,7 @@ vfs_list_items(struct vfslist *vl)
  * @brief Return the next item in the VFS list.
  */
 static inline struct vfsref *
-vfs_list_next(struct vfsref *vr)
+vfs_list_next(const struct vfsref *vr)
 {
 	return (vr->next);
 }
@@ -225,7 +225,7 @@ vfs_list_next(struct vfsref *vr)
  * @brief Return the preivous item in the VFS list.
  */
 static inline struct vfsref *
-vfs_list_prev(struct vfsref *vr)
+vfs_list_prev(const struct vfsref *vr)
 {
 	return (vr->prev);
 }
@@ -362,7 +362,7 @@ struct vfsref	*vfs_open(const char *filename, const char *name,
 /**
  * @brief Duplicate the reference by increasing the reference count.
  */
-struct vfsref	*vfs_dup(struct vfsref *vr);
+struct vfsref	*vfs_dup(const struct vfsref *vr);
 /**
  * @brief Decrease the reference count of the entity and deallocate the
  *        entity when no references are left. The reference itself is also
@@ -372,12 +372,12 @@ void		vfs_close(struct vfsref *vr);
 /**
  * @brief Populate the VFS entity with references to its children.
  */
-int		vfs_populate(struct vfsref *vr);
+int		vfs_populate(const struct vfsref *vr);
 /**
  * @brief Recursively expand a VFS reference to all their usable
  *        children and append them to the specified list.
  */
-void		vfs_unfold(struct vfslist *vl, struct vfsref *vr);
+void		vfs_unfold(struct vfslist *vl, const struct vfsref *vr);
 /**
  * @brief Write a VFS list to a PLS file on disk.
  */
@@ -406,7 +406,7 @@ vfs_filename(struct vfsref *vr)
  * @brief Determine if a VFS entity is playable audio.
  */
 static inline int
-vfs_playable(struct vfsref *vr)
+vfs_playable(const struct vfsref *vr)
 {
 	return (vr->ent->vmod->vhandle != NULL);
 }
@@ -415,7 +415,7 @@ vfs_playable(struct vfsref *vr)
  * @brief Open a new filehandle to the entity.
  */
 static inline FILE *
-vfs_handle(struct vfsref *vr)
+vfs_handle(const struct vfsref *vr)
 {
 	return vr->ent->vmod->vhandle(vr->ent);
 }
@@ -424,7 +424,7 @@ vfs_handle(struct vfsref *vr)
  * @brief Determine if the VFS entity can have population.
  */
 static inline int
-vfs_populatable(struct vfsref *vr)
+vfs_populatable(const struct vfsref *vr)
 {
 	return (vr->ent->vmod->vpopulate != NULL);
 }
@@ -434,7 +434,7 @@ vfs_populatable(struct vfsref *vr)
  *        the filebrowser.
  */
 static inline char
-vfs_marking(struct vfsref *vr)
+vfs_marking(const struct vfsref *vr)
 {
 	return (vr->ent->vmod->marking);
 }
@@ -443,7 +443,7 @@ vfs_marking(struct vfsref *vr)
  * @brief Get the sorting priority of the current object.
  */
 static inline unsigned char
-vfs_sortorder(struct vfsref *vr)
+vfs_sortorder(const struct vfsref *vr)
 {
 	return (vr->ent->vmod->sortorder);
 }
@@ -452,7 +452,7 @@ vfs_sortorder(struct vfsref *vr)
  * @brief Determine if we should recurse this object.
  */
 static inline char
-vfs_recurse(struct vfsref *vr)
+vfs_recurse(const struct vfsref *vr)
 {
 	return (vr->ent->vmod->recurse);
 }
@@ -460,8 +460,8 @@ vfs_recurse(struct vfsref *vr)
 /**
  * @brief Return a pointer to the VFS list inside the VFS reference.
  */
-static inline struct vfslist *
-vfs_population(struct vfsref *vr)
+static inline const struct vfslist *
+vfs_population(const struct vfsref *vr)
 {
 	return (&vr->ent->population);
 }
@@ -470,7 +470,7 @@ vfs_population(struct vfsref *vr)
  * @brief Return whether the current reference is marked.
  */
 static inline int
-vfs_marked(struct vfsref *vr)
+vfs_marked(const struct vfsref *vr)
 {
 	return (vr->marked != 0);
 }

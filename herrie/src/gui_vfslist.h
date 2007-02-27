@@ -58,7 +58,7 @@ struct gui_vfslist {
 	/**
 	 * @brief List that should be used for display.
 	 */
-	struct vfslist	*list;
+	const struct vfslist *list;
 	/**
 	 * @brief Item currently at the top of the screen.
 	 */
@@ -99,7 +99,7 @@ void gui_vfslist_destroy(struct gui_vfslist *gv);
 /**
  * @brief Set the list that should be shown in the dialog.
  */
-void gui_vfslist_setlist(struct gui_vfslist *gv, struct vfslist *vl);
+void gui_vfslist_setlist(struct gui_vfslist *gv, const struct vfslist *vl);
 /**
  * @brief Warn the user when the list is empty.
  */

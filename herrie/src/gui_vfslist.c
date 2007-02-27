@@ -212,7 +212,7 @@ gui_vfslist_destroy(struct gui_vfslist *gv)
 }
 
 void
-gui_vfslist_setlist(struct gui_vfslist *gv, struct vfslist *vl)
+gui_vfslist_setlist(struct gui_vfslist *gv, const struct vfslist *vl)
 {
 	gv->list = vl;
 	gv->vr_top = gv->vr_selected = vfs_list_first(gv->list);
