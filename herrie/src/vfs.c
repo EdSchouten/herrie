@@ -311,7 +311,7 @@ vfs_unfold(struct vfslist *vl, const struct vfsref *vr)
 }
 
 struct vfsref *
-vfs_write_playlist(struct vfslist *vl, struct vfsref *vr,
+vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
     const char *filename)
 {
 	const char *base;

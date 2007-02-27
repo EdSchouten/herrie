@@ -381,14 +381,14 @@ void		vfs_unfold(struct vfslist *vl, const struct vfsref *vr);
 /**
  * @brief Write a VFS list to a PLS file on disk.
  */
-struct vfsref	*vfs_write_playlist(struct vfslist *vl,
-    struct vfsref *vr, const char *filename);
+struct vfsref	*vfs_write_playlist(const struct vfslist *vl,
+    const struct vfsref *vr, const char *filename);
 
 /**
  * @brief Get the friendly name of the current VFS reference.
  */
 static inline const char *
-vfs_name(struct vfsref *vr)
+vfs_name(const struct vfsref *vr)
 {
 	return (vr->ent->name);
 }
@@ -397,7 +397,7 @@ vfs_name(struct vfsref *vr)
  * @brief Get the full pathname of the current VFS reference.
  */
 static inline const char *
-vfs_filename(struct vfsref *vr)
+vfs_filename(const struct vfsref *vr)
 {
 	return (vr->ent->filename);
 }
