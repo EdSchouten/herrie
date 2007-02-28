@@ -24,7 +24,7 @@
  * SUCH DAMAGE.
  */
 /**
- * @file playq_regular.c
+ * @file playq_xmms.c
  * @brief XMMS-style playlist handling.
  */
 
@@ -41,7 +41,7 @@ static struct vfsref *cursong = NULL;
 static struct vfsref *selectsong = NULL;
 
 struct vfsref *
-playq_regular_give(void)
+playq_xmms_give(void)
 {
 	struct vfsref *vr = NULL;
 
@@ -73,7 +73,7 @@ playq_regular_give(void)
 }
 
 void
-playq_regular_idle(void)
+playq_xmms_idle(void)
 {
 	if (cursong != NULL) {
 		/* Remove left-over marking */
@@ -83,7 +83,7 @@ playq_regular_idle(void)
 }
 
 int
-playq_regular_select(struct vfsref *vr)
+playq_xmms_select(struct vfsref *vr)
 {
 	selectsong = vr;
 
@@ -91,7 +91,7 @@ playq_regular_select(struct vfsref *vr)
 }
 
 int
-playq_regular_next(void)
+playq_xmms_next(void)
 {
 	if (cursong != NULL) {
 		selectsong = vfs_list_next(cursong);
@@ -103,7 +103,7 @@ playq_regular_next(void)
 }
 
 int
-playq_regular_prev(void)
+playq_xmms_prev(void)
 {
 	if (cursong != NULL) {
 		selectsong = vfs_list_prev(cursong);
@@ -115,7 +115,7 @@ playq_regular_prev(void)
 }
 
 void
-playq_regular_notify_pre_removal(struct vfsref *vr)
+playq_xmms_notify_pre_removal(struct vfsref *vr)
 {
 	/* Remove dangling pointers */
 	if (cursong == vr)

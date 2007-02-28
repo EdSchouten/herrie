@@ -70,26 +70,26 @@ void playq_party_notify_pre_removal(struct vfsref *vr);
  * @brief XMMS-like function that retreives the next song from the
  *        playlist.
  */
-struct vfsref *playq_regular_give(void);
+struct vfsref *playq_xmms_give(void);
 /**
  * @brief XMMS-like function to notify that playback is going idle.
  */
-void playq_regular_idle(void);
+void playq_xmms_idle(void);
 /**
  * @brief XMMS-like function to start playback of a specific song.
  */
-int playq_regular_select(struct vfsref *vr);
+int playq_xmms_select(struct vfsref *vr);
 /**
  * @brief XMMS-like function that switches playback to the next song.
  */
-int playq_regular_next(void);
+int playq_xmms_next(void);
 /**
  * @brief XMMS-like function that switches playback to the previous song.
  */
-int playq_regular_prev(void);
+int playq_xmms_prev(void);
 /**
  * @brief XMMS-like notification that a song is about to be deleted.
  */
-void playq_regular_notify_pre_removal(struct vfsref *vr);
+void playq_xmms_notify_pre_removal(struct vfsref *vr);
 
 #endif /* !_PLAYQ_MODULES_H_ */

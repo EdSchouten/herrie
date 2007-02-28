@@ -83,19 +83,19 @@ static struct playq_funcs party_funcs = {
 /**
  * @brief XMMS-style playlist handling.
  */
-static struct playq_funcs regular_funcs = {
-	playq_regular_give,
-	playq_regular_idle,
-	playq_regular_select,
-	playq_regular_next,
-	playq_regular_prev,
-	playq_regular_notify_pre_removal,
+static struct playq_funcs xmms_funcs = {
+	playq_xmms_give,
+	playq_xmms_idle,
+	playq_xmms_select,
+	playq_xmms_next,
+	playq_xmms_prev,
+	playq_xmms_notify_pre_removal,
 	0,
 };
 /**
  * @brief Currenty used playlist handling routines.
  */
-static struct playq_funcs *funcs = &regular_funcs;
+static struct playq_funcs *funcs = &xmms_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
 GMutex 			*playq_lock;
