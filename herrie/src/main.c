@@ -83,7 +83,7 @@ version(void)
 static void
 usage(void)
 {
-	g_printerr("%s: " APP_NAME " [-pv] [-c configfile] "
+	g_printerr("%s: " APP_NAME " [-vx] [-c configfile] "
 	    "[file ...]\n", _("usage"));
 	exit(1);
 }
