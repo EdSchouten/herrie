@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/res/xslt/g-rave.xsl"?>
+<?xml-stylesheet type="text/xsl" href="http://g-rave.nl/res/xslt/g-rave.xsl"?>
 <div xmlns="http://www.w3.org/1999/xhtml">
 	<h1>Herrie: a minimalistic music player</h1>
 
@@ -65,9 +65,10 @@ SIZE (herrie-1.5.tar.gz) = 53159</pre>
 	<pre>git clone git://g-rave.nl/herrie</pre>
 
 	<p>It is also possible to <a
-	href="/gitweb?p=herrie;a=tree;f=herrie/src">take a look at the
-	sourcecode</a> or <a href="/gitweb?p=herrie;a=snapshot">download
-	the trunk</a>, without using Git, using Gitweb.</p>
+	href="http://g-rave.nl/gitweb?p=herrie;a=tree;f=herrie/src">take
+	a look at the sourcecode</a> or <a
+	href="http://g-rave.nl/gitweb?p=herrie;a=snapshot">download the
+	trunk</a>, without using Git, using Gitweb.</p>
 
 	<h2>Using Herrie</h2>
 
