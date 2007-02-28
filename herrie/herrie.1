@@ -40,16 +40,13 @@ statistics to AudioScrobbler. The word `herrie' is Dutch for `clamor'.
 .PP
 .B herrie
 uses a split-screen user interface: a playlist at the top and a
-filebrowser at the bottom. Though the user has been quite consistent
-over time, the behaviour of the playlist has changed a lot. Before
-version 1.5, the playlist was a list of batched songs. Songs got
-automatically opened and removed when they got added to the top of the
-list. This behaviour is refered to as `party mode'.
-.PP
-Recent versions of
-.B herrie
-use an XMMS-like playlist. After adding songs to the playlist, any song
-can be started, without moving it to the top of the playlist.
+filebrowser at the bottom. The application has two modes of operation,
+called `party mode' and `XMMS mode'. When the application is started in
+party mode, songs are automatically started when they are added to the
+playlist. Songs get removed from the top of the playlist. When the
+application is started in XMMS mode, songs have to be started by hand
+after they have been added to the playlist. The default mode is party
+mode.
 .PP
 The following command line options are available:
 .TP
@@ -62,19 +59,13 @@ or in the system wide global configuration file for options. The
 .B -c
 options allows you to load additional configuration files.
 .TP
-.B -p
-This switch causes
-.B herrie
-to start up in party mode.
-.B herrie
-will only start playing the first song in the playlist. Songs are
-automatically deleted. This behaviour roughly matches the functionality
-of
-.B herrie
-before version 1.5.
-.TP
 .B -v
 Display version information and a list of supported file formats.
+.TP
+.B -x
+This switch causes
+.B herrie
+to start up in XMMS mode.
 
 .SH CONFIGURATION SWITCHES
 .b herrie
@@ -141,10 +132,10 @@ The background color of a selected item of an active window.
 .B gui.color.select.fg=black
 The foreground color of a selected item of an active window.
 .TP
-.B playq.party=no
+.B playq.xmms=no
 Always start
 .B herrie
-in party mode.
+in XMMS mode.
 .TP
 .B scrobbler.hostname=post.audioscrobbler.com
 The hostname the AudioScrobbler client uses when authenticating.
