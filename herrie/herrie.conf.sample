@@ -7,3 +7,6 @@
 
 # This line makes the user interface look more devilish:
 # gui.color.bar.bg=red
+
+# Switch file browser to a certain directory at startup:
+# gui.browser.defaultpath=/vol0/music
