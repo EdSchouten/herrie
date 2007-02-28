@@ -220,19 +220,9 @@ config_load(const char *file)
 	GIOChannel *cio;
 	GString *cln;
 	gsize eol;
-	char *filename, *cln_val;
+	char *cln_val;
 
-	if (file == NULL) {
-		/* Use the standard configuration file */
-		filename = g_build_filename(g_get_home_dir(),
-		    "." APP_NAME, "config", NULL);
-		cio = g_io_channel_new_file(filename, "r", NULL);
-		g_free(filename);
-	} else {
-		/* Use an explicit configuration file */
-		cio = g_io_channel_new_file(file, "r", NULL);
-	}
-	
+	cio = g_io_channel_new_file(file, "r", NULL);
 	if (cio == NULL)
 		return;
 	cln = g_string_sized_new(64);

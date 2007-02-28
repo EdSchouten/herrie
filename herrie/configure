@@ -47,6 +47,7 @@ OS=`uname`
 case $OS in
 CYGWIN*)
 	unset CFG_HTTP
+	[ "$CONFDIR" = "" ] && CONFDIR=/etc
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 Darwin)
@@ -61,6 +62,7 @@ FreeBSD)
 	;;
 Linux)
 	CFG_AO=oss
+	[ "$CONFDIR" = "" ] && CONFDIR=/etc
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 NetBSD)
@@ -87,6 +89,8 @@ SunOS)
 esac
 SRCDIR=`dirname $0`
 BINDIR=$PREFIX/bin
+[ "$CONFDIR" = "" ] && CONFDIR=$PREFIX/etc
+CONFFILE=$CONFDIR/$APP_NAME.conf
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
 [ "$CC" = "" ] && CC=gcc
@@ -141,7 +145,7 @@ CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -I$PREFIX/include -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\> \
     -include $SRCDIR/src/stdinc.h"
-CFLAGS_main="-DAUDIO_OUTPUT=\\\"$CFG_AO\\\""
+CFLAGS_main="-DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -DCONFFILE=\\\"$CONFFILE\\\""
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
     -L$PREFIX/lib -l$CFG_CURSES_LIB"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
@@ -250,6 +254,7 @@ done
 echo "Configuration:"
 echo "- Installing $APP_NAME in $BINDIR"
 echo "- Installing manual page in $MANDIR"
+echo "- Using $CONFFILE configuration file"
 [ "$CFG_TRANS" != "" ] && echo "- Installing translations in $TRANSDIR"
 echo "- Using -l$CFG_CURSES_LIB and <$CFG_CURSES_HEADER.h>"
 echo "- Using $CFG_AO audio output"

@@ -95,7 +95,7 @@ int
 main(int argc, char *argv[])
 {
 	int ch, i, show_version = 0, party = 0;
-	char *configfile = NULL, *cwd;
+	char *homeconf, *cwd;
 	const char *errmsg;
 	struct vfsref *vr;
 #ifdef CLOSE_STDERR
@@ -108,10 +108,19 @@ main(int argc, char *argv[])
 	textdomain(APP_NAME);
 #endif /* BUILD_TRANS */
 
+#ifdef CONFFILE
+	config_load(CONFFILE);
+#endif /* CONFFILE */
+
+	homeconf = g_build_filename(g_get_home_dir(),
+	    "." APP_NAME, "config", NULL);
+	config_load(homeconf);
+	g_free(homeconf);
+
 	while ((ch = getopt(argc, argv, "c:pv")) != -1) {
 		switch (ch) {
 		case 'c':
-			configfile = optarg;
+			config_load(optarg);
 			break;
 		case 'p':
 			party = 1;
@@ -128,8 +137,6 @@ main(int argc, char *argv[])
 
 	if (show_version)
 		version();
-
-	config_load(configfile);
 
 	g_thread_init(NULL);
 

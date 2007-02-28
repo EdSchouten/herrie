@@ -95,6 +95,7 @@ the generated Makefile:
 - CC            C compiler
 - CFLAGS        Prepend compiler flags
 - LDFLAGS       Prepend linkage flags
+- CONFDIR       Change configuration file directory
 - MANDIR        Change Manual page directory
 - PREFIX	Change installation prefix
 
