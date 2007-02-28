@@ -269,7 +269,7 @@ echo "- Using $CFG_AO audio output"
 CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
 OBJS=$OBJS
-all: $APP_NAME $APP_NAME.1.gz $LINGUAS
+all: $APP_NAME $APP_NAME.1.gz $SRCDIR/$APP_NAME.conf.sample $LINGUAS
 $APP_NAME: \$(OBJS)
 	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME
 $APP_NAME.1.gz: $SRCDIR/$APP_NAME.1
@@ -281,6 +281,7 @@ distclean: clean
 install: all
 	install -s $APP_NAME \$(DESTROOT)$BINDIR/$APP_NAME
 	install -m 444 $APP_NAME.1.gz \$(DESTROOT)$MANDIR/man1/$APP_NAME.1.gz
+	install -m 444 $SRCDIR/$APP_NAME.conf.sample \$(DESTROOT)$CONFDIR/$APP_NAME.conf.sample
 EOF
 for i in $CFG_TRANS
 do

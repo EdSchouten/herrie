@@ -1,0 +1,9 @@
+# This is the sample configuration file for herrie. Please refer to the
+# herrie(1) manual page for a complete list of configuration switches.
+
+# Uncomment this line to change the behaviour of the playlist to be like
+# players like WinAmp, XMMS and AmaroK:
+# playq.xmms=yes
+
+# This line makes the user interface look more devilish:
+# gui.color.bar.bg=red
