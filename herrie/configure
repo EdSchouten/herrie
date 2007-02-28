@@ -34,6 +34,7 @@ CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
 CFG_SCROBBLER=yes
+unset CFG_SETPROCTITLE
 unset CFG_SIGWINCH
 CFG_SNDFILE=yes
 CFG_TRANS='nl tr'
@@ -54,6 +55,7 @@ Darwin)
 	;;
 FreeBSD)
 	CFG_AO=oss
+	CFG_SETPROCTITLE=yes
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
 	;;
@@ -63,10 +65,12 @@ Linux)
 	;;
 NetBSD)
 	CFG_AO=oss
+	CFG_SETPROCTITLE=yes
 	[ "$PREFIX" = "" ] && PREFIX=/usr/pkg
 	;;
 OpenBSD)
 	CFG_AO=oss
+	CFG_SETPROCTITLE=yes
 	CFG_SIGWINCH=yes
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
@@ -176,6 +180,11 @@ then
 	LDFLAGS="$LDFLAGS -lmad -lid3tag"
 	SRCS="$SRCS audio_format_mp3"
 fi
+# setproctitle() usage
+if [ "$CFG_SETPROCTITLE" != "" ]
+then
+	CFLAGS_gui_playq="-DBUILD_SETPROCTITLE"
+fi
 # SIGWINCH wrapper
 if [ "$CFG_SIGWINCH" != "" ]
 then
@@ -211,7 +220,13 @@ ao)
 oss)
 	case $OS in
 	NetBSD|OpenBSD)
+		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/audio\\\""
+		CFLAGS_audio_output_oss="-DOSS_HEADER=\\<soundcard.h\\>"
 		LDFLAGS="$LDFLAGS -lossaudio"
+		;;
+	*)
+		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/dsp\\\""
+		CFLAGS_audio_output_oss="-DOSS_HEADER=\\<sys/soundcard.h\\>"
 		;;
 	esac
 	;;

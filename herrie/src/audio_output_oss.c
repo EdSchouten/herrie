@@ -28,11 +28,7 @@
  * @brief OSS audio output driver.
  */
 
-#if defined(__NetBSD__) || defined(__OpenBSD__)
-#include <soundcard.h>
-#else /* !(__NetBSD__ || __OpenBSD__) */
-#include <sys/soundcard.h>
-#endif /* __NetBSD__ || __OpenBSD__ */
+#include OSS_HEADER
 
 #include "audio_file.h"
 #include "audio_output.h"

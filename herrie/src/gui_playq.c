@@ -235,10 +235,10 @@ gui_playq_song_update(struct audio_file *fd, int paused, int timeonly)
 {
 	gui_playq_song_set(fd, paused, timeonly);
 
-#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
+#ifdef BUILD_SETPROCTITLE
 	/* Print same message in ps(1) */
 	setproctitle("%s %s%s", str_status, str_song->str, str_time->str);
-#endif /* __FreeBSD__ || __NetBSD__ || __OpenBSD__ */
+#endif /* BUILD_SETPROCTITLE */
 	
 	gui_playq_statbar_refresh();
 	gui_draw_done();
