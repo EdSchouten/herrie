@@ -94,7 +94,7 @@ usage(void)
 int
 main(int argc, char *argv[])
 {
-	int ch, i, show_version = 0, party = 0;
+	int ch, i, show_version = 0, xmms = 0;
 	char *homeconf, *cwd;
 	const char *errmsg;
 	struct vfsref *vr;
@@ -117,13 +117,13 @@ main(int argc, char *argv[])
 	config_load(homeconf);
 	g_free(homeconf);
 
-	while ((ch = getopt(argc, argv, "c:pv")) != -1) {
+	while ((ch = getopt(argc, argv, "c:vx")) != -1) {
 		switch (ch) {
 		case 'c':
 			config_load(optarg);
 			break;
-		case 'p':
-			party = 1;
+		case 'x':
+			xmms = 1;
 			break;
 		case 'v':
 			show_version = 1;
@@ -159,7 +159,7 @@ main(int argc, char *argv[])
 #ifdef BUILD_SCROBBLER
 	scrobbler_init();
 #endif /* BUILD_SCROBBLER */
-	playq_init(party);
+	playq_init(xmms);
 
 	/* Draw all the windows */
 	gui_draw_init_post();

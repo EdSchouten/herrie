@@ -95,7 +95,7 @@ static struct playq_funcs xmms_funcs = {
 /**
  * @brief Currenty used playlist handling routines.
  */
-static struct playq_funcs *funcs = &xmms_funcs;
+static struct playq_funcs *funcs = &party_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
 GMutex 			*playq_lock;
@@ -114,7 +114,7 @@ static GThread		*playq_runner;
  *        should be locked down.
  */
 static volatile int	playq_flags = 0;
-int			playq_repeat = 1;
+int			playq_repeat = 0;
 /**
  * @brief Quit the playback thread.
  */
@@ -228,14 +228,14 @@ done:
 }
 
 void
-playq_init(int party)
+playq_init(int xmms)
 {
 	playq_lock = g_mutex_new();
 	playq_wakeup = g_cond_new();
 
-	if (party || config_getopt_bool("playq.party")) {
-		funcs = &party_funcs;
-		playq_repeat = 0;
+	if (xmms || config_getopt_bool("playq.xmms")) {
+		funcs = &xmms_funcs;
+		playq_repeat = 1;
 	}
 }
 
