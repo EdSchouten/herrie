@@ -174,7 +174,7 @@ main(int argc, char *argv[])
 	g_free(cwd);
 
 #ifdef CLOSE_STDERR
-	/* Close stderr before adding songs */
+	/* Close stderr before starting playback */
 	dup2(devnull, STDERR_FILENO);
 	close(devnull);
 #endif /* CLOSE_STDERR */
