@@ -63,7 +63,7 @@
 #include <sys/ioctl.h>
 #include <netinet/in.h>
 #include <pwd.h>
-#ifndef __CYGWIN__
+#ifdef BUILD_RES_INIT
 #include <resolv.h>
-#endif /* !__CYGWIN__ */
+#endif /* BUILD_RES_INIT */
 #endif /* G_OS_UNIX */

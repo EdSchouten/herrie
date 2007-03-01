@@ -33,6 +33,7 @@ CFG_AO=ao
 CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
+CFG_RES_INIT=yes
 CFG_SCROBBLER=yes
 unset CFG_SETPROCTITLE
 unset CFG_SIGWINCH
@@ -47,6 +48,7 @@ OS=`uname`
 case $OS in
 CYGWIN*)
 	unset CFG_HTTP
+	unset CFG_RES_INIT
 	[ "$CONFDIR" = "" ] && CONFDIR=/etc
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
@@ -183,6 +185,11 @@ then
 	CFLAGS="$CFLAGS -DBUILD_MP3"
 	LDFLAGS="$LDFLAGS -lmad -lid3tag"
 	SRCS="$SRCS audio_format_mp3"
+fi
+# res_init() usage
+if [ "$CFG_RES_INIT" != "" ]
+then
+	CFLAGS_vfs="-DBUILD_RES_INIT"
 fi
 # setproctitle() usage
 if [ "$CFG_SETPROCTITLE" != "" ]
