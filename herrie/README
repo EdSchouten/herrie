@@ -85,6 +85,7 @@ configure script to change certain parameters:
 
 - ao            Use libao audio output
 - oss           Use Open Sound System output
+- null          Use placeholder audio output
 - sdl           Use LibSDL audio output
 
 - xcurses       Build application against XCurses (PDCurses)

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+PREFIX=/usr/local/mingw32
+export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
+export CC=mingw32-gcc
+export OS=Windows
+
+`dirname $0`/herrie/configure $@
