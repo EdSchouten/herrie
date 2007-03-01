@@ -1,0 +1,15 @@
+#!/bin/sh
+
+from="herrie-$1"
+to="master"
+
+if [ $# = 2 ]
+then
+	to="herrie-$2"
+elif [ $# != 1 ]
+then
+	echo "usage: $0 from [to]"
+	exit 1
+fi
+
+git diff "$from:herrie" "$to:herrie"
