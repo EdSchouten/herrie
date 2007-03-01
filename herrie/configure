@@ -157,7 +157,7 @@ CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -Wall -Wsign-compare -Werror -Wmissing-prototypes \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -I$PREFIX/include -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\> \
-    -include $SRCDIR/src/stdinc.h"
+    -finline-functions -include $SRCDIR/src/stdinc.h"
 CFLAGS_main="-DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -DCONFFILE=\\\"$CONFFILE\\\""
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
     -L$PREFIX/lib -l$CFG_CURSES_LIB"
