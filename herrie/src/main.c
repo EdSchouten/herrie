@@ -164,6 +164,12 @@ main(int argc, char *argv[])
 	/* Draw all the windows */
 	gui_draw_init_post();
 
+#ifdef CLOSE_STDERR
+	/* Close stderr before adding songs */
+	dup2(devnull, STDERR_FILENO);
+	close(devnull);
+#endif /* CLOSE_STDERR */
+
 	cwd = g_get_current_dir();
 	for (i = 0; i < argc; i++) {
 		if ((vr = vfs_open(argv[i], NULL, cwd)) != NULL) {
@@ -178,10 +184,6 @@ main(int argc, char *argv[])
 #ifdef BUILD_SCROBBLER
 	scrobbler_spawn();
 #endif /* BUILD_SCROBBLER */
-#ifdef CLOSE_STDERR
-	dup2(devnull, STDERR_FILENO);
-	close(devnull);
-#endif /* CLOSE_STDERR */
 	gui_input_loop();
 
 	/* Shutdown the application */
