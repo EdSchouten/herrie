@@ -267,7 +267,7 @@ do
 done
 
 echo "Configuration:"
-echo "- Installing $APP_NAME in $BINDIR"
+echo "- Installing $APP_NAME$CFG_BINEXT in $BINDIR"
 echo "- Installing manual page in $MANDIR"
 echo "- Using $CONFFILE configuration file"
 [ "$CFG_TRANS" != "" ] && echo "- Installing translations in $TRANSDIR"
