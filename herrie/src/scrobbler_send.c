@@ -95,6 +95,7 @@ scrobbler_send_handshake(struct scrobbler_condata *scd)
 	host = config_getopt("scrobbler.hostname");
 	url = g_strdup_printf(SCROBBLER_URL, host, scd->username);
 	curl_easy_setopt(con, CURLOPT_URL, url);
+	curl_easy_setopt(con, CURLOPT_USERAGENT, APP_NAME "/" APP_VERSION);
 
 	/* Callback function */
 	curl_easy_setopt(con, CURLOPT_WRITEFUNCTION, handshake_write);
@@ -170,6 +171,7 @@ scrobbler_send_tracks(struct scrobbler_condata *scd, char *poststr)
 
 	curl_easy_setopt(con, CURLOPT_URL, scd->url);
 	curl_easy_setopt(con, CURLOPT_POSTFIELDS, poststr);
+	curl_easy_setopt(con, CURLOPT_USERAGENT, APP_NAME "/" APP_VERSION);
 
 	curl_easy_setopt(con, CURLOPT_WRITEFUNCTION, tracks_write);
 	curl_easy_setopt(con, CURLOPT_WRITEDATA, scd);
