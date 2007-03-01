@@ -67,3 +67,7 @@
 #include <resolv.h>
 #endif /* BUILD_RES_INIT */
 #endif /* G_OS_UNIX */
+
+#ifndef BUILD_FTELLO
+#define ftello(stream)		ftell(stream)
+#endif /* !BUILD_FTELLO */

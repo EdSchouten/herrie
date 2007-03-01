@@ -31,6 +31,7 @@ APP_VERSION=1.5
 # Default compilation switches
 CFG_AO=ao
 unset CFG_BINEXT
+CFG_FTELLO=yes
 CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
@@ -89,6 +90,7 @@ SunOS)
 Windows)
 	CFG_AO=null
 	CFG_BINEXT=.exe
+	unset CFG_FTELLO
 	unset CFG_HTTP
 	unset CFG_MODPLUG
 	CFG_CURSES_HEADER=curses
@@ -163,6 +165,8 @@ SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
     gui_input gui_msgbar gui_playq gui_vfslist main playq playq_party \
     playq_xmms vfs vfs_playlist vfs_regular"
 
+# ftello() usage
+[ "$CFG_FTELLO" != "" ] && CFLAGS="$CFLAGS -DBUILD_FTELLO"
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
 then
