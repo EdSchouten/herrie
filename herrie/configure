@@ -87,7 +87,8 @@ SunOS)
 	CFLAGS="$CFLAGS -I$PREFIX/include/ncurses"
 	;;
 Windows)
-	CFG_BINEXT=".exe"
+	CFG_AO=null
+	CFG_BINEXT=.exe
 	unset CFG_HTTP
 	unset CFG_MODPLUG
 	CFG_CURSES_HEADER=curses
