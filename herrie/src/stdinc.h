@@ -24,8 +24,9 @@
  * SUCH DAMAGE.
  */
 
-/* Linux needs this */
+/* Teach glibc a little lesson */
 #define _GNU_SOURCE
+#undef _FORTIFY_SOURCE
 
 #include <sys/param.h>
 #include <sys/stat.h>
