@@ -206,6 +206,8 @@ vfs_http_handle(struct vfsent *ve)
 	/* BSD's */
 	ret = funopen(hs, vfs_http_readfn, NULL, NULL, vfs_http_closefn);
 #endif /* __GLIBC__ */
+	if (ret == NULL)
+		vfs_http_closefn(hs);
 
 	return (ret);
 }
