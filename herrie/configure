@@ -93,6 +93,7 @@ Windows)
 	unset CFG_FTELLO
 	unset CFG_HTTP
 	unset CFG_MODPLUG
+	unset CFG_SCROBBLER
 	CFG_CURSES_HEADER=curses
 	CFG_CURSES_LIB=pdcurses
 	;;
@@ -197,7 +198,7 @@ fi
 if [ "$CFG_MP3" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_MP3"
-	LDFLAGS="$LDFLAGS -lmad -lid3tag"
+	LDFLAGS="$LDFLAGS -lmad -lid3tag -lz"
 	SRCS="$SRCS audio_format_mp3"
 fi
 # res_init() usage
