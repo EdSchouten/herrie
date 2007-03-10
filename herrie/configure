@@ -294,8 +294,8 @@ OBJS=$OBJS
 all: $APP_NAME$CFG_BINEXT $APP_NAME.1.gz $SRCDIR/$APP_NAME.conf.sample $LINGUAS
 $APP_NAME$CFG_BINEXT: \$(OBJS)
 	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME$CFG_BINEXT
-$APP_NAME.1.gz: $SRCDIR/$APP_NAME.1
-	gzip -9 < $SRCDIR/$APP_NAME.1 > $APP_NAME.1.gz
+$APP_NAME.1.gz: $SRCDIR/$APP_NAME.1 Makefile
+	sed -e 's|%%CONFFILE%%|$CONFFILE|' < $SRCDIR/$APP_NAME.1 | gzip -9 > $APP_NAME.1.gz
 clean:
 	rm -f *.core *.o .gdb_history
 distclean: clean
