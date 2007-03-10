@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-27 20:30+0100\n"
-"PO-Revision-Date: 2007-02-27 20:30+0100\n"
+"POT-Creation-Date: 2007-03-10 11:51+0100\n"
+"PO-Revision-Date: 2007-03-10 11:51+0100\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr "Ses aygıtı açılamıyor"
 
-#: audio_output_oss.c:62
+#: audio_output_oss.c:58
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ses aygıtı \"%s\" açılamadı.\n"
