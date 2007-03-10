@@ -1,4 +1,4 @@
-Herrie 1.5 -> 1.6:
+Herrie 1.5 -> 1.5.1:
 - Add global configuration file
 - Make the original playlist behaviour the default again
 - Remove all OS-specific checks from the source-code
