@@ -128,6 +128,7 @@ struct config_entry {
  */
 static struct config_entry configlist[] = {
 	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
+	{ "audio.output.ao.host",	"",		NULL, 		NULL },
 #ifdef OSS_DEVICE
 	{ "audio.output.oss.device",	OSS_DEVICE,	NULL,		NULL },
 #endif /* OSS_DEVICE */

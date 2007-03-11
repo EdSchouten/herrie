@@ -43,15 +43,39 @@ static ao_device*	devptr = NULL;
  * @brief Format of the current open audio device handle.
  */
 static ao_sample_format	devfmt;
+/**
+ * @brief Default options that should be prepended when opening the
+ *        audio device.
+ */
+static ao_option	*devopt = NULL;
 
 int
 audio_output_open(void)
 {
+	const char *host;
+	char *henv, *hend;
+
 	ao_initialize();
 
 	/* We always expect 16 bits little endian PCM */
 	devfmt.bits = 16;
 	devfmt.byte_format = AO_FMT_LITTLE;
+
+	host = config_getopt("audio.output.ao.host");
+	if (strcmp(host, "env_ssh") == 0) {
+		/* Fetch "host" option from SSH_CLIENT variable */
+		henv = g_strdup(getenv("SSH_CLIENT"));
+		if (henv != NULL) {
+			/* Remove the trailing port number */
+			if ((hend = strchr(henv, ' ')) != NULL)
+				*hend = '\0';
+			ao_append_option(&devopt, "host", henv);
+			g_free(henv);
+		}
+	} else if (host[0] != '\0') {
+		/* Use the value as the hostname */
+		ao_append_option(&devopt, "host", host);
+	}
 
 	return (0);
 }
@@ -84,7 +108,7 @@ audio_output_play(struct audio_file *fd)
 			drvnum = ao_default_driver_id();
 		}
 
-		devptr = ao_open_live(drvnum, &devfmt, NULL);
+		devptr = ao_open_live(drvnum, &devfmt, devopt);
 		if (devptr == NULL) {
 			gui_msgbar_warn(_("Cannot open the audio device."));
 			return (0);
@@ -104,7 +128,12 @@ void
 audio_output_close(void)
 {
 	if (devptr != NULL) {
+		/* Close device */
 		ao_close(devptr);
 		devptr = NULL;
 	}
+
+	/* Free options */
+	ao_free_options(devopt);
+	devopt = NULL;
 }
