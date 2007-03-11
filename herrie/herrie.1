@@ -82,7 +82,12 @@ Below is a list of switches, including their default values:
 The name of the driver that LibAO should use for audio playback.
 .TP
 .B audio.output.ao.host=
-The hostname that the libao library should
+The hostname that LibAO should use to transmit the sound to (only
+applicable to Esound). When set to
+.B env_ssh
+the application will use the IP-address in the
+.B SSH_CLIENT
+environment variable.
 .TP
 .B audio.output.oss.device=/dev/dsp
 The OSS DSP device, used for audio playback. On NetBSD and OpenBSD, this
