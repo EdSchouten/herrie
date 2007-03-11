@@ -132,8 +132,4 @@ audio_output_close(void)
 		ao_close(devptr);
 		devptr = NULL;
 	}
-
-	/* Free options */
-	ao_free_options(devopt);
-	devopt = NULL;
 }
