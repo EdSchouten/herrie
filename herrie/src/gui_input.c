@@ -174,7 +174,7 @@ gui_input_cursong_seek_jump(void)
 	for (t = str; *t != '\0'; t++) {
 		switch (*t) {
 		case ':':
-			if (split > 2 || digit == 0 ||
+			if (split > 1 || digit == 0 ||
 			    (split > 0 && digit != 2))
 				goto bad;
 			split++;
