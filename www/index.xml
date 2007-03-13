@@ -74,7 +74,8 @@ SIZE (herrie-1.5.1.tar.gz) = 53842</pre>
 
 	<p>After installation, a new manual page is available. Just run
 	<tt>man herrie</tt> for a list of configuration switches and
-	keyboard bindings.</p>
+	keyboard bindings. An <a href="herrie.1.txt">online manual
+	page</a> is also available.</p>
 
 	<p>Developers can take a look at the <a
 	href="http://www.il.fontys.nl/~ed/projects/herrie/doc/html/">source

@@ -1,0 +1,248 @@
+HERRIE(1)							     HERRIE(1)
+
+
+
+NAME
+       herrie - interactive music playlist player
+
+
+SYNOPSIS
+       herrie [-vx] [-c configfile] [file ...]
+
+
+DESCRIPTION
+       herrie  is a command line music player. It supports multiple audio file
+       formats (including MP3 and Ogg Vorbis) and  has	the  ability  to  send
+       playback  statistics  to AudioScrobbler. The word `herrie' is Dutch for
+       `clamor'.
+
+       herrie uses a split-screen user interface: a playlist at the top and  a
+       filebrowser  at the bottom. The application has two modes of operation,
+       called `party mode' and `XMMS mode'. When the application is started in
+       party  mode, songs are automatically started when they are added to the
+       playlist. Songs get removed from the top  of  the  playlist.  When  the
+       application  is	started in XMMS mode, songs have to be started by hand
+       after they have been added to the playlist. The default mode  is  party
+       mode.
+
+       The following command line options are available:
+
+       -c configfile
+	      By default, herrie searches in ~/.herrie/config or in the system
+	      wide global configuration file %%CONFFILE%% for options. The  -c
+	      options allows you to load additional configuration files.
+
+       -v     Display  version	information  and a list of supported file for-
+	      mats.
+
+       -x     This switch causes herrie to start up in XMMS mode.
+
+
+CONFIGURATION SWITCHES
+       may be configured by storing options in a configuration	file.  Options
+       must be stored in the following format:
+
+       key=value
+
+       Below is a list of switches, including their default values:
+
+       audio.output.ao.driver=
+	      The name of the driver that LibAO should use for audio playback.
+
+       audio.output.ao.host=
+	      The hostname that LibAO should use  to  transmit	the  sound  to
+	      (only applicable to Esound). When set to env_ssh the application
+	      will use the IP-address in the SSH_CLIENT environment  variable.
+
+       audio.output.oss.device=/dev/dsp
+	      The  OSS	DSP  device,  used  for  audio playback. On NetBSD and
+	      OpenBSD, this value will be set to /dev/audio by default.
+
+       gui.browser.defaultpath=
+	      On startup, the current directory is shown in the file  browser.
+	      When  this  option is set, it tries to open that specific direc-
+	      tory first.
+
+       gui.color.bar.bg=blue
+	      The background color of the bars (the status bar at the  top  of
+	      the screen and the directory name bar in the middle). Valid col-
+	      ors are black, red, green, yellow, blue,	magenta,  cyan,  white
+	      and  default.  The  latter is the terminal's default color (e.g.
+	      black on white).
+
+       gui.color.bar.fg=white
+	      The foreground color of the bars.
+
+       gui.color.block.bg=black
+	      The background color of  the  blocks  (the  playlist,  the  file
+	      browser and the message prompt at the bottom).
+
+       gui.color.block.fg=white
+	      The foreground color of the blocks.
+
+       gui.color.deselect.bg=white
+	      The  background  color  of a selected item of an inactive window
+	      (the background color of a selection in the  file  browser  when
+	      the playlist is selected, for example).
+
+       gui.color.deselect.fg=black
+	      The foreground color of a selected item of an inactive window.
+
+       gui.color.enabled=yes
+	      Draw the application using colors when the terminal supports it.
+	      When disabled, the application is forced to draw itself as if it
+	      were used with a monochrome terminal.
+
+       gui.color.marked.fg=black
+	      The  foreground color of the item that is currenty played. It is
+	      not used when in party mode.
+
+       gui.color.marked.bg=red
+	      The background color of the item that is currenty played. It  is
+	      not used when in party mode.
+
+       gui.color.select.bg=cyan
+	      The background color of a selected item of an active window.
+
+       gui.color.select.fg=black
+	      The foreground color of a selected item of an active window.
+
+       playq.xmms=no
+	      Always start herrie in XMMS mode.
+
+       scrobbler.hostname=post.audioscrobbler.com
+	      The hostname the AudioScrobbler client uses when authenticating.
+
+       scrobbler.password=
+	      The password the Audioscrobbler client uses when authenticating.
+	      Make  sure  your	configuration  file  isn't world readable when
+	      specifying this switch in your configuration file.  Please  note
+	      that  this  switch  must	contain an MD5 hash. Use the following
+	      command to generate such a hash: echo -n 'p4ssw0rd' | md5
+
+       scrobbler.username=
+	      The username the AudioScrobbler client uses when authenticating.
+
+       vfs.dir.hide_dotfiles=yes
+	      Hide files in directories with a filename starting with a dot.
+
+       vfs.lockup.chroot=
+	      Lock  the  application's filebrowser in a directory. Please note
+	      that herrie must be launched as root for this switch to work. It
+	      is advised to set vfs.lockup.user as well.
+
+       vfs.lockup.user=
+	      Change  the  effective  user of the application to the specified
+	      user.
+
+
+KEYBOARD BINDINGS
+       Both the file browser and the playlist share some common keyboard bind-
+       ings:
+
+       j or down arrow
+	      Move the selection one entry down.
+
+       k or up arrow
+	      Move the selection one entry up.
+
+       ^F, page down or spacebar
+	      Move the selection one page down.
+
+       ^B or page up
+	      Move the selection one page up.
+
+       g or home
+	      Move the selection to the top.
+
+       G or end
+	      Move the selection to the bottom.
+
+       /      Search  the entries for a specified search string and select the
+	      first matching entry below the current selection. If no match is
+	      found, the search will continue at the top of the list.
+
+       n      Perform another search for the last entered search string.
+
+       There are also some bindings that only apply to the playlist:
+
+       d      Remove the currently selected song from the playlist.
+
+       D      Remove all songs from the playlist.
+
+       R      Randomize the playlist.
+
+       [      Move the currently selected song upward.
+
+       ]      Move the currently selected song downward.
+
+       The  file browser also has some bindings that allow you to traverse the
+       file system or add files, directories or playlists (M3U and PLS) to the
+       playlist:
+
+       a      Add items after the current selected item in the playlist.
+
+       A      Add items at the end of the playlist.
+
+       i      Add items before the current selected item in the playlist.
+
+       I      Add items at the beginning of the playlist.
+
+       h or left arrow
+	      Go one directory up.
+
+       l or right arrow
+	      Enter the selected directory.
+
+       C      Change  the current directory by entering a pathname. This path-
+	      name may be relative to the current directory. When the  address
+	      refers  to a file or web location, it will be displayed as well.
+
+       And last but not least, there are also some general keyboard bindings:
+
+       <      Seek 5 seconds backward.
+
+       >      Seek 5 seconds forward.
+
+       b      Go to the next song. Sending the signal SIGUSR2 to the  applica-
+	      tion will do the same.
+
+       c      Pause  the  current  song.  When c is pressed again, playback is
+	      resumed. Sending the signal SIGUSR1 to the application  will  do
+	      the same.
+
+       J      Seek to a specific position. When the inserted time is prepended
+	      with a + or -, the seek is performed relative.
+
+       q      Quit the application.
+
+       r      Switch repeat on and off. When this  option  is  enabled,  songs
+	      that  have  been successfully opened will be added to the end of
+	      the playlist, causing the playlist to repeat.
+
+       v      Stop playback. This button does the same as  b  in  party  mode,
+	      because  in party mode playback is always started when possible.
+
+       w      Write the current playlist to a PLS file.
+
+       x      When not in party mode, it starts the selected song. This button
+	      has  no  effect  in  party mode, because songs are automatically
+	      started.
+
+       z      Go to the previous song.
+
+       ^L     Force the application to redraw itself.
+
+       ^W or tab
+	      Switch the focus from the playlist to the file browser  or  vice
+	      versa.
+
+
+AUTHORS
+       herrie is maintained by Ed Schouten <ed@fxq.nl>. Please visit http://g-
+       rave.nl/projects/herrie/ for more information, documentation and devel-
+       oper notes.
+
+
+
+Ed Schouten			August 19, 2006 		     HERRIE(1)
