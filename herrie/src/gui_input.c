@@ -174,6 +174,11 @@ gui_input_cursong_seek_jump(void)
 	for (t = str; *t != '\0'; t++) {
 		switch (*t) {
 		case ':':
+			/*
+			 * Only allow two :'s, not without a prepending
+			 * digit. :'s must be interleaved with two
+			 * digits.
+			 */
 			if (split > 1 || digit == 0 ||
 			    (split > 0 && digit != 2))
 				goto bad;
@@ -196,18 +201,16 @@ gui_input_cursong_seek_jump(void)
 			/* Regular digit */
 			value = g_ascii_digit_value(*t);
 			g_assert(value != -1);
-			if (split > 0) {
-				if (digit > 1)
-					goto bad;
-				if (digit == 0 && value >= 6)
-					goto bad;
-			}
+			/* Only allow 0-5 to be used for the first digit. */
+			if (split > 0 && digit == 0 && value > 5)
+				goto bad;
 			total *= (digit == 0) ? 6 : 10;
 			total += value;
 			digit++;
 		}
 	}
 
+	/* Too many trailing digits */
 	if (split > 0 && digit != 2)
 		goto bad;
 
