@@ -164,34 +164,38 @@ static void
 gui_input_cursong_seek_jump(void)
 {
 	char *str, *t;
-	int total = 0, split = 0, digit = 0, value, relative;
+	int total = 0, split = 0, digit = 0, value, relative = 0;
 
 	t = str = gui_input_askstring(_("Jump to position"), NULL,
 	    "1234567890:+-");
 	if (str == NULL)
 		return;
 
-	switch (*t) {
-	case '+':
-		relative = 1;
-		t++;
-		break;
-	case '-':
-		relative = -1;
-		t++;
-		break;
-	default:
-		relative = 0;
-	}
-	
-	for (; *t != '\0'; t++) {
-		if (*t == ':') {
-			if (digit == 0 || split > 1)
+	for (t = str; *t != '\0'; t++) {
+		switch (*t) {
+		case ':':
+			if (split > 2 || digit == 0 ||
+			    (split > 0 && digit != 2))
 				goto bad;
 			split++;
 			digit = 0;
-		} else if ((value = g_ascii_digit_value(*t)) != -1) {
+			break;
+		case '+':
+			/* Must be at the beginning */
+			if (t != str)
+				goto bad;
+			relative = 1;
+			break;
+		case '-':
+			/* Must be at the beginning */
+			if (t != str)
+				goto bad;
+			relative = -1;
+			break;
+		default:
 			/* Regular digit */
+			value = g_ascii_digit_value(*t);
+			g_assert(value != -1);
 			if (split > 0) {
 				if (digit > 1)
 					goto bad;
@@ -201,9 +205,6 @@ gui_input_cursong_seek_jump(void)
 			total *= (digit == 0) ? 6 : 10;
 			total += value;
 			digit++;
-		} else {
-			/* '+' or '-' in the middle */
-			goto bad;
 		}
 	}
 
