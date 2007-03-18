@@ -113,7 +113,7 @@ gui_unlock(void)
 #define GUI_COLOR_DESELECT		5
 /**
  * @brief Curses colour code used to draw marked items (song currenty
- * played).
+ *        played).
  */
 #define GUI_COLOR_MARKED		6
 
