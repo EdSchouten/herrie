@@ -233,12 +233,12 @@ vfs_list_prev(const struct vfsref *vr)
 /**
  * @brief Loop through all items in the VFS list.
  */
-#define vfs_list_foreach(vl, vr) \
+#define VFS_LIST_FOREACH(vl, vr) \
 	for (vr = vfs_list_first(vl); vr != NULL; vr = vfs_list_next(vr))
 /**
  * @brief Reverse loop through all items in the VFS list.
  */
-#define vfs_list_foreach_reverse(vl, vr) \
+#define VFS_LIST_FOREACH_REVERSE(vl, vr) \
 	for (vr = vfs_list_last(vl); vr != NULL; vr = vfs_list_prev(vr))
 
 /**

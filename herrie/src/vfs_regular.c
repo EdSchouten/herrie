@@ -73,7 +73,7 @@ vfs_dir_populate(struct vfsent *ve)
 		/*
 		 * Add the items to the tailq in a sorted manner.
 		 */
-		vfs_list_foreach(&ve->population, svr) {
+		VFS_LIST_FOREACH(&ve->population, svr) {
 			/* Store the file if the sorting priority is lower */
 			if (vfs_sortorder(nvr) < vfs_sortorder(svr) ||
 			    /* Or if they are the same and the filename is lower */

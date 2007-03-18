@@ -155,7 +155,7 @@ static struct config_entry configlist[] = {
 /**
  * @brief The amount of configuration switches available.
  */
-#define NUM_SWITCHES (sizeof(configlist) / sizeof(struct config_entry)) 
+#define NUM_SWITCHES (sizeof configlist / sizeof(struct config_entry)) 
 
 /**
  * @brief Search for an entry in the configlist by name.

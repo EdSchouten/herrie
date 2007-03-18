@@ -31,7 +31,7 @@
 #include "config.h"
 #include "gui_internal.h"
 
-GMutex *gui_lock;
+GMutex *gui_mtx;
 int gui_draw_colors;
 
 void
@@ -45,7 +45,7 @@ void
 gui_draw_init_post(void)
 {
 	/* Lock playq from main thread */
-	gui_lock = g_mutex_new();
+	gui_mtx = g_mutex_new();
 
 #ifdef PDCURSES
 	PDC_set_title(APP_NAME);
@@ -98,21 +98,21 @@ gui_draw_init_abort(void)
 void
 gui_draw_destroy(void)
 {
-	GUI_LOCK;
+	gui_lock();
 	gui_msgbar_destroy();
 	gui_playq_destroy();
 	gui_browser_destroy();
 
 	endwin();
-	GUI_UNLOCK;
+	gui_unlock();
 }
 
 void
 gui_draw_resize(void)
 {
-	GUI_LOCK;
+	gui_lock();
 	wnoutrefresh(stdscr);
-	GUI_UNLOCK;
+	gui_unlock();
 	gui_msgbar_resize();
 	gui_playq_resize();
 	gui_browser_resize();
@@ -150,7 +150,7 @@ void
 gui_draw_done(void)
 {
 	gui_msgbar_refresh();
-	GUI_LOCK;
+	gui_lock();
 	doupdate();
-	GUI_UNLOCK;
+	gui_unlock();
 }

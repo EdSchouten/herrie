@@ -298,12 +298,11 @@ vfs_unfold(struct vfslist *vl, const struct vfsref *vr)
 
 	if (vfs_playable(vr)) {
 		/* Single item - add it to the list */
-		cvr = vfs_dup(vr);
-		vfs_list_insert_tail(vl, cvr);
+		vfs_list_insert_tail(vl, vfs_dup(vr));
 	} else {
 		/* See if we can recurse it */
 		vfs_populate(vr);
-		vfs_list_foreach(&vr->ent->population, cvr) {
+		VFS_LIST_FOREACH(&vr->ent->population, cvr) {
 			if (vfs_recurse(cvr))
 				vfs_unfold(vl, cvr);
 		}
@@ -343,7 +342,7 @@ vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
 
 	fprintf(fio, "[playlist]\nNumberOfEntries=%u\n",
 	    vfs_list_items(vl));
-	vfs_list_foreach(vl, cvr) {
+	VFS_LIST_FOREACH(vl, cvr) {
 		/* Skip directory name when relative is possible */
 		base = vfs_filename(cvr);
 		if (strncmp(fn, base, cmplen) == 0)

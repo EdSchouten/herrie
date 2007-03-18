@@ -88,7 +88,7 @@ static struct audio_format formats[] = {
 /**
  * @brief Amount of audio formats.
  */
-#define NUM_FORMATS (sizeof(formats) / sizeof(struct audio_format))
+#define NUM_FORMATS (sizeof formats / sizeof(struct audio_format))
 
 struct audio_file *
 audio_file_open(struct vfsref *vr)

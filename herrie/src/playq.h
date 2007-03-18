@@ -94,19 +94,29 @@ void playq_song_randomize(void);
 /**
  * @brief The mutex that locks down the playlist.
  */
-extern GMutex		*playq_lock;
+extern GMutex		*playq_mtx;
+
 /**
  * @brief Acquire the lock on the playlist.
  */
-#define PLAYQ_LOCK	g_mutex_lock(playq_lock)
+static inline void
+playq_lock(void)
+{
+	g_mutex_lock(playq_mtx);
+}
+
 /**
  * @brief Release the lock on the playlist.
  */
-#define PLAYQ_UNLOCK	g_mutex_unlock(playq_lock)
+static inline void
+playq_unlock(void)
+{
+	g_mutex_unlock(playq_mtx);
+}
 
 /*
  * All functions and variables below need proper locking. Always use
- * PLAYQ_LOCK and PLAYQ_UNLOCK when using them.
+ * playq_lock() and playq_unlock() when using them.
  */
 
 /**

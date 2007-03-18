@@ -46,7 +46,7 @@ static WINDOW *win_msgbar;
 void
 gui_msgbar_init(void)
 {
-	win_msgbar = newwin(1, 0, gui_size_msgbar_top, 0);
+	win_msgbar = newwin(1, 0, GUI_SIZE_MSGBAR_TOP, 0);
 	clearok(win_msgbar, TRUE);
 	if (gui_draw_colors)
 		wbkgdset(win_msgbar, COLOR_PAIR(GUI_COLOR_BAR));
@@ -72,11 +72,11 @@ gui_msgbar_destroy(void)
 void
 gui_msgbar_resize(void)
 {
-	GUI_LOCK;
+	gui_lock();
 	wresize(win_msgbar, 1, COLS);
-	mvwin(win_msgbar, gui_size_msgbar_top, 0);
+	mvwin(win_msgbar, GUI_SIZE_MSGBAR_TOP, 0);
 	clearok(win_msgbar, TRUE);
-	GUI_UNLOCK;
+	gui_unlock();
 
 	gui_msgbar_refresh();
 }
@@ -84,23 +84,23 @@ gui_msgbar_resize(void)
 void
 gui_msgbar_refresh(void)
 {
-	GUI_LOCK;
+	gui_lock();
 	if (win_msgbar != NULL) {
 		werase(win_msgbar);
 		mvwaddstr(win_msgbar, 0, 1, message->str);
 		wnoutrefresh(win_msgbar);
 	}
-	GUI_UNLOCK;
+	gui_unlock();
 }
 
 void
 gui_msgbar_flush(void)
 {
-	GUI_LOCK;
+	gui_lock();
 	g_string_assign(message, "");
 	message_prio = -1;
 	curs_set(0);
-	GUI_UNLOCK;
+	gui_unlock();
 
 	gui_msgbar_refresh();
 }
@@ -111,20 +111,20 @@ gui_msgbar_flush(void)
 static void
 gui_msgbar_update(const char *msg, int prio, int cursor)
 {
-	GUI_LOCK;
+	gui_lock();
 
 	/*
 	 * Do not attempt to set the message when there is a message on
 	 * screen with a higher priority
 	 */
 	if (prio < message_prio) {
-		GUI_UNLOCK;
+		gui_unlock();
 		return;
 	}
 
 	g_string_assign(message, msg);
 	message_prio = prio;
-	GUI_UNLOCK;
+	gui_unlock();
 
 	curs_set(cursor);
 	gui_msgbar_refresh();

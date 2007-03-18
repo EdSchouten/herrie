@@ -186,7 +186,7 @@ mp3_fill_buffer(struct audio_file *fd)
 		memmove(data->buf_input, data->mstream.next_frame, offset);
 	}
 
-	readlen = sizeof(data->buf_input) - offset;
+	readlen = sizeof data->buf_input - offset;
 
 	filledlen = fread(data->buf_input + offset, 1, readlen, fd->fp);
 

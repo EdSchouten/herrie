@@ -98,7 +98,7 @@ static struct playq_funcs xmms_funcs = {
 static struct playq_funcs *funcs = &party_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
-GMutex 			*playq_lock;
+GMutex 			*playq_mtx;
 /**
  * @brief Conditional variable used to kick the playq alive when it was
  *        waiting for a new song to be added to the playlist or when
@@ -161,20 +161,20 @@ playq_runner_thread(void *unused)
 
 	do {
 		/* Wait until there's a song available */
-		PLAYQ_LOCK;
+		playq_lock();
 		while ((!funcs->autostart && playq_flags & PF_PAUSE) ||
 		    (nvr = funcs->give()) == NULL) {
 			/* Change the current status to idle */
 			funcs->idle();
 			gui_playq_song_update(NULL, 0, 0);
 
-			g_cond_wait(playq_wakeup, playq_lock);
+			g_cond_wait(playq_wakeup, playq_mtx);
 			if (playq_flags & PF_QUIT) {
-				PLAYQ_UNLOCK;
+				playq_unlock();
 				goto done;
 			}
 		}
-		PLAYQ_UNLOCK;
+		playq_unlock();
 
 		cur = audio_file_open(nvr);
 		if (cur == NULL) {
@@ -192,18 +192,18 @@ playq_runner_thread(void *unused)
 		vfs_close(nvr);
 		gui_playq_song_update(cur, 0, 0);
 
-		PLAYQ_LOCK;
+		playq_lock();
 		playq_flags &= ~(PF_PAUSE|PF_SKIP|PF_SEEK);
-		PLAYQ_UNLOCK;
+		playq_unlock();
 
 		do  {
 			if (playq_flags & PF_PAUSE && !cur->stream) {
 				gui_playq_song_update(cur, 1, 1);
 
 				/* Wait to be waken up */
-				PLAYQ_LOCK;
-				g_cond_wait(playq_wakeup, playq_lock);
-				PLAYQ_UNLOCK;
+				playq_lock();
+				g_cond_wait(playq_wakeup, playq_mtx);
+				playq_unlock();
 			} else {
 				gui_playq_song_update(cur, 0, 1);
 
@@ -215,9 +215,9 @@ playq_runner_thread(void *unused)
 			if (playq_flags & PF_SEEK) {
 				audio_file_seek(cur, playq_seek_time,
 				    playq_flags & PF_SEEK_REL);
-				PLAYQ_LOCK;
+				playq_lock();
 				playq_flags &= ~PF_SEEK;
-				PLAYQ_UNLOCK;
+				playq_unlock();
 			}
 		} while (!(playq_flags & (PF_QUIT|PF_SKIP)));
 
@@ -230,7 +230,7 @@ done:
 void
 playq_init(int xmms)
 {
-	playq_lock = g_mutex_new();
+	playq_mtx = g_mutex_new();
 	playq_wakeup = g_cond_new();
 
 	if (xmms || config_getopt_bool("playq.xmms")) {
@@ -249,9 +249,9 @@ playq_spawn(void)
 void
 playq_shutdown(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	playq_flags = PF_QUIT;
-	PLAYQ_UNLOCK;
+	playq_unlock();
 	g_cond_signal(playq_wakeup);
 	g_thread_join(playq_runner);
 }
@@ -267,7 +267,7 @@ playq_song_add_head(struct vfsref *vr)
 	struct vfslist newlist = VFSLIST_INITIALIZER;
 	vfs_unfold(&newlist, vr);
 
-	PLAYQ_LOCK;
+	playq_lock();
 	/* Copy the expanded contents to the playlist */
 	while ((vr = vfs_list_last(&newlist)) != NULL) {
 		vfs_list_remove(&newlist, vr);
@@ -277,7 +277,7 @@ playq_song_add_head(struct vfsref *vr)
 
 	gui_playq_notify_done();
 	g_cond_signal(playq_wakeup);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
@@ -287,7 +287,7 @@ playq_song_add_tail(struct vfsref *vr)
 	struct vfslist newlist = VFSLIST_INITIALIZER;
 	vfs_unfold(&newlist, vr);
 
-	PLAYQ_LOCK;
+	playq_lock();
 	/* Copy the expanded contents to the playlist */
 	while ((vr = vfs_list_first(&newlist)) != NULL) {
 		vfs_list_remove(&newlist, vr);
@@ -297,7 +297,7 @@ playq_song_add_tail(struct vfsref *vr)
 
 	gui_playq_notify_done();
 	g_cond_signal(playq_wakeup);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 /**
@@ -309,10 +309,10 @@ playq_cursong_seek(int len, int rel)
 	int fl;
 
 	fl = rel ? PF_SEEK_REL : PF_SEEK_ABS;
-	PLAYQ_LOCK;
+	playq_lock();
 	playq_flags = (playq_flags & ~PF_SEEK) | fl;
 	playq_seek_time = len;
-	PLAYQ_UNLOCK;
+	playq_unlock();
 
 	g_cond_signal(playq_wakeup);
 }
@@ -320,34 +320,34 @@ playq_cursong_seek(int len, int rel)
 void
 playq_cursong_next(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	if (funcs->next() == 0) {
 		/* Unpause as well */
 		playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
 		g_cond_signal(playq_wakeup);
 	}
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 playq_cursong_prev(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	if (funcs->prev() == 0) {
 		/* Unpause as well */
 		playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
 		g_cond_signal(playq_wakeup);
 	}
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 playq_cursong_stop(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	/* Stop playback */
 	playq_flags |= PF_SKIP | PF_PAUSE;
-	PLAYQ_UNLOCK;
+	playq_unlock();
 
 	g_cond_signal(playq_wakeup);
 }
@@ -355,10 +355,10 @@ playq_cursong_stop(void)
 void
 playq_cursong_pause(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	/* Toggle the pause flag */
 	playq_flags ^= PF_PAUSE;
-	PLAYQ_UNLOCK;
+	playq_unlock();
 
 	g_cond_signal(playq_wakeup);
 }
@@ -472,7 +472,7 @@ playq_song_remove_all(void)
 {
 	struct vfsref *vr;
 
-	PLAYQ_LOCK;
+	playq_lock();
 	while ((vr = vfs_list_first(&playq_list)) != NULL) {
 		funcs->notify_pre_removal(vr);
 		gui_playq_notify_pre_removal(1);
@@ -480,7 +480,7 @@ playq_song_remove_all(void)
 		vfs_close(vr);
 	}
 	gui_playq_notify_done();
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
@@ -495,14 +495,14 @@ playq_song_randomize(void)
 	 * back in the list instead of actually swapping them.
 	 */
 
-	PLAYQ_LOCK;
+	playq_lock();
 	remaining = vfs_list_items(&playq_list);
 	if (remaining < 2)
 		goto done;
 
 	/* Generate a shadow list */
 	vrlist = g_new(struct vfsref *, remaining);
-	vfs_list_foreach(&playq_list, vr)
+	VFS_LIST_FOREACH(&playq_list, vr)
 		vrlist[idx++] = vr;
 	vfs_list_init(&playq_list);
 
@@ -521,5 +521,5 @@ playq_song_randomize(void)
 
 	gui_playq_notify_post_randomization();
 	gui_playq_notify_done();
-done:	PLAYQ_UNLOCK;
+done:	playq_unlock();
 }

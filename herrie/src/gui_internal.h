@@ -52,38 +52,48 @@ void gui_draw_done(void);
 /**
  * @brief The mutex that locks the GUI down.
  */
-extern GMutex *gui_lock;
+extern GMutex *gui_mtx;
+
 /**
  * @brief Acquire a lock on the GUI.
  */
-#define GUI_LOCK g_mutex_lock(gui_lock)
+static inline void
+gui_lock(void)
+{
+	g_mutex_lock(gui_mtx);
+}
+
 /**
  * @brief Release a lock on the GUI.
  */
-#define GUI_UNLOCK g_mutex_unlock(gui_lock)
+static inline void
+gui_unlock(void)
+{
+	g_mutex_unlock(gui_mtx);
+}
 
 /* Display size ratios */
 /**
  * @brief Height of playlist window.
  */
-#define gui_size_playq_height		((LINES / 2) - 1)
+#define GUI_SIZE_PLAYQ_HEIGHT		((LINES / 2) - 1)
 /**
  * @brief Offset of the window containing the filebrowser's directory
  *        name.
  */
-#define gui_size_browser_dirname_top	(gui_size_playq_height + 1)
+#define GUI_SIZE_BROWSER_DIRNAME_TOP	(GUI_SIZE_PLAYQ_HEIGHT + 1)
 /**
  * @brief Offset of the filebrowser window.
  */
-#define gui_size_browser_top		(gui_size_browser_dirname_top + 1)
+#define GUI_SIZE_BROWSER_TOP		(GUI_SIZE_BROWSER_DIRNAME_TOP + 1)
 /**
  * @brief Height of the filebrowser window.
  */
-#define gui_size_browser_height		(LINES - gui_size_browser_top - 1)
+#define GUI_SIZE_BROWSER_HEIGHT		(LINES - GUI_SIZE_BROWSER_TOP - 1)
 /**
  * @brief Offset of the message bar window.
  */
-#define gui_size_msgbar_top		(LINES - 1)
+#define GUI_SIZE_MSGBAR_TOP		(LINES - 1)
 
 /**
  * @brief Curses colour code used to draw bars (status, dirname).

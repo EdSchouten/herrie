@@ -161,12 +161,12 @@ gui_playq_statbar_time(struct audio_file *fd)
 static void
 gui_playq_song_set(struct audio_file *fd, int paused, int timeonly)
 {
-	GUI_LOCK;
+	gui_lock();
 	if (!timeonly)
 		gui_playq_statbar_song(fd);
 	gui_playq_statbar_time(fd);
 	gui_playq_statbar_status(fd, paused);
-	GUI_UNLOCK;
+	gui_unlock();
 }
 
 /**
@@ -180,7 +180,7 @@ gui_playq_statbar_refresh(void)
 	const char *percent;
 	int plen;
 
-	GUI_LOCK;
+	gui_lock();
 	/* Blank it */
 	werase(win_statbar);
 
@@ -196,7 +196,7 @@ gui_playq_statbar_refresh(void)
 
 	/* And draw it */
 	wnoutrefresh(win_statbar);
-	GUI_UNLOCK;
+	gui_unlock();
 }
 
 void
@@ -217,7 +217,7 @@ gui_playq_init(void)
 	win_playq = gui_vfslist_new(1);
 	gui_vfslist_setcallback(win_playq, gui_playq_statbar_refresh);
 	gui_vfslist_setlist(win_playq, &playq_list);
-	gui_vfslist_move(win_playq, 0, 1, COLS, gui_size_playq_height);
+	gui_vfslist_move(win_playq, 0, 1, COLS, GUI_SIZE_PLAYQ_HEIGHT);
 }
 
 void
@@ -247,14 +247,14 @@ gui_playq_song_update(struct audio_file *fd, int paused, int timeonly)
 void
 gui_playq_resize(void)
 {
-	GUI_LOCK;
+	gui_lock();
 	wresize(win_statbar, 1, COLS);
 	clearok(win_statbar, TRUE);
-	GUI_UNLOCK;
+	gui_unlock();
 	
-	PLAYQ_LOCK;
-	gui_vfslist_move(win_playq, 0, 1, COLS, gui_size_playq_height);
-	PLAYQ_UNLOCK;
+	playq_lock();
+	gui_vfslist_move(win_playq, 0, 1, COLS, GUI_SIZE_PLAYQ_HEIGHT);
+	playq_unlock();
 }
 
 void
@@ -285,49 +285,49 @@ gui_playq_notify_done(void)
 void
 gui_playq_cursor_up(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	gui_vfslist_cursor_up(win_playq);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 gui_playq_cursor_down(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	gui_vfslist_cursor_down(win_playq, 0);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 gui_playq_cursor_pageup(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	gui_vfslist_cursor_pageup(win_playq);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 gui_playq_cursor_pagedown(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	gui_vfslist_cursor_pagedown(win_playq);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 gui_playq_cursor_top(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	gui_vfslist_cursor_top(win_playq);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 gui_playq_cursor_bottom(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	gui_vfslist_cursor_bottom(win_playq);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
@@ -335,13 +335,13 @@ gui_playq_song_remove(void)
 {
 	struct vfsref *vr;
 
-	PLAYQ_LOCK;
+	playq_lock();
 	if (!gui_vfslist_warn_isempty(win_playq)) {
 		vr = gui_vfslist_getselected(win_playq);
 		playq_song_fast_remove(vr,
 		    gui_vfslist_getselectedidx(win_playq));
 	}
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
@@ -371,16 +371,16 @@ gui_playq_song_add_before(struct vfsref *vr)
 {
 	struct vfsref *vr_selected;
 
-	PLAYQ_LOCK;
+	playq_lock();
 	vr_selected = gui_vfslist_getselected(win_playq);
 	if (vr_selected == vfs_list_first(&playq_list)) {
-		PLAYQ_UNLOCK;
+		playq_unlock();
 		/* List is empty or adding before the first node */
 		playq_song_add_head(vr);
 	} else {
 		playq_song_fast_add_before(vr, vr_selected,
 		    gui_vfslist_getselectedidx(win_playq));
-		PLAYQ_UNLOCK;
+		playq_unlock();
 	}
 }
 
@@ -389,16 +389,16 @@ gui_playq_song_add_after(struct vfsref *vr)
 {
 	struct vfsref *vr_selected;
 
-	PLAYQ_LOCK;
+	playq_lock();
 	vr_selected = gui_vfslist_getselected(win_playq);
 	if (vr_selected == vfs_list_last(&playq_list)) {
-		PLAYQ_UNLOCK;
+		playq_unlock();
 		/* List is empty or appending after the last node */
 		playq_song_add_tail(vr);
 	} else {
 		playq_song_fast_add_after(vr, vr_selected,
 		    gui_vfslist_getselectedidx(win_playq));
-		PLAYQ_UNLOCK;
+		playq_unlock();
 	}
 }
 
@@ -407,7 +407,7 @@ gui_playq_song_moveup(void)
 {
 	struct vfsref *vr_selected;
 
-	PLAYQ_LOCK;
+	playq_lock();
 	if (!gui_vfslist_warn_isempty(win_playq)) {
 		vr_selected = gui_vfslist_getselected(win_playq);
 		if (vr_selected == vfs_list_first(&playq_list)) {
@@ -418,7 +418,7 @@ gui_playq_song_moveup(void)
 			    gui_vfslist_getselectedidx(win_playq));
 		}
 	}
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
@@ -426,7 +426,7 @@ gui_playq_song_movedown(void)
 {
 	struct vfsref *vr_selected;
 
-	PLAYQ_LOCK;
+	playq_lock();
 	if (!gui_vfslist_warn_isempty(win_playq)) {
 		vr_selected = gui_vfslist_getselected(win_playq);
 		if (vr_selected == vfs_list_last(&playq_list)) {
@@ -437,33 +437,33 @@ gui_playq_song_movedown(void)
 			    gui_vfslist_getselectedidx(win_playq));
 		}
 	}
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 gui_playq_song_select(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	if (!gui_vfslist_warn_isempty(win_playq)) {
 		playq_song_fast_select(
 		    gui_vfslist_getselected(win_playq),
 		    gui_vfslist_getselectedidx(win_playq));
 	}
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 gui_playq_searchnext(void)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	gui_vfslist_searchnext(win_playq);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }
 
 void
 gui_playq_setfocus(int focus)
 {
-	PLAYQ_LOCK;
+	playq_lock();
 	gui_vfslist_setfocus(win_playq, focus);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 }

@@ -62,7 +62,7 @@ gui_browser_dirname_refresh(void)
 	const char *percent;
 	int plen;
 
-	GUI_LOCK;
+	gui_lock();
 
 	werase(win_dirname);
 	if (vr_curdir != NULL) {
@@ -74,7 +74,7 @@ gui_browser_dirname_refresh(void)
 	mvwaddstr(win_dirname, 0, COLS - plen, percent);
 	wnoutrefresh(win_dirname);
 
-	GUI_UNLOCK;
+	gui_unlock();
 }
 
 void
@@ -83,7 +83,7 @@ gui_browser_init(void)
 	const char *defdir;
 	char *cwd;
 
-	win_dirname = newwin(1, 0, gui_size_browser_dirname_top, 0);
+	win_dirname = newwin(1, 0, GUI_SIZE_BROWSER_DIRNAME_TOP, 0);
 	clearok(win_dirname, TRUE);
 	if (gui_draw_colors)
 		wbkgdset(win_dirname, COLOR_PAIR(GUI_COLOR_BAR));
@@ -112,8 +112,8 @@ gui_browser_init(void)
 	} else {
 		gui_msgbar_warn(_("Unable to open initial directory."));
 	}
-	gui_vfslist_move(win_browser, 0, gui_size_browser_top,
-	    COLS, gui_size_browser_height);
+	gui_vfslist_move(win_browser, 0, GUI_SIZE_BROWSER_TOP,
+	    COLS, GUI_SIZE_BROWSER_HEIGHT);
 }
 
 void
@@ -128,14 +128,14 @@ gui_browser_destroy(void)
 void
 gui_browser_resize(void)
 {
-	GUI_LOCK;
+	gui_lock();
 	wresize(win_dirname, 1, COLS);
-	mvwin(win_dirname, gui_size_browser_dirname_top, 0);
+	mvwin(win_dirname, GUI_SIZE_BROWSER_DIRNAME_TOP, 0);
 	clearok(win_dirname, TRUE);
-	GUI_UNLOCK;
+	gui_unlock();
 
-	gui_vfslist_move(win_browser, 0, gui_size_browser_top,
-	    COLS, gui_size_browser_height);
+	gui_vfslist_move(win_browser, 0, GUI_SIZE_BROWSER_TOP,
+	    COLS, GUI_SIZE_BROWSER_HEIGHT);
 }
 
 /*
@@ -369,9 +369,9 @@ gui_browser_write_playlist(void)
 	fn = gui_input_askstring(_("Write playlist to file"), NULL, NULL);
 	if (fn == NULL)
 		return;
-	PLAYQ_LOCK;
+	playq_lock();
 	vr = vfs_write_playlist(&playq_list, vr_curdir, fn);
-	PLAYQ_UNLOCK;
+	playq_unlock();
 	g_free(fn);
 
 	if (vr == NULL) {

@@ -124,7 +124,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 	/* Make sure we have everything in sight */
 	gui_vfslist_cursor_adjust(gv);
 
-	GUI_LOCK;
+	gui_lock();
 	werase(gv->win);
 
 	vr = gv->vr_top;
@@ -184,7 +184,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 	}
 
 	wnoutrefresh(gv->win);
-	GUI_UNLOCK;
+	gui_unlock();
 
 	gui_vfslist_percent(gv);
 
@@ -236,7 +236,7 @@ void
 gui_vfslist_move(struct gui_vfslist *gv,
     int x, int y, int width, int height)
 {
-	GUI_LOCK;
+	gui_lock();
 	if (gv->win == NULL) {
 		gv->win = newwin(height, width, y, x);
 	} else {
@@ -244,7 +244,7 @@ gui_vfslist_move(struct gui_vfslist *gv,
 		mvwin(gv->win, y, x);
 	}
 	clearok(gv->win, TRUE);
-	GUI_UNLOCK;
+	gui_unlock();
 	gv->winheight = height;
 
 	gui_vfslist_refresh(gv);
