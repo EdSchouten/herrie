@@ -264,7 +264,7 @@ sdl)
 esac
 
 unset OBJS
-for i in $SRCS
+for i in `echo $SRCS | xargs -n 1 | sort`
 do
 	OBJS="$OBJS $i.o"
 done
