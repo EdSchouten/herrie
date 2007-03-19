@@ -3,6 +3,5 @@
 *.o
 .gdb_history
 Makefile
-herrie
+herrie/herrie
 herrie.1.gz
-src/stdinc.h.gch
