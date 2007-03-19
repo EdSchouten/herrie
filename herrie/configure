@@ -293,9 +293,11 @@ LDFLAGS=$LDFLAGS
 OBJS=$OBJS
 all: $APP_NAME$CFG_BINEXT $APP_NAME.1.gz $SRCDIR/$APP_NAME.conf.sample $LINGUAS
 $APP_NAME$CFG_BINEXT: \$(OBJS)
-	$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME$CFG_BINEXT
+	# Linking $APP_NAME$CFG_BINEXT
+	@$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME$CFG_BINEXT
 $APP_NAME.1.gz: $SRCDIR/$APP_NAME.1 Makefile
-	sed -e 's|%%CONFFILE%%|$CONFFILE|' $SRCDIR/$APP_NAME.1 | gzip -9 > $APP_NAME.1.gz
+	# Generating manual page $APP_NAME.1.gz
+	@sed -e 's|%%CONFFILE%%|$CONFFILE|' $SRCDIR/$APP_NAME.1 | gzip -9 > $APP_NAME.1.gz
 clean:
 	rm -f *.core *.o .gdb_history
 distclean: clean
@@ -319,12 +321,14 @@ do
 		DEPS="$DEPS $SRCDIR/src/$j.h"
 	done
 	echo "$i.o: Makefile $SRCDIR/src/$i.c $SRCDIR/src/stdinc.h $DEPS"
-	echo "	$CC -c $SRCDIR/src/$i.c \$(CFLAGS) `eval echo \\\$CFLAGS_\$i` -o $i.o"
+	echo "	# Compiling $i.o"
+	echo "	@$CC -c $SRCDIR/src/$i.c \$(CFLAGS) `eval echo \\\$CFLAGS_\$i` -o $i.o"
 done
 for i in $CFG_TRANS
 do
 	echo "$i.mo: $SRCDIR/lang/$i.po"
-	echo "	msgfmt -o $i.mo $SRCDIR/lang/$i.po"
+	echo "	# Generating translation $i.mo"
+	echo "	@msgfmt -o $i.mo $SRCDIR/lang/$i.po"
 done) > Makefile
 
 echo
