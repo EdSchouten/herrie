@@ -68,6 +68,7 @@ Linux)
 	CFG_AO=oss
 	[ "$CONFDIR" = "" ] && CONFDIR=/etc
 	[ "$PREFIX" = "" ] && PREFIX=/usr
+	CFLAGS="$CFLAGS -I$PREFIX/include/ncurses"
 	;;
 NetBSD)
 	CFG_AO=oss
