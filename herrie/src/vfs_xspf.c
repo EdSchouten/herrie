@@ -48,8 +48,7 @@ vfs_xspf_populate(struct vfsent *ve)
 	struct spiff_list *slist;
 	struct spiff_track *strack;
 	struct spiff_mvalue *sloc;
-	const char *filename;
-	char *dirname;
+	const char *dirname, *filename;
 	struct vfsref *vr;
 
 	slist = spiff_parse(ve->filename);
@@ -73,5 +72,6 @@ vfs_xspf_populate(struct vfsent *ve)
 	}
 	
 	g_free(dirname);
+	spiff_free(slist);
 	return (0);
 }
