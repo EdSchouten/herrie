@@ -59,6 +59,7 @@ vfs_xspf_populate(struct vfsent *ve)
 
 	SPIFF_LIST_FOREACH_TRACK(slist, strack) {
 		SPIFF_TRACK_FOREACH_LOCATION(strack, sloc) {
+			/* XXX: Strip HTTP escape */
 			filename = sloc->value;
 			/* Skip file:// part */
 			if (strncmp(filename, "file://", 7) == 0)
