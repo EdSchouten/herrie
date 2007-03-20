@@ -85,4 +85,16 @@ int	vfs_pls_open(struct vfsent *ve, int isdir);
  */
 int	vfs_pls_populate(struct vfsent *ve);
 
+#ifdef BUILD_XSPF
+/**
+ * @brief Test whether the current node is an XSPF file.
+ */
+int	vfs_xspf_open(struct vfsent *ve, int isdir);
+/**
+ * @brief Add all items in the XSPF file to the population of the
+ *        current node.
+ */
+int	vfs_xspf_populate(struct vfsent *ve);
+#endif /* BUILD_XSPF */
+
 #endif /* !_VFS_MODULES_H_ */

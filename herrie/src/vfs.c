@@ -42,6 +42,9 @@ static struct vfsmodule modules[] = {
 #endif /* BUILD_HTTP */
 	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
 	{ vfs_pls_open, vfs_pls_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
+#ifdef BUILD_XSPF
+	{ vfs_xspf_open, vfs_xspf_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
+#endif /* BUILD_XSPF */
 	/*
 	 * Leave these two rules at the bottom of the list. They have
 	 * the weakest matching rules.
