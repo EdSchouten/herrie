@@ -256,19 +256,20 @@ fi
 # Audio output options
 case $CFG_AO in
 ao)
+	CFLAGS="$CFLAGS_main -DBUILD_AO"
 	CFLAGS_main="$CFLAGS_main -DCLOSE_STDERR"
 	LDFLAGS="$LDFLAGS -lao"
 	;;
 oss)
 	case $OS in
 	NetBSD|OpenBSD)
+		CFLAGS="$CFLAGS -DOSS_HEADER=\\<soundcard.h\\>"
 		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/audio\\\""
-		CFLAGS_audio_output_oss="-DOSS_HEADER=\\<soundcard.h\\>"
 		LDFLAGS="$LDFLAGS -lossaudio"
 		;;
 	*)
+		CFLAGS="$CFLAGS -DOSS_HEADER=\\<sys/soundcard.h\\>"
 		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/dsp\\\""
-		CFLAGS_audio_output_oss="-DOSS_HEADER=\\<sys/soundcard.h\\>"
 		;;
 	esac
 	;;
@@ -297,7 +298,7 @@ do
 	LINGUAS="$LINGUAS $i.mo"
 done
 
-$CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest
+eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest
 if [ $? -ne 0 ]
 then
 	echo "Error: some dependencies are missing"

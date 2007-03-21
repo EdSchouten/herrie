@@ -29,11 +29,10 @@
  * to check whether they are available on our system.
  */
 
-#if 0
-#include <ao/ao.h>
-#include OSS_HEADER
 #include CURSES_HEADER
-#endif
+#ifdef BUILD_AO
+#include <ao/ao.h>
+#endif /* BUILD_AO */
 #ifdef BUILD_MODPLUG
 #include <sys/mman.h>
 #endif /* BUILD_MODPLUG */
@@ -41,6 +40,9 @@
 #include <id3tag.h>
 #include <mad.h>
 #endif /* BUILD_MP3 */
+#ifdef OSS_HEADER
+#include OSS_HEADER
+#endif /* OSS_HEADER */
 #ifdef BUILD_SCROBBLER
 #include <openssl/md5.h>
 #endif /* BUILD_SCROBBLER */
