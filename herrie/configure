@@ -298,13 +298,13 @@ do
 	LINGUAS="$LINGUAS $i.mo"
 done
 
-eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest
+eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest$CFG_BINEXT
 if [ $? -ne 0 ]
 then
 	echo "Error: some dependencies are missing"
 	exit 1
 fi
-rm conftest
+rm conftest$CFG_BINEXT
 
 echo "Configuration:"
 echo "- Installing $APP_NAME$CFG_BINEXT in $BINDIR"
