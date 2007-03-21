@@ -277,6 +277,14 @@ do
 	LINGUAS="$LINGUAS $i.mo"
 done
 
+$CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o /dev/null
+if [ $? -ne 0 ]
+then
+	echo "Error: some dependencies are missing"
+	exit 1
+fi
+
+echo
 echo "Configuration:"
 echo "- Installing $APP_NAME$CFG_BINEXT in $BINDIR"
 echo "- Installing manual page in $MANDIR"
