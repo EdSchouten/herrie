@@ -127,8 +127,10 @@ struct config_entry {
  * @brief List of configuration switches.
  */
 static struct config_entry configlist[] = {
+#ifdef BUILD_AO
 	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
 	{ "audio.output.ao.host",	"",		NULL, 		NULL },
+#endif /* BUILD_AO */
 #ifdef OSS_DEVICE
 	{ "audio.output.oss.device",	OSS_DEVICE,	NULL,		NULL },
 #endif /* OSS_DEVICE */
@@ -145,9 +147,11 @@ static struct config_entry configlist[] = {
 	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
 	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
 	{ "playq.xmms",			"no",		valid_bool,	NULL },
+#ifdef BUILD_SCROBBLER
 	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },
 	{ "scrobbler.password",		"",		valid_md5,	NULL },
 	{ "scrobbler.username",		"",		NULL,		NULL },
+#endif /* BUILD_SCROBBLER */
 	{ "vfs.dir.hide_dotfiles",	"yes",		valid_bool,	NULL },
 	{ "vfs.lockup.chroot",		"",		NULL,		NULL },
 	{ "vfs.lockup.user",		"",		NULL,		NULL },
