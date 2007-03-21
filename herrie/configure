@@ -284,7 +284,6 @@ then
 	exit 1
 fi
 
-echo
 echo "Configuration:"
 echo "- Installing $APP_NAME$CFG_BINEXT in $BINDIR"
 echo "- Installing manual page in $MANDIR"
