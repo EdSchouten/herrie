@@ -25,7 +25,9 @@
  */
 
 /* Teach glibc a little lesson */
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+#endif /* !_GNU_SOURCE */
 #undef _FORTIFY_SOURCE
 
 #include <sys/param.h>
