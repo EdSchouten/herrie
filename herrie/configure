@@ -161,6 +161,11 @@ CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -I$PREFIX/include -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\> \
     -include $SRCDIR/src/stdinc.h"
+if [ $? -ne 0 ]
+then
+	echo "Error: Glib not found"
+	exit 1
+fi
 CFLAGS_main="-DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -DCONFFILE=\\\"$CONFFILE\\\""
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
     -L$PREFIX/lib -l$CFG_CURSES_LIB"
@@ -185,6 +190,11 @@ then
 		SRCS="$SRCS scrobbler scrobbler_hash scrobbler_send"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
+	if [ $? -ne 0 ]
+	then
+		echo "Error: cURL not found"
+		exit 1
+	fi
 	LDFLAGS="$LDFLAGS `curl-config --libs`"
 fi
 # Modplug support
@@ -192,6 +202,11 @@ if [ "$CFG_MODPLUG" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_MODPLUG"
 	CFLAGS_audio_format_modplug="`pkg-config --cflags libmodplug`"
+	if [ $? -ne 0 ]
+	then
+		echo "Error: libmodplug not found"
+		exit 1
+	fi
 	LDFLAGS="$LDFLAGS `pkg-config --libs libmodplug`"
 	SRCS="$SRCS audio_format_modplug"
 fi
@@ -259,6 +274,11 @@ oss)
 	;;
 sdl)
 	CFLAGS="$CFLAGS `sdl-config --cflags`"
+	if [ $? -ne 0 ]
+	then
+		echo "Error: LibSDL not found"
+		exit 1
+	fi
 	LDFLAGS="$LDFLAGS `sdl-config --libs`"
 	;;
 esac

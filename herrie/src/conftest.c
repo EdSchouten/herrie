@@ -24,6 +24,34 @@
  * SUCH DAMAGE.
  */
 
+/*
+ * Header files which aren't obtained from pkg-config and such. We need
+ * to check whether they are available on our system.
+ */
+
+#if 0
+#include <ao/ao.h>
+#include OSS_HEADER
+#include CURSES_HEADER
+#endif
+#ifdef BUILD_MODPLUG
+#include <sys/mman.h>
+#endif /* BUILD_MODPLUG */
+#ifdef BUILD_MP3
+#include <id3tag.h>
+#include <mad.h>
+#endif /* BUILD_MP3 */
+#ifdef BUILD_SCROBBLER
+#include <openssl/md5.h>
+#endif /* BUILD_SCROBBLER */
+#ifdef BUILD_SNDFILE
+#include <sndfile.h>
+#endif /* BUILD_SNDFILE */
+#ifdef BUILD_VORBIS
+#include <vorbis/codec.h>
+#include <vorbis/vorbisfile.h>
+#endif /* BUILD_VORBIS */
+
 int
 main(int argc, char *argv[])
 {
