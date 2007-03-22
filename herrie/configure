@@ -220,7 +220,7 @@ fi
 # res_init() usage
 if [ "$CFG_RES_INIT" != "" ]
 then
-	CFLAGS_vfs="-DBUILD_RES_INIT"
+	CFLAGS="$CFLAGS -DBUILD_RES_INIT"
 fi
 # setproctitle() usage
 if [ "$CFG_SETPROCTITLE" != "" ]
