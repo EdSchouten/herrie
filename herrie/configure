@@ -44,8 +44,7 @@ unset CFG_SIGWINCH
 CFG_SNDFILE=yes
 CFG_TRANS='nl tr'
 CFG_VORBIS=yes
-# XXX notyet CFG_XSPF=yes
-unset CFG_XSPF
+CFG_XSPF=yes
 
 # Operating system defaults
 [ "$OS" != "" ] || OS=`uname`
@@ -331,6 +330,7 @@ echo "- Using $CFG_AO audio output"
 [ "$CFG_SCROBBLER" != "" ] && echo "- Support for AudioScrobbler"
 [ "$CFG_SNDFILE" != "" ] && echo "- Support for libsndfile"
 [ "$CFG_VORBIS" != "" ] && echo "- Support for Ogg Vorbis"
+[ "$CFG_XSPF" != "" ] && echo "- Support for XSPF (\`Spiff')"
 
 (cat << EOF
 CFLAGS=$CFLAGS

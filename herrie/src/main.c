@@ -45,6 +45,7 @@ version(void)
 		"%s: " AUDIO_OUTPUT "\n"
 		"%s: %s\n"
 		"%s: %s\n"
+		"%s: %s\n"
 		"%s:\n"
 #ifdef BUILD_VORBIS
 		"- Ogg Vorbis\n"
@@ -72,6 +73,12 @@ version(void)
 #else /* !BUILD_HTTP */
 		_("no"),
 #endif /* BUILD_HTTP */
+		_("support for xspf playlists (`spiff')"),
+#ifdef BUILD_XSPF
+		_("yes"),
+#else /* !BUILD_XSPF */
+		_("no"),
+#endif /* BUILD_XSPF */
 		_("supported audio file formats"));
 
 	exit(0);

@@ -61,6 +61,7 @@ Herrie:
 - libmodplug
 - libsdl (audio - optional)
 - libsndfile
+- libspiff
 - libvorbisfile
 - ncurses or pdcurses (`XCurses')
 - openssl
@@ -82,6 +83,7 @@ configure script to change certain parameters:
 - no_sndfile    Disable libsndfile linkage (Wave/FLAC support)
 - no_trans      Disable translations
 - no_vorbis     Disable Ogg Vorbis support
+- no_xsfp       Disable XSPF (`Spiff') playlist support
 
 - ao            Use libao audio output
 - oss           Use Open Sound System output
