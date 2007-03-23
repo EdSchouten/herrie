@@ -34,7 +34,7 @@
  * @brief Open a VFS entry by relative Win32 pathname and add it to the
  *        tail of the current entry.
  */
-static int
+static void
 vfs_playlist_add_tail(struct vfsent *ve, char *fn, char *title, char *dirname)
 {
 	struct vfsref *nvr;
@@ -45,12 +45,8 @@ vfs_playlist_add_tail(struct vfsent *ve, char *fn, char *title, char *dirname)
 #endif
 	nvr = vfs_open(fn, title, dirname);
 
-	if (nvr != NULL) {
+	if (nvr != NULL)
 		vfs_list_insert_tail(&ve->population, nvr);
-		return (0);
-	} else {
-		return (1);
-	}
 }
 
 /*
