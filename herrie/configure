@@ -31,6 +31,8 @@ APP_VERSION=1.5.1
 # Default compilation switches
 CFG_AO=ao
 unset CFG_BINEXT
+CFG_CURSES_HEADER=ncurses
+CFG_CURSES_LIB=ncurses
 CFG_FTELLO=yes
 CFG_HTTP=yes
 CFG_MODPLUG=yes
@@ -42,8 +44,8 @@ unset CFG_SIGWINCH
 CFG_SNDFILE=yes
 CFG_TRANS='nl tr'
 CFG_VORBIS=yes
-CFG_CURSES_HEADER=ncurses
-CFG_CURSES_LIB=ncurses
+# XXX notyet CFG_XSPF=yes
+unset CFG_XSPF
 
 # Operating system defaults
 [ "$OS" != "" ] || OS=`uname`
@@ -134,6 +136,9 @@ do
 		;;
 	no_vorbis)
 		unset CFG_VORBIS
+		;;
+	no_xspf)
+		unset CFG_XSPF
 		;;
 
 	ao|null|oss|sdl)
@@ -251,6 +256,13 @@ then
 	CFLAGS="$CFLAGS -DBUILD_VORBIS"
 	LDFLAGS="$LDFLAGS -lvorbisfile -lvorbis -logg"
 	SRCS="$SRCS audio_format_vorbis"
+fi
+# XSPF support
+if [ "$CFG_XSPF" != "" ]
+then
+	CFLAGS="$CFLAGS -DBUILD_XSPF"
+	LDFLAGS="$LDFLAGS -lspiff"
+	SRCS="$SRCS vfs_xspf"
 fi
 
 # Audio output options

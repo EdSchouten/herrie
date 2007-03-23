@@ -53,6 +53,9 @@
 #include <vorbis/codec.h>
 #include <vorbis/vorbisfile.h>
 #endif /* BUILD_VORBIS */
+#ifdef BUILD_XSPF
+#include <spiff/spiff_c.h>
+#endif /* BUILD_XSPF */
 
 int
 main(int argc, char *argv[])
