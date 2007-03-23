@@ -40,9 +40,9 @@
 #include <id3tag.h>
 #include <mad.h>
 #endif /* BUILD_MP3 */
-#ifdef OSS_HEADER
+#ifdef BUILD_OSS
 #include OSS_HEADER
-#endif /* OSS_HEADER */
+#endif /* BUILD_OSS */
 #ifdef BUILD_SCROBBLER
 #include <openssl/md5.h>
 #endif /* BUILD_SCROBBLER */

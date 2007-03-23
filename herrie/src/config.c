@@ -131,9 +131,9 @@ static struct config_entry configlist[] = {
 	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
 	{ "audio.output.ao.host",	"",		NULL, 		NULL },
 #endif /* BUILD_AO */
-#ifdef OSS_DEVICE
+#ifdef BUILD_OSS
 	{ "audio.output.oss.device",	OSS_DEVICE,	NULL,		NULL },
-#endif /* OSS_DEVICE */
+#endif /* BUILD_OSS */
 	{ "gui.browser.defaultpath",	"",		NULL,		NULL },
 	{ "gui.color.bar.bg",		"blue",		valid_color,	NULL },
 	{ "gui.color.bar.fg",		"white",	valid_color,	NULL },

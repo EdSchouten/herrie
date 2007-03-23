@@ -272,6 +272,7 @@ ao)
 	LDFLAGS="$LDFLAGS -lao"
 	;;
 oss)
+	CFLAGS="$CFLAGS -DBUILD_OSS"
 	case $OS in
 	NetBSD|OpenBSD)
 		CFLAGS="$CFLAGS -DOSS_HEADER=\\<soundcard.h\\>"
