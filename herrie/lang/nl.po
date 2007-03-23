@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-10 11:51+0100\n"
-"PO-Revision-Date: 2007-03-10 11:51+0100\n"
+"POT-Creation-Date: 2007-03-23 21:22+0100\n"
+"PO-Revision-Date: 2007-03-23 21:22+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:89 audio_output_sdl.c:112
+#: audio_output_ao.c:113 audio_output_sdl.c:112
 msgid "Cannot open the audio device."
 msgstr "Kan het geluidsapparaat niet openen."
 
@@ -64,15 +64,15 @@ msgstr "%s afsluiten?"
 msgid "Jump to position"
 msgstr "Spring naar positie"
 
-#: gui_input.c:218
+#: gui_input.c:222
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:397 main.c:65 main.c:71
+#: gui_input.c:401 main.c:66 main.c:72 main.c:78
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:397 main.c:67 main.c:73
+#: gui_input.c:401 main.c:68 main.c:74 main.c:80
 msgid "no"
 msgstr "nee"
 
@@ -128,23 +128,27 @@ msgstr "Zoekopdracht naar boven verplaatst."
 msgid "Not found."
 msgstr "Niet gevonden."
 
-#: main.c:62
+#: main.c:63
 msgid "audio output"
 msgstr "geluidsuitvoer"
 
-#: main.c:63
+#: main.c:64
 msgid "support for audioscrobbler"
 msgstr "ondersteuning voor audioscrobbler"
 
-#: main.c:69
+#: main.c:70
 msgid "support for http streams"
 msgstr "ondersteuning voor http streams"
 
-#: main.c:75
+#: main.c:76
+msgid "support for xspf playlists (`spiff')"
+msgstr "ondersteuning voor xspf afspeellijsten (`spiff')"
+
+#: main.c:82
 msgid "supported audio file formats"
 msgstr "ondersteunde geluidsformaten"
 
-#: main.c:87
+#: main.c:94
 msgid "usage"
 msgstr "gebruik"
 
@@ -191,22 +195,22 @@ msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 
-#: vfs.c:71
+#: vfs.c:74
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Onbekende gebruiker: %s\n"
 
-#: vfs.c:83
+#: vfs.c:86
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Onmogelijk om te chroot'en naar %s\n"
 
-#: vfs.c:91
+#: vfs.c:94
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Onmogelijk om naar groep %d te veranderen\n"
 
-#: vfs.c:95
+#: vfs.c:98
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Onmogelijk om naar gebruiker %d te veranderen\n"

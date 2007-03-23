@@ -8,7 +8,7 @@ tbl < herrie/herrie.1 | groff -S -Wall -mtty-char -man -Tascii | col -b > www/he
 cd herrie/src
 
 # Update depends file
-fastdep *.c | perl -pe 's/^\t//; s/\\\n//; s/\.h//' | perl -pe 's/^(.*?)\.o: .*?\.c /DEPENDS_$1="/; s/$/"/' > ../depends
+fastdep *.c | perl -pe 's/^\t//; s/\\\n//; s/\.h//' | perl -pe 's/^(.*?)\.o: .*?\.c /DEPENDS_$1="/; s/$/"/' | grep -v '^conftest\.o:' > ../depends
 
 # Update translations
 xgettext -k_ *.c

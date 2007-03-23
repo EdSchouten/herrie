@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-10 11:51+0100\n"
+"POT-Creation-Date: 2007-03-23 21:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:89 audio_output_sdl.c:112
+#: audio_output_ao.c:113 audio_output_sdl.c:112
 msgid "Cannot open the audio device."
 msgstr ""
 
@@ -70,15 +70,15 @@ msgstr ""
 msgid "Jump to position"
 msgstr ""
 
-#: gui_input.c:218
+#: gui_input.c:222
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:397 main.c:65 main.c:71
+#: gui_input.c:401 main.c:66 main.c:72 main.c:78
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:397 main.c:67 main.c:73
+#: gui_input.c:401 main.c:68 main.c:74 main.c:80
 msgid "no"
 msgstr ""
 
@@ -134,23 +134,27 @@ msgstr ""
 msgid "Not found."
 msgstr ""
 
-#: main.c:62
+#: main.c:63
 msgid "audio output"
 msgstr ""
 
-#: main.c:63
+#: main.c:64
 msgid "support for audioscrobbler"
 msgstr ""
 
-#: main.c:69
+#: main.c:70
 msgid "support for http streams"
 msgstr ""
 
-#: main.c:75
+#: main.c:76
+msgid "support for xspf playlists (`spiff')"
+msgstr ""
+
+#: main.c:82
 msgid "supported audio file formats"
 msgstr ""
 
-#: main.c:87
+#: main.c:94
 msgid "usage"
 msgstr ""
 
@@ -197,22 +201,22 @@ msgstr ""
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr ""
 
-#: vfs.c:71
+#: vfs.c:74
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr ""
 
-#: vfs.c:83
+#: vfs.c:86
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr ""
 
-#: vfs.c:91
+#: vfs.c:94
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr ""
 
-#: vfs.c:95
+#: vfs.c:98
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr ""
