@@ -31,8 +31,9 @@
 #ifndef _SCROBBLER_H_
 #define _SCROBBLER_H_
 
-#include "audio_file.h"
+struct audio_file;
 
+#ifdef BUILD_SCROBBLER
 /**
  * @brief Initialize locking for the AudioScrobbler submission thread.
  */
@@ -46,17 +47,11 @@ void scrobbler_spawn(void);
  *        been performed.
  */
 void scrobbler_notify_read(struct audio_file *fd, int eof);
-
-#ifdef BUILD_SCROBBLER
 /**
  * @brief Notify the AudioScrobbler thread that a seek on the file has
  *        been performed.
  */
-static inline void
-scrobbler_notify_seek(struct audio_file *fd)
-{
-	fd->_scrobbler_done = 1;
-}
+void scrobbler_notify_seek(struct audio_file *fd);
 #endif /* BUILD_SCROBBLER */
 
 #endif /* !_SCROBBLER_H_ */

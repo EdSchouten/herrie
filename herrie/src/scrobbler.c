@@ -28,6 +28,7 @@
  * @brief AudioScrobbler submission queue.
  */
 
+#include "audio_file.h"
 #include "config.h"
 #include "gui.h"
 #include "scrobbler.h"
@@ -207,6 +208,12 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 	scrobbler_queue_insert_tail(nse);
 	g_cond_signal(scrobbler_avail);
 	g_mutex_unlock(scrobbler_lock);
+}
+
+void
+scrobbler_notify_seek(struct audio_file *fd)
+{
+	fd->_scrobbler_done = 1;
 }
 
 /**

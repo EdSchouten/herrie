@@ -30,11 +30,8 @@
 
 #include "audio_file.h"
 #include "audio_format.h"
-#include "vfs.h"
-
-#ifdef BUILD_SCROBBLER
 #include "scrobbler.h"
-#endif /* BUILD_SCROBBLER */
+#include "vfs.h"
 
 /**
  * @brief Audio format containg its functions to open, close, read and
