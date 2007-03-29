@@ -56,7 +56,8 @@ http_escape(const char *str)
 	return g_string_free(ret, FALSE);
 }
 
-void http_unescape(char *str)
+void
+http_unescape(char *str)
 {
 	unsigned char *r, *w; /* Read and write offsets */
 
