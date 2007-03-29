@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-10 11:51+0100\n"
-"PO-Revision-Date: 2007-03-10 11:51+0100\n"
+"POT-Creation-Date: 2007-03-29 21:05+0200\n"
+"PO-Revision-Date: 2007-03-29 21:05+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:89 audio_output_sdl.c:112
+#: audio_output_ao.c:113 audio_output_sdl.c:112
 msgid "Cannot open the audio device."
 msgstr "Ses aygıtı açılamıyor"
 
@@ -66,15 +66,15 @@ msgstr "%s uygulamasından çık?"
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:218
+#: gui_input.c:222
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:397 main.c:65 main.c:71
+#: gui_input.c:402 main.c:66 main.c:72 main.c:78
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:397 main.c:67 main.c:73
+#: gui_input.c:403 main.c:68 main.c:74 main.c:80
 msgid "no"
 msgstr "hayır"
 
@@ -130,85 +130,89 @@ msgstr "Arama üste kaydırıldı."
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: main.c:62
+#: main.c:63
 msgid "audio output"
 msgstr "ses çıkışı"
 
-#: main.c:63
+#: main.c:64
 msgid "support for audioscrobbler"
 msgstr "audioscrobbler desteği"
 
-#: main.c:69
+#: main.c:70
 msgid "support for http streams"
 msgstr "http akımları desteği"
 
-#: main.c:75
+#: main.c:76
+msgid "support for xspf playlists (`spiff')"
+msgstr "xspf parca listesi destegi (`spiff`)"
+
+#: main.c:82
 msgid "supported audio file formats"
 msgstr "desteklenen ses dosyası biçimleri"
 
-#: main.c:87
+#: main.c:94
 msgid "usage"
 msgstr "kullanım"
 
-#: playq.c:183
+#: playq.c:184
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Tekrarlamak içn \"%s\" açılamadı."
 
-#: playq.c:373
+#: playq.c:397
 #, c-format
 msgid "Repeat: %s"
 msgstr "Tekrarla: %s"
 
-#: playq.c:374
+#: playq.c:398
 msgid "on"
 msgstr "açık"
 
-#: playq.c:374
+#: playq.c:398
 msgid "off"
 msgstr "kapalı"
 
-#: scrobbler.c:305
+#: scrobbler.c:312
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "AudioScrobbler'de başarıyla yetkilendirildi."
 
-#: scrobbler.c:312
+#: scrobbler.c:319
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "AudioScrobbler'de yetkilendirme başarısız."
 
-#: scrobbler.c:328
+#: scrobbler.c:335
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "1 parça başarıyla AudioScrobbler'e gönderildi."
 
-#: scrobbler.c:332
+#: scrobbler.c:339
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "%d parça başarıyla AudioScrobbler'e gönerildi."
 
-#: scrobbler.c:338
+#: scrobbler.c:345
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Geçersiz AudioScrobbler kullanıcı adı/şifresi"
 
-#: scrobbler.c:341
+#: scrobbler.c:348
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Parçalar AudioScrobbler'e gönderilemedi."
 
-#: vfs.c:71
+#: vfs.c:74
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Geçersiz kullanıcı: %s\n"
 
-#: vfs.c:83
+#: vfs.c:86
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "%s içerisinde chroot başarısız\n"
 
-#: vfs.c:91
+#: vfs.c:94
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "%d grubuna değiştirme başarısız\n"
 
-#: vfs.c:95
+#: vfs.c:98
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "%d kullanıcısına değiştirme başarısız\n"
