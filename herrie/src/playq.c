@@ -487,10 +487,8 @@ playq_song_fast_select(struct vfsref *vr, unsigned int index)
 		return;
 
 	/* Now go to the next song */
-	playq_lock();
 	playq_flags &= ~PF_STOP;
 	playq_flags |= PF_SKIP;
-	playq_unlock();
 	g_cond_signal(playq_wakeup);
 }
 
