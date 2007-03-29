@@ -143,6 +143,7 @@ int			playq_repeat = 0;
  * @brief Amount of seconds which the current song should seek.
  */
 static volatile int	playq_seek_time;
+static char 		*playq_autosave;
 
 /**
  * @brief Infinitely play music in the playlist, honouring the
@@ -230,12 +231,25 @@ done:
 void
 playq_init(int xmms)
 {
+	struct vfsref *vr;
+
 	playq_mtx = g_mutex_new();
 	playq_wakeup = g_cond_new();
 
 	if (xmms || config_getopt_bool("playq.xmms")) {
 		funcs = &xmms_funcs;
 		playq_repeat = 1;
+	}
+
+	if (config_getopt_bool("playq.autosave")) {
+		/* Autoload playlist */
+		playq_autosave = g_build_filename(g_get_home_dir(),
+		    "." APP_NAME, "autosave.pls", NULL);
+		vr = vfs_open(playq_autosave, NULL, NULL);
+		if (vr != NULL) {
+			vfs_unfold(&playq_list, vr);
+			vfs_close(vr);
+		}
 	}
 }
 
@@ -249,11 +263,21 @@ playq_spawn(void)
 void
 playq_shutdown(void)
 {
+	struct vfsref *vr;
+
 	playq_lock();
 	playq_flags = PF_QUIT;
 	playq_unlock();
 	g_cond_signal(playq_wakeup);
 	g_thread_join(playq_runner);
+
+	/* Flush the list back to the disk */
+	if (playq_autosave != NULL) {
+		vr = vfs_write_playlist(&playq_list, NULL, playq_autosave);
+		g_free(playq_autosave);
+		if (vr != NULL)
+			vfs_close(vr);
+	}
 }
 
 /*
