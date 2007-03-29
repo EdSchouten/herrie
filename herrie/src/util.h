@@ -32,6 +32,11 @@
 #define _UTIL_H_
 
 /**
+ * @brief Convert a hexadecimal string to binary data. The len parameter
+ *        is the length of the binary buffer.
+ */
+void hex_decode(char *hex, char *bin, size_t len);
+/**
  * @brief Escape a string according to HTTP/1.1.
  */
 char *http_escape(const char *str);

@@ -30,6 +30,15 @@
 
 #include "util.h"
 
+inline void
+hex_decode(char *hex, char *bin, size_t len)
+{
+	while (len-- > 0) {
+		*bin = g_ascii_xdigit_value(*hex++) << 4;
+		*bin++ |= g_ascii_xdigit_value(*hex++);
+	}
+}
+
 char *
 http_escape(const char *str)
 {
@@ -59,14 +68,13 @@ http_escape(const char *str)
 void
 http_unescape(char *str)
 {
-	unsigned char *r, *w; /* Read and write offsets */
+	char *r, *w; /* Read and write offsets */
 
 	for (r = w = str; *r != '\0'; r++, w++) {
 		if (r[0] == '%' &&
 		    g_ascii_isxdigit(r[1]) && g_ascii_isxdigit(r[2])) {
 			/* Character needs to be unescaped */
-			*w = (g_ascii_xdigit_value(r[1]) << 4) |
-			    g_ascii_xdigit_value(r[2]);
+			hex_decode(&r[1], w, 1);
 			/* Move two bytes more */
 			r += 2;
 		} else if (*r == '+') {
