@@ -33,6 +33,7 @@
 #include "gui.h"
 #include "scrobbler.h"
 #include "scrobbler_internal.h"
+#include "util.h"
 
 /**
  * @brief Flag indicating if the AudioScrobbler thread has already been
@@ -133,35 +134,6 @@ scrobbler_queue_remove_head(void)
 	scrobbler_queue_first = scrobbler_queue_first->next;
 }
 
-/**
- * @brief Escape a string according to HTTP/1.1.
- */
-static char *
-scrobbler_http_escape(const char *str)
-{
-	const char *c;
-	const char allowed[] = "-_.!~*'()";
-	GString *ret;
-
-	/* Argument may be empty */
-	if (str == NULL)
-		return g_strdup("");
-
-	ret = g_string_sized_new(32);
-
-	for (c = str; *c != '\0'; c++) {
-		if (g_ascii_isalnum(*c) || (strchr(allowed, *c) != NULL))
-			/* Character is allowed */
-			g_string_append_c(ret, *c);
-		else
-			/* Reserved or unwise character */
-			g_string_append_printf(ret, "%%%02hhx",
-			    (const unsigned char)*c);
-	}
-
-	return g_string_free(ret, FALSE);
-}
-
 void
 scrobbler_notify_read(struct audio_file *fd, int eof)
 {
@@ -198,9 +170,9 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 
 	/* Place the track in our queue */
 	nse = g_slice_new(struct scrobbler_entry);
-	nse->artist = scrobbler_http_escape(fd->tag.artist);
-	nse->title = scrobbler_http_escape(fd->tag.title);
-	nse->album = scrobbler_http_escape(fd->tag.album);
+	nse->artist = http_escape(fd->tag.artist);
+	nse->title = http_escape(fd->tag.title);
+	nse->album = http_escape(fd->tag.album);
 	nse->length = len;
 	nse->time = time(NULL);
 
@@ -381,7 +353,7 @@ scrobbler_spawn(void)
 	
 	/* Connection local storage */
 	scd = g_slice_new0(struct scrobbler_condata);
-	scd->username = scrobbler_http_escape(su);
+	scd->username = http_escape(su);
 	scd->password = sp;
 	
 	scrobbler_runner = g_thread_create(scrobbler_runner_thread, scd, 0, NULL);
