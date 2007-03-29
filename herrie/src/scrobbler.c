@@ -266,7 +266,7 @@ scrobbler_queue_remove(int amount)
 static void
 scrobbler_hash(struct scrobbler_condata *scd)
 {
-	char bin_res[16];
+	unsigned char bin_res[16];
 	MD5_CTX ctx;
 
 	/*

@@ -35,13 +35,13 @@
  * @brief Convert a hexadecimal string to binary data. The len parameter
  *        is the length of the binary buffer.
  */
-void hex_decode(char *hex, char *bin, size_t len);
+void hex_decode(char *hex, unsigned char *bin, size_t len);
 /**
  * @brief Convert a binary buffer to a hexadecimal string. The len
  *        parameter is the length of the binary buffer. The string will
  *        not be null terminated.
  */
-void hex_encode(char *bin, char *hex, size_t len);
+void hex_encode(unsigned char *bin, char *hex, size_t len);
 /**
  * @brief Escape a string according to HTTP/1.1.
  */

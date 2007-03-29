@@ -43,16 +43,16 @@ toxdigit(char val)
 }
 
 void
-hex_encode(char *bin, char *hex, size_t len)
+hex_encode(unsigned char *bin, char *hex, size_t len)
 {
 	while (len-- > 0) {
-		*hex++ = toxdigit((unsigned char)*bin >> 4);
-		*hex++ = toxdigit((unsigned char)*bin++ & 0x0f);
+		*hex++ = toxdigit(*bin >> 4);
+		*hex++ = toxdigit(*bin++ & 0x0f);
 	}
 }
 
 inline void
-hex_decode(char *hex, char *bin, size_t len)
+hex_decode(char *hex, unsigned char *bin, size_t len)
 {
 	while (len-- > 0) {
 		*bin = g_ascii_xdigit_value(*hex++) << 4;
@@ -97,7 +97,7 @@ http_unescape(char *str)
 		if (r[0] == '%' &&
 		    g_ascii_isxdigit(r[1]) && g_ascii_isxdigit(r[2])) {
 			/* Character needs to be unescaped */
-			hex_decode(&r[1], w, 1);
+			hex_decode(&r[1], (unsigned char *)w, 1);
 			/* Move two bytes more */
 			r += 2;
 		} else if (*r == '+') {
