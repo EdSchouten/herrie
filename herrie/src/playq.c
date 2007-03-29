@@ -127,6 +127,9 @@ static GThread		*playq_runner;
  * @brief Skip to the next song.
  */
 #define PF_SKIP		0x20
+/**
+ * @brief Don't start playback of the next song.
+ */
 #define PF_STOP		0x40
 /**
  * @brief Flags the playback thread should honour. Writing to them
@@ -138,6 +141,9 @@ int			playq_repeat = 0;
  * @brief Amount of seconds which the current song should seek.
  */
 static volatile int	playq_seek_time;
+/**
+ * @brief Filename of the playlist used for saving on shutdown.
+ */
 static char 		*playq_autosave;
 
 /**
