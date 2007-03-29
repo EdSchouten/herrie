@@ -231,6 +231,7 @@ done:
 void
 playq_init(int xmms)
 {
+	const char *filename;
 	struct vfsref *vr;
 
 	playq_mtx = g_mutex_new();
@@ -243,8 +244,12 @@ playq_init(int xmms)
 
 	if (config_getopt_bool("playq.remember")) {
 		/* Autoload playlist */
-		playq_dumpfile = g_build_filename(g_get_home_dir(),
-		    "." APP_NAME, "autosave.pls", NULL);
+		filename = config_getopt("playq.dumpfile");
+		if (filename[0] != '\0')
+			playq_dumpfile = g_strdup(filename);
+		else
+			playq_dumpfile = g_build_filename(g_get_home_dir(),
+			    "." APP_NAME, "autosave.pls", NULL);
 		vr = vfs_open(playq_dumpfile, NULL, NULL);
 		if (vr != NULL) {
 			vfs_unfold(&playq_list, vr);
