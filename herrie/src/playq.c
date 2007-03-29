@@ -144,7 +144,7 @@ static volatile int	playq_seek_time;
 /**
  * @brief Filename of the playlist used for saving on shutdown.
  */
-static char 		*playq_autosave;
+static char 		*playq_dumpfile;
 
 /**
  * @brief Infinitely play music in the playlist, honouring the
@@ -241,11 +241,11 @@ playq_init(int xmms)
 		playq_repeat = 1;
 	}
 
-	if (config_getopt_bool("playq.autosave")) {
+	if (config_getopt_bool("playq.remember")) {
 		/* Autoload playlist */
-		playq_autosave = g_build_filename(g_get_home_dir(),
+		playq_dumpfile = g_build_filename(g_get_home_dir(),
 		    "." APP_NAME, "autosave.pls", NULL);
-		vr = vfs_open(playq_autosave, NULL, NULL);
+		vr = vfs_open(playq_dumpfile, NULL, NULL);
 		if (vr != NULL) {
 			vfs_unfold(&playq_list, vr);
 			vfs_close(vr);
@@ -272,9 +272,9 @@ playq_shutdown(void)
 	g_thread_join(playq_runner);
 
 	/* Flush the list back to the disk */
-	if (playq_autosave != NULL) {
-		vr = vfs_write_playlist(&playq_list, NULL, playq_autosave);
-		g_free(playq_autosave);
+	if (playq_dumpfile != NULL) {
+		vr = vfs_write_playlist(&playq_list, NULL, playq_dumpfile);
+		g_free(playq_dumpfile);
 		if (vr != NULL)
 			vfs_close(vr);
 	}

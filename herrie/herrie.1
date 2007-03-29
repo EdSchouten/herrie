@@ -142,10 +142,13 @@ The background color of a selected item of an active window.
 .B gui.color.select.fg=black
 The foreground color of a selected item of an active window.
 .TP
-.B playq.autosave=no
-Automatically load the file
+.B playq.remember=no
+Make
+.B herrie
+remember the contents of the playlist when shut down. The contents of
+the playlist are saved to the file
 .I ~/.herrie/autosave.pls
-at startup and flush playlist contents to this same file at shutdown.
+and is automatically added to the playlist on startup.
 .TP
 .B playq.xmms=no
 Always start
