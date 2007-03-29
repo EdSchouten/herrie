@@ -4,6 +4,7 @@ Herrie 1.5.1 -> 1.6:
 - Perform tests to make sure all software is installed in ./configure
 - Add the ability to autoload/autosave the playlist - Thanks to Martijn
 - Allow localized characters in quit message (ja/nee -> j/n)
+- Allow playlists to be written to disk as M3U
 
 Herrie 1.5 -> 1.5.1:
 - Add global configuration file
