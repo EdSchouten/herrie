@@ -53,7 +53,9 @@ http_escape(const char *str)
 	ret = g_string_sized_new(32);
 
 	for (c = str; *c != '\0'; c++) {
-		if (g_ascii_isalnum(*c) || (strchr(allowed, *c) != NULL))
+		if (*c == ' ')
+			g_string_append_c(ret, '+');
+		else if (g_ascii_isalnum(*c) || strchr(allowed, *c) != NULL)
 			/* Character is allowed */
 			g_string_append_c(ret, *c);
 		else
