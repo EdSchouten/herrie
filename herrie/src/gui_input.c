@@ -395,27 +395,49 @@ gui_input_loop(void)
 int
 gui_input_askyesno(const char *question)
 {
-	char *msg;
+	char *msg, input;
+	const char *yes, *no;
+	int ret;
+
+	yes = _("yes");
+	no = _("no");
 
 	/* Print the question on screen */
-	msg = g_strdup_printf("%s ([%s]/%s): ", question, _("yes"), _("no"));
+	msg = g_strdup_printf("%s ([%s]/%s): ", question, yes, no);
 	gui_msgbar_ask(msg);
 	g_free(msg);
 
 	for (;;) {
-		switch(gui_input_getch()) {
+		input = gui_input_getch();
+
+#ifdef BUILD_TRANS
+		/* Localized yes/no buttons */
+		if (input == yes[0]) {
+			ret = 0;
+			goto done;
+		} else if (input == no[0]) {
+			ret = -1;
+			goto done;
+		}
+#endif /* BUILD_TRANS */
+
+		/* Default y/n behaviour */
+		switch(input) {
 		case 'y':
 		case 'Y':
 		case '\r':
-			gui_msgbar_flush();
-			return (0);
+			ret = 0;
+			goto done;
 		case 'n':
 		case 'N':
 		case 0x03: /* ^C */
-			gui_msgbar_flush();
-			return (-1);
+			ret = -1;
+			goto done;
 		}
 	}
+done:
+	gui_msgbar_flush();
+	return (ret);
 }
 
 /**
