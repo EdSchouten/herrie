@@ -62,10 +62,6 @@ struct playq_funcs {
 	 * @brief Notify that a song is about to be removed.
 	 */
 	void (*notify_pre_removal)(struct vfsref *vr);
-	/**
-	 * @brief Start when adding first song to the playlist.
-	 */
-	int autostart;
 };
 
 /**
@@ -78,7 +74,6 @@ static struct playq_funcs party_funcs = {
 	playq_party_next,
 	playq_party_prev,
 	playq_party_notify_pre_removal,
-	1,
 };
 /**
  * @brief XMMS-style playlist handling.
@@ -90,7 +85,6 @@ static struct playq_funcs xmms_funcs = {
 	playq_xmms_next,
 	playq_xmms_prev,
 	playq_xmms_notify_pre_removal,
-	0,
 };
 /**
  * @brief Currenty used playlist handling routines.
@@ -109,12 +103,6 @@ static GCond		*playq_wakeup;
  * @brief Reference to playback thread.
  */
 static GThread		*playq_runner;
-/**
- * @brief Flags the playback thread should honour. Writing to them
- *        should be locked down.
- */
-static volatile int	playq_flags = 0;
-int			playq_repeat = 0;
 /**
  * @brief Quit the playback thread.
  */
@@ -139,6 +127,13 @@ int			playq_repeat = 0;
  * @brief Skip to the next song.
  */
 #define PF_SKIP		0x20
+#define PF_STOPPED	0x40
+/**
+ * @brief Flags the playback thread should honour. Writing to them
+ *        should be locked down.
+ */
+static volatile int	playq_flags = PF_STOPPED;
+int			playq_repeat = 0;
 /**
  * @brief Amount of seconds which the current song should seek.
  */
@@ -156,15 +151,14 @@ playq_runner_thread(void *unused)
 	struct audio_file	*cur;
 	char			*errmsg;
 
-	playq_flags = PF_PAUSE;
-
 	gui_input_sigmask();
 
 	do {
 		/* Wait until there's a song available */
 		playq_lock();
-		while ((!funcs->autostart && playq_flags & PF_PAUSE) ||
+		while (playq_flags & PF_STOPPED ||
 		    (nvr = funcs->give()) == NULL) {
+			playq_flags |= PF_STOPPED;
 			/* Change the current status to idle */
 			funcs->idle();
 			gui_playq_song_update(NULL, 0, 0);
@@ -370,7 +364,7 @@ playq_cursong_stop(void)
 {
 	playq_lock();
 	/* Stop playback */
-	playq_flags |= PF_SKIP | PF_PAUSE;
+	playq_flags |= PF_SKIP | PF_STOPPED;
 	playq_unlock();
 
 	g_cond_signal(playq_wakeup);
@@ -487,7 +481,7 @@ playq_song_fast_select(struct vfsref *vr, unsigned int index)
 		return;
 
 	/* Now go to the next song */
-	playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
+	playq_flags = (playq_flags & ~(PF_PAUSE|PF_STOPPED)) | PF_SKIP;
 	g_cond_signal(playq_wakeup);
 }
 
