@@ -58,11 +58,26 @@ static struct vfsmodule modules[] = {
  */
 #define NUM_MODULES (sizeof(modules) / sizeof(struct vfsmodule))
 
+/**
+ * @brief Playlist writing module object. Matching is performed by
+ *        extension.
+ */
 struct vfswriter {
+	/**
+	 * @brief Write routine.
+	 */
 	int (*write)(const struct vfslist *vl, const char *filename);
+	/**
+	 * @brief File extension.
+	 */
 	char *ext;
 };
 
+/**
+ * @brief List of VFS writing modules. The first item in the list is
+ *        used when no matching extension was found. In that case, the
+ *        extension of the first item will be appended to the filename.
+ */
 static struct vfswriter writers[] = {
 #if 0 /* ifdef BUILD_XSPF */
 	{ vfs_xspf_write, ".xspf" },
@@ -70,6 +85,10 @@ static struct vfswriter writers[] = {
 	{ vfs_pls_write, ".pls" },
 	{ vfs_m3u_write, ".m3u" },
 };
+/**
+ * @brief The number of VFS writing modules currently available in the
+ *        application.
+ */
 #define NUM_WRITERS (sizeof(writers) / sizeof(struct vfswriter))
 
 const char *
