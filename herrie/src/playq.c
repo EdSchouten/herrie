@@ -127,12 +127,12 @@ static GThread		*playq_runner;
  * @brief Skip to the next song.
  */
 #define PF_SKIP		0x20
-#define PF_STOPPED	0x40
+#define PF_STOP		0x40
 /**
  * @brief Flags the playback thread should honour. Writing to them
  *        should be locked down.
  */
-static volatile int	playq_flags = PF_STOPPED;
+static volatile int	playq_flags = PF_STOP;
 int			playq_repeat = 0;
 /**
  * @brief Amount of seconds which the current song should seek.
@@ -156,9 +156,8 @@ playq_runner_thread(void *unused)
 	do {
 		/* Wait until there's a song available */
 		playq_lock();
-		while (playq_flags & PF_STOPPED ||
+		while (playq_flags & PF_STOP ||
 		    (nvr = funcs->give()) == NULL) {
-			playq_flags |= PF_STOPPED;
 			/* Change the current status to idle */
 			funcs->idle();
 			gui_playq_song_update(NULL, 0, 0);
@@ -341,7 +340,7 @@ playq_cursong_next(void)
 	playq_lock();
 	if (funcs->next() == 0) {
 		/* Unpause as well */
-		playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
+		playq_flags |= PF_SKIP;
 		g_cond_signal(playq_wakeup);
 	}
 	playq_unlock();
@@ -353,7 +352,7 @@ playq_cursong_prev(void)
 	playq_lock();
 	if (funcs->prev() == 0) {
 		/* Unpause as well */
-		playq_flags = (playq_flags & ~PF_PAUSE) | PF_SKIP;
+		playq_flags |= PF_SKIP;
 		g_cond_signal(playq_wakeup);
 	}
 	playq_unlock();
@@ -364,7 +363,7 @@ playq_cursong_stop(void)
 {
 	playq_lock();
 	/* Stop playback */
-	playq_flags |= PF_SKIP | PF_STOPPED;
+	playq_flags |= (PF_SKIP|PF_STOP);
 	playq_unlock();
 
 	g_cond_signal(playq_wakeup);
@@ -481,7 +480,10 @@ playq_song_fast_select(struct vfsref *vr, unsigned int index)
 		return;
 
 	/* Now go to the next song */
-	playq_flags = (playq_flags & ~(PF_PAUSE|PF_STOPPED)) | PF_SKIP;
+	playq_lock();
+	playq_flags &= ~PF_STOP;
+	playq_flags |= PF_SKIP;
+	playq_unlock();
 	g_cond_signal(playq_wakeup);
 }
 
