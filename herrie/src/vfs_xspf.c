@@ -30,6 +30,7 @@
 
 #include <spiff/spiff_c.h>
 
+#include "util.h"
 #include "vfs_modules.h"
 
 int
@@ -59,11 +60,12 @@ vfs_xspf_populate(struct vfsent *ve)
 
 	SPIFF_LIST_FOREACH_TRACK(slist, strack) {
 		SPIFF_TRACK_FOREACH_LOCATION(strack, sloc) {
-			/* XXX: Strip HTTP escape */
 			filename = sloc->value;
 			/* Skip file:// part */
-			if (strncmp(filename, "file://", 7) == 0)
+			if (strncmp(filename, "file://", 7) == 0) {
 				filename += 7;
+				http_unescape(filename);
+			}
 
 			/* Add it to the list */
 			vr = vfs_open(filename, strack->title, dirname);
