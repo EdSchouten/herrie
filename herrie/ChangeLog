@@ -1,5 +1,6 @@
 Herrie 1.5.1 -> 1.6:
 - Add the ability to specify the Esound hostname in the config file
+- Add XSPF playlist support through libSpiff
 - Perform tests to make sure all software is installed in ./configure
 - Add the ability to autoload/autosave the playlist - Thanks to Martijn
 
