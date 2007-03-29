@@ -58,6 +58,20 @@ static struct vfsmodule modules[] = {
  */
 #define NUM_MODULES (sizeof(modules) / sizeof(struct vfsmodule))
 
+struct vfswriter {
+	int (*write)(const struct vfslist *vl, const char *filename);
+	char *ext;
+};
+
+static struct vfswriter writers[] = {
+#if 0 /* ifdef BUILD_XSPF */
+	{ vfs_xspf_write, ".xspf" },
+#endif /* BUILD_XSPF */
+	{ vfs_pls_write, ".pls" },
+	{ vfs_m3u_write, ".m3u" },
+};
+#define NUM_WRITERS (sizeof(writers) / sizeof(struct vfswriter))
+
 const char *
 vfs_lockup(void)
 {
@@ -318,48 +332,34 @@ vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
 {
 	const char *base = NULL;
 	char *fn, *nfn;
-	size_t cmplen;
-	FILE *fio;
-	struct vfsref *cvr, *rvr = NULL;
-	unsigned int idx = 1;
+	struct vfsref *rvr = NULL;
+	struct vfswriter *wr;
+	unsigned int i;
 
 	if (vr != NULL)
 		base = vfs_filename(vr);
 	fn = vfs_path_concat(base, filename);
 	if (fn == NULL)
 		return (NULL);
-	if (!g_str_has_suffix(fn, ".pls")) {
-		/* Append .pls extension */
-		nfn = g_strdup_printf("%s.pls", fn);
-		g_free(fn);
-		fn = nfn;
-	}
-	fio = fopen(fn, "w");
-	if (fio == NULL)
-		goto done;
 	
-	/* Directory name length of .pls filename */
-	base = strrchr(fn, G_DIR_SEPARATOR);
-	g_assert(base != NULL);
-	cmplen = base - fn + 1;
-
-	fprintf(fio, "[playlist]\nNumberOfEntries=%u\n",
-	    vfs_list_items(vl));
-	VFS_LIST_FOREACH(vl, cvr) {
-		/* Skip directory name when relative is possible */
-		base = vfs_filename(cvr);
-		if (strncmp(fn, base, cmplen) == 0)
-			base += cmplen;
-
-		fprintf(fio, "File%u=%s\nTitle%u=%s\n",
-		    idx, base,
-		    idx, vfs_name(cvr));
-		idx++;
+	/* Search for a matching extension */
+	for (i = 0; i < NUM_WRITERS; i++) {
+		if (g_str_has_suffix(fn, writers[i].ext)) {
+			wr = &writers[i];
+			goto match;
+		}
 	}
-	fclose(fio);
 
-	rvr = vfs_open(fn, NULL, NULL);
-	g_assert(rvr != NULL);
-done:	g_free(fn);
+	/* No extension matched, use default format */
+	wr = &writers[0];
+	nfn = g_strdup_printf("%s%s", fn, wr->ext);
+	g_free(fn);
+	fn = nfn;
+match:
+	/* Write the playlist to disk */
+	if (wr->write(vl, fn) == 0)
+		rvr = vfs_open(fn, NULL, NULL);
+
+	g_free(fn);
 	return (rvr);
 }
