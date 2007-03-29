@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-23 21:22+0100\n"
+"POT-Creation-Date: 2007-03-29 21:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,11 +74,11 @@ msgstr ""
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:401 main.c:66 main.c:72 main.c:78
+#: gui_input.c:402 main.c:66 main.c:72 main.c:78
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:401 main.c:68 main.c:74 main.c:80
+#: gui_input.c:403 main.c:68 main.c:74 main.c:80
 msgid "no"
 msgstr ""
 
@@ -158,46 +158,46 @@ msgstr ""
 msgid "usage"
 msgstr ""
 
-#: playq.c:183
+#: playq.c:184
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr ""
 
-#: playq.c:373
+#: playq.c:397
 #, c-format
 msgid "Repeat: %s"
 msgstr ""
 
-#: playq.c:374
+#: playq.c:398
 msgid "on"
 msgstr ""
 
-#: playq.c:374
+#: playq.c:398
 msgid "off"
 msgstr ""
 
-#: scrobbler.c:305
+#: scrobbler.c:312
 msgid "Successfully authorized at AudioScrobbler."
 msgstr ""
 
-#: scrobbler.c:312
+#: scrobbler.c:319
 msgid "Failed to authorize at AudioScrobbler."
 msgstr ""
 
-#: scrobbler.c:328
+#: scrobbler.c:335
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr ""
 
-#: scrobbler.c:332
+#: scrobbler.c:339
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr ""
 
-#: scrobbler.c:338
+#: scrobbler.c:345
 msgid "Invalid AudioScrobbler username/password."
 msgstr ""
 
-#: scrobbler.c:341
+#: scrobbler.c:348
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr ""
 

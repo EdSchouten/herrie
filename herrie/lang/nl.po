@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-23 21:22+0100\n"
-"PO-Revision-Date: 2007-03-23 21:22+0100\n"
+"POT-Creation-Date: 2007-03-29 21:05+0200\n"
+"PO-Revision-Date: 2007-03-29 21:05+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -68,11 +68,11 @@ msgstr "Spring naar positie"
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:401 main.c:66 main.c:72 main.c:78
+#: gui_input.c:402 main.c:66 main.c:72 main.c:78
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:401 main.c:68 main.c:74 main.c:80
+#: gui_input.c:403 main.c:68 main.c:74 main.c:80
 msgid "no"
 msgstr "nee"
 
@@ -152,46 +152,46 @@ msgstr "ondersteunde geluidsformaten"
 msgid "usage"
 msgstr "gebruik"
 
-#: playq.c:183
+#: playq.c:184
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Openen voor afspelen van \"%s\" mislukt."
 
-#: playq.c:373
+#: playq.c:397
 #, c-format
 msgid "Repeat: %s"
 msgstr "Herhaling: %s"
 
-#: playq.c:374
+#: playq.c:398
 msgid "on"
 msgstr "aan"
 
-#: playq.c:374
+#: playq.c:398
 msgid "off"
 msgstr "uit"
 
-#: scrobbler.c:305
+#: scrobbler.c:312
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Succesvol geauthoriseerd bij AudioScrobbler."
 
-#: scrobbler.c:312
+#: scrobbler.c:319
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Authoriseren bij AudioScrobbler mislukt."
 
-#: scrobbler.c:328
+#: scrobbler.c:335
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Succesvol 1 nummer opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:332
+#: scrobbler.c:339
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Succesvol %d nummers opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:338
+#: scrobbler.c:345
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
 
-#: scrobbler.c:341
+#: scrobbler.c:348
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 
