@@ -28,6 +28,8 @@
  * @brief AudioScrobbler submission queue.
  */
 
+#include <openssl/md5.h>
+
 #include "audio_file.h"
 #include "config.h"
 #include "gui.h"
@@ -256,6 +258,29 @@ scrobbler_queue_remove(int amount)
 		g_slice_free(struct scrobbler_entry, ent);
 	}
 	g_mutex_unlock(scrobbler_lock);
+}
+
+/**
+ * @brief Generate a response, based on the password and challenge.
+ */
+static void
+scrobbler_hash(struct scrobbler_condata *scd)
+{
+	char bin_res[16];
+	MD5_CTX ctx;
+
+	/*
+	 * Generate the new MD5 value
+	 */
+	MD5_Init(&ctx);
+	MD5_Update(&ctx, scd->password, 32);
+	MD5_Update(&ctx, scd->challenge, 32);
+	MD5_Final(bin_res, &ctx);
+
+	/*
+	 * Convert the result back to hexadecimal string
+	 */
+	hex_encode(bin_res, scd->response, sizeof bin_res);
 }
 
 /**

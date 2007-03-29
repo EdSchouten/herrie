@@ -191,7 +191,7 @@ then
 	then
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
 		LDFLAGS="$LDFLAGS -lssl"
-		SRCS="$SRCS scrobbler scrobbler_hash scrobbler_send"
+		SRCS="$SRCS scrobbler scrobbler_send"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
 	if [ $? -ne 0 ]

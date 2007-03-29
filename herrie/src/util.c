@@ -30,6 +30,27 @@
 
 #include "util.h"
 
+/**
+ * @brief Convert a numerical value to a hexadecimal character.
+ */
+static inline char
+toxdigit(char val)
+{
+	if (val < 10)
+		return (val + '0');
+	else
+		return (val - 10 + 'a');
+}
+
+void
+hex_encode(char *bin, char *hex, size_t len)
+{
+	while (len-- > 0) {
+		*hex++ = toxdigit((unsigned char)*bin >> 4);
+		*hex++ = toxdigit((unsigned char)*bin++ & 0x0f);
+	}
+}
+
 inline void
 hex_decode(char *hex, char *bin, size_t len)
 {

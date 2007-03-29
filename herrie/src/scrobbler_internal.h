@@ -78,10 +78,6 @@ struct scrobbler_condata {
 };
 
 /**
- * @brief Generate a response, based on the password and challenge.
- */
-void scrobbler_hash(struct scrobbler_condata *scd);
-/**
  * @brief Send a handshake to the AudioScrobbler server, thus obtaining
  *        the submission URL and challenge.
  */
