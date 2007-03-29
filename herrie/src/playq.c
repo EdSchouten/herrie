@@ -159,6 +159,7 @@ playq_runner_thread(void *unused)
 		while (playq_flags & PF_STOP ||
 		    (nvr = funcs->give()) == NULL) {
 			/* Change the current status to idle */
+			playq_flags |= PF_STOP;
 			funcs->idle();
 			gui_playq_song_update(NULL, 0, 0);
 
