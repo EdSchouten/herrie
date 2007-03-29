@@ -56,8 +56,27 @@ http_escape(const char *str)
 	return g_string_free(ret, FALSE);
 }
 
-#if 0
 void http_unescape(char *str)
 {
+	unsigned char *r, *w; /* Read and write offsets */
+
+	for (r = w = str; *r != '\0'; r++, w++) {
+		if (r[0] == '%' &&
+		    g_ascii_isxdigit(r[1]) && g_ascii_isxdigit(r[2])) {
+			/* Character needs to be unescaped */
+			*w = (g_ascii_xdigit_value(r[1]) << 4) |
+			    g_ascii_xdigit_value(r[2]);
+			/* Move two bytes more */
+			r += 2;
+		} else if (*r == '+') {
+			/* Convert + back to space */
+			*w = ' ';
+		} else {
+			/* Ordinary character */
+			*w = *r;
+		}
+	}
+
+	/* Null terminate the output */
+	*w = '\0';
 }
-#endif

@@ -35,11 +35,10 @@
  * @brief Escape a string according to HTTP/1.1.
  */
 char *http_escape(const char *str);
-#if 0
 /**
- * @brief Unescape a string according to HTTP/1.1.
+ * @brief Unescape a string according to HTTP/1.1. The conversion will
+ *        be performed in place.
  */
 void http_unescape(char *str);
-#endif
 
 #endif /* !_GUI_H_ */
