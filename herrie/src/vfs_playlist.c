@@ -136,6 +136,42 @@ vfs_pls_populate(struct vfsent *ve)
 	return (0);
 }
 
+int
+vfs_pls_write(const struct vfslist *vl, const char *filename)
+{
+	const char *base = NULL;
+	size_t cmplen;
+	FILE *fio;
+	struct vfsref *vr;
+	unsigned int idx = 1;
+
+	fio = fopen(filename, "w");
+	if (fio == NULL)
+		return (-1);
+	
+	/* Directory name length of .pls filename */
+	base = strrchr(filename, G_DIR_SEPARATOR);
+	g_assert(base != NULL);
+	cmplen = base - filename + 1;
+
+	fprintf(fio, "[playlist]\nNumberOfEntries=%u\n",
+	    vfs_list_items(vl));
+	VFS_LIST_FOREACH(vl, vr) {
+		/* Skip directory name when relative is possible */
+		base = vfs_filename(vr);
+		if (strncmp(filename, base, cmplen) == 0)
+			base += cmplen;
+
+		fprintf(fio, "File%u=%s\nTitle%u=%s\n",
+		    idx, base,
+		    idx, vfs_name(vr));
+		idx++;
+	}
+	fclose(fio);
+
+	return (0);
+}
+
 /*
  * M3U interface
  */
@@ -190,6 +226,37 @@ vfs_m3u_populate(struct vfsent *ve)
 	g_io_channel_unref(fio);
 	g_string_free(fln, TRUE);
 	g_free(dn);
+
+	return (0);
+}
+
+int
+vfs_m3u_write(const struct vfslist *vl, const char *filename)
+{
+	const char *base = NULL;
+	size_t cmplen;
+	FILE *fio;
+	struct vfsref *vr;
+
+	fio = fopen(filename, "w");
+	if (fio == NULL)
+		return (-1);
+	
+	/* Directory name length of .meu filename */
+	base = strrchr(filename, G_DIR_SEPARATOR);
+	g_assert(base != NULL);
+	cmplen = base - filename + 1;
+
+	fprintf(fio, "#EXTM3U\n");
+	VFS_LIST_FOREACH(vl, vr) {
+		/* Skip directory name when relative is possible */
+		base = vfs_filename(vr);
+		if (strncmp(filename, base, cmplen) == 0)
+			base += cmplen;
+
+		fprintf(fio, "#EXTINF:-1,%s\n%s\n", vfs_name(vr), base);
+	}
+	fclose(fio);
 
 	return (0);
 }

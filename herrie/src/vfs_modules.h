@@ -74,6 +74,11 @@ int	vfs_m3u_open(struct vfsent *ve, int isdir);
  *        node.
  */
 int	vfs_m3u_populate(struct vfsent *ve);
+/**
+ * @brief Write the current list of VFS entries to a M3U formatted
+ *        playlist.
+ */
+int	vfs_m3u_write(const struct vfslist *vl, const char *filename);
 
 /**
  * @brief Test whether the current node is an PLS file.
@@ -84,6 +89,11 @@ int	vfs_pls_open(struct vfsent *ve, int isdir);
  *        node.
  */
 int	vfs_pls_populate(struct vfsent *ve);
+/**
+ * @brief Write the current list of VFS entries to a PLS formatted
+ *        playlist.
+ */
+int	vfs_pls_write(const struct vfslist *vl, const char *filename);
 
 #ifdef BUILD_XSPF
 /**
