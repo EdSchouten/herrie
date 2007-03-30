@@ -107,7 +107,7 @@ struct audio_file {
  * @brief Fill an audio_file struct with the appropiate information
  *        and function calls, and open the file handle.
  */
-struct audio_file *audio_file_open(struct vfsref *vr);
+struct audio_file *audio_file_open(const struct vfsref *vr);
 /**
  * @brief Clean up the given audio_file struct and close the file handle.
  */

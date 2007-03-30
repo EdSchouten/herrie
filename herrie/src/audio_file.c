@@ -88,7 +88,7 @@ static struct audio_format formats[] = {
 #define NUM_FORMATS (sizeof formats / sizeof(struct audio_format))
 
 struct audio_file *
-audio_file_open(struct vfsref *vr)
+audio_file_open(const struct vfsref *vr)
 {
 	const char *ext;
 	struct audio_file *out = NULL;
