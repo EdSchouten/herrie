@@ -92,6 +92,8 @@ configure script to change certain parameters:
 
 - xcurses       Build application against XCurses (PDCurses)
 
+- verbose       Print commands during compilation
+
 There are also some environment variables which also have influence on
 the generated Makefile:
 
