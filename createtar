@@ -6,7 +6,8 @@ then
 	exit 1
 fi
 
-TARBALL="www/distfiles/herrie-$1.tar.gz"
+FILENAME="herrie-$1.tar.gz"
+TARBALL="www/distfiles/$FILENAME"
 
 if [ -e $TARBALL ]
 then
@@ -18,8 +19,9 @@ mkdir -p www/distfiles
 git archive --format=tar --prefix="herrie-$1/" HEAD:herrie |
     gzip -9 > $TARBALL
 
-ls -l $TARBALL
-md5 $TARBALL
-sha256 $TARBALL
+cd www/distfiles
+md5 $FILENAME
+sha256 $FILENAME
+stat -f "SIZE ($FILENAME) = %z" $FILENAME
 
 echo "don't forget to run ./updatestuff!"
