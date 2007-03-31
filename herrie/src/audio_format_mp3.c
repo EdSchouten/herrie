@@ -81,10 +81,14 @@ struct mp3_drv_data {
  * @brief Test if an opened file is an MP3 file.
  */
 static int
-mp3_match(FILE *fp)
+mp3_match(FILE *fp, const char *ext)
 {
 	unsigned char buf[3];
 	int ret = 0;
+
+	/* Also match (broken) *.mp3 files */
+	if (strcmp(ext, "mp3") == 0)
+		goto done;
 
 	if (fread(buf, sizeof buf, 1, fp) != 1) {
 		ret = -1;
@@ -329,7 +333,7 @@ mp3_open(struct audio_file *fd, const char *ext)
 
 	/* Don't match other files */
 	if (!fd->stream) {
-		if (mp3_match(fd->fp) != 0)
+		if (mp3_match(fd->fp, ext) != 0)
 			return (-1);
 		mp3_readtags(fd);
 	}
