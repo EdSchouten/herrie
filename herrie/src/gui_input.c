@@ -326,13 +326,19 @@ static struct gui_binding kbdbindings[] = {
 void
 gui_input_sigmask(void)
 {
-#if defined(SIGWINCH) && defined(G_THREADS_IMPL_POSIX)
+#ifdef G_THREADS_IMPL_POSIX
 	sigset_t sset;
 
 	sigemptyset(&sset);
+	sigaddset(&sset, SIGUSR1);
+	sigaddset(&sset, SIGUSR2);
+	sigaddset(&sset, SIGHUP);
+	sigaddset(&sset, SIGTERM);
+#ifdef SIGWINCH
 	sigaddset(&sset, SIGWINCH);
+#endif /* SIGWINCH */
 	pthread_sigmask(SIG_BLOCK, &sset, NULL);
-#endif /* SIGWINCH && G_THREADS_IMPL_POSIX */
+#endif /* G_THREADS_IMPL_POSIX */
 }
 
 #ifdef G_OS_UNIX
