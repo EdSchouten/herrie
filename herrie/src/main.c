@@ -191,12 +191,9 @@ main(int argc, char *argv[])
 #ifdef BUILD_SCROBBLER
 	scrobbler_spawn();
 #endif /* BUILD_SCROBBLER */
+
+	/* And off we go! */
 	gui_input_loop();
-
-	/* Shutdown the application */
-	playq_shutdown();
-	audio_output_close();
-	gui_draw_destroy();
-
-	return (0);
+	/* NOTREACHED */
+	return (1);
 }

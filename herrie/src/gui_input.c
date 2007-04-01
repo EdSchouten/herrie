@@ -28,6 +28,7 @@
  * @brief Keyboard and signal input for user interface.
  */
 
+#include "audio_output.h"
 #include "gui_internal.h"
 #include "playq.h"
 
@@ -120,12 +121,21 @@ gui_input_search(void)
 		gui_playq_searchnext();
 }
 
+static void
+gui_input_quit(void)
+{
+	playq_shutdown();
+	audio_output_close();
+	gui_draw_destroy();
+	exit(0);
+}
+
 /**
  * @brief Prompt the user with a message to confirm termination of the
  *        application.
  */
-static int
-gui_input_quit(void)
+static void
+gui_input_askquit(void)
 {
 	int ret;
 	char *msg;
@@ -134,7 +144,8 @@ gui_input_quit(void)
 	ret = gui_input_askyesno(msg);
 	g_free(msg);
 
-	return (ret);
+	if (ret == 0)
+		gui_input_quit();
 }
 
 /**
@@ -260,7 +271,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, 'I',			gui_browser_playq_add_head },
 	{ -1, 'J',			gui_input_cursong_seek_jump, }, /* ^J */
 	{ -1, 'l',			gui_browser_dir_enter },
-	{ -1, 'q',			NULL }, /* Quit the application */
+	{ -1, 'q',			gui_input_askquit },
 	{ -1, 'r',			playq_repeat_toggle },
 	{ -1, 'R',			gui_playq_song_randomize },
 	{ -1, 'v',			playq_cursong_stop, },
@@ -342,6 +353,10 @@ gui_input_sighandler(int signal)
 	case SIGUSR2:
 		playq_cursong_next();
 		break;
+	case SIGHUP:
+	case SIGTERM:
+		gui_input_quit();
+		/* NOTREACHED */
 #ifdef BUILD_GUI_SIGWINCH_WRAPPER
 	case SIGWINCH:
 		if (ioctl(STDIN_FILENO, TIOCGWINSZ, &ws) != -1) {
@@ -363,6 +378,8 @@ gui_input_loop(void)
 #ifdef G_OS_UNIX
 	signal(SIGUSR1, gui_input_sighandler);
 	signal(SIGUSR2, gui_input_sighandler);
+	signal(SIGHUP, gui_input_sighandler);
+	signal(SIGTERM, gui_input_sighandler);
 #ifdef BUILD_GUI_SIGWINCH_WRAPPER
 	signal(SIGWINCH, gui_input_sighandler);
 #endif /* BUILD_GUI_SIGWINCH_WRAPPER */
@@ -379,13 +396,8 @@ gui_input_loop(void)
 			     kbdbindings[i].focus != gui_input_curfocus))
 				continue;
 			
-			if (kbdbindings[i].func == NULL) {
-				if (gui_input_quit() == 0)
-					return;
-			} else {
-				kbdbindings[i].func();
-				break;
-			}
+			kbdbindings[i].func();
+			break;
 		}
 
 		gui_draw_done();
