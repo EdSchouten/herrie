@@ -2,6 +2,9 @@
 
 set -e
 
+# Make sure we are in the proper directory
+cd `dirname $0`
+
 # Update WWW manpage
 tbl < herrie/herrie.1 | groff -S -Wall -mtty-char -man -Tascii | col -b > www/herrie.1.txt
 
