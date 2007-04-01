@@ -145,6 +145,11 @@ static volatile int	playq_seek_time;
  * @brief Filename of the playlist used for saving on shutdown.
  */
 static char 		*playq_dumpfile;
+#ifdef BUILD_XSPF
+#define DUMPFILE "autosave.xspf"
+#else /* !BUILD_XSPF */
+#define DUMPFILE "autosave.asp"
+#endif /* BUILD_XSPF */
 
 /**
  * @brief Infinitely play music in the playlist, honouring the
@@ -249,7 +254,7 @@ playq_init(int xmms)
 			playq_dumpfile = g_strdup(filename);
 		else
 			playq_dumpfile = g_build_filename(g_get_home_dir(),
-			    "." APP_NAME, "autosave.pls", NULL);
+			    "." APP_NAME, DUMPFILE, NULL);
 		vr = vfs_open(playq_dumpfile, NULL, NULL);
 		if (vr != NULL) {
 			vfs_unfold(&playq_list, vr);
