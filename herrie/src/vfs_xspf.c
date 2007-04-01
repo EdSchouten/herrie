@@ -84,6 +84,7 @@ vfs_xspf_write(const struct vfslist *vl, const char *filename)
 {
 	struct spiff_list *list;
 	struct spiff_track *track;
+	struct spiff_mvalue *location;
 	struct vfsref *vr;
 	int ret;
 
@@ -93,6 +94,10 @@ vfs_xspf_write(const struct vfslist *vl, const char *filename)
 		/* Add a new track to the beginning of the list */
 		track = spiff_new_track_before(&list->tracks);
 		spiff_setvalue(&track->title, vfs_name(vr));
+
+		/* XXX: Add file:///, escape stuff properly */
+		location = spiff_new_mvalue_before(&track->locations);
+		spiff_setvalue(&location->value, vfs_filename(vr));
 	}
 
 	ret = spiff_write(list, filename);
