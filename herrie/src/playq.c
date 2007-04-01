@@ -148,7 +148,7 @@ static char 		*playq_dumpfile;
 #ifdef BUILD_XSPF
 #define DUMPFILE "autosave.xspf"
 #else /* !BUILD_XSPF */
-#define DUMPFILE "autosave.asp"
+#define DUMPFILE "autosave.pls"
 #endif /* BUILD_XSPF */
 
 /**
