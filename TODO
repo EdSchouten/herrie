@@ -20,6 +20,7 @@ Audio abstraction:
 
 Virtual filesystem:
 - Add some kind of 'recursive' VFS: playlists on HTTP
+- Perform more testing on XSPF compliance
 
 Documentation:
 - Usage guide
