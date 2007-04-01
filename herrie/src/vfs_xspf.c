@@ -78,3 +78,25 @@ vfs_xspf_populate(struct vfsent *ve)
 	spiff_free(slist);
 	return (0);
 }
+
+int
+vfs_xspf_write(const struct vfslist *vl, const char *filename)
+{
+	struct spiff_list *list;
+	struct spiff_track *track;
+	struct vfsref *vr;
+	int ret;
+
+	list = spiff_new();
+
+	VFS_LIST_FOREACH_REVERSE(vl, vr) {
+		/* Add a new track to the beginning of the list */
+		track = spiff_new_track_before(&list->tracks);
+		spiff_setvalue(&track->title, vfs_name(vr));
+	}
+
+	ret = spiff_write(list, filename);
+	spiff_free(list);
+
+	return (ret);
+}

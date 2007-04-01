@@ -105,6 +105,11 @@ int	vfs_xspf_open(struct vfsent *ve, int isdir);
  *        current node.
  */
 int	vfs_xspf_populate(struct vfsent *ve);
+/**
+ * @brief Write the current list of VFS entries to a XSPF formatted
+ *        playlist.
+ */
+int	vfs_xspf_write(const struct vfslist *vl, const char *filename);
 #endif /* BUILD_XSPF */
 
 #endif /* !_VFS_MODULES_H_ */

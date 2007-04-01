@@ -79,7 +79,7 @@ struct vfswriter {
  *        extension of the first item will be appended to the filename.
  */
 static struct vfswriter writers[] = {
-#if 0 /* ifdef BUILD_XSPF */
+#ifdef BUILD_XSPF
 	{ vfs_xspf_write, ".xspf" },
 #endif /* BUILD_XSPF */
 	{ vfs_pls_write, ".pls" },
