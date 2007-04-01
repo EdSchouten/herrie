@@ -61,7 +61,7 @@ audio_output_open(void)
 	
 	/* 16 bits little endian stereo */
 	dat = AFMT_S16_LE;
-	ioctl (dev_fd, SNDCTL_DSP_SETFMT, &dat);
+	ioctl(dev_fd, SNDCTL_DSP_SETFMT, &dat);
 
 	return (0);
 }
@@ -77,18 +77,18 @@ audio_output_play(struct audio_file *fd)
 
 	if (cur_srate != fd->srate || cur_channels != fd->channels) {
 		/* Our settings have been altered */
-		ioctl (dev_fd, SNDCTL_DSP_RESET, NULL);
+		ioctl(dev_fd, SNDCTL_DSP_RESET, NULL);
 
 		if (cur_srate != fd->srate) {
 			/* Reset the sample rate */
-			if (ioctl (dev_fd, SNDCTL_DSP_SPEED,
+			if (ioctl(dev_fd, SNDCTL_DSP_SPEED,
 			    &fd->srate) != -1)
 				cur_srate = fd->srate;
 		}
 
 		if (cur_channels != fd->channels) {
 			/* Reset the number of channels rate */
-			if (ioctl (dev_fd, SNDCTL_DSP_CHANNELS,
+			if (ioctl(dev_fd, SNDCTL_DSP_CHANNELS,
 			    &fd->channels) != -1)
 				cur_channels = fd->channels;
 		}
@@ -100,5 +100,5 @@ audio_output_play(struct audio_file *fd)
 void
 audio_output_close(void)
 {
-	close (dev_fd);
+	close(dev_fd);
 }
