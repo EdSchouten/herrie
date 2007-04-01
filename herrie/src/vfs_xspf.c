@@ -60,12 +60,8 @@ vfs_xspf_populate(struct vfsent *ve)
 
 	SPIFF_LIST_FOREACH_TRACK(slist, strack) {
 		SPIFF_TRACK_FOREACH_LOCATION(strack, sloc) {
-			filename = sloc->value;
 			/* Skip file:// part */
-			if (strncmp(filename, "file://", 7) == 0) {
-				filename += 7;
-				http_unescape(filename);
-			}
+			filename = url_unescape(sloc->value);
 
 			/* Add it to the list */
 			vr = vfs_open(filename, strack->title, dirname);
@@ -85,6 +81,7 @@ vfs_xspf_write(const struct vfslist *vl, const char *filename)
 	struct spiff_list *list;
 	struct spiff_track *track;
 	struct spiff_mvalue *location;
+	char *fn;
 	struct vfsref *vr;
 	int ret;
 
@@ -95,9 +92,10 @@ vfs_xspf_write(const struct vfslist *vl, const char *filename)
 		track = spiff_new_track_before(&list->tracks);
 		spiff_setvalue(&track->title, vfs_name(vr));
 
-		/* XXX: Add file:///, escape stuff properly */
 		location = spiff_new_mvalue_before(&track->locations);
-		spiff_setvalue(&location->value, vfs_filename(vr));
+		fn = url_escape(vfs_filename(vr));
+		spiff_setvalue(&location->value, fn);
+		g_free(fn);
 	}
 
 	ret = spiff_write(list, filename);

@@ -61,17 +61,20 @@ hex_decode(char *hex, unsigned char *bin, size_t len)
 }
 
 char *
-http_escape(const char *str)
+http_escape(const char *str, const char *prepend)
 {
 	const char *c;
-	const char allowed[] = "-_.!~*'()";
+	const char allowed[] = "-_.!~*'()/";
 	GString *ret;
+
+	if (prepend == NULL)
+		prepend = "";
 
 	/* Argument may be empty */
 	if (str == NULL)
-		return g_strdup("");
+		return g_strdup(prepend);
 
-	ret = g_string_sized_new(32);
+	ret = g_string_new(prepend);
 
 	for (c = str; *c != '\0'; c++) {
 		if (*c == ' ')
@@ -89,11 +92,9 @@ http_escape(const char *str)
 }
 
 void
-http_unescape(char *str)
+http_unescape(char *r, char *w)
 {
-	char *r, *w; /* Read and write offsets */
-
-	for (r = w = str; *r != '\0'; r++, w++) {
+	for (; *r != '\0'; r++, w++) {
 		if (r[0] == '%' &&
 		    g_ascii_isxdigit(r[1]) && g_ascii_isxdigit(r[2])) {
 			/* Character needs to be unescaped */
@@ -111,4 +112,25 @@ http_unescape(char *str)
 
 	/* Null terminate the output */
 	*w = '\0';
+}
+
+char *
+url_escape(const char *str)
+{
+	if (strstr(str, "://") == NULL) {
+		return http_escape(str, "file://");
+	} else {
+		return g_strdup(str);
+	}
+}
+
+char *
+url_unescape(char *str)
+{
+	if (strncmp(str, "file://", 7) == 0) {
+		http_unescape(str + 7, str);
+		/* XXX: slash conversion */
+	}
+
+	return (str);
 }

@@ -43,13 +43,26 @@ void hex_decode(char *hex, unsigned char *bin, size_t len);
  */
 void hex_encode(unsigned char *bin, char *hex, size_t len);
 /**
- * @brief Escape a string according to HTTP/1.1.
+ * @brief Escape a string according to HTTP/1.1. A string can be
+ *        prepended as well, which won't be escaped.
  */
-char *http_escape(const char *str);
+char *http_escape(const char *str, const char *prepend);
 /**
  * @brief Unescape a string according to HTTP/1.1. The conversion will
- *        be performed in place.
+ *        be performed in place. The arguments point to the read and
+ *        write offsets. In almost all cases, they must point to the
+ *        same string.
  */
-void http_unescape(char *str);
+void http_unescape(char *r, char *w);
+/**
+ * @brief Escape an URL when needed. If it's a local filename, file://
+ *        will be prepended.
+ */
+char *url_escape(const char *str);
+/**
+ * @brief Unescape an URL to a local filename where possible
+ *        (file://foo -> foo).
+ */
+char *url_unescape(char *str);
 
 #endif /* !_GUI_H_ */

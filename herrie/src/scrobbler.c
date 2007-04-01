@@ -172,9 +172,9 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 
 	/* Place the track in our queue */
 	nse = g_slice_new(struct scrobbler_entry);
-	nse->artist = http_escape(fd->tag.artist);
-	nse->title = http_escape(fd->tag.title);
-	nse->album = http_escape(fd->tag.album);
+	nse->artist = http_escape(fd->tag.artist, NULL);
+	nse->title = http_escape(fd->tag.title, NULL);
+	nse->album = http_escape(fd->tag.album, NULL);
 	nse->length = len;
 	nse->time = time(NULL);
 
@@ -378,7 +378,7 @@ scrobbler_spawn(void)
 	
 	/* Connection local storage */
 	scd = g_slice_new0(struct scrobbler_condata);
-	scd->username = http_escape(su);
+	scd->username = http_escape(su, NULL);
 	scd->password = sp;
 	
 	scrobbler_runner = g_thread_create(scrobbler_runner_thread, scd, 0, NULL);
