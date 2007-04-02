@@ -9,8 +9,8 @@
 
 	<p>Herrie has a split-screen user interface, with a playlist at
 	the top of the screen and a file browser at the bottom. When
-	tracks are added to the playlist, Herrie automatically consumes
-	them one by one. It is thus an application that allows you to
+	tracks are added to the playlist, Herrie consumes them from the
+	top one by one. It is thus an application that allows you to
 	batch music for playback.</p>
 
 	<p>Herrie also has some more exotic features, including support
