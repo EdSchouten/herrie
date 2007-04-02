@@ -61,7 +61,7 @@ Herrie:
 - libmodplug
 - libsdl (audio - optional)
 - libsndfile
-- libspiff
+- libspiff (0.6.3 or higher - optional)
 - libvorbisfile
 - ncurses or pdcurses (`XCurses')
 - openssl
