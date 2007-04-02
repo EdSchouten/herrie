@@ -9,6 +9,7 @@ Graphical user interface:
 
 Scrobbler:
 - Allow Scrobbler queue to be dumped on closure (send them next time)
+  - Store in XSPF; extend format to store datetime
 
 Audio abstraction:
 - Add support for volume control
