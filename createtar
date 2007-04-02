@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 if [ $# != 1 ]
 then
 	echo "usage: $0 version"
@@ -8,6 +10,8 @@ fi
 
 FILENAME="herrie-$1.tar.gz"
 TARBALL="www/distfiles/$FILENAME"
+
+cd `$dirname 0`
 
 if [ -e $TARBALL ]
 then
