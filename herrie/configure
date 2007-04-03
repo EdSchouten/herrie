@@ -87,7 +87,6 @@ OpenBSD)
 SunOS)
 	unset CFG_GCC
 	unset CFG_HTTP
-	unset CFG_TRANS
 	[ "$PREFIX" = "" ] && PREFIX=/opt/sfw
 	LDFLAGS="$LDFLAGS -lresolv"
 	;;
@@ -164,8 +163,16 @@ do
 	shift
 done
 
-# Standard options
-[ "$CFG_GCC" != "" -a "$CFLAGS" = "" ] && CFLAGS="-O2"
+# Only -O is POSIX. -O2 only works with GCC
+if [ "$CFLAGS" = "" ]
+then
+	if [ "$CFG_GCC" != "" ]
+	then
+		CFLAGS="-O2"
+	else
+		CFLAGS="-O"
+	fi
+fi
 CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -I$PREFIX/include -I$PREFIX/include/ncurses \
