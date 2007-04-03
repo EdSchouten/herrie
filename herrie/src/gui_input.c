@@ -28,6 +28,8 @@
  * @brief Keyboard and signal input for user interface.
  */
 
+#include "stdinc.h"
+
 #include "audio_output.h"
 #include "gui_internal.h"
 #include "playq.h"

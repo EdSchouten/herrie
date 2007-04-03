@@ -28,6 +28,8 @@
  * @brief XMMS-style playlist handling.
  */
 
+#include "stdinc.h"
+
 #include "gui.h"
 #include "playq_modules.h"
 

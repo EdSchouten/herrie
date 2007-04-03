@@ -28,6 +28,8 @@
  * @brief Application startup routine.
  */
 
+#include "stdinc.h"
+
 #include "audio_output.h"
 #include "config.h"
 #include "gui.h"

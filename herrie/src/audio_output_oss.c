@@ -28,6 +28,8 @@
  * @brief OSS audio output driver.
  */
 
+#include "stdinc.h"
+
 #include OSS_HEADER
 
 #include "audio_file.h"

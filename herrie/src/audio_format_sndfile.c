@@ -28,6 +28,8 @@
  * @brief libsndfile decompression routines.
  */
 
+#include "stdinc.h"
+
 #include <sndfile.h>
 
 #include "audio_format.h"

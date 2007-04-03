@@ -6,6 +6,7 @@ Herrie 1.5.1 -> 1.6:
 - Allow localized characters in yes/no questions (ja/nee -> j/n)
 - Allow playlists to be written to disk as M3U, PLS or XSPF
 - Make signal handling work better on certain systems
+- Make configure-script work on Solaris
 
 Herrie 1.5 -> 1.5.1:
 - Add global configuration file

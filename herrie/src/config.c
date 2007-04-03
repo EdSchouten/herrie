@@ -28,6 +28,8 @@
  * @brief Configuration file handling.
  */
 
+#include "stdinc.h"
+
 #include "config.h"
 #include "gui.h"
 

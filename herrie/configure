@@ -34,6 +34,7 @@ unset CFG_BINEXT
 CFG_CURSES_HEADER=ncurses
 CFG_CURSES_LIB=ncurses
 CFG_FTELLO=yes
+CFG_GCC=yes
 CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
@@ -70,7 +71,6 @@ Linux)
 	CFG_AO=oss
 	[ "$CONFDIR" = "" ] && CONFDIR=/etc
 	[ "$PREFIX" = "" ] && PREFIX=/usr
-	CFLAGS="$CFLAGS -I$PREFIX/include/ncurses"
 	;;
 NetBSD)
 	CFG_AO=oss
@@ -85,10 +85,11 @@ OpenBSD)
 	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
 	;;
 SunOS)
+	unset CFG_GCC
 	unset CFG_HTTP
 	unset CFG_TRANS
 	[ "$PREFIX" = "" ] && PREFIX=/opt/sfw
-	CFLAGS="$CFLAGS -I$PREFIX/include/ncurses"
+	LDFLAGS="$LDFLAGS -lresolv"
 	;;
 Windows)
 	CFG_AO=null
@@ -166,10 +167,9 @@ done
 # Standard options
 [ "$CFLAGS" = "" ] && CFLAGS="-O2"
 CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
-    -Wall -Wsign-compare -Werror -Wmissing-prototypes \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
-    -I$PREFIX/include -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\> \
-    -include $SRCDIR/src/stdinc.h"
+    -I$PREFIX/include -I$PREFIX/include/ncurses \
+    -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\>"
 if [ $? -ne 0 ]
 then
 	echo "Error: Glib not found"
@@ -184,6 +184,9 @@ SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
 
 # ftello() usage
 [ "$CFG_FTELLO" != "" ] && CFLAGS="$CFLAGS -DBUILD_FTELLO"
+# GCC compiler (stricter compiler flags)
+[ "$CFG_GCC" != "" ] && CFLAGS="$CFLAGS -Wall -Werror \
+    -Wmissing-prototypes -Wsign-compare"
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
 then

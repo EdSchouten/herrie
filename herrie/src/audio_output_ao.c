@@ -28,6 +28,8 @@
  * @brief libao audio output driver.
  */
 
+#include "stdinc.h"
+
 #include <ao/ao.h>
 
 #include "audio_file.h"

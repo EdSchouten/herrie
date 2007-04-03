@@ -28,6 +28,8 @@
  * @brief Ogg Vorbis decompression routines.
  */
 
+#include "stdinc.h"
+
 #include <vorbis/codec.h>
 #include <vorbis/vorbisfile.h>
 

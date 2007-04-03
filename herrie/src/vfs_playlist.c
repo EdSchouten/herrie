@@ -28,6 +28,8 @@
  * @brief M3U and PLS playlist file access.
  */
 
+#include "stdinc.h"
+
 #include "vfs_modules.h"
 
 /**

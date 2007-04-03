@@ -28,6 +28,8 @@
  * @brief Generic directory/playlist display for textual user interface.
  */
 
+#include "stdinc.h"
+
 #include "gui_vfslist.h"
 
 /**

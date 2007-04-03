@@ -28,6 +28,8 @@
  * @brief Playlist management for textual user interface.
  */
 
+#include "stdinc.h"
+
 #include "audio_file.h"
 #include "gui_internal.h"
 #include "gui_vfslist.h"

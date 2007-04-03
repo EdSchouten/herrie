@@ -28,6 +28,8 @@
  * @brief LibSDL audio output driver.
  */
 
+#include "stdinc.h"
+
 #include <SDL.h>
 #include <SDL_audio.h>
 

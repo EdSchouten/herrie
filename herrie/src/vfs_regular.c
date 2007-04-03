@@ -28,6 +28,8 @@
  * @brief Regular on-disk file and directory access.
  */
 
+#include "stdinc.h"
+
 #include "config.h"
 #include "vfs_modules.h"
 

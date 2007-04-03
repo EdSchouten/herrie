@@ -28,6 +28,8 @@
  * @brief Generic access and decoding of audio file formats.
  */
 
+#include "stdinc.h"
+
 #include "audio_file.h"
 #include "audio_format.h"
 #include "scrobbler.h"

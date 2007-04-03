@@ -28,6 +28,8 @@
  * @brief Fake audio output driver.
  */
 
+#include "stdinc.h"
+
 #include "audio_output.h"
 
 int

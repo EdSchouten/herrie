@@ -28,6 +28,8 @@
  * @brief General utility functions
  */
 
+#include "stdinc.h"
+
 #include "util.h"
 
 /**

@@ -28,6 +28,8 @@
  * @brief libmodplug decompression routines.
  */
 
+#include "stdinc.h"
+
 #include <sys/mman.h>
 #include <modplug.h>
 

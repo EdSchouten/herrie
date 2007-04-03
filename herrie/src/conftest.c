@@ -29,6 +29,8 @@
  * to check whether they are available on our system.
  */
 
+#include "stdinc.h"
+
 #include CURSES_HEADER
 #ifdef BUILD_AO
 #include <ao/ao.h>

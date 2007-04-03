@@ -28,6 +28,8 @@
  * @brief Message logging for textual user interface.
  */
 
+#include "stdinc.h"
+
 #include "gui_internal.h"
 
 /**

@@ -28,6 +28,8 @@
  * @brief File browser in textual user interface.
  */
 
+#include "stdinc.h"
+
 #include "config.h"
 #include "gui_internal.h"
 #include "gui_vfslist.h"

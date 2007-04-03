@@ -28,6 +28,8 @@
  * @brief Initialization, destruction and rendering functions for interface.
  */
 
+#include "stdinc.h"
+
 #include "config.h"
 #include "gui_internal.h"
 

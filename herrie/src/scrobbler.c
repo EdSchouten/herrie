@@ -28,6 +28,8 @@
  * @brief AudioScrobbler submission queue.
  */
 
+#include "stdinc.h"
+
 #include <openssl/md5.h>
 
 #include "audio_file.h"

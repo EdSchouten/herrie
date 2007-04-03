@@ -28,6 +28,8 @@
  * @brief MP3 decompression routines.
  */
 
+#include "stdinc.h"
+
 #include <mad.h>
 #include <id3tag.h>
 

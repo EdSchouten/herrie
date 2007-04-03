@@ -28,6 +28,8 @@
  * @brief XSPF file access.
  */
 
+#include "stdinc.h"
+
 #include <spiff/spiff_c.h>
 
 #include "util.h"
