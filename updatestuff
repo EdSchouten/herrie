@@ -11,10 +11,9 @@ tbl < herrie/herrie.1 | groff -S -Wall -mtty-char -man -Tascii | col -b > www/he
 cd herrie/src
 
 # Update depends file
-fastdep *.c |
-    perl -pe 's/^\t//; s/\\\n//; s/\.h//' |
-    grep -v '^conftest\.o:' |
-    perl -pe 's/^(.*?)\.o: .*?\.c /DEPENDS_$1="/; s/$/"/; s/stdinc ?//' > ../depends
+fastdep *.c | grep -v -e 'stdinc' -e 'conftest' |
+    perl -pe 's/^(.*?)\.o:.*\n/DEPENDS_\1="/; s/^\t//; s/ \\\n$/ /' |
+    sed -e 's/\.h//g' -e 's/$/"/' > ../depends
 
 # Update translations
 xgettext -k_ *.c
