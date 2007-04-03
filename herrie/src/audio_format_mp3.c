@@ -89,7 +89,7 @@ mp3_match(FILE *fp, const char *ext)
 	int ret = 0;
 
 	/* Also match (broken) *.mp3 files */
-	if (strcmp(ext, "mp3") == 0)
+	if (ext != NULL && strcmp(ext, "mp3") == 0)
 		goto done;
 
 	if (fread(buf, sizeof buf, 1, fp) != 1) {
