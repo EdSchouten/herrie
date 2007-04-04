@@ -1,124 +1,123 @@
-Herrie 1.5.1 -> 1.6:
-- Add the ability to specify the Esound hostname in the config file
-- Add XSPF playlist support through libSpiff
-- Perform tests to make sure all software is installed in ./configure
-- Add the ability to autoload/autosave the playlist - Thanks to Martijn
-- Allow localized characters in yes/no questions (ja/nee -> j/n)
-- Allow playlists to be written to disk as M3U, PLS or XSPF
-- Make signal handling work better on certain systems
-- Make configure-script work on Solaris
+007-04-?? -- Herrie 1.6:
+ * Added: Ability to specify the Esound hostname in the config file
+ * Added: XSPF playlist support through libSpiff
+ * Improved: Perform compilation test during configuration
+ * Added: Autosaving the playlist on shutdown - Martijn van den Dungen
+ * Improved: international bindings for yes/no questions
+ * Added: Save playlists to disk as M3U, PLS and XSPF
+ * Improved: Signal handling should now work more reliable
+ * Fixed: Configuration now works on Solaris
 
-Herrie 1.5 -> 1.5.1:
-- Add global configuration file
-- Make the original playlist behaviour the default again
-- Remove all OS-specific checks from the source-code
-- Close stderr before starting playback of command line arguments
+2007-03-10 -- Herrie 1.5.1:
+ * Added: Add global configuration file
+ * Changed: Make the original playlist behaviour the default again
+ * Fixed: Remove all OS-specific checks from the source-code
+ * Fixed: Close stderr before starting playback of command line arguments
 
-Herrie 1.4 -> 1.5:
-- Add support for the color 'default', which is the terminal default
-- Add Turkish translation - maintainer: Eren Turkay <turkay.eren@gmail.com>
-- Long requested feature: XMMS style playlist
-- Replaced some bindings with XMMS style bindings (z, x, c, v and b)
-- Add 'w' button to write the playlist to disk
-- Add support for libmodplug - hooray!
+2007-02-28 -- Herrie 1.5:
+ * Added: support for the color 'default', which is the terminal default
+ * Added: Turkish translation - Eren Turkay <turkay.eren@gmail.com>
+ * Added: Long requested feature: XMMS style playlist
+ * Changed: Replaced some bindings with XMMS style bindings (z, x, c, v and b)
+ * Added: 'w' button to write the playlist to disk
+ * Added: support for libmodplug - hooray!
 
-Herrie 1.3 -> 1.4:
-- Add 'configure' script which creates a really compatible Makefile
-- Use display name when no tag is present in the file
+2007-02-11 -- Herrie 1.4:
+ * Added: 'configure' script which creates a really compatible Makefile
+ * Improved: Use display name when no tag is present in the file
 
-Herrie 1.2 -> 1.3:
-- Use UTF-8 for MP3 tags, just like Ogg Vorbis - found by Bertrand Janin
-- Improve black and white terminal support
-- Force refresh with ^L - fixes dtach support
-- Don't leave terminal broken when chroot/setuid fails
-- Show a message when the libao code cannot open the device
-- Add absolute seeking with 'J'
-- Add support for HTTP files and streams
-- Initialize the resolver before chroot()
-- Add keyboard binding to repeat the playlist
-- Don't unpause when seeking
-- Show 'Paused' instead of 'Playing' when the song is paused
-- Prevent more unneeded terminal I/O
-- Allow single files (or URL's) to be displayed with 'c'
-- Add experimental SDL Audio output code
+2007-01-23 -- Herrie 1.3:
+ * Fixed: Use UTF-8 for MP3 tags, just like Ogg Vorbis - found by Bertrand Janin
+ * Improved: black and white terminal support
+ * Added: Force refresh with ^L - fixes dtach support
+ * Fixed: Don't leave terminal broken when chroot/setuid fails
+ * Fixed: Show a message when the libao code cannot open the device
+ * Added: absolute seeking with 'J'
+ * Added: support for HTTP files and streams
+ * Fixed: Initialize the resolver before chroot()
+ * Added: keyboard binding to repeat the playlist
+ * Changed: Don't unpause when seeking
+ * Fixed: Show 'Paused' instead of 'Playing' when the song is paused
+ * Fixed: Prevent more unneeded terminal I/O
+ * Added: Allow single files (or URL's) to be displayed with 'c'
+ * Added: experimental SDL Audio output code
 
-Herrie 1.1 -> 1.2:
-- Include <stdlib.h> for setproctitle() on Open/NetBSD
-- Move makefile to the root of the tarball
-- Add switch to compile with XCurses
-- Add dependencies file to record header file deps
-- Restore our Glib GSlice fallback macros
-- Improve Solaris Makefile defaults
+2007-01-01 -- Herrie 1.2:
+ * Fixed: Include <stdlib.h> for setproctitle() on Open/NetBSD
+ * Changed: Move makefile to the root of the tarball
+ * Added: switch to compile with XCurses
+ * Added: dependencies file to record header file deps
+ * Fixed: Restore our Glib GSlice fallback macros
+ * Added: Improve Solaris Makefile defaults
 
-Herrie 1.0.2 -> 1.1 "Christmas Edition":
-- Don't expand pathname of symlinks
-- Large rewrite of entire playlist/filebrowser code
-- Show scrolling percentage above playlist and filebrowser
-- Allow tracks to be paused and skipped with SIGUSR1 and SIGUSR2
-- Enable setproctitle() on NetBSD and OpenBSD as well
-- Revive Herrie 0.3 MP3 code, with seeking
+2006-12-22 -- Herrie 1.1 "Christmas Edition":
+ * Changed: Don't expand pathname of symlinks
+ * Improved: Large rewrite of entire playlist/filebrowser code
+ * Added: Show scrolling percentage above playlist and filebrowser
+ * Added: Allow tracks to be paused and skipped with SIGUSR1 and SIGUSR2
+ * Fixed: Enable setproctitle() on NetBSD and OpenBSD as well
+ * Improved: Revive Herrie 0.3 MP3 code, with seeking
 
-Herrie 1.0.1 -> 1.0.2:
-- Add ^W to delete complete words when entering search query
-- Add ^U to delete entire input when entering search query
-- Add 'c' in filebrowser to change the directory by entering the pathname
-- Show cursor when answering questions or filling in the search query
-- Discard refreshes when the playback time hasn't changed
-- Massively improve randomizing performance
+2006-12-10 -- Herrie 1.0.2:
+ * Added: ^W to delete complete words when entering search query
+ * Added: ^U to delete entire input when entering search query
+ * Added: 'c' in filebrowser to change the directory by entering the pathname
+ * Fixed: Show cursor when answering questions or filling in the search query
+ * Fixed: Discard refreshes when the playback time hasn't changed
+ * Improved: Massively improve randomizing performance
 
-Herrie 1.0 -> 1.0.1:
-- Make Vorbis tag parsing less strict (match case insensitive)
-- Fix OSS and terminal resizing on OpenBSD
-- Fix terminal resizing in SIGWINCH wrapper while in chroot()
+2006-12-03 -- Herrie 1.0.1:
+ * Fixed: Make Vorbis tag parsing less strict (match case insensitive)
+ * Fixed: OSS and terminal resizing on OpenBSD
+ * Fixed: terminal resizing in SIGWINCH wrapper while in chroot()
 
-Herrie 0.7 -> 1.0:
-- Prevent whitespace in filebrowser and playlist as much as possible
-- Document more sourcecode with Doxygen
-- Display an error message when opening an audio file fails
+2006-11-12 -- Herrie 1.0:
+ * Improved: Prevent whitespace in filebrowser and playlist as much as possible
+ * Improved: Document more sourcecode with Doxygen
+ * Improved: Display an error message when opening an audio file fails
 
-Herrie 0.6 -> 0.7:
-- Remove all the Windows bits, add Cygwin support
-- Hopefully revive the Solaris port
-- Finally a more sane MP3 decoder
-- Show hours separately when track length exceeds one hour
+2006-10-20 -- Herrie 0.7:
+ * Changed: Remove all the Windows bits, add Cygwin support
+ * Fixed: Hopefully revive the Solaris port
+ * Improved: Finally a more sane MP3 decoder
+ * Improved: Show hours separately when track length exceeds one hour
 
-Herrie 0.5 -> 0.6:
-- Make the AudioScrobbler thread wait a little longer when the server is down
-- Remove a lot of possible race conditions on startup and shutdown
-- Add a LibAO audio output driver
-- Proper support for Mac OS X
-- Raise priority in the playback thread to prevent hickups
-- Fix CR+NL handling and allow absolute paths in playlists
-- Fix deadlock when searching the playlist
+2006-10-10 -- Herrie 0.6:
+ * Fixed: Make the AudioScrobbler thread wait longer when the server is down
+ * Fixed: Remove a lot of possible race conditions on startup and shutdown
+ * Added: LibAO audio output driver
+ * Fixed: Proper support for Mac OS X
+ * Fixed: Raise priority in the playback thread to prevent hickups
+ * Fixed: CR+NL handling and allow absolute paths in playlists
+ * Fixed: deadlock when searching the playlist
 
-Herrie 0.4 -> 0.5:
-- Split off header files to make abstraction in Herrie more clear
-- Fix the gettext code to allow translations of the application
-- Add '[' and ']' which allow you to move songs up and down in the playlist
-- Make the statbar less flickery
-- Don't double-fclose() MP3 files - patch from Bjorge Dijkstra
+2006-09-27 -- Herrie 0.5:
+ * Changed: Split off header files to make abstraction in Herrie more clear
+ * Fixed: the gettext code to allow translations of the application
+ * Added: '[' and ']' which allow you to move songs up and down in the playlist
+ * Fixed: Make the statbar less flickery
+ * Fixed: Don't double-fclose() MP3 files - Bjorge Dijkstra
 
-Herrie 0.3 -> 0.4:
-- Fix HTTP escaping in AudioScrobbler submissions
-- Add Mutt-like search feature
-- Make Herrie work with older versions of glib (2.6.x for example)
-- Fix libsndfile code on big endian platforms
-- Move libmad/libid3tag code to a separate library - libmp3file
-- Improve M3U support - read titles from #EXTINF lines
-- Add PLS support
+2006-09-13 -- Herrie 0.4:
+ * Fixed: HTTP escaping in AudioScrobbler submissions
+ * Added: Mutt-like search feature
+ * Fixed: Make Herrie work with older versions of glib (2.6.x for example)
+ * Fixed: libsndfile code on big endian platforms
+ * Changed: Move libmad/libid3tag code to a separate library - libmp3file
+ * Improved: M3U support - read titles from #EXTINF lines
+ * Added: PLS support
 
-Herrie 0.2 -> 0.3:
-- Glibify even more parts of the source code
-- Add 'delete all' button (D)
-- Add seeking and progress to libsndfile code
+2006-08-28 -- Herrie 0.3:
+ * Improved: Glibify even more parts of the source code
+ * Added: 'delete all' button (D)
+ * Improved: seeking and progress to libsndfile code
 
-Herrie 0.1 -> 0.2:
-- Improve error messages when playq fails to initialize
-- Remove Auto* and use a regular GNU Makefile
-- Fix GCC 2.95 compatibility (FreeBSD 4.x)
-- Add AudioScrobbler
-- Add message bar at the bottom of the screen
-- Add manual page
+2006-08-19 -- Herrie 0.2:
+ * Improved: error messages when playq fails to initialize
+ * Changed: Remove Auto* and use a regular GNU Makefile
+ * Fixed: GCC 2.95 compatibility (FreeBSD 4.x)
+ * Added: AudioScrobbler support
+ * Added: message bar at the bottom of the screen
+ * Added: manual page
 
-Herrie 0.0 -> 0.1:
-- Initial release
+2006-08-01 -- Herrie 0.1
