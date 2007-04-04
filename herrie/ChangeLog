@@ -1,4 +1,4 @@
-007-04-?? -- Herrie 1.6:
+2007-04-13 -- Herrie 1.6 "First Anniversary Edition":
  * Added: Ability to specify the Esound hostname in the config file
  * Added: XSPF playlist support through libSpiff
  * Improved: Perform compilation test during configuration
