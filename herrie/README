@@ -100,6 +100,7 @@ the generated Makefile:
 - CC            C compiler
 - CFLAGS        Prepend compiler flags
 - LDFLAGS       Prepend linkage flags
+- INSTALL       install(1) application used by `make install'
 - CONFDIR       Change configuration file directory
 - MANDIR        Change Manual page directory
 - OS            Override operating system detection (for cross compilation)
