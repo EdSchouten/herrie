@@ -9,7 +9,7 @@
  * Fixed: Configuration now works on Solaris
 
 2007-03-10 -- Herrie 1.5.1:
- * Added: Add global configuration file
+ * Added: Global configuration file
  * Changed: Make the original playlist behaviour the default again
  * Fixed: Remove all OS-specific checks from the source-code
  * Fixed: Close stderr before starting playback of command line arguments
@@ -27,7 +27,7 @@
  * Improved: Use display name when no tag is present in the file
 
 2007-01-23 -- Herrie 1.3:
- * Fixed: Use UTF-8 for MP3 tags, just like Ogg Vorbis - found by Bertrand Janin
+ * Fixed: Use UTF-8 for MP3 tags, just like Ogg Vorbis - Bertrand Janin
  * Improved: black and white terminal support
  * Added: Force refresh with ^L - fixes dtach support
  * Fixed: Don't leave terminal broken when chroot/setuid fails
