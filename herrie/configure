@@ -384,6 +384,20 @@ do
 	echo "	${DOIT}mkdir -p \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES"
 	echo "	$DOIT$INSTALL -m 444 $i.mo \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 done
+cat << EOF
+uninstall:
+	# Removing \$(DESTROOT)$BINDIR/$APP_NAME$CFG_BINEXT
+	${DOIT}rm -f \$(DESTROOT)$BINDIR/$APP_NAME$CFG_BINEXT
+	# Removing \$(DESTROOT)$MANDIR/man1/$APP_NAME.1.gz
+	${DOIT}rm -f \$(DESTROOT)$MANDIR/man1/$APP_NAME.1.gz
+	# Removing \$(DESTROOT)$CONFDIR/$APP_NAME.conf.sample
+	${DOIT}rm -f  \$(DESTROOT)$CONFDIR/$APP_NAME.conf.sample
+EOF
+for i in $CFG_TRANS
+do
+	echo "	# Removing \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
+	echo "	${DOIT}rm -f \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
+done
 . $SRCDIR/depends
 for i in $SRCS
 do
