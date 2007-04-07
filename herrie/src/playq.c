@@ -283,12 +283,18 @@ playq_shutdown(void)
 	g_cond_signal(playq_wakeup);
 	g_thread_join(playq_runner);
 
-	/* Flush the list back to the disk */
 	if (playq_dumpfile != NULL) {
-		vr = vfs_write_playlist(&playq_list, NULL, playq_dumpfile);
+		if (vfs_list_empty(&playq_list)) {
+			/* Remove the autosave playlist */
+			unlink(playq_dumpfile);
+		} else {
+			/* Flush the list back to the disk */
+			vr = vfs_write_playlist(&playq_list, NULL,
+			    playq_dumpfile);
+			if (vr != NULL)
+				vfs_close(vr);
+		}
 		g_free(playq_dumpfile);
-		if (vr != NULL)
-			vfs_close(vr);
 	}
 }
 
