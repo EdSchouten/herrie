@@ -362,11 +362,11 @@ $APP_NAME.1.gz: $SRCDIR/$APP_NAME.1 Makefile
 	# Generating manual page $APP_NAME.1.gz
 	${DOIT}sed -e 's|%%CONFFILE%%|$CONFFILE|' $SRCDIR/$APP_NAME.1 | gzip -9 > $APP_NAME.1.gz
 clean:
-	# Performing clean
-	${DOIT}rm -f *.core *.o .gdb_history
+	# Removing $APP_NAME$CFG_BINEXT $APP_NAME.1.gz *.mo *.o
+	${DOIT}rm -f $APP_NAME$CFG_BINEXT $APP_NAME.1.gz *.mo *.o
 distclean: clean
-	# Performing distclean
-	${DOIT}rm -f $APP_NAME$CFG_BINEXT $APP_NAME.1.gz *.mo Makefile
+	# Removing Makefile
+	${DOIT}rm -f Makefile
 install: all
 	# Installing \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
 	${DOIT}mkdir -p \$(DESTDIR)$BINDIR
@@ -386,16 +386,16 @@ do
 done
 cat << EOF
 uninstall:
-	# Removing \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
+	# Uninstalling \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
 	${DOIT}rm -f \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
-	# Removing \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
+	# Uninstalling \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
 	${DOIT}rm -f \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
-	# Removing \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
+	# Uninstalling \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 	${DOIT}rm -f  \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 EOF
 for i in $CFG_TRANS
 do
-	echo "	# Removing \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
+	echo "	# Uninstalling \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 	echo "	${DOIT}rm -f \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 done
 . $SRCDIR/depends
