@@ -8,6 +8,7 @@
  * Improved: Signal handling should now work more reliable
  * Fixed: Configuration now works on Solaris
  * Improved: Force MP3's with a proper extension to be matched
+ * Added: German translation - Sebastian and Elias Pipping
 
 2007-03-10 -- Herrie 1.5.1:
  * Added: Global configuration file

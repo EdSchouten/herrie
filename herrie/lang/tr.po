@@ -1,11 +1,9 @@
-# translation of tr.po to Türkçe
-# Eren Türkay <turkay.eren@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-07 14:57+0200\n"
-"PO-Revision-Date: 2007-04-07 14:57+0200\n"
+"POT-Creation-Date: 2007-04-08 13:26+0200\n"
+"PO-Revision-Date: 2007-04-08 13:23+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -131,24 +129,24 @@ msgid "Not found."
 msgstr "Bulunamadı"
 
 #: main.c:65
-msgid "audio output"
-msgstr "ses çıkışı"
+msgid "Audio output"
+msgstr "Ses çıkışı"
 
 #: main.c:66
-msgid "support for audioscrobbler"
-msgstr "audioscrobbler desteği"
+msgid "Support for AudioScrobbler"
+msgstr "AudioScrobbler desteği"
 
 #: main.c:72
-msgid "support for http streams"
-msgstr "http akımları desteği"
+msgid "Support for HTTP streams"
+msgstr "HTTP akımları desteği"
 
 #: main.c:78
-msgid "support for xspf playlists (`spiff')"
-msgstr "xspf parca listesi destegi (`spiff`)"
+msgid "Support for XSPF playlists (`spiff')"
+msgstr "XSPF parca listesi destegi (`spiff`)"
 
 #: main.c:84
-msgid "supported audio file formats"
-msgstr "desteklenen ses dosyası biçimleri"
+msgid "Supported audio file formats"
+msgstr "Desteklenen ses dosyası biçimleri"
 
 #: main.c:96
 msgid "usage"

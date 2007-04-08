@@ -43,7 +43,7 @@
 static void
 version(void)
 {
-	g_printerr(APP_NAME " " APP_VERSION "\n"
+	g_printerr(APP_NAME " " APP_VERSION "\n\n"
 		"%s: " AUDIO_OUTPUT "\n"
 		"%s: %s\n"
 		"%s: %s\n"
@@ -62,26 +62,26 @@ version(void)
 		"- libsndfile\n"
 #endif /* BUILD_SNDFILE */
 		,
-		_("audio output"),
-		_("support for audioscrobbler"),
+		_("Audio output"),
+		_("Support for AudioScrobbler"),
 #ifdef BUILD_SCROBBLER
 		_("yes"),
 #else /* !BUILD_SCROBBLER */
 		_("no"),
 #endif /* BUILD_SCROBBLER */
-		_("support for http streams"),
+		_("Support for HTTP streams"),
 #ifdef BUILD_HTTP
 		_("yes"),
 #else /* !BUILD_HTTP */
 		_("no"),
 #endif /* BUILD_HTTP */
-		_("support for xspf playlists (`spiff')"),
+		_("Support for XSPF playlists (`spiff')"),
 #ifdef BUILD_XSPF
 		_("yes"),
 #else /* !BUILD_XSPF */
 		_("no"),
 #endif /* BUILD_XSPF */
-		_("supported audio file formats"));
+		_("Supported audio file formats"));
 
 	exit(0);
 }

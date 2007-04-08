@@ -17,7 +17,7 @@ fastdep *.c | grep -v -e 'stdinc' -e 'conftest' |
 
 # Update translations
 xgettext -k_ *.c
-for i in nl tr
+for i in de nl tr
 do
 	msgmerge ../lang/$i.po messages.po > tmp.po
 	mv tmp.po ../lang/$i.po

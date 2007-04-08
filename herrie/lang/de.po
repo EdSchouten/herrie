@@ -1,227 +1,221 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-08 13:26+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2007-04-08 13:26+0200\n"
+"Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
+"Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: audio_output_ao.c:115 audio_output_sdl.c:114
 msgid "Cannot open the audio device."
-msgstr ""
+msgstr "Gerät kann nicht geöffnet werden."
 
 #: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr ""
+msgstr "Gerät \"%s\" kann nicht geöffnet werden.\n"
 
 #: audio_output_sdl.c:82
 msgid "Cannot initialize SDL audio subsystem.\n"
-msgstr ""
+msgstr "SDL-Sub-System kann nicht initialisiert werden.\n"
 
 #: gui_browser.c:115
 msgid "Unable to open initial directory."
-msgstr ""
+msgstr "Fehler beim Öffnen des Start-Verzeichnisses."
 
 #: gui_browser.c:220
 msgid "Unable to enter the parent directory."
-msgstr ""
+msgstr "Fehler beim Öffnen des übergeordneten Verzeichnisses."
 
 #: gui_browser.c:235
 msgid "Unable to enter the selected directory."
-msgstr ""
+msgstr "Fehler beim Öffnen des gewählten Verzeichnisses."
 
 #: gui_browser.c:316
 msgid "Change directory"
-msgstr ""
+msgstr "Verzeichnis wechseln"
 
 #: gui_browser.c:354
 msgid "Unable to display the file or directory."
-msgstr ""
+msgstr "Datei oder Verzeichnis kann nicht angezeigt werden."
 
 #: gui_browser.c:371
 msgid "Write playlist to file"
-msgstr ""
+msgstr "Playlist in Datei speichern"
 
 #: gui_browser.c:380
 msgid "Unable to write playlist."
-msgstr ""
+msgstr "Fehler beim Schreiben der Playlist."
 
 #: gui_input.c:112
 msgid "Search for"
-msgstr ""
+msgstr "Suchen"
 
 #: gui_input.c:145
 #, c-format
 msgid "Quit %s?"
-msgstr ""
+msgstr "%s beenden?"
 
 #: gui_input.c:182
 msgid "Jump to position"
-msgstr ""
+msgstr "Zu Position springen"
 
 #: gui_input.c:235
 msgid "Bad time format."
-msgstr ""
+msgstr "Ungültiges Zeit-Format."
 
 #: gui_input.c:422 main.c:68 main.c:74 main.c:80
 msgid "yes"
-msgstr ""
+msgstr "ja"
 
 #: gui_input.c:423 main.c:70 main.c:76 main.c:82
 msgid "no"
-msgstr ""
+msgstr "nein"
 
 #: gui_playq.c:113
 msgid "Idle"
-msgstr ""
+msgstr "Inaktiv"
 
 #: gui_playq.c:116
 msgid "Paused"
-msgstr ""
+msgstr "Pausiert"
 
 #: gui_playq.c:118
 msgid "Playing"
-msgstr ""
+msgstr "Aktiv"
 
 #: gui_playq.c:356
 msgid "Remove all songs from the playlist?"
-msgstr ""
+msgstr "Alle Lieder aus der Playlist entfernen?"
 
 #: gui_playq.c:367
 msgid "Randomize the playlist?"
-msgstr ""
+msgstr "Playlist zufällig anordnen?"
 
 #: gui_playq.c:416
 msgid "The song is already at the top of the playlist."
-msgstr ""
+msgstr "Dieses Lied ist bereits ganz oben."
 
 #: gui_playq.c:435
 msgid "The song is already at the bottom of the playlist."
-msgstr ""
+msgstr "Dieses Lied ist bereits ganz am Ende."
 
 #: gui_vfslist.c:230
 msgid "There are no songs."
-msgstr ""
+msgstr "Die Playlist ist leer."
 
 #: gui_vfslist.c:287
 msgid "You are at the first song."
-msgstr ""
+msgstr "Du bist am Anfang der Playlist."
 
 #: gui_vfslist.c:306
 msgid "You are at the last song."
-msgstr ""
+msgstr "Du bist am Ende der Playlist."
 
 #: gui_vfslist.c:544
 msgid "No search pattern."
-msgstr ""
+msgstr "Suchmuster fehlt."
 
 #: gui_vfslist.c:563
 msgid "Search wrapped to top."
-msgstr ""
+msgstr "Suche am Ende angelagt, Fortsetzung am Anfang."
 
 #: gui_vfslist.c:568
 msgid "Not found."
-msgstr ""
+msgstr "Nicht gefunden."
 
 #: main.c:65
 msgid "Audio output"
-msgstr ""
+msgstr "Audio-Ausgabe"
 
 #: main.c:66
 msgid "Support for AudioScrobbler"
-msgstr ""
+msgstr "Unterstützung für AudioScrobbler"
 
 #: main.c:72
 msgid "Support for HTTP streams"
-msgstr ""
+msgstr "Unterstützung für HTTP-Streams"
 
 #: main.c:78
 msgid "Support for XSPF playlists (`spiff')"
-msgstr ""
+msgstr "Unterstützung für XSPF Playlists"
 
 #: main.c:84
 msgid "Supported audio file formats"
-msgstr ""
+msgstr "Unterstützte Audio-Formate"
 
 #: main.c:96
 msgid "usage"
-msgstr ""
+msgstr "Benutzung"
 
 #: playq.c:191
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr ""
+msgstr "\"%s\" konnte nicht zum Abspielen geöffnet werden."
 
 #: playq.c:415
 #, c-format
 msgid "Repeat: %s"
-msgstr ""
+msgstr "Wiederholen: %s"
 
 #: playq.c:416
 msgid "on"
-msgstr ""
+msgstr "an"
 
 #: playq.c:416
 msgid "off"
-msgstr ""
+msgstr "aus"
 
 #: scrobbler.c:311
 msgid "Successfully authorized at AudioScrobbler."
-msgstr ""
+msgstr "AudioScrobbler-Login erfolgreich."
 
 #: scrobbler.c:318
 msgid "Failed to authorize at AudioScrobbler."
-msgstr ""
+msgstr "AudioScrobbler-Login fehlgeschlagen."
 
 #: scrobbler.c:334
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr ""
+msgstr "Ein Lied an AudioScrobbler gesendet."
 
 #: scrobbler.c:338
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr ""
+msgstr "%d Lieder an AudioScrobbler gesendet."
 
 #: scrobbler.c:344
 msgid "Invalid AudioScrobbler username/password."
-msgstr ""
+msgstr "Benutzername oder Passwort für AudioScrobbler ungültig."
 
 #: scrobbler.c:347
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr ""
+msgstr "Fehler bei der Übertragung zu AudioScrobbler."
 
 #: vfs.c:109
 #, c-format
 msgid "Unknown user: %s\n"
-msgstr ""
+msgstr "Unbekannter Benutzer: %s\n"
 
 #: vfs.c:121
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr ""
+msgstr "Fehler beim chroot'en nach %s\n"
 
 #: vfs.c:129
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr ""
+msgstr "Fehler beim Wechseln zu Gruppe %d\n"
 
 #: vfs.c:133
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr ""
+msgstr "Fehler beim Wechseln zu Benutzer %d\n"
 
 #: vfs_http.c:145
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr ""
+msgstr "Verbindung zu \"%s\" verloren."

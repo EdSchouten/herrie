@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-07 14:57+0200\n"
-"PO-Revision-Date: 2007-04-07 14:57+0200\n"
+"POT-Creation-Date: 2007-04-08 13:26+0200\n"
+"PO-Revision-Date: 2007-04-08 13:23+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -129,23 +129,23 @@ msgid "Not found."
 msgstr "Niet gevonden."
 
 #: main.c:65
-msgid "audio output"
-msgstr "geluidsuitvoer"
+msgid "Audio output"
+msgstr "Geluidsuitvoer"
 
 #: main.c:66
-msgid "support for audioscrobbler"
-msgstr "ondersteuning voor audioscrobbler"
+msgid "Support for AudioScrobbler"
+msgstr "Ondersteuning voor AudioScrobbler"
 
 #: main.c:72
-msgid "support for http streams"
-msgstr "ondersteuning voor http streams"
+msgid "Support for HTTP streams"
+msgstr "Ondersteuning voor HTTP streams"
 
 #: main.c:78
-msgid "support for xspf playlists (`spiff')"
-msgstr "ondersteuning voor xspf afspeellijsten (`spiff')"
+msgid "Support for XSPF playlists (`spiff')"
+msgstr "Ondersteuning voor XSPF afspeellijsten (`spiff')"
 
 #: main.c:84
-msgid "supported audio file formats"
+msgid "Supported audio file formats"
 msgstr "ondersteunde geluidsformaten"
 
 #: main.c:96
