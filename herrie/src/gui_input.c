@@ -368,7 +368,9 @@ gui_input_sighandler(int signal)
 #ifdef BUILD_GUI_SIGWINCH_WRAPPER
 	case SIGWINCH:
 		if (ioctl(STDIN_FILENO, TIOCGWINSZ, &ws) != -1) {
+			gui_lock();
 			resizeterm(ws.ws_row, ws.ws_col);
+			gui_unlock();
 			gui_draw_resize();
 		}
 		break;
