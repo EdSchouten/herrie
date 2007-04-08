@@ -368,35 +368,35 @@ distclean: clean
 	# Performing distclean
 	${DOIT}rm -f $APP_NAME$CFG_BINEXT $APP_NAME.1.gz *.mo Makefile
 install: all
-	# Installing \$(DESTROOT)$BINDIR/$APP_NAME$CFG_BINEXT
-	${DOIT}mkdir -p \$(DESTROOT)$BINDIR
-	$DOIT$INSTALL -s $APP_NAME$CFG_BINEXT \$(DESTROOT)$BINDIR/$APP_NAME$CFG_BINEXT
-	# Installing \$(DESTROOT)$MANDIR/man1/$APP_NAME.1.gz
-	${DOIT}mkdir -p \$(DESTROOT)$MANDIR/man1
-	$DOIT$INSTALL -m 444 $APP_NAME.1.gz \$(DESTROOT)$MANDIR/man1/$APP_NAME.1.gz
-	# Installing \$(DESTROOT)$CONFDIR/$APP_NAME.conf.sample
-	${DOIT}mkdir -p \$(DESTROOT)$CONFDIR
-	$DOIT$INSTALL -m 444 $SRCDIR/$APP_NAME.conf.sample \$(DESTROOT)$CONFDIR/$APP_NAME.conf.sample
+	# Installing \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
+	${DOIT}mkdir -p \$(DESTDIR)$BINDIR
+	$DOIT$INSTALL -s $APP_NAME$CFG_BINEXT \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
+	# Installing \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
+	${DOIT}mkdir -p \$(DESTDIR)$MANDIR/man1
+	$DOIT$INSTALL -m 444 $APP_NAME.1.gz \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
+	# Installing \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
+	${DOIT}mkdir -p \$(DESTDIR)$CONFDIR
+	$DOIT$INSTALL -m 444 $SRCDIR/$APP_NAME.conf.sample \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 EOF
 for i in $CFG_TRANS
 do
-	echo "	# Installing \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
-	echo "	${DOIT}mkdir -p \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES"
-	echo "	$DOIT$INSTALL -m 444 $i.mo \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
+	echo "	# Installing \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
+	echo "	${DOIT}mkdir -p \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES"
+	echo "	$DOIT$INSTALL -m 444 $i.mo \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 done
 cat << EOF
 uninstall:
-	# Removing \$(DESTROOT)$BINDIR/$APP_NAME$CFG_BINEXT
-	${DOIT}rm -f \$(DESTROOT)$BINDIR/$APP_NAME$CFG_BINEXT
-	# Removing \$(DESTROOT)$MANDIR/man1/$APP_NAME.1.gz
-	${DOIT}rm -f \$(DESTROOT)$MANDIR/man1/$APP_NAME.1.gz
-	# Removing \$(DESTROOT)$CONFDIR/$APP_NAME.conf.sample
-	${DOIT}rm -f  \$(DESTROOT)$CONFDIR/$APP_NAME.conf.sample
+	# Removing \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
+	${DOIT}rm -f \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
+	# Removing \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
+	${DOIT}rm -f \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
+	# Removing \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
+	${DOIT}rm -f  \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 EOF
 for i in $CFG_TRANS
 do
-	echo "	# Removing \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
-	echo "	${DOIT}rm -f \$(DESTROOT)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
+	echo "	# Removing \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
+	echo "	${DOIT}rm -f \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 done
 . $SRCDIR/depends
 for i in $SRCS

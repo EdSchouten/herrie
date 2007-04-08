@@ -104,11 +104,11 @@ the generated Makefile:
 - CONFDIR       Change configuration file directory
 - MANDIR        Change Manual page directory
 - OS            Override operating system detection (for cross compilation)
-- PREFIX	Change installation prefix
+- PREFIX        Change installation prefix
 
-After running `./configure', a simple 'make; make install' will suffice.
-When the DESTROOT variable is set during installation, its contents will
-be prepended to the PREFIX.
+After running `./configure', a simple 'make; make install' will suffice. When
+the DESTDIR variable is set during installation, its contents will be prepended
+to the PREFIX.
 
 I've installed it - now what?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
