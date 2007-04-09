@@ -43,7 +43,6 @@ CFG_SCROBBLER=yes
 unset CFG_SETPROCTITLE
 unset CFG_SIGWINCH
 CFG_SNDFILE=yes
-CFG_TRANS='de nl tr'
 CFG_VORBIS=yes
 CFG_XSPF=yes
 DOIT=@
@@ -109,6 +108,7 @@ SRCDIR=`dirname $0`
 BINDIR=$PREFIX/bin
 [ "$CONFDIR" = "" ] && CONFDIR=$PREFIX/etc
 CONFFILE=$CONFDIR/$APP_NAME.conf
+[ "$LINGUAS" = "" ] && LINGUAS='de nl tr'
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
 [ "$CC" = "" ] && CC=gcc
@@ -134,7 +134,7 @@ do
 		unset CFG_SNDFILE
 		;;
 	no_trans)
-		unset CFG_TRANS
+		unset LINGUAS
 		;;
 	no_vorbis)
 		unset CFG_VORBIS
@@ -261,7 +261,7 @@ then
 	SRCS="$SRCS audio_format_sndfile"
 fi
 # Translation support
-if [ "$CFG_TRANS" != "" ]
+if [ "$LINGUAS" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_TRANS"
 	CFLAGS_main="$CFLAGS_main -DTRANSDIR=\\\"$TRANSDIR\\\""
@@ -321,10 +321,10 @@ for i in $SRCS
 do
 	OBJS="$OBJS $i.o"
 done
-unset LINGUAS
-for i in $CFG_TRANS
+unset MOS
+for i in $LINGUAS
 do
-	LINGUAS="$LINGUAS $i.mo"
+	MOS="$MOS $i.mo"
 done
 
 eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest$CFG_BINEXT
@@ -339,7 +339,7 @@ echo "Configuration:"
 echo "- Installing $APP_NAME$CFG_BINEXT in $BINDIR"
 echo "- Installing manual page in $MANDIR"
 echo "- Using $CONFFILE configuration file"
-[ "$CFG_TRANS" != "" ] && echo "- Installing translations in $TRANSDIR"
+[ "$LINGUAS" != "" ] && echo "- Installing translations '$LINGUAS' in $TRANSDIR"
 echo "- Using -l$CFG_CURSES_LIB and <$CFG_CURSES_HEADER.h>"
 echo "- Using $CFG_AO audio output"
 [ "$CFG_HTTP" != "" ] && echo "- Support for HTTP streams"
@@ -354,7 +354,7 @@ echo "- Using $CFG_AO audio output"
 CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
 OBJS=$OBJS
-all: $APP_NAME$CFG_BINEXT $APP_NAME.1.gz $SRCDIR/$APP_NAME.conf.sample $LINGUAS
+all: $APP_NAME$CFG_BINEXT $APP_NAME.1.gz $SRCDIR/$APP_NAME.conf.sample $MOS
 $APP_NAME$CFG_BINEXT: \$(OBJS)
 	# Linking $APP_NAME$CFG_BINEXT
 	$DOIT$CC \$(OBJS) \$(LDFLAGS) -o $APP_NAME$CFG_BINEXT
@@ -378,7 +378,7 @@ install: all
 	${DOIT}mkdir -p \$(DESTDIR)$CONFDIR
 	$DOIT$INSTALL -m 444 $SRCDIR/$APP_NAME.conf.sample \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 EOF
-for i in $CFG_TRANS
+for i in $LINGUAS
 do
 	echo "	# Installing \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 	echo "	${DOIT}mkdir -p \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES"
@@ -393,7 +393,7 @@ uninstall:
 	# Uninstalling \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 	${DOIT}rm -f  \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 EOF
-for i in $CFG_TRANS
+for i in $LINGUAS
 do
 	echo "	# Uninstalling \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 	echo "	${DOIT}rm -f \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
@@ -410,7 +410,7 @@ do
 	echo "	# Compiling $i.o"
 	echo "	$DOIT$CC -c $SRCDIR/src/$i.c \$(CFLAGS) `eval echo \\\$CFLAGS_\$i` -o $i.o"
 done
-for i in $CFG_TRANS
+for i in $LINGUAS
 do
 	echo "$i.mo: $SRCDIR/lang/$i.po"
 	echo "	# Generating translation $i.mo"
