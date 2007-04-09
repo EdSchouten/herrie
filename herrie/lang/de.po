@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-08 13:26+0200\n"
-"PO-Revision-Date: 2007-04-08 13:26+0200\n"
+"POT-Creation-Date: 2007-04-09 09:54+0200\n"
+"PO-Revision-Date: 2007-04-09 09:54+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
 "MIME-Version: 1.0\n"
@@ -68,11 +68,11 @@ msgstr "Zu Position springen"
 msgid "Bad time format."
 msgstr "Ungültiges Zeit-Format."
 
-#: gui_input.c:422 main.c:68 main.c:74 main.c:80
+#: gui_input.c:424 main.c:68 main.c:74 main.c:80
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:423 main.c:70 main.c:76 main.c:82
+#: gui_input.c:425 main.c:70 main.c:76 main.c:82
 msgid "no"
 msgstr "nein"
 
@@ -106,15 +106,15 @@ msgstr "Dieses Lied ist bereits ganz am Ende."
 
 #: gui_vfslist.c:230
 msgid "There are no songs."
-msgstr "Die Playlist ist leer."
+msgstr "Die Liste ist leer."
 
 #: gui_vfslist.c:287
 msgid "You are at the first song."
-msgstr "Du bist am Anfang der Playlist."
+msgstr "Du bist am Anfang der Liste."
 
 #: gui_vfslist.c:306
 msgid "You are at the last song."
-msgstr "Du bist am Ende der Playlist."
+msgstr "Du bist am Ende der Liste."
 
 #: gui_vfslist.c:544
 msgid "No search pattern."

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-08 13:26+0200\n"
-"PO-Revision-Date: 2007-04-08 13:23+0200\n"
+"POT-Creation-Date: 2007-04-09 09:54+0200\n"
+"PO-Revision-Date: 2007-04-09 09:54+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -68,11 +68,11 @@ msgstr "Spring naar positie"
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:422 main.c:68 main.c:74 main.c:80
+#: gui_input.c:424 main.c:68 main.c:74 main.c:80
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:423 main.c:70 main.c:76 main.c:82
+#: gui_input.c:425 main.c:70 main.c:76 main.c:82
 msgid "no"
 msgstr "nee"
 
