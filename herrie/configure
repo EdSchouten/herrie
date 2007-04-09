@@ -194,8 +194,8 @@ SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
 # ftello() usage
 [ "$CFG_FTELLO" != "" ] && CFLAGS="$CFLAGS -DBUILD_FTELLO"
 # GCC compiler (stricter compiler flags)
-[ "$CFG_GCC" != "" ] && CFLAGS="$CFLAGS -Wall -Werror \
-    -Wmissing-prototypes -Wsign-compare"
+[ "$CFG_GCC" != "" ] && CFLAGS="$CFLAGS -Wall -Wmissing-prototypes \
+	-Wsign-compare"
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
 then
