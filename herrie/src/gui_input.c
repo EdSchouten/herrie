@@ -164,6 +164,10 @@ gui_input_search(void)
 	gui_input_searchnext();
 }
 
+/**
+ * @brief Properly shutdown the application by stopping playback and
+ *        destroying the GUI.
+ */
 static void
 gui_input_quit(void)
 {
