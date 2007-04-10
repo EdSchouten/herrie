@@ -3,5 +3,6 @@
 *.o
 .gdb_history
 Makefile
-herrie/herrie
 herrie.1.gz
+herrie/herrie
+www/g-rave.xsl.gz
