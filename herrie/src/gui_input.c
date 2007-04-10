@@ -53,7 +53,7 @@ static int gui_input_curfocus = GUI_FOCUS_BROWSER;
 /**
  * @brief Indicator of the current search string.
  */
-char *cursearch = NULL;
+static char *cursearch = NULL;
 
 /**
  * @brief Fetch a character from the keyboard, already processing
