@@ -8,7 +8,7 @@ then
 	exit 1
 fi
 
-FILENAME="herrie-$1.tar.gz"
+FILENAME="herrie-$1.tar.bz2"
 TARBALL="www/distfiles/$FILENAME"
 
 cd `dirname $0`
@@ -21,7 +21,7 @@ fi
 
 mkdir -p www/distfiles
 git archive --format=tar --prefix="herrie-$1/" HEAD:herrie |
-    gzip -9 > $TARBALL
+    bzip2 -9 > $TARBALL
 
 cd www/distfiles
 md5 $FILENAME
