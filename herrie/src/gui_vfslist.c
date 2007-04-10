@@ -553,7 +553,7 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const char *str)
 
 	/* Step 2: search from beginning to selection */
 	for (vr = vfs_list_first(gv->list), idx = 1;
-	    vr != gv->vr_selected;
+	    vr != vfs_list_next(gv->vr_selected);
 	    vr = vfs_list_next(vr), idx++) {
 		if (gui_vfslist_searchmatch(vr, str)) {
 			gui_msgbar_warn(_("Search wrapped to top."));
