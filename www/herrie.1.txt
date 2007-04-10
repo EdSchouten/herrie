@@ -245,10 +245,10 @@ KEYBOARD BINDINGS
 
 
 AUTHORS
-       herrie is maintained by Ed Schouten <ed@fxq.nl>. Please visit http://g-
-       rave.nl/projects/herrie/ for more information, documentation and devel-
-       oper notes.
+       herrie  is  maintained  by  Ed  Schouten  <ed@fxq.nl>.	Please	 visit
+       http://herrie.info/  for  more information, documentation and developer
+       notes.
 
 
 
-Ed Schouten			August 19, 2006 		     HERRIE(1)
+Ed Schouten			April 10, 2007			     HERRIE(1)
