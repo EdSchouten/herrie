@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="http://g-rave.nl/res/xslt/g-rave.xsl"?>
+<?xml-stylesheet type="text/xsl" href="g-rave.xsl"?>
 <div xmlns="http://www.w3.org/1999/xhtml">
 	<h1>Herrie: a minimalistic music player</h1>
 
@@ -31,7 +31,7 @@
 	following locations:</p>
 
 	<ul>
-		<li><a href="distfiles/herrie-1.5.1.tar.gz">g-rave.nl</a></li>
+		<li><a href="http://g-rave.nl/projects/herrie/distfiles/herrie-1.5.1.tar.gz">g-rave.nl</a></li>
 		<li><a href="http://www.il.fontys.nl/~ed/projects/herrie/distfiles/herrie-1.5.1.tar.gz">Dispuut Interlink</a></li>
 		<li><a href="http://www.stack.nl/~ed/projects/herrie/distfiles/herrie-1.5.1.tar.gz">MCGV Stack</a></li>
 	</ul>
