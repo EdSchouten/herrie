@@ -109,7 +109,7 @@ CONFFILE=$CONFDIR/$APP_NAME.conf
 [ "$LINGUAS" = "" ] && LINGUAS='de nl tr'
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
-[ "$CC" = "" ] && CC=gcc
+[ "$CC" = "" ] && CC=cc
 [ "$INSTALL" = "" ] && INSTALL=install
 
 # Command line options
