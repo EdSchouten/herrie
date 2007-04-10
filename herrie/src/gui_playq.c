@@ -454,12 +454,16 @@ gui_playq_song_select(void)
 	playq_unlock();
 }
 
-void
-gui_playq_searchnext(void)
+int
+gui_playq_searchnext(const char *str)
 {
+	int ret;
+
 	playq_lock();
-	gui_vfslist_searchnext(win_playq);
+	ret = gui_vfslist_searchnext(win_playq, str);
 	playq_unlock();
+	
+	return (ret);
 }
 
 void

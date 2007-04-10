@@ -127,10 +127,6 @@ int gui_input_askyesno(const char *question);
  *        and return the user response.
  */
 char *gui_input_askstring(char *question, char *defstr, char *allowed);
-/**
- * @brief Indicator of the current search string.
- */
-extern char *gui_input_cursearch;
 
 /*
  *  gui_msgbar
@@ -246,7 +242,7 @@ void gui_playq_song_select(void);
  * @brief Search for the next item matching gui_input_cursearch in the
  *        playlist.
  */
-void gui_playq_searchnext(void);
+int gui_playq_searchnext(const char *str);
 /**
  * @brief Focus or unfocus the playlist.
  */
@@ -328,7 +324,7 @@ void gui_browser_playq_add_before(void);
  * @brief Search for the next item matching gui_input_cursearch in the
  *        file browser.
  */
-void gui_browser_searchnext(void);
+int gui_browser_searchnext(const char *str);
 /**
  * @brief Change to a specified directory.
  */

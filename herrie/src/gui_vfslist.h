@@ -206,6 +206,6 @@ void gui_vfslist_notify_done(struct gui_vfslist *gv);
  * @brief Change the selection to the first item that matches the
  *        globally defined search string gui_input_cursearch.
  */
-void gui_vfslist_searchnext(struct gui_vfslist *gv);
+int gui_vfslist_searchnext(struct gui_vfslist *gv, const char *str);
 
 #endif /* !_GUI_VFSLIST_H_ */

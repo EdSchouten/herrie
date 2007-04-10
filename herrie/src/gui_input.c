@@ -51,9 +51,9 @@
  */
 static int gui_input_curfocus = GUI_FOCUS_BROWSER;
 /**
- * @brief Indicator of current selected window.
+ * @brief Indicator of the current search string.
  */
-char *gui_input_cursearch = NULL;
+char *cursearch = NULL;
 
 /**
  * @brief Fetch a character from the keyboard, already processing
@@ -100,6 +100,50 @@ gui_input_switchfocus(void)
 }
 
 /**
+ * @brief Ask the user to enter a search string when none was given and
+ *        search for the next item matching the search string.
+ */
+static void
+gui_input_searchnext(void)
+{
+	int ret, nfocus = GUI_FOCUS_PLAYQ;
+
+	if (cursearch == NULL) {
+		/* No search string yet */
+		cursearch = gui_input_askstring(_("Search for"), NULL, NULL);
+		if (cursearch == NULL)
+			return;
+	}
+
+	/*
+	 * We want to change our search order depending on which dialog
+	 * is currently focused. This code is quite awful, but does the
+	 * thing. When the playq is focused, it only performs the first
+	 * two searches. If the browser is focused, it only performs the
+	 * last two.
+	 */
+	if (gui_input_curfocus == GUI_FOCUS_PLAYQ &&
+	    gui_playq_searchnext(cursearch) == 0) {
+		goto found;
+	} else if (gui_browser_searchnext(cursearch) == 0) {
+		nfocus = GUI_FOCUS_BROWSER;
+		goto found;
+	} else if (gui_input_curfocus != GUI_FOCUS_PLAYQ &&
+	    gui_playq_searchnext(cursearch) == 0) {
+		goto found;
+	}
+
+	/* Bad luck. */
+	gui_msgbar_warn(_("Not found."));
+	return;
+
+found:	/* Focus the window with the match and redraw them. */
+	gui_input_curfocus = nfocus;
+	gui_playq_setfocus(gui_input_curfocus == GUI_FOCUS_PLAYQ);
+	gui_browser_setfocus(gui_input_curfocus == GUI_FOCUS_BROWSER);
+}
+
+/**
  * @brief Ask the user to enter a new search string and perform the
  *        first search.
  */
@@ -109,18 +153,15 @@ gui_input_search(void)
 	char *str;
 
 	/* Allow the user to enter a search string */
-	str = gui_input_askstring(_("Search for"), gui_input_cursearch, NULL);
+	str = gui_input_askstring(_("Search for"), cursearch, NULL);
 	if (str == NULL)
 		return;
 
 	/* Replace our search string */
-	g_free(gui_input_cursearch);
-	gui_input_cursearch = str;
+	g_free(cursearch);
+	cursearch = str;
 
-	if (gui_input_curfocus == GUI_FOCUS_BROWSER)
-		gui_browser_searchnext();
-	else if (gui_input_curfocus == GUI_FOCUS_PLAYQ)
-		gui_playq_searchnext();
+	gui_input_searchnext();
 }
 
 static void
@@ -285,6 +326,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, '\t', 			gui_input_switchfocus },
 	{ -1, 0x17, 			gui_input_switchfocus }, /* ^W */
 	{ -1, '/',			gui_input_search },
+	{ -1, 'n',			gui_input_searchnext },
 	{ -1, KEY_LEFT,			gui_browser_dir_parent },
 	{ -1, KEY_RIGHT,		gui_browser_dir_enter },
 
@@ -294,7 +336,6 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_BROWSER, 'g',	gui_browser_cursor_top },
 	{ GUI_FOCUS_BROWSER, 'j',	gui_browser_cursor_down },
 	{ GUI_FOCUS_BROWSER, 'k',	gui_browser_cursor_up },
-	{ GUI_FOCUS_BROWSER, 'n',	gui_browser_searchnext },
 	{ GUI_FOCUS_BROWSER, 0x02,	gui_browser_cursor_pageup }, /* ^B */
 	{ GUI_FOCUS_BROWSER, 0x06,	gui_browser_cursor_pagedown }, /* ^F */
 	{ GUI_FOCUS_BROWSER, KEY_DOWN,	gui_browser_cursor_down },
@@ -310,7 +351,6 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_PLAYQ, 'g',		gui_playq_cursor_top },
 	{ GUI_FOCUS_PLAYQ, 'j',		gui_playq_cursor_down },
 	{ GUI_FOCUS_PLAYQ, 'k',		gui_playq_cursor_up },
-	{ GUI_FOCUS_PLAYQ, 'n',		gui_playq_searchnext },
 	{ GUI_FOCUS_PLAYQ, 0x02,	gui_playq_cursor_pageup }, /* ^B */
 	{ GUI_FOCUS_PLAYQ, 0x06,	gui_playq_cursor_pagedown }, /* ^F */
 	{ GUI_FOCUS_PLAYQ, KEY_DOWN,	gui_playq_cursor_down },

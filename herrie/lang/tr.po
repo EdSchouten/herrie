@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-09 09:54+0200\n"
-"PO-Revision-Date: 2007-04-09 09:54+0200\n"
+"POT-Creation-Date: 2007-04-10 21:49+0200\n"
+"PO-Revision-Date: 2007-04-10 21:49+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,28 +51,32 @@ msgstr "Parça listesini dosyaya yaz"
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
-#: gui_input.c:112
+#: gui_input.c:109 gui_input.c:152
 msgid "Search for"
 msgstr "Ara"
 
-#: gui_input.c:145
+#: gui_input.c:133
+msgid "Not found."
+msgstr "Bulunamadı"
+
+#: gui_input.c:182
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:182
+#: gui_input.c:219
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:235
+#: gui_input.c:272
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:424 main.c:68 main.c:74 main.c:80
+#: gui_input.c:460 main.c:68 main.c:74 main.c:80
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:425 main.c:70 main.c:76 main.c:82
+#: gui_input.c:461 main.c:70 main.c:76 main.c:82
 msgid "no"
 msgstr "hayır"
 
@@ -116,17 +120,9 @@ msgstr "İlk parçadasınız."
 msgid "You are at the last song."
 msgstr "Son parçadasınız."
 
-#: gui_vfslist.c:544
-msgid "No search pattern."
-msgstr "Arama kalıbı yok"
-
-#: gui_vfslist.c:563
+#: gui_vfslist.c:559
 msgid "Search wrapped to top."
 msgstr "Arama üste kaydırıldı."
-
-#: gui_vfslist.c:568
-msgid "Not found."
-msgstr "Bulunamadı"
 
 #: main.c:65
 msgid "Audio output"

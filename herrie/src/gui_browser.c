@@ -300,10 +300,10 @@ gui_browser_playq_add_before(void)
 	gui_vfslist_cursor_down(win_browser, 1);
 }
 
-void
-gui_browser_searchnext(void)
+int
+gui_browser_searchnext(const char *str)
 {
-	gui_vfslist_searchnext(win_browser);
+	return gui_vfslist_searchnext(win_browser, str);
 }
 
 void

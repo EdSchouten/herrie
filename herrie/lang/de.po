@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-09 09:54+0200\n"
-"PO-Revision-Date: 2007-04-09 09:54+0200\n"
+"POT-Creation-Date: 2007-04-10 21:49+0200\n"
+"PO-Revision-Date: 2007-04-10 21:49+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,28 +51,32 @@ msgstr "Playlist in Datei speichern"
 msgid "Unable to write playlist."
 msgstr "Fehler beim Schreiben der Playlist."
 
-#: gui_input.c:112
+#: gui_input.c:109 gui_input.c:152
 msgid "Search for"
 msgstr "Suchen"
 
-#: gui_input.c:145
+#: gui_input.c:133
+msgid "Not found."
+msgstr "Nicht gefunden."
+
+#: gui_input.c:182
 #, c-format
 msgid "Quit %s?"
 msgstr "%s beenden?"
 
-#: gui_input.c:182
+#: gui_input.c:219
 msgid "Jump to position"
 msgstr "Zu Position springen"
 
-#: gui_input.c:235
+#: gui_input.c:272
 msgid "Bad time format."
 msgstr "Ungültiges Zeit-Format."
 
-#: gui_input.c:424 main.c:68 main.c:74 main.c:80
+#: gui_input.c:460 main.c:68 main.c:74 main.c:80
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:425 main.c:70 main.c:76 main.c:82
+#: gui_input.c:461 main.c:70 main.c:76 main.c:82
 msgid "no"
 msgstr "nein"
 
@@ -116,17 +120,9 @@ msgstr "Du bist am Anfang der Liste."
 msgid "You are at the last song."
 msgstr "Du bist am Ende der Liste."
 
-#: gui_vfslist.c:544
-msgid "No search pattern."
-msgstr "Suchmuster fehlt."
-
-#: gui_vfslist.c:563
+#: gui_vfslist.c:559
 msgid "Search wrapped to top."
 msgstr "Suche am Ende angelagt, Fortsetzung am Anfang."
-
-#: gui_vfslist.c:568
-msgid "Not found."
-msgstr "Nicht gefunden."
 
 #: main.c:65
 msgid "Audio output"

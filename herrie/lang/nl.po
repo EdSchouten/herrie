@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-09 09:54+0200\n"
-"PO-Revision-Date: 2007-04-09 09:54+0200\n"
+"POT-Creation-Date: 2007-04-10 21:49+0200\n"
+"PO-Revision-Date: 2007-04-10 21:49+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -51,28 +51,32 @@ msgstr "Schrijf afspeellijst naar bestand"
 msgid "Unable to write playlist."
 msgstr "Het wegschrijven van de afspeellijst mislukt."
 
-#: gui_input.c:112
+#: gui_input.c:109 gui_input.c:152
 msgid "Search for"
 msgstr "Zoeken naar"
 
-#: gui_input.c:145
+#: gui_input.c:133
+msgid "Not found."
+msgstr "Niet gevonden."
+
+#: gui_input.c:182
 #, c-format
 msgid "Quit %s?"
 msgstr "%s afsluiten?"
 
-#: gui_input.c:182
+#: gui_input.c:219
 msgid "Jump to position"
 msgstr "Spring naar positie"
 
-#: gui_input.c:235
+#: gui_input.c:272
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:424 main.c:68 main.c:74 main.c:80
+#: gui_input.c:460 main.c:68 main.c:74 main.c:80
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:425 main.c:70 main.c:76 main.c:82
+#: gui_input.c:461 main.c:70 main.c:76 main.c:82
 msgid "no"
 msgstr "nee"
 
@@ -116,17 +120,9 @@ msgstr "Je bent bij het eerste nummer."
 msgid "You are at the last song."
 msgstr "Je bent bij het laatste nummer."
 
-#: gui_vfslist.c:544
-msgid "No search pattern."
-msgstr "Geen zoekpatroon."
-
-#: gui_vfslist.c:563
+#: gui_vfslist.c:559
 msgid "Search wrapped to top."
 msgstr "Zoekopdracht naar boven verplaatst."
-
-#: gui_vfslist.c:568
-msgid "Not found."
-msgstr "Niet gevonden."
 
 #: main.c:65
 msgid "Audio output"

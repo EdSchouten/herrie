@@ -512,66 +512,61 @@ gui_vfslist_notify_done(struct gui_vfslist *gv)
  *        string.
  */
 static int
-gui_vfslist_searchmatch(struct vfsref *vr)
+gui_vfslist_searchmatch(struct vfsref *vr, const char *str)
 {
 	size_t len;
 	const char *name;
 	char first;
 
 	name = vfs_name(vr);
-	len = strlen(gui_input_cursearch);
+	len = strlen(str);
 
 	/* strcasestr()-like string comparison */
-	if ((first = tolower(gui_input_cursearch[0])) == '\0')
+	if ((first = tolower(str[0])) == '\0')
 		return (0);
 	while (name[0] != '\0') {
 		if (tolower(name[0]) == first)
-			if (strncasecmp(name, gui_input_cursearch, len) == 0)
+			if (strncasecmp(name, str, len) == 0)
 				return (1);
 		name++;
 	}
 	return (0);
 }
 
-void
-gui_vfslist_searchnext(struct gui_vfslist *gv)
+int
+gui_vfslist_searchnext(struct gui_vfslist *gv, const char *str)
 {
 	struct vfsref *vr;
 	unsigned int idx;
 
-	if (gui_input_cursearch == NULL) {
-		/* Nothing to search for */
-		gui_msgbar_warn(_("No search pattern."));
-		return;
-	}
+	g_assert(str != NULL);
 
-	if (gui_vfslist_warn_isempty(gv))
-		return;
+	if (gv->vr_selected == NULL)
+		return (-1);
 
 	/* Step 1: search from selection to end */
 	for (vr = vfs_list_next(gv->vr_selected), idx = gv->idx_selected + 1;
 	    vr != NULL; vr = vfs_list_next(vr), idx++) {
-		if (gui_vfslist_searchmatch(vr))
+		if (gui_vfslist_searchmatch(vr, str))
 			goto found;
 	}
 
 	/* Step 2: search from beginning to selection */
 	for (vr = vfs_list_first(gv->list), idx = 1;
-	    vr != vfs_list_next(gv->vr_selected);
+	    vr != gv->vr_selected;
 	    vr = vfs_list_next(vr), idx++) {
-		if (gui_vfslist_searchmatch(vr)) {
+		if (gui_vfslist_searchmatch(vr, str)) {
 			gui_msgbar_warn(_("Search wrapped to top."));
 			goto found;
 		}
 	}
 
-	gui_msgbar_warn(_("Not found."));
-	return;
+	return (-1);
 
 found:	/* Select our found item */
 	gv->vr_selected = vr;
 	gv->idx_selected = idx;
 
-	/* Item may be outside the viewport */
-	gui_vfslist_refresh(gv);
+	/* No need to redraw, as window switching is performed */
+	return (0);
 }
