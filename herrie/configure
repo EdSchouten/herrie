@@ -34,7 +34,6 @@ unset CFG_BINEXT
 CFG_CURSES_HEADER=ncurses
 CFG_CURSES_LIB=ncurses
 CFG_FTELLO=yes
-CFG_GCC=yes
 CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
@@ -84,7 +83,6 @@ OpenBSD)
 	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
 	;;
 SunOS)
-	unset CFG_GCC
 	unset CFG_HTTP
 	[ "$PREFIX" = "" ] && PREFIX=/opt/sfw
 	LDFLAGS="$LDFLAGS -lresolv"
@@ -165,20 +163,12 @@ do
 	shift
 done
 
-# Only -O is POSIX. -O2 only works with GCC
-if [ "$CFLAGS" = "" ]
-then
-	if [ "$CFG_GCC" != "" ]
-	then
-		CFLAGS="-O2"
-	else
-		CFLAGS="-O"
-	fi
-fi
+[ "$CFLAGS" = "" ] && CFLAGS="-O"
 CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -I$PREFIX/include -I$PREFIX/include/ncurses \
     -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\>"
+#CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
 if [ $? -ne 0 ]
 then
 	echo "Error: Glib not found"
@@ -193,9 +183,6 @@ SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
 
 # ftello() usage
 [ "$CFG_FTELLO" != "" ] && CFLAGS="$CFLAGS -DBUILD_FTELLO"
-# GCC compiler (stricter compiler flags)
-[ "$CFG_GCC" != "" ] && CFLAGS="$CFLAGS -Wall -Wmissing-prototypes \
-	-Wsign-compare"
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
 then
@@ -330,7 +317,7 @@ done
 eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest$CFG_BINEXT
 if [ $? -ne 0 ]
 then
-	echo "Error: some dependencies are missing"
+	echo "Error: compiler is not usable"
 	exit 1
 fi
 rm conftest$CFG_BINEXT
