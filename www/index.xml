@@ -48,10 +48,10 @@ SIZE (herrie-1.5.1.tar.gz) = 53842</pre>
 	Herrie in their package manager:</p>
 
 	<ul>
-		<li><a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/audio/herrie/">FreeBSD</a></li>
-		<li><a href="http://trac.macports.org/projects/macports/browser/trunk/dports/audio/herrie/">MacPorts</a></li>
-		<li><a href="http://www.openbsd.org/cgi-bin/cvsweb/ports/audio/herrie/">OpenBSD</a></li>
-		<li><a href="http://svn.uludag.org.tr/contrib/applications/multimedia/herrie/">Pardus Linux</a></li>
+		<li><a href="http://freshports.org/audio/herrie">FreeBSD</a></li>
+		<li><a href="http://herrie.darwinports.com/">MacPorts</a></li>
+		<li><a href="http://ports.openbsd.nu/audio/herrie">OpenBSD</a></li>
+		<li><a href="http://paketler.pardus.org.tr/contrib/source/herrie.html">Pardus Linux</a></li>
 		<li><a href="http://cvs.pld-linux.org/cgi-bin/cvsweb/SPECS/herrie.spec">PLD Linux Distribution</a></li>
 		<li><a href="http://linux01.gwdg.de/~pbleser/rpm-navigation.php?cat=Sound/herrie/">SuSE Linux</a></li>
 	</ul>

@@ -11,7 +11,7 @@ fi
 FILENAME="herrie-$1.tar.gz"
 TARBALL="www/distfiles/$FILENAME"
 
-cd `$dirname 0`
+cd `dirname $0`
 
 if [ -e $TARBALL ]
 then
