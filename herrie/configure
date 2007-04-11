@@ -42,6 +42,7 @@ CFG_SCROBBLER=yes
 unset CFG_SETPROCTITLE
 unset CFG_SIGWINCH
 CFG_SNDFILE=yes
+unset CFG_STRICT
 CFG_VORBIS=yes
 CFG_XSPF=yes
 DOIT=@
@@ -145,6 +146,9 @@ do
 		CFG_AO=$1
 		;;
 	
+	strict)
+		CFG_STRICT=yes
+		;;
 	verbose)
 		unset DOIT
 		;;
@@ -168,7 +172,6 @@ CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -I$PREFIX/include -I$PREFIX/include/ncurses \
     -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\>"
-#CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
 if [ $? -ne 0 ]
 then
 	echo "Error: Glib not found"
@@ -246,6 +249,11 @@ then
 	CFLAGS="$CFLAGS -DBUILD_SNDFILE"
 	LDFLAGS="$LDFLAGS -lsndfile"
 	SRCS="$SRCS audio_format_sndfile"
+fi
+# Strict compilation
+if [ "$CFG_STRICT" != "" ]
+then
+	CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
 fi
 # Translation support
 if [ "$LINGUAS" != "" ]

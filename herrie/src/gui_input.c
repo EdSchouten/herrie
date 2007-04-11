@@ -106,7 +106,7 @@ gui_input_switchfocus(void)
 static void
 gui_input_searchnext(void)
 {
-	int ret, nfocus = GUI_FOCUS_PLAYQ;
+	int nfocus = GUI_FOCUS_PLAYQ;
 
 	if (cursearch == NULL) {
 		/* No search string yet */
