@@ -87,6 +87,9 @@ gui_playq_statbar_song(struct audio_file *fd)
 		/* Smash strings down to ISO-8859-1 */
 		title = g_convert(fd->tag.title, -1,
 		    "ISO-8859-1", "UTF-8", NULL, NULL, NULL);
+		if (title == NULL)
+			/* Conversion error - don't convert charset */
+			title = g_strdup(fd->tag.title);
 		if (fd->tag.artist == NULL) {
 			/* Only show the title */
 			g_string_assign(str_song, title);
@@ -94,6 +97,9 @@ gui_playq_statbar_song(struct audio_file *fd)
 			/* Print artist and title */
 			artist = g_convert(fd->tag.artist, -1,
 			    "ISO-8859-1", "UTF-8", NULL, NULL, NULL);
+			if (artist == NULL)
+				/* Conversion error */
+				artist = g_strdup(fd->tag.artist);
 			g_string_printf(str_song, "%s - %s",
 			    artist, title);
 			g_free(artist);

@@ -13,6 +13,7 @@
  * Improved: 'n' will now ask for a search string if none was given
  * Improved: Search now continues in the other window when no match is found
  * Fixed: Make modplug code work on Linux - Michael
+ * Fixed: Don't crash when charset conversion of tags fails - Michael
 
 2007-03-10 -- Herrie 1.5.1:
  * Added: Global configuration file
