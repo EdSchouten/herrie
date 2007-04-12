@@ -105,8 +105,8 @@ modplug_open(struct audio_file *fd, const char *ext)
 	data->map_len = ftello(fd->fp);
 
 	/* Memory map the entire file */
-	data->map_base = mmap(NULL, data->map_len, PROT_READ, 0,
-	    fileno(fd->fp), 0);
+	data->map_base = mmap(NULL, data->map_len, PROT_READ,
+	    MAP_PRIVATE, fileno(fd->fp), 0);
 	if (data->map_base == MAP_FAILED)
 		goto free;
 

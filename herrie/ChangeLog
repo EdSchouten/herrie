@@ -12,6 +12,7 @@
  * Changed: DESTROOT option renamed to DESTDIR to be more conformant
  * Improved: 'n' will now ask for a search string if none was given
  * Improved: Search now continues in the other window when no match is found
+ * Fixed: Make modplug code work on Linux - Michael
 
 2007-03-10 -- Herrie 1.5.1:
  * Added: Global configuration file
