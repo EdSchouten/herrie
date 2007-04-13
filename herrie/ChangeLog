@@ -3,6 +3,7 @@
  * Added: XSPF playlist support through libSpiff
  * Improved: Perform compilation test during configuration
  * Added: Autosaving the playlist on shutdown - Martijn van den Dungen
+ * Changed: Playback must be manually started now - use 'x'
  * Improved: international bindings for yes/no questions
  * Added: Save playlists to disk as M3U, PLS and XSPF
  * Improved: Signal handling should now work more reliable
