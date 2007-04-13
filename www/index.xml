@@ -49,6 +49,7 @@ SIZE (herrie-1.5.1.tar.gz) = 53842</pre>
 
 	<ul>
 		<li><a href="http://freshports.org/audio/herrie">FreeBSD</a></li>
+		<li><a href="http://packages.gentoo.org/packages/?category=media-sound;name=herrie">Gentoo Linux</a></li>
 		<li><a href="http://herrie.darwinports.com/">MacPorts</a></li>
 		<li><a href="http://ports.openbsd.nu/audio/herrie">OpenBSD</a></li>
 		<li><a href="http://paketler.pardus.org.tr/contrib/source/herrie.html">Pardus Linux</a></li>
