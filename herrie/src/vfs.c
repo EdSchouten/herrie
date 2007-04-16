@@ -157,9 +157,9 @@ static char *
 vfs_path_concat(const char *dir, const char *file)
 {
 	GString *npath;
-	char *tmp1, *off;
+	char *tmp, *off;
 #ifdef G_OS_UNIX
-	struct passwd *user;
+	struct passwd *pw;
 #endif /* G_OS_UNIX */
 
 	if (file[0] == '~' &&
@@ -175,14 +175,14 @@ vfs_path_concat(const char *dir, const char *file)
 		/* Temporarily split the string and resolve the username */
 		if (off != NULL)
 			*off = '\0';
-		user = getpwnam(file + 1);
+		pw = getpwnam(file + 1);
 		if (off != NULL)
 			*off = G_DIR_SEPARATOR;
-		if (user == NULL)
+		if (pw == NULL)
 			return (NULL);
 
 		/* Create the new pathname */
-		npath = g_string_new(user->pw_dir);
+		npath = g_string_new(pw->pw_dir);
 		if (off != NULL)
 			g_string_append(npath, off);
 #endif /* G_OS_UNIX */
@@ -195,9 +195,9 @@ vfs_path_concat(const char *dir, const char *file)
 			return (NULL);
 
 		/* Use the predefined basedir */
-		tmp1 = g_build_filename(dir, file, NULL);
-		npath = g_string_new(tmp1);
-		g_free(tmp1);
+		tmp = g_build_filename(dir, file, NULL);
+		npath = g_string_new(tmp);
+		g_free(tmp);
 	} else {
 		/* Relative filename with no base */
 		return (NULL);
@@ -219,11 +219,11 @@ vfs_path_concat(const char *dir, const char *file)
 
 			/* Strip one directory below */
 			*off = '\0';
-			tmp1 = strrchr(npath->str, G_DIR_SEPARATOR);
-			if (tmp1 != NULL) {
-				g_string_erase(npath, tmp1 - npath->str,
-				    (off - tmp1) + 3);
-				off = tmp1;
+			tmp = strrchr(npath->str, G_DIR_SEPARATOR);
+			if (tmp != NULL) {
+				g_string_erase(npath, tmp - npath->str,
+				    (off - tmp) + 3);
+				off = tmp;
 			} else {
 				/* Woops! Too many ..'s */
 				g_string_free(npath, TRUE);
