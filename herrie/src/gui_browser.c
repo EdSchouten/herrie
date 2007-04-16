@@ -310,10 +310,13 @@ void
 gui_browser_chdir(void)
 {
 	char *path;
+	const char *curwd = NULL;
 	int dir = 0;
 	struct vfsref *vr;
 
-	path = gui_input_askstring(_("Change directory"), NULL, NULL);
+	if (vr_curdir != NULL)
+		curwd = vfs_filename(vr_curdir);
+	path = gui_input_askstring(_("Change directory"), curwd, NULL);
 	if (path == NULL)
 		return;
 

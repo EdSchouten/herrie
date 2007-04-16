@@ -126,7 +126,8 @@ int gui_input_askyesno(const char *question);
  * @brief Display a string input question at the bottom of the screen
  *        and return the user response.
  */
-char *gui_input_askstring(char *question, char *defstr, char *allowed);
+char *gui_input_askstring(const char *question, const char *defstr,
+    const char *allowed);
 
 /*
  *  gui_msgbar

@@ -542,7 +542,8 @@ gui_input_trimword(GString *gs)
 }
 
 char *
-gui_input_askstring(char *question, char *defstr, char *allowed)
+gui_input_askstring(const char *question, const char *defstr,
+    const char *allowed)
 {
 	GString *msg;
 	unsigned int origlen, newlen;
