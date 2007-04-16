@@ -21,7 +21,7 @@ msgstr "Nie mo¿na utworzyæ urz±dzenia \"%s\".\n"
 
 #: audio_output_sdl.c:82
 msgid "Cannot initialize SDL audio subsystem.\n"
-msgstr "Nie mo¿na zainicjowaæ podsystemu audio SDL"
+msgstr "Nie mo¿na zainicjowaæ podsystemu audio SDL.\n"
 
 #: gui_browser.c:115
 msgid "Unable to open initial directory."
