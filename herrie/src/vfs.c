@@ -159,7 +159,12 @@ vfs_path_concat(const char *dir, const char *file)
 	GString *npath;
 	char *tmp1, *off;
 
-	if (g_path_is_absolute(file)) {
+	if (file[0] == '~' &&
+	    (file[1] == '\0' || file[1] == G_DIR_SEPARATOR)) {
+		/* Expand ~ to go to the home directory */
+		npath = g_string_new(g_get_home_dir());
+		g_string_append(npath, file + 1);
+	} else if (g_path_is_absolute(file)) {
 		/* We already have an absolute path */
 		npath = g_string_new(file);
 	} else if (dir != NULL) {
