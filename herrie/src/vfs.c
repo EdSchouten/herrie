@@ -158,12 +158,34 @@ vfs_path_concat(const char *dir, const char *file)
 {
 	GString *npath;
 	char *tmp1, *off;
+#ifdef G_OS_UNIX
+	struct passwd *user;
+#endif /* G_OS_UNIX */
 
 	if (file[0] == '~' &&
 	    (file[1] == '\0' || file[1] == G_DIR_SEPARATOR)) {
 		/* Expand ~ to go to the home directory */
 		npath = g_string_new(g_get_home_dir());
 		g_string_append(npath, file + 1);
+#ifdef G_OS_UNIX
+	} else if (file[0] == '~') {
+		/* Expand ~username - UNIX only */
+		off = strchr(file, G_DIR_SEPARATOR);
+
+		/* Temporarily split the string and resolve the username */
+		if (off != NULL)
+			*off = '\0';
+		user = getpwnam(file + 1);
+		if (off != NULL)
+			*off = G_DIR_SEPARATOR;
+		if (user == NULL)
+			return (NULL);
+
+		/* Create the new pathname */
+		npath = g_string_new(user->pw_dir);
+		if (off != NULL)
+			g_string_append(npath, off);
+#endif /* G_OS_UNIX */
 	} else if (g_path_is_absolute(file)) {
 		/* We already have an absolute path */
 		npath = g_string_new(file);
