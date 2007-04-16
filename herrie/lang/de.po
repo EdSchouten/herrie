@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-10 21:49+0200\n"
-"PO-Revision-Date: 2007-04-10 21:49+0200\n"
+"POT-Creation-Date: 2007-04-16 07:58+0200\n"
+"PO-Revision-Date: 2007-04-16 07:58+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,60 +51,60 @@ msgstr "Playlist in Datei speichern"
 msgid "Unable to write playlist."
 msgstr "Fehler beim Schreiben der Playlist."
 
-#: gui_input.c:109 gui_input.c:152
+#: gui_input.c:113 gui_input.c:156
 msgid "Search for"
 msgstr "Suchen"
 
-#: gui_input.c:133
+#: gui_input.c:137
 msgid "Not found."
 msgstr "Nicht gefunden."
 
-#: gui_input.c:182
+#: gui_input.c:190
 #, c-format
 msgid "Quit %s?"
 msgstr "%s beenden?"
 
-#: gui_input.c:219
+#: gui_input.c:227
 msgid "Jump to position"
 msgstr "Zu Position springen"
 
-#: gui_input.c:272
+#: gui_input.c:280
 msgid "Bad time format."
 msgstr "Ungültiges Zeit-Format."
 
-#: gui_input.c:460 main.c:68 main.c:74 main.c:80
+#: gui_input.c:468 main.c:68 main.c:74 main.c:80
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:461 main.c:70 main.c:76 main.c:82
+#: gui_input.c:469 main.c:70 main.c:76 main.c:82
 msgid "no"
 msgstr "nein"
 
-#: gui_playq.c:113
+#: gui_playq.c:119
 msgid "Idle"
 msgstr "Inaktiv"
 
-#: gui_playq.c:116
+#: gui_playq.c:122
 msgid "Paused"
 msgstr "Pausiert"
 
-#: gui_playq.c:118
+#: gui_playq.c:124
 msgid "Playing"
 msgstr "Aktiv"
 
-#: gui_playq.c:356
+#: gui_playq.c:362
 msgid "Remove all songs from the playlist?"
 msgstr "Alle Lieder aus der Playlist entfernen?"
 
-#: gui_playq.c:367
+#: gui_playq.c:373
 msgid "Randomize the playlist?"
 msgstr "Playlist zufällig anordnen?"
 
-#: gui_playq.c:416
+#: gui_playq.c:422
 msgid "The song is already at the top of the playlist."
 msgstr "Dieses Lied ist bereits ganz oben."
 
-#: gui_playq.c:435
+#: gui_playq.c:441
 msgid "The song is already at the bottom of the playlist."
 msgstr "Dieses Lied ist bereits ganz am Ende."
 
@@ -148,7 +148,7 @@ msgstr "Unterstützte Audio-Formate"
 msgid "usage"
 msgstr "Benutzung"
 
-#: playq.c:191
+#: playq.c:186
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "\"%s\" konnte nicht zum Abspielen geöffnet werden."

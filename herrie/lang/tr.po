@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-10 21:49+0200\n"
-"PO-Revision-Date: 2007-04-10 21:49+0200\n"
+"POT-Creation-Date: 2007-04-16 07:58+0200\n"
+"PO-Revision-Date: 2007-04-16 07:58+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,60 +51,60 @@ msgstr "Parça listesini dosyaya yaz"
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
-#: gui_input.c:109 gui_input.c:152
+#: gui_input.c:113 gui_input.c:156
 msgid "Search for"
 msgstr "Ara"
 
-#: gui_input.c:133
+#: gui_input.c:137
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: gui_input.c:182
+#: gui_input.c:190
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:219
+#: gui_input.c:227
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:272
+#: gui_input.c:280
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:460 main.c:68 main.c:74 main.c:80
+#: gui_input.c:468 main.c:68 main.c:74 main.c:80
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:461 main.c:70 main.c:76 main.c:82
+#: gui_input.c:469 main.c:70 main.c:76 main.c:82
 msgid "no"
 msgstr "hayır"
 
-#: gui_playq.c:113
+#: gui_playq.c:119
 msgid "Idle"
 msgstr "Boş"
 
-#: gui_playq.c:116
+#: gui_playq.c:122
 msgid "Paused"
 msgstr "Durduruldu"
 
-#: gui_playq.c:118
+#: gui_playq.c:124
 msgid "Playing"
 msgstr "Çalınıyor"
 
-#: gui_playq.c:356
+#: gui_playq.c:362
 msgid "Remove all songs from the playlist?"
 msgstr "Tüm parçaları listeden sil?"
 
-#: gui_playq.c:367
+#: gui_playq.c:373
 msgid "Randomize the playlist?"
 msgstr "Parça listesini karıştır?"
 
-#: gui_playq.c:416
+#: gui_playq.c:422
 msgid "The song is already at the top of the playlist."
 msgstr "Parça zaten parça listesinin en üstünde."
 
-#: gui_playq.c:435
+#: gui_playq.c:441
 msgid "The song is already at the bottom of the playlist."
 msgstr "Parça zaten parça listesinin en altında."
 
@@ -148,7 +148,7 @@ msgstr "Desteklenen ses dosyası biçimleri"
 msgid "usage"
 msgstr "kullanım"
 
-#: playq.c:191
+#: playq.c:186
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Tekrarlamak içn \"%s\" açılamadı."

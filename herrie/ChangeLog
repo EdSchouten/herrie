@@ -1,3 +1,6 @@
+????-??-?? -- Herrie 1.7:
+ * Added: Polish translation - Adam Golebiowski from PLD Linux
+
 2007-04-13 -- Herrie 1.6 "First Anniversary Edition":
  * Added: Ability to specify the Esound hostname in the config file
  * Added: XSPF playlist support through libSpiff

@@ -1,223 +1,217 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-16 07:58+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2007-04-16 07:58+0000\n"
+"Last-Translator: Adam Golebiowski <adamg@pld-linux.org>\n"
+"Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: audio_output_ao.c:115 audio_output_sdl.c:114
 msgid "Cannot open the audio device."
-msgstr ""
+msgstr "Nie mo¿na otworzyæ urz±dzenia"
 
 #: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr ""
+msgstr "Nie mo¿na utworzyæ urz±dzenia \"%s\".\n"
 
 #: audio_output_sdl.c:82
 msgid "Cannot initialize SDL audio subsystem.\n"
-msgstr ""
+msgstr "Nie mo¿na zainicjowaæ podsystemu audio SDL"
 
 #: gui_browser.c:115
 msgid "Unable to open initial directory."
-msgstr ""
+msgstr "Nie mo¿na otworzyæ katalogu."
 
 #: gui_browser.c:220
 msgid "Unable to enter the parent directory."
-msgstr ""
+msgstr "Nie mo¿na wej¶æ do katalogu nadrzêdnego."
 
 #: gui_browser.c:235
 msgid "Unable to enter the selected directory."
-msgstr ""
+msgstr "Nie mo¿na wej¶æ do wskazanego katalogu."
 
 #: gui_browser.c:316
 msgid "Change directory"
-msgstr ""
+msgstr "Zmieñ katalog"
 
 #: gui_browser.c:354
 msgid "Unable to display the file or directory."
-msgstr ""
+msgstr "Nie mo¿na wy¶wietliæ pliku lub katalogu"
 
 #: gui_browser.c:371
 msgid "Write playlist to file"
-msgstr ""
+msgstr "Zapisz playlistê do pliku"
 
 #: gui_browser.c:380
 msgid "Unable to write playlist."
-msgstr ""
+msgstr "Nie mo¿na zapisac playlisty."
 
 #: gui_input.c:113 gui_input.c:156
 msgid "Search for"
-msgstr ""
+msgstr "Szukaj"
 
 #: gui_input.c:137
 msgid "Not found."
-msgstr ""
+msgstr "Nie znaleziono"
 
 #: gui_input.c:190
 #, c-format
 msgid "Quit %s?"
-msgstr ""
+msgstr "Zamknij %s?"
 
 #: gui_input.c:227
 msgid "Jump to position"
-msgstr ""
+msgstr "Skocz do pozycji"
 
 #: gui_input.c:280
 msgid "Bad time format."
-msgstr ""
+msgstr "Z³y format czasu."
 
 #: gui_input.c:468 main.c:68 main.c:74 main.c:80
 msgid "yes"
-msgstr ""
+msgstr "tak"
 
 #: gui_input.c:469 main.c:70 main.c:76 main.c:82
 msgid "no"
-msgstr ""
+msgstr "nie"
 
 #: gui_playq.c:119
 msgid "Idle"
-msgstr ""
+msgstr "Bezczynny"
 
 #: gui_playq.c:122
 msgid "Paused"
-msgstr ""
+msgstr "Pauza"
 
 #: gui_playq.c:124
 msgid "Playing"
-msgstr ""
+msgstr "Gra"
 
 #: gui_playq.c:362
 msgid "Remove all songs from the playlist?"
-msgstr ""
+msgstr "Usun±c wszystkie utwory z playlisty?"
 
 #: gui_playq.c:373
 msgid "Randomize the playlist?"
-msgstr ""
+msgstr "Przemieszaæ playlistê?"
 
 #: gui_playq.c:422
 msgid "The song is already at the top of the playlist."
-msgstr ""
+msgstr "Utwór ju¿ jest na szczycie playlisty."
 
 #: gui_playq.c:441
 msgid "The song is already at the bottom of the playlist."
-msgstr ""
+msgstr "Uwtór ju¿ jest na dole playlisty."
 
 #: gui_vfslist.c:230
 msgid "There are no songs."
-msgstr ""
+msgstr "Brak utworów."
 
 #: gui_vfslist.c:287
 msgid "You are at the first song."
-msgstr ""
+msgstr "To jest pierwszy utwór."
 
 #: gui_vfslist.c:306
 msgid "You are at the last song."
-msgstr ""
+msgstr "To jest ostati utwór."
 
 #: gui_vfslist.c:559
 msgid "Search wrapped to top."
-msgstr ""
+msgstr "Przeszukiwanie wznowione od pocz±tku."
 
 #: main.c:65
 msgid "Audio output"
-msgstr ""
+msgstr "Wyj¶cie audio"
 
 #: main.c:66
 msgid "Support for AudioScrobbler"
-msgstr ""
+msgstr "Wsparcie dla AudioScrobblera"
 
 #: main.c:72
 msgid "Support for HTTP streams"
-msgstr ""
+msgstr "Wsparcie dla strumienie HTTP"
 
 #: main.c:78
 msgid "Support for XSPF playlists (`spiff')"
-msgstr ""
+msgstr "Wsparcie dla plylist XSPF ('spiff')"
 
 #: main.c:84
 msgid "Supported audio file formats"
-msgstr ""
+msgstr "Wspierane formaty plików audio"
 
 #: main.c:96
 msgid "usage"
-msgstr ""
+msgstr "u¿ycie"
 
 #: playq.c:186
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr ""
+msgstr "Nie uda³o siê otworzyæ \"%s\" do odtworzenia."
 
 #: playq.c:415
 #, c-format
 msgid "Repeat: %s"
-msgstr ""
+msgstr "Powtórz: %s"
 
 #: playq.c:416
 msgid "on"
-msgstr ""
+msgstr "w³±czony"
 
 #: playq.c:416
 msgid "off"
-msgstr ""
+msgstr "wy³±czony"
 
 #: scrobbler.c:311
 msgid "Successfully authorized at AudioScrobbler."
-msgstr ""
+msgstr "Pomy¶lnie zautoryzowany w AudioScrobbler."
 
 #: scrobbler.c:318
 msgid "Failed to authorize at AudioScrobbler."
-msgstr ""
+msgstr "Nie uda³o siê zautoryzowaæ w AudioScrobbler."
 
 #: scrobbler.c:334
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr ""
+msgstr "Pomy¶lnie wys³ano utwór do AudioScrobbler."
 
 #: scrobbler.c:338
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr ""
+msgstr "Pomyslnie wys³ano %d utworów do AudioScrobbler."
 
 #: scrobbler.c:344
 msgid "Invalid AudioScrobbler username/password."
-msgstr ""
+msgstr "Nieprawid³owa nazwa u¿ytkownika/has³o w AudioScrobbler."
 
 #: scrobbler.c:347
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr ""
+msgstr "Nie uda³o siê wys³aæ utworów do AudioScrobbler."
 
 #: vfs.c:109
 #, c-format
 msgid "Unknown user: %s\n"
-msgstr ""
+msgstr "Nieznany u¿ytkownik %s\n"
 
 #: vfs.c:121
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr ""
+msgstr "Nie uda³o siê wykonaæ chroot do %s\n"
 
 #: vfs.c:129
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr ""
+msgstr "Nie uda³o siê zmieniæ grupy na %d\n"
 
 #: vfs.c:133
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr ""
+msgstr "Nie uda³o siê zmieniæ u¿ytkownika na %d\n"
 
 #: vfs_http.c:145
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr ""
+msgstr "Po³aczenie z \"%s\" utracone."

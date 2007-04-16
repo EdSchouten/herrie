@@ -107,7 +107,7 @@ SRCDIR=`dirname $0`
 BINDIR=$PREFIX/bin
 [ "$CONFDIR" = "" ] && CONFDIR=$PREFIX/etc
 CONFFILE=$CONFDIR/$APP_NAME.conf
-[ "$LINGUAS" = "" ] && LINGUAS='de nl tr'
+[ "$LINGUAS" = "" ] && LINGUAS='de nl pl tr'
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
 [ "$CC" = "" ] && CC=cc
