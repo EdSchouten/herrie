@@ -66,16 +66,16 @@ static void
 gui_playq_statbar_song(struct audio_file *fd)
 {
 	char *artist, *title;
-	const char *locale;
+	const char *charset;
 
 	if (fd == NULL) {
 		g_string_assign(str_song, "");
 	} else {
 		/* Smash strings down to the correct charset */
-		locale = setlocale(LC_CTYPE, NULL);
+		charset = nl_langinfo(CODESET);
 
 		g_assert(fd->tag.title != NULL);
-		title = g_convert(fd->tag.title, -1, locale, "UTF-8",
+		title = g_convert(fd->tag.title, -1, charset, "UTF-8",
 		    NULL, NULL, NULL);
 		if (title == NULL)
 			/* Conversion error - don't convert charset */
@@ -86,7 +86,7 @@ gui_playq_statbar_song(struct audio_file *fd)
 			g_string_assign(str_song, title);
 		} else {
 			/* Print artist and title */
-			artist = g_convert(fd->tag.artist, -1, locale,
+			artist = g_convert(fd->tag.artist, -1, charset,
 			    "UTF-8", NULL, NULL, NULL);
 			if (artist == NULL)
 				/* Conversion error */
