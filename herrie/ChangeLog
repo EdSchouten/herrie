@@ -2,6 +2,8 @@
  * Added: Polish translation - Adam Golebiowski from PLD Linux
  * Added: Support for ~ or ~user in pathnames to go to the home directory
  * Improved: Automatically fill in the current directory when using 'C'
+ * Added: Configure option to link against ncursesw
+ * Improved: Character set handling for displaying track titles
 
 2007-04-13 -- Herrie 1.6 "First Anniversary Edition":
  * Added: Ability to specify the Esound hostname in the config file
