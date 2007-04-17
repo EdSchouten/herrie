@@ -35,7 +35,6 @@
 #include <sys/types.h>
 #include <ctype.h>
 #include <fcntl.h>
-#include <langinfo.h>
 #ifdef BUILD_TRANS
 #include <locale.h>
 #endif /* BUILD_TRANS */
@@ -71,6 +70,9 @@
 #include <resolv.h>
 #endif /* BUILD_RES_INIT */
 #endif /* G_OS_UNIX */
+#ifndef G_OS_WIN32
+#include <langinfo.h>
+#endif /* !G_OS_WIN32 */
 
 #ifndef BUILD_FTELLO
 #define ftello(stream)		ftell(stream)
