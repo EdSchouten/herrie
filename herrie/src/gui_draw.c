@@ -35,6 +35,7 @@
 
 GMutex *gui_mtx;
 int gui_draw_colors;
+char *gui_charset;
 
 void
 gui_draw_init_pre(void)
@@ -61,6 +62,7 @@ gui_draw_init_post(void)
 
 	gui_draw_colors =
 	    config_getopt_bool("gui.color.enabled") && has_colors();
+	gui_charset = nl_langinfo(CODESET);
 
 	if (gui_draw_colors) {
 		start_color();
