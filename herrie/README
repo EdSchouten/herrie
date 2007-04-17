@@ -79,9 +79,9 @@ configure script to change certain parameters:
 - no_http       Disable support for HTTP audio streams
 - no_modplug    Disable libmodplug linkage
 - no_mp3        Disable MP3 audio file support
+- no_nls        Disable native language support
 - no_scrobbler  Disable AudioScrobbler support
 - no_sndfile    Disable libsndfile linkage (Wave/FLAC support)
-- no_nls        Disable native language support
 - no_vorbis     Disable Ogg Vorbis support
 - no_xspf       Disable XSPF (`Spiff') playlist support
 
