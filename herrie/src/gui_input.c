@@ -476,7 +476,7 @@ gui_input_askyesno(const char *question)
 	for (;;) {
 		input = gui_input_getch();
 
-#ifdef BUILD_TRANS
+#ifdef BUILD_NLS
 		/* Localized yes/no buttons */
 		if (input == yes[0]) {
 			ret = 0;
@@ -485,7 +485,7 @@ gui_input_askyesno(const char *question)
 			ret = -1;
 			goto done;
 		}
-#endif /* BUILD_TRANS */
+#endif /* BUILD_NLS */
 
 		/* Default y/n behaviour */
 		switch(input) {

@@ -133,7 +133,7 @@ do
 	no_sndfile)
 		unset CFG_SNDFILE
 		;;
-	no_trans)
+	no_nls)
 		unset LINGUAS
 		;;
 	no_vorbis)
@@ -266,7 +266,7 @@ fi
 # Translation support
 if [ "$LINGUAS" != "" ]
 then
-	CFLAGS="$CFLAGS -DBUILD_TRANS"
+	CFLAGS="$CFLAGS -DBUILD_NLS"
 	CFLAGS_main="$CFLAGS_main -DTRANSDIR=\\\"$TRANSDIR\\\""
 fi
 # Ogg Vorbis support

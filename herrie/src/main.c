@@ -111,11 +111,11 @@ main(int argc, char *argv[])
 	int devnull;
 #endif /* CLOSE_STDERR */
 
-#ifdef BUILD_TRANS
+#ifdef BUILD_NLS
 	setlocale(LC_ALL, "");
 	bindtextdomain(APP_NAME, TRANSDIR);
 	textdomain(APP_NAME);
-#endif /* BUILD_TRANS */
+#endif /* BUILD_NLS */
 
 #ifdef CONFFILE
 	config_load(CONFFILE);

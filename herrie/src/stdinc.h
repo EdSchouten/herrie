@@ -35,9 +35,9 @@
 #include <sys/types.h>
 #include <ctype.h>
 #include <fcntl.h>
-#ifdef BUILD_TRANS
+#ifdef BUILD_NLS
 #include <locale.h>
-#endif /* BUILD_TRANS */
+#endif /* BUILD_NLS */
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,11 +46,11 @@
 #include <unistd.h>
 
 #include <glib.h>
-#ifdef BUILD_TRANS
+#ifdef BUILD_NLS
 #include <glib/gi18n.h>
-#else /* !BUILD_TRANS */
+#else /* !BUILD_NLS */
 #define _(str) str
-#endif /* BUILD_TRANS */
+#endif /* BUILD_NLS */
 
 /* Older Glib's don't have GSlice yet */
 #ifndef g_slice_new
