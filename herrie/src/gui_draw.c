@@ -62,7 +62,11 @@ gui_draw_init_post(void)
 
 	gui_draw_colors =
 	    config_getopt_bool("gui.color.enabled") && has_colors();
+#ifdef G_OS_WIN32
+	gui_charset = "US-ASCII"; /* XXX */
+#else /* !G_OS_WIN32 */
 	gui_charset = nl_langinfo(CODESET);
+#endif /* G_OS_WIN32 */
 
 	if (gui_draw_colors) {
 		start_color();
