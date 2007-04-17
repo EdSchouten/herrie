@@ -73,7 +73,7 @@ gui_playq_statbar_song(struct audio_file *fd)
 		/* Smash strings down to the correct charset */
 		g_assert(fd->tag.title != NULL);
 		title = g_convert_with_fallback(fd->tag.title, -1,
-		    gui_charset, "UTF-8", "?", NULL, NULL, NULL);
+		    "", "UTF-8", "?", NULL, NULL, NULL);
 		if (title == NULL)
 			/* Conversion error - don't convert charset */
 			title = g_strdup(fd->tag.title);
@@ -84,7 +84,7 @@ gui_playq_statbar_song(struct audio_file *fd)
 		} else {
 			/* Print artist and title */
 			artist = g_convert_with_fallback(fd->tag.artist, -1,
-			    gui_charset, "UTF-8", "?", NULL, NULL, NULL);
+			    "", "UTF-8", "?", NULL, NULL, NULL);
 			if (artist == NULL)
 				/* Conversion error */
 				artist = g_strdup(fd->tag.artist);

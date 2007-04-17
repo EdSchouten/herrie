@@ -42,10 +42,6 @@ struct vfsref;
  */
 extern int gui_draw_colors;
 /**
- * @brief Character set that is currently used on the terminal.
- */
-extern char *gui_charset;
-/**
  * @brief Refresh the curses GUI after a terminal resize.
  */
 void gui_draw_resize(void);
