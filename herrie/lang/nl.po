@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-16 07:58+0200\n"
-"PO-Revision-Date: 2007-04-16 07:58+0200\n"
+"POT-Creation-Date: 2007-04-17 22:11+0200\n"
+"PO-Revision-Date: 2007-04-17 22:11+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -35,19 +35,19 @@ msgstr "Naar een hogere map gaan mislukt."
 msgid "Unable to enter the selected directory."
 msgstr "Naar de geselecteerde map gaan mislukt."
 
-#: gui_browser.c:316
+#: gui_browser.c:319
 msgid "Change directory"
 msgstr "Verplaats van map"
 
-#: gui_browser.c:354
+#: gui_browser.c:357
 msgid "Unable to display the file or directory."
 msgstr "Het weergeven van het bestand of de map mislukt."
 
-#: gui_browser.c:371
+#: gui_browser.c:374
 msgid "Write playlist to file"
 msgstr "Schrijf afspeellijst naar bestand"
 
-#: gui_browser.c:380
+#: gui_browser.c:383
 msgid "Unable to write playlist."
 msgstr "Het wegschrijven van de afspeellijst mislukt."
 
@@ -80,31 +80,31 @@ msgstr "ja"
 msgid "no"
 msgstr "nee"
 
-#: gui_playq.c:119
+#: gui_playq.c:106
 msgid "Idle"
 msgstr "Inactief"
 
-#: gui_playq.c:122
+#: gui_playq.c:109
 msgid "Paused"
 msgstr "Gepauzeerd"
 
-#: gui_playq.c:124
+#: gui_playq.c:111
 msgid "Playing"
 msgstr "Afspelen"
 
-#: gui_playq.c:362
+#: gui_playq.c:349
 msgid "Remove all songs from the playlist?"
 msgstr "Alle nummers uit de afspeellijst verwijderen?"
 
-#: gui_playq.c:373
+#: gui_playq.c:360
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:422
+#: gui_playq.c:409
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:441
+#: gui_playq.c:428
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-16 07:58+0200\n"
+"POT-Creation-Date: 2007-04-17 22:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,19 +41,19 @@ msgstr ""
 msgid "Unable to enter the selected directory."
 msgstr ""
 
-#: gui_browser.c:316
+#: gui_browser.c:319
 msgid "Change directory"
 msgstr ""
 
-#: gui_browser.c:354
+#: gui_browser.c:357
 msgid "Unable to display the file or directory."
 msgstr ""
 
-#: gui_browser.c:371
+#: gui_browser.c:374
 msgid "Write playlist to file"
 msgstr ""
 
-#: gui_browser.c:380
+#: gui_browser.c:383
 msgid "Unable to write playlist."
 msgstr ""
 
@@ -86,31 +86,31 @@ msgstr ""
 msgid "no"
 msgstr ""
 
-#: gui_playq.c:119
+#: gui_playq.c:106
 msgid "Idle"
 msgstr ""
 
-#: gui_playq.c:122
+#: gui_playq.c:109
 msgid "Paused"
 msgstr ""
 
-#: gui_playq.c:124
+#: gui_playq.c:111
 msgid "Playing"
 msgstr ""
 
-#: gui_playq.c:362
+#: gui_playq.c:349
 msgid "Remove all songs from the playlist?"
 msgstr ""
 
-#: gui_playq.c:373
+#: gui_playq.c:360
 msgid "Randomize the playlist?"
 msgstr ""
 
-#: gui_playq.c:422
+#: gui_playq.c:409
 msgid "The song is already at the top of the playlist."
 msgstr ""
 
-#: gui_playq.c:441
+#: gui_playq.c:428
 msgid "The song is already at the bottom of the playlist."
 msgstr ""
 

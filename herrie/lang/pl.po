@@ -2,54 +2,54 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-16 07:58+0200\n"
-"PO-Revision-Date: 2007-04-16 07:58+0000\n"
+"POT-Creation-Date: 2007-04-17 22:11+0200\n"
+"PO-Revision-Date: 2007-04-17 22:11+0000\n"
 "Last-Translator: Adam Golebiowski <adamg@pld-linux.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: audio_output_ao.c:115 audio_output_sdl.c:114
 msgid "Cannot open the audio device."
-msgstr "Nie mo¿na otworzyæ urz±dzenia"
+msgstr "Nie moÅ¼na otworzyÄ‡ urzÄ…dzenia"
 
 #: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "Nie mo¿na utworzyæ urz±dzenia \"%s\".\n"
+msgstr "Nie moÅ¼na utworzyÄ‡ urzÄ…dzenia \"%s\".\n"
 
 #: audio_output_sdl.c:82
 msgid "Cannot initialize SDL audio subsystem.\n"
-msgstr "Nie mo¿na zainicjowaæ podsystemu audio SDL.\n"
+msgstr "Nie moÅ¼na zainicjowaÄ‡ podsystemu audio SDL.\n"
 
 #: gui_browser.c:115
 msgid "Unable to open initial directory."
-msgstr "Nie mo¿na otworzyæ katalogu."
+msgstr "Nie moÅ¼na otworzyÄ‡ katalogu."
 
 #: gui_browser.c:220
 msgid "Unable to enter the parent directory."
-msgstr "Nie mo¿na wej¶æ do katalogu nadrzêdnego."
+msgstr "Nie moÅ¼na wejÅ›Ä‡ do katalogu nadrzÄ™dnego."
 
 #: gui_browser.c:235
 msgid "Unable to enter the selected directory."
-msgstr "Nie mo¿na wej¶æ do wskazanego katalogu."
+msgstr "Nie moÅ¼na wejÅ›Ä‡ do wskazanego katalogu."
 
-#: gui_browser.c:316
+#: gui_browser.c:319
 msgid "Change directory"
-msgstr "Zmieñ katalog"
+msgstr "ZmieÅ„ katalog"
 
-#: gui_browser.c:354
+#: gui_browser.c:357
 msgid "Unable to display the file or directory."
-msgstr "Nie mo¿na wy¶wietliæ pliku lub katalogu"
+msgstr "Nie moÅ¼na wyÅ›wietliÄ‡ pliku lub katalogu"
 
-#: gui_browser.c:371
+#: gui_browser.c:374
 msgid "Write playlist to file"
-msgstr "Zapisz playlistê do pliku"
+msgstr "Zapisz playlistÄ™ do pliku"
 
-#: gui_browser.c:380
+#: gui_browser.c:383
 msgid "Unable to write playlist."
-msgstr "Nie mo¿na zapisac playlisty."
+msgstr "Nie moÅ¼na zapisac playlisty."
 
 #: gui_input.c:113 gui_input.c:156
 msgid "Search for"
@@ -70,7 +70,7 @@ msgstr "Skocz do pozycji"
 
 #: gui_input.c:280
 msgid "Bad time format."
-msgstr "Z³y format czasu."
+msgstr "ZÅ‚y format czasu."
 
 #: gui_input.c:468 main.c:68 main.c:74 main.c:80
 msgid "yes"
@@ -80,53 +80,53 @@ msgstr "tak"
 msgid "no"
 msgstr "nie"
 
-#: gui_playq.c:119
+#: gui_playq.c:106
 msgid "Idle"
 msgstr "Bezczynny"
 
-#: gui_playq.c:122
+#: gui_playq.c:109
 msgid "Paused"
 msgstr "Pauza"
 
-#: gui_playq.c:124
+#: gui_playq.c:111
 msgid "Playing"
 msgstr "Gra"
 
-#: gui_playq.c:362
+#: gui_playq.c:349
 msgid "Remove all songs from the playlist?"
-msgstr "Usun±c wszystkie utwory z playlisty?"
+msgstr "UsunÄ…c wszystkie utwory z playlisty?"
 
-#: gui_playq.c:373
+#: gui_playq.c:360
 msgid "Randomize the playlist?"
-msgstr "Przemieszaæ playlistê?"
+msgstr "PrzemieszaÄ‡ playlistÄ™?"
 
-#: gui_playq.c:422
+#: gui_playq.c:409
 msgid "The song is already at the top of the playlist."
-msgstr "Utwór ju¿ jest na szczycie playlisty."
+msgstr "UtwÃ³r juÅ¼ jest na szczycie playlisty."
 
-#: gui_playq.c:441
+#: gui_playq.c:428
 msgid "The song is already at the bottom of the playlist."
-msgstr "Uwtór ju¿ jest na dole playlisty."
+msgstr "UwtÃ³r juÅ¼ jest na dole playlisty."
 
 #: gui_vfslist.c:230
 msgid "There are no songs."
-msgstr "Brak utworów."
+msgstr "Brak utworÃ³w."
 
 #: gui_vfslist.c:287
 msgid "You are at the first song."
-msgstr "To jest pierwszy utwór."
+msgstr "To jest pierwszy utwÃ³r."
 
 #: gui_vfslist.c:306
 msgid "You are at the last song."
-msgstr "To jest ostati utwór."
+msgstr "To jest ostati utwÃ³r."
 
 #: gui_vfslist.c:559
 msgid "Search wrapped to top."
-msgstr "Przeszukiwanie wznowione od pocz±tku."
+msgstr "Przeszukiwanie wznowione od poczÄ…tku."
 
 #: main.c:65
 msgid "Audio output"
-msgstr "Wyj¶cie audio"
+msgstr "WyjÅ›cie audio"
 
 #: main.c:66
 msgid "Support for AudioScrobbler"
@@ -142,76 +142,76 @@ msgstr "Wsparcie dla plylist XSPF ('spiff')"
 
 #: main.c:84
 msgid "Supported audio file formats"
-msgstr "Wspierane formaty plików audio"
+msgstr "Wspierane formaty plikÃ³w audio"
 
 #: main.c:96
 msgid "usage"
-msgstr "u¿ycie"
+msgstr "uÅ¼ycie"
 
 #: playq.c:186
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "Nie uda³o siê otworzyæ \"%s\" do odtworzenia."
+msgstr "Nie udaÅ‚o siÄ™ otworzyÄ‡ \"%s\" do odtworzenia."
 
 #: playq.c:415
 #, c-format
 msgid "Repeat: %s"
-msgstr "Powtórz: %s"
+msgstr "PowtÃ³rz: %s"
 
 #: playq.c:416
 msgid "on"
-msgstr "w³±czony"
+msgstr "wÅ‚Ä…czony"
 
 #: playq.c:416
 msgid "off"
-msgstr "wy³±czony"
+msgstr "wyÅ‚Ä…czony"
 
 #: scrobbler.c:311
 msgid "Successfully authorized at AudioScrobbler."
-msgstr "Pomy¶lnie zautoryzowany w AudioScrobbler."
+msgstr "PomyÅ›lnie zautoryzowany w AudioScrobbler."
 
 #: scrobbler.c:318
 msgid "Failed to authorize at AudioScrobbler."
-msgstr "Nie uda³o siê zautoryzowaæ w AudioScrobbler."
+msgstr "Nie udaÅ‚o siÄ™ zautoryzowaÄ‡ w AudioScrobbler."
 
 #: scrobbler.c:334
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr "Pomy¶lnie wys³ano utwór do AudioScrobbler."
+msgstr "PomyÅ›lnie wysÅ‚ano utwÃ³r do AudioScrobbler."
 
 #: scrobbler.c:338
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr "Pomyslnie wys³ano %d utworów do AudioScrobbler."
+msgstr "Pomyslnie wysÅ‚ano %d utworÃ³w do AudioScrobbler."
 
 #: scrobbler.c:344
 msgid "Invalid AudioScrobbler username/password."
-msgstr "Nieprawid³owa nazwa u¿ytkownika/has³o w AudioScrobbler."
+msgstr "NieprawidÅ‚owa nazwa uÅ¼ytkownika/hasÅ‚o w AudioScrobbler."
 
 #: scrobbler.c:347
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr "Nie uda³o siê wys³aæ utworów do AudioScrobbler."
+msgstr "Nie udaÅ‚o siÄ™ wysÅ‚aÄ‡ utworÃ³w do AudioScrobbler."
 
 #: vfs.c:109
 #, c-format
 msgid "Unknown user: %s\n"
-msgstr "Nieznany u¿ytkownik %s\n"
+msgstr "Nieznany uÅ¼ytkownik %s\n"
 
 #: vfs.c:121
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr "Nie uda³o siê wykonaæ chroot do %s\n"
+msgstr "Nie udaÅ‚o siÄ™ wykonaÄ‡ chroot do %s\n"
 
 #: vfs.c:129
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr "Nie uda³o siê zmieniæ grupy na %d\n"
+msgstr "Nie udaÅ‚o siÄ™ zmieniÄ‡ grupy na %d\n"
 
 #: vfs.c:133
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr "Nie uda³o siê zmieniæ u¿ytkownika na %d\n"
+msgstr "Nie udaÅ‚o siÄ™ zmieniÄ‡ uÅ¼ytkownika na %d\n"
 
 #: vfs_http.c:145
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "Po³aczenie z \"%s\" utracone."
+msgstr "PoÅ‚aczenie z \"%s\" utracone."

@@ -2,22 +2,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-16 07:58+0200\n"
-"PO-Revision-Date: 2007-04-16 07:58+0200\n"
+"POT-Creation-Date: 2007-04-17 22:11+0200\n"
+"PO-Revision-Date: 2007-04-17 22:11+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: audio_output_ao.c:115 audio_output_sdl.c:114
 msgid "Cannot open the audio device."
-msgstr "Gerät kann nicht geöffnet werden."
+msgstr "GerÃ¤t kann nicht geÃ¶ffnet werden."
 
 #: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "Gerät \"%s\" kann nicht geöffnet werden.\n"
+msgstr "GerÃ¤t \"%s\" kann nicht geÃ¶ffnet werden.\n"
 
 #: audio_output_sdl.c:82
 msgid "Cannot initialize SDL audio subsystem.\n"
@@ -25,29 +25,29 @@ msgstr "SDL-Sub-System kann nicht initialisiert werden.\n"
 
 #: gui_browser.c:115
 msgid "Unable to open initial directory."
-msgstr "Fehler beim Öffnen des Start-Verzeichnisses."
+msgstr "Fehler beim Ã–ffnen des Start-Verzeichnisses."
 
 #: gui_browser.c:220
 msgid "Unable to enter the parent directory."
-msgstr "Fehler beim Öffnen des übergeordneten Verzeichnisses."
+msgstr "Fehler beim Ã–ffnen des Ã¼bergeordneten Verzeichnisses."
 
 #: gui_browser.c:235
 msgid "Unable to enter the selected directory."
-msgstr "Fehler beim Öffnen des gewählten Verzeichnisses."
+msgstr "Fehler beim Ã–ffnen des gewÃ¤hlten Verzeichnisses."
 
-#: gui_browser.c:316
+#: gui_browser.c:319
 msgid "Change directory"
 msgstr "Verzeichnis wechseln"
 
-#: gui_browser.c:354
+#: gui_browser.c:357
 msgid "Unable to display the file or directory."
 msgstr "Datei oder Verzeichnis kann nicht angezeigt werden."
 
-#: gui_browser.c:371
+#: gui_browser.c:374
 msgid "Write playlist to file"
 msgstr "Playlist in Datei speichern"
 
-#: gui_browser.c:380
+#: gui_browser.c:383
 msgid "Unable to write playlist."
 msgstr "Fehler beim Schreiben der Playlist."
 
@@ -70,7 +70,7 @@ msgstr "Zu Position springen"
 
 #: gui_input.c:280
 msgid "Bad time format."
-msgstr "Ungültiges Zeit-Format."
+msgstr "UngÃ¼ltiges Zeit-Format."
 
 #: gui_input.c:468 main.c:68 main.c:74 main.c:80
 msgid "yes"
@@ -80,31 +80,31 @@ msgstr "ja"
 msgid "no"
 msgstr "nein"
 
-#: gui_playq.c:119
+#: gui_playq.c:106
 msgid "Idle"
 msgstr "Inaktiv"
 
-#: gui_playq.c:122
+#: gui_playq.c:109
 msgid "Paused"
 msgstr "Pausiert"
 
-#: gui_playq.c:124
+#: gui_playq.c:111
 msgid "Playing"
 msgstr "Aktiv"
 
-#: gui_playq.c:362
+#: gui_playq.c:349
 msgid "Remove all songs from the playlist?"
 msgstr "Alle Lieder aus der Playlist entfernen?"
 
-#: gui_playq.c:373
+#: gui_playq.c:360
 msgid "Randomize the playlist?"
-msgstr "Playlist zufällig anordnen?"
+msgstr "Playlist zufÃ¤llig anordnen?"
 
-#: gui_playq.c:422
+#: gui_playq.c:409
 msgid "The song is already at the top of the playlist."
 msgstr "Dieses Lied ist bereits ganz oben."
 
-#: gui_playq.c:441
+#: gui_playq.c:428
 msgid "The song is already at the bottom of the playlist."
 msgstr "Dieses Lied ist bereits ganz am Ende."
 
@@ -130,19 +130,19 @@ msgstr "Audio-Ausgabe"
 
 #: main.c:66
 msgid "Support for AudioScrobbler"
-msgstr "Unterstützung für AudioScrobbler"
+msgstr "UnterstÃ¼tzung fÃ¼r AudioScrobbler"
 
 #: main.c:72
 msgid "Support for HTTP streams"
-msgstr "Unterstützung für HTTP-Streams"
+msgstr "UnterstÃ¼tzung fÃ¼r HTTP-Streams"
 
 #: main.c:78
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "Unterstützung für XSPF Playlists"
+msgstr "UnterstÃ¼tzung fÃ¼r XSPF Playlists"
 
 #: main.c:84
 msgid "Supported audio file formats"
-msgstr "Unterstützte Audio-Formate"
+msgstr "UnterstÃ¼tzte Audio-Formate"
 
 #: main.c:96
 msgid "usage"
@@ -151,7 +151,7 @@ msgstr "Benutzung"
 #: playq.c:186
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "\"%s\" konnte nicht zum Abspielen geöffnet werden."
+msgstr "\"%s\" konnte nicht zum Abspielen geÃ¶ffnet werden."
 
 #: playq.c:415
 #, c-format
@@ -185,11 +185,11 @@ msgstr "%d Lieder an AudioScrobbler gesendet."
 
 #: scrobbler.c:344
 msgid "Invalid AudioScrobbler username/password."
-msgstr "Benutzername oder Passwort für AudioScrobbler ungültig."
+msgstr "Benutzername oder Passwort fÃ¼r AudioScrobbler ungÃ¼ltig."
 
 #: scrobbler.c:347
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr "Fehler bei der Übertragung zu AudioScrobbler."
+msgstr "Fehler bei der Ãœbertragung zu AudioScrobbler."
 
 #: vfs.c:109
 #, c-format
