@@ -90,6 +90,7 @@ configure script to change certain parameters:
 - null          Use placeholder audio output
 - sdl           Use LibSDL audio output
 
+- ncursesw      Link against the wide character ncurses library
 - xcurses       Build application against XCurses (PDCurses)
 
 - strict        Turn on stricter compiler flags for GCC

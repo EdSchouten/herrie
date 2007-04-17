@@ -153,6 +153,11 @@ do
 		unset DOIT
 		;;
 	
+	ncursesw)
+		CFG_CURSES_HEADER=ncurses
+		CFG_CURSES_LIB=ncursesw
+		CFLAGS_gui_playq="-DBUILD_UTF8"
+		;;
 	xcurses)
 		CFG_CURSES_HEADER=xcurses
 		CFG_CURSES_LIB=XCurses
@@ -236,7 +241,7 @@ fi
 # setproctitle() usage
 if [ "$CFG_SETPROCTITLE" != "" ]
 then
-	CFLAGS_gui_playq="-DBUILD_SETPROCTITLE"
+	CFLAGS_gui_playq="$CFLAGS_gui_playq -DBUILD_SETPROCTITLE"
 fi
 # SIGWINCH wrapper
 if [ "$CFG_SIGWINCH" != "" ]
