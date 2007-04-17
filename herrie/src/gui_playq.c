@@ -65,38 +65,29 @@ static struct gui_vfslist *win_playq;
 static void
 gui_playq_statbar_song(struct audio_file *fd)
 {
-#ifndef BUILD_UTF8
 	char *artist, *title;
-#endif /* BUILD_UTF8 */
+	const char *locale;
 
 	if (fd == NULL) {
 		g_string_assign(str_song, "");
 	} else {
+		/* Smash strings down to the correct charset */
+		locale = setlocale(LC_CTYPE, NULL);
+
 		g_assert(fd->tag.title != NULL);
-#ifdef BUILD_UTF8
-		/* Display strings as UTF-8 */
-		if (fd->tag.artist == NULL) {
-			/* Only show the title */
-			g_string_assign(str_song, fd->tag.title);
-		} else {
-			/* Print artist and title */
-			g_string_printf(str_song, "%s - %s",
-			    fd->tag.artist, fd->tag.title);
-		}
-#else /* !BUILD_UTF8 */
-		/* Smash strings down to ISO-8859-1 */
-		title = g_convert(fd->tag.title, -1,
-		    "ISO-8859-1", "UTF-8", NULL, NULL, NULL);
+		title = g_convert(fd->tag.title, -1, locale, "UTF-8",
+		    NULL, NULL, NULL);
 		if (title == NULL)
 			/* Conversion error - don't convert charset */
 			title = g_strdup(fd->tag.title);
+
 		if (fd->tag.artist == NULL) {
 			/* Only show the title */
 			g_string_assign(str_song, title);
 		} else {
 			/* Print artist and title */
-			artist = g_convert(fd->tag.artist, -1,
-			    "ISO-8859-1", "UTF-8", NULL, NULL, NULL);
+			artist = g_convert(fd->tag.artist, -1, locale,
+			    "UTF-8", NULL, NULL, NULL);
 			if (artist == NULL)
 				/* Conversion error */
 				artist = g_strdup(fd->tag.artist);
@@ -105,7 +96,6 @@ gui_playq_statbar_song(struct audio_file *fd)
 			g_free(artist);
 		}
 		g_free(title);
-#endif /* BUILD_UTF8 */
 	}
 }
 
