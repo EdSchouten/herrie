@@ -93,6 +93,7 @@ configure script to change certain parameters:
 - ncursesw      Link against the wide character ncurses library
 - xcurses       Build application against XCurses (PDCurses)
 
+- no_strip      Don't strip the application binary on installation
 - strict        Turn on stricter compiler flags for GCC
 - verbose       Print commands during compilation
 

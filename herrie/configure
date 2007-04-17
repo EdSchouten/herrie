@@ -43,6 +43,7 @@ unset CFG_SETPROCTITLE
 unset CFG_SIGWINCH
 CFG_SNDFILE=yes
 unset CFG_STRICT
+CFG_STRIP=-s
 CFG_VORBIS=yes
 CFG_XSPF=yes
 DOIT=@
@@ -146,6 +147,9 @@ do
 		CFG_AO=$1
 		;;
 	
+	no_strip)
+		unset CFG_STRIP
+		;;
 	strict)
 		CFG_STRICT=yes
 		;;
@@ -366,7 +370,7 @@ distclean: clean
 install: all
 	# Installing \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
 	${DOIT}mkdir -p \$(DESTDIR)$BINDIR
-	$DOIT$INSTALL -s $APP_NAME$CFG_BINEXT \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
+	$DOIT$INSTALL $CFG_STRIP $APP_NAME$CFG_BINEXT \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
 	# Installing \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
 	${DOIT}mkdir -p \$(DESTDIR)$MANDIR/man1
 	$DOIT$INSTALL -m 444 $APP_NAME.1.gz \$(DESTDIR)$MANDIR/man1/$APP_NAME.1.gz
