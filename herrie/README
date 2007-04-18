@@ -63,7 +63,7 @@ Herrie:
 - libsndfile
 - libspiff (0.6.3 or higher - optional)
 - libvorbisfile
-- ncurses or pdcurses (`XCurses')
+- ncursesw, ncurses or pdcurses (`XCurses')
 - openssl
 
 Please note that some dependencies can be disabled. OpenSSL and cURL are only
@@ -90,7 +90,7 @@ configure script to change certain parameters:
 - null          Use placeholder audio output
 - sdl           Use LibSDL audio output
 
-- ncursesw      Link against the wide character ncurses library
+- ncurses       Use ncurses instead of ncursesw (breaks UTF-8 support)
 - xcurses       Build application against XCurses (PDCurses)
 
 - no_strip      Don't strip the application binary on installation
