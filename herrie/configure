@@ -27,6 +27,7 @@
 
 APP_NAME=herrie
 APP_VERSION=1.6
+APP_LINGUAS='de nl pl tr'
 
 # Default compilation switches
 CFG_AO=ao
@@ -108,7 +109,7 @@ SRCDIR=`dirname $0`
 BINDIR=$PREFIX/bin
 [ "$CONFDIR" = "" ] && CONFDIR=$PREFIX/etc
 CONFFILE=$CONFDIR/$APP_NAME.conf
-[ "$LINGUAS" = "" ] && LINGUAS='de nl pl tr'
+[ "$LINGUAS" = "" ] && LINGUAS=$APP_LINGUAS
 [ "$MANDIR" = "" ] && MANDIR=$PREFIX/share/man
 TRANSDIR=$PREFIX/share/locale
 [ "$CC" = "" ] && CC=cc
@@ -264,7 +265,23 @@ then
 	CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
 fi
 # Translation support
-if [ "$LINGUAS" != "" ]
+# Remove all broken translations
+unset CFG_LINGUAS
+unset MOS
+for i in $LINGUAS
+do
+	for j in $APP_LINGUAS
+	do
+		if [ "$i" = "$j" ]
+		then
+			CFG_LINGUAS="$CFG_LINGUAS $i"
+			MOS="$MOS $i.mo"
+			continue 2
+		fi
+	done
+	echo "Warning: unknown language: $i"
+done
+if [ "$CFG_LINGUAS" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_NLS"
 	CFLAGS_main="$CFLAGS_main -DTRANSDIR=\\\"$TRANSDIR\\\""
@@ -324,11 +341,6 @@ for i in $SRCS
 do
 	OBJS="$OBJS $i.o"
 done
-unset MOS
-for i in $LINGUAS
-do
-	MOS="$MOS $i.mo"
-done
 
 eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest$CFG_BINEXT
 if [ $? -ne 0 ]
@@ -342,7 +354,7 @@ echo "Configuration:"
 echo "- Installing $APP_NAME$CFG_BINEXT in $BINDIR"
 echo "- Installing manual page in $MANDIR"
 echo "- Using $CONFFILE configuration file"
-[ "$LINGUAS" != "" ] && echo "- Installing translations '$LINGUAS' in $TRANSDIR"
+[ "$CFG_LINGUAS" != "" ] && echo "- Installing translations$CFG_LINGUAS in $TRANSDIR"
 echo "- Using -l$CFG_CURSES_LIB and <$CFG_CURSES_HEADER.h>"
 echo "- Using $CFG_AO audio output"
 [ "$CFG_HTTP" != "" ] && echo "- Support for HTTP streams"
@@ -378,7 +390,7 @@ install: all
 	${DOIT}mkdir -p \$(DESTDIR)$CONFDIR
 	$DOIT$INSTALL -m 444 $SRCDIR/$APP_NAME.conf.sample \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 EOF
-for i in $LINGUAS
+for i in $CFG_LINGUAS
 do
 	echo "	# Installing \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 	echo "	${DOIT}mkdir -p \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES"
@@ -393,7 +405,7 @@ uninstall:
 	# Uninstalling \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 	${DOIT}rm -f  \$(DESTDIR)$CONFDIR/$APP_NAME.conf.sample
 EOF
-for i in $LINGUAS
+for i in $CFG_LINGUAS
 do
 	echo "	# Uninstalling \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
 	echo "	${DOIT}rm -f \$(DESTDIR)$TRANSDIR/$i/LC_MESSAGES/$APP_NAME.mo"
@@ -410,7 +422,7 @@ do
 	echo "	# Compiling $i.o"
 	echo "	$DOIT$CC -c $SRCDIR/src/$i.c $CFLAGS `eval echo \\\$CFLAGS_\$i` -o $i.o"
 done
-for i in $LINGUAS
+for i in $CFG_LINGUAS
 do
 	echo "$i.mo: $SRCDIR/lang/$i.po"
 	echo "	# Generating translation $i.mo"
