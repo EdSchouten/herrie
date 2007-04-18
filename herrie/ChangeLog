@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 1.7:
+2007-04-20 -- Herrie 1.6.1:
  * Added: Polish translation - Adam Golebiowski from PLD Linux
  * Added: Support for ~ or ~user in pathnames to go to the home directory
  * Improved: Automatically fill in the current directory when using 'C'
