@@ -9,19 +9,21 @@ then
 fi
 
 FILENAME="herrie-$1.tar.bz2"
-TARBALL="www/distfiles/$FILENAME"
+TARBZ2="www/distfiles/$FILENAME"
+TARGZ="www/distfiles/herrie-$1.tar.gz"
 
 cd `dirname $0`
 
-if [ -e $TARBALL ]
+if [ -e $TARBZ2 ]
 then
-	echo "$TARBALL: file already exists"
+	echo "$TARBZ2: file already exists"
 	exit 1
 fi
 
 mkdir -p www/distfiles
 git archive --format=tar --prefix="herrie-$1/" HEAD:herrie |
-    bzip2 -9 > $TARBALL
+    bzip2 -9 > $TARBZ2
+bzip2 -d < $TARBZ2 | gzip -9 > $TARGZ
 
 cd www/distfiles
 md5 $FILENAME
