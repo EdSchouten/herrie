@@ -2,7 +2,6 @@
  * Added: Polish translation - Adam Golebiowski from PLD Linux
  * Added: Support for ~ or ~user in pathnames to go to the home directory
  * Improved: Automatically fill in the current directory when using 'C'
- * Added: Configure option to link against ncursesw
  * Improved: Herrie will now use LC_CTYPE for displaying tags
  * Fixed: Configure script won't generate targets for invalid locales
  * Changed: Herrie will now use ncursesw by default - use ncurses to disable
