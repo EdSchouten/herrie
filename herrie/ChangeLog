@@ -5,6 +5,8 @@
  * Added: Configure option to link against ncursesw
  * Improved: Herrie will now use LC_CTYPE for displaying tags
  * Fixed: Configure script won't generate targets for invalid locales
+ * Changed: Herrie will now use ncursesw by default - use ncurses to disable
+ * Changed: no_trans renamed to no_nls to sound more familiar
 
 2007-04-13 -- Herrie 1.6 "First Anniversary Edition":
  * Added: Ability to specify the Esound hostname in the config file
