@@ -14,8 +14,9 @@
 	batch music for playback.</p>
 
 	<p>Herrie also has some more exotic features, including support
-	for AudioScrobbler and the ability to <tt>chroot()</tt> itself
-	into a directory.</p>
+	for <a href="http://www.last.fm/group/Herrie">AudioScrobbler</a>
+	and the ability to <tt>chroot()</tt> itself into a
+	directory.</p>
 
 	<p>Below is a screenshot of the application in action.</p>
 
