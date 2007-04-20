@@ -34,6 +34,7 @@ CFG_AO=ao
 unset CFG_BINEXT
 CFG_CURSES_HEADER=ncurses
 CFG_CURSES_LIB=ncursesw
+CFG_DUMPFILE='~/.herrie/autosave.xspf'
 CFG_FTELLO=yes
 CFG_HTTP=yes
 CFG_MODPLUG=yes
@@ -142,6 +143,7 @@ do
 		;;
 	no_xspf)
 		unset CFG_XSPF
+		CFG_DUMPFILE='~/.herrie/autosave.pls'
 		;;
 
 	ao|null|oss|sdl)
@@ -186,6 +188,7 @@ then
 	echo "Error: Glib not found"
 	exit 1
 fi
+CFLAGS_config="-DPLAYQ_DUMPFILE=\\\"$CFG_DUMPFILE\\\""
 CFLAGS_main="-DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -DCONFFILE=\\\"$CONFFILE\\\""
 LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
     -L$PREFIX/lib -l$CFG_CURSES_LIB"
@@ -313,12 +316,12 @@ oss)
 	case $OS in
 	NetBSD|OpenBSD)
 		CFLAGS="$CFLAGS -DOSS_HEADER=\\<soundcard.h\\>"
-		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/audio\\\""
+		CFLAGS_config="$CFLAGS_config -DOSS_DEVICE=\\\"/dev/audio\\\""
 		LDFLAGS="$LDFLAGS -lossaudio"
 		;;
 	*)
 		CFLAGS="$CFLAGS -DOSS_HEADER=\\<sys/soundcard.h\\>"
-		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/dsp\\\""
+		CFLAGS_config="$CFLAGS_config -DOSS_DEVICE=\\\"/dev/dsp\\\""
 		;;
 	esac
 	;;
