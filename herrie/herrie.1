@@ -141,18 +141,9 @@ The background color of a selected item of an active window.
 .B gui.color.select.fg=black
 The foreground color of a selected item of an active window.
 .TP
-.B playq.dumpfile=
-The filename used by the
-.B playq.remember
-option. When empty,
-.I ~/.herrie/autosave.pls
-will be used.
-.TP
-.B playq.remember=yes
-Make
-.B herrie
-remember the contents of the playlist on shutdown. The playlist is
-automatically loaded on startup.
+.B playq.dumpfile=~/.herrie/autosave.xspf
+The filename used to automatically saved at shutdown and load at
+startup. When empty, this feature will be disabled.
 .TP
 .B playq.xmms=no
 Always start

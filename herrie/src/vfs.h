@@ -355,10 +355,12 @@ const char	*vfs_lockup(void);
  *        optional. It only allows you to display entities with a
  *        different name (inside playlists). When setting the basepath
  *        variable, all relative pathnames are appended to the basepath.
- *        When unset, it can only open absolute filenames.
+ *        When unset, it can only open absolute filenames. When forcing
+ *        strict pathnames, application-implemented features like ~ are
+ *        discarded.
  */
 struct vfsref	*vfs_open(const char *filename, const char *name,
-    const char *basepath);
+    const char *basepath, int strict);
 /**
  * @brief Duplicate the reference by increasing the reference count.
  */
@@ -383,6 +385,10 @@ void		vfs_unfold(struct vfslist *vl, const struct vfsref *vr);
  */
 struct vfsref	*vfs_write_playlist(const struct vfslist *vl,
     const struct vfsref *vr, const char *filename);
+/**
+ * @brief Delete a local file. Use with caution. ;-)
+ */
+int		vfs_delete(const char *filename);
 
 /**
  * @brief Get the friendly name of the current VFS reference.

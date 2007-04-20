@@ -45,7 +45,7 @@ vfs_playlist_add_tail(struct vfsent *ve, char *fn, char *title, char *dirname)
 	/* Convert to proper separator */
 	g_strdelimit(fn, "\\", G_DIR_SEPARATOR);
 #endif
-	nvr = vfs_open(fn, title, dirname);
+	nvr = vfs_open(fn, title, dirname, 0);
 
 	if (nvr != NULL)
 		vfs_list_insert_tail(&ve->population, nvr);

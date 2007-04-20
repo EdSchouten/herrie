@@ -69,7 +69,7 @@ vfs_dir_populate(struct vfsent *ve)
 		if (hide_dotfiles && sfn[0] == '.')
 			continue;
 
-		if ((nvr = vfs_open(sfn, NULL, ve->filename)) == NULL)
+		if ((nvr = vfs_open(sfn, NULL, ve->filename, 1)) == NULL)
 			continue;
 
 		/*

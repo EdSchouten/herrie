@@ -150,8 +150,11 @@ static struct config_entry configlist[] = {
 	{ "gui.color.marked.fg",	"black",	valid_color,	NULL },
 	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
 	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
-	{ "playq.dumpfile",		"",		NULL,		NULL },
-	{ "playq.remember",		"yes",		valid_bool,	NULL },
+#ifdef BUILD_XSPF
+	{ "playq.dumpfile",		"~/.herrie/autosave.xspf", NULL, NULL },
+#else /* !BUILD_XSPF */
+	{ "playq.dumpfile",		"~/.herrie/autosave.pls", NULL, NULL },
+#endif /* BUILD_XSPF */
 	{ "playq.xmms",			"no",		valid_bool,	NULL },
 #ifdef BUILD_SCROBBLER
 	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },

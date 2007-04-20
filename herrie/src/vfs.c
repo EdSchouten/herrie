@@ -154,7 +154,7 @@ vfs_dealloc(struct vfsent *ve)
  *        not contain /./'s and /../'s.
  */
 static char *
-vfs_path_concat(const char *dir, const char *file)
+vfs_path_concat(const char *dir, const char *file, int strict)
 {
 	GString *npath;
 	char *tmp, *off;
@@ -162,13 +162,13 @@ vfs_path_concat(const char *dir, const char *file)
 	struct passwd *pw;
 #endif /* G_OS_UNIX */
 
-	if (file[0] == '~' &&
+	if (!strict && file[0] == '~' &&
 	    (file[1] == '\0' || file[1] == G_DIR_SEPARATOR)) {
 		/* Expand ~ to go to the home directory */
 		npath = g_string_new(g_get_home_dir());
 		g_string_append(npath, file + 1);
 #ifdef G_OS_UNIX
-	} else if (file[0] == '~') {
+	} else if (!strict && file[0] == '~') {
 		/* Expand ~username - UNIX only */
 		off = strchr(file, G_DIR_SEPARATOR);
 
@@ -242,7 +242,8 @@ vfs_path_concat(const char *dir, const char *file)
 }
 
 struct vfsref *
-vfs_open(const char *filename, const char *name, const char *basepath)
+vfs_open(const char *filename, const char *name, const char *basepath,
+    int strict)
 {
 	char *fn;
 	struct vfsent *ve;
@@ -251,7 +252,7 @@ vfs_open(const char *filename, const char *name, const char *basepath)
 	unsigned int i;
 	int pseudo = 0;
 
-	fn = vfs_path_concat(basepath, filename);
+	fn = vfs_path_concat(basepath, filename, strict);
 	if (fn == NULL)
 		return (NULL);
 
@@ -386,7 +387,7 @@ vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
 
 	if (vr != NULL)
 		base = vfs_filename(vr);
-	fn = vfs_path_concat(base, filename);
+	fn = vfs_path_concat(base, filename, 0);
 	if (fn == NULL)
 		return (NULL);
 	
@@ -406,8 +407,24 @@ vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
 match:
 	/* Write the playlist to disk */
 	if (wr->write(vl, fn) == 0)
-		rvr = vfs_open(fn, NULL, NULL);
+		rvr = vfs_open(fn, NULL, NULL, 0);
 
 	g_free(fn);
 	return (rvr);
+}
+
+int
+vfs_delete(const char *filename)
+{
+	char *fn;
+	int ret;
+
+	fn = vfs_path_concat(NULL, filename, 0);
+	if (fn == NULL)
+		return (-1);
+	
+	ret = unlink(fn);
+	g_free(fn);
+
+	return (ret);
 }

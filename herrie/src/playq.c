@@ -143,10 +143,6 @@ int			playq_repeat = 0;
  * @brief Amount of seconds which the current song should seek.
  */
 static volatile int	playq_seek_time;
-/**
- * @brief Filename of the playlist used for saving on shutdown.
- */
-static char 		*playq_dumpfile;
 
 /**
  * @brief Infinitely play music in the playlist, honouring the
@@ -244,20 +240,10 @@ playq_init(int xmms)
 		playq_repeat = 1;
 	}
 
-	if (config_getopt_bool("playq.remember")) {
+	filename = config_getopt("playq.dumpfile");
+	if (filename[0] != '\0') {
 		/* Autoload playlist */
-		filename = config_getopt("playq.dumpfile");
-		if (filename[0] != '\0')
-			playq_dumpfile = g_strdup(filename);
-		else
-#ifdef BUILD_XSPF
-			playq_dumpfile = g_build_filename(g_get_home_dir(),
-			    "." APP_NAME, "autosave.xspf", NULL);
-#else /* !BUILD_XSPF */
-			playq_dumpfile = g_build_filename(g_get_home_dir(),
-			    "." APP_NAME, "autosave.pls", NULL);
-#endif /* BUILD_XSPF */
-		vr = vfs_open(playq_dumpfile, NULL, NULL);
+		vr = vfs_open(filename, NULL, NULL, 0);
 		if (vr != NULL) {
 			vfs_unfold(&playq_list, vr);
 			vfs_close(vr);
@@ -276,6 +262,7 @@ void
 playq_shutdown(void)
 {
 	struct vfsref *vr;
+	const char *filename;
 
 	playq_lock();
 	playq_flags = PF_QUIT;
@@ -283,18 +270,17 @@ playq_shutdown(void)
 	g_cond_signal(playq_wakeup);
 	g_thread_join(playq_runner);
 
-	if (playq_dumpfile != NULL) {
+	filename = config_getopt("playq.dumpfile");
+	if (filename[0] != '\0') {
 		if (vfs_list_empty(&playq_list)) {
 			/* Remove the autosave playlist */
-			unlink(playq_dumpfile);
+			vfs_delete(filename);
 		} else {
 			/* Flush the list back to the disk */
-			vr = vfs_write_playlist(&playq_list, NULL,
-			    playq_dumpfile);
+			vr = vfs_write_playlist(&playq_list, NULL, filename);
 			if (vr != NULL)
 				vfs_close(vr);
 		}
-		g_free(playq_dumpfile);
 	}
 }
 

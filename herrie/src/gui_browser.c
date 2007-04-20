@@ -100,11 +100,11 @@ gui_browser_init(void)
 	defdir = config_getopt("gui.browser.defaultpath");
 	if (defdir[0] != '\0') {
 		/* Open predefined directory */
-		vr_curdir = vfs_open(defdir, NULL, NULL);
+		vr_curdir = vfs_open(defdir, NULL, NULL, 0);
 	} else {
 		/* Open current directory */
 		cwd = g_get_current_dir();
-		vr_curdir = vfs_open(cwd, NULL, NULL);
+		vr_curdir = vfs_open(cwd, NULL, NULL, 1);
 		g_free(cwd);
 	}
 
@@ -193,7 +193,7 @@ gui_browser_dir_parent(void)
 	if (vr_curdir == NULL)
 		return;
 
-	if ((vr = vfs_open("..", NULL, vfs_filename(vr_curdir))) == NULL)
+	if ((vr = vfs_open("..", NULL, vfs_filename(vr_curdir), 1)) == NULL)
 		goto bad;
 	if (vfs_populate(vr) != 0) {
 		/* Permission denied? */
@@ -322,10 +322,10 @@ gui_browser_chdir(void)
 
 	if (vr_curdir != NULL) {
 		/* Relative to the current node */
-		vr = vfs_open(path, NULL, vfs_filename(vr_curdir));
+		vr = vfs_open(path, NULL, vfs_filename(vr_curdir), 0);
 	} else {
 		/* Relative to the root */
-		vr = vfs_open(path, NULL, NULL);
+		vr = vfs_open(path, NULL, NULL, 0);
 	}
 	g_free(path);
 

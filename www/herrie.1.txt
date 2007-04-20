@@ -106,13 +106,9 @@ CONFIGURATION SWITCHES
        gui.color.select.fg=black
 	      The foreground color of a selected item of an active window.
 
-       playq.dumpfile=
-	      The filename used by  the  playq.remember  option.  When	empty,
-	      ~/.herrie/autosave.pls will be used.
-
-       playq.remember=yes
-	      Make  herrie  remember the contents of the playlist on shutdown.
-	      The playlist is automatically loaded on startup.
+       playq.dumpfile=~/.herrie/autosave.xspf
+	      The filename used to automatically saved at shutdown and load at
+	      startup. When empty, this feature will be disabled.
 
        playq.xmms=no
 	      Always start herrie in XMMS mode.
@@ -122,9 +118,9 @@ CONFIGURATION SWITCHES
 
        scrobbler.password=
 	      The password the Audioscrobbler client uses when authenticating.
-	      Make sure your configuration  file  isn't  world	readable  when
-	      specifying  this	switch in your configuration file. Please note
-	      that this switch must contain an MD5  hash.  Use	the  following
+	      Make  sure  your	configuration  file  isn't world readable when
+	      specifying this switch in your configuration file.  Please  note
+	      that  this  switch  must	contain an MD5 hash. Use the following
 	      command to generate such a hash: echo -n 'p4ssw0rd' | md5
 
        scrobbler.username=
@@ -134,12 +130,12 @@ CONFIGURATION SWITCHES
 	      Hide files in directories with a filename starting with a dot.
 
        vfs.lockup.chroot=
-	      Lock the application's filebrowser in a directory.  Please  note
+	      Lock  the  application's filebrowser in a directory. Please note
 	      that herrie must be launched as root for this switch to work. It
 	      is advised to set vfs.lockup.user as well.
 
        vfs.lockup.user=
-	      Change the effective user of the application  to	the  specified
+	      Change  the  effective  user of the application to the specified
 	      user.
 
 
@@ -165,9 +161,9 @@ KEYBOARD BINDINGS
        G or end
 	      Move the selection to the bottom.
 
-       /      Search the entries for a specified search string and select  the
+       /      Search  the entries for a specified search string and select the
 	      first matching entry below the current selection. If no match is
-	      found, the search will continue at the top of  the  list.  As  a
+	      found,  the  search  will  continue at the top of the list. As a
 	      final attempt, the other window is searched as well.
 
        n      Perform another search for the last entered search string.
@@ -184,7 +180,7 @@ KEYBOARD BINDINGS
 
        ]      Move the currently selected song downward.
 
-       The  file browser also has some bindings that allow you to traverse the
+       The file browser also has some bindings that allow you to traverse  the
        file system or add files, directories or playlists (M3U and PLS) to the
        playlist:
 
@@ -202,9 +198,9 @@ KEYBOARD BINDINGS
        l or right arrow
 	      Enter the selected directory.
 
-       C      Change  the current directory by entering a pathname. This path-
-	      name may be relative to the current directory. When the  address
-	      refers  to a file or web location, it will be displayed as well.
+       C      Change the current directory by entering a pathname. This  path-
+	      name  may be relative to the current directory. When the address
+	      refers to a file or web location, it will be displayed as  well.
 
        And last but not least, there are also some general keyboard bindings:
 
@@ -212,11 +208,11 @@ KEYBOARD BINDINGS
 
        >      Seek 5 seconds forward.
 
-       b      Go to the next song. Sending the signal SIGUSR2 to the  applica-
+       b      Go  to the next song. Sending the signal SIGUSR2 to the applica-
 	      tion will do the same.
 
-       c      Pause  the  current  song.  When c is pressed again, playback is
-	      resumed. Sending the signal SIGUSR1 to the application  will  do
+       c      Pause the current song. When c is  pressed  again,  playback  is
+	      resumed.	Sending  the signal SIGUSR1 to the application will do
 	      the same.
 
        J      Seek to a specific position. When the inserted time is prepended
@@ -224,16 +220,16 @@ KEYBOARD BINDINGS
 
        q      Quit the application.
 
-       r      Switch repeat on and off. When this  option  is  enabled,  songs
-	      that  have  been successfully opened will be added to the end of
+       r      Switch  repeat  on  and  off. When this option is enabled, songs
+	      that have been successfully opened will be added to the  end  of
 	      the playlist, causing the playlist to repeat.
 
        v      Stop playback.
 
        w      Write the current playlist to a PLS file.
 
-       x      When in XMMS mode, it starts the selected song. In  party  mode,
-	      this  song  will	always start playback of the first song in the
+       x      When  in	XMMS mode, it starts the selected song. In party mode,
+	      this song will always start playback of the first  song  in  the
 	      list.
 
        z      Go to the previous song.
@@ -241,13 +237,13 @@ KEYBOARD BINDINGS
        ^L     Force the application to redraw itself.
 
        ^W or tab
-	      Switch the focus from the playlist to the file browser  or  vice
+	      Switch  the  focus from the playlist to the file browser or vice
 	      versa.
 
 
 AUTHORS
-       herrie	is   maintained  by  Ed  Schouten  <ed@fxq.nl>.  Please  visit
-       http://herrie.info/ for more information, documentation	and  developer
+       herrie  is  maintained  by  Ed  Schouten  <ed@fxq.nl>.	Please	 visit
+       http://herrie.info/  for  more information, documentation and developer
        notes.
 
 
