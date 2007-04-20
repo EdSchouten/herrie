@@ -66,7 +66,7 @@ vfs_xspf_populate(struct vfsent *ve)
 			filename = url_unescape(sloc->value);
 
 			/* Add it to the list */
-			vr = vfs_open(filename, strack->title, dirname);
+			vr = vfs_open(filename, strack->title, dirname, 1);
 			if (vr != NULL)
 				vfs_list_insert_tail(&ve->population, vr);
 		}
