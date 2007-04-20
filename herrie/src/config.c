@@ -162,8 +162,10 @@ static struct config_entry configlist[] = {
 	{ "scrobbler.username",		"",		NULL,		NULL },
 #endif /* BUILD_SCROBBLER */
 	{ "vfs.dir.hide_dotfiles",	"yes",		valid_bool,	NULL },
+#ifdef G_OS_UNIX
 	{ "vfs.lockup.chroot",		"",		NULL,		NULL },
 	{ "vfs.lockup.user",		"",		NULL,		NULL },
+#endif /* G_OS_UNIX */
 };
 /**
  * @brief The amount of configuration switches available.
