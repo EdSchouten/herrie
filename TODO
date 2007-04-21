@@ -6,6 +6,7 @@ Graphical user interface:
 - Add curses mouse support
 - Allow numeric multipliers just like vi
 - Add copy/paste functionality to playlist
+- Use different colors for files. playlists and directories
 
 Scrobbler:
 - Allow Scrobbler queue to be dumped on closure (send them next time)
