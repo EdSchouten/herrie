@@ -101,9 +101,9 @@ gui_vfslist_percent(struct gui_vfslist *gv)
 	if (bottom >= length) {
 		/* We can see the end */
 		if (gv->idx_top <= 1)
-			sprintf(gv->percent, " (all) ");
+			strcpy(gv->percent, " (all) ");
 		else
-			sprintf(gv->percent, " (end) ");
+			strcpy(gv->percent, " (end) ");
 	} else {
 		/* Write back a percentage */
 		sprintf(gv->percent, " (%d%%) ", (bottom * 100) / length);
@@ -166,9 +166,10 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 		wclrtoeol(gv->win);
 
 		if (gv->shownumbers) {
-			idxw = snprintf(num, sizeof num, "%d.", idx);
-			mvwaddstr(gv->win, i, 2 + idxmaxw - idxw, num);
-			mvwaddstr(gv->win, i, idxmaxw + 3, vfs_name(vr));
+			idxw = snprintf(num, sizeof num, "%d", idx);
+			mvwaddstr(gv->win, i, 1 + idxmaxw - idxw, num);
+			waddstr(gv->win, ". ");
+			waddstr(gv->win, vfs_name(vr));
 		} else {
 			mvwaddstr(gv->win, i, 1, vfs_name(vr));
 		}
