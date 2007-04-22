@@ -171,7 +171,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 			waddstr(gv->win, ". ");
 			waddstr(gv->win, vfs_name(vr));
 		} else {
-			mvwaddstr(gv->win, i, 1, vfs_name(vr));
+			waddstr(gv->win, vfs_name(vr));
 		}
 
                 /* Marking character for dirs and such */
