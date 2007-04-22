@@ -39,13 +39,10 @@
  * @brief Private AAC data stored in the audio file structure.
  */
 struct aac_drv_data {
-	NeAACDecHandle	decoder;
-	long		bufpos;
-	size_t		buflen;
-	/**
-	 * @brief Read buffer.
-	 */
-	unsigned char	buf_input[65536];
+	NeAACDecHandle		decoder;
+	NeAACDecFrameInfo	curframe;
+	size_t			buflen;
+	unsigned char		buf_input[65536];
 };
 
 int
@@ -61,11 +58,6 @@ aac_open(struct audio_file *fd, const char *ext)
 		return (-1);
 	}
 
-	/* Only match *.aac and *.mp3 */
-	if (ext == NULL ||
-	    (strcmp(ext, "aac") != 0 && strcmp(ext, "mp4") != 0))
-		return (-1);
-	
 	data = g_slice_new0(struct aac_drv_data);
 	data->decoder = NeAACDecOpen();
 
@@ -78,9 +70,8 @@ aac_open(struct audio_file *fd, const char *ext)
 	    sizeof data->buf_input, fd->fp);
 	if (data->buflen == 0)
 		goto bad;
-	data->bufpos = NeAACDecInit(data->decoder, data->buf_input,
-	    data->buflen, &srate, &channels);
-	if (data->bufpos < 0)
+	if (NeAACDecInit(data->decoder, data->buf_input, data->buflen,
+	    &srate, &channels) < 0)
 		goto bad;
 
 	fd->srate = srate;
@@ -105,14 +96,28 @@ size_t
 aac_read(struct audio_file *fd, void *buf)
 {
 	struct aac_drv_data *data = fd->drv_data;
+	size_t left = AUDIO_OUTPUT_BUFLEN;
 	void *rbuf;
 	NeAACDecFrameInfo fr;
+	GString *str;
 
-	rbuf = NeAACDecDecode(data->decoder, &fr, data->buf_input,
-	    sizeof data->buf_input);
-	gui_msgbar_warn(NeAACDecGetErrorMessage(fr.error));
-	if (rbuf == NULL || fr.bytesconsumed == 0 || fr.error != 0)
+	do {
+		rbuf = NeAACDecDecode(data->decoder, &fr,
+		    data->buf_input, sizeof data->buf_input);
+		if (rbuf == NULL || fr.bytesconsumed == 0 || fr.error != 0) {
+			/* Refill buffer */
+			data->buflen = fread(data->buf_input, 1,
+			    sizeof data->buf_input, fd->fp);
+			if (data->buflen == 0)
+				return (0);
+			continue;
+		}
+		str = g_string_new("");
+		g_string_printf(str, "Samples: %lu\n", fr.samples);
+		gui_msgbar_warn(str->str);
+		g_string_free(str, TRUE);
 		return (0);
+	} while (left > 0);
 
 	return (1);
 }
