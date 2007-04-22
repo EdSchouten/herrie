@@ -23,50 +23,36 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-
-/*
- * Header files which aren't obtained from pkg-config and such. We need
- * to check whether they are available on our system.
+/**
+ * @file audio_format_aac.c
+ * @brief AAC decompression routines.
  */
 
 #include "stdinc.h"
 
-#include CURSES_HEADER
-#ifdef BUILD_AAC
 #include <neaacdec.h>
-#endif /* BUILD_AAC */
-#ifdef BUILD_AO
-#include <ao/ao.h>
-#endif /* BUILD_AO */
-#ifdef BUILD_MODPLUG
-#include <sys/mman.h>
-#endif /* BUILD_MODPLUG */
-#ifdef BUILD_MP3
-#include <id3tag.h>
-#include <mad.h>
-#endif /* BUILD_MP3 */
-#ifdef BUILD_OSS
-#include OSS_HEADER
-#endif /* BUILD_OSS */
-#ifdef BUILD_SCROBBLER
-#include <openssl/md5.h>
-#endif /* BUILD_SCROBBLER */
-#ifdef BUILD_SNDFILE
-#include <sndfile.h>
-#endif /* BUILD_SNDFILE */
-#ifdef BUILD_VORBIS
-#include <vorbis/codec.h>
-#include <vorbis/vorbisfile.h>
-#endif /* BUILD_VORBIS */
-#ifdef BUILD_XSPF
-#include <spiff/spiff_c.h>
-#endif /* BUILD_XSPF */
+
+#include "audio_format.h"
+#include "audio_output.h"
 
 int
-main(int argc, char *argv[])
+aac_open(struct audio_file *fd, const char *ext)
 {
-#ifdef BUILD_XSPF
-	spiff_write(NULL, NULL);
-#endif /* BUILD_XSPF */
+	return (-1);
+}
+
+void
+aac_close(struct audio_file *fd)
+{
+}
+
+size_t
+aac_read(struct audio_file *fd, void *buf)
+{
 	return (0);
+}
+
+void
+aac_seek(struct audio_file *fd, int len, int rel)
+{
 }
