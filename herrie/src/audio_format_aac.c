@@ -35,9 +35,62 @@
 #include "audio_format.h"
 #include "audio_output.h"
 
+/**
+ * @brief Private AAC data stored in the audio file structure.
+ */
+struct aac_drv_data {
+	NeAACDecHandle	decoder;
+	long		bufpos;
+	size_t		buflen;
+	/**
+	 * @brief Read buffer.
+	 */
+	unsigned char	buf_input[65536];
+};
+
 int
 aac_open(struct audio_file *fd, const char *ext)
 {
+	struct aac_drv_data *data;
+	NeAACDecConfigurationPtr cfg;
+	long srate;
+	char channels;
+
+	if (fd->stream) {
+		/* Not yet */
+		return (-1);
+	}
+
+	/* Only match *.aac and *.mp3 */
+	if (ext == NULL ||
+	    (strcmp(ext, "aac") != 0 && strcmp(ext, "mp4") != 0))
+		return (-1);
+	
+	data = g_slice_new0(struct aac_drv_data);
+	data->decoder = NeAACDecOpen();
+
+	/* Set output correctly */
+	cfg = NeAACDecGetCurrentConfiguration(data->decoder);
+	cfg->outputFormat = FAAD_FMT_16BIT;
+	NeAACDecSetConfiguration(data->decoder, cfg);
+
+	data->buflen = fread(data->buf_input, 1,
+	    sizeof data->buf_input, fd->fp);
+	if (data->buflen == 0)
+		goto bad;
+	data->bufpos = NeAACDecInit(data->decoder, data->buf_input,
+	    data->buflen, &srate, &channels);
+	if (data->bufpos < 0)
+		goto bad;
+
+	fd->srate = srate;
+	fd->channels = channels;
+
+	fd->drv_data = data;
+	return (0);
+
+bad:	NeAACDecClose(data->decoder);
+	g_slice_free(struct aac_drv_data, data);
 	return (-1);
 }
 
@@ -46,10 +99,22 @@ aac_close(struct audio_file *fd)
 {
 }
 
+#include "gui.h"
+
 size_t
 aac_read(struct audio_file *fd, void *buf)
 {
-	return (0);
+	struct aac_drv_data *data = fd->drv_data;
+	void *rbuf;
+	NeAACDecFrameInfo fr;
+
+	rbuf = NeAACDecDecode(data->decoder, &fr, data->buf_input,
+	    sizeof data->buf_input);
+	gui_msgbar_warn(NeAACDecGetErrorMessage(fr.error));
+	if (rbuf == NULL || fr.bytesconsumed == 0 || fr.error != 0)
+		return (0);
+
+	return (1);
 }
 
 void
