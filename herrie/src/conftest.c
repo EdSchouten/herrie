@@ -49,7 +49,11 @@
 #include OSS_HEADER
 #endif /* BUILD_OSS */
 #ifdef BUILD_SCROBBLER
+#ifdef BUILD_OPENSSL_MD5
 #include <openssl/md5.h>
+#else /* !BUILD_OPENSSL_MD5 */
+#include <md5.h>
+#endif /* !UILD_OPENSSL_MD5 */
 #endif /* BUILD_SCROBBLER */
 #ifdef BUILD_SNDFILE
 #include <sndfile.h>

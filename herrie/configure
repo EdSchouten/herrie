@@ -229,7 +229,7 @@ then
 			;;
 		*)
 			# Use MD5 routines from OpenSSL
-			CFLAGS_scrobbler="-DBUILD_OPENSSL_MD5"
+			CFLAGS="$CFLAGS -DBUILD_OPENSSL_MD5"
 			LDFLAGS="$LDFLAGS -lssl"
 			;;
 		esac
