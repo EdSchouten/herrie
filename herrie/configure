@@ -233,7 +233,6 @@ then
 			LDFLAGS="$LDFLAGS -lssl"
 			;;
 		esac
-		LDFLAGS="$LDFLAGS -lssl"
 		SRCS="$SRCS scrobbler scrobbler_send"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
