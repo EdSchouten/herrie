@@ -209,6 +209,19 @@ then
 	if [ "$CFG_SCROBBLER" != "" ]
 	then
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
+		case $OS in
+		FreeBSD)
+			LDFLAGS="$LDFLAGS -lmd"
+			;;
+		SunOS)
+			LDFLAGS="$LDFLAGS -lmd5"
+			;;
+		*)
+			# Use MD5 routines from OpenSSL
+			CFLAGS_scrobbler="-DBUILD_OPENSSL_MD5"
+			LDFLAGS="$LDFLAGS -lssl"
+			;;
+		esac
 		LDFLAGS="$LDFLAGS -lssl"
 		SRCS="$SRCS scrobbler scrobbler_send"
 	fi

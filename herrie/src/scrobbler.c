@@ -30,7 +30,14 @@
 
 #include "stdinc.h"
 
+#ifdef BUILD_OPENSSL_MD5
 #include <openssl/md5.h>
+#define MD5Init		MD5_Init
+#define MD5Update	MD5_Update
+#define MD5Final	MD5_Final
+#else /* !BUILD_OPENSSL_MD5 */
+#include <md5.h>
+#endif /* BUILD_OPENSSL_MD5 */
 
 #include "audio_file.h"
 #include "config.h"
@@ -274,10 +281,10 @@ scrobbler_hash(struct scrobbler_condata *scd)
 	/*
 	 * Generate the new MD5 value
 	 */
-	MD5_Init(&ctx);
-	MD5_Update(&ctx, scd->password, 32);
-	MD5_Update(&ctx, scd->challenge, 32);
-	MD5_Final(bin_res, &ctx);
+	MD5Init(&ctx);
+	MD5Update(&ctx, scd->password, 32);
+	MD5Update(&ctx, scd->challenge, 32);
+	MD5Final(bin_res, &ctx);
 
 	/*
 	 * Convert the result back to hexadecimal string
