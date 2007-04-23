@@ -274,8 +274,8 @@ scrobbler_hash(struct scrobbler_condata *scd)
 	 * Generate the new MD5 value
 	 */
 	MD5Init(&ctx);
-	MD5Update(&ctx, scd->password, 32);
-	MD5Update(&ctx, scd->challenge, 32);
+	MD5Update(&ctx, (unsigned char *)scd->password, 32);
+	MD5Update(&ctx, (unsigned char *)scd->challenge, 32);
 	MD5Final(bin_res, &ctx);
 
 	/*

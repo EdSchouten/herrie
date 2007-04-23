@@ -169,7 +169,7 @@ MD5Update (context, input, inputLen)
  * MD5 padding. Adds padding followed by original length.
  */
 
-void
+static void
 MD5Pad (context)
 	MD5_CTX *context;
 {
