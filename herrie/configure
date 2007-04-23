@@ -224,6 +224,9 @@ then
 		FreeBSD)
 			LDFLAGS="$LDFLAGS -lmd"
 			;;
+		NetBSD|OpenBSD)
+			# Already has MD5 in libc
+			;;
 		SunOS)
 			LDFLAGS="$LDFLAGS -lmd5"
 			;;

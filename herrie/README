@@ -65,7 +65,7 @@ Herrie:
 - libspiff (0.6.3 or higher - optional)
 - libvorbisfile
 - ncursesw, ncurses or pdcurses (`XCurses')
-- openssl (except on FreeBSD and Solaris)
+- openssl (except on xBSD and Solaris)
 
 Please note that some dependencies can be disabled. OpenSSL and cURL are only
 needed when compiling with AudioScrobbler or HTTP support. LibAO and SDL are
