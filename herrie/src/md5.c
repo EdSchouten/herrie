@@ -46,7 +46,7 @@ Encode (unsigned char *output, uint32_t *input, unsigned int len)
 	uint32_t *op = (u_int32_t *)output;
 
 	for (i = 0; i < len / 4; i++)
-		op[i] = htole32(input[i]);
+		op[i] = GUINT32_TO_LE(input[i]);
 }
 
 /*
@@ -61,7 +61,7 @@ Decode (uint32_t *output, const unsigned char *input, unsigned int len)
 	const uint32_t *ip = (const u_int32_t *)input;
 
 	for (i = 0; i < len / 4; i++)
-		output[i] = le32toh(ip[i]);
+		output[i] = GUINT32_FROM_LE(ip[i]);
 }
 #endif /* G_BYTE_ORDER == G_LITTLE_ENDIAN */
 
