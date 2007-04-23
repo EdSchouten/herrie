@@ -354,7 +354,7 @@ scrobbler_runner_thread(void *arg)
 		g_usleep(MAX(scd->interval, 1) * 1000000);
 	}
 	
-	return (NULL);
+	/* NOTREACHED */
 }
 
 void

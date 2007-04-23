@@ -43,7 +43,7 @@ static void
 Encode (unsigned char *output, uint32_t *input, unsigned int len)
 {
 	unsigned int i;
-	uint32_t *op = (u_int32_t *)output;
+	uint32_t *op = (uint32_t *)output;
 
 	for (i = 0; i < len / 4; i++)
 		op[i] = GUINT32_TO_LE(input[i]);
@@ -58,7 +58,7 @@ static void
 Decode (uint32_t *output, const unsigned char *input, unsigned int len)
 {
 	unsigned int i;
-	const uint32_t *ip = (const u_int32_t *)input;
+	const uint32_t *ip = (const uint32_t *)input;
 
 	for (i = 0; i < len / 4; i++)
 		output[i] = GUINT32_FROM_LE(ip[i]);
