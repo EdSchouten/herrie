@@ -30,6 +30,7 @@ APP_VERSION=1.6.1
 APP_LINGUAS='de nl pl tr'
 
 # Default compilation switches
+CFG_AAC=yes
 CFG_AO=ao
 unset CFG_BINEXT
 CFG_CURSES_HEADER=ncurses
@@ -120,6 +121,9 @@ TRANSDIR=$PREFIX/share/locale
 while [ $# -gt 0 ]
 do
 	case $1 in
+	no_aac)
+		unset CFG_AAC
+		;;
 	no_http)
 		unset CFG_HTTP
 		;;
@@ -198,6 +202,13 @@ SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
 
 # ftello() usage
 [ "$CFG_FTELLO" != "" ] && CFLAGS="$CFLAGS -DBUILD_FTELLO"
+# AAC support
+if [ "$CFG_AAC" != "" ]
+then
+	CFLAGS="$CFLAGS -DBUILD_AAC"
+	LDFLAGS="$LDFLAGS -lfaad"
+	SRCS="$SRCS audio_format_aac"
+fi
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
 then
@@ -373,6 +384,7 @@ echo "- Using $CONFFILE configuration file"
 [ "$CFG_LINGUAS" != "" ] && echo "- Installing translations$CFG_LINGUAS in $TRANSDIR"
 echo "- Using -l$CFG_CURSES_LIB and <$CFG_CURSES_HEADER.h>"
 echo "- Using $CFG_AO audio output"
+[ "$CFG_AAC" != "" ] && echo "- Support for AAC"
 [ "$CFG_HTTP" != "" ] && echo "- Support for HTTP streams"
 [ "$CFG_MODPLUG" != "" ] && echo "- Support for libmodplug"
 [ "$CFG_MP3" != "" ] && echo "- Support for MP3"

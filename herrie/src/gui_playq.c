@@ -187,7 +187,7 @@ gui_playq_statbar_refresh(void)
 	percent = gui_vfslist_getpercentage(win_playq);
 	plen = strlen(percent);
 	mvwaddstr(win_statbar, 0, COLS - str_time->len - plen, str_time->str);
-	mvwaddstr(win_statbar, 0, COLS - plen, percent);
+	waddstr(win_statbar, percent);
 
 	/* And draw it */
 	wnoutrefresh(win_statbar);
