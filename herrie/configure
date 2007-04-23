@@ -99,7 +99,6 @@ Windows)
 	unset CFG_FTELLO
 	unset CFG_HTTP
 	unset CFG_MODPLUG
-	unset CFG_SCROBBLER
 	CFG_CURSES_HEADER=curses
 	CFG_CURSES_LIB=pdcurses
 	;;
@@ -220,27 +219,7 @@ then
 	if [ "$CFG_SCROBBLER" != "" ]
 	then
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
-		MD5_HEADER=md5
-		case $OS in
-		FreeBSD)
-			LDFLAGS="$LDFLAGS -lmd"
-			;;
-		NetBSD|OpenBSD)
-			# Already has MD5 in libc
-			;;
-		SunOS)
-			LDFLAGS="$LDFLAGS -lmd5"
-			;;
-		*)
-			# Use MD5 routines from OpenSSL; different names
-			MD5_HEADER=openssl/md5
-			CFLAGS="$CFLAGS -DMD5Init=MD5_Init \
-			    -DMD5Update=MD5_Update -DMD5Final=MD5_Final"
-			LDFLAGS="$LDFLAGS -lssl"
-			;;
-		esac
-		CFLAGS="$CFLAGS -DMD5_HEADER=\\<$MD5_HEADER.h\\>"
-		SRCS="$SRCS scrobbler scrobbler_send"
+		SRCS="$SRCS md5 scrobbler scrobbler_send"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
 	if [ $? -ne 0 ]

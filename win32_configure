@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export PREFIX=/usr/local/mingw32
+export PATH="$PREFIX/bin:$PATH"
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
 export CC=mingw32-gcc
 export OS=Windows

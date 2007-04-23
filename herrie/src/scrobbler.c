@@ -30,11 +30,10 @@
 
 #include "stdinc.h"
 
-#include MD5_HEADER
-
 #include "audio_file.h"
 #include "config.h"
 #include "gui.h"
+#include "md5.h"
 #include "scrobbler.h"
 #include "scrobbler_internal.h"
 #include "util.h"

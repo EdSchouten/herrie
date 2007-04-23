@@ -1,7 +1,7 @@
 ????-??-?? -- Herrie 1.7:
  * Fixed: Don't point files/directories starting with ~ to home directories.
  * Fixed: Allow usage of ~/foo in playq.dumpfile.
- * Improved: On Solaris and xBSD, -lc/-lmd5/-lmd is used for MD5 hashing
+ * Improved: Include own MD5 implementation
 
 2007-04-19 -- Herrie 1.6.1:
  * Added: Polish translation - Adam Golebiowski from PLD Linux
