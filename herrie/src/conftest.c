@@ -49,11 +49,7 @@
 #include OSS_HEADER
 #endif /* BUILD_OSS */
 #ifdef BUILD_SCROBBLER
-#ifdef BUILD_OPENSSL_MD5
-#include <openssl/md5.h>
-#else /* !BUILD_OPENSSL_MD5 */
-#include <md5.h>
-#endif /* !UILD_OPENSSL_MD5 */
+#include MD5_HEADER
 #endif /* BUILD_SCROBBLER */
 #ifdef BUILD_SNDFILE
 #include <sndfile.h>
@@ -72,5 +68,8 @@ main(int argc, char *argv[])
 #ifdef BUILD_XSPF
 	spiff_write(NULL, NULL);
 #endif /* BUILD_XSPF */
+#ifdef BUILD_SCROBBLER
+	MD5Init(NULL);
+#endif /* BUILD_SCROBBLER */
 	return (0);
 }

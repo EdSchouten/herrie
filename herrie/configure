@@ -220,6 +220,7 @@ then
 	if [ "$CFG_SCROBBLER" != "" ]
 	then
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
+		MD5_HEADER=md5
 		case $OS in
 		FreeBSD)
 			LDFLAGS="$LDFLAGS -lmd"
@@ -231,11 +232,14 @@ then
 			LDFLAGS="$LDFLAGS -lmd5"
 			;;
 		*)
-			# Use MD5 routines from OpenSSL
-			CFLAGS="$CFLAGS -DBUILD_OPENSSL_MD5"
+			# Use MD5 routines from OpenSSL; different names
+			MD5_HEADER=openssl/md5
+			CFLAGS="$CFLAGS -DMD5Init=MD5_Init \
+			    -DMD5Update=MD5_Update -DMD5Final=MD5_Final"
 			LDFLAGS="$LDFLAGS -lssl"
 			;;
 		esac
+		CFLAGS="$CFLAGS -DMD5_HEADER=\\<$MD5_HEADER.h\\>"
 		SRCS="$SRCS scrobbler scrobbler_send"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"

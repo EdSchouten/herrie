@@ -30,14 +30,7 @@
 
 #include "stdinc.h"
 
-#ifdef BUILD_OPENSSL_MD5
-#include <openssl/md5.h>
-#define MD5Init		MD5_Init
-#define MD5Update	MD5_Update
-#define MD5Final	MD5_Final
-#else /* !BUILD_OPENSSL_MD5 */
-#include <md5.h>
-#endif /* BUILD_OPENSSL_MD5 */
+#include MD5_HEADER
 
 #include "audio_file.h"
 #include "config.h"
