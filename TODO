@@ -7,6 +7,8 @@ Graphical user interface:
 - Allow numeric multipliers just like vi
 - Add copy/paste functionality to playlist
 - Use different colors for files. playlists and directories
+- Add filtering feature instead of searching, just like Mutt has
+- Recursive searching
 
 Scrobbler:
 - Allow Scrobbler queue to be dumped on closure (send them next time)
