@@ -32,6 +32,7 @@
 
 #include "util.h"
 
+#ifdef BUILD_SCROBBLER
 /**
  * @brief Convert a numerical value to a hexadecimal character.
  */
@@ -52,6 +53,7 @@ hex_encode(unsigned char *bin, char *hex, size_t len)
 		*hex++ = toxdigit(*bin++ & 0x0f);
 	}
 }
+#endif /* BUILD_SCROBBLER */
 
 inline void
 hex_decode(char *hex, unsigned char *bin, size_t len)
@@ -93,7 +95,14 @@ http_escape(const char *str, const char *prepend)
 	return g_string_free(ret, FALSE);
 }
 
-void
+#ifdef BUILD_XSPF
+/**
+ * @brief Unescape a string according to HTTP/1.1. The conversion will
+ *        be performed in place. The arguments point to the read and
+ *        write offsets. In almost all cases, they must point to the
+ *        same string.
+ */
+static void
 http_unescape(char *r, char *w)
 {
 	for (; *r != '\0'; r++, w++) {
@@ -136,3 +145,4 @@ url_unescape(char *str)
 
 	return (str);
 }
+#endif /* BUILD_XSPF */

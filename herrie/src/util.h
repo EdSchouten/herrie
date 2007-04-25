@@ -31,29 +31,27 @@
 #ifndef _UTIL_H_
 #define _UTIL_H_
 
-/**
- * @brief Convert a hexadecimal string to binary data. The len parameter
- *        is the length of the binary buffer.
- */
-void hex_decode(char *hex, unsigned char *bin, size_t len);
+#ifdef BUILD_SCROBBLER
 /**
  * @brief Convert a binary buffer to a hexadecimal string. The len
  *        parameter is the length of the binary buffer. The string will
  *        not be null terminated.
  */
 void hex_encode(unsigned char *bin, char *hex, size_t len);
+#endif /* BUILD_SCROBBLER */
+/**
+ * @brief Convert a hexadecimal string to binary data. The len parameter
+ *        is the length of the binary buffer.
+ */
+void hex_decode(char *hex, unsigned char *bin, size_t len);
+
 /**
  * @brief Escape a string according to HTTP/1.1. A string can be
  *        prepended as well, which won't be escaped.
  */
 char *http_escape(const char *str, const char *prepend);
-/**
- * @brief Unescape a string according to HTTP/1.1. The conversion will
- *        be performed in place. The arguments point to the read and
- *        write offsets. In almost all cases, they must point to the
- *        same string.
- */
-void http_unescape(char *r, char *w);
+
+#ifdef BUILD_XSPF
 /**
  * @brief Escape an URL when needed. If it's a local filename, file://
  *        will be prepended.
@@ -64,5 +62,6 @@ char *url_escape(const char *str);
  *        (file://foo -> foo).
  */
 char *url_unescape(char *str);
+#endif /* BUILD_XSPF */
 
 #endif /* !_GUI_H_ */
