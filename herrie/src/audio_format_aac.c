@@ -50,8 +50,8 @@ aac_open(struct audio_file *fd, const char *ext)
 {
 	struct aac_drv_data *data;
 	NeAACDecConfigurationPtr cfg;
-	long srate;
-	char channels;
+	unsigned long srate;
+	unsigned char channels;
 
 	if (fd->stream) {
 		/* Not yet */
