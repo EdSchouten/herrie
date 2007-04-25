@@ -197,7 +197,7 @@ LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
     -L$PREFIX/lib -l$CFG_CURSES_LIB"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
     gui_input gui_msgbar gui_playq gui_vfslist main playq playq_party \
-    playq_xmms util vfs vfs_playlist vfs_regular"
+    playq_xmms vfs vfs_playlist vfs_regular"
 
 # ftello() usage
 [ "$CFG_FTELLO" != "" ] && CFLAGS="$CFLAGS -DBUILD_FTELLO"
@@ -219,7 +219,7 @@ then
 	if [ "$CFG_SCROBBLER" != "" ]
 	then
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
-		SRCS="$SRCS md5 scrobbler scrobbler_send"
+		SRCS="$SRCS md5 scrobbler scrobbler_send util"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
 	if [ $? -ne 0 ]
@@ -310,7 +310,7 @@ if [ "$CFG_XSPF" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_XSPF"
 	LDFLAGS="$LDFLAGS -lspiff"
-	SRCS="$SRCS vfs_xspf"
+	SRCS="$SRCS util vfs_xspf"
 fi
 
 # Audio output options
@@ -346,7 +346,7 @@ sdl)
 esac
 
 # Sort source files by name
-SRCS=`echo $SRCS | xargs -n 1 | sort`
+SRCS=`echo $SRCS | xargs -n 1 | sort | uniq`
 
 unset OBJS
 for i in $SRCS
