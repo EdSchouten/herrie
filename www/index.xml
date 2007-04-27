@@ -49,6 +49,7 @@ SIZE (herrie-1.6.1.tar.bz2) = 51267</pre>
 	Herrie in their package manager:</p>
 
 	<ul>
+		<li><a href="http://gnu.ethz.ch/debian/herrie/">Debian</a></li>
 		<li><a href="http://freshports.org/audio/herrie">FreeBSD</a></li>
 		<li><a href="http://packages.gentoo.org/packages/?category=media-sound;name=herrie">Gentoo Linux</a></li>
 		<li><a href="http://trac.macports.org/projects/macports/browser/trunk/dports/audio/herrie">MacPorts</a></li>
