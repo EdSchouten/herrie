@@ -23,15 +23,16 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.TH HERRIE 1 "April 10, 2007" "Ed Schouten"
-
+.TH HERRIE 1 "April 30, 2007" "Ed Schouten"
 .SH NAME
 herrie \- interactive music playlist player
-
 .SH SYNOPSIS
 .B herrie
-[-vx] [-c configfile] [file ...]
-
+.RB [ -vx ]
+.RB [ -c
+.IR configfile ] 
+.RI [ file
+.IR ... ]
 .SH DESCRIPTION
 .B herrie
 is a command line music player. It supports multiple audio file formats
@@ -49,7 +50,7 @@ playlist.  The default mode is party mode.
 .PP
 The following command line options are available:
 .TP
-.B -c configfile
+.BI "-c " "configfile"
 By default,
 .B herrie
 searches in
@@ -67,7 +68,6 @@ Display version information and a list of supported file formats.
 This switch causes
 .B herrie
 to start up in XMMS mode.
-
 .SH CONFIGURATION SWITCHES
 .b herrie
 may be configured by storing options in a configuration file. Options
@@ -179,7 +179,6 @@ as well.
 .TP
 .B vfs.lockup.user=
 Change the effective user of the application to the specified user.
-
 .SH KEYBOARD BINDINGS
 Both the file browser and the playlist share some common keyboard
 bindings:
@@ -305,7 +304,6 @@ Force the application to redraw itself.
 .TP
 .B ^W or tab
 Switch the focus from the playlist to the file browser or vice versa.
-
 .SH AUTHORS
 .B herrie
 is maintained by Ed Schouten <ed@fxq.nl>. Please visit
