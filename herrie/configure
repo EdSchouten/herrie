@@ -218,8 +218,23 @@ then
 	fi
 	if [ "$CFG_SCROBBLER" != "" ]
 	then
+		case $OS in
+		FreeBSD)
+			LDFLAGS="$LDFLAGS -lmd"
+			;;
+		NetBSD|OpenBSD)
+			# NetBSD/OpenBSD have MD5 in libc
+			;;
+		SunOS)
+			LDFLAGS="$LDFLAGS -lmd5"
+			;;
+		*)
+			CFLAGS="$CFLAGS -DBUILD_MD5_INTERNAL"
+			SRCS="$SRCS md5"
+			;;
+		esac
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
-		SRCS="$SRCS md5 scrobbler scrobbler_send util"
+		SRCS="$SRCS scrobbler scrobbler_send util"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
 	if [ $? -ne 0 ]

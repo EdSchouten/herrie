@@ -38,6 +38,9 @@
 #ifdef BUILD_AO
 #include <ao/ao.h>
 #endif /* BUILD_AO */
+#ifndef BUILD_MD5_INTERNAL
+#include <md5.h>
+#endif /* BUILD_MD5_INTERNAL */
 #ifdef BUILD_MODPLUG
 #include <sys/mman.h>
 #endif /* BUILD_MODPLUG */

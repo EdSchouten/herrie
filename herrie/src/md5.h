@@ -23,6 +23,12 @@
  * documentation and/or software.
  */
 
+#ifndef BUILD_MD5_INTERNAL
+
+#include <md5.h>
+
+#else /* BUILD_MD5_INTERNAL */
+
 #ifndef _MD5_H_
 #define _MD5_H_
 
@@ -37,4 +43,6 @@ void MD5Init (MD5_CTX *);
 void MD5Update (MD5_CTX *, const unsigned char *, unsigned int);
 void MD5Final (unsigned char [16], MD5_CTX *);
 
-#endif /* _MD5_H_ */
+#endif /* !_MD5_H_ */
+
+#endif /* !BUILD_MD5_INTERNAL */
