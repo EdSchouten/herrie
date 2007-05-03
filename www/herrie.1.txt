@@ -5,10 +5,8 @@ HERRIE(1)							     HERRIE(1)
 NAME
        herrie - interactive music playlist player
 
-
 SYNOPSIS
        herrie [-vx] [-c configfile] [file ...]
-
 
 DESCRIPTION
        herrie  is a command line music player. It supports multiple audio file
@@ -35,7 +33,6 @@ DESCRIPTION
 	      mats.
 
        -x     This switch causes herrie to start up in XMMS mode.
-
 
 CONFIGURATION SWITCHES
        may  be	configured by storing options in a configuration file. Options
@@ -138,7 +135,6 @@ CONFIGURATION SWITCHES
 	      Change  the  effective  user of the application to the specified
 	      user.
 
-
 KEYBOARD BINDINGS
        Both the file browser and the playlist share some common keyboard bind-
        ings:
@@ -240,7 +236,6 @@ KEYBOARD BINDINGS
 	      Switch  the  focus from the playlist to the file browser or vice
 	      versa.
 
-
 AUTHORS
        herrie  is  maintained  by  Ed  Schouten  <ed@fxq.nl>.	Please	 visit
        http://herrie.info/  for  more information, documentation and developer
@@ -248,4 +243,4 @@ AUTHORS
 
 
 
-Ed Schouten			April 10, 2007			     HERRIE(1)
+Ed Schouten			April 30, 2007			     HERRIE(1)
