@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-17 22:11+0200\n"
-"PO-Revision-Date: 2007-04-17 22:11+0200\n"
+"POT-Creation-Date: 2007-05-06 16:31+0200\n"
+"PO-Revision-Date: 2007-05-06 16:31+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -72,11 +72,11 @@ msgstr "Spring naar positie"
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:468 main.c:68 main.c:74 main.c:80
+#: gui_input.c:468 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:469 main.c:70 main.c:76 main.c:82
+#: gui_input.c:469 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "nee"
 
@@ -108,86 +108,90 @@ msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 
-#: gui_vfslist.c:230
+#: gui_vfslist.c:231
 msgid "There are no songs."
 msgstr "Er zijn geen nummers."
 
-#: gui_vfslist.c:287
+#: gui_vfslist.c:288
 msgid "You are at the first song."
 msgstr "Je bent bij het eerste nummer."
 
-#: gui_vfslist.c:306
+#: gui_vfslist.c:307
 msgid "You are at the last song."
 msgstr "Je bent bij het laatste nummer."
 
-#: gui_vfslist.c:559
+#: gui_vfslist.c:560
 msgid "Search wrapped to top."
 msgstr "Zoekopdracht naar boven verplaatst."
 
-#: main.c:65
+#: main.c:66
+msgid "Global configuration file"
+msgstr "Globale configuratiebestand"
+
+#: main.c:67
 msgid "Audio output"
 msgstr "Geluidsuitvoer"
 
-#: main.c:66
+#: main.c:68
 msgid "Support for AudioScrobbler"
 msgstr "Ondersteuning voor AudioScrobbler"
 
-#: main.c:72
+#: main.c:74
 msgid "Support for HTTP streams"
 msgstr "Ondersteuning voor HTTP streams"
 
-#: main.c:78
+#: main.c:80
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Ondersteuning voor XSPF afspeellijsten (`spiff')"
 
-#: main.c:84
+#: main.c:86
 msgid "Supported audio file formats"
 msgstr "ondersteunde geluidsformaten"
 
-#: main.c:96
+#: main.c:98
 msgid "usage"
 msgstr "gebruik"
 
-#: playq.c:186
+#: playq.c:182
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Openen voor afspelen van \"%s\" mislukt."
 
-#: playq.c:415
+#: playq.c:401
 #, c-format
 msgid "Repeat: %s"
 msgstr "Herhaling: %s"
 
-#: playq.c:416
+#: playq.c:402
 msgid "on"
 msgstr "aan"
 
-#: playq.c:416
+#: playq.c:402
 msgid "off"
 msgstr "uit"
 
-#: scrobbler.c:311
+#: scrobbler.c:310
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Succesvol geauthoriseerd bij AudioScrobbler."
 
-#: scrobbler.c:318
+#: scrobbler.c:317
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Authoriseren bij AudioScrobbler mislukt."
 
-#: scrobbler.c:334
+#: scrobbler.c:333
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Succesvol 1 nummer opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:338
+#: scrobbler.c:337
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Succesvol %d nummers opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:344
+#: scrobbler.c:343
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
 
-#: scrobbler.c:347
+#: scrobbler.c:346
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 
