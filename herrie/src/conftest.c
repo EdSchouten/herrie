@@ -35,9 +35,6 @@
 #ifdef BUILD_AO
 #include <ao/ao.h>
 #endif /* BUILD_AO */
-#ifndef BUILD_MD5_INTERNAL
-#include <md5.h>
-#endif /* BUILD_MD5_INTERNAL */
 #ifdef BUILD_MODPLUG
 #include <sys/mman.h>
 #endif /* BUILD_MODPLUG */
@@ -48,6 +45,9 @@
 #ifdef BUILD_OSS
 #include OSS_HEADER
 #endif /* BUILD_OSS */
+#if defined(BUILD_SCROBBLER) && !defined(BUILD_MD5_INTERNAL)
+#include <md5.h>
+#endif /* BUILD_SCROBBLER && !BUILD_MD5_INTERNAL */
 #ifdef BUILD_SNDFILE
 #include <sndfile.h>
 #endif /* BUILD_SNDFILE */
