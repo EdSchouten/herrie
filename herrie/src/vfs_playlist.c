@@ -68,9 +68,8 @@ vfs_pls_open(struct vfsent *ve, int isdir)
 int
 vfs_pls_populate(struct vfsent *ve)
 {
-	GIOChannel *fio;
-	GString *fln;
-	gsize eol;
+	FILE *fio;
+	char fbuf[1024];
 	char *ch, *dn, **out;
 	int idxoff, nidx;
 
@@ -79,20 +78,16 @@ vfs_pls_populate(struct vfsent *ve)
 	char *fn = NULL;
 	char *title = NULL;
 
-	if ((fio = g_io_channel_new_file(ve->filename, "r", NULL)) == NULL)
+	if ((fio = fopen(ve->filename, "r")) == NULL)
 		return (-1);
-	fln = g_string_sized_new(64);
 	dn = g_path_get_dirname(ve->filename);
 
-	while (g_io_channel_read_line_string(fio, fln, &eol, NULL) ==
-	    G_IO_STATUS_NORMAL) {
-		g_string_truncate(fln, eol);
-
-		if (strncmp(fln->str, "File", 4) == 0) {
+	while (vfs_fgets(fbuf, sizeof fbuf, fio) == 0) {
+		if (strncmp(fbuf, "File", 4) == 0) {
 			/* Filename */
 			out = &fn;
 			idxoff = 4;
-		} else if (strncmp(fln->str, "Title", 5) == 0) {
+		} else if (strncmp(fbuf, "Title", 5) == 0) {
 			/* Song title */
 			out = &title;
 			idxoff = 5;
@@ -101,11 +96,11 @@ vfs_pls_populate(struct vfsent *ve)
 		}
 
 		/* Parse the index number */
-		if ((nidx = atoi(fln->str + idxoff)) == 0)
+		if ((nidx = atoi(fbuf + idxoff)) == 0)
 			continue;
 
 		/* See if we have a value */
-		ch = strchr(fln->str + idxoff, '=');
+		ch = strchr(fbuf + idxoff, '=');
 		if ((ch == NULL) || (ch[1] == '\0'))
 			continue;
 
@@ -131,8 +126,7 @@ vfs_pls_populate(struct vfsent *ve)
 	g_free(fn);
 	g_free(title);
 
-	g_io_channel_unref(fio);
-	g_string_free(fln, TRUE);
+	fclose(fio);
 	g_free(dn);
 	
 	return (0);
@@ -191,33 +185,29 @@ vfs_m3u_open(struct vfsent *ve, int isdir)
 int
 vfs_m3u_populate(struct vfsent *ve)
 {
-	GIOChannel *fio;
-	GString *fln;
-	gsize eol;
+	FILE *fio;
+	char fbuf[1024];
 	char *ch, *dn;
 	char *title = NULL;
 
-	if ((fio = g_io_channel_new_file(ve->filename, "r", NULL)) == NULL)
+	if ((fio = fopen(ve->filename, "r")) == NULL)
 		return (-1);
-	fln = g_string_sized_new(64);
 	dn = g_path_get_dirname(ve->filename);
 
-	while (g_io_channel_read_line_string(fio, fln, &eol, NULL) ==
-	    G_IO_STATUS_NORMAL) {
-		g_string_truncate(fln, eol);
-		if (fln->str[0] == '#') {
+	while (vfs_fgets(fbuf, sizeof fbuf, fio) == 0) {
+		if (fbuf[0] == '#') {
 			/* Only EXTINF is supported */
-			if (strncmp(fln->str, "#EXTINF:", 8) == 0) {
+			if (strncmp(fbuf, "#EXTINF:", 8) == 0) {
 				/* Consolidate double lines */
 				g_free(title); title = NULL;
 
 				/* Remove the duration in seconds */
-				if (((ch = strchr(fln->str + 8, ',')) != NULL)
+				if (((ch = strchr(fbuf + 8, ',')) != NULL)
 				    && (ch[1] != '\0'))
 					title = g_strdup(ch + 1);
 			}
-		} else if (fln->str[0] != '\0') {
-			vfs_playlist_add_tail(ve, fln->str, title, dn);
+		} else if (fbuf[0] != '\0') {
+			vfs_playlist_add_tail(ve, fbuf, title, dn);
 			g_free(title); title = NULL;
 		}
 	}
@@ -225,8 +215,7 @@ vfs_m3u_populate(struct vfsent *ve)
 	/* Trailing EXTINF */
 	g_free(title);
 
-	g_io_channel_unref(fio);
-	g_string_free(fln, TRUE);
+	fclose(fio);
 	g_free(dn);
 
 	return (0);
