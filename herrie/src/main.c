@@ -44,6 +44,7 @@ static void
 version(void)
 {
 	g_printerr(APP_NAME " " APP_VERSION "\n\n"
+		"%s: " CONFFILE "\n"
 		"%s: " AUDIO_OUTPUT "\n"
 		"%s: %s\n"
 		"%s: %s\n"
@@ -62,6 +63,7 @@ version(void)
 		"- libsndfile\n"
 #endif /* BUILD_SNDFILE */
 		,
+		_("Global configuration file"),
 		_("Audio output"),
 		_("Support for AudioScrobbler"),
 #ifdef BUILD_SCROBBLER
@@ -117,10 +119,8 @@ main(int argc, char *argv[])
 	textdomain(APP_NAME);
 #endif /* BUILD_NLS */
 
-#ifdef CONFFILE
+	/* Global and local configuration files */
 	config_load(CONFFILE);
-#endif /* CONFFILE */
-
 	homeconf = g_build_filename(g_get_home_dir(),
 	    "." APP_NAME, "config", NULL);
 	config_load(homeconf);
