@@ -32,9 +32,6 @@
 #include "stdinc.h"
 
 #include CURSES_HEADER
-#ifdef BUILD_AAC
-#include <neaacdec.h>
-#endif /* BUILD_AAC */
 #ifdef BUILD_AO
 #include <ao/ao.h>
 #endif /* BUILD_AO */
