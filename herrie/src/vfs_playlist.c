@@ -84,8 +84,8 @@ vfs_pls_populate(struct vfsent *ve)
 	fln = g_string_sized_new(64);
 	dn = g_path_get_dirname(ve->filename);
 
-	while (g_io_channel_read_line_string(fio, fln, &eol, NULL)
-	    == G_IO_STATUS_NORMAL) {
+	while (g_io_channel_read_line_string(fio, fln, &eol, NULL) ==
+	    G_IO_STATUS_NORMAL) {
 		g_string_truncate(fln, eol);
 
 		if (strncmp(fln->str, "File", 4) == 0) {

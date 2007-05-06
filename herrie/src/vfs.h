@@ -389,6 +389,14 @@ struct vfsref	*vfs_write_playlist(const struct vfslist *vl,
  * @brief Delete a local file. Use with caution. ;-)
  */
 int		vfs_delete(const char *filename);
+/**
+ * @brief fopen()-like routine that uses VFS path expansino.
+ */
+FILE		*vfs_fopen(const char *filename, const char *mode);
+/**
+ * @brief fgets()-like routine that performs newline-stripping.
+ */
+int		vfs_fgets(char *str, int size, FILE *fp);
 
 /**
  * @brief Get the friendly name of the current VFS reference.

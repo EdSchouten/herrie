@@ -37,6 +37,7 @@
 #include "scrobbler.h"
 #include "scrobbler_internal.h"
 #include "util.h"
+#include "vfs.h"
 
 /**
  * @brief Flag indicating if the AudioScrobbler thread has already been
@@ -81,7 +82,7 @@ struct scrobbler_entry {
 	/**
 	 * @brief The length in seconds of the song.
 	 */
-	int	length;
+	unsigned int length;
 	/**
 	 * @brief The time the song was added to the queue.
 	 */
@@ -124,6 +125,9 @@ scrobbler_queue_insert_tail(struct scrobbler_entry *se)
 	scrobbler_queue_last = se;
 }
 
+#define SCROBBLER_QUEUE_FOREACH(se) \
+	for (se = scrobbler_queue_first; se != NULL; se = se->next)
+
 /**
  * @brief Remove the first item from our Scrobbler queue.
  */
@@ -141,7 +145,7 @@ void
 scrobbler_notify_read(struct audio_file *fd, int eof)
 {
 	struct scrobbler_entry *nse;
-	int len;
+	unsigned int len;
 
 	/* Don't accept streams or submit songs twice */
 	if (!scrobbler_enabled || fd->stream || fd->_scrobbler_done)
@@ -217,7 +221,7 @@ scrobbler_queue_fetch(struct scrobbler_condata *scd, char **poststr)
 		    gmtime(&ent->time));
 
 		g_string_append_printf(str,
-		    "&a[%d]=%s&t[%d]=%s&b[%d]=%s&m[%d]=&l[%d]=%d&i[%d]=%s",
+		    "&a[%d]=%s&t[%d]=%s&b[%d]=%s&m[%d]=&l[%d]=%u&i[%d]=%s",
 		    len, ent->artist,
 		    len, ent->title,
 		    len, ent->album,
@@ -238,6 +242,15 @@ scrobbler_queue_fetch(struct scrobbler_condata *scd, char **poststr)
 	return (len);
 }
 
+static void
+scrobbler_queue_item_free(struct scrobbler_entry *ent)
+{
+	g_free(ent->artist);
+	g_free(ent->title);
+	g_free(ent->album);
+	g_slice_free(struct scrobbler_entry, ent);
+}
+
 /**
  * @brief Remove a specified amount of tracks from the AudioScrobbler
  *        submission queue.
@@ -252,11 +265,7 @@ scrobbler_queue_remove(int amount)
 	for (i = amount; i > 0; i--) {
 		ent = scrobbler_queue_first;
 		scrobbler_queue_remove_head();
-
-		g_free(ent->artist);
-		g_free(ent->title);
-		g_free(ent->album);
-		g_slice_free(struct scrobbler_entry, ent);
+		scrobbler_queue_item_free(ent);
 	}
 	g_mutex_unlock(scrobbler_lock);
 }
@@ -364,6 +373,61 @@ scrobbler_init(void)
 	scrobbler_avail = g_cond_new();
 }
 
+static void
+scrobbler_queue_dump(void)
+{
+	const char *filename;
+	FILE *fp;
+	struct scrobbler_entry *ent;
+
+	filename = config_getopt("scrobbler.dumpfile");
+	if (filename[0] == '\0')
+		return;
+	
+	/* Nothing to be stored - remove queue */
+	g_mutex_lock(scrobbler_lock);
+	if (scrobbler_queue_first == NULL) {
+		vfs_delete(filename);
+		goto done;
+	}
+	
+	/* Write list to queue file */
+	fp = vfs_fopen(filename, "w");
+	if (fp == NULL)
+		goto done;
+	SCROBBLER_QUEUE_FOREACH(ent) {
+		fprintf(fp, "%s\n%s\n%s\n%u\n%d\n",
+		    ent->artist, ent->title, ent->album,
+		    ent->length, (int)ent->time);
+	}
+	fclose(fp);
+
+done:	g_mutex_unlock(scrobbler_lock);
+}
+
+/**
+ * @brief Restore the AudioScrobbler queue from a file.
+ */
+static void
+scrobbler_queue_restore(void)
+{
+	const char *filename;
+	FILE *fio;
+	char fbuf[1024];
+
+	filename = config_getopt("scrobbler.dumpfile");
+	if (filename[0] == '\0')
+		return;
+	
+	if ((fio = vfs_fopen(filename, "r")) == NULL)
+		return;
+
+	while (vfs_fgets(fbuf, sizeof fbuf, fio) == 0) {
+		/* XXX */
+	}
+	fclose(fio);
+}
+
 void
 scrobbler_spawn(void)
 {
@@ -376,12 +440,23 @@ scrobbler_spawn(void)
 	/* Bail out if the username or password is not filled in */
 	if (su[0] == '\0' || sp[0] == '\0')
 		return;
+
+	/* Restore unsubmitted tracks */
+	scrobbler_queue_restore();
 	
 	/* Connection local storage */
 	scd = g_slice_new0(struct scrobbler_condata);
 	scd->username = http_escape(su, NULL);
 	scd->password = sp;
 	
-	scrobbler_runner = g_thread_create(scrobbler_runner_thread, scd, 0, NULL);
+	scrobbler_runner = g_thread_create(scrobbler_runner_thread,
+	    scd, 0, NULL);
 	scrobbler_enabled = 1;
+}
+
+void
+scrobbler_shutdown(void)
+{
+	/* XXX: bring down the Scrobbler thread */
+	scrobbler_queue_dump();
 }

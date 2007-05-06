@@ -428,3 +428,41 @@ vfs_delete(const char *filename)
 
 	return (ret);
 }
+
+FILE *
+vfs_fopen(const char *filename, const char *mode)
+{
+	char *fn;
+	FILE *ret;
+
+	fn = vfs_path_concat(NULL, filename, 0);
+	if (fn == NULL)
+		return (NULL);
+	
+	ret = fopen(fn, mode);
+	g_free(fn);
+
+	return (ret);
+}
+
+int
+vfs_fgets(char *str, int size, FILE *fp)
+{
+	char *eol;
+
+	if (fgets(str, size, fp) == NULL)
+		return (-1);
+	
+	eol = strchr(str, '\0');
+	g_assert(eol != NULL);
+
+	/* Strip the final \n */
+	if (--eol >= str && *eol == '\n') {
+		*eol = '\0';
+		/* Strip the final \r */
+		if (--eol >= str && *eol == '\r')
+			*eol = '\0';
+	}
+
+	return (0);
+}

@@ -33,6 +33,7 @@
 #include "audio_output.h"
 #include "gui_internal.h"
 #include "playq.h"
+#include "scrobbler.h"
 
 /**
  * @brief The focus is on the browser.
@@ -172,6 +173,7 @@ static void
 gui_input_quit(void)
 {
 	playq_shutdown();
+	scrobbler_shutdown();
 	audio_output_close();
 	gui_draw_destroy();
 	exit(0);

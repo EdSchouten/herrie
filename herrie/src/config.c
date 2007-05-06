@@ -32,6 +32,7 @@
 
 #include "config.h"
 #include "gui.h"
+#include "vfs.h"
 
 /**
  * @brief Convert a "yes"/"no" string to a boolean value.
@@ -153,6 +154,8 @@ static struct config_entry configlist[] = {
 	{ "playq.dumpfile",		PLAYQ_DUMPFILE,	NULL,		NULL },
 	{ "playq.xmms",			"no",		valid_bool,	NULL },
 #ifdef BUILD_SCROBBLER
+	{ "scrobbler.dumpfile",		"~" G_DIR_SEPARATOR_S "." APP_NAME
+	    G_DIR_SEPARATOR_S "scrobbler.queue",	NULL,		NULL },
 	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },
 	{ "scrobbler.password",		"",		valid_md5,	NULL },
 	{ "scrobbler.username",		"",		NULL,		NULL },
@@ -229,31 +232,25 @@ config_setopt(const char *opt, char *val)
 void
 config_load(const char *file)
 {
-	GIOChannel *cio;
-	GString *cln;
-	gsize eol;
-	char *cln_val;
+	FILE *fio;
+	char fbuf[512]; /* Should be long enough */
+	char *split;
 
-	cio = g_io_channel_new_file(file, "r", NULL);
-	if (cio == NULL)
+	fio = vfs_fopen(file, "r");
+	if (fio == NULL)
 		return;
-	cln = g_string_sized_new(64);
 
-	while (g_io_channel_read_line_string(cio, cln, &eol, NULL)
-	    == G_IO_STATUS_NORMAL) {
-		g_string_truncate(cln, eol);
-
+	while (vfs_fgets(fbuf, sizeof fbuf, fio) == 0) {
 		/* Split at the : and set the option */
-		cln_val = strchr(cln->str, '=');
-		if (cln_val != NULL) {
+		split = strchr(fbuf, '=');
+		if (split != NULL) {
 			/* Split the option and value */
-			*cln_val++ = '\0';
-			config_setopt(cln->str, cln_val);
+			*split++ = '\0';
+			config_setopt(fbuf, split);
 		}
 	}
 
-	g_io_channel_unref(cio);
-	g_string_free(cln, TRUE);
+	fclose(fio);
 }
 
 const char *

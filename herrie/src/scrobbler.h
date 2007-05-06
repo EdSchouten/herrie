@@ -42,6 +42,7 @@ void scrobbler_init(void);
  * @brief Spawn an AudioScrobbler submission thread.
  */
 void scrobbler_spawn(void);
+void scrobbler_shutdown(void);
 /**
  * @brief Notify the AudioScrobbler thread that a read from the file has
  *        been performed.

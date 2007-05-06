@@ -106,7 +106,7 @@ int
 main(int argc, char *argv[])
 {
 	int ch, i, show_version = 0, xmms = 0;
-	char *homeconf, *cwd;
+	char *cwd;
 	const char *errmsg;
 	struct vfsref *vr;
 #ifdef CLOSE_STDERR
@@ -121,10 +121,8 @@ main(int argc, char *argv[])
 
 	/* Global and local configuration files */
 	config_load(CONFFILE);
-	homeconf = g_build_filename(g_get_home_dir(),
-	    "." APP_NAME, "config", NULL);
-	config_load(homeconf);
-	g_free(homeconf);
+	config_load("~" G_DIR_SEPARATOR_S "." APP_NAME
+	    G_DIR_SEPARATOR_S "config");
 
 	while ((ch = getopt(argc, argv, "c:vx")) != -1) {
 		switch (ch) {
