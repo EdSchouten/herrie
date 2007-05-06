@@ -33,25 +33,6 @@
 
 #include "audio_file.h"
 
-#ifdef BUILD_AAC
-/**
- * @brief Open an AAC file.
- */
-int aac_open(struct audio_file *fd, const char *ext);
-/**
- * @brief Close and clean up the AAC file.
- */
-void aac_close(struct audio_file *fd);
-/**
- * @brief Read data from the AAC file and place it in buf.
- */
-size_t aac_read(struct audio_file *fd, void *buf);
-/**
- * @brief Seek the AAC file a relatime amount of seconds.
- */
-void aac_seek(struct audio_file *fd, int len, int rel);
-#endif /* BUILD_AAC */
-
 #ifdef BUILD_MODPLUG
 /**
  * @brief Open a modplug file.

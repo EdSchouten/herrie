@@ -1,5 +1,4 @@
 DEPENDS_audio_file="audio_file audio_format scrobbler vfs"
-DEPENDS_audio_format_aac="audio_format audio_file audio_output gui"
 DEPENDS_audio_format_modplug="audio_format audio_file audio_output"
 DEPENDS_audio_format_mp3="audio_format audio_file audio_output"
 DEPENDS_audio_format_sndfile="audio_format audio_file audio_output"
