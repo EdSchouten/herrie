@@ -1,8 +1,9 @@
 ????-??-?? -- Herrie 1.7:
- * Fixed: Don't point files/directories starting with ~ to home directories.
- * Fixed: Allow usage of ~/foo in playq.dumpfile.
+ * Fixed: Don't point files/directories starting with ~ to home directories
+ * Fixed: Allow usage of ~/foo in playq.dumpfile
  * Improved: Include own MD5 implementation or use -lmd/-lmd5/-lc
  * Improved: Finally - a new website - lots of thanks to Ruud Jansen
+ * Added: Remaining tracks in AudioScrobbler queue are now stored on shutdown
 
 2007-04-19 -- Herrie 1.6.1:
  * Added: Polish translation - Adam Golebiowski from PLD Linux

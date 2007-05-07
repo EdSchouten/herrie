@@ -10,10 +10,6 @@ Graphical user interface:
 - Add filtering feature instead of searching, just like Mutt has
 - Recursive searching
 
-Scrobbler:
-- Allow Scrobbler queue to be dumped on closure (send them next time)
-  - Store in XSPF; extend format to store datetime
-
 Audio abstraction:
 - Add support for volume control
 - Fully implement more audio file formats
