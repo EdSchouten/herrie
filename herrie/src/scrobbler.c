@@ -447,10 +447,10 @@ scrobbler_queue_restore(void)
 			goto bad;
 		(*nse)->album = g_strndup(s2, s1 - s2);
 		/* Length and time */
-		if ((s1 = strchr(++s2, ' ')) == NULL)
+		if ((s2 = strchr(++s1, ' ')) == NULL)
 			goto bad;
-		(*nse)->length = strtoul(s2, NULL, 10);
-		(*nse)->time = strtol(s1, NULL, 10);
+		(*nse)->length = strtoul(s1, NULL, 10);
+		(*nse)->time = strtol(++s2, NULL, 10);
 		
 		/* Properly fix up the list */
 		scrobbler_queue_last = *nse;
