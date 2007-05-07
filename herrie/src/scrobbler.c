@@ -402,7 +402,7 @@ scrobbler_queue_dump(void)
 	if (fp == NULL)
 		goto done;
 	SCROBBLER_QUEUE_FOREACH(ent) {
-		fprintf(fp, "%s\n%s\n%s\n%u\n%d\n",
+		fprintf(fp, "%s %s %s %u %d\n",
 		    ent->artist, ent->title, ent->album,
 		    ent->length, (int)ent->time);
 	}
