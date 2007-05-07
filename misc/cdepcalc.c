@@ -51,7 +51,9 @@ file_add_recursive(struct header *from, struct header *to)
 {
 	struct header_depend *hd, *hdp, *hdn;
 
-	/* Make sure item is not already in the list */
+	/* We can't depend on ourself. Prevent duplicates. */
+	if (from == to)
+		return;
 	for (hd = to->depends; hd != NULL; hd = hd->next) {
 		if (hd->header == from)
 			return;
@@ -162,6 +164,7 @@ file_scan(const char *filename)
 int
 main(int argc, char *argv[])
 {
+	int first;
 	char *ext;
 	DIR *srcdir;
 	FILE *out;
@@ -198,13 +201,16 @@ main(int argc, char *argv[])
 		fprintf(out, "DEPENDS_");
 		fwrite(h->filename, 1, ext - h->filename, out);
 		fprintf(out, "=\"");
+		first = 1;
 		for (hd = h->depends; hd != NULL; hd = hd->next) {
-			if (h->depends != hd)
-				fprintf(out, " ");
 			/* Only print header files */
 			ext = strchr(hd->header->filename, '.');
 			if (ext == NULL || strcmp(ext, ".h") != 0)
 				continue;
+			if (first)
+				first = 0;
+			else
+				fprintf(out, " ");
 			fwrite(hd->header->filename, 1,
 			    ext - hd->header->filename, out);
 		}
