@@ -22,7 +22,7 @@ struct header {
 static void
 file_add_recursive(struct header *from, struct header *to)
 {
-	struct header_depend *hd;
+	struct header_depend *hd, *hdp, *hdn;
 
 	/* Make sure item is not already in the list */
 	SLIST_FOREACH(hd, &to->depends, next) {
@@ -33,7 +33,23 @@ file_add_recursive(struct header *from, struct header *to)
 	/* Add item itself */
 	hd = malloc(sizeof(struct header_depend));
 	hd->header = from;
-	SLIST_INSERT_HEAD(&to->depends, hd, next);
+
+	hdp = SLIST_FIRST(&to->depends);
+	if (hdp == NULL || strcmp(hd->header->filename,
+	    hdp->header->filename) < 0) {
+		/* Add it to the beginning */
+		SLIST_INSERT_HEAD(&to->depends, hd, next);
+	} else {
+		/* Add it after an existing item */
+		SLIST_FOREACH(hdp, &to->depends, next) {
+			hdn = SLIST_NEXT(hdp, next);
+			if (hdn == NULL || strcmp(hd->header->filename,
+			    hdn->header->filename) < 0) {
+				SLIST_INSERT_AFTER(hdp, hd, next);
+				break;
+			}
+		}
+	}
 
 	SLIST_FOREACH(hd, &from->depends, next)
 		file_add_recursive(hd->header, to);
@@ -42,15 +58,38 @@ file_add_recursive(struct header *from, struct header *to)
 static struct header *
 file_scan(const char *filename)
 {
-	struct header *h, *hl;
+	int cmp;
+	struct header *h, *hp, *hn, *hs;
 	char fbuf[2048], *eol;
 	FILE *fp;
 
-	/* See if we already scanned the file */
-	SLIST_FOREACH(h, &headerlist, next) {
-		/* Match */
-		if (strcmp(filename, h->filename) == 0)
-			return (h);
+	if (strcmp(filename, "conftest.c") == 0 ||
+	    strcmp(filename, "stdinc.h") == 0)
+		return (NULL);
+
+	hp = SLIST_FIRST(&headerlist);
+	if (hp != NULL) {
+		cmp = strcmp(filename, hp->filename);
+		if (cmp == 0) {
+			return (hp);
+		} else if (cmp < 0) {
+			/* Item cannot be in the list - add to beginning */
+			hp = NULL;
+		} else {
+			/* Item may be in the list - look it up */
+			SLIST_FOREACH(hp, &headerlist, next) {
+				hn = SLIST_NEXT(hp, next);
+				if (hn == NULL)
+					break;
+				cmp = strcmp(filename, hn->filename);
+				if (cmp == 0)
+					/* We've found it */
+					return (hn);
+				else if (cmp < 0)
+					/* Add in between */
+					break;
+			}
+		}
 	}
 
 	fp = fopen(filename, "r");
@@ -63,7 +102,12 @@ file_scan(const char *filename)
 	h = malloc(sizeof(struct header));
 	h->filename = strdup(filename);
 	SLIST_INIT(&h->depends);
-	SLIST_INSERT_HEAD(&headerlist, h, next);
+
+	/* Add it alphabetically to the list */
+	if (hp == NULL)
+		SLIST_INSERT_HEAD(&headerlist, h, next);
+	else
+		SLIST_INSERT_AFTER(hp, h, next);
 
 	/* Scan the file */
 	while (fgets(fbuf, sizeof fbuf, fp) != NULL) {
@@ -73,9 +117,9 @@ file_scan(const char *filename)
 				continue;
 			*eol = '\0';
 
-			hl = file_scan(fbuf + 10);
-			if (hl != NULL)
-				file_add_recursive(hl, h);
+			hs = file_scan(fbuf + 10);
+			if (hs != NULL)
+				file_add_recursive(hs, h);
 		}
 	}
 
@@ -118,14 +162,10 @@ main(int argc, char *argv[])
 		ext = strchr(h->filename, '.');
 		if (ext == NULL || strcmp(ext, ".c") != 0)
 			continue;
-		if (strcmp(h->filename, "conftest.c") == 0)
-			continue;
 		fprintf(out, "DEPENDS_");
 		fwrite(h->filename, 1, ext - h->filename, out);
 		fprintf(out, "=\"");
 		SLIST_FOREACH(hd, &h->depends, next) {
-			if (strcmp(hd->header->filename, "stdinc.h") == 0)
-				continue;
 			if (SLIST_FIRST(&h->depends) != hd)
 				fprintf(out, " ");
 			/* Only print header files */
