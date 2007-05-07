@@ -3,10 +3,9 @@ sourcecode. Feel free to implement them. Patches are, as always, very
 welcome.
 
 Graphical user interface:
-- Add curses mouse support
 - Allow numeric multipliers just like vi
 - Add copy/paste functionality to playlist
-- Use different colors for files. playlists and directories
+- Use different colors for files, playlists and directories
 - Add filtering feature instead of searching, just like Mutt has
 - Recursive searching
 
@@ -14,6 +13,8 @@ Audio abstraction:
 - Add support for volume control
 - Fully implement more audio file formats
   - Apple Lossless
+  - WMA
+  - AAC
 - CD playback
   - CDDB
 - 5.1 support?
