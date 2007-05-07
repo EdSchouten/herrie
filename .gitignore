@@ -3,8 +3,9 @@
 *.o
 .DS_Store
 .gdb_history
-Makefile
+herrie/Makefile
 herrie.1.gz
 herrie/herrie
+misc/cdepcalc
 www/distfiles
 www/doc
