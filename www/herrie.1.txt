@@ -110,6 +110,11 @@ CONFIGURATION SWITCHES
        playq.xmms=no
 	      Always start herrie in XMMS mode.
 
+       scrobbler.dumpfile=~/.herrie/scrobbler.queue
+	      The file that is used to store tracks that have not been submit-
+	      ted to AudioScrobbler yet. When set to empty,  this  feature  is
+	      disabled, causing all unsubmitted tracks to be discarded.
+
        scrobbler.hostname=post.audioscrobbler.com
 	      The hostname the AudioScrobbler client uses when authenticating.
 
