@@ -242,6 +242,9 @@ scrobbler_queue_fetch(struct scrobbler_condata *scd, char **poststr)
 	return (len);
 }
 
+/**
+ * @brief Deallocate an AudioScrobbler queue entry.
+ */
 static void
 scrobbler_queue_item_free(struct scrobbler_entry *ent)
 {
@@ -373,6 +376,9 @@ scrobbler_init(void)
 	scrobbler_avail = g_cond_new();
 }
 
+/**
+ * @brief Dump the songs that are still present in the queue to disk.
+ */
 static void
 scrobbler_queue_dump(void)
 {
@@ -457,6 +463,6 @@ scrobbler_spawn(void)
 void
 scrobbler_shutdown(void)
 {
-	/* XXX: bring down the Scrobbler thread */
+	/* XXX: bring down the AudioScrobbler thread */
 	scrobbler_queue_dump();
 }
