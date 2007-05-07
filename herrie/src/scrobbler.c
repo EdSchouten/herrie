@@ -441,11 +441,11 @@ scrobbler_queue_restore(void)
 		/* Title */
 		if ((s2 = strchr(++s1, ' ')) == NULL)
 			goto bad;
-		(*nse)->artist = g_strndup(s1, s2 - s1);
+		(*nse)->title = g_strndup(s1, s2 - s1);
 		/* Album */
 		if ((s1 = strchr(++s2, ' ')) == NULL)
 			goto bad;
-		(*nse)->artist = g_strndup(s2, s1 - s2);
+		(*nse)->album = g_strndup(s2, s1 - s2);
 		/* Length and time */
 		if ((s1 = strchr(++s2, ' ')) == NULL)
 			goto bad;
