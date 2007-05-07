@@ -419,7 +419,8 @@ scrobbler_queue_restore(void)
 {
 	const char *filename;
 	FILE *fio;
-	char fbuf[1024];
+	char fbuf[1024], *s1, *s2;
+	struct scrobbler_entry **nse;
 
 	filename = config_getopt("scrobbler.dumpfile");
 	if (filename[0] == '\0')
@@ -428,10 +429,40 @@ scrobbler_queue_restore(void)
 	if ((fio = vfs_fopen(filename, "r")) == NULL)
 		return;
 
+	nse = &scrobbler_queue_first;
 	while (vfs_fgets(fbuf, sizeof fbuf, fio) == 0) {
-		/* XXX */
+		/* String parsing sucks */
+		*nse = g_slice_new(struct scrobbler_entry);
+
+		/* Artist */
+		if ((s1 = strchr(fbuf, ' ')) == NULL)
+			goto bad;
+		(*nse)->artist = g_strndup(fbuf, s1 - fbuf);
+		/* Title */
+		if ((s2 = strchr(++s1, ' ')) == NULL)
+			goto bad;
+		(*nse)->artist = g_strndup(s1, s2 - s1);
+		/* Album */
+		if ((s1 = strchr(++s2, ' ')) == NULL)
+			goto bad;
+		(*nse)->artist = g_strndup(s2, s1 - s2);
+		/* Length and time */
+		if ((s1 = strchr(++s2, ' ')) == NULL)
+			goto bad;
+		(*nse)->length = strtoul(s2, NULL, 10);
+		(*nse)->time = strtol(s1, NULL, 10);
+		
+		/* Properly fix up the list */
+		scrobbler_queue_last = *nse;
+		nse = &(*nse)->next;
+		continue;
+
+bad:		scrobbler_queue_item_free(*nse);
 	}
 	fclose(fio);
+
+	/* Terminate our entry list */
+	*nse = NULL;
 }
 
 void
