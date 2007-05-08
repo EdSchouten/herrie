@@ -225,6 +225,18 @@ main(int argc, char *argv[])
 			    ext - hd->header->filename, out);
 		}
 		fprintf(out, "\"\n");
+
+#if 0
+		/* Regular Makefile-style output */
+		ext = strchr(h->filename, '.');
+		if (ext == NULL || strcmp(ext, ".c") != 0)
+			continue;
+		fwrite(h->filename, 1, ext - h->filename, out);
+		fprintf(out, ".o: %s", h->filename);
+		for (hd = h->depends; hd != NULL; hd = hd->next)
+			fprintf(out, " %s", hd->header->filename);
+		fprintf(out, "\n");
+#endif
 	}
 	fclose(out);
 
