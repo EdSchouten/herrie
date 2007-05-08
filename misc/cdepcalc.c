@@ -46,17 +46,17 @@ struct header_depend {
 
 struct header *headerlist = NULL;
 
-static void
-file_add_recursive(struct header *from, struct header *to)
+static int
+depend_add(struct header *from, struct header *to)
 {
 	struct header_depend *hd, *hdp, *hdn;
 
 	/* We can't depend on ourself. Prevent duplicates. */
 	if (from == to)
-		return;
+		return (-1);
 	for (hd = to->depends; hd != NULL; hd = hd->next) {
 		if (hd->header == from)
-			return;
+			return (-1);
 	}
 
 	/* Add item itself */
@@ -83,8 +83,18 @@ file_add_recursive(struct header *from, struct header *to)
 		}
 	}
 
+	return (0);
+}
+
+static void
+depend_copy(struct header *from, struct header *to)
+{
+	struct header_depend *hd;
+
+	if (depend_add(from, to) != 0)
+		return;
 	for (hd = from->depends; hd != NULL; hd = hd->next)
-		file_add_recursive(hd->header, to);
+		depend_add(hd->header, to);
 }
 
 static struct header *
@@ -154,7 +164,7 @@ file_scan(const char *filename)
 
 			hs = file_scan(fbuf + 10);
 			if (hs != NULL)
-				file_add_recursive(hs, h);
+				depend_copy(hs, h);
 		}
 	}
 
