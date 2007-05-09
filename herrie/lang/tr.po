@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-06 16:31+0200\n"
-"PO-Revision-Date: 2007-05-06 16:31+0200\n"
+"POT-Creation-Date: 2007-05-09 14:43+0200\n"
+"PO-Revision-Date: 2007-05-09 14:43+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Türkçe <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,32 +51,32 @@ msgstr "Parça listesini dosyaya yaz"
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
-#: gui_input.c:113 gui_input.c:156
+#: gui_input.c:114 gui_input.c:157
 msgid "Search for"
 msgstr "Ara"
 
-#: gui_input.c:137
+#: gui_input.c:138
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: gui_input.c:190
+#: gui_input.c:192
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:227
+#: gui_input.c:229
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:280
+#: gui_input.c:282
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:468 main.c:70 main.c:76 main.c:82
+#: gui_input.c:470 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:469 main.c:72 main.c:78 main.c:84
+#: gui_input.c:471 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "hayır"
 
@@ -155,7 +155,7 @@ msgstr "kullanım"
 #: playq.c:182
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "Tekrarlamak içn \"%s\" açılamadı."
+msgstr "\"%s\" çalınamadı."
 
 #: playq.c:401
 #, c-format
@@ -170,28 +170,28 @@ msgstr "açık"
 msgid "off"
 msgstr "kapalı"
 
-#: scrobbler.c:310
+#: scrobbler.c:322
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "AudioScrobbler'de başarıyla yetkilendirildi."
 
-#: scrobbler.c:317
+#: scrobbler.c:329
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "AudioScrobbler'de yetkilendirme başarısız."
 
-#: scrobbler.c:333
+#: scrobbler.c:345
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "1 parça başarıyla AudioScrobbler'e gönderildi."
 
-#: scrobbler.c:337
+#: scrobbler.c:349
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "%d parça başarıyla AudioScrobbler'e gönerildi."
 
-#: scrobbler.c:343
+#: scrobbler.c:355
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Geçersiz AudioScrobbler kullanıcı adı/şifresi"
 
-#: scrobbler.c:346
+#: scrobbler.c:358
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Parçalar AudioScrobbler'e gönderilemedi."
 
