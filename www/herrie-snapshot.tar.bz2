@@ -1,6 +1,4 @@
 #!/bin/sh
 
-cd ..
-
 printf 'Content-Type: application/octet-stream\r\n\r\n'
-git archive --format=tar --prefix=herrie-snapshot/ HEAD:herrie | bzip2 -9c
+git --git-dir=/home/ed/.repos/public-git/herrie archive --format=tar --prefix=herrie-snapshot/ HEAD:herrie | bzip2 -9c
