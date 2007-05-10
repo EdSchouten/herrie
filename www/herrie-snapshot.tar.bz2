@@ -1,0 +1,5 @@
+#!/bin/sh
+cd /home/ed/projects/herrie
+
+printf 'Content-Type: application/octet-stream\r\n\r\n'
+git archive --format=tar --prefix=herrie-snapshot/ HEAD:herrie | bzip2 -9c
