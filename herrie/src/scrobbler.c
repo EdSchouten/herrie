@@ -391,24 +391,21 @@ scrobbler_queue_dump(void)
 		return;
 	
 	/* Nothing to be stored - remove queue */
-	g_mutex_lock(scrobbler_lock);
 	if (scrobbler_queue_first == NULL) {
 		vfs_delete(filename);
-		goto done;
+		return;
 	}
 	
 	/* Write list to queue file */
 	fp = vfs_fopen(filename, "w");
 	if (fp == NULL)
-		goto done;
+		return;
 	SCROBBLER_QUEUE_FOREACH(ent) {
 		fprintf(fp, "%s %s %s %u %d\n",
 		    ent->artist, ent->title, ent->album,
 		    ent->length, (int)ent->time);
 	}
 	fclose(fp);
-
-done:	g_mutex_unlock(scrobbler_lock);
 }
 
 /**
@@ -495,5 +492,7 @@ void
 scrobbler_shutdown(void)
 {
 	/* XXX: bring down the AudioScrobbler thread */
+	g_mutex_lock(scrobbler_lock);
 	scrobbler_queue_dump();
+	g_mutex_unlock(scrobbler_lock);
 }
