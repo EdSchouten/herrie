@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-09 14:43+0200\n"
+"POT-Creation-Date: 2007-05-14 18:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,11 +78,11 @@ msgstr ""
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:470 main.c:70 main.c:76 main.c:82
+#: gui_input.c:472 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:471 main.c:72 main.c:78 main.c:84
+#: gui_input.c:473 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr ""
 
@@ -128,6 +128,10 @@ msgstr ""
 
 #: gui_vfslist.c:560
 msgid "Search wrapped to top."
+msgstr ""
+
+#: gui_vfslist.c:584
+msgid "Full pathname"
 msgstr ""
 
 #: main.c:66

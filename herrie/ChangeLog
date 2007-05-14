@@ -4,6 +4,7 @@
  * Improved: Include own MD5 implementation or use -lmd/-lmd5/-lc
  * Improved: Finally - a new website - lots of thanks to Ruud Jansen
  * Added: Remaining tracks in AudioScrobbler queue are now stored on shutdown
+ * Added: 'f' button to retreive the full pathname of the selected item
 
 2007-04-19 -- Herrie 1.6.1:
  * Added: Polish translation - Adam Golebiowski from PLD Linux

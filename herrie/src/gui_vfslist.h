@@ -207,5 +207,10 @@ void gui_vfslist_notify_done(struct gui_vfslist *gv);
  *        globally defined search string gui_input_cursearch.
  */
 int gui_vfslist_searchnext(struct gui_vfslist *gv, const char *str);
+/**
+ * @brief Show the full pathname of the selected entry in the message
+ *        bar.
+ */
+void gui_vfslist_fullpath(struct gui_vfslist *gv);
 
 #endif /* !_GUI_VFSLIST_H_ */

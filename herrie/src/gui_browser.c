@@ -393,3 +393,9 @@ gui_browser_write_playlist(void)
 	/* Go inside the directory */
 	gui_vfslist_setlist(win_browser, vfs_population(vr));
 }
+
+void
+gui_browser_fullpath(void)
+{
+	gui_vfslist_fullpath(win_browser);
+}

@@ -156,6 +156,8 @@ KEYBOARD BINDINGS
        ^B or page up
 	      Move the selection one page up.
 
+       f      Show the full pathname of the selected song.
+
        g or home
 	      Move the selection to the top.
 

@@ -571,3 +571,17 @@ found:	/* Select our found item */
 	/* No need to redraw, as window switching is performed */
 	return (0);
 }
+
+void
+gui_vfslist_fullpath(struct gui_vfslist *gv)
+{
+	char *msg;
+
+	if (gui_vfslist_warn_isempty(gv))
+		return;
+	
+	msg = g_strdup_printf("%s: %s",
+	    _("Full pathname"), vfs_filename(gv->vr_selected));
+	gui_msgbar_warn(msg);
+	g_free(msg);
+}

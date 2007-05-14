@@ -466,3 +466,11 @@ gui_playq_setfocus(int focus)
 	gui_vfslist_setfocus(win_playq, focus);
 	playq_unlock();
 }
+
+void
+gui_playq_fullpath(void)
+{
+	playq_lock();
+	gui_vfslist_fullpath(win_playq);
+	playq_unlock();
+}

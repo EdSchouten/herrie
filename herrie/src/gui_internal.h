@@ -248,6 +248,11 @@ int gui_playq_searchnext(const char *str);
  * @brief Focus or unfocus the playlist.
  */
 void gui_playq_setfocus(int focus);
+/**
+ * @brief Write the full pathname of the selected item in the message
+ *        bar.
+ */
+void gui_playq_fullpath(void);
 
 /*
  * gui_browser
@@ -338,5 +343,10 @@ void gui_browser_setfocus(int focus);
  * @brief Write the playlist to a file.
  */
 void gui_browser_write_playlist(void);
+/**
+ * @brief Write the full pathname of the selected item in the message
+ *        bar.
+ */
+void gui_browser_fullpath(void);
 
 #endif /* !_GUI_INTERNAL_H_ */

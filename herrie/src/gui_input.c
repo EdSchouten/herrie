@@ -338,6 +338,7 @@ static struct gui_binding kbdbindings[] = {
 
 	/* Keyboard bindings for the file browser */
 	{ GUI_FOCUS_BROWSER, ' ',	gui_browser_cursor_pagedown },
+	{ GUI_FOCUS_BROWSER, 'f',	gui_browser_fullpath },
 	{ GUI_FOCUS_BROWSER, 'G',	gui_browser_cursor_bottom },
 	{ GUI_FOCUS_BROWSER, 'g',	gui_browser_cursor_top },
 	{ GUI_FOCUS_BROWSER, 'j',	gui_browser_cursor_down },
@@ -353,6 +354,7 @@ static struct gui_binding kbdbindings[] = {
 
 	/* Keyboard bindings for the playlist */
 	{ GUI_FOCUS_PLAYQ, ' ',		gui_playq_cursor_pagedown },
+	{ GUI_FOCUS_PLAYQ, 'f',		gui_playq_fullpath },
 	{ GUI_FOCUS_PLAYQ, 'G',		gui_playq_cursor_bottom },
 	{ GUI_FOCUS_PLAYQ, 'g',		gui_playq_cursor_top },
 	{ GUI_FOCUS_PLAYQ, 'j',		gui_playq_cursor_down },
