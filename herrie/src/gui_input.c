@@ -31,6 +31,7 @@
 #include "stdinc.h"
 
 #include "audio_output.h"
+#include "config.h"
 #include "gui_internal.h"
 #include "playq.h"
 #include "scrobbler.h"
@@ -188,6 +189,11 @@ gui_input_askquit(void)
 {
 	int ret;
 	char *msg;
+
+	if (!config_getopt_bool("gui.input.may_quit")) {
+		gui_msgbar_warn(_("Use kill(1) to quit."));
+		return;
+	}
 
 	msg = g_strdup_printf(_("Quit %s?"), APP_NAME);
 	ret = gui_input_askyesno(msg);

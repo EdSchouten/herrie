@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-14 18:30+0200\n"
+"POT-Creation-Date: 2007-05-14 22:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,32 +57,36 @@ msgstr ""
 msgid "Unable to write playlist."
 msgstr ""
 
-#: gui_input.c:114 gui_input.c:157
+#: gui_input.c:115 gui_input.c:158
 msgid "Search for"
 msgstr ""
 
-#: gui_input.c:138
+#: gui_input.c:139
 msgid "Not found."
 msgstr ""
 
-#: gui_input.c:192
+#: gui_input.c:194
+msgid "Use kill(1) to quit."
+msgstr ""
+
+#: gui_input.c:198
 #, c-format
 msgid "Quit %s?"
 msgstr ""
 
-#: gui_input.c:229
+#: gui_input.c:235
 msgid "Jump to position"
 msgstr ""
 
-#: gui_input.c:282
+#: gui_input.c:288
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:472 main.c:70 main.c:76 main.c:82
+#: gui_input.c:478 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:473 main.c:72 main.c:78 main.c:84
+#: gui_input.c:479 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr ""
 
