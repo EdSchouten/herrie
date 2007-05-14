@@ -143,6 +143,7 @@ file_scan(const char *filename)
 	/* We can read it - we must track it */
 	h = malloc(sizeof(struct header));
 	h->filename = strdup(filename);
+	h->depends = NULL;
 	h->next = NULL;
 
 	/* Add it alphabetically to the list */
