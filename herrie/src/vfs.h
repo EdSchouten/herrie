@@ -396,7 +396,7 @@ FILE		*vfs_fopen(const char *filename, const char *mode);
 /**
  * @brief fgets()-like routine that performs newline-stripping.
  */
-int		vfs_fgets(char *str, int size, FILE *fp);
+int		vfs_fgets(char *str, size_t size, FILE *fp);
 
 /**
  * @brief Get the friendly name of the current VFS reference.

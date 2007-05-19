@@ -446,7 +446,7 @@ vfs_fopen(const char *filename, const char *mode)
 }
 
 int
-vfs_fgets(char *str, int size, FILE *fp)
+vfs_fgets(char *str, size_t size, FILE *fp)
 {
 	char *eol;
 
