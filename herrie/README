@@ -109,9 +109,11 @@ the generated Makefile:
 - OS            Override operating system detection (for cross compilation)
 - PREFIX        Change installation prefix
 
-After running `./configure', a simple 'make; make install' will suffice. When
-the DESTDIR variable is set during installation, its contents will be prepended
-to the PREFIX.
+After running `./configure', a simple `make; make install' will suffice.
+When the DESTDIR variable is set during installation, its contents will
+be prepended to the PREFIX. It is also possible to run the `configure'
+script from a different directory, which causes all generated data to be
+stored in that directory.
 
 I've installed it - now what?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
