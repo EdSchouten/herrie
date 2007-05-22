@@ -86,6 +86,7 @@ int
 modplug_open(struct audio_file *fd, const char *ext)
 {
 	struct modplug_drv_data *data;
+	const char *title;
 
 	/* libmodplug doesn't have good magic. Match by extension */
 	if (ext == NULL)
@@ -120,7 +121,9 @@ modplug_open(struct audio_file *fd, const char *ext)
 		fd->channels = 2;
 
 		fd->time_len = ModPlug_GetLength(data->modplug) / 1000;
-		fd->tag.title = g_strdup(ModPlug_GetName(data->modplug));
+		title = ModPlug_GetName(data->modplug);
+		if (title != NULL && title[0] != '\0')
+			fd->tag.title = g_strdup(title);
 		return (0);
 	}
 
