@@ -1,11 +1,12 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-09 14:43+0200\n"
-"PO-Revision-Date: 2007-05-09 14:43+0200\n"
+"POT-Creation-Date: 2007-05-29 00:15+0200\n"
+"PO-Revision-Date: 2007-05-29 01:26+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
-"Language-Team: Türkçe <yerellestirme@kde.org>\n"
+"Language-Team: Turkish <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,32 +52,36 @@ msgstr "Parça listesini dosyaya yaz"
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
-#: gui_input.c:114 gui_input.c:157
+#: gui_input.c:115 gui_input.c:158
 msgid "Search for"
 msgstr "Ara"
 
-#: gui_input.c:138
+#: gui_input.c:139
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: gui_input.c:192
+#: gui_input.c:194
+msgid "Use kill(1) to quit."
+msgstr "Çıkmak için kill(1) kullanın."
+
+#: gui_input.c:198
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:229
+#: gui_input.c:235
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:282
+#: gui_input.c:288
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:470 main.c:70 main.c:76 main.c:82
+#: gui_input.c:478 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:471 main.c:72 main.c:78 main.c:84
+#: gui_input.c:479 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "hayır"
 
@@ -123,6 +128,10 @@ msgstr "Son parçadasınız."
 #: gui_vfslist.c:560
 msgid "Search wrapped to top."
 msgstr "Arama üste kaydırıldı."
+
+#: gui_vfslist.c:584
+msgid "Full pathname"
+msgstr "Tam dosya yolu"
 
 #: main.c:66
 msgid "Global configuration file"
