@@ -174,7 +174,9 @@ static void
 gui_input_quit(void)
 {
 	playq_shutdown();
+#ifdef BUILD_SCROBBLER
 	scrobbler_shutdown();
+#endif /* BUILD_SCROBBLER */
 	audio_output_close();
 	gui_draw_destroy();
 	exit(0);
