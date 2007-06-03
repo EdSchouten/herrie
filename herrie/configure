@@ -26,7 +26,7 @@
 # 
 
 APP_NAME=herrie
-APP_VERSION=1.6.1
+APP_VERSION=1.7
 APP_LINGUAS='de nl pl sv tr'
 
 # Default compilation switches
