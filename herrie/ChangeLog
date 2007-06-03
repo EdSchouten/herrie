@@ -6,6 +6,7 @@
  * Added: Remaining tracks in AudioScrobbler queue are now stored on shutdown
  * Added: 'f' button to retreive the full pathname of the selected item
  * Added: gui.input.may_quit switch to disable quit button
+ * Added: Swedish translation - Daniel Nylander
 
 2007-04-19 -- Herrie 1.6.1:
  * Added: Polish translation - Adam Golebiowski from PLD Linux
