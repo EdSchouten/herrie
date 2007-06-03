@@ -1,14 +1,17 @@
+# translation of pl.po to
+# Piotr Budny <piotr@lcm.pl>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-17 22:11+0200\n"
-"PO-Revision-Date: 2007-04-17 22:11+0000\n"
-"Last-Translator: Adam Golebiowski <adamg@pld-linux.org>\n"
+"POT-Creation-Date: 2007-06-03 18:00+0200\n"
+"PO-Revision-Date: 2007-06-03 18:00+0200\n"
+"Last-Translator: Piotr Budny <piotr@lcm.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: audio_output_ao.c:115 audio_output_sdl.c:114
 msgid "Cannot open the audio device."
@@ -51,32 +54,36 @@ msgstr "Zapisz playlistę do pliku"
 msgid "Unable to write playlist."
 msgstr "Nie można zapisac playlisty."
 
-#: gui_input.c:113 gui_input.c:156
+#: gui_input.c:115 gui_input.c:158
 msgid "Search for"
 msgstr "Szukaj"
 
-#: gui_input.c:137
+#: gui_input.c:139
 msgid "Not found."
 msgstr "Nie znaleziono"
 
-#: gui_input.c:190
+#: gui_input.c:194
+msgid "Use kill(1) to quit."
+msgstr "Użyj kill(1) aby wyjść."
+
+#: gui_input.c:198
 #, c-format
 msgid "Quit %s?"
 msgstr "Zamknij %s?"
 
-#: gui_input.c:227
+#: gui_input.c:235
 msgid "Jump to position"
 msgstr "Skocz do pozycji"
 
-#: gui_input.c:280
+#: gui_input.c:288
 msgid "Bad time format."
 msgstr "Zły format czasu."
 
-#: gui_input.c:468 main.c:68 main.c:74 main.c:80
+#: gui_input.c:478 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "tak"
 
-#: gui_input.c:469 main.c:70 main.c:76 main.c:82
+#: gui_input.c:479 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "nie"
 
@@ -108,86 +115,94 @@ msgstr "Utwór już jest na szczycie playlisty."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Uwtór już jest na dole playlisty."
 
-#: gui_vfslist.c:230
+#: gui_vfslist.c:231
 msgid "There are no songs."
 msgstr "Brak utworów."
 
-#: gui_vfslist.c:287
+#: gui_vfslist.c:288
 msgid "You are at the first song."
 msgstr "To jest pierwszy utwór."
 
-#: gui_vfslist.c:306
+#: gui_vfslist.c:307
 msgid "You are at the last song."
 msgstr "To jest ostati utwór."
 
-#: gui_vfslist.c:559
+#: gui_vfslist.c:560
 msgid "Search wrapped to top."
 msgstr "Przeszukiwanie wznowione od początku."
 
-#: main.c:65
+#: gui_vfslist.c:584
+msgid "Full pathname"
+msgstr "Pełna ścieżka"
+
+#: main.c:66
+msgid "Global configuration file"
+msgstr "Globalny plik konfiguracyjny"
+
+#: main.c:67
 msgid "Audio output"
 msgstr "Wyjście audio"
 
-#: main.c:66
+#: main.c:68
 msgid "Support for AudioScrobbler"
 msgstr "Wsparcie dla AudioScrobblera"
 
-#: main.c:72
+#: main.c:74
 msgid "Support for HTTP streams"
 msgstr "Wsparcie dla strumienie HTTP"
 
-#: main.c:78
+#: main.c:80
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Wsparcie dla plylist XSPF ('spiff')"
 
-#: main.c:84
+#: main.c:86
 msgid "Supported audio file formats"
 msgstr "Wspierane formaty plików audio"
 
-#: main.c:96
+#: main.c:98
 msgid "usage"
 msgstr "użycie"
 
-#: playq.c:186
+#: playq.c:182
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Nie udało się otworzyć \"%s\" do odtworzenia."
 
-#: playq.c:415
+#: playq.c:401
 #, c-format
 msgid "Repeat: %s"
 msgstr "Powtórz: %s"
 
-#: playq.c:416
+#: playq.c:402
 msgid "on"
 msgstr "włączony"
 
-#: playq.c:416
+#: playq.c:402
 msgid "off"
 msgstr "wyłączony"
 
-#: scrobbler.c:311
+#: scrobbler.c:322
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Pomyślnie zautoryzowany w AudioScrobbler."
 
-#: scrobbler.c:318
+#: scrobbler.c:329
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Nie udało się zautoryzować w AudioScrobbler."
 
-#: scrobbler.c:334
+#: scrobbler.c:345
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Pomyślnie wysłano utwór do AudioScrobbler."
 
-#: scrobbler.c:338
+#: scrobbler.c:349
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Pomyslnie wysłano %d utworów do AudioScrobbler."
 
-#: scrobbler.c:344
+#: scrobbler.c:355
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Nieprawidłowa nazwa użytkownika/hasło w AudioScrobbler."
 
-#: scrobbler.c:347
+#: scrobbler.c:358
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nie udało się wysłać utworów do AudioScrobbler."
 
