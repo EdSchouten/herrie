@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-31 11:25+0200\n"
-"PO-Revision-Date: 2007-05-31 11:25+0200\n"
+"POT-Creation-Date: 2007-06-03 16:09+0200\n"
+"PO-Revision-Date: 2007-06-03 16:09+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -34,11 +34,11 @@ msgstr "Kunde inte öppna startkatalogen."
 
 #: gui_browser.c:220
 msgid "Unable to enter the parent directory."
-msgstr "Kunde inte gå in i föräldrakatalogen."
+msgstr "Kunde inte gå till föräldrakatalogen."
 
 #: gui_browser.c:235
 msgid "Unable to enter the selected directory."
-msgstr "Kunde inte gå in i den valda katalogen."
+msgstr "Kunde inte gå till den valda katalogen."
 
 #: gui_browser.c:319
 msgid "Change directory"
@@ -63,6 +63,10 @@ msgstr "Sök efter"
 #: gui_input.c:139
 msgid "Not found."
 msgstr "Hittades inte."
+
+#: gui_input.c:194
+msgid "Use kill(1) to quit."
+msgstr "Använd kill(1) för att avsluta."
 
 #: gui_input.c:198
 #, c-format
@@ -130,9 +134,17 @@ msgstr "Du är på sista låten."
 msgid "Search wrapped to top."
 msgstr "Sökningen började om från början."
 
+#: gui_vfslist.c:584
+msgid "Full pathname"
+msgstr "Full sökväg"
+
+#: main.c:66
+msgid "Global configuration file"
+msgstr "Global konfigurationsfil"
+
 #: main.c:67
 msgid "Audio output"
-msgstr "Ljudutgång"
+msgstr "Ljudutmatning"
 
 #: main.c:68
 msgid "Support for AudioScrobbler"
@@ -205,7 +217,7 @@ msgstr "Okänd användare: %s\n"
 #: vfs.c:121
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr "Kunde inte använda chroot till %s\n"
+msgstr "Kunde inte göra chroot till %s\n"
 
 #: vfs.c:129
 #, c-format
