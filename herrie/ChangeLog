@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 1.7:
+2007-06-03 -- Herrie 1.7:
  * Fixed: Don't point files/directories starting with ~ to home directories
  * Fixed: Allow usage of ~/foo in playq.dumpfile
  * Improved: Include own MD5 implementation or use -lmd/-lmd5/-lc
