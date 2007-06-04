@@ -71,8 +71,8 @@ audio_output_play(struct audio_file *fd)
 	if (devptr == NULL) {
 		/* Open the device */
 		devptr = pa_simple_new(NULL, APP_NAME,
-		    PA_STREAM_PLAYBACK, NULL, NULL,  &devfmt, NULL,
-		    NULL, NULL);
+		    PA_STREAM_PLAYBACK, NULL, "Audio output", &devfmt,
+		    NULL, NULL, NULL);
 		if (devptr == NULL) {
 			gui_msgbar_warn(_("Cannot open the audio device."));
 			return (0);
