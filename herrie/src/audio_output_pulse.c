@@ -23,51 +23,78 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-
-/*
- * Header files which aren't obtained from pkg-config and such. We need
- * to check whether they are available on our system.
+/**
+ * @file audio_output_pulse.c
+ * @brief PulseAudio audio output driver.
  */
 
 #include "stdinc.h"
 
-#include CURSES_HEADER
-#ifdef BUILD_AO
-#include <ao/ao.h>
-#endif /* BUILD_AO */
-#ifdef BUILD_MODPLUG
-#include <sys/mman.h>
-#endif /* BUILD_MODPLUG */
-#ifdef BUILD_MP3
-#include <id3tag.h>
-#include <mad.h>
-#endif /* BUILD_MP3 */
-#ifdef BUILD_OSS
-#include OSS_HEADER
-#endif /* BUILD_OSS */
-#ifdef BUILD_PULSE
 #include <pulse/simple.h>
-#endif /* BUILD_PULSE */
-#if defined(BUILD_SCROBBLER) && !defined(BUILD_MD5_INTERNAL)
-#include <md5.h>
-#endif /* BUILD_SCROBBLER && !BUILD_MD5_INTERNAL */
-#ifdef BUILD_SNDFILE
-#include <sndfile.h>
-#endif /* BUILD_SNDFILE */
-#ifdef BUILD_VORBIS
-#include <vorbis/codec.h>
-#include <vorbis/vorbisfile.h>
-#endif /* BUILD_VORBIS */
-#ifdef BUILD_XSPF
-#include <spiff/spiff_c.h>
-#endif /* BUILD_XSPF */
+
+#include "audio_file.h"
+#include "audio_output.h"
+#include "gui.h"
+
+/**
+ * @brief Handle to an audio device handle if one has already been opened.
+ */
+static pa_simple*	devptr = NULL;
+/**
+ * @brief Format of the current open audio device handle.
+ */
+static pa_sample_spec	devfmt = { PA_SAMPLE_S16LE, 0, 0 };
 
 int
-main(int argc, char *argv[])
+audio_output_open(void)
 {
-#ifdef BUILD_XSPF
-	spiff_write(NULL, NULL);
-#endif /* BUILD_XSPF */
-
 	return (0);
+}
+
+int
+audio_output_play(struct audio_file *fd)
+{
+	char buf[AUDIO_OUTPUT_BUFLEN];
+	int len;
+
+	if ((len = audio_file_read(fd, buf)) == 0)
+		return (0);
+
+	if (devfmt.rate != fd->srate || devfmt.channels != fd->channels) {
+		/* Sample rate or amount of channels has changed */
+		audio_output_close();
+
+		devfmt.rate = fd->srate;
+		devfmt.channels = fd->channels;
+	}
+
+	if (devptr == NULL) {
+		/* Open the device */
+		devptr = pa_simple_new(NULL, APP_NAME,
+		    PA_STREAM_PLAYBACK, NULL, NULL,  &devfmt, NULL,
+		    NULL, NULL);
+		if (devptr == NULL) {
+			gui_msgbar_warn(_("Cannot open the audio device."));
+			return (0);
+		}
+	}
+
+	if (pa_simple_write(devptr, buf, len, NULL) != 0 ||
+	    pa_simple_drain(devptr, NULL) != 0) {
+		/* No success - device must be closed */
+		audio_output_close();
+		return (0);
+	} else {
+		return (len);
+	}
+}
+
+void
+audio_output_close(void)
+{
+	if (devptr != NULL) {
+		/* Close device */
+		pa_simple_free(devptr);
+		devptr = NULL;
+	}
 }
