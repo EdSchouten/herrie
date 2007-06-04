@@ -79,8 +79,7 @@ audio_output_play(struct audio_file *fd)
 		}
 	}
 
-	if (pa_simple_write(devptr, buf, len, NULL) != 0 ||
-	    pa_simple_drain(devptr, NULL) != 0) {
+	if (pa_simple_write(devptr, buf, len, NULL) != 0) {
 		/* No success - device must be closed */
 		audio_output_close();
 		return (0);
