@@ -152,11 +152,14 @@ static struct config_entry configlist[] = {
 	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
 	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
 	{ "gui.input.may_quit",		"yes",		valid_bool,	NULL },
-	{ "playq.dumpfile",		PLAYQ_DUMPFILE,	NULL,		NULL },
+#ifdef BUILD_XSPF
+	{ "playq.dumpfile",		CONFHOMEDIR "autosave.xspf", NULL, NULL },
+#else /* !BUILD_XSPF */
+	{ "playq.dumpfile",		CONFHOMEDIR "autosave.pls", NULL, NULL },
+#endif /* BUILD_XSPF */
 	{ "playq.xmms",			"no",		valid_bool,	NULL },
 #ifdef BUILD_SCROBBLER
-	{ "scrobbler.dumpfile",		"~" G_DIR_SEPARATOR_S "." APP_NAME
-	    G_DIR_SEPARATOR_S "scrobbler.queue",	NULL,		NULL },
+	{ "scrobbler.dumpfile",		CONFHOMEDIR "scrobbler.queue",	NULL, NULL },
 	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },
 	{ "scrobbler.password",		"",		valid_md5,	NULL },
 	{ "scrobbler.username",		"",		NULL,		NULL },

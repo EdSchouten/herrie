@@ -121,8 +121,7 @@ main(int argc, char *argv[])
 
 	/* Global and local configuration files */
 	config_load(CONFFILE);
-	config_load("~" G_DIR_SEPARATOR_S "." APP_NAME
-	    G_DIR_SEPARATOR_S "config");
+	config_load(CONFHOMEDIR "config");
 
 	while ((ch = getopt(argc, argv, "c:vx")) != -1) {
 		switch (ch) {

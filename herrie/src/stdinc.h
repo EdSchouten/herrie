@@ -74,3 +74,5 @@
 #ifndef BUILD_FTELLO
 #define ftello(stream)		ftell(stream)
 #endif /* !BUILD_FTELLO */
+
+#define CONFHOMEDIR "~" G_DIR_SEPARATOR_S "." APP_NAME G_DIR_SEPARATOR_S
