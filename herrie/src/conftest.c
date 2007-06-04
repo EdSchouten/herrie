@@ -45,9 +45,6 @@
 #ifdef BUILD_OSS
 #include OSS_HEADER
 #endif /* BUILD_OSS */
-#ifdef BUILD_PULSE
-#include <pulse/simple.h>
-#endif /* BUILD_PULSE */
 #if defined(BUILD_SCROBBLER) && !defined(BUILD_MD5_INTERNAL)
 #include <md5.h>
 #endif /* BUILD_SCROBBLER && !BUILD_MD5_INTERNAL */
