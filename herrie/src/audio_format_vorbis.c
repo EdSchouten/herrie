@@ -140,4 +140,5 @@ vorbis_seek(struct audio_file *fd, int len, int rel)
 	npos = CLAMP(npos, 0, ov_time_total(vfp, -1));
 
 	ov_time_seek(vfp, npos);
+	fd->time_cur = ov_time_tell(vfp);
 }
