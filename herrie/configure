@@ -330,6 +330,8 @@ oss)
 		LDFLAGS="$LDFLAGS -lossaudio"
 		;;
 	*)
+		# The OSS-through-ALSA compat may generate noise
+		[ "$OS" = "Linux" ] && CFLAGS_main="$CFLAGS_main -DCLOSE_STDERR"
 		CFLAGS="$CFLAGS -DOSS_HEADER=\\<sys/soundcard.h\\>"
 		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/dsp\\\""
 		;;
