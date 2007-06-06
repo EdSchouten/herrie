@@ -1,6 +1,7 @@
 ????-??-?? -- Herrie 1.8:
  * Added: PulseAudio output module
  * Fixed: Close stderr on Linux when using OSS as well - Robert Buchholz
+ * Fixed: Time display when seeking Ogg files while being paused
  * Improved: Seek time when using 'J' will now be remembered
 
 2007-06-03 -- Herrie 1.7:
