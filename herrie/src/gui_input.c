@@ -56,6 +56,10 @@ static int gui_input_curfocus = GUI_FOCUS_BROWSER;
  * @brief Indicator of the current search string.
  */
 static char *cursearch = NULL;
+/**
+ * @brief The last seek string that has been entered.
+ */
+static char *curseek = NULL;
 
 /**
  * @brief Fetch a character from the keyboard, already processing
@@ -234,8 +238,8 @@ gui_input_cursong_seek_jump(void)
 	char *str, *t;
 	int total = 0, split = 0, digit = 0, value, relative = 0;
 
-	t = str = gui_input_askstring(_("Jump to position"), NULL,
-	    "1234567890:+-");
+	t = str = gui_input_askstring(_("Jump to position"),
+	    curseek, "1234567890:+-");
 	if (str == NULL)
 		return;
 
@@ -285,10 +289,14 @@ gui_input_cursong_seek_jump(void)
 	if (relative != 0)
 		total *= relative;
 	playq_cursong_seek(total, relative);
-	goto done;
+
+	/* Show the string the next time as well */
+	g_free(curseek);
+	curseek = str;
+	return;
 
 bad:	gui_msgbar_warn(_("Bad time format."));
-done:	g_free(str);
+	g_free(str);
 }
 
 /**

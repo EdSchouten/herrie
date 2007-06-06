@@ -1,6 +1,7 @@
 ????-??-?? -- Herrie 1.8:
  * Added: PulseAudio output module
  * Fixed: Close stderr on Linux when using OSS as well - Robert Buchholz
+ * Improved: Seek time when using 'J' will now be remembered
 
 2007-06-03 -- Herrie 1.7:
  * Fixed: Don't point files/directories starting with ~ to home directories
