@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-03 18:00+0200\n"
+"POT-Creation-Date: 2007-06-07 13:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:115 audio_output_sdl.c:114
+#: audio_output_ao.c:115 audio_output_pulse.c:77 audio_output_sdl.c:114
 msgid "Cannot open the audio device."
 msgstr ""
 
@@ -41,52 +41,56 @@ msgstr ""
 msgid "Unable to enter the selected directory."
 msgstr ""
 
-#: gui_browser.c:319
+#: gui_browser.c:324
 msgid "Change directory"
 msgstr ""
 
-#: gui_browser.c:357
+#: gui_browser.c:362
 msgid "Unable to display the file or directory."
 msgstr ""
 
-#: gui_browser.c:374
+#: gui_browser.c:379
 msgid "Write playlist to file"
 msgstr ""
 
-#: gui_browser.c:383
+#: gui_browser.c:388
 msgid "Unable to write playlist."
 msgstr ""
 
-#: gui_input.c:115 gui_input.c:158
-msgid "Search for"
-msgstr ""
-
-#: gui_input.c:139
+#: gui_input.c:155
 msgid "Not found."
 msgstr ""
 
-#: gui_input.c:194
+#: gui_input.c:174
+msgid "Search for"
+msgstr ""
+
+#: gui_input.c:181
+msgid "Bad pattern."
+msgstr ""
+
+#: gui_input.c:221
 msgid "Use kill(1) to quit."
 msgstr ""
 
-#: gui_input.c:198
+#: gui_input.c:225
 #, c-format
 msgid "Quit %s?"
 msgstr ""
 
-#: gui_input.c:235
+#: gui_input.c:262
 msgid "Jump to position"
 msgstr ""
 
-#: gui_input.c:288
+#: gui_input.c:319
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:478 main.c:70 main.c:76 main.c:82
+#: gui_input.c:509 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:479 main.c:72 main.c:78 main.c:84
+#: gui_input.c:510 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr ""
 
@@ -130,11 +134,11 @@ msgstr ""
 msgid "You are at the last song."
 msgstr ""
 
-#: gui_vfslist.c:560
+#: gui_vfslist.c:576
 msgid "Search wrapped to top."
 msgstr ""
 
-#: gui_vfslist.c:584
+#: gui_vfslist.c:600
 msgid "Full pathname"
 msgstr ""
 
