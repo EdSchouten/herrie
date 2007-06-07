@@ -512,35 +512,51 @@ gui_vfslist_notify_done(struct gui_vfslist *gv)
  * @brief Match a VFS reference's name to the globally defined search
  *        string.
  */
+#ifdef BUILD_REGEX
 static int
-gui_vfslist_searchmatch(struct vfsref *vr, const char *str)
+gui_vfslist_searchmatch(struct vfsref *vr, const regex_t *match)
+{
+	if (regexec(match, vfs_name(vr), 0, NULL, 0) == 0)
+		return (1);
+	
+	return (0);
+}
+#else /* !BUILD_REGEX */
+static int
+gui_vfslist_searchmatch(struct vfsref *vr, const char *match)
 {
 	size_t len;
 	const char *name;
 	char first;
 
 	name = vfs_name(vr);
-	len = strlen(str);
+	len = strlen(match);
 
 	/* strcasestr()-like string comparison */
-	if ((first = tolower(str[0])) == '\0')
+	if ((first = tolower(match[0])) == '\0')
 		return (0);
 	while (name[0] != '\0') {
 		if (tolower(name[0]) == first)
-			if (strncasecmp(name, str, len) == 0)
+			if (strncasecmp(name, match, len) == 0)
 				return (1);
 		name++;
 	}
 	return (0);
 }
+#endif /* BUILD_REGEX */
 
+#ifdef BUILD_REGEX
 int
-gui_vfslist_searchnext(struct gui_vfslist *gv, const char *str)
+gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)
+#else /* !BUILD_REGEX */
+int
+gui_vfslist_searchnext(struct gui_vfslist *gv, const char *match)
+#endif /* BUILD_REGEX */
 {
 	struct vfsref *vr;
 	unsigned int idx;
 
-	g_assert(str != NULL);
+	g_assert(match != NULL);
 
 	if (gv->vr_selected == NULL)
 		return (-1);
@@ -548,7 +564,7 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const char *str)
 	/* Step 1: search from selection to end */
 	for (vr = vfs_list_next(gv->vr_selected), idx = gv->idx_selected + 1;
 	    vr != NULL; vr = vfs_list_next(vr), idx++) {
-		if (gui_vfslist_searchmatch(vr, str))
+		if (gui_vfslist_searchmatch(vr, match))
 			goto found;
 	}
 
@@ -556,7 +572,7 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const char *str)
 	for (vr = vfs_list_first(gv->list), idx = 1;
 	    vr != vfs_list_next(gv->vr_selected);
 	    vr = vfs_list_next(vr), idx++) {
-		if (gui_vfslist_searchmatch(vr, str)) {
+		if (gui_vfslist_searchmatch(vr, match)) {
 			gui_msgbar_warn(_("Search wrapped to top."));
 			goto found;
 		}

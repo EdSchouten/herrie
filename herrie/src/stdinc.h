@@ -75,4 +75,8 @@
 #define ftello(stream)		ftell(stream)
 #endif /* !BUILD_FTELLO */
 
+#ifdef BUILD_REGEX
+#include <regex.h>
+#endif /* BUILD_REGEX */
+
 #define CONFHOMEDIR "~" G_DIR_SEPARATOR_S "." APP_NAME G_DIR_SEPARATOR_S

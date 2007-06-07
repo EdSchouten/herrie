@@ -243,7 +243,11 @@ void gui_playq_song_select(void);
  * @brief Search for the next item matching gui_input_cursearch in the
  *        playlist.
  */
+#ifdef BUILD_REGEX
+int gui_playq_searchnext(const regex_t *str);
+#else /* !BUILD_REGEX */
 int gui_playq_searchnext(const char *str);
+#endif /* BUILD_REGEX */
 /**
  * @brief Focus or unfocus the playlist.
  */
@@ -330,7 +334,11 @@ void gui_browser_playq_add_before(void);
  * @brief Search for the next item matching gui_input_cursearch in the
  *        file browser.
  */
+#ifdef BUILD_REGEX
+int gui_browser_searchnext(const regex_t *str);
+#else /* !BUILD_REGEX */
 int gui_browser_searchnext(const char *str);
+#endif /* BUILD_REGEX */
 /**
  * @brief Change to a specified directory.
  */

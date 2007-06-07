@@ -56,10 +56,18 @@ static int gui_input_curfocus = GUI_FOCUS_BROWSER;
  * @brief Indicator of the current search string.
  */
 static char *cursearch = NULL;
+#ifdef BUILD_REGEX
+/**
+ * @brief Compiled regular expression of the current search string.
+ */
+static regex_t cursearchregex;
+#endif /* BUILD_REGEX */
 /**
  * @brief The last seek string that has been entered.
  */
 static char *curseek = NULL;
+
+static void gui_input_search(void);
 
 /**
  * @brief Fetch a character from the keyboard, already processing
@@ -113,12 +121,16 @@ static void
 gui_input_searchnext(void)
 {
 	int nfocus = GUI_FOCUS_PLAYQ;
+#ifdef BUILD_REGEX
+	const regex_t *match = &cursearchregex;
+#else /* !BUILD_REGEX */
+	const char *match = cursearch;
+#endif /* BUILD_REGEX */
 
 	if (cursearch == NULL) {
 		/* No search string yet */
-		cursearch = gui_input_askstring(_("Search for"), NULL, NULL);
-		if (cursearch == NULL)
-			return;
+		gui_input_search();
+		return;
 	}
 
 	/*
@@ -129,13 +141,13 @@ gui_input_searchnext(void)
 	 * last two.
 	 */
 	if (gui_input_curfocus == GUI_FOCUS_PLAYQ &&
-	    gui_playq_searchnext(cursearch) == 0) {
+	    gui_playq_searchnext(match) == 0) {
 		goto found;
-	} else if (gui_browser_searchnext(cursearch) == 0) {
+	} else if (gui_browser_searchnext(match) == 0) {
 		nfocus = GUI_FOCUS_BROWSER;
 		goto found;
 	} else if (gui_input_curfocus != GUI_FOCUS_PLAYQ &&
-	    gui_playq_searchnext(cursearch) == 0) {
+	    gui_playq_searchnext(match) == 0) {
 		goto found;
 	}
 
@@ -162,6 +174,15 @@ gui_input_search(void)
 	str = gui_input_askstring(_("Search for"), cursearch, NULL);
 	if (str == NULL)
 		return;
+	
+#ifdef BUILD_REGEX
+	/* Compile the regular expression */
+	if (regcomp(&cursearchregex, str, REG_ICASE) != 0) {
+		gui_msgbar_warn(_("Bad pattern."));
+		g_free(str);
+		return;
+	}
+#endif /* BUILD_REGEX */
 
 	/* Replace our search string */
 	g_free(cursearch);

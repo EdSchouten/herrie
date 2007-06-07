@@ -3,6 +3,7 @@
  * Fixed: Close stderr on Linux when using OSS as well - Robert Buchholz
  * Fixed: Time display when seeking Ogg files while being paused
  * Improved: Seek time when using 'J' will now be remembered
+ * Added: Support for searching with regex(3)
 
 2007-06-03 -- Herrie 1.7:
  * Fixed: Don't point files/directories starting with ~ to home directories

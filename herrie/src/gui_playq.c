@@ -447,13 +447,18 @@ gui_playq_song_select(void)
 	playq_unlock();
 }
 
+#ifdef BUILD_REGEX
 int
-gui_playq_searchnext(const char *str)
+gui_playq_searchnext(const regex_t *match)
+#else /* !BUILD_REGEX */
+int
+gui_playq_searchnext(const char *match)
+#endif /* BUILD_REGEX */
 {
 	int ret;
 
 	playq_lock();
-	ret = gui_vfslist_searchnext(win_playq, str);
+	ret = gui_vfslist_searchnext(win_playq, match);
 	playq_unlock();
 	
 	return (ret);

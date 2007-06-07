@@ -38,6 +38,7 @@ CFG_FTELLO=yes
 CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
+CFG_REGEX=yes
 CFG_RES_INIT=yes
 CFG_SCROBBLER=yes
 unset CFG_SETPROCTITLE
@@ -250,11 +251,10 @@ then
 	LDFLAGS="$LDFLAGS -lmad -lid3tag -lz"
 	SRCS="$SRCS audio_format_mp3"
 fi
+# regcomp()/regexec() usage
+[ "$CFG_REGEX" != "" ] && CFLAGS="$CFLAGS -DBUILD_REGEX"
 # res_init() usage
-if [ "$CFG_RES_INIT" != "" ]
-then
-	CFLAGS="$CFLAGS -DBUILD_RES_INIT"
-fi
+[ "$CFG_RES_INIT" != "" ] && CFLAGS="$CFLAGS -DBUILD_RES_INIT"
 # setproctitle() usage
 if [ "$CFG_SETPROCTITLE" != "" ]
 then
