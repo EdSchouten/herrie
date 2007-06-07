@@ -176,10 +176,18 @@ gui_input_search(void)
 		return;
 	
 #ifdef BUILD_REGEX
-	/* Compile the regular expression */
+	/* Trash the old compiled expression */
+	if (cursearch != NULL)
+		regfree(&cursearchregex);
+
+	/* Compile the new expression */
 	if (regcomp(&cursearchregex, str, REG_ICASE) != 0) {
 		gui_msgbar_warn(_("Bad pattern."));
 		g_free(str);
+
+		/* Just recompile the old expression then */
+		if (cursearch != NULL)
+			regcomp(&cursearchregex, cursearch, REG_ICASE);
 		return;
 	}
 #endif /* BUILD_REGEX */
