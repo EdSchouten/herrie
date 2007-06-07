@@ -169,6 +169,9 @@ static void
 gui_input_search(void)
 {
 	char *str;
+#ifdef BUILD_REGEX
+	regex_t match;
+#endif /* BUILD_REGEX */
 
 	/* Allow the user to enter a search string */
 	str = gui_input_askstring(_("Search for"), cursearch, NULL);
@@ -176,20 +179,17 @@ gui_input_search(void)
 		return;
 	
 #ifdef BUILD_REGEX
-	/* Trash the old compiled expression */
-	if (cursearch != NULL)
-		regfree(&cursearchregex);
-
 	/* Compile the new expression */
-	if (regcomp(&cursearchregex, str, REG_ICASE) != 0) {
+	if (regcomp(&match, str, REG_ICASE) != 0) {
 		gui_msgbar_warn(_("Bad pattern."));
 		g_free(str);
-
-		/* Just recompile the old expression then */
-		if (cursearch != NULL)
-			regcomp(&cursearchregex, cursearch, REG_ICASE);
 		return;
 	}
+
+	/* Copy the compiled expression over the original one */
+	if (cursearch != NULL)
+		regfree(&cursearchregex);
+	memcpy(&cursearchregex, &match, sizeof match);
 #endif /* BUILD_REGEX */
 
 	/* Replace our search string */
