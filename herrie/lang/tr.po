@@ -3,15 +3,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-03 18:00+0200\n"
-"PO-Revision-Date: 2007-06-03 16:09+0200\n"
+"POT-Creation-Date: 2007-06-07 21:54+0200\n"
+"PO-Revision-Date: 2007-06-07 21:54+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:115 audio_output_sdl.c:114
+#: audio_output_ao.c:115 audio_output_pulse.c:77 audio_output_sdl.c:114
 msgid "Cannot open the audio device."
 msgstr "Ses aygıtı açılamıyor"
 
@@ -36,52 +36,56 @@ msgstr "Üst dizine girilemiyor."
 msgid "Unable to enter the selected directory."
 msgstr "Seçilen dizine girilemiyor."
 
-#: gui_browser.c:319
+#: gui_browser.c:324
 msgid "Change directory"
 msgstr "Dizin değiştir"
 
-#: gui_browser.c:357
+#: gui_browser.c:362
 msgid "Unable to display the file or directory."
 msgstr "Dosya veya dizin gösterilemiyor"
 
-#: gui_browser.c:374
+#: gui_browser.c:379
 msgid "Write playlist to file"
 msgstr "Parça listesini dosyaya yaz"
 
-#: gui_browser.c:383
+#: gui_browser.c:388
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
-#: gui_input.c:115 gui_input.c:158
-msgid "Search for"
-msgstr "Ara"
-
-#: gui_input.c:139
+#: gui_input.c:155
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: gui_input.c:194
+#: gui_input.c:177
+msgid "Search for"
+msgstr "Ara"
+
+#: gui_input.c:184
+msgid "Bad pattern."
+msgstr "Hatalı ifade"
+
+#: gui_input.c:229
 msgid "Use kill(1) to quit."
 msgstr "Çıkmak için kill(1) kullanın."
 
-#: gui_input.c:198
+#: gui_input.c:233
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:235
+#: gui_input.c:270
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:288
+#: gui_input.c:327
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:478 main.c:70 main.c:76 main.c:82
+#: gui_input.c:517 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:479 main.c:72 main.c:78 main.c:84
+#: gui_input.c:518 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "hayır"
 
@@ -125,11 +129,11 @@ msgstr "İlk parçadasınız."
 msgid "You are at the last song."
 msgstr "Son parçadasınız."
 
-#: gui_vfslist.c:560
+#: gui_vfslist.c:576
 msgid "Search wrapped to top."
 msgstr "Arama üste kaydırıldı."
 
-#: gui_vfslist.c:584
+#: gui_vfslist.c:600
 msgid "Full pathname"
 msgstr "Tam dosya yolu"
 

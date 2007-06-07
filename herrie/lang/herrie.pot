@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-07 13:44+0200\n"
+"POT-Creation-Date: 2007-06-07 21:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,36 +61,36 @@ msgstr ""
 msgid "Not found."
 msgstr ""
 
-#: gui_input.c:174
+#: gui_input.c:177
 msgid "Search for"
 msgstr ""
 
-#: gui_input.c:181
+#: gui_input.c:184
 msgid "Bad pattern."
 msgstr ""
 
-#: gui_input.c:221
+#: gui_input.c:229
 msgid "Use kill(1) to quit."
 msgstr ""
 
-#: gui_input.c:225
+#: gui_input.c:233
 #, c-format
 msgid "Quit %s?"
 msgstr ""
 
-#: gui_input.c:262
+#: gui_input.c:270
 msgid "Jump to position"
 msgstr ""
 
-#: gui_input.c:319
+#: gui_input.c:327
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:509 main.c:70 main.c:76 main.c:82
+#: gui_input.c:517 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:510 main.c:72 main.c:78 main.c:84
+#: gui_input.c:518 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr ""
 

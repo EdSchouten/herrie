@@ -171,10 +171,10 @@ KEYBOARD BINDINGS
        G or end
 	      Move the selection to the bottom.
 
-       /      Search the entries for a specified search string and select  the
-	      first matching entry below the current selection. If no match is
-	      found, the search will continue at the top of  the  list.  As  a
-	      final attempt, the other window is searched as well.
+       /      Search the entries for a specified regular expression and select
+	      the  first  matching  entry  below  the current selection. If no
+	      match is found, the search will continue at the top of the list.
+	      As a final attempt, the other window is searched as well.
 
        n      Perform another search for the last entered search string.
 
@@ -257,4 +257,4 @@ AUTHORS
 
 
 
-Ed Schouten			April 30, 2007			     HERRIE(1)
+Ed Schouten			 June 3, 2007			     HERRIE(1)
