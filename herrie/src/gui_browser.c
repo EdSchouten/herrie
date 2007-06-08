@@ -300,13 +300,8 @@ gui_browser_playq_add_before(void)
 	gui_vfslist_cursor_down(win_browser, 1);
 }
 
-#ifdef BUILD_REGEX
 int
 gui_browser_searchnext(const regex_t *match)
-#else /* !BUILD_REGEX */
-int
-gui_browser_searchnext(const char *match)
-#endif /* BUILD_REGEX */
 {
 	return gui_vfslist_searchnext(win_browser, match);
 }

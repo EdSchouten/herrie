@@ -206,11 +206,7 @@ void gui_vfslist_notify_done(struct gui_vfslist *gv);
  * @brief Change the selection to the first item that matches the
  *        globally defined search string gui_input_cursearch.
  */
- #ifdef BUILD_REGEX
 int gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match);
-#else /* !BUILD_REGEX */
-int gui_vfslist_searchnext(struct gui_vfslist *gv, const char *match);
-#endif /* BUILD_REGEX */
 /**
  * @brief Show the full pathname of the selected entry in the message
  *        bar.

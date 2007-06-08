@@ -545,13 +545,8 @@ gui_vfslist_searchmatch(struct vfsref *vr, const char *match)
 }
 #endif /* BUILD_REGEX */
 
-#ifdef BUILD_REGEX
 int
 gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)
-#else /* !BUILD_REGEX */
-int
-gui_vfslist_searchnext(struct gui_vfslist *gv, const char *match)
-#endif /* BUILD_REGEX */
 {
 	struct vfsref *vr;
 	unsigned int idx;
