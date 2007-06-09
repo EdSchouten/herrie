@@ -512,19 +512,13 @@ gui_vfslist_notify_done(struct gui_vfslist *gv)
  * @brief Match a VFS reference's name to the globally defined search
  *        string.
  */
-#ifdef BUILD_REGEX
 static int
 gui_vfslist_searchmatch(struct vfsref *vr, const regex_t *match)
 {
+#ifdef BUILD_REGEX
 	if (regexec(match, vfs_name(vr), 0, NULL, 0) == 0)
 		return (1);
-	
-	return (0);
-}
 #else /* !BUILD_REGEX */
-static int
-gui_vfslist_searchmatch(struct vfsref *vr, const char *match)
-{
 	size_t len;
 	const char *name;
 	char first;
@@ -541,9 +535,10 @@ gui_vfslist_searchmatch(struct vfsref *vr, const char *match)
 				return (1);
 		name++;
 	}
+#endif /* BUILD_REGEX */
+
 	return (0);
 }
-#endif /* BUILD_REGEX */
 
 int
 gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)

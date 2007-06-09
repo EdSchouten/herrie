@@ -98,6 +98,7 @@ Windows)
 	unset CFG_FTELLO
 	unset CFG_HTTP
 	unset CFG_MODPLUG
+	unset CFG_REGEX
 	CFG_CURSES_HEADER=curses
 	CFG_CURSES_LIB=pdcurses
 	;;
