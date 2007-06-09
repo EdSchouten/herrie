@@ -392,8 +392,6 @@ echo "- Using $CFG_AO audio output"
 
 (cat << EOF
 all: $APP_NAME$CFG_BINEXT $APP_NAME.1.gz $SRCDIR/$APP_NAME.conf.sample $MOS
-Makefile: $SRCDIR/configure
-	# WARNING: $SRCDIR/configure is newer than this Makefile
 $APP_NAME$CFG_BINEXT: $OBJS
 	# Linking $APP_NAME$CFG_BINEXT
 	$DOIT$CC $OBJS $LDFLAGS -o $APP_NAME$CFG_BINEXT
