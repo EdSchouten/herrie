@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-11 20:01+0200\n"
+"POT-Creation-Date: 2007-06-11 20:56+0200\n"
 "PO-Revision-Date: 2007-06-11 10:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -63,6 +63,14 @@ msgstr "Ar iarraidh."
 #: gui_input.c:177
 msgid "Search for"
 msgstr "Déan cuardach ar"
+
+#: gui_input.c:184
+msgid "Bad pattern."
+msgstr ""
+
+#: gui_input.c:229
+msgid "Use kill(1) to quit."
+msgstr ""
 
 #: gui_input.c:233
 #, c-format
@@ -128,6 +136,14 @@ msgstr "Tá tú ag an amhrán deiridh."
 #: gui_vfslist.c:566
 msgid "Search wrapped to top."
 msgstr "Thimfhill an cuardach go dtí an barr."
+
+#: gui_vfslist.c:590
+msgid "Full pathname"
+msgstr ""
+
+#: main.c:66
+msgid "Global configuration file"
+msgstr ""
 
 #: main.c:67
 msgid "Audio output"
