@@ -3,7 +3,10 @@
 from="herrie-$1"
 to="master"
 
-if [ $# = 2 ]
+if [ $# = 0 ]
+then
+	from="`git tag -l | tail -n 1`"
+elif [ $# = 2 ]
 then
 	to="herrie-$2"
 elif [ $# != 1 ]
