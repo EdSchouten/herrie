@@ -4,6 +4,7 @@
  * Fixed: Time display when seeking Ogg files while being paused
  * Improved: Seek time when using 'J' will now be remembered
  * Added: Support for searching with regex(3)
+ * Added: Irish translation - Kevin Scannell
 
 2007-06-03 -- Herrie 1.7:
  * Fixed: Don't point files/directories starting with ~ to home directories

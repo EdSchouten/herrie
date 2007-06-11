@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-08 11:43+0200\n"
-"PO-Revision-Date: 2007-06-08 11:43+0200\n"
+"POT-Creation-Date: 2007-06-11 20:01+0200\n"
+"PO-Revision-Date: 2007-06-11 20:01+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,19 +35,19 @@ msgstr "Fehler beim Öffnen des übergeordneten Verzeichnisses."
 msgid "Unable to enter the selected directory."
 msgstr "Fehler beim Öffnen des gewählten Verzeichnisses."
 
-#: gui_browser.c:324
+#: gui_browser.c:319
 msgid "Change directory"
 msgstr "Verzeichnis wechseln"
 
-#: gui_browser.c:362
+#: gui_browser.c:357
 msgid "Unable to display the file or directory."
 msgstr "Datei oder Verzeichnis kann nicht angezeigt werden."
 
-#: gui_browser.c:379
+#: gui_browser.c:374
 msgid "Write playlist to file"
 msgstr "Playlist in Datei speichern"
 
-#: gui_browser.c:388
+#: gui_browser.c:383
 msgid "Unable to write playlist."
 msgstr "Fehler beim Schreiben der Playlist."
 
@@ -128,11 +128,11 @@ msgstr "Du bist am Anfang der Liste."
 msgid "You are at the last song."
 msgstr "Du bist am Ende der Liste."
 
-#: gui_vfslist.c:576
+#: gui_vfslist.c:566
 msgid "Search wrapped to top."
 msgstr "Suche am Ende angelagt, Fortsetzung am Anfang."
 
-#: gui_vfslist.c:600
+#: gui_vfslist.c:590
 msgid "Full pathname"
 msgstr "Vollständiger Pfad"
 

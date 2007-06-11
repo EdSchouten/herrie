@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-07 21:54+0200\n"
-"PO-Revision-Date: 2007-06-07 21:54+0200\n"
+"POT-Creation-Date: 2007-06-11 20:01+0200\n"
+"PO-Revision-Date: 2007-06-11 20:01+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <yerellestirme@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -36,19 +36,19 @@ msgstr "Üst dizine girilemiyor."
 msgid "Unable to enter the selected directory."
 msgstr "Seçilen dizine girilemiyor."
 
-#: gui_browser.c:324
+#: gui_browser.c:319
 msgid "Change directory"
 msgstr "Dizin değiştir"
 
-#: gui_browser.c:362
+#: gui_browser.c:357
 msgid "Unable to display the file or directory."
 msgstr "Dosya veya dizin gösterilemiyor"
 
-#: gui_browser.c:379
+#: gui_browser.c:374
 msgid "Write playlist to file"
 msgstr "Parça listesini dosyaya yaz"
 
-#: gui_browser.c:388
+#: gui_browser.c:383
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
@@ -129,11 +129,11 @@ msgstr "İlk parçadasınız."
 msgid "You are at the last song."
 msgstr "Son parçadasınız."
 
-#: gui_vfslist.c:576
+#: gui_vfslist.c:566
 msgid "Search wrapped to top."
 msgstr "Arama üste kaydırıldı."
 
-#: gui_vfslist.c:600
+#: gui_vfslist.c:590
 msgid "Full pathname"
 msgstr "Tam dosya yolu"
 
