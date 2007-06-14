@@ -145,7 +145,7 @@ do
 		unset CFG_XSPF
 		;;
 
-	ao|null|oss|pulse|sdl)
+	ao|null|oss|pulse)
 		CFG_AO=$1
 		;;
 	
@@ -347,15 +347,6 @@ pulse)
 		exit 1
 	fi
 	LDFLAGS="$LDFLAGS `pkg-config --libs libpulse-simple`"
-	;;
-sdl)
-	CFLAGS="$CFLAGS `sdl-config --cflags`"
-	if [ $? -ne 0 ]
-	then
-		echo "Error: LibSDL not found"
-		exit 1
-	fi
-	LDFLAGS="$LDFLAGS `sdl-config --libs`"
 	;;
 esac
 

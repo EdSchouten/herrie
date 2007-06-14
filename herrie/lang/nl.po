@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-11 20:56+0200\n"
+"POT-Creation-Date: 2007-06-15 00:32+0200\n"
 "PO-Revision-Date: 2007-06-11 20:01+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:115 audio_output_pulse.c:77 audio_output_sdl.c:114
+#: audio_output_ao.c:115 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Kan het geluidsapparaat niet openen."
 
@@ -18,10 +18,6 @@ msgstr "Kan het geluidsapparaat niet openen."
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan geluidsapparaat \"%s\" niet openen.\n"
-
-#: audio_output_sdl.c:82
-msgid "Cannot initialize SDL audio subsystem.\n"
-msgstr "Kan het SDL geluids subsysteem niet initialiseren.\n"
 
 #: gui_browser.c:115
 msgid "Unable to open initial directory."

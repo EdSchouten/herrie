@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-11 20:56+0200\n"
+"POT-Creation-Date: 2007-06-15 00:32+0200\n"
 "PO-Revision-Date: 2007-06-11 20:01+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:115 audio_output_pulse.c:77 audio_output_sdl.c:114
+#: audio_output_ao.c:115 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Gerät kann nicht geöffnet werden."
 
@@ -18,10 +18,6 @@ msgstr "Gerät kann nicht geöffnet werden."
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Gerät \"%s\" kann nicht geöffnet werden.\n"
-
-#: audio_output_sdl.c:82
-msgid "Cannot initialize SDL audio subsystem.\n"
-msgstr "SDL-Sub-System kann nicht initialisiert werden.\n"
 
 #: gui_browser.c:115
 msgid "Unable to open initial directory."

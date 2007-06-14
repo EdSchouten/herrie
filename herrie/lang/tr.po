@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-11 20:56+0200\n"
+"POT-Creation-Date: 2007-06-15 00:32+0200\n"
 "PO-Revision-Date: 2007-06-11 20:01+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <yerellestirme@kde.org>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:115 audio_output_pulse.c:77 audio_output_sdl.c:114
+#: audio_output_ao.c:115 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Ses aygıtı açılamıyor"
 
@@ -19,10 +19,6 @@ msgstr "Ses aygıtı açılamıyor"
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ses aygıtı \"%s\" açılamadı.\n"
-
-#: audio_output_sdl.c:82
-msgid "Cannot initialize SDL audio subsystem.\n"
-msgstr "SDL ses sistemi başlatılamıyor\n"
 
 #: gui_browser.c:115
 msgid "Unable to open initial directory."

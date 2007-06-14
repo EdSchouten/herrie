@@ -59,16 +59,16 @@ Herrie:
 - libid3tag
 - libmad
 - libmodplug
-- libsdl (audio - optional)
 - libsndfile
 - libspiff (0.6.3 or higher - optional)
 - libvorbisfile
 - ncursesw, ncurses or pdcurses (`XCurses')
 - pulseaudio (optional)
 
-Please note that some dependencies can be disabled. OpenSSL and cURL are only
-needed when compiling with AudioScrobbler or HTTP support. LibAO and SDL are
-only needed when building the `ao' or `sdl' audio output driver.
+Please note that some dependencies can be disabled. OpenSSL and cURL are
+only needed when compiling with AudioScrobbler or HTTP support. LibAO
+and PulseAudio are only needed when building the `ao' or `pulse' audio
+output driver.
 
 How do I compile and install Herrie?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,7 +89,6 @@ configure script to change certain parameters:
 - oss           Use Open Sound System output
 - null          Use placeholder audio output
 - pulse         Use PulseAudio audio output
-- sdl           Use LibSDL audio output
 
 - ncurses       Use ncurses instead of ncursesw (breaks UTF-8 support)
 - xcurses       Build application against XCurses (PDCurses)
