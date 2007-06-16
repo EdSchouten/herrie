@@ -60,6 +60,7 @@ CYGWIN*)
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 Darwin)
+	CFG_AO=ao
 	LDFLAGS="$LDFLAGS -lresolv"
 	[ "$PREFIX" = "" ] && PREFIX=/opt/local
 	;;
@@ -145,7 +146,7 @@ do
 		unset CFG_XSPF
 		;;
 
-	ao|null|oss|pulse)
+	ao|coreaudio|null|oss|pulse)
 		CFG_AO=$1
 		;;
 	
@@ -321,6 +322,9 @@ ao)
 	CFLAGS="$CFLAGS -DBUILD_AO"
 	CFLAGS_main="$CFLAGS_main -DCLOSE_STDERR"
 	LDFLAGS="$LDFLAGS -lao"
+	;;
+coreaudio)
+	LDFLAGS="$LDFLAGS -framework CoreAudio"
 	;;
 oss)
 	CFLAGS="$CFLAGS -DBUILD_OSS"

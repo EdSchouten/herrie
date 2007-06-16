@@ -1,0 +1,93 @@
+/*
+ * Copyright (c) 2006-2007 Ed Schouten <ed@fxq.nl>
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+/**
+ * @file audio_output_coreaudio.c
+ * @brief Apple CoreAudio audio output driver.
+ */
+
+#include "stdinc.h"
+
+#include <CoreAudio/AudioHardware.h>
+
+#include "audio_file.h"
+#include "audio_output.h"
+#include "gui.h"
+
+AudioDeviceID			adid;
+AudioStreamBasicDescription	afmt;
+
+static OSStatus
+audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
+    const AudioBufferList *inInputData, const AudioTimeStamp *inInputTime,
+    AudioBufferList *outOutputData, const AudioTimeStamp *inOutputTime,
+    void *inClientData)
+{
+	return (0);
+}
+
+int
+audio_output_open(void)
+{
+	UInt32 size;
+
+	/* Obtain the audio device ID */
+	size = sizeof adid;
+	if (AudioHardwareGetProperty(
+	    kAudioHardwarePropertyDefaultOutputDevice, 
+	    &size, &adid) != 0 || adid == kAudioDeviceUnknown)
+		goto error;
+
+	/* Obtain the stream format */
+	size = sizeof afmt;
+	if (AudioDeviceGetProperty(adid, 0, false,
+	    kAudioDevicePropertyStreamFormat, &size, &afmt) != 0 ||
+	    afmt.mFormatID != kAudioFormatLinearPCM)
+		goto error;
+
+	/* Add our own I/O handling routine */
+	if (AudioDeviceAddIOProc(adid, audio_output_ioproc, NULL) != 0 ||
+	    AudioDeviceStart(adid, audio_output_ioproc) != 0)
+		goto error;
+
+	return (0);
+error:
+	g_printerr(_("Cannot open the audio device.\n"));
+	return (-1);
+}
+
+int
+audio_output_play(struct audio_file *fd)
+{
+	return (0);
+}
+
+void
+audio_output_close(void)
+{
+	AudioDeviceStop(adid, audio_output_ioproc);
+	AudioDeviceRemoveIOProc(adid, audio_output_ioproc);
+
+}
