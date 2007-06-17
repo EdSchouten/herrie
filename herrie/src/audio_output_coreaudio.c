@@ -87,6 +87,10 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 
 	g_mutex_lock(abuflock);
 
+	/* Stop the IOProc handling if we're going idle */
+	if (abufulen == 0)
+		AudioDeviceStop(adid, audio_output_ioproc);
+
 	/* Convert the data to floats */
 	for (i = 0; i < abufulen / sizeof(short); i++)
 		ob[i] = GINT16_FROM_LE(abufcur[i]) * (0.5f / SHRT_MAX);
@@ -147,8 +151,7 @@ audio_output_open(void)
 	abufdrained = g_cond_new();
 
 	/* Add our own I/O handling routine */
-	if (AudioDeviceAddIOProc(adid, audio_output_ioproc, NULL) != 0 ||
-	    AudioDeviceStart(adid, audio_output_ioproc) != 0)
+	if (AudioDeviceAddIOProc(adid, audio_output_ioproc, NULL) != 0)
 		goto error;
 
 	return (0);
@@ -191,6 +194,10 @@ audio_output_play(struct audio_file *fd)
 	abufulen = len;
 
 	g_mutex_unlock(abuflock);
+
+	/* Start processing of the data */
+	AudioDeviceStart(adid, audio_output_ioproc);
+
 	return (0);
 }
 
@@ -199,4 +206,7 @@ audio_output_close(void)
 {
 	AudioDeviceStop(adid, audio_output_ioproc);
 	AudioDeviceRemoveIOProc(adid, audio_output_ioproc);
+
+	g_free(abufnew);
+	g_free(abufcur);
 }
