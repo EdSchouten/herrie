@@ -93,7 +93,7 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 
 	/* Convert the data to floats */
 	for (i = 0; i < abufulen / sizeof(short); i++)
-		ob[i] = GINT16_FROM_LE(abufcur[i]) * (0.5f / SHRT_MAX);
+		ob[i] = GINT16_FROM_LE(abufcur[i]) * (1.0 / SHRT_MAX);
 
 	/* Empty the buffer and notify that we can receive new data */
 	abufulen = 0;
