@@ -60,7 +60,7 @@ CYGWIN*)
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 Darwin)
-	CFG_AO=ao
+	CFG_AO=coreaudio
 	LDFLAGS="$LDFLAGS -lresolv"
 	[ "$PREFIX" = "" ] && PREFIX=/opt/local
 	;;

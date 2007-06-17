@@ -129,12 +129,14 @@ audio_output_play(struct audio_file *fd)
 	if (fd->srate != afmt.mSampleRate ||
 	    fd->channels != afmt.mChannelsPerFrame) {
 		/* Sample rate or the amount of channels has changed */
-		fd->srate = afmt.mSampleRate;
-		fd->channels = afmt.mChannelsPerFrame;
+		afmt.mSampleRate = fd->srate;
+		afmt.mChannelsPerFrame = fd->channels;
 
 		if (AudioDeviceSetProperty(adid, 0, 0, 0,
-		    kAudioDevicePropertyStreamFormat, sizeof afmt, &afmt) != 0)
+		    kAudioDevicePropertyStreamFormat, sizeof afmt, &afmt) != 0) {
+			gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
 			return (0);
+		}
 	}
 
 	g_mutex_lock(abuflock);
