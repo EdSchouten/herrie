@@ -207,7 +207,7 @@ playq_runner_thread(void *unused)
 				gui_playq_song_update(cur, 0, 1);
 
 				/* Play a part of the audio file */
-				if (audio_output_play(cur) <= 0)
+				if (audio_output_play(cur) != 0)
 					break;
 			}
 

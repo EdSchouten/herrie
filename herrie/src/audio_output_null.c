@@ -41,7 +41,7 @@ audio_output_open(void)
 int
 audio_output_play(struct audio_file *fd)
 {
-	return (0);
+	return (-1);
 }
 
 void

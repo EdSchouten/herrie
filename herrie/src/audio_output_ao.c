@@ -90,7 +90,7 @@ audio_output_play(struct audio_file *fd)
 	int len, drvnum;
 
 	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
-		return (0);
+		return (-1);
 
 	if ((unsigned int)devfmt.rate != fd->srate ||
 	    (unsigned int)devfmt.channels != fd->channels) {
@@ -114,17 +114,17 @@ audio_output_play(struct audio_file *fd)
 		devptr = ao_open_live(drvnum, &devfmt, devopt);
 		if (devptr == NULL) {
 			gui_msgbar_warn(_("Cannot open the audio device."));
-			return (0);
+			return (-1);
 		}
 	}
 
 	if (ao_play(devptr, buf, len) == 0) {
 		/* No success - device must be closed */
 		audio_output_close();
-		return (0);
-	} else {
-		return (len);
+		return (-1);
 	}
+
+	return (0);
 }
 
 void

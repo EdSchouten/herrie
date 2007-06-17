@@ -131,11 +131,11 @@ error:
 int
 audio_output_play(struct audio_file *fd)
 {
-	int ret;
+	UInt32 len;
 	short *tmp;
 	
 	/* Read data in our temporary buffer */
-	ret = audio_file_read(fd, abufnew, abuflen);
+	len = audio_file_read(fd, abufnew, abuflen);
 
 	if (fd->srate != afmt.mSampleRate ||
 	    fd->channels != afmt.mChannelsPerFrame) {
@@ -146,7 +146,7 @@ audio_output_play(struct audio_file *fd)
 		if (AudioDeviceSetProperty(adid, 0, 0, 0,
 		    kAudioDevicePropertyStreamFormat, sizeof afmt, &afmt) != 0) {
 			gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
-			return (0);
+			return (-1);
 		}
 	}
 
@@ -158,10 +158,10 @@ audio_output_play(struct audio_file *fd)
 	tmp = abuf;
 	abuf = abufnew;
 	abufnew = tmp;
-	abufulen = ret;
+	abufulen = len;
 
 	g_mutex_unlock(abuflock);
-	return (ret);
+	return (0);
 }
 
 void

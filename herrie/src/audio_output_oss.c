@@ -75,7 +75,7 @@ audio_output_play(struct audio_file *fd)
 	int len;
 
 	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
-		return (0);
+		return (-1);
 
 	if (cur_srate != fd->srate || cur_channels != fd->channels) {
 		/* Our settings have been altered */
@@ -96,7 +96,10 @@ audio_output_play(struct audio_file *fd)
 		}
 	}
 
-	return write(dev_fd, buf, len);
+	if (write(dev_fd, buf, len) != len)
+		return (-1);
+	
+	return (0);
 }
 
 void
