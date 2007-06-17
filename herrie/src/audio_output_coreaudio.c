@@ -61,14 +61,15 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 	/* Convert the data to floats */
 	for (i = 0; i < abufulen / sizeof(short); i++)
 		ob[i] = GINT16_FROM_LE(abuf[i]) * (0.5f / SHRT_MAX);
-	/* Fill the trailer with zero's */
-	for (; i < abuflen / sizeof(short); i++)
-		ob[i] = 0.0;
 
 	/* Empty the buffer and notify that we can receive new data */
 	abufulen = 0;
 	g_mutex_unlock(abuflock);
 	g_cond_signal(abufdrained);
+
+	/* Fill the trailer with zero's */
+	for (; i < abuflen / sizeof(short); i++)
+		ob[i] = 0.0;
 	
 	return (0);
 }
