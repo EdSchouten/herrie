@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-15 00:32+0200\n"
+"POT-Creation-Date: 2007-06-17 16:33+0200\n"
 "PO-Revision-Date: 2007-06-03 18:00+0200\n"
 "Last-Translator: Piotr Budny <vip@pld-linux.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -15,6 +15,14 @@ msgstr ""
 #: audio_output_ao.c:115 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Nie można otworzyć urządzenia"
+
+#: audio_output_coreaudio.c:122
+msgid "Cannot open the audio device.\n"
+msgstr "Nie można otworzyć urządzenia.\n"
+
+#: audio_output_coreaudio.c:143
+msgid "Sample rate or amount of channels not supported."
+msgstr ""
 
 #: audio_output_oss.c:60
 #, c-format
