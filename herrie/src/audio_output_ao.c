@@ -92,7 +92,8 @@ audio_output_play(struct audio_file *fd)
 	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
 		return (0);
 
-	if (devfmt.rate != fd->srate || devfmt.channels != fd->channels) {
+	if ((unsigned int)devfmt.rate != fd->srate ||
+	    (unsigned int)devfmt.channels != fd->channels) {
 		/* Sample rate or amount of channels has changed */
 		audio_output_close();
 
