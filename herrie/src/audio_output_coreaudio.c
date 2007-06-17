@@ -98,11 +98,15 @@ audio_output_open(void)
 	afmt.mBytesPerFrame = afmt.mChannelsPerFrame * sizeof (float);
 	afmt.mBytesPerPacket = afmt.mBytesPerFrame * afmt.mFramesPerPacket;
 
-	/* Allocate the audio buffer */
+	/* Decide what buffer size to use */
 	size = sizeof abuflen;
+	abuflen = 32768;
+	AudioDeviceSetProperty(adid, 0, 0, false,
+	    kAudioDevicePropertyBufferSize, size, &abuflen);
 	if (AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyBufferSize, &size, &abuflen) != 0)
 		goto error;
+
 	/* The buffer size reported is in floats */
 	abuflen /= sizeof(float) / sizeof(short);
 	abufnew = g_malloc(abuflen);
