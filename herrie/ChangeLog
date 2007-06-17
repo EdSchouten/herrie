@@ -5,7 +5,7 @@
  * Improved: Seek time when using 'J' will now be remembered
  * Added: Support for searching with regex(3)
  * Added: Irish translation - Kevin Scannell
- * Remove: Buggy SDL output driver - package makers want to use it
+ * Removed: Buggy SDL output driver - package makers want to use it
  * Fixed: Improve buffering behaviour of Ogg Vorbis files
  * Added: Native Mac OS X CoreAudio output module
 
