@@ -135,7 +135,8 @@ audio_output_play(struct audio_file *fd)
 	short *tmp;
 	
 	/* Read data in our temporary buffer */
-	len = audio_file_read(fd, abufnew, abuflen);
+	if ((len = audio_file_read(fd, abufnew, abuflen)) == 0)
+		return (-1);
 
 	if (fd->srate != afmt.mSampleRate ||
 	    fd->channels != afmt.mChannelsPerFrame) {
