@@ -127,6 +127,7 @@ int
 audio_output_play(struct audio_file *fd)
 {
 	int ret;
+	short *tmp;
 	
 	/* Read data in our temporary buffer */
 	ret = audio_file_read(fd, abufnew, abuflen);
@@ -148,9 +149,11 @@ audio_output_play(struct audio_file *fd)
 	while (abufulen != 0)
 		g_cond_wait(abufdrained, abuflock);
 	
-	/* Copy the data to the new buffer that we share between the threads */
+	/* Toggle the buffers */
+	tmp = abuf;
+	abuf = abufnew;
+	abufnew = tmp;
 	abufulen = ret;
-	memcpy(abuf, abufnew, abufulen);
 
 	g_mutex_unlock(abuflock);
 	return (ret);
