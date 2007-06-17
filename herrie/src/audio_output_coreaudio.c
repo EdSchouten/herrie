@@ -36,17 +36,46 @@
 #include "audio_output.h"
 #include "gui.h"
 
+/**
+ * @brief The audio device ID obtained from CoreAudio.
+ */
 AudioDeviceID			adid;
+/**
+ * @brief The stream format used by the CoreAudio device.
+ */
 AudioStreamBasicDescription	afmt;
 
+/**
+ * @brief The buffer that will be played when the current buffer is
+ *        finished processing.
+ */
 short				*abufnew;
-short				*abuf;
+/**
+ * @brief The buffer that is currently processed by CoreAudio.
+ */
+short				*abufcur;
+/**
+ * @brief The length of the buffers used by CoreAudio.
+ */
 UInt32				abuflen;
-
+/**
+ * @brief The length of the abufcur that is currently used.
+ */
 UInt32				abufulen = 0;
+/**
+ * @brief The lock that protects the buffers from concurrent access.
+ */
 GMutex				*abuflock;
+/**
+ * @brief The conditional variable that is used to inform the
+ *        application that a buffer has been processed.
+ */
 GCond				*abufdrained;
 
+/**
+ * @brief Pull-function needed by CoreAudio to copy data to the audio
+ *        buffers.
+ */
 static OSStatus
 audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
     const AudioBufferList *inInputData, const AudioTimeStamp *inInputTime,
@@ -60,7 +89,7 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 
 	/* Convert the data to floats */
 	for (i = 0; i < abufulen / sizeof(short); i++)
-		ob[i] = GINT16_FROM_LE(abuf[i]) * (0.5f / SHRT_MAX);
+		ob[i] = GINT16_FROM_LE(abufcur[i]) * (0.5f / SHRT_MAX);
 
 	/* Empty the buffer and notify that we can receive new data */
 	abufulen = 0;
@@ -111,7 +140,7 @@ audio_output_open(void)
 	/* The buffer size reported is in floats */
 	abuflen /= sizeof(float) / sizeof(short);
 	abufnew = g_malloc(abuflen);
-	abuf = g_malloc(abuflen);
+	abufcur = g_malloc(abuflen);
 
 	/* Locking down the buffer length */
 	abuflock = g_mutex_new();
@@ -156,8 +185,8 @@ audio_output_play(struct audio_file *fd)
 		g_cond_wait(abufdrained, abuflock);
 	
 	/* Toggle the buffers */
-	tmp = abuf;
-	abuf = abufnew;
+	tmp = abufcur;
+	abufcur = abufnew;
 	abufnew = tmp;
 	abufulen = len;
 
