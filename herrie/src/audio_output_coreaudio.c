@@ -39,7 +39,7 @@
 AudioDeviceID			adid;
 AudioStreamBasicDescription	afmt;
 
-char				*abuf;
+short				*abuf;
 UInt32				abuflen;
 
 UInt32				abufulen = 0;
@@ -100,8 +100,7 @@ audio_output_open(void)
 	/* Allocate the audio buffer */
 	size = sizeof abuflen;
 	if (AudioDeviceGetProperty(adid, 0, false,
-	    kAudioDevicePropertyBufferSize,
-	    &size, &abuflen) != 0)
+	    kAudioDevicePropertyBufferSize, &size, &abuflen) != 0)
 		goto error;
 	/* The buffer size reported is in floats */
 	abuflen /= sizeof(float) / sizeof(short);
