@@ -56,12 +56,12 @@ struct audio_file {
 	/**
 	 * @brief The file's sample rate.
 	 */
-	long srate;
+	unsigned int srate;
 
 	/**
 	 * @brief The number of audio channels.
 	 */
-	long channels;
+	unsigned int channels;
 
 	/**
 	 * @brief The file's length in seconds.

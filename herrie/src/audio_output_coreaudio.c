@@ -59,7 +59,7 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 
 	/* Convert the data to floats */
 	for (i = 0; i < abufulen / sizeof(short); i++)
-		ob[i] = GUINT16_FROM_LE(abuf[i]) * (0.5f / SHRT_MAX);
+		ob[i] = GINT16_FROM_LE(abuf[i]) * (0.5f / SHRT_MAX);
 	/* Fill the trailer with zero's */
 	for (; i < abuflen / sizeof(short); i++)
 		ob[i] = 0.0;
@@ -84,12 +84,18 @@ audio_output_open(void)
 	    &size, &adid) != 0 || adid == kAudioDeviceUnknown)
 		goto error;
 
-	/* Obtain the stream format */
+	/* Adjust the stream format */
 	size = sizeof afmt;
 	if (AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyStreamFormat, &size, &afmt) != 0 ||
 	    afmt.mFormatID != kAudioFormatLinearPCM)
 		goto error;
+
+	/* To be set on the first run */
+	afmt.mSampleRate = 0;
+	afmt.mChannelsPerFrame = 0;
+	afmt.mBytesPerFrame = afmt.mChannelsPerFrame * sizeof (float);
+	afmt.mBytesPerPacket = afmt.mBytesPerFrame * afmt.mFramesPerPacket;
 
 	/* Allocate the audio buffer */
 	size = sizeof abuflen;
@@ -120,6 +126,17 @@ int
 audio_output_play(struct audio_file *fd)
 {
 	int ret;
+
+	if (fd->srate != afmt.mSampleRate ||
+	    fd->channels != afmt.mChannelsPerFrame) {
+		/* Sample rate or the amount of channels has changed */
+		fd->srate = afmt.mSampleRate;
+		fd->channels = afmt.mChannelsPerFrame;
+
+		if (AudioDeviceSetProperty(adid, 0, 0, 0,
+		    kAudioDevicePropertyStreamFormat, sizeof afmt, &afmt) != 0)
+			return (0);
+	}
 
 	g_mutex_lock(abuflock);
 	while (abufulen != 0)
