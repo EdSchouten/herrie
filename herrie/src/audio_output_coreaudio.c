@@ -39,6 +39,7 @@
 AudioDeviceID			adid;
 AudioStreamBasicDescription	afmt;
 
+short				*abufnew;
 short				*abuf;
 UInt32				abuflen;
 
@@ -104,6 +105,7 @@ audio_output_open(void)
 		goto error;
 	/* The buffer size reported is in floats */
 	abuflen /= sizeof(float) / sizeof(short);
+	abufnew = g_malloc(abuflen);
 	abuf = g_malloc(abuflen);
 
 	/* Locking down the buffer length */
@@ -125,6 +127,9 @@ int
 audio_output_play(struct audio_file *fd)
 {
 	int ret;
+	
+	/* Read data in our temporary buffer */
+	ret = audio_file_read(fd, abufnew, abuflen);
 
 	if (fd->srate != afmt.mSampleRate ||
 	    fd->channels != afmt.mChannelsPerFrame) {
@@ -143,8 +148,9 @@ audio_output_play(struct audio_file *fd)
 	while (abufulen != 0)
 		g_cond_wait(abufdrained, abuflock);
 	
-	/* Read data and store it inside our temporary buffer */
-	ret = abufulen = audio_file_read(fd, abuf, abuflen);
+	/* Copy the data to the new buffer that we share between the threads */
+	abufulen = ret;
+	memcpy(abuf, abufnew, abufulen);
 
 	g_mutex_unlock(abuflock);
 	return (ret);
