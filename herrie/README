@@ -86,6 +86,7 @@ configure script to change certain parameters:
 - no_xspf       Disable XSPF (`Spiff') playlist support
 
 - ao            Use libao audio output
+- coreaudio     Use Apple's CoreAudio audio output
 - oss           Use Open Sound System output
 - null          Use placeholder audio output
 - pulse         Use PulseAudio audio output
