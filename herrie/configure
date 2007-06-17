@@ -366,7 +366,7 @@ done
 eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest$CFG_BINEXT
 if [ $? -ne 0 ]
 then
-	echo "Error: compiler is not usable"
+	echo "Error: some dependencies are missing; please see README for a list"
 	exit 1
 fi
 rm conftest$CFG_BINEXT
