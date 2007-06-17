@@ -51,7 +51,7 @@ struct audio_format {
 	/**
 	 * @brief The format's read call.
 	 */
-	size_t	(*read)(struct audio_file *fd, void *buf);
+	size_t	(*read)(struct audio_file *fd, void *buf, size_t len);
 	/**
 	 * @brief The format's seek call.
 	 */
@@ -148,11 +148,11 @@ audio_file_close(struct audio_file *fd)
 }
 
 size_t
-audio_file_read(struct audio_file *fd, void *buf)
+audio_file_read(struct audio_file *fd, void *buf, size_t len)
 {
 	size_t ret;
 
-	ret = fd->drv->read(fd, buf);
+	ret = fd->drv->read(fd, buf, len);
 #ifdef BUILD_SCROBBLER
 	scrobbler_notify_read(fd, (ret == 0));
 #endif /* BUILD_SCROBBLER */

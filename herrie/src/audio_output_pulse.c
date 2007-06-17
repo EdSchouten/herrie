@@ -54,10 +54,10 @@ audio_output_open(void)
 int
 audio_output_play(struct audio_file *fd)
 {
-	char buf[AUDIO_OUTPUT_BUFLEN];
+	char buf[4096];
 	int len;
 
-	if ((len = audio_file_read(fd, buf)) == 0)
+	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
 		return (0);
 
 	if (devfmt.rate != fd->srate || devfmt.channels != fd->channels) {

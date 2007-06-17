@@ -116,7 +116,7 @@ void audio_file_close(struct audio_file *fd);
 /**
  * @brief Call the read function in the audio_file struct.
  */
-size_t audio_file_read(struct audio_file *fd, void *buf);
+size_t audio_file_read(struct audio_file *fd, void *buf, size_t len);
 
 /**
  * @brief Call the seek function in the audio_file struct if available.

@@ -39,12 +39,36 @@
 AudioDeviceID			adid;
 AudioStreamBasicDescription	afmt;
 
+char				*abuf;
+UInt32				abuflen;
+
+UInt32				abufulen = 0;
+GMutex				*abuflock;
+GCond				*abufdrained;
+
 static OSStatus
 audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
     const AudioBufferList *inInputData, const AudioTimeStamp *inInputTime,
     AudioBufferList *outOutputData, const AudioTimeStamp *inOutputTime,
     void *inClientData)
 {
+	UInt32 i;
+	float *ob = outOutputData->mBuffers[0].mData;
+
+	g_mutex_lock(abuflock);
+
+	/* Convert the data to floats */
+	for (i = 0; i < abufulen / sizeof(short); i++)
+		ob[i] = GUINT16_FROM_LE(abuf[i]) * (0.5f / SHRT_MAX);
+	/* Fill the trailer with zero's */
+	for (; i < abuflen / sizeof(short); i++)
+		ob[i] = 0.0;
+
+	/* Empty the buffer and notify that we can receive new data */
+	abufulen = 0;
+	g_mutex_unlock(abuflock);
+	g_cond_signal(abufdrained);
+	
 	return (0);
 }
 
@@ -67,6 +91,20 @@ audio_output_open(void)
 	    afmt.mFormatID != kAudioFormatLinearPCM)
 		goto error;
 
+	/* Allocate the audio buffer */
+	size = sizeof abuflen;
+	if (AudioDeviceGetProperty(adid, 0, false,
+	    kAudioDevicePropertyBufferSize,
+	    &size, &abuflen) != 0)
+		goto error;
+	/* The buffer size reported is in floats */
+	abuflen /= sizeof(float) / sizeof(short);
+	abuf = g_malloc(abuflen);
+
+	/* Locking down the buffer length */
+	abuflock = g_mutex_new();
+	abufdrained = g_cond_new();
+
 	/* Add our own I/O handling routine */
 	if (AudioDeviceAddIOProc(adid, audio_output_ioproc, NULL) != 0 ||
 	    AudioDeviceStart(adid, audio_output_ioproc) != 0)
@@ -81,7 +119,17 @@ error:
 int
 audio_output_play(struct audio_file *fd)
 {
-	return (0);
+	int ret;
+
+	g_mutex_lock(abuflock);
+	while (abufulen != 0)
+		g_cond_wait(abufdrained, abuflock);
+	
+	/* Read data and store it inside our temporary buffer */
+	ret = abufulen = audio_file_read(fd, abuf, abuflen);
+
+	g_mutex_unlock(abuflock);
+	return (ret);
 }
 
 void
@@ -89,5 +137,4 @@ audio_output_close(void)
 {
 	AudioDeviceStop(adid, audio_output_ioproc);
 	AudioDeviceRemoveIOProc(adid, audio_output_ioproc);
-
 }

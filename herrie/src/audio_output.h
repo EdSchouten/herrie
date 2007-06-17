@@ -46,9 +46,4 @@ int audio_output_play(struct audio_file *fd);
  */
 void audio_output_close(void);
 
-/**
- * @brief The size in bytes that a read may return at most.
- */
-#define AUDIO_OUTPUT_BUFLEN 4096
-
 #endif /* !_AUDIO_OUTPUT_H_ */

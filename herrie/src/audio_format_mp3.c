@@ -363,7 +363,7 @@ mp3_close(struct audio_file *fd)
 }
 
 size_t
-mp3_read(struct audio_file *fd, void *buf)
+mp3_read(struct audio_file *fd, void *buf, size_t len)
 {
 	struct mp3_drv_data *data = fd->drv_data;
 	size_t written = 0;
@@ -387,7 +387,7 @@ mp3_read(struct audio_file *fd, void *buf)
 		}
 
 		while ((data->cursample < data->msynth.pcm.length) &&
-		    (written < AUDIO_OUTPUT_BUFLEN)) {
+		    (written < len)) {
 			/* Write out all channels */
 			for (i = 0; i < MAD_NCHANNELS(&data->mframe.header); i++) {
 				sample = mp3_fixed_to_short(
@@ -405,7 +405,7 @@ mp3_read(struct audio_file *fd, void *buf)
 		if (data->cursample == data->msynth.pcm.length)
 			data->cursample = 0;
 
-	} while (written < AUDIO_OUTPUT_BUFLEN);
+	} while (written < len);
 
 done:
 	return (written);

@@ -70,7 +70,7 @@ sndfile_close(struct audio_file *fd)
 }
 
 size_t
-sndfile_read(struct audio_file *fd, void *buf)
+sndfile_read(struct audio_file *fd, void *buf, size_t len)
 {
 	SNDFILE *hnd = fd->drv_data;
 	sf_count_t ret, frame;
@@ -78,7 +78,7 @@ sndfile_read(struct audio_file *fd, void *buf)
 	int i;
 #endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 	
-	ret = sf_read_short(hnd, buf, AUDIO_OUTPUT_BUFLEN / sizeof(short));
+	ret = sf_read_short(hnd, buf, len / sizeof(short));
 #if G_BYTE_ORDER != G_LITTLE_ENDIAN
 	/* Convert it to little endian */
 	for (i = 0; i < ret; i++)

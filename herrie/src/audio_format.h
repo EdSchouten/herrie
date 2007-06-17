@@ -45,7 +45,7 @@ void modplug_close(struct audio_file *fd);
 /**
  * @brief Read data from the modplug file and place it in buf.
  */
-size_t modplug_read(struct audio_file *fd, void *buf);
+size_t modplug_read(struct audio_file *fd, void *bufs, size_t len);
 /**
  * @brief Seek the modplug file a relatime amount of seconds.
  */
@@ -64,7 +64,7 @@ void mp3_close(struct audio_file *fd);
 /**
  * @brief Read data from the mp3 file and place it in buf.
  */
-size_t mp3_read(struct audio_file *fd, void *buf);
+size_t mp3_read(struct audio_file *fd, void *buf, size_t len);
 /**
  * @brief Seek the mp3 file a relatime amount of seconds.
  */
@@ -83,7 +83,7 @@ void sndfile_close(struct audio_file *fd);
 /**
  * @brief Read data from the soundfile and place it in buf.
  */
-size_t sndfile_read(struct audio_file *fd, void *buf);
+size_t sndfile_read(struct audio_file *fd, void *buf, size_t len);
 /**
  * @brief Seek a relative amount in seconds in the current file handle.
  */
@@ -102,7 +102,7 @@ void vorbis_close(struct audio_file *fd);
 /**
  * @brief Read data from the Ogg Vorbis file and place it in buf.
  */
-size_t vorbis_read(struct audio_file *fd, void *buf);
+size_t vorbis_read(struct audio_file *fd, void *buf, size_t len);
 /**
  * @brief Seek a relative amount in seconds in the current file handle.
  */
