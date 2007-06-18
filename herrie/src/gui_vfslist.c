@@ -264,9 +264,18 @@ void
 gui_vfslist_setselected(struct gui_vfslist *gv, struct vfsref *vr,
     unsigned int index)
 {
-	gv->vr_selected = vr;
-	gv->idx_selected = index;
-	/* XXX: center */
+	unsigned int i;
+
+	gv->vr_selected = gv->vr_top = vr;
+	gv->idx_selected = gv->idx_top =  index;
+
+	/* Put the selected item in the center */
+	for (i = 0; i < (gv->winheight - 1) / 2 &&
+	    gv->vr_top != NULL && vfs_list_prev(gv->vr_top) != NULL; i++) {
+		gv->vr_top = vfs_list_prev(gv->vr_top);
+		gv->idx_top--;
+	}
+
 	gui_vfslist_refresh(gv);
 }
 
