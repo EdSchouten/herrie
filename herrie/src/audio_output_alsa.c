@@ -102,7 +102,7 @@ error:
 int
 audio_output_play(struct audio_file *fd)
 {
-	char buf[4096];
+	char buf[32768];
 	size_t bps;
 	snd_pcm_sframes_t ret, len, done = 0;
 
