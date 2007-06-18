@@ -146,7 +146,7 @@ do
 		unset CFG_XSPF
 		;;
 
-	ao|coreaudio|null|oss|pulse)
+	alsa|ao|coreaudio|null|oss|pulse)
 		CFG_AO=$1
 		;;
 	
@@ -318,6 +318,9 @@ fi
 
 # Audio output options
 case $CFG_AO in
+alsa)
+	LDFLAGS="$LDFLAGS -lasound"
+	;;
 ao)
 	CFLAGS="$CFLAGS -DBUILD_AO"
 	CFLAGS_main="$CFLAGS_main -DCLOSE_STDERR"
