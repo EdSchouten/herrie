@@ -319,6 +319,7 @@ fi
 # Audio output options
 case $CFG_AO in
 alsa)
+	CFLAGS="$CFLAGS -DBUILD_ALSA"
 	LDFLAGS="$LDFLAGS -lasound"
 	;;
 ao)

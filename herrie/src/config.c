@@ -132,6 +132,9 @@ struct config_entry {
  * @brief List of configuration switches.
  */
 static struct config_entry configlist[] = {
+#ifdef BUILD_ALSA
+	{ "audio.output.alsa.device",	"default",	NULL, 		NULL },
+#endif /* BUILD_ALSA */
 #ifdef BUILD_AO
 	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
 	{ "audio.output.ao.host",	"",		NULL, 		NULL },

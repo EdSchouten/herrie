@@ -34,6 +34,7 @@
 
 #include "audio_file.h"
 #include "audio_output.h"
+#include "config.h"
 #include "gui.h"
 
 /**
@@ -53,7 +54,8 @@ audio_output_open(void)
 	unsigned int srate = 44100;
 
 	/* Open the device */
-	if ((ret = snd_pcm_open(&devhnd, "default",
+	if ((ret = snd_pcm_open(&devhnd,
+	    config_getopt("audio.output.alsa.device"),
 	    SND_PCM_STREAM_PLAYBACK, 0)) != 0)
 		goto error;
 

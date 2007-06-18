@@ -32,6 +32,9 @@
 #include "stdinc.h"
 
 #include CURSES_HEADER
+#ifdef BUILD_ALSA
+#include <alsa/asoundlib.h>
+#endif /* BUILD_ALSA */
 #ifdef BUILD_AO
 #include <ao/ao.h>
 #endif /* BUILD_AO */
