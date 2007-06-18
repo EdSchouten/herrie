@@ -45,7 +45,7 @@ void modplug_close(struct audio_file *fd);
 /**
  * @brief Read data from the modplug file and place it in buf.
  */
-size_t modplug_read(struct audio_file *fd, void *bufs, size_t len);
+size_t modplug_read(struct audio_file *fd, void *buf, size_t len);
 /**
  * @brief Seek the modplug file a relatime amount of seconds.
  */
