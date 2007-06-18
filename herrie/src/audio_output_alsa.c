@@ -95,14 +95,14 @@ audio_output_play(struct audio_file *fd)
 	size_t bps;
 	snd_pcm_sframes_t ret, len, done = 0;
 
+	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
+		return (-1);
+	
 	if (fd->channels != 2 || fd->srate != 44100) {
 		gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
 		return (-1);
 	}
 
-	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
-		return (-1);
-	
 	/* ALSA measures in sample lengths */
 	bps = fd->channels * sizeof(short);
 	len /= bps;
