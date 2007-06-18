@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-17 16:33+0200\n"
+"POT-Creation-Date: 2007-06-18 17:39+0200\n"
 "PO-Revision-Date: 2007-06-11 20:01+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
@@ -10,17 +10,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_ao.c:115 audio_output_pulse.c:77
-msgid "Cannot open the audio device."
-msgstr "Kan het geluidsapparaat niet openen."
-
-#: audio_output_coreaudio.c:122
+#: audio_output_alsa.c:89 audio_output_coreaudio.c:159
 msgid "Cannot open the audio device.\n"
 msgstr "Kan het geluidsapparaat niet openen.\n"
 
-#: audio_output_coreaudio.c:143
+#: audio_output_alsa.c:104 audio_output_coreaudio.c:181
 msgid "Sample rate or amount of channels not supported."
 msgstr "Sample rate of aantal kanalen wordt niet ondersteund."
+
+#: audio_output_ao.c:116 audio_output_pulse.c:77
+msgid "Cannot open the audio device."
+msgstr "Kan het geluidsapparaat niet openen."
 
 #: audio_output_oss.c:60
 #, c-format

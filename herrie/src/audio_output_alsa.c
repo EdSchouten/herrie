@@ -51,7 +51,6 @@ audio_output_open(void)
 {
 	int ret;
 	unsigned int srate = 44100;
-	GString *errstr;
 
 	/* Open the device */
 	if ((ret = snd_pcm_open(&devhnd, "default",
@@ -87,11 +86,7 @@ audio_output_open(void)
 	
 	return (0);
 error:
-	errstr = g_string_new("");
-	g_string_printf(errstr, _("Cannot open the audio device: %s.\n"),
-	    snd_strerror(ret));
-	g_printerr(errstr->str);
-	g_string_free(errstr, TRUE);
+	g_printerr(_("Cannot open the audio device.\n"));
 	return (-1);
 }
 
