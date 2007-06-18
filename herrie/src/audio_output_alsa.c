@@ -36,7 +36,14 @@
 #include "audio_output.h"
 #include "gui.h"
 
+/**
+ * @brief Handle to the audio device obtained from ALSA.
+ */
 static snd_pcm_t		*devhnd;
+/**
+ * @brief Hardware parameters from the audio device as read obtained the
+ *        ALSA.
+ */
 static snd_pcm_hw_params_t	*devparam;
 
 int
