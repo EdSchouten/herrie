@@ -350,12 +350,11 @@ gui_vfslist_cursor_pageup(struct gui_vfslist *gv)
 		gv->idx_top--;
 	}
 	if (gv->vr_top == NULL) {
+		/* Don't scroll out of reach */
 		gv->vr_selected = gv->vr_top = vfs_list_first(gv->list);
 		gv->idx_selected = gv->idx_top = 1;
-	}
-	
-	/* Original screen may have had one item */
-	if (gv->vr_selected == NULL) {
+	} else if (gv->vr_selected == NULL) {
+		/* Original screen may have had one item */
 		gv->vr_selected = gv->vr_top;
 		gv->idx_selected = gv->idx_top;
 	}
