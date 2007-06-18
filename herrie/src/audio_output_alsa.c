@@ -99,10 +99,17 @@ audio_output_play(struct audio_file *fd)
 	
 	lenf = len / 4;
 
-	if ((ret = snd_pcm_writei(devhnd, buf, lenf)) != lenf)
-		return (-1);
-	
-	return (0);
+	for (;;) {
+		ret = snd_pcm_writei(devhnd, buf, lenf);
+		if (ret == -EPIPE) {
+			if (snd_pcm_prepare(devhnd) != 0)
+				return (-1);
+			continue;
+		}
+		if (ret != lenf)
+			return (-1);
+		return (0);
+	}
 }
 
 void
