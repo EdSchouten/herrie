@@ -36,6 +36,19 @@
 #include "audio_output.h"
 #include "gui.h"
 
+/*
+ * A small problem with CoreAudio is that it doesn't actually have a
+ * standard blocking push-interface such as OSS or ALSA. We have to
+ * install a routine in the audio layer that gets called routinely to
+ * pull data from buffers.
+ *
+ * According to a discussion on the CoreAudio mailing list, we can't use
+ * stuff such as spinlocks from within this callback routine (probably
+ * served through some kind of interrupt-driven context) we guarantee
+ * buffer locking by using atomic operations on abufulen; the indicator
+ * of the length of the buffer that is used.
+ */
+
 /**
  * @brief The audio device ID obtained from CoreAudio.
  */
@@ -57,13 +70,15 @@ short				*abufcur;
 /**
  * @brief The length of the buffers used by CoreAudio.
  */
-UInt32				abuflen;
+unsigned int			abuflen;
 /**
- * @brief The length of the abufcur that is currently used.
+ * @brief The length of the abufcur that is currently used. It should
+ *        only be used with g_atomic_* operations.
  */
-UInt32				abufulen = 0;
+int				abufulen = 0;
 /**
- * @brief The lock that protects the buffers from concurrent access.
+ * @brief A not really used mutex that is used for the conditional
+ *        variable.
  */
 GMutex				*abuflock;
 /**
@@ -82,22 +97,21 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
     AudioBufferList *outOutputData, const AudioTimeStamp *inOutputTime,
     void *inClientData)
 {
-	UInt32 i;
+	unsigned int i;
+	int len;
 	float *ob = outOutputData->mBuffers[0].mData;
 
-	g_mutex_lock(abuflock);
-
 	/* Stop the IOProc handling if we're going idle */
-	if (abufulen == 0)
+	len = g_atomic_int_get(&abufulen);
+	if (len == 0)
 		AudioDeviceStop(adid, audio_output_ioproc);
 
 	/* Convert the data to floats */
-	for (i = 0; i < abufulen / sizeof(short); i++)
+	for (i = 0; i < len / sizeof(short); i++)
 		ob[i] = (float)GINT16_FROM_LE(abufcur[i]) / SHRT_MAX;
 
 	/* Empty the buffer and notify that we can receive new data */
-	abufulen = 0;
-	g_mutex_unlock(abuflock);
+	g_atomic_int_set(&abufulen, 0);
 	g_cond_signal(abufdrained);
 
 	/* Fill the trailer with zero's */
@@ -183,17 +197,19 @@ audio_output_play(struct audio_file *fd)
 		}
 	}
 
+	/* XXX: Mutex not actually needed - only for the condvar */
 	g_mutex_lock(abuflock);
-	while (abufulen != 0)
+	while (g_atomic_int_get(&abufulen) != 0)
 		g_cond_wait(abufdrained, abuflock);
+	g_mutex_unlock(abuflock);
 	
 	/* Toggle the buffers */
 	tmp = abufcur;
 	abufcur = abufnew;
 	abufnew = tmp;
-	abufulen = len;
 
-	g_mutex_unlock(abuflock);
+	/* Atomically set the usage length */
+	g_atomic_int_set(&abufulen, len);
 
 	/* Start processing of the data */
 	AudioDeviceStart(adid, audio_output_ioproc);
