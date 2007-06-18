@@ -350,8 +350,8 @@ gui_vfslist_cursor_pageup(struct gui_vfslist *gv)
 		gv->idx_top--;
 	}
 	if (gv->vr_top == NULL) {
-		gv->vr_top = vfs_list_first(gv->list);
-		gv->idx_top = 1;
+		gv->vr_selected = gv->vr_top = vfs_list_first(gv->list);
+		gv->idx_selected = gv->idx_top = 1;
 	}
 	
 	/* Original screen may have had one item */
