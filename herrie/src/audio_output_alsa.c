@@ -34,6 +34,7 @@
 
 #include "audio_file.h"
 #include "audio_output.h"
+#include "gui.h"
 
 static snd_pcm_t		*devhnd;
 static snd_pcm_hw_params_t	*devparam;
@@ -90,29 +91,45 @@ error:
 int
 audio_output_play(struct audio_file *fd)
 {
-	char buf[3760];
-	size_t len;
-	snd_pcm_sframes_t lenf, ret;
+	char buf[4096];
+	size_t bps;
+	snd_pcm_sframes_t ret, len, done = 0;
+
+	if (fd->channels != 2 || fd->srate != 44100) {
+		gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
+		return (-1);
+	}
 
 	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
 		return (-1);
 	
-	lenf = len / 4;
+	/* ALSA measures in sample lengths */
+	bps = fd->channels * sizeof(short);
+	len /= bps;
 
-	for (;;) {
-		ret = snd_pcm_writei(devhnd, buf, lenf);
+	/* Our complex error handling for snd_pcm_writei() */
+	while (done < len) {
+		ret = snd_pcm_writei(devhnd, buf + (done * bps), len - done);
 		if (ret == -EPIPE) {
+			/* Buffer underrun. */
 			if (snd_pcm_prepare(devhnd) != 0)
 				return (-1);
 			continue;
-		}
-		if (ret != lenf)
+		} else if (ret <= 0) {
+			/* Some other strange error. */
 			return (-1);
-		return (0);
+		} else {
+			done += ret;
+		}
 	}
+
+	return (0);
 }
 
 void
 audio_output_close(void)
 {
+	snd_pcm_drain(devhnd);
+	snd_pcm_close(devhnd);
+	snd_pcm_hw_params_free(devparam);
 }
