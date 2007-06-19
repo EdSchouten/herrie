@@ -8,6 +8,8 @@ Graphical user interface:
 - Use different colors for files, playlists and directories
 - Add filtering feature instead of searching, just like Mutt has
 - Recursive searching
+- Show whether repeat is turned on
+- Make startup-configuration of repeat-switch configurable
 
 Audio abstraction:
 - Add support for volume control
@@ -18,6 +20,7 @@ Audio abstraction:
 - CD playback
   - CDDB
 - 5.1 support?
+- Make ALSA buffer size configurable
 
 Virtual filesystem:
 - Add some kind of 'recursive' VFS: playlists on HTTP
