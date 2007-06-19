@@ -253,11 +253,9 @@ vfs_open(const char *filename, const char *name, const char *basepath,
 	int pseudo = 0;
 
 	fn = vfs_path_concat(basepath, filename, strict);
-	if (fn == NULL)
-		return (NULL);
 
 	/* We only allow files and directories */
-	if (stat(fn, &fs) != 0) {
+	if (fn == NULL || stat(fn, &fs) != 0) {
 		/* Could be a network stream */
 		pseudo = 1;
 		/* Don't prepend the dirnames */
