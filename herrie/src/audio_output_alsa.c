@@ -52,12 +52,26 @@ static unsigned int		srate = 0;
 static int
 audio_output_apply_hwparams(void)
 {
+	/* Acquire the standard parameters */
+	if (snd_pcm_hw_params_any(devhnd, devparam) != 0)
+		return (-1);
+
+	/* Set the access method - XXX: mmap */
+	if (snd_pcm_hw_params_set_access(devhnd, devparam,
+	    SND_PCM_ACCESS_RW_INTERLEAVED) != 0)
+		return (-1);
+
+	/* Output format */
+	if (snd_pcm_hw_params_set_format(devhnd, devparam,
+	    SND_PCM_FORMAT_S16_LE) != 0)
+		return (-1);
 	/* Sample rate */
 	if (snd_pcm_hw_params_set_rate_near(devhnd, devparam, &srate, NULL) != 0)
 		return (-1);
 	/* Channels */
 	if (snd_pcm_hw_params_set_channels(devhnd, devparam, channels) != 0)
 		return (-1);
+
 	/* Apply values */
 	if (snd_pcm_hw_params(devhnd, devparam) != 0)
 		return (-1);
@@ -80,18 +94,6 @@ audio_output_open(void)
 	/* Retreive the hardware parameters */
 	if (snd_pcm_hw_params_malloc(&devparam) != 0)
 		goto error;
-	if (snd_pcm_hw_params_any(devhnd, devparam) != 0)
-		goto error;
-
-	/* Set the access method - XXX: mmap */
-	if (snd_pcm_hw_params_set_access(devhnd, devparam,
-	    SND_PCM_ACCESS_RW_INTERLEAVED) != 0)
-		goto error;
-
-	/* Output format */
-	if (snd_pcm_hw_params_set_format(devhnd, devparam,
-	    SND_PCM_FORMAT_S16_LE) != 0)
-		return (-1);
 
 	return (0);
 error:
