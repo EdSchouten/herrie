@@ -114,7 +114,6 @@ audio_output_play(struct audio_file *fd)
 	if (fd->channels != channels || fd->srate != srate) {
 		/* Reset the stream */
 		snd_pcm_drain(devhnd);
-		snd_pcm_drop(devhnd);
 
 		/* Apply the new values */
 		channels = fd->channels;
