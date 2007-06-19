@@ -184,6 +184,8 @@ playq_runner_thread(void *unused)
 			gui_msgbar_warn(errmsg);
 			g_free(errmsg);
 			vfs_close(nvr);
+			/* Don't hog the CPU */
+			g_usleep(500000);
 			continue;
 		}
 
