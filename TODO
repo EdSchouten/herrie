@@ -21,6 +21,7 @@ Audio abstraction:
   - CDDB
 - 5.1 support?
 - Make ALSA buffer size configurable
+- Tag information on internet streams
 
 Virtual filesystem:
 - Add some kind of 'recursive' VFS: playlists on HTTP
