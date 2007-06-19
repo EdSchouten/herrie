@@ -4,9 +4,9 @@ msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-18 17:39+0200\n"
-"PO-Revision-Date: 2007-06-11 20:01+0200\n"
+"PO-Revision-Date: 2007-06-19 12:41+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
-"Language-Team: Turkish <yerellestirme@kde.org>\n"
+"Language-Team: Turkish <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,7 +17,7 @@ msgstr "Ses aygıtı açılamıyor.\n"
 
 #: audio_output_alsa.c:104 audio_output_coreaudio.c:181
 msgid "Sample rate or amount of channels not supported."
-msgstr ""
+msgstr "Örnekleme oranı ya da kanal sayısı desteklenmiyor"
 
 #: audio_output_ao.c:116 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
