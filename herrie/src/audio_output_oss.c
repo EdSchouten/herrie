@@ -80,7 +80,7 @@ audio_output_play(struct audio_file *fd)
 
 		/* 16 bits native endian stereo */
 		fmt = AFMT_S16_NE;
-		if (ioctl(dev_fd, SNDCTL_DSP_SETFMT, &dat) == -1)
+		if (ioctl(dev_fd, SNDCTL_DSP_SETFMT, &fmt) == -1)
 			goto bad;
 
 		/* Reset the sample rate */
