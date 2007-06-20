@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-18 17:39+0200\n"
+"POT-Creation-Date: 2007-06-20 15:22+0200\n"
 "PO-Revision-Date: 2007-06-12 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:89 audio_output_coreaudio.c:159
+#: audio_output_alsa.c:100 audio_output_coreaudio.c:172
 msgid "Cannot open the audio device.\n"
 msgstr "Ní féidir an gléas fuaime a oscailt.\n"
 
-#: audio_output_alsa.c:104 audio_output_coreaudio.c:181
+#: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
 msgid "Sample rate or amount of channels not supported."
 msgstr ""
 
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr "Ní féidir an gléas fuaime a oscailt."
 
-#: audio_output_oss.c:60
+#: audio_output_oss.c:61
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ní féidir gléas fuaime \"%s\" a oscailt.\n"
@@ -129,19 +129,19 @@ msgstr "Tá an t-amhrán ag bun an tseinmliosta cheana."
 msgid "There are no songs."
 msgstr "Níl aon amhrán ann."
 
-#: gui_vfslist.c:288
+#: gui_vfslist.c:297
 msgid "You are at the first song."
 msgstr "Tá tú ag an chéad amhrán."
 
-#: gui_vfslist.c:307
+#: gui_vfslist.c:316
 msgid "You are at the last song."
 msgstr "Tá tú ag an amhrán deiridh."
 
-#: gui_vfslist.c:566
+#: gui_vfslist.c:574
 msgid "Search wrapped to top."
 msgstr "Thimfhill an cuardach go dtí an barr."
 
-#: gui_vfslist.c:590
+#: gui_vfslist.c:598
 msgid "Full pathname"
 msgstr "Ainm iomlán na conaire"
 
@@ -178,16 +178,16 @@ msgstr "úsáid"
 msgid "Failed to open \"%s\" for playback."
 msgstr "Theip ar \"%s\" a oscailt chun é a sheinm ar ais."
 
-#: playq.c:401
+#: playq.c:403
 #, c-format
 msgid "Repeat: %s"
 msgstr "Athsheinm: %s"
 
-#: playq.c:402
+#: playq.c:404
 msgid "on"
 msgstr "ann"
 
-#: playq.c:402
+#: playq.c:404
 msgid "off"
 msgstr "as"
 
