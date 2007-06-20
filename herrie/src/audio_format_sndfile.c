@@ -70,26 +70,18 @@ sndfile_close(struct audio_file *fd)
 }
 
 size_t
-sndfile_read(struct audio_file *fd, void *buf, size_t len)
+sndfile_read(struct audio_file *fd, int16_t *buf, size_t len)
 {
 	SNDFILE *hnd = fd->drv_data;
 	sf_count_t ret, frame;
-#if G_BYTE_ORDER != G_LITTLE_ENDIAN
-	int i;
-#endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 	
-	ret = sf_read_short(hnd, buf, len / sizeof(short));
-#if G_BYTE_ORDER != G_LITTLE_ENDIAN
-	/* Convert it to little endian */
-	for (i = 0; i < ret; i++)
-		((short *)buf)[i] = GINT16_TO_LE(((short *)buf)[i]);
-#endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
+	ret = sf_read_short(hnd, buf, len);
 
 	/* Seek zero frames to obtain the current position */
 	frame = sf_seek(hnd, 0, SEEK_CUR);
 	fd->time_cur = frame / fd->srate;
 
-	return (ret * sizeof(short));
+	return (ret);
 }
 
 void

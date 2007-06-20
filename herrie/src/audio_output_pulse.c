@@ -54,10 +54,10 @@ audio_output_open(void)
 int
 audio_output_play(struct audio_file *fd)
 {
-	char buf[4096];
-	int len;
+	int16_t buf[2048];
+	size_t len;
 
-	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
+	if ((len = audio_file_read(fd, buf, sizeof buf / sizeof(int16_t))) == 0)
 		return (-1);
 
 	if (devfmt.rate != fd->srate || devfmt.channels != fd->channels) {
@@ -79,7 +79,7 @@ audio_output_play(struct audio_file *fd)
 		}
 	}
 
-	if (pa_simple_write(devptr, buf, len, NULL) != 0) {
+	if (pa_simple_write(devptr, buf, len * sizeof(int16_t), NULL) != 0) {
 		/* No success - device must be closed */
 		audio_output_close();
 		return (-1);

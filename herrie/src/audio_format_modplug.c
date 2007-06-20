@@ -143,25 +143,16 @@ modplug_close(struct audio_file *fd)
 }
 
 size_t
-modplug_read(struct audio_file *fd, void *buf, size_t len)
+modplug_read(struct audio_file *fd, int16_t *buf, size_t len)
 {
 	struct modplug_drv_data *data = fd->drv_data;
 	int rlen;
-#if G_BYTE_ORDER != G_LITTLE_ENDIAN
-	unsigned int i;
-#endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 
-	rlen = ModPlug_Read(data->modplug, buf, len);
+	rlen = ModPlug_Read(data->modplug, buf, len * sizeof(int16_t));
 	data->sample += rlen / BYTESPERSAMPLE;
 	fd->time_cur = data->sample / SAMPLERATE;
 
-#if G_BYTE_ORDER != G_LITTLE_ENDIAN
-	/* Convert it to little endian */
-	for (i = 0; i < rlen / sizeof(short); i++)
-		((short *)buf)[i] = GINT16_TO_LE(((short *)buf)[i]);
-#endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
-
-	return (rlen);
+	return (rlen / sizeof(int16_t));
 }
 
 void

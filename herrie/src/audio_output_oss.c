@@ -35,6 +35,7 @@
 #include "audio_file.h"
 #include "audio_output.h"
 #include "config.h"
+#include "gui.h"
 
 /**
  * @brief File descriptor of the audio device handle.
@@ -61,8 +62,8 @@ audio_output_open(void)
 		return (-1);
 	}
 	
-	/* 16 bits little endian stereo */
-	dat = AFMT_S16_LE;
+	/* 16 bits native endian stereo */
+	dat = AFMT_S16_NE;
 	ioctl(dev_fd, SNDCTL_DSP_SETFMT, &dat);
 
 	return (0);
@@ -71,10 +72,10 @@ audio_output_open(void)
 int
 audio_output_play(struct audio_file *fd)
 {
-	char buf[4096];
+	int16_t buf[2048];
 	int len;
 
-	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
+	if ((len = audio_file_read(fd, buf, sizeof buf / sizeof(int16_t))) == 0)
 		return (-1);
 
 	if (cur_srate != fd->srate || cur_channels != fd->channels) {
@@ -84,22 +85,28 @@ audio_output_play(struct audio_file *fd)
 		if (cur_srate != fd->srate) {
 			/* Reset the sample rate */
 			if (ioctl(dev_fd, SNDCTL_DSP_SPEED,
-			    &fd->srate) != -1)
-				cur_srate = fd->srate;
+			    &fd->srate) == -1)
+				goto bad;
+			cur_srate = fd->srate;
 		}
 
 		if (cur_channels != fd->channels) {
 			/* Reset the number of channels rate */
 			if (ioctl(dev_fd, SNDCTL_DSP_CHANNELS,
-			    &fd->channels) != -1)
-				cur_channels = fd->channels;
+			    &fd->channels) == -1)
+				goto bad;
+			cur_channels = fd->channels;
 		}
 	}
 
+	len *= sizeof(int16_t);
 	if (write(dev_fd, buf, len) != len)
 		return (-1);
 	
 	return (0);
+bad:
+	gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
+	return (-1);
 }
 
 void

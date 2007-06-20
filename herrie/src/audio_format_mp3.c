@@ -258,10 +258,10 @@ mp3_read_frame(struct audio_file *fd)
 /**
  * @brief Convert a fixed point sample to a short.
  */
-static short
+static int16_t
 mp3_fixed_to_short(mad_fixed_t fixed)
 {
-	short sample;
+	int16_t sample;
 
 	if (fixed >= MAD_F_ONE)
 		sample = SHRT_MAX;
@@ -363,13 +363,11 @@ mp3_close(struct audio_file *fd)
 }
 
 size_t
-mp3_read(struct audio_file *fd, void *buf, size_t len)
+mp3_read(struct audio_file *fd, int16_t *buf, size_t len)
 {
 	struct mp3_drv_data *data = fd->drv_data;
 	size_t written = 0;
 	int i;
-	short sample;
-	unsigned char *out = buf;
 
 	do {
 		/* Get a new frame when we haven't go one */
@@ -390,12 +388,8 @@ mp3_read(struct audio_file *fd, void *buf, size_t len)
 		    (written < len)) {
 			/* Write out all channels */
 			for (i = 0; i < MAD_NCHANNELS(&data->mframe.header); i++) {
-				sample = mp3_fixed_to_short(
+				buf[written++] = mp3_fixed_to_short(
 				    data->msynth.pcm.samples[i][data->cursample]);
-
-				/* Write it back as little endian */
-				out[written++] = sample >> 0;
-				out[written++] = sample >> 8;
 			}
 
 			data->cursample++;

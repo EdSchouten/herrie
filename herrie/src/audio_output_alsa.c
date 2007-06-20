@@ -63,7 +63,7 @@ audio_output_apply_hwparams(void)
 
 	/* Output format */
 	if (snd_pcm_hw_params_set_format(devhnd, devparam,
-	    SND_PCM_FORMAT_S16_LE) != 0)
+	    SND_PCM_FORMAT_S16) != 0)
 		return (-1);
 	/* Sample rate */
 	if (snd_pcm_hw_params_set_rate_near(devhnd, devparam, &srate, NULL) != 0)
@@ -108,7 +108,7 @@ audio_output_play(struct audio_file *fd)
 	size_t bps;
 	snd_pcm_sframes_t ret, len, done = 0;
 
-	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
+	if ((len = audio_file_read(fd, buf, sizeof buf / sizeof(int16_t))) == 0)
 		return (-1);
 	
 	if (fd->channels != channels || fd->srate != srate) {
@@ -125,8 +125,8 @@ audio_output_play(struct audio_file *fd)
 	}
 
 	/* ALSA measures in sample lengths */
-	bps = fd->channels * sizeof(short);
-	len /= bps;
+	bps = fd->channels * sizeof(int16_t);
+	len /= fd->channels;
 
 	/* Our complex error handling for snd_pcm_writei() */
 	while (done < len) {

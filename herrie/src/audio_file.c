@@ -51,7 +51,7 @@ struct audio_format {
 	/**
 	 * @brief The format's read call.
 	 */
-	size_t	(*read)(struct audio_file *fd, void *buf, size_t len);
+	size_t	(*read)(struct audio_file *fd, int16_t *buf, size_t len);
 	/**
 	 * @brief The format's seek call.
 	 */

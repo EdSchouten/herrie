@@ -113,22 +113,29 @@ vorbis_close(struct audio_file *fd)
 }
 
 size_t
-vorbis_read(struct audio_file *fd, void *buf, size_t len)
+vorbis_read(struct audio_file *fd, int16_t *buf, size_t len)
 {
 	OggVorbis_File *vfp = fd->drv_data;
 	size_t ret = 0;
 	long rlen;
+	char *out = (char *)buf;
+	
+	len *= sizeof(int16_t);
 
 	/* Return 16 bits signed little endian */
 	while (ret < len) {
-		rlen = ov_read(vfp, buf + ret, len - ret, 0, 2, 1, NULL);
+#if G_BYTE_ORDER == G_BIG_ENDIAN
+		rlen = ov_read(vfp, out + ret, len - ret, 1, 2, 1, NULL);
+#else /* G_BYTE_ORDER != G_BIG_ENDIAN */
+		rlen = ov_read(vfp, out + ret, len - ret, 0, 2, 1, NULL);
+#endif /* G_BYTE_ORDER == G_BIG_ENDIAN */
 		if (rlen <= 0)
 			break;
 		ret += rlen;
 	}
 	fd->time_cur = ov_time_tell(vfp);
 
-	return (ret);
+	return (ret / sizeof(int16_t));
 }
 
 void

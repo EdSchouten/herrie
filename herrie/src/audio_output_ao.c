@@ -59,9 +59,9 @@ audio_output_open(void)
 
 	ao_initialize();
 
-	/* We always expect 16 bits little endian PCM */
+	/* We always expect 16 bits native endian PCM */
 	devfmt.bits = 16;
-	devfmt.byte_format = AO_FMT_LITTLE;
+	devfmt.byte_format = AO_FMT_NATIVE;
 
 	host = config_getopt("audio.output.ao.host");
 	if (strcmp(host, "env_ssh") == 0) {
@@ -86,10 +86,10 @@ int
 audio_output_play(struct audio_file *fd)
 {
 	const char *drvname;
-	char buf[4096];
+	int16_t buf[2048];
 	int len, drvnum;
 
-	if ((len = audio_file_read(fd, buf, sizeof buf)) == 0)
+	if ((len = audio_file_read(fd, buf, sizeof buf / sizeof(int16_t))) == 0)
 		return (-1);
 
 	if ((unsigned int)devfmt.rate != fd->srate ||
@@ -118,7 +118,7 @@ audio_output_play(struct audio_file *fd)
 		}
 	}
 
-	if (ao_play(devptr, buf, len) == 0) {
+	if (ao_play(devptr, (char *)buf, len * sizeof(int16_t)) == 0) {
 		/* No success - device must be closed */
 		audio_output_close();
 		return (-1);

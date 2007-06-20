@@ -62,15 +62,15 @@ AudioStreamBasicDescription	afmt;
  * @brief The buffer that will be played when the current buffer is
  *        finished processing.
  */
-short				*abufnew;
+int16_t				*abufnew;
 /**
  * @brief The buffer that is currently processed by CoreAudio.
  */
-short				*abufcur;
+int16_t				*abufcur;
 /**
  * @brief The length of the buffers used by CoreAudio.
  */
-unsigned int			abuflen;
+int				abuflen;
 /**
  * @brief The length of the abufcur that is currently used. It should
  *        only be used with g_atomic_* operations.
@@ -97,8 +97,7 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
     AudioBufferList *outOutputData, const AudioTimeStamp *inOutputTime,
     void *inClientData)
 {
-	unsigned int i;
-	int len;
+	int i, len;
 	float *ob = outOutputData->mBuffers[0].mData;
 
 	/* Stop the IOProc handling if we're going idle */
@@ -107,15 +106,15 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 		AudioDeviceStop(adid, audio_output_ioproc);
 
 	/* Convert the data to floats */
-	for (i = 0; i < len / sizeof(short); i++)
-		ob[i] = (float)GINT16_FROM_LE(abufcur[i]) / SHRT_MAX;
+	for (i = 0; i < len; i++)
+		ob[i] = (float)abufcur[i] / SHRT_MAX;
 
 	/* Empty the buffer and notify that we can receive new data */
 	g_atomic_int_set(&abufulen, 0);
 	g_cond_signal(abufdrained);
 
 	/* Fill the trailer with zero's */
-	for (; i < abuflen / sizeof(short); i++)
+	for (; i < abuflen; i++)
 		ob[i] = 0.0;
 	
 	return (0);
@@ -156,9 +155,9 @@ audio_output_open(void)
 		goto error;
 
 	/* The buffer size reported is in floats */
-	abuflen /= sizeof(float) / sizeof(short);
-	abufnew = g_malloc(abuflen);
-	abufcur = g_malloc(abuflen);
+	abuflen /= sizeof(float);
+	abufnew = g_malloc(abuflen * sizeof(int16_t));
+	abufcur = g_malloc(abuflen * sizeof(int16_t));
 
 	/* Locking down the buffer length */
 	abuflock = g_mutex_new();
@@ -178,7 +177,7 @@ int
 audio_output_play(struct audio_file *fd)
 {
 	UInt32 len;
-	short *tmp;
+	int16_t *tmp;
 	
 	/* Read data in our temporary buffer */
 	if ((len = audio_file_read(fd, abufnew, abuflen)) == 0)
