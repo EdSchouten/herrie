@@ -53,7 +53,6 @@ static unsigned int cur_channels = 0;
 int
 audio_output_open(void)
 {
-	int dat;
 	const char *dev;
 
 	dev = config_getopt("audio.output.oss.device");
@@ -61,10 +60,6 @@ audio_output_open(void)
 		g_printerr(_("Cannot open audio device \"%s\".\n"), dev);
 		return (-1);
 	}
-	
-	/* 16 bits native endian stereo */
-	dat = AFMT_S16_NE;
-	ioctl(dev_fd, SNDCTL_DSP_SETFMT, &dat);
 
 	return (0);
 }
@@ -74,6 +69,7 @@ audio_output_play(struct audio_file *fd)
 {
 	int16_t buf[2048];
 	int len;
+	int fmt;
 
 	if ((len = audio_file_read(fd, buf, sizeof buf / sizeof(int16_t))) == 0)
 		return (-1);
@@ -81,6 +77,11 @@ audio_output_play(struct audio_file *fd)
 	if (cur_srate != fd->srate || cur_channels != fd->channels) {
 		/* Our settings have been altered */
 		ioctl(dev_fd, SNDCTL_DSP_RESET, NULL);
+
+		/* 16 bits native endian stereo */
+		fmt = AFMT_S16_NE;
+		if (ioctl(dev_fd, SNDCTL_DSP_SETFMT, &dat) == -1)
+			goto bad;
 
 		/* Reset the sample rate */
 		if (ioctl(dev_fd, SNDCTL_DSP_SPEED, &fd->srate) == -1)
