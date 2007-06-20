@@ -367,14 +367,6 @@ do
 	OBJS="$OBJS $i.o"
 done
 
-eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest$CFG_BINEXT
-if [ $? -ne 0 ]
-then
-	echo "Error: some dependencies are missing; please see README for a list"
-	exit 1
-fi
-rm conftest$CFG_BINEXT
-
 echo "Configuration:"
 echo "- Installing $APP_NAME$CFG_BINEXT in $BINDIR"
 echo "- Installing manual page in $MANDIR"
@@ -389,6 +381,16 @@ echo "- Using $CFG_AO audio output"
 [ "$CFG_SNDFILE" != "" ] && echo "- Support for libsndfile"
 [ "$CFG_VORBIS" != "" ] && echo "- Support for Ogg Vorbis"
 [ "$CFG_XSPF" != "" ] && echo "- Support for XSPF (\`Spiff')"
+echo
+
+# Perform a simple compiler test
+eval $CC $SRCDIR/src/conftest.c $CFLAGS $LDFLAGS -o conftest$CFG_BINEXT
+if [ $? -ne 0 ]
+then
+	echo "Error: some dependencies are missing; please see README for a list"
+	exit 1
+fi
+rm conftest$CFG_BINEXT
 
 (cat << EOF
 all: $APP_NAME$CFG_BINEXT $APP_NAME.1.gz $SRCDIR/$APP_NAME.conf.sample $MOS
@@ -454,5 +456,4 @@ do
 	echo "	${DOIT}msgfmt -o $i.mo $SRCDIR/lang/$i.po"
 done) > Makefile
 
-echo
 echo "Run \`make' to compile $APP_NAME"
