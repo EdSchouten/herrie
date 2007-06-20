@@ -122,7 +122,7 @@ vorbis_read(struct audio_file *fd, int16_t *buf, size_t len)
 	
 	len *= sizeof(int16_t);
 
-	/* Return 16 bits signed little endian */
+	/* Return 16 bits signed native endian */
 	while (ret < len) {
 #if G_BYTE_ORDER == G_BIG_ENDIAN
 		rlen = ov_read(vfp, out + ret, len - ret, 1, 2, 1, NULL);
