@@ -108,7 +108,8 @@ audio_output_play(struct audio_file *fd)
 	size_t bps;
 	snd_pcm_sframes_t ret, len, done = 0;
 
-	if ((len = audio_file_read(fd, buf, sizeof buf / sizeof(int16_t))) == 0)
+	if ((len = audio_file_read(fd, (int16_t *)buf,
+	    sizeof buf / sizeof(int16_t))) == 0)
 		return (-1);
 	
 	if (fd->channels != channels || fd->srate != srate) {
