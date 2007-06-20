@@ -121,6 +121,8 @@ audio_output_play(struct audio_file *fd)
 		srate = fd->srate;
 		if (audio_output_apply_hwparams() != 0) {
 			gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
+			/* Invalidate the old settings */
+			srate = 0;
 			return (-1);
 		}
 	}
