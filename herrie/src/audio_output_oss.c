@@ -82,21 +82,17 @@ audio_output_play(struct audio_file *fd)
 		/* Our settings have been altered */
 		ioctl(dev_fd, SNDCTL_DSP_RESET, NULL);
 
-		if (cur_srate != fd->srate) {
-			/* Reset the sample rate */
-			if (ioctl(dev_fd, SNDCTL_DSP_SPEED,
-			    &fd->srate) == -1)
-				goto bad;
-			cur_srate = fd->srate;
-		}
+		/* Reset the sample rate */
+		if (ioctl(dev_fd, SNDCTL_DSP_SPEED, &fd->srate) == -1)
+			goto bad;
 
-		if (cur_channels != fd->channels) {
-			/* Reset the number of channels rate */
-			if (ioctl(dev_fd, SNDCTL_DSP_CHANNELS,
-			    &fd->channels) == -1)
-				goto bad;
-			cur_channels = fd->channels;
-		}
+		/* Reset the number of channels rate */
+		if (ioctl(dev_fd, SNDCTL_DSP_CHANNELS, &fd->channels) == -1)
+			goto bad;
+
+		/* Both succeeded */
+		cur_srate = fd->srate;
+		cur_channels = fd->channels;
 	}
 
 	len *= sizeof(int16_t);
@@ -106,6 +102,8 @@ audio_output_play(struct audio_file *fd)
 	return (0);
 bad:
 	gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
+	/* Invalidate the old sample rate setting to force reconfiguration */
+	cur_srate = 0;
 	return (-1);
 }
 
