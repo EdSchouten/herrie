@@ -44,11 +44,11 @@ static int dev_fd;
 /**
  * @brief Sample rate of the audio device handle.
  */
-static unsigned int cur_srate = -1;
+static unsigned int cur_srate = 0;
 /**
  * @brief Amount of channels of the audio device handle.
  */
-static unsigned int cur_channels = -1;
+static unsigned int cur_channels = 0;
 
 int
 audio_output_open(void)
