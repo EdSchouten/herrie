@@ -148,7 +148,7 @@ audio_file_close(struct audio_file *fd)
 }
 
 size_t
-audio_file_read(struct audio_file *fd, void *buf, size_t len)
+audio_file_read(struct audio_file *fd, int16_t *buf, size_t len)
 {
 	size_t ret;
 
