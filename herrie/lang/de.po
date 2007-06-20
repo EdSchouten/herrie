@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-20 15:22+0200\n"
-"PO-Revision-Date: 2007-06-11 20:01+0200\n"
+"PO-Revision-Date: 2007-06-21 01:46+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr "Gerät kann nicht geöffnet werden.\n"
 
 #: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
 msgid "Sample rate or amount of channels not supported."
-msgstr ""
+msgstr "Abtastrate oder Kanalanzahl nicht unterstützt"
 
 #: audio_output_ao.c:116 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
