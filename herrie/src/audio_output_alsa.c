@@ -41,17 +41,16 @@
  * @brief Handle to the audio device obtained from ALSA.
  */
 static snd_pcm_t		*devhnd;
-/**
- * @brief Hardware parameters from the audio device as read obtained the
- *        ALSA.
- */
-static snd_pcm_hw_params_t	*devparam;
 static unsigned int		channels = 0;
 static unsigned int		srate = 0;
 
 static int
 audio_output_apply_hwparams(void)
 {
+	snd_pcm_hw_params_t *devparam;
+
+	snd_pcm_hw_params_alloca(&devparam);
+
 	/* Acquire the standard parameters */
 	if (snd_pcm_hw_params_any(devhnd, devparam) != 0)
 		return (-1);
@@ -86,13 +85,8 @@ int
 audio_output_open(void)
 {
 	/* Open the device */
-	if (snd_pcm_open(&devhnd,
-	    config_getopt("audio.output.alsa.device"),
+	if (snd_pcm_open(&devhnd, config_getopt("audio.output.alsa.device"),
 	    SND_PCM_STREAM_PLAYBACK, 0) != 0)
-		goto error;
-
-	/* Retreive the hardware parameters */
-	if (snd_pcm_hw_params_malloc(&devparam) != 0)
 		goto error;
 
 	return (0);
@@ -153,7 +147,5 @@ audio_output_play(struct audio_file *fd)
 void
 audio_output_close(void)
 {
-	snd_pcm_drain(devhnd);
 	snd_pcm_close(devhnd);
-	snd_pcm_hw_params_free(devparam);
 }
