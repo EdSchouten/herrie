@@ -258,19 +258,15 @@ mp3_read_frame(struct audio_file *fd)
 /**
  * @brief Convert a fixed point sample to a short.
  */
-static int16_t
+static inline int16_t
 mp3_fixed_to_short(mad_fixed_t fixed)
 {
-	int16_t sample;
-
 	if (fixed >= MAD_F_ONE)
-		sample = SHRT_MAX;
+		return (SHRT_MAX);
 	else if (fixed <= -MAD_F_ONE)
-		sample = -SHRT_MAX;
-	else
-		sample = fixed >> (MAD_F_FRACBITS - 15);
+		return (-SHRT_MAX);
 
-	return (sample);
+	return (fixed >> (MAD_F_FRACBITS - 15));
 }
 
 /**
