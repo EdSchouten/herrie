@@ -88,14 +88,6 @@ struct vfsmodule {
 	char	recurse;
 
 	/**
-	 * @brief Sorting number of items that should appear at the top
-	 */
-#define VFS_SORT_FIRST	0
-	/**
-	 * @brief Sorting number of items that should appear at the bottom
-	 */
-#define VFS_SORT_LAST	255
-	/**
 	 * @brief Order in which files should be sorted in vfs_dir
 	 */
 	unsigned char sortorder;
