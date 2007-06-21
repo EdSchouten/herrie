@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-20 15:22+0200\n"
-"PO-Revision-Date: 2007-06-03 18:00+0200\n"
+"PO-Revision-Date: 2007-06-21 11:06+0200\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr "Kan inte öppna ljudenheten.\n"
 
 #: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
 msgid "Sample rate or amount of channels not supported."
-msgstr ""
+msgstr "Samlingsfrekvensen eller antalet kanaler stöds inte."
 
 #: audio_output_ao.c:116 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
@@ -70,7 +70,7 @@ msgstr "Sök efter"
 
 #: gui_input.c:184
 msgid "Bad pattern."
-msgstr ""
+msgstr "Felaktigt mönster."
 
 #: gui_input.c:229
 msgid "Use kill(1) to quit."
