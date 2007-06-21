@@ -40,19 +40,19 @@
  */
 static struct vfsmodule modules[] = {
 #ifdef BUILD_HTTP
-	{ vfs_http_open, NULL, vfs_http_handle, 1, 1, VFS_SORT_LAST, '^' },
+	{ vfs_http_open, NULL, vfs_http_handle, 1, 1, 1, '^' },
 #endif /* BUILD_HTTP */
-	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
-	{ vfs_pls_open, vfs_pls_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
+	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, 0, 1, '@' },
+	{ vfs_pls_open, vfs_pls_populate, NULL, 0, 0, 1, '@' },
 #ifdef BUILD_XSPF
-	{ vfs_xspf_open, vfs_xspf_populate, NULL, 0, 0, VFS_SORT_LAST, '@' },
+	{ vfs_xspf_open, vfs_xspf_populate, NULL, 0, 0, 1, '@' },
 #endif /* BUILD_XSPF */
 	/*
 	 * Leave these two rules at the bottom of the list. They have
 	 * the weakest matching rules.
 	 */
-	{ vfs_dir_open, vfs_dir_populate, NULL, 0, 1, VFS_SORT_FIRST, G_DIR_SEPARATOR },
-	{ vfs_file_open, NULL, vfs_file_handle, 0, 1, VFS_SORT_LAST, '\0' },
+	{ vfs_dir_open, vfs_dir_populate, NULL, 0, 1, 0, G_DIR_SEPARATOR },
+	{ vfs_file_open, NULL, vfs_file_handle, 0, 1, 1, '\0' },
 };
 /**
  * @brief The number of virtual file system modules currently available
