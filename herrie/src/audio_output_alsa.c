@@ -41,9 +41,18 @@
  * @brief Handle to the audio device obtained from ALSA.
  */
 static snd_pcm_t		*devhnd;
+/**
+ * @brief the amount of channels that is currently used for playback.
+ */
 static unsigned int		channels = 0;
+/**
+ * @brief the sample rate that is currently used for playback.
+ */
 static unsigned int		srate = 0;
 
+/**
+ * @brief Alter the audio output parameters of the audio output device.
+ */
 static int
 audio_output_apply_hwparams(void)
 {
