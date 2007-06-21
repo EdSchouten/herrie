@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 1.8:
+2007-07-01 -- Herrie 1.8:
  * Added: PulseAudio output module
  * Fixed: Close stderr on Linux when using OSS as well - Robert Buchholz
  * Fixed: Time display when seeking Ogg Vorbis files while being paused
