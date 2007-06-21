@@ -1,12 +1,13 @@
 # translation of pl.po to
 # Piotr Budny <vip@pld-linux.org>, 2007.
+# Piotr Budny <piotr@lcm.pl>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-20 15:22+0200\n"
-"PO-Revision-Date: 2007-06-03 18:00+0200\n"
-"Last-Translator: Piotr Budny <vip@pld-linux.org>\n"
+"PO-Revision-Date: 2007-06-21 12:47+0200\n"
+"Last-Translator: Piotr Budny <piotr@lcm.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +19,7 @@ msgstr "Nie można otworzyć urządzenia.\n"
 
 #: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
 msgid "Sample rate or amount of channels not supported."
-msgstr ""
+msgstr "Częstotliwość próbkowania lub liczba kanałów nie jest wspierana."
 
 #: audio_output_ao.c:116 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
@@ -67,7 +68,7 @@ msgstr "Szukaj"
 
 #: gui_input.c:184
 msgid "Bad pattern."
-msgstr ""
+msgstr "Zła próbka."
 
 #: gui_input.c:229
 msgid "Use kill(1) to quit."
