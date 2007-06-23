@@ -21,7 +21,7 @@ msgstr "Ní féidir an gléas fuaime a oscailt.\n"
 
 #: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
 msgid "Sample rate or amount of channels not supported."
-msgstr ""
+msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
 
 #: audio_output_ao.c:116 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
