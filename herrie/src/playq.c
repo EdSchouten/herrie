@@ -34,7 +34,9 @@
 #include "audio_output.h"
 #include "config.h"
 #include "gui.h"
+#include "playq.h"
 #include "playq_modules.h"
+#include "vfs.h"
 
 /**
  * @brief Routines that should be used to control the playlist.

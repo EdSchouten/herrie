@@ -31,8 +31,7 @@
 #ifndef _PLAYQ_MODULES_H_
 #define _PLAYQ_MODULES_H_
 
-#include "playq.h"
-#include "vfs.h"
+struct vfsref;
 
 /**
  * @brief Flag whether repeat is turned on by the user.

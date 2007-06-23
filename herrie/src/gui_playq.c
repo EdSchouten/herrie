@@ -31,9 +31,11 @@
 #include "stdinc.h"
 
 #include "audio_file.h"
+#include "gui.h"
 #include "gui_internal.h"
 #include "gui_vfslist.h"
 #include "playq.h"
+#include "vfs.h"
 
 /**
  * @brief Buffer containing a string representation of the playback time

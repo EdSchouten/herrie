@@ -31,7 +31,7 @@
 #ifndef _AUDIO_FORMAT_H_
 #define _AUDIO_FORMAT_H_
 
-#include "audio_file.h"
+struct audio_file;
 
 #ifdef BUILD_MODPLUG
 /**

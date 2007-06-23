@@ -33,6 +33,7 @@
 #include <spiff/spiff_c.h>
 
 #include "util.h"
+#include "vfs.h"
 #include "vfs_modules.h"
 
 int

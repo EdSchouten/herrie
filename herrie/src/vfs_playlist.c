@@ -30,6 +30,7 @@
 
 #include "stdinc.h"
 
+#include "vfs.h"
 #include "vfs_modules.h"
 
 /**

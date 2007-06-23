@@ -31,8 +31,10 @@
 #ifndef _GUI_VFSLIST_H_
 #define _GUI_VFSLIST_H_
 
-#include "gui_internal.h"
-#include "vfs.h"
+#include CURSES_HEADER
+
+struct vfslist;
+struct vfsref;
 
 /**
  * @brief Graphical presentation of a vfslist.

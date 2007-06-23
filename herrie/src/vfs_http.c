@@ -35,6 +35,7 @@
 #include <curl/multi.h>
 
 #include "gui.h"
+#include "vfs.h"
 #include "vfs_modules.h"
 
 /**

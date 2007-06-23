@@ -30,7 +30,10 @@
 
 #include "stdinc.h"
 
+#include "gui.h"
+#include "gui_internal.h"
 #include "gui_vfslist.h"
+#include "vfs.h"
 
 /**
  * @brief Make sure the cursor resides inside the viewport. Move the

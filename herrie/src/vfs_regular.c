@@ -31,6 +31,7 @@
 #include "stdinc.h"
 
 #include "config.h"
+#include "vfs.h"
 #include "vfs_modules.h"
 
 int

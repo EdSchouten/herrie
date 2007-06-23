@@ -31,7 +31,8 @@
 #ifndef _VFS_MODULES_H_
 #define _VFS_MODULES_H_
 
-#include "vfs.h"
+struct vfsent;
+struct vfslist;
 
 /**
  * @brief Open a directory.

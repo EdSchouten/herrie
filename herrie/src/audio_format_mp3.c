@@ -33,6 +33,7 @@
 #include <mad.h>
 #include <id3tag.h>
 
+#include "audio_file.h"
 #include "audio_format.h"
 #include "audio_output.h"
 

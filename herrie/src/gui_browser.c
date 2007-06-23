@@ -31,6 +31,7 @@
 #include "stdinc.h"
 
 #include "config.h"
+#include "gui.h"
 #include "gui_internal.h"
 #include "gui_vfslist.h"
 #include "playq.h"

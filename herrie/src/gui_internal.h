@@ -33,8 +33,6 @@
 
 #include CURSES_HEADER
 
-#include "gui.h"
-
 struct vfsref;
 
 /**

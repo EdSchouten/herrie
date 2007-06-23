@@ -32,6 +32,7 @@
 
 #include "audio_output.h"
 #include "config.h"
+#include "gui.h"
 #include "gui_internal.h"
 #include "playq.h"
 #include "scrobbler.h"

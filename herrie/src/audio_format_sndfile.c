@@ -32,6 +32,7 @@
 
 #include <sndfile.h>
 
+#include "audio_file.h"
 #include "audio_format.h"
 #include "audio_output.h"
 

@@ -31,7 +31,9 @@
 #include "stdinc.h"
 
 #include "gui.h"
+#include "playq.h"
 #include "playq_modules.h"
+#include "vfs.h"
 
 struct vfsref *
 playq_party_give(void)
