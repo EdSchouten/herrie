@@ -80,11 +80,10 @@ audio_output_apply_hwparams(void)
 	if (snd_pcm_hw_params_set_channels(devhnd, devparam, channels) != 0)
 		return (-1);
 
+	/* XXX: We may be underrun - fix that first. */
+	snd_pcm_prepare(devhnd);
 	/* Apply values */
 	if (snd_pcm_hw_params(devhnd, devparam) != 0)
-		return (-1);
-	/* And we're off! */
-	if (snd_pcm_prepare(devhnd) != 0)
 		return (-1);
 	
 	return (0);
