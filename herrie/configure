@@ -258,15 +258,9 @@ fi
 # res_init() usage
 [ "$CFG_RES_INIT" != "" ] && CFLAGS="$CFLAGS -DBUILD_RES_INIT"
 # setproctitle() usage
-if [ "$CFG_SETPROCTITLE" != "" ]
-then
-	CFLAGS_gui_playq="-DBUILD_SETPROCTITLE"
-fi
+[ "$CFG_SETPROCTITLE" != "" ] && CFLAGS_gui_playq="-DBUILD_SETPROCTITLE"
 # SIGWINCH wrapper
-if [ "$CFG_SIGWINCH" != "" ]
-then
-	CFLAGS_gui_input="-DBUILD_GUI_SIGWINCH_WRAPPER"
-fi
+[ "$CFG_SIGWINCH" != "" ] && CFLAGS_gui_input="-DBUILD_GUI_SIGWINCH_WRAPPER"
 # libsndfile support
 if [ "$CFG_SNDFILE" != "" ]
 then
@@ -275,10 +269,7 @@ then
 	SRCS="$SRCS audio_format_sndfile"
 fi
 # Strict compilation
-if [ "$CFG_STRICT" != "" ]
-then
-	CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
-fi
+[ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
 # Translation support
 # Remove all broken translations
 unset CFG_LINGUAS
