@@ -456,6 +456,7 @@ gui_input_sighandler(int signal)
 		playq_cursong_next();
 		break;
 	case SIGHUP:
+	case SIGPIPE:
 	case SIGTERM:
 		gui_input_quit();
 		/* NOTREACHED */
@@ -483,6 +484,7 @@ gui_input_loop(void)
 	signal(SIGUSR1, gui_input_sighandler);
 	signal(SIGUSR2, gui_input_sighandler);
 	signal(SIGHUP, gui_input_sighandler);
+	signal(SIGPIPE, gui_input_sighandler);
 	signal(SIGTERM, gui_input_sighandler);
 #ifdef BUILD_GUI_SIGWINCH_WRAPPER
 	signal(SIGWINCH, gui_input_sighandler);
