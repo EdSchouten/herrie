@@ -429,6 +429,9 @@ gui_input_sigmask(void)
 	sigaddset(&sset, SIGUSR1);
 	sigaddset(&sset, SIGUSR2);
 	sigaddset(&sset, SIGHUP);
+	sigaddset(&sset, SIGINT);
+	sigaddset(&sset, SIGPIPE);
+	sigaddset(&sset, SIGQUIT);
 	sigaddset(&sset, SIGTERM);
 #ifdef SIGWINCH
 	sigaddset(&sset, SIGWINCH);
@@ -456,7 +459,9 @@ gui_input_sighandler(int signal)
 		playq_cursong_next();
 		break;
 	case SIGHUP:
+	case SIGINT:
 	case SIGPIPE:
+	case SIGQUIT:
 	case SIGTERM:
 		gui_input_quit();
 		/* NOTREACHED */
