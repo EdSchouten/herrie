@@ -30,6 +30,7 @@
 
 #include "stdinc.h"
 
+#include "audio_file.h"
 #include "audio_output.h"
 
 int
@@ -41,7 +42,18 @@ audio_output_open(void)
 int
 audio_output_play(struct audio_file *fd)
 {
-	return (-1);
+	int16_t buf[4096];
+	size_t len;
+	unsigned long delay;
+
+	if ((len = audio_file_read(fd, buf, sizeof buf / sizeof(int16_t))) == 0)
+		return (-1);
+	
+	/* This should just fit - 2^12 * 10^6 < 2^32 */
+	delay = (1000000 * len) / (fd->srate * fd->channels);
+	g_usleep(delay);
+
+	return (0);
 }
 
 void
