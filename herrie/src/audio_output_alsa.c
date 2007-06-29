@@ -106,12 +106,10 @@ error:
 int
 audio_output_play(struct audio_file *fd)
 {
-	char buf[16384];
-	size_t bps;
+	int16_t buf[8192];
 	snd_pcm_sframes_t ret, len, done = 0;
 
-	if ((len = audio_file_read(fd, (int16_t *)buf,
-	    sizeof buf / sizeof(int16_t))) == 0)
+	if ((len = audio_file_read(fd, buf, sizeof buf / sizeof(int16_t))) == 0)
 		return (-1);
 	
 	if (fd->channels != channels || fd->srate != srate) {
@@ -130,23 +128,22 @@ audio_output_play(struct audio_file *fd)
 	}
 
 	/* ALSA measures in sample lengths */
-	bps = fd->channels * sizeof(int16_t);
 	len /= fd->channels;
 
 	/* Our complex error handling for snd_pcm_writei() */
 	while (done < len) {
-		ret = snd_pcm_writei(devhnd, buf + (done * bps), len - done);
+		ret = snd_pcm_writei(devhnd, buf + (done * fd->channels), len - done);
 		if (ret == -EPIPE) {
-			/* Buffer underrun. */
+			/* Buffer underrun. Try again. */
 			if (snd_pcm_prepare(devhnd) != 0)
 				return (-1);
 			continue;
 		} else if (ret <= 0) {
 			/* Some other strange error. */
 			return (-1);
-		} else {
-			done += ret;
 		}
+
+		done += ret;
 	}
 
 	return (0);
