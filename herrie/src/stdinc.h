@@ -64,9 +64,9 @@
 #endif /* G_THREADS_IMPL_POSIX */
 #ifdef G_OS_UNIX
 #include <sys/ioctl.h>
-#include <netinet/in.h>
 #include <pwd.h>
 #ifdef BUILD_RES_INIT
+#include <netinet/in.h>
 #include <resolv.h>
 #endif /* BUILD_RES_INIT */
 #endif /* G_OS_UNIX */
