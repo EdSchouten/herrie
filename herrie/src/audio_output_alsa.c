@@ -80,8 +80,10 @@ audio_output_apply_hwparams(void)
 	if (snd_pcm_hw_params_set_channels(devhnd, devparam, channels) != 0)
 		return (-1);
 
-	/* XXX: We may be underrun - fix that first. */
+	/* Drain current data and make sure we aren't underrun */
+	snd_pcm_drain(devhnd);
 	snd_pcm_prepare(devhnd);
+
 	/* Apply values */
 	if (snd_pcm_hw_params(devhnd, devparam) != 0)
 		return (-1);
@@ -113,9 +115,6 @@ audio_output_play(struct audio_file *fd)
 		return (-1);
 	
 	if (fd->channels != channels || fd->srate != srate) {
-		/* Reset the stream */
-		snd_pcm_drain(devhnd);
-
 		/* Apply the new values */
 		channels = fd->channels;
 		srate = fd->srate;
