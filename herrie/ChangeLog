@@ -10,6 +10,7 @@
  * Added: Native Mac OS X CoreAudio output module
  * Added: Native Linux ALSA output module
  * Fixed: Delay when a track can't be opened; prevents CPU hogging
+ * Fixed: Seeking backward in files handled by libsndfile
 
 2007-06-03 -- Herrie 1.7:
  * Fixed: Don't point files/directories starting with ~ to home directories
