@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-20 15:22+0200\n"
+"POT-Creation-Date: 2007-06-30 23:58+0200\n"
 "PO-Revision-Date: 2007-06-11 20:01+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
@@ -10,11 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:100 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:104 audio_output_coreaudio.c:172
 msgid "Cannot open the audio device.\n"
 msgstr "Kan het geluidsapparaat niet openen.\n"
 
-#: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
+#: audio_output_alsa.c:122 audio_output_coreaudio.c:194 audio_output_oss.c:105
 msgid "Sample rate or amount of channels not supported."
 msgstr "Sample rate of aantal kanalen wordt niet ondersteund."
 
@@ -22,121 +22,121 @@ msgstr "Sample rate of aantal kanalen wordt niet ondersteund."
 msgid "Cannot open the audio device."
 msgstr "Kan het geluidsapparaat niet openen."
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan geluidsapparaat \"%s\" niet openen.\n"
 
-#: gui_browser.c:115
+#: gui_browser.c:116
 msgid "Unable to open initial directory."
 msgstr "Opstartmap openen mislukt."
 
-#: gui_browser.c:220
+#: gui_browser.c:221
 msgid "Unable to enter the parent directory."
 msgstr "Naar een hogere map gaan mislukt."
 
-#: gui_browser.c:235
+#: gui_browser.c:236
 msgid "Unable to enter the selected directory."
 msgstr "Naar de geselecteerde map gaan mislukt."
 
-#: gui_browser.c:319
+#: gui_browser.c:320
 msgid "Change directory"
 msgstr "Verplaats van map"
 
-#: gui_browser.c:357
+#: gui_browser.c:358
 msgid "Unable to display the file or directory."
 msgstr "Het weergeven van het bestand of de map mislukt."
 
-#: gui_browser.c:374
+#: gui_browser.c:375
 msgid "Write playlist to file"
 msgstr "Schrijf afspeellijst naar bestand"
 
-#: gui_browser.c:383
+#: gui_browser.c:384
 msgid "Unable to write playlist."
 msgstr "Het wegschrijven van de afspeellijst mislukt."
 
-#: gui_input.c:155
+#: gui_input.c:156
 msgid "Not found."
 msgstr "Niet gevonden."
 
-#: gui_input.c:177
+#: gui_input.c:178
 msgid "Search for"
 msgstr "Zoeken naar"
 
-#: gui_input.c:184
+#: gui_input.c:185
 msgid "Bad pattern."
 msgstr "Ongeldig patroon."
 
-#: gui_input.c:229
+#: gui_input.c:230
 msgid "Use kill(1) to quit."
 msgstr "Gebruik kill(1) om af te sluiten."
 
-#: gui_input.c:233
+#: gui_input.c:234
 #, c-format
 msgid "Quit %s?"
 msgstr "%s afsluiten?"
 
-#: gui_input.c:270
+#: gui_input.c:271
 msgid "Jump to position"
 msgstr "Spring naar positie"
 
-#: gui_input.c:327
+#: gui_input.c:328
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:517 main.c:70 main.c:76 main.c:82
+#: gui_input.c:527 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:518 main.c:72 main.c:78 main.c:84
+#: gui_input.c:528 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "nee"
 
-#: gui_playq.c:106
+#: gui_playq.c:108
 msgid "Idle"
 msgstr "Inactief"
 
-#: gui_playq.c:109
+#: gui_playq.c:111
 msgid "Paused"
 msgstr "Gepauzeerd"
 
-#: gui_playq.c:111
+#: gui_playq.c:113
 msgid "Playing"
 msgstr "Afspelen"
 
-#: gui_playq.c:349
+#: gui_playq.c:351
 msgid "Remove all songs from the playlist?"
 msgstr "Alle nummers uit de afspeellijst verwijderen?"
 
-#: gui_playq.c:360
+#: gui_playq.c:362
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:409
+#: gui_playq.c:411
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:428
+#: gui_playq.c:430
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 
-#: gui_vfslist.c:231
+#: gui_vfslist.c:234
 msgid "There are no songs."
 msgstr "Er zijn geen nummers."
 
-#: gui_vfslist.c:297
+#: gui_vfslist.c:300
 msgid "You are at the first song."
 msgstr "Je bent bij het eerste nummer."
 
-#: gui_vfslist.c:316
+#: gui_vfslist.c:319
 msgid "You are at the last song."
 msgstr "Je bent bij het laatste nummer."
 
-#: gui_vfslist.c:574
+#: gui_vfslist.c:577
 msgid "Search wrapped to top."
 msgstr "Zoekopdracht naar boven verplaatst."
 
-#: gui_vfslist.c:598
+#: gui_vfslist.c:601
 msgid "Full pathname"
 msgstr "Volledige bestandsnaam"
 
@@ -168,21 +168,21 @@ msgstr "ondersteunde geluidsformaten"
 msgid "usage"
 msgstr "gebruik"
 
-#: playq.c:182
+#: playq.c:184
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Openen voor afspelen van \"%s\" mislukt."
 
-#: playq.c:403
+#: playq.c:405
 #, c-format
 msgid "Repeat: %s"
 msgstr "Herhaling: %s"
 
-#: playq.c:404
+#: playq.c:406
 msgid "on"
 msgstr "aan"
 
-#: playq.c:404
+#: playq.c:406
 msgid "off"
 msgstr "uit"
 
@@ -231,7 +231,7 @@ msgstr "Onmogelijk om naar groep %d te veranderen\n"
 msgid "Unable to change to user %d\n"
 msgstr "Onmogelijk om naar gebruiker %d te veranderen\n"
 
-#: vfs_http.c:145
+#: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr "Verbinding met \"%s\" verloren."

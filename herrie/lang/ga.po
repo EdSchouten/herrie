@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-20 15:22+0200\n"
+"POT-Creation-Date: 2007-06-30 23:58+0200\n"
 "PO-Revision-Date: 2007-06-12 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:100 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:104 audio_output_coreaudio.c:172
 msgid "Cannot open the audio device.\n"
 msgstr "Ní féidir an gléas fuaime a oscailt.\n"
 
-#: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
+#: audio_output_alsa.c:122 audio_output_coreaudio.c:194 audio_output_oss.c:105
 msgid "Sample rate or amount of channels not supported."
 msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
 
@@ -27,121 +27,121 @@ msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
 msgid "Cannot open the audio device."
 msgstr "Ní féidir an gléas fuaime a oscailt."
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ní féidir gléas fuaime \"%s\" a oscailt.\n"
 
-#: gui_browser.c:115
+#: gui_browser.c:116
 msgid "Unable to open initial directory."
 msgstr "Ní féidir an chomhadlann tosaigh a oscailt."
 
-#: gui_browser.c:220
+#: gui_browser.c:221
 msgid "Unable to enter the parent directory."
 msgstr "Ní féidir dul isteach sa mháthairchomhadlann."
 
-#: gui_browser.c:235
+#: gui_browser.c:236
 msgid "Unable to enter the selected directory."
 msgstr "Ní féidir dul isteach sa chomhadlann roghnaithe."
 
-#: gui_browser.c:319
+#: gui_browser.c:320
 msgid "Change directory"
 msgstr "Athraigh an chomhadlann"
 
-#: gui_browser.c:357
+#: gui_browser.c:358
 msgid "Unable to display the file or directory."
 msgstr "Ní féidir an comhad nó comhadlann a thaispeáint."
 
-#: gui_browser.c:374
+#: gui_browser.c:375
 msgid "Write playlist to file"
 msgstr "Scríobh an seinmliosta i gcomhad"
 
-#: gui_browser.c:383
+#: gui_browser.c:384
 msgid "Unable to write playlist."
 msgstr "Ní féidir an seinmliosta a scríobh."
 
-#: gui_input.c:155
+#: gui_input.c:156
 msgid "Not found."
 msgstr "Ar iarraidh."
 
-#: gui_input.c:177
+#: gui_input.c:178
 msgid "Search for"
 msgstr "Déan cuardach ar"
 
-#: gui_input.c:184
+#: gui_input.c:185
 msgid "Bad pattern."
 msgstr "Drochphatrún."
 
-#: gui_input.c:229
+#: gui_input.c:230
 msgid "Use kill(1) to quit."
 msgstr "Bain úsáid as kill(1) chun scor."
 
-#: gui_input.c:233
+#: gui_input.c:234
 #, c-format
 msgid "Quit %s?"
 msgstr "Scoir ó %s?"
 
-#: gui_input.c:270
+#: gui_input.c:271
 msgid "Jump to position"
 msgstr "Léim go"
 
-#: gui_input.c:327
+#: gui_input.c:328
 msgid "Bad time format."
 msgstr "Drochfhormáid ama."
 
-#: gui_input.c:517 main.c:70 main.c:76 main.c:82
+#: gui_input.c:527 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "tá"
 
-#: gui_input.c:518 main.c:72 main.c:78 main.c:84
+#: gui_input.c:528 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "níl"
 
-#: gui_playq.c:106
+#: gui_playq.c:108
 msgid "Idle"
 msgstr "Díomhaoin"
 
-#: gui_playq.c:109
+#: gui_playq.c:111
 msgid "Paused"
 msgstr "Moillithe"
 
-#: gui_playq.c:111
+#: gui_playq.c:113
 msgid "Playing"
 msgstr "Á Sheinm"
 
-#: gui_playq.c:349
+#: gui_playq.c:351
 msgid "Remove all songs from the playlist?"
 msgstr "Bain gach amhrán as an seinmliosta?"
 
-#: gui_playq.c:360
+#: gui_playq.c:362
 msgid "Randomize the playlist?"
 msgstr "Suaith an seinmliosta?"
 
-#: gui_playq.c:409
+#: gui_playq.c:411
 msgid "The song is already at the top of the playlist."
 msgstr "Tá an t-amhrán seo ag barr an tseinmliosta cheana."
 
-#: gui_playq.c:428
+#: gui_playq.c:430
 msgid "The song is already at the bottom of the playlist."
 msgstr "Tá an t-amhrán ag bun an tseinmliosta cheana."
 
-#: gui_vfslist.c:231
+#: gui_vfslist.c:234
 msgid "There are no songs."
 msgstr "Níl aon amhrán ann."
 
-#: gui_vfslist.c:297
+#: gui_vfslist.c:300
 msgid "You are at the first song."
 msgstr "Tá tú ag an chéad amhrán."
 
-#: gui_vfslist.c:316
+#: gui_vfslist.c:319
 msgid "You are at the last song."
 msgstr "Tá tú ag an amhrán deiridh."
 
-#: gui_vfslist.c:574
+#: gui_vfslist.c:577
 msgid "Search wrapped to top."
 msgstr "Thimfhill an cuardach go dtí an barr."
 
-#: gui_vfslist.c:598
+#: gui_vfslist.c:601
 msgid "Full pathname"
 msgstr "Ainm iomlán na conaire"
 
@@ -173,21 +173,21 @@ msgstr "Formáidí fuaime a dtacaítear leo"
 msgid "usage"
 msgstr "úsáid"
 
-#: playq.c:182
+#: playq.c:184
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Theip ar \"%s\" a oscailt chun é a sheinm ar ais."
 
-#: playq.c:403
+#: playq.c:405
 #, c-format
 msgid "Repeat: %s"
 msgstr "Athsheinm: %s"
 
-#: playq.c:404
+#: playq.c:406
 msgid "on"
 msgstr "ann"
 
-#: playq.c:404
+#: playq.c:406
 msgid "off"
 msgstr "as"
 
@@ -236,7 +236,7 @@ msgstr "Ní féidir an grúpa a athrú go %d\n"
 msgid "Unable to change to user %d\n"
 msgstr "Ní féidir an t-úsáideoir a athrú go %d\n"
 
-#: vfs_http.c:145
+#: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr "Cailleadh an nasc le \"%s\"."

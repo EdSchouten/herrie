@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-20 15:22+0200\n"
+"POT-Creation-Date: 2007-06-30 23:58+0200\n"
 "PO-Revision-Date: 2007-06-21 01:46+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
@@ -10,11 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:100 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:104 audio_output_coreaudio.c:172
 msgid "Cannot open the audio device.\n"
 msgstr "Gerät kann nicht geöffnet werden.\n"
 
-#: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
+#: audio_output_alsa.c:122 audio_output_coreaudio.c:194 audio_output_oss.c:105
 msgid "Sample rate or amount of channels not supported."
 msgstr "Abtastrate oder Kanalanzahl nicht unterstützt"
 
@@ -22,121 +22,121 @@ msgstr "Abtastrate oder Kanalanzahl nicht unterstützt"
 msgid "Cannot open the audio device."
 msgstr "Gerät kann nicht geöffnet werden."
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Gerät \"%s\" kann nicht geöffnet werden.\n"
 
-#: gui_browser.c:115
+#: gui_browser.c:116
 msgid "Unable to open initial directory."
 msgstr "Fehler beim Öffnen des Start-Verzeichnisses."
 
-#: gui_browser.c:220
+#: gui_browser.c:221
 msgid "Unable to enter the parent directory."
 msgstr "Fehler beim Öffnen des übergeordneten Verzeichnisses."
 
-#: gui_browser.c:235
+#: gui_browser.c:236
 msgid "Unable to enter the selected directory."
 msgstr "Fehler beim Öffnen des gewählten Verzeichnisses."
 
-#: gui_browser.c:319
+#: gui_browser.c:320
 msgid "Change directory"
 msgstr "Verzeichnis wechseln"
 
-#: gui_browser.c:357
+#: gui_browser.c:358
 msgid "Unable to display the file or directory."
 msgstr "Datei oder Verzeichnis kann nicht angezeigt werden."
 
-#: gui_browser.c:374
+#: gui_browser.c:375
 msgid "Write playlist to file"
 msgstr "Playlist in Datei speichern"
 
-#: gui_browser.c:383
+#: gui_browser.c:384
 msgid "Unable to write playlist."
 msgstr "Fehler beim Schreiben der Playlist."
 
-#: gui_input.c:155
+#: gui_input.c:156
 msgid "Not found."
 msgstr "Nicht gefunden."
 
-#: gui_input.c:177
+#: gui_input.c:178
 msgid "Search for"
 msgstr "Suchen"
 
-#: gui_input.c:184
+#: gui_input.c:185
 msgid "Bad pattern."
 msgstr "Ungültiger regulärer Ausdruck"
 
-#: gui_input.c:229
+#: gui_input.c:230
 msgid "Use kill(1) to quit."
 msgstr "Zum Beenden kill(1) benutzen."
 
-#: gui_input.c:233
+#: gui_input.c:234
 #, c-format
 msgid "Quit %s?"
 msgstr "%s beenden?"
 
-#: gui_input.c:270
+#: gui_input.c:271
 msgid "Jump to position"
 msgstr "Zu Position springen"
 
-#: gui_input.c:327
+#: gui_input.c:328
 msgid "Bad time format."
 msgstr "Ungültiges Zeit-Format."
 
-#: gui_input.c:517 main.c:70 main.c:76 main.c:82
+#: gui_input.c:527 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:518 main.c:72 main.c:78 main.c:84
+#: gui_input.c:528 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "nein"
 
-#: gui_playq.c:106
+#: gui_playq.c:108
 msgid "Idle"
 msgstr "Inaktiv"
 
-#: gui_playq.c:109
+#: gui_playq.c:111
 msgid "Paused"
 msgstr "Pausiert"
 
-#: gui_playq.c:111
+#: gui_playq.c:113
 msgid "Playing"
 msgstr "Aktiv"
 
-#: gui_playq.c:349
+#: gui_playq.c:351
 msgid "Remove all songs from the playlist?"
 msgstr "Alle Lieder aus der Playlist entfernen?"
 
-#: gui_playq.c:360
+#: gui_playq.c:362
 msgid "Randomize the playlist?"
 msgstr "Playlist zufällig anordnen?"
 
-#: gui_playq.c:409
+#: gui_playq.c:411
 msgid "The song is already at the top of the playlist."
 msgstr "Dieses Lied ist bereits ganz oben."
 
-#: gui_playq.c:428
+#: gui_playq.c:430
 msgid "The song is already at the bottom of the playlist."
 msgstr "Dieses Lied ist bereits ganz am Ende."
 
-#: gui_vfslist.c:231
+#: gui_vfslist.c:234
 msgid "There are no songs."
 msgstr "Die Liste ist leer."
 
-#: gui_vfslist.c:297
+#: gui_vfslist.c:300
 msgid "You are at the first song."
 msgstr "Du bist am Anfang der Liste."
 
-#: gui_vfslist.c:316
+#: gui_vfslist.c:319
 msgid "You are at the last song."
 msgstr "Du bist am Ende der Liste."
 
-#: gui_vfslist.c:574
+#: gui_vfslist.c:577
 msgid "Search wrapped to top."
 msgstr "Suche am Ende angelagt, Fortsetzung am Anfang."
 
-#: gui_vfslist.c:598
+#: gui_vfslist.c:601
 msgid "Full pathname"
 msgstr "Vollständiger Pfad"
 
@@ -168,21 +168,21 @@ msgstr "Unterstützte Audio-Formate"
 msgid "usage"
 msgstr "Benutzung"
 
-#: playq.c:182
+#: playq.c:184
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "\"%s\" konnte nicht zum Abspielen geöffnet werden."
 
-#: playq.c:403
+#: playq.c:405
 #, c-format
 msgid "Repeat: %s"
 msgstr "Wiederholen: %s"
 
-#: playq.c:404
+#: playq.c:406
 msgid "on"
 msgstr "an"
 
-#: playq.c:404
+#: playq.c:406
 msgid "off"
 msgstr "aus"
 
@@ -231,7 +231,7 @@ msgstr "Fehler beim Wechseln zu Gruppe %d\n"
 msgid "Unable to change to user %d\n"
 msgstr "Fehler beim Wechseln zu Benutzer %d\n"
 
-#: vfs_http.c:145
+#: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr "Verbindung zu \"%s\" verloren."

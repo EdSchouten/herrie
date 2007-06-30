@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-20 15:22+0200\n"
+"POT-Creation-Date: 2007-06-30 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:100 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:104 audio_output_coreaudio.c:172
 msgid "Cannot open the audio device.\n"
 msgstr ""
 
-#: audio_output_alsa.c:123 audio_output_coreaudio.c:194 audio_output_oss.c:108
+#: audio_output_alsa.c:122 audio_output_coreaudio.c:194 audio_output_oss.c:105
 msgid "Sample rate or amount of channels not supported."
 msgstr ""
 
@@ -28,121 +28,121 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr ""
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr ""
 
-#: gui_browser.c:115
+#: gui_browser.c:116
 msgid "Unable to open initial directory."
 msgstr ""
 
-#: gui_browser.c:220
+#: gui_browser.c:221
 msgid "Unable to enter the parent directory."
 msgstr ""
 
-#: gui_browser.c:235
+#: gui_browser.c:236
 msgid "Unable to enter the selected directory."
 msgstr ""
 
-#: gui_browser.c:319
+#: gui_browser.c:320
 msgid "Change directory"
 msgstr ""
 
-#: gui_browser.c:357
+#: gui_browser.c:358
 msgid "Unable to display the file or directory."
 msgstr ""
 
-#: gui_browser.c:374
+#: gui_browser.c:375
 msgid "Write playlist to file"
 msgstr ""
 
-#: gui_browser.c:383
+#: gui_browser.c:384
 msgid "Unable to write playlist."
 msgstr ""
 
-#: gui_input.c:155
+#: gui_input.c:156
 msgid "Not found."
 msgstr ""
 
-#: gui_input.c:177
+#: gui_input.c:178
 msgid "Search for"
 msgstr ""
 
-#: gui_input.c:184
+#: gui_input.c:185
 msgid "Bad pattern."
 msgstr ""
 
-#: gui_input.c:229
+#: gui_input.c:230
 msgid "Use kill(1) to quit."
 msgstr ""
 
-#: gui_input.c:233
+#: gui_input.c:234
 #, c-format
 msgid "Quit %s?"
 msgstr ""
 
-#: gui_input.c:270
+#: gui_input.c:271
 msgid "Jump to position"
 msgstr ""
 
-#: gui_input.c:327
+#: gui_input.c:328
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:517 main.c:70 main.c:76 main.c:82
+#: gui_input.c:527 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:518 main.c:72 main.c:78 main.c:84
+#: gui_input.c:528 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr ""
 
-#: gui_playq.c:106
+#: gui_playq.c:108
 msgid "Idle"
 msgstr ""
 
-#: gui_playq.c:109
+#: gui_playq.c:111
 msgid "Paused"
 msgstr ""
 
-#: gui_playq.c:111
+#: gui_playq.c:113
 msgid "Playing"
 msgstr ""
 
-#: gui_playq.c:349
+#: gui_playq.c:351
 msgid "Remove all songs from the playlist?"
 msgstr ""
 
-#: gui_playq.c:360
+#: gui_playq.c:362
 msgid "Randomize the playlist?"
 msgstr ""
 
-#: gui_playq.c:409
+#: gui_playq.c:411
 msgid "The song is already at the top of the playlist."
 msgstr ""
 
-#: gui_playq.c:428
+#: gui_playq.c:430
 msgid "The song is already at the bottom of the playlist."
 msgstr ""
 
-#: gui_vfslist.c:231
+#: gui_vfslist.c:234
 msgid "There are no songs."
 msgstr ""
 
-#: gui_vfslist.c:297
+#: gui_vfslist.c:300
 msgid "You are at the first song."
 msgstr ""
 
-#: gui_vfslist.c:316
+#: gui_vfslist.c:319
 msgid "You are at the last song."
 msgstr ""
 
-#: gui_vfslist.c:574
+#: gui_vfslist.c:577
 msgid "Search wrapped to top."
 msgstr ""
 
-#: gui_vfslist.c:598
+#: gui_vfslist.c:601
 msgid "Full pathname"
 msgstr ""
 
@@ -174,21 +174,21 @@ msgstr ""
 msgid "usage"
 msgstr ""
 
-#: playq.c:182
+#: playq.c:184
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr ""
 
-#: playq.c:403
+#: playq.c:405
 #, c-format
 msgid "Repeat: %s"
 msgstr ""
 
-#: playq.c:404
+#: playq.c:406
 msgid "on"
 msgstr ""
 
-#: playq.c:404
+#: playq.c:406
 msgid "off"
 msgstr ""
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Unable to change to user %d\n"
 msgstr ""
 
-#: vfs_http.c:145
+#: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr ""
