@@ -89,10 +89,13 @@ void
 sndfile_seek(struct audio_file *fd, int len, int rel)
 {
 	SNDFILE *hnd = fd->drv_data;
-	int whence;
 	sf_count_t frame;
 
-	whence = rel ? SEEK_CUR : SEEK_SET;
-	frame = sf_seek(hnd, len * fd->srate, whence);
+	/* Make sure we always align the seek to seconds */
+	if (rel)
+		len += fd->time_cur;
+	len = CLAMP(len, 0, (int)fd->time_len);
+
+	frame = sf_seek(hnd, len * fd->srate, SEEK_SET);
 	fd->time_cur = frame / fd->srate;
 }
