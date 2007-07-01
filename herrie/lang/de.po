@@ -158,7 +158,7 @@ msgstr "Unterstützung für HTTP-Streams"
 
 #: main.c:80
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "Unterstützung für XSPF Playlists"
+msgstr "Unterstützung für XSPF Wiedergabelisten"
 
 #: main.c:86
 msgid "Supported audio file formats"
