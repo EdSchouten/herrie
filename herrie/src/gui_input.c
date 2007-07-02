@@ -181,7 +181,7 @@ gui_input_search(void)
 	
 #ifdef BUILD_REGEX
 	/* Compile the new expression */
-	if (regcomp(&match, str, REG_ICASE) != 0) {
+	if (regcomp(&match, str, REG_EXTENDED|REG_ICASE) != 0) {
 		gui_msgbar_warn(_("Bad pattern."));
 		g_free(str);
 		return;
