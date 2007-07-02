@@ -1,242 +1,240 @@
-# Irish translations for herrie.
-# Copyright (C) 2006 Free Software Foundation, Inc.
+# translation of herrie.pot to Russian
+# Copyright (C) 2007 Moroz Sergey L. <se.seam@gmail.com>
 # This file is distributed under the same license as the herrie package.
-# Kevin Scannell <kscanne@gmail.com>, 2007.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-07-02 12:48+0200\n"
-"PO-Revision-Date: 2007-06-12 07:53-0500\n"
-"Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
-"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2007-07-01 22:48+0300\n"
+"Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
+"Language-Team: Russian translation project <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: audio_output_alsa.c:104 audio_output_coreaudio.c:172
 msgid "Cannot open the audio device.\n"
-msgstr "Ní féidir an gléas fuaime a oscailt.\n"
+msgstr "Невозможно открыть звуковое устройство.\n"
 
 #: audio_output_alsa.c:122 audio_output_coreaudio.c:194 audio_output_oss.c:105
 msgid "Sample rate or amount of channels not supported."
-msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
+msgstr "Частота сэмпла или число каналов не поддерживаются."
 
 #: audio_output_ao.c:116 audio_output_pulse.c:77
 msgid "Cannot open the audio device."
-msgstr "Ní féidir an gléas fuaime a oscailt."
+msgstr "Невозможно открыть звуковое устройство."
 
 #: audio_output_oss.c:60
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "Ní féidir gléas fuaime \"%s\" a oscailt.\n"
+msgstr "Невозможно открыть звуковое устройство \"%s\".\n"
 
 #: gui_browser.c:116
 msgid "Unable to open initial directory."
-msgstr "Ní féidir an chomhadlann tosaigh a oscailt."
+msgstr "Нет доступа к исходному каталогу."
 
 #: gui_browser.c:221
 msgid "Unable to enter the parent directory."
-msgstr "Ní féidir dul isteach sa mháthairchomhadlann."
+msgstr "Нет доступа к родительскому каталогу."
 
 #: gui_browser.c:236
 msgid "Unable to enter the selected directory."
-msgstr "Ní féidir dul isteach sa chomhadlann roghnaithe."
+msgstr "Нет доступа к выбранному каталогу."
 
 #: gui_browser.c:320
 msgid "Change directory"
-msgstr "Athraigh an chomhadlann"
+msgstr "Сменить каталог"
 
 #: gui_browser.c:358
 msgid "Unable to display the file or directory."
-msgstr "Ní féidir an comhad nó comhadlann a thaispeáint."
+msgstr "Невозможно отобразить файл или каталог."
 
 #: gui_browser.c:375
 msgid "Write playlist to file"
-msgstr "Scríobh an seinmliosta i gcomhad"
+msgstr "Записать список воспроизведения в файл"
 
 #: gui_browser.c:384
 msgid "Unable to write playlist."
-msgstr "Ní féidir an seinmliosta a scríobh."
+msgstr "Невозможно записать список воспроизведения."
 
 #: gui_input.c:156
 msgid "Not found."
-msgstr "Ar iarraidh."
+msgstr "Не найден."
 
 #: gui_input.c:178
 msgid "Search for"
-msgstr "Déan cuardach ar"
+msgstr "Поиск"
 
 #: gui_input.c:185
 msgid "Bad pattern."
-msgstr "Drochphatrún."
+msgstr "Неверный шаблон."
 
 #: gui_input.c:230
 msgid "Use kill(1) to quit."
-msgstr "Bain úsáid as kill(1) chun scor."
+msgstr "Используйте kill(1) для выхода."
 
 #: gui_input.c:234
 #, c-format
 msgid "Quit %s?"
-msgstr "Scoir ó %s?"
+msgstr "Покинуть %s?"
 
 #: gui_input.c:271
 msgid "Jump to position"
-msgstr "Léim go"
+msgstr "Перейти к позиции"
 
 #: gui_input.c:328
 msgid "Bad time format."
-msgstr "Drochfhormáid ama."
+msgstr "Неверный формат времени."
 
 #: gui_input.c:527 main.c:70 main.c:76 main.c:82
 msgid "yes"
-msgstr "tá"
+msgstr "да"
 
 #: gui_input.c:528 main.c:72 main.c:78 main.c:84
 msgid "no"
-msgstr "níl"
+msgstr "нет"
 
 #: gui_playq.c:108
 msgid "Idle"
-msgstr "Díomhaoin"
+msgstr "Задержка"
 
 #: gui_playq.c:111
 msgid "Paused"
-msgstr "Moillithe"
+msgstr "Пауза"
 
 #: gui_playq.c:113
 msgid "Playing"
-msgstr "Á Sheinm"
+msgstr "Воспроизведение"
 
 #: gui_playq.c:351
 msgid "Remove all songs from the playlist?"
-msgstr "Bain gach amhrán as an seinmliosta?"
+msgstr "Удалить все композиции из списка?"
 
 #: gui_playq.c:362
 msgid "Randomize the playlist?"
-msgstr "Suaith an seinmliosta?"
+msgstr "Перемешать список?"
 
 #: gui_playq.c:411
 msgid "The song is already at the top of the playlist."
-msgstr "Tá an t-amhrán seo ag barr an tseinmliosta cheana."
+msgstr "Композиция уже в начале списка."
 
 #: gui_playq.c:430
 msgid "The song is already at the bottom of the playlist."
-msgstr "Tá an t-amhrán ag bun an tseinmliosta cheana."
+msgstr "Композиция уже в конце списка."
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
-msgstr "Níl aon amhrán ann."
+msgstr "Здесь нет композиций."
 
 #: gui_vfslist.c:300
 msgid "You are at the first song."
-msgstr "Tá tú ag an chéad amhrán."
+msgstr "Вы на первой композиции."
 
 #: gui_vfslist.c:319
 msgid "You are at the last song."
-msgstr "Tá tú ag an amhrán deiridh."
+msgstr "Вы на последней композиции."
 
 #: gui_vfslist.c:577
 msgid "Search wrapped to top."
-msgstr "Thimfhill an cuardach go dtí an barr."
+msgstr "Поиск достиг начала."
 
 #: gui_vfslist.c:601
 msgid "Full pathname"
-msgstr "Ainm iomlán na conaire"
+msgstr "Полный путь"
 
 #: main.c:66
 msgid "Global configuration file"
-msgstr "Comhad cumraíochta comhchoitinne"
+msgstr "Файл глобальной конфигурации"
 
 #: main.c:67
 msgid "Audio output"
-msgstr "Aschur fuaime"
+msgstr "Аудио-выход"
 
 #: main.c:68
 msgid "Support for AudioScrobbler"
-msgstr "Tacaíocht AudioScrobbler"
+msgstr "Поддержка AudioScrobbler"
 
 #: main.c:74
 msgid "Support for HTTP streams"
-msgstr "Tacaíocht le Sruthanna HTTP"
+msgstr "Поддержка HTTP-потоков"
 
 #: main.c:80
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "Tacaíocht le seinmliostaí XSPF (`spiff')"
+msgstr "Поддержка XSPF-списков (`spiff')"
 
 #: main.c:86
 msgid "Supported audio file formats"
-msgstr "Formáidí fuaime a dtacaítear leo"
+msgstr "Поддерживаемые форматы звуковых файлов"
 
 #: main.c:98
 msgid "usage"
-msgstr "úsáid"
+msgstr "использование"
 
 #: playq.c:184
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "Theip ar \"%s\" a oscailt chun é a sheinm ar ais."
+msgstr "Невозможно открыть \"%s\" для воспроизведения"
 
 #: playq.c:405
 #, c-format
 msgid "Repeat: %s"
-msgstr "Athsheinm: %s"
+msgstr "Повтор %s"
 
 #: playq.c:406
 msgid "on"
-msgstr "ann"
+msgstr "вкл"
 
 #: playq.c:406
 msgid "off"
-msgstr "as"
+msgstr "выкл"
 
 #: scrobbler.c:322
 msgid "Successfully authorized at AudioScrobbler."
-msgstr "D'éirigh le húdarú ag AudioScrobbler."
+msgstr "Успешно авторизован на AudioScrobbler."
 
 #: scrobbler.c:329
 msgid "Failed to authorize at AudioScrobbler."
-msgstr "Theip ar údarú ag AudioScrobbler."
+msgstr "Невозможно авторизоваться на AudioScrobbler."
 
 #: scrobbler.c:345
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr "D'éirigh le seoladh amhrán amháin chuig AudioScrobbler."
+msgstr "Успешно отослана 1 композиция на AudioScrobbler."
 
 #: scrobbler.c:349
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr "D'éirigh le seoladh %d amhrán chuig AudioScrobbler."
+msgstr "Успешно отослано %d композиций на AudioScrobbler."
 
 #: scrobbler.c:355
 msgid "Invalid AudioScrobbler username/password."
-msgstr "Ainm úsáideora/Focal faire neamhbhailí do AudioScrobbler."
+msgstr "Неверные логин/пароль AudioScrobbler."
 
 #: scrobbler.c:358
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr "Theip ar sheoladh amhráin chuig AudioScrobbler."
+msgstr "Невозможно передать композиции на AudioScrobbler."
 
 #: vfs.c:109
 #, c-format
 msgid "Unknown user: %s\n"
-msgstr "Úsáideoir anaithnid: %s\n"
+msgstr "Неизвестный пользователь: %s\n"
 
 #: vfs.c:121
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr "Ní féidir \"chroot\" a dhéanamh i %s\n"
+msgstr "Невозможно chroot в %s\n"
 
 #: vfs.c:129
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr "Ní féidir an grúpa a athrú go %d\n"
+msgstr "Невозможно сменить на группу %d\n"
 
 #: vfs.c:133
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr "Ní féidir an t-úsáideoir a athrú go %d\n"
+msgstr "Невозможно сменить на пользователя %d\n"
 
 #: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "Cailleadh an nasc le \"%s\"."
+msgstr "Соединение с \"%s\" потеряно."

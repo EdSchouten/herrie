@@ -1,3 +1,6 @@
+????-??-?? -- Herrie 1.9:
+ * Added: Russian translation - Moroz Sergey L.
+
 2007-07-01 -- Herrie 1.8:
  * Added: PulseAudio output module
  * Fixed: Close stderr on Linux when using OSS as well - Robert Buchholz
