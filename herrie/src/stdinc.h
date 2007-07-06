@@ -45,6 +45,9 @@
 #include <time.h>
 #include <unistd.h>
 
+/* We can now live with this */
+#define G_DISABLE_ASSERT
+
 #include <glib.h>
 #ifdef BUILD_NLS
 #include <glib/gi18n.h>
