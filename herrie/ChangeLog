@@ -1,5 +1,7 @@
 ????-??-?? -- Herrie 1.9:
  * Added: Russian translation - Moroz Sergey L.
+ * Improved: Search function now supports extended regular expressions
+ * Changed: Assertion checks in source code have been disabled
 
 2007-07-01 -- Herrie 1.8:
  * Added: PulseAudio output module
