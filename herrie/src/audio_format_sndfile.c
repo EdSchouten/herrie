@@ -60,6 +60,10 @@ sndfile_open(struct audio_file *fd, const char *ext)
 	fd->channels = info.channels;
 	fd->time_len = info.frames / fd->srate;
 
+	/* Metadata - libsndfile only has artist + title */
+	fd->tag.artist = g_strdup(sf_get_string(hnd, SF_STR_ARTIST));
+	fd->tag.title = g_strdup(sf_get_string(hnd, SF_STR_TITLE));
+
 	return (0);
 }
 
