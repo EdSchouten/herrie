@@ -47,7 +47,7 @@ vorbis_read_comments(struct audio_file *fd)
 	OggVorbis_File *vfp = fd->drv_data;
 	struct vorbis_comment *cmt;
 	int i;
-	char *tag;
+	const char *tag;
 
 	if ((cmt = ov_comment(vfp, -1)) == NULL)
 		return;
