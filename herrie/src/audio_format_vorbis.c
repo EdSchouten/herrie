@@ -47,28 +47,20 @@ vorbis_read_comments(struct audio_file *fd)
 	OggVorbis_File *vfp = fd->drv_data;
 	struct vorbis_comment *cmt;
 	int i;
-	char *tag, *value;
+	char *tag;
 
 	if ((cmt = ov_comment(vfp, -1)) == NULL)
 		return;
 	
 	for (i = 0; i < cmt->comments; i++) {
 		tag = cmt->user_comments[i];
-		value = strchr(tag, '=');
-		if (value == NULL) {
-			/* No foo=bar format */
-			continue;
-		} else {
-			/* Split at the '=' character */
-			*value++ = '\0';
-		}
 
-		if (strcasecmp(tag, "artist") == 0)
-			fd->tag.artist = g_strdup(value);
-		else if (strcasecmp(tag, "title") == 0)
-			fd->tag.title = g_strdup(value);
-		else if (strcasecmp(tag, "album") == 0)
-			fd->tag.album = g_strdup(value);
+		if (g_ascii_strncasecmp(tag, "artist=", 7) == 0)
+			fd->tag.artist = g_strdup(tag + 7);
+		else if (g_ascii_strncasecmp(tag, "title=", 6) == 0)
+			fd->tag.title = g_strdup(tag + 6);
+		else if (g_ascii_strncasecmp(tag, "album=", 6) == 0)
+			fd->tag.album = g_strdup(tag + 6);
 	}
 }
 
