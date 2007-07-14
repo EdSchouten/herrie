@@ -27,7 +27,7 @@
 
 APP_NAME=herrie
 APP_VERSION=1.8.1
-APP_LINGUAS='de ga nl pl ru sv tr'
+APP_LINGUAS='de ga nl pl ru sv tr vi'
 
 # Default compilation switches
 CFG_AO=ao
