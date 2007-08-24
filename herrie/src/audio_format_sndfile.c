@@ -63,7 +63,7 @@ sndfile_open(struct audio_file *fd, const char *ext)
 	/* Metadata - libsndfile only has artist + title */
 	fd->tag.artist = g_strdup(sf_get_string(hnd, SF_STR_ARTIST));
 	fd->tag.title = g_strdup(sf_get_string(hnd, SF_STR_TITLE));
-#ifdef notyet
+#if 0
 	fd->tag.album = g_strdup(sf_get_string(hnd, SF_STR_ALBUM));
 #endif
 
