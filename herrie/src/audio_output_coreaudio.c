@@ -176,7 +176,7 @@ error:
 int
 audio_output_play(struct audio_file *fd)
 {
-	UInt32 len;
+	UInt32 len, size;
 	int16_t *tmp;
 	
 	/* Read data in our temporary buffer */
@@ -191,6 +191,11 @@ audio_output_play(struct audio_file *fd)
 
 		if (AudioDeviceSetProperty(adid, 0, 0, 0,
 		    kAudioDevicePropertyStreamFormat, sizeof afmt, &afmt) != 0) {
+		    	/* Get current settings back */
+			size = sizeof afmt;
+			AudioDeviceGetProperty(adid, 0, false,
+			    kAudioDevicePropertyStreamFormat, &size, &afmt);
+
 			gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
 			return (-1);
 		}
