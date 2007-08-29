@@ -66,7 +66,6 @@
 #include <pthread.h>
 #endif /* G_THREADS_IMPL_POSIX */
 #ifdef G_OS_UNIX
-#include <sys/ioctl.h>
 #include <pwd.h>
 #ifdef BUILD_RES_INIT
 #include <netinet/in.h>

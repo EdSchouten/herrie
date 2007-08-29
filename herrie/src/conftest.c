@@ -46,6 +46,7 @@
 #include <mad.h>
 #endif /* BUILD_MP3 */
 #ifdef BUILD_OSS
+#include <sys/ioctl.h>
 #include OSS_HEADER
 #endif /* BUILD_OSS */
 #if defined(BUILD_SCROBBLER) && !defined(BUILD_MD5_INTERNAL)

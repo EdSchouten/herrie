@@ -447,10 +447,6 @@ gui_input_sigmask(void)
 static void
 gui_input_sighandler(int signal)
 {
-#ifdef BUILD_GUI_SIGWINCH_WRAPPER
-	struct winsize ws;
-#endif /* BUILD_GUI_SIGWINCH_WRAPPER */
-
 	switch (signal) {
 	case SIGUSR1:
 		playq_cursong_pause();
@@ -465,16 +461,6 @@ gui_input_sighandler(int signal)
 	case SIGTERM:
 		gui_input_quit();
 		/* NOTREACHED */
-#ifdef BUILD_GUI_SIGWINCH_WRAPPER
-	case SIGWINCH:
-		if (ioctl(STDIN_FILENO, TIOCGWINSZ, &ws) != -1) {
-			gui_lock();
-			resizeterm(ws.ws_row, ws.ws_col);
-			gui_unlock();
-			gui_draw_resize();
-		}
-		break;
-#endif /* BUILD_GUI_SIGWINCH_WRAPPER */
 	}
 }
 #endif /* G_OS_UNIX */
@@ -493,9 +479,6 @@ gui_input_loop(void)
 	signal(SIGPIPE, gui_input_sighandler);
 	signal(SIGQUIT, gui_input_sighandler);
 	signal(SIGTERM, gui_input_sighandler);
-#ifdef BUILD_GUI_SIGWINCH_WRAPPER
-	signal(SIGWINCH, gui_input_sighandler);
-#endif /* BUILD_GUI_SIGWINCH_WRAPPER */
 #endif /* G_OS_UNIX */
 
 	for (;;) {

@@ -30,6 +30,7 @@
 
 #include "stdinc.h"
 
+#include <sys/ioctl.h>
 #include OSS_HEADER
 
 #include "audio_file.h"

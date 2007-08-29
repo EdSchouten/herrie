@@ -42,7 +42,6 @@ CFG_REGEX=yes
 CFG_RES_INIT=yes
 CFG_SCROBBLER=yes
 unset CFG_SETPROCTITLE
-unset CFG_SIGWINCH
 CFG_SNDFILE=yes
 unset CFG_STRICT
 CFG_STRIP=-s
@@ -83,7 +82,6 @@ NetBSD)
 OpenBSD)
 	CFG_AO=oss
 	CFG_SETPROCTITLE=yes
-	CFG_SIGWINCH=yes
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
 	;;
@@ -167,7 +165,6 @@ do
 	xcurses)
 		CFG_CURSES_HEADER=xcurses
 		CFG_CURSES_LIB=XCurses
-		unset CFG_SIGWINCH
 		;;
 
 	*)
@@ -259,8 +256,6 @@ fi
 [ "$CFG_RES_INIT" != "" ] && CFLAGS="$CFLAGS -DBUILD_RES_INIT"
 # setproctitle() usage
 [ "$CFG_SETPROCTITLE" != "" ] && CFLAGS_gui_playq="-DBUILD_SETPROCTITLE"
-# SIGWINCH wrapper
-[ "$CFG_SIGWINCH" != "" ] && CFLAGS_gui_input="-DBUILD_GUI_SIGWINCH_WRAPPER"
 # libsndfile support
 if [ "$CFG_SNDFILE" != "" ]
 then
