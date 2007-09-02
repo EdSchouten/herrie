@@ -82,7 +82,6 @@ audio_output_apply_hwparams(void)
 
 	/* Drain current data and make sure we aren't underrun */
 	snd_pcm_drain(devhnd);
-	snd_pcm_prepare(devhnd);
 
 	/* Apply values */
 	if (snd_pcm_hw_params(devhnd, devparam) != 0)

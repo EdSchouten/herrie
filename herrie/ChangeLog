@@ -1,6 +1,7 @@
 ????-??-?? -- Herrie 1.9:
  * Fixed: Error handling in CoreAudio when changing modes
  * Removed: SIGWINCH wrapper - no way for me to maintain it
+ * Fixed: Crash in ALSA code
 
 2007-08-24 -- Herrie 1.8.2:
  * Added: Support for metadata for libsndfile
