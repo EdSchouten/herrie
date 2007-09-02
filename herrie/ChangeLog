@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 1.9:
+2007-09-02 -- Herrie 1.8.3:
  * Fixed: Error handling in CoreAudio when changing modes
  * Removed: SIGWINCH wrapper - no way for me to maintain it
  * Fixed: Crash in ALSA code
