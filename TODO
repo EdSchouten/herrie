@@ -23,6 +23,9 @@ Audio abstraction:
 - Make ALSA buffer size configurable
 - Tag information on internet streams
 
+AudioScrobbler:
+- Bump to protocol 1.2
+
 Virtual filesystem:
 - Add some kind of 'recursive' VFS: playlists on HTTP
 - Perform more testing on XSPF compliance
