@@ -626,8 +626,8 @@ void
 scrobbler_spawn(void)
 {
 	/* Bail out if the username or password is not filled in */
-	if (config_getopt("scrobbler.username") == '\0' ||
-	    config_getopt("scrobbler.password") == '\0')
+	if (config_getopt("scrobbler.username")[0] == '\0' ||
+	    config_getopt("scrobbler.password")[0] == '\0')
 		return;
 
 	/* Restore unsubmitted tracks */
