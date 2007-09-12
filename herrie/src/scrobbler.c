@@ -316,6 +316,9 @@ scrobbler_curl_concat(void *ptr, size_t size, size_t nmemb, void *stream)
 	return (len);
 }
 
+/**
+ * @brief Split a string into multiple \0-terminated lines.
+ */
 static void
 scrobbler_split_lines(char *str, char *lines[], unsigned int nlines)
 {
@@ -337,6 +340,10 @@ scrobbler_split_lines(char *str, char *lines[], unsigned int nlines)
 	}
 }
 
+/**
+ * @brief Send a handshake to the AudioScrobbler server. Also catch
+ *         whether the configured password is correct.
+ */
 static int
 scrobbler_send_handshake(char *key, char **url)
 {
@@ -401,6 +408,10 @@ done:
 	return (ret);
 }
 
+/**
+ * @brief Submit an amount of tracks to the AudioScrobbler server. Also
+ *        make sure whether the tracks are submitted properly.
+ */
 static int
 scrobbler_send_tracks(char *key, const char *url, const char *poststr)
 {
