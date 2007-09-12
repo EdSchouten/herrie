@@ -317,7 +317,7 @@ scrobbler_curl_concat(void *ptr, size_t size, size_t nmemb, void *stream)
 }
 
 /**
- * @brief Split a string into multiple \0-terminated lines.
+ * @brief Split a string into multiple nul-terminated lines.
  */
 static void
 scrobbler_split_lines(char *str, char *lines[], unsigned int nlines)
