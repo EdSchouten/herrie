@@ -304,6 +304,9 @@ scrobbler_hash(time_t t, char out[32])
 	hex_encode(bin_res, out, sizeof bin_res);
 }
 
+/**
+ * @brief Concatenate cURL data to a string.
+ */
 static size_t
 scrobbler_curl_concat(void *ptr, size_t size, size_t nmemb, void *stream)
 {
