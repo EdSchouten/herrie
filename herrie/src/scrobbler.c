@@ -355,7 +355,7 @@ scrobbler_send_handshake(char *key, char **url)
 	time_t hstime;
 	CURL *con;
 	GString *response;
-	char *lines[3];
+	char *lines[4];
 	int ret;
 
 	con = curl_easy_init();
