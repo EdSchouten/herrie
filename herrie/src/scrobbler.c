@@ -473,7 +473,7 @@ scrobbler_runner_thread(void *unused)
 	gui_input_sigmask();
 
 	for(;;) {
-		interval = 1;
+		interval = 60;
 
 		if (key[0] == '\0') {
 			/* No key yet */
@@ -483,11 +483,11 @@ scrobbler_runner_thread(void *unused)
 				    "at AudioScrobbler."));
 			} else if (key[0] == '\0') {
 				/* We got BADAUTH */
-				interval = 60;
 				gui_msgbar_warn(_("Invalid AudioScrobbler "
 				    "username/password."));
 			} else {
 				/* We've got a key */
+				interval = 1;
 				gui_msgbar_warn(_("Successfully "
 				    "authorized at AudioScrobbler."));
 			}
@@ -499,6 +499,7 @@ scrobbler_runner_thread(void *unused)
 
 			if (scrobbler_send_tracks(key, url, poststr) == 0) {
 				/* Done. Remove them from the queue. */
+				interval = 1;
 				scrobbler_queue_remove(amount);
 
 				/* Print a message on the GUI */
@@ -514,7 +515,6 @@ scrobbler_runner_thread(void *unused)
 				gui_msgbar_warn(msg);
 				g_free(msg);
 			} else {
-				interval = 60;
 				gui_msgbar_warn(_("Failed to submit songs "
 				    "to AudioScrobbler."));
 			}
