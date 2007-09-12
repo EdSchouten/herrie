@@ -450,7 +450,7 @@ scrobbler_send_tracks(char *key, const char *url, const char *poststr)
 	if (lines[0] != NULL) {
 		if (strcmp(lines[0], "OK") == 0)
 			ret = 0;
-		else if (strcmp(lines[0], "BADAUTH") == 0)
+		else if (strcmp(lines[0], "BADSESSION") == 0)
 			/* Invalidate the session */
 			key[0] = '\0';
 	}
