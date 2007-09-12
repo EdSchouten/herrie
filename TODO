@@ -24,7 +24,7 @@ Audio abstraction:
 - Tag information on internet streams
 
 AudioScrobbler:
-- Bump to protocol 1.2
+- Implement `Now playing' feature
 
 Virtual filesystem:
 - Add some kind of 'recursive' VFS: playlists on HTTP
