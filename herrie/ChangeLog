@@ -1,3 +1,6 @@
+????-??-?? -- Herrie 1.9:
+ * Improved: Support for the new AudioScrobbler protocol
+
 2007-09-02 -- Herrie 1.8.3:
  * Fixed: Error handling in CoreAudio when changing modes
  * Removed: SIGWINCH wrapper - no way for me to maintain it

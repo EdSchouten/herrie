@@ -220,7 +220,7 @@ then
 			;;
 		esac
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
-		SRCS="$SRCS scrobbler scrobbler_send util"
+		SRCS="$SRCS scrobbler util"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
 	if [ $? -ne 0 ]
