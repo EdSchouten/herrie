@@ -211,7 +211,7 @@ static int
 scrobbler_queue_fetch(const char key[32], char **poststr)
 {
 	struct scrobbler_entry *ent;
-	unsigned int len = 0;
+	unsigned int len;
 	GString *str;
 
 	g_mutex_lock(scrobbler_lock);
