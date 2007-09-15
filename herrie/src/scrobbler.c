@@ -25,7 +25,7 @@
  */
 /**
  * @file scrobbler.c
- * @brief AudioScrobbler submission queue.
+ * @brief AudioScrobbler submission.
  */
 
 #include "stdinc.h"
