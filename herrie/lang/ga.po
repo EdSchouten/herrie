@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-14 09:51+0200\n"
+"POT-Creation-Date: 2007-09-23 15:20+0200\n"
 "PO-Revision-Date: 2007-06-12 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:104 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:103 audio_output_coreaudio.c:172
 msgid "Cannot open the audio device.\n"
 msgstr "Ní féidir an gléas fuaime a oscailt.\n"
 
-#: audio_output_alsa.c:122 audio_output_coreaudio.c:194 audio_output_oss.c:105
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:106
 msgid "Sample rate or amount of channels not supported."
 msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
 
@@ -27,7 +27,7 @@ msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
 msgid "Cannot open the audio device."
 msgstr "Ní féidir an gléas fuaime a oscailt."
 
-#: audio_output_oss.c:60
+#: audio_output_oss.c:61
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ní féidir gléas fuaime \"%s\" a oscailt.\n"
@@ -89,11 +89,11 @@ msgstr "Léim go"
 msgid "Bad time format."
 msgstr "Drochfhormáid ama."
 
-#: gui_input.c:527 main.c:70 main.c:76 main.c:82
+#: gui_input.c:510 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "tá"
 
-#: gui_input.c:528 main.c:72 main.c:78 main.c:84
+#: gui_input.c:511 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "níl"
 
@@ -191,28 +191,28 @@ msgstr "ann"
 msgid "off"
 msgstr "as"
 
-#: scrobbler.c:322
-msgid "Successfully authorized at AudioScrobbler."
-msgstr "D'éirigh le húdarú ag AudioScrobbler."
-
-#: scrobbler.c:329
+#: scrobbler.c:482
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Theip ar údarú ag AudioScrobbler."
 
-#: scrobbler.c:345
+#: scrobbler.c:486
+msgid "Invalid AudioScrobbler username/password."
+msgstr "Ainm úsáideora/Focal faire neamhbhailí do AudioScrobbler."
+
+#: scrobbler.c:491
+msgid "Successfully authorized at AudioScrobbler."
+msgstr "D'éirigh le húdarú ag AudioScrobbler."
+
+#: scrobbler.c:508
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "D'éirigh le seoladh amhrán amháin chuig AudioScrobbler."
 
-#: scrobbler.c:349
+#: scrobbler.c:512
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "D'éirigh le seoladh %d amhrán chuig AudioScrobbler."
 
-#: scrobbler.c:355
-msgid "Invalid AudioScrobbler username/password."
-msgstr "Ainm úsáideora/Focal faire neamhbhailí do AudioScrobbler."
-
-#: scrobbler.c:358
+#: scrobbler.c:518
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Theip ar sheoladh amhráin chuig AudioScrobbler."
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-14 09:51+0200\n"
+"POT-Creation-Date: 2007-09-23 15:20+0200\n"
 "PO-Revision-Date: 2007-06-11 20:01+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
@@ -10,11 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:104 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:103 audio_output_coreaudio.c:172
 msgid "Cannot open the audio device.\n"
 msgstr "Kan het geluidsapparaat niet openen.\n"
 
-#: audio_output_alsa.c:122 audio_output_coreaudio.c:194 audio_output_oss.c:105
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:106
 msgid "Sample rate or amount of channels not supported."
 msgstr "Sample rate of aantal kanalen wordt niet ondersteund."
 
@@ -22,7 +22,7 @@ msgstr "Sample rate of aantal kanalen wordt niet ondersteund."
 msgid "Cannot open the audio device."
 msgstr "Kan het geluidsapparaat niet openen."
 
-#: audio_output_oss.c:60
+#: audio_output_oss.c:61
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan geluidsapparaat \"%s\" niet openen.\n"
@@ -84,11 +84,11 @@ msgstr "Spring naar positie"
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:527 main.c:70 main.c:76 main.c:82
+#: gui_input.c:510 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:528 main.c:72 main.c:78 main.c:84
+#: gui_input.c:511 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "nee"
 
@@ -186,28 +186,28 @@ msgstr "aan"
 msgid "off"
 msgstr "uit"
 
-#: scrobbler.c:322
-msgid "Successfully authorized at AudioScrobbler."
-msgstr "Succesvol geauthoriseerd bij AudioScrobbler."
-
-#: scrobbler.c:329
+#: scrobbler.c:482
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Authoriseren bij AudioScrobbler mislukt."
 
-#: scrobbler.c:345
+#: scrobbler.c:486
+msgid "Invalid AudioScrobbler username/password."
+msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
+
+#: scrobbler.c:491
+msgid "Successfully authorized at AudioScrobbler."
+msgstr "Succesvol geauthoriseerd bij AudioScrobbler."
+
+#: scrobbler.c:508
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Succesvol 1 nummer opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:349
+#: scrobbler.c:512
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Succesvol %d nummers opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:355
-msgid "Invalid AudioScrobbler username/password."
-msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
-
-#: scrobbler.c:358
+#: scrobbler.c:518
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 
