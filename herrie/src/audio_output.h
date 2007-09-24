@@ -46,7 +46,7 @@ int audio_output_play(struct audio_file *fd);
  */
 void audio_output_close(void);
 
-#ifdef BUILD_MIXER
+#ifdef BUILD_VOLUME
 /**
  * @brief Increment the volume and return the new value in percent.
  */
@@ -55,6 +55,6 @@ int audio_output_volume_up(void);
  * @brief Decrement the volume and return the new value in percent.
  */
 int audio_output_volume_down(void);
-#endif /* BUILD_MIXER */
+#endif /* BUILD_VOLUME */
 
 #endif /* !_AUDIO_OUTPUT_H_ */
