@@ -127,7 +127,7 @@ audio_output_close(void)
 static int
 audio_output_volume_adjust(int n)
 {
-	int vol;
+	int vol, out;
 
 	/* We can't use the mixer */
 	if (mix_fd < 0)
@@ -137,9 +137,11 @@ audio_output_volume_adjust(int n)
 		return (-1);
 	
 	/* XXX: Merge left and right */
-	vol = CLAMP(((vol & 0x7f) | ((vol >> 8) & 0x7f)) + n, 0, 100);
+	vol = ((vol & 0x7f) + ((vol >> 8) & 0x7f)) / 2;
+	vol = CLAMP(vol + n, 0, 100);
+	out = (vol << 8) | vol;
 
-	if (ioctl(mix_fd, MIXER_WRITE(SOUND_MIXER_VOLUME), &vol) == -1)
+	if (ioctl(mix_fd, MIXER_WRITE(SOUND_MIXER_VOLUME), &out) == -1)
 		return (-1);
 
 	return (vol);
