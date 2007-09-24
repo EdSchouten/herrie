@@ -141,6 +141,7 @@ static struct config_entry configlist[] = {
 #endif /* BUILD_AO */
 #ifdef BUILD_OSS
 	{ "audio.output.oss.device",	OSS_DEVICE,	NULL,		NULL },
+	{ "audio.output.oss.mixer",	"/dev/mixer",	NULL,		NULL },
 #endif /* BUILD_OSS */
 	{ "gui.browser.defaultpath",	"",		NULL,		NULL },
 	{ "gui.color.bar.bg",		"blue",		valid_color,	NULL },

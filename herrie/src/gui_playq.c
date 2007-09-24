@@ -30,6 +30,7 @@
 
 #include "stdinc.h"
 
+#include "audio_output.h"
 #include "audio_file.h"
 #include "gui.h"
 #include "gui_internal.h"
@@ -476,3 +477,37 @@ gui_playq_fullpath(void)
 	gui_vfslist_fullpath(win_playq);
 	playq_unlock();
 }
+
+#ifdef BUILD_VOLUME
+static void
+gui_playq_volume_show(int new)
+{
+	char *str;
+
+	if (new < 0) {
+		gui_msgbar_warn(_("Failed to adjust the volume."));
+	} else {
+		str = g_strdup_printf(_("Volume: %d"), new);
+		gui_msgbar_warn(str);
+		g_free(str);
+	}
+}
+
+void
+gui_playq_volume_up(void)
+{
+	int new;
+
+	new = audio_output_volume_up();
+	gui_playq_volume_show(new);
+}
+
+void
+gui_playq_volume_down(void)
+{
+	int new;
+
+	new = audio_output_volume_down();
+	gui_playq_volume_show(new);
+}
+#endif /* BUILD_VOLUME */

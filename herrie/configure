@@ -317,7 +317,7 @@ coreaudio)
 	LDFLAGS="$LDFLAGS -framework CoreAudio"
 	;;
 oss)
-	CFLAGS="$CFLAGS -DBUILD_OSS"
+	CFLAGS="$CFLAGS -DBUILD_OSS -DBUILD_MIXER"
 	case $OS in
 	NetBSD|OpenBSD)
 		CFLAGS="$CFLAGS -DOSS_HEADER=\\<soundcard.h\\>"

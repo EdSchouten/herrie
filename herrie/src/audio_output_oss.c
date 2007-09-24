@@ -43,6 +43,10 @@
  */
 static int dev_fd;
 /**
+ * @brief File descriptor of the mixer device.
+ */
+static int mix_fd;
+/**
  * @brief Sample rate of the audio device handle.
  */
 static unsigned int cur_srate = 0;
@@ -56,11 +60,16 @@ audio_output_open(void)
 {
 	const char *dev;
 
+	/* Open the audio device */
 	dev = config_getopt("audio.output.oss.device");
 	if ((dev_fd = open(dev, O_WRONLY)) == -1) {
 		g_printerr(_("Cannot open audio device \"%s\".\n"), dev);
 		return (-1);
 	}
+
+	/* Open the mixer device */
+	dev = config_getopt("audio.output.oss.mixer");
+	mix_fd = open(dev, O_RDWR);
 
 	return (0);
 }
@@ -113,4 +122,37 @@ void
 audio_output_close(void)
 {
 	close(dev_fd);
+}
+
+static int
+audio_output_volume_adjust(int n)
+{
+	int vol;
+
+	/* We can't use the mixer */
+	if (mix_fd < 0)
+		return (-1);
+
+	if (ioctl(mix_fd, MIXER_READ(SOUND_MIXER_VOLUME), &vol) == -1)
+		return (-1);
+	
+	/* XXX: Merge left and right */
+	vol = CLAMP(((vol & 0x7f) | ((vol >> 8) & 0x7f)) + n, 0, 100);
+
+	if (ioctl(mix_fd, MIXER_WRITE(SOUND_MIXER_VOLUME), &vol) == -1)
+		return (-1);
+
+	return (vol);
+}
+
+int
+audio_output_volume_up(void)
+{
+	return audio_output_volume_adjust(1);
+}
+
+int
+audio_output_volume_down(void)
+{
+	return audio_output_volume_adjust(-1);
 }

@@ -352,24 +352,28 @@ struct gui_binding {
  */
 static struct gui_binding kbdbindings[] = {
 	/* Application-wide keyboard bindings */
-	{ -1, '<',			gui_input_cursong_seek_backward, },
-	{ -1, '>',			gui_input_cursong_seek_forward, },
+#ifdef BUILD_VOLUME
+	{ -1, '(',			gui_playq_volume_down },
+	{ -1, ')',			gui_playq_volume_up },
+#endif /* BUILD_VOLUME */
+	{ -1, '<',			gui_input_cursong_seek_backward },
+	{ -1, '>',			gui_input_cursong_seek_forward },
 	{ -1, 'a',			gui_browser_playq_add_after },
 	{ -1, 'A',			gui_browser_playq_add_tail },
 	{ -1, 'b',			playq_cursong_next },
-	{ -1, 'c',			playq_cursong_pause, },
+	{ -1, 'c',			playq_cursong_pause },
 	{ -1, 'C',			gui_browser_chdir },
 	{ -1, 'd',			gui_playq_song_remove },
 	{ -1, 'D',			gui_playq_song_remove_all },
 	{ -1, 'h',			gui_browser_dir_parent },
 	{ -1, 'i',			gui_browser_playq_add_before },
 	{ -1, 'I',			gui_browser_playq_add_head },
-	{ -1, 'J',			gui_input_cursong_seek_jump, }, /* ^J */
+	{ -1, 'J',			gui_input_cursong_seek_jump }, /* ^J */
 	{ -1, 'l',			gui_browser_dir_enter },
 	{ -1, 'q',			gui_input_askquit },
 	{ -1, 'r',			playq_repeat_toggle },
 	{ -1, 'R',			gui_playq_song_randomize },
-	{ -1, 'v',			playq_cursong_stop, },
+	{ -1, 'v',			playq_cursong_stop },
 	{ -1, 'w',			gui_browser_write_playlist },
 	{ -1, 'x',			gui_playq_song_select },
 	{ -1, 'z',			playq_cursong_prev },

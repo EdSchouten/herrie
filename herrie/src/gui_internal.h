@@ -251,6 +251,16 @@ void gui_playq_setfocus(int focus);
  *        bar.
  */
 void gui_playq_fullpath(void);
+#ifdef BUILD_VOLUME
+/**
+ * @brief Increment the volume and display the new value.
+ */
+void gui_playq_volume_up(void);
+/**
+ * @brief Decrement the volume and display the new value.
+ */
+void gui_playq_volume_down(void);
+#endif /* BUILD_VOLUME */
 
 /*
  * gui_browser
