@@ -314,6 +314,7 @@ ao)
 	LDFLAGS="$LDFLAGS -lao"
 	;;
 coreaudio)
+	CFLAGS="$CFLAGS -DBUILD_VOLUME"
 	LDFLAGS="$LDFLAGS -framework CoreAudio"
 	;;
 oss)

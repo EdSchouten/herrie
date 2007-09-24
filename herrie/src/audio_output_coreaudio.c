@@ -86,6 +86,11 @@ GMutex				*abuflock;
  *        application that a buffer has been processed.
  */
 GCond				*abufdrained;
+/**
+ * @brief Preferred audio channels used for audio playback. We use it to
+ *        set the volume.
+ */
+UInt32				achans[2];
 
 /**
  * @brief Pull-function needed by CoreAudio to copy data to the audio
@@ -153,6 +158,11 @@ audio_output_open(void)
 	if (AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyBufferSize, &size, &abuflen) != 0)
 		goto error;
+	
+	/* Store the audio channels */
+	size = sizeof achans;
+	AudioDeviceGetProperty(adid, 0, false,
+	    kAudioDevicePropertyPreferredChannelsForStereo, &size, &achans);
 
 	/* The buffer size reported is in floats */
 	abuflen /= sizeof(float);
@@ -229,4 +239,50 @@ audio_output_close(void)
 
 	g_free(abufnew);
 	g_free(abufcur);
+}
+
+/**
+ * @brief Adjust the audio output by a certain ratio and return the new
+ *        value.
+ */
+static int
+audio_output_volume_adjust(Float32 n)
+{
+	Float32 vl, vr, vn;
+	UInt32 size = sizeof vl;
+
+	/*
+	 * Merge left and right. On Mac OS X, we want to do this. My
+	 * PowerBook has this odd bug that the built-in OS X volume
+	 * applet makes the sound card go unbalanced after a long amount
+	 * of time. We can prevent that over here...
+	 */
+	if (AudioDeviceGetProperty(adid, achans[0], false,
+	    kAudioDevicePropertyVolumeScalar, &size, &vl) != 0)
+		return (-1);
+	if (AudioDeviceGetProperty(adid, achans[1], false,
+	    kAudioDevicePropertyVolumeScalar, &size, &vr) != 0)
+		return (-1);
+	vn = CLAMP((vl + vr) / 2.0 + n, 0.0, 1.0);
+
+	/* Set the new volume */
+	if (AudioDeviceSetProperty(adid, 0, achans[0], false,
+	    kAudioDevicePropertyVolumeScalar, size, &vn) != 0 ||
+	    AudioDeviceSetProperty(adid, 0, achans[1], false,
+	    kAudioDevicePropertyVolumeScalar, size, &vn) != 0)
+		return (-1);
+
+	return (vn * 100.0);
+}
+
+int
+audio_output_volume_up(void)
+{
+	return audio_output_volume_adjust(0.04);
+}
+
+int
+audio_output_volume_down(void)
+{
+	return audio_output_volume_adjust(-0.04);
 }

@@ -124,6 +124,10 @@ audio_output_close(void)
 	close(dev_fd);
 }
 
+/**
+ * @brief Adjust the audio output by a certain percentage and return the
+ *        new value.
+ */
 static int
 audio_output_volume_adjust(int n)
 {
@@ -150,11 +154,11 @@ audio_output_volume_adjust(int n)
 int
 audio_output_volume_up(void)
 {
-	return audio_output_volume_adjust(1);
+	return audio_output_volume_adjust(4);
 }
 
 int
 audio_output_volume_down(void)
 {
-	return audio_output_volume_adjust(-1);
+	return audio_output_volume_adjust(-4);
 }
