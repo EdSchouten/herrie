@@ -258,9 +258,8 @@ audio_output_volume_adjust(Float32 n)
 	 * of time. We can prevent that over here...
 	 */
 	if (AudioDeviceGetProperty(adid, achans[0], false,
-	    kAudioDevicePropertyVolumeScalar, &size, &vl) != 0)
-		return (-1);
-	if (AudioDeviceGetProperty(adid, achans[1], false,
+	    kAudioDevicePropertyVolumeScalar, &size, &vl) != 0 ||
+	    AudioDeviceGetProperty(adid, achans[1], false,
 	    kAudioDevicePropertyVolumeScalar, &size, &vr) != 0)
 		return (-1);
 	vn = CLAMP((vl + vr) / 2.0 + n, 0.0, 1.0);
