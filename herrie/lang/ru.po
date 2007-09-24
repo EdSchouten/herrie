@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 15:20+0200\n"
+"POT-Creation-Date: 2007-09-24 22:00+0200\n"
 "PO-Revision-Date: 2007-07-01 22:48+0300\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team: Russian translation project <ru@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 msgid "Cannot open the audio device.\n"
 msgstr "Невозможно открыть звуковое устройство.\n"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:106
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:115
 msgid "Sample rate or amount of channels not supported."
 msgstr "Частота сэмпла или число каналов не поддерживаются."
 
@@ -25,7 +25,7 @@ msgstr "Частота сэмпла или число каналов не под
 msgid "Cannot open the audio device."
 msgstr "Невозможно открыть звуковое устройство."
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:66
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Невозможно открыть звуковое устройство \"%s\".\n"
@@ -87,41 +87,50 @@ msgstr "Перейти к позиции"
 msgid "Bad time format."
 msgstr "Неверный формат времени."
 
-#: gui_input.c:510 main.c:70 main.c:76 main.c:82
+#: gui_input.c:514 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "да"
 
-#: gui_input.c:511 main.c:72 main.c:78 main.c:84
+#: gui_input.c:515 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "нет"
 
-#: gui_playq.c:108
+#: gui_playq.c:109
 msgid "Idle"
 msgstr "Задержка"
 
-#: gui_playq.c:111
+#: gui_playq.c:112
 msgid "Paused"
 msgstr "Пауза"
 
-#: gui_playq.c:113
+#: gui_playq.c:114
 msgid "Playing"
 msgstr "Воспроизведение"
 
-#: gui_playq.c:351
+#: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
 msgstr "Удалить все композиции из списка?"
 
-#: gui_playq.c:362
+#: gui_playq.c:363
 msgid "Randomize the playlist?"
 msgstr "Перемешать список?"
 
-#: gui_playq.c:411
+#: gui_playq.c:412
 msgid "The song is already at the top of the playlist."
 msgstr "Композиция уже в начале списка."
 
-#: gui_playq.c:430
+#: gui_playq.c:431
 msgid "The song is already at the bottom of the playlist."
 msgstr "Композиция уже в конце списка."
+
+#: gui_playq.c:488
+msgid "Failed to adjust the volume."
+msgstr ""
+
+#: gui_playq.c:490
+#, c-format
+msgid "Volume: %d"
+msgstr ""
 
 #: gui_vfslist.c:234
 msgid "There are no songs."

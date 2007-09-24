@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 15:20+0200\n"
+"POT-Creation-Date: 2007-09-24 22:00+0200\n"
 "PO-Revision-Date: 2007-06-19 12:41+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -15,7 +15,7 @@ msgstr ""
 msgid "Cannot open the audio device.\n"
 msgstr "Ses aygıtı açılamıyor.\n"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:106
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:115
 msgid "Sample rate or amount of channels not supported."
 msgstr "Örnekleme oranı ya da kanal sayısı desteklenmiyor"
 
@@ -23,7 +23,7 @@ msgstr "Örnekleme oranı ya da kanal sayısı desteklenmiyor"
 msgid "Cannot open the audio device."
 msgstr "Ses aygıtı açılamıyor."
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:66
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ses aygıtı \"%s\" açılamadı.\n"
@@ -85,41 +85,50 @@ msgstr "Konuma git"
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:510 main.c:70 main.c:76 main.c:82
+#: gui_input.c:514 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:511 main.c:72 main.c:78 main.c:84
+#: gui_input.c:515 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "hayır"
 
-#: gui_playq.c:108
+#: gui_playq.c:109
 msgid "Idle"
 msgstr "Boş"
 
-#: gui_playq.c:111
+#: gui_playq.c:112
 msgid "Paused"
 msgstr "Durduruldu"
 
-#: gui_playq.c:113
+#: gui_playq.c:114
 msgid "Playing"
 msgstr "Çalınıyor"
 
-#: gui_playq.c:351
+#: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
 msgstr "Tüm parçaları listeden sil?"
 
-#: gui_playq.c:362
+#: gui_playq.c:363
 msgid "Randomize the playlist?"
 msgstr "Parça listesini karıştır?"
 
-#: gui_playq.c:411
+#: gui_playq.c:412
 msgid "The song is already at the top of the playlist."
 msgstr "Parça zaten parça listesinin en üstünde."
 
-#: gui_playq.c:430
+#: gui_playq.c:431
 msgid "The song is already at the bottom of the playlist."
 msgstr "Parça zaten parça listesinin en altında."
+
+#: gui_playq.c:488
+msgid "Failed to adjust the volume."
+msgstr ""
+
+#: gui_playq.c:490
+#, c-format
+msgid "Volume: %d"
+msgstr ""
 
 #: gui_vfslist.c:234
 msgid "There are no songs."

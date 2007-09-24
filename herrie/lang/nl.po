@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 15:20+0200\n"
-"PO-Revision-Date: 2007-06-11 20:01+0200\n"
+"POT-Creation-Date: 2007-09-24 22:00+0200\n"
+"PO-Revision-Date: 2007-09-24 22:00+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 msgid "Cannot open the audio device.\n"
 msgstr "Kan het geluidsapparaat niet openen.\n"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:106
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:115
 msgid "Sample rate or amount of channels not supported."
 msgstr "Sample rate of aantal kanalen wordt niet ondersteund."
 
@@ -22,7 +22,7 @@ msgstr "Sample rate of aantal kanalen wordt niet ondersteund."
 msgid "Cannot open the audio device."
 msgstr "Kan het geluidsapparaat niet openen."
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:66
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan geluidsapparaat \"%s\" niet openen.\n"
@@ -84,41 +84,50 @@ msgstr "Spring naar positie"
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:510 main.c:70 main.c:76 main.c:82
+#: gui_input.c:514 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:511 main.c:72 main.c:78 main.c:84
+#: gui_input.c:515 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "nee"
 
-#: gui_playq.c:108
+#: gui_playq.c:109
 msgid "Idle"
 msgstr "Inactief"
 
-#: gui_playq.c:111
+#: gui_playq.c:112
 msgid "Paused"
 msgstr "Gepauzeerd"
 
-#: gui_playq.c:113
+#: gui_playq.c:114
 msgid "Playing"
 msgstr "Afspelen"
 
-#: gui_playq.c:351
+#: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
 msgstr "Alle nummers uit de afspeellijst verwijderen?"
 
-#: gui_playq.c:362
+#: gui_playq.c:363
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:411
+#: gui_playq.c:412
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:430
+#: gui_playq.c:431
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
+
+#: gui_playq.c:488
+msgid "Failed to adjust the volume."
+msgstr "Bijstellen van het volume mislukt."
+
+#: gui_playq.c:490
+#, c-format
+msgid "Volume: %d"
+msgstr "Volume: %d"
 
 #: gui_vfslist.c:234
 msgid "There are no songs."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 15:20+0200\n"
+"POT-Creation-Date: 2007-09-24 22:00+0200\n"
 "PO-Revision-Date: 2007-06-21 11:06+0200\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "Cannot open the audio device.\n"
 msgstr "Kan inte öppna ljudenheten.\n"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:106
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:115
 msgid "Sample rate or amount of channels not supported."
 msgstr "Samlingsfrekvensen eller antalet kanaler stöds inte."
 
@@ -27,7 +27,7 @@ msgstr "Samlingsfrekvensen eller antalet kanaler stöds inte."
 msgid "Cannot open the audio device."
 msgstr "Kan inte öppna ljudenheten."
 
-#: audio_output_oss.c:61
+#: audio_output_oss.c:66
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan inte öppna ljudenheten \"%s\".\n"
@@ -89,42 +89,51 @@ msgstr "Hoppa till position"
 msgid "Bad time format."
 msgstr "Felaktigt tidsformat."
 
-#: gui_input.c:510 main.c:70 main.c:76 main.c:82
+#: gui_input.c:514 main.c:70 main.c:76 main.c:82
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:511 main.c:72 main.c:78 main.c:84
+#: gui_input.c:515 main.c:72 main.c:78 main.c:84
 msgid "no"
 msgstr "nej"
 
 # Man kan även använda Overksam
-#: gui_playq.c:108
+#: gui_playq.c:109
 msgid "Idle"
 msgstr "Inaktiv"
 
-#: gui_playq.c:111
+#: gui_playq.c:112
 msgid "Paused"
 msgstr "Pausad"
 
-#: gui_playq.c:113
+#: gui_playq.c:114
 msgid "Playing"
 msgstr "Spelar"
 
-#: gui_playq.c:351
+#: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
 msgstr "Ta bort alla låtar från spellistan?"
 
-#: gui_playq.c:362
+#: gui_playq.c:363
 msgid "Randomize the playlist?"
 msgstr "Slumpa spellistan?"
 
-#: gui_playq.c:411
+#: gui_playq.c:412
 msgid "The song is already at the top of the playlist."
 msgstr "Låten är redan överst i spellistan."
 
-#: gui_playq.c:430
+#: gui_playq.c:431
 msgid "The song is already at the bottom of the playlist."
 msgstr "Låten är redan i slutet av spellistan."
+
+#: gui_playq.c:488
+msgid "Failed to adjust the volume."
+msgstr ""
+
+#: gui_playq.c:490
+#, c-format
+msgid "Volume: %d"
+msgstr ""
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
