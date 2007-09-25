@@ -86,11 +86,13 @@ GMutex				*abuflock;
  *        application that a buffer has been processed.
  */
 GCond				*abufdrained;
+#ifdef BUILD_VOLUME
 /**
  * @brief Preferred audio channels used for audio playback. We use it to
  *        set the volume.
  */
 UInt32				achans[2] = { 0, 0 };
+#endif /* BUILD_VOLUME */
 
 /**
  * @brief Pull-function needed by CoreAudio to copy data to the audio
@@ -158,11 +160,13 @@ audio_output_open(void)
 	if (AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyBufferSize, &size, &abuflen) != 0)
 		goto error;
-	
+
+#ifdef BUILD_VOLUME
 	/* Store the audio channels */
 	size = sizeof achans;
 	AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyPreferredChannelsForStereo, &size, &achans);
+#endif /* BUILD_VOLUME */
 
 	/* The buffer size reported is in floats */
 	abuflen /= sizeof(float);
@@ -241,6 +245,7 @@ audio_output_close(void)
 	g_free(abufcur);
 }
 
+#ifdef BUILD_VOLUME
 /**
  * @brief Adjust the audio output by a certain ratio and return the new
  *        value.
@@ -285,3 +290,4 @@ audio_output_volume_down(void)
 {
 	return audio_output_volume_adjust(-0.04);
 }
+#endif /* BUILD_VOLUME */

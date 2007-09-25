@@ -42,10 +42,12 @@
  * @brief File descriptor of the audio device handle.
  */
 static int dev_fd;
+#ifdef BUILD_VOLUME
 /**
  * @brief File descriptor of the mixer device.
  */
 static int mix_fd;
+#endif /* BUILD_VOLUME */
 /**
  * @brief Sample rate of the audio device handle.
  */
@@ -67,9 +69,11 @@ audio_output_open(void)
 		return (-1);
 	}
 
+#ifdef BUILD_VOLUME
 	/* Open the mixer device */
 	dev = config_getopt("audio.output.oss.mixer");
 	mix_fd = open(dev, O_RDWR);
+#endif /* BUILD_VOLUME */
 
 	return (0);
 }
@@ -124,6 +128,7 @@ audio_output_close(void)
 	close(dev_fd);
 }
 
+#ifdef BUILD_VOLUME
 /**
  * @brief Adjust the audio output by a certain percentage and return the
  *        new value.
@@ -162,3 +167,4 @@ audio_output_volume_down(void)
 {
 	return audio_output_volume_adjust(-4);
 }
+#endif /* BUILD_VOLUME */
