@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-24 22:00+0200\n"
+"POT-Creation-Date: 2007-09-25 07:00+0200\n"
 "PO-Revision-Date: 2007-06-12 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:103 audio_output_coreaudio.c:182
 msgid "Cannot open the audio device.\n"
 msgstr "Ní féidir an gléas fuaime a oscailt.\n"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:115
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:209 audio_output_oss.c:115
 msgid "Sample rate or amount of channels not supported."
 msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
 
@@ -125,13 +125,13 @@ msgstr "Tá an t-amhrán seo ag barr an tseinmliosta cheana."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Tá an t-amhrán ag bun an tseinmliosta cheana."
 
-#: gui_playq.c:488
+#: gui_playq.c:491
 msgid "Failed to adjust the volume."
 msgstr ""
 
-#: gui_playq.c:490
+#: gui_playq.c:493
 #, c-format
-msgid "Volume: %d"
+msgid "Volume: %d%%"
 msgstr ""
 
 #: gui_vfslist.c:234

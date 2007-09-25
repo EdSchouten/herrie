@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-24 22:00+0200\n"
+"POT-Creation-Date: 2007-09-25 07:00+0200\n"
 "PO-Revision-Date: 2007-06-19 12:41+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -11,11 +11,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:103 audio_output_coreaudio.c:182
 msgid "Cannot open the audio device.\n"
 msgstr "Ses aygıtı açılamıyor.\n"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:115
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:209 audio_output_oss.c:115
 msgid "Sample rate or amount of channels not supported."
 msgstr "Örnekleme oranı ya da kanal sayısı desteklenmiyor"
 
@@ -121,13 +121,13 @@ msgstr "Parça zaten parça listesinin en üstünde."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Parça zaten parça listesinin en altında."
 
-#: gui_playq.c:488
+#: gui_playq.c:491
 msgid "Failed to adjust the volume."
 msgstr ""
 
-#: gui_playq.c:490
+#: gui_playq.c:493
 #, c-format
-msgid "Volume: %d"
+msgid "Volume: %d%%"
 msgstr ""
 
 #: gui_vfslist.c:234

@@ -90,7 +90,7 @@ GCond				*abufdrained;
  * @brief Preferred audio channels used for audio playback. We use it to
  *        set the volume.
  */
-UInt32				achans[2];
+UInt32				achans[2] = { 0, 0 };
 
 /**
  * @brief Pull-function needed by CoreAudio to copy data to the audio

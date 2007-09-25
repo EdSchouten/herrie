@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-24 22:00+0200\n"
+"POT-Creation-Date: 2007-09-25 07:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:103 audio_output_coreaudio.c:182
 msgid "Cannot open the audio device.\n"
 msgstr ""
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:115
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:209 audio_output_oss.c:115
 msgid "Sample rate or amount of channels not supported."
 msgstr ""
 
@@ -126,13 +126,13 @@ msgstr ""
 msgid "The song is already at the bottom of the playlist."
 msgstr ""
 
-#: gui_playq.c:488
+#: gui_playq.c:491
 msgid "Failed to adjust the volume."
 msgstr ""
 
-#: gui_playq.c:490
+#: gui_playq.c:493
 #, c-format
-msgid "Volume: %d"
+msgid "Volume: %d%%"
 msgstr ""
 
 #: gui_vfslist.c:234

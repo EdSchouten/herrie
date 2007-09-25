@@ -479,6 +479,9 @@ gui_playq_fullpath(void)
 }
 
 #ifdef BUILD_VOLUME
+/**
+ * @brief Show the result of the volume setting routines.
+ */
 static void
 gui_playq_volume_show(int new)
 {
@@ -487,7 +490,7 @@ gui_playq_volume_show(int new)
 	if (new < 0) {
 		gui_msgbar_warn(_("Failed to adjust the volume."));
 	} else {
-		str = g_strdup_printf(_("Volume: %d"), new);
+		str = g_strdup_printf(_("Volume: %d%%"), new);
 		gui_msgbar_warn(str);
 		g_free(str);
 	}

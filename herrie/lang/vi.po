@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-24 22:00+0200\n"
+"POT-Creation-Date: 2007-09-25 07:00+0200\n"
 "PO-Revision-Date: 2007-07-14 16:12+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:172
+#: audio_output_alsa.c:103 audio_output_coreaudio.c:182
 msgid "Cannot open the audio device.\n"
 msgstr "Không thể mở thiết bị âm thanh.\n"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:199 audio_output_oss.c:115
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:209 audio_output_oss.c:115
 msgid "Sample rate or amount of channels not supported."
 msgstr "Không hỗ trợ tần số lấy mẫu hay tổng số kênh."
 
@@ -125,13 +125,13 @@ msgstr "Bài hát này đã ở đầu của danh mục nhạc."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Bài hát này đã ở cuối của danh mục nhạc."
 
-#: gui_playq.c:488
+#: gui_playq.c:491
 msgid "Failed to adjust the volume."
 msgstr ""
 
-#: gui_playq.c:490
+#: gui_playq.c:493
 #, c-format
-msgid "Volume: %d"
+msgid "Volume: %d%%"
 msgstr ""
 
 #: gui_vfslist.c:234
