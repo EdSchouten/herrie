@@ -30,6 +30,7 @@ AudioScrobbler:
 Virtual filesystem:
 - Add some kind of 'recursive' VFS: playlists on HTTP
 - Perform more testing on XSPF compliance
+- Add custom sorting to VFS directory support, i.e. by date
 
 Documentation:
 - Usage guide
