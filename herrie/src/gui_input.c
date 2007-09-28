@@ -368,7 +368,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, 'h',			gui_browser_dir_parent },
 	{ -1, 'i',			gui_browser_playq_add_before },
 	{ -1, 'I',			gui_browser_playq_add_head },
-	{ -1, 'J',			gui_input_cursong_seek_jump }, /* ^J */
+	{ -1, 'J',			gui_input_cursong_seek_jump },
 	{ -1, 'l',			gui_browser_dir_enter },
 	{ -1, 'q',			gui_input_askquit },
 	{ -1, 'r',			playq_repeat_toggle },
