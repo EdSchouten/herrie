@@ -30,8 +30,8 @@
 
 #include "stdinc.h"
 
-#include "audio_output.h"
 #include "audio_file.h"
+#include "audio_output.h"
 #include "gui.h"
 #include "gui_internal.h"
 #include "gui_vfslist.h"
