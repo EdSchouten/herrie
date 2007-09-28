@@ -393,8 +393,8 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_BROWSER, 'g',	gui_browser_cursor_top },
 	{ GUI_FOCUS_BROWSER, 'j',	gui_browser_cursor_down },
 	{ GUI_FOCUS_BROWSER, 'k',	gui_browser_cursor_up },
-	{ GUI_FOCUS_BROWSER, 0x02,	gui_browser_cursor_pageup }, /* ^B */
-	{ GUI_FOCUS_BROWSER, 0x06,	gui_browser_cursor_pagedown }, /* ^F */
+	{ GUI_FOCUS_BROWSER, 0x02 /* ^B */, gui_browser_cursor_pageup },
+	{ GUI_FOCUS_BROWSER, 0x06 /* ^F */, gui_browser_cursor_pagedown },
 	{ GUI_FOCUS_BROWSER, KEY_DOWN,	gui_browser_cursor_down },
 	{ GUI_FOCUS_BROWSER, KEY_END,	gui_browser_cursor_bottom },
 	{ GUI_FOCUS_BROWSER, KEY_HOME,	gui_browser_cursor_top },
@@ -409,8 +409,8 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_PLAYQ, 'g',		gui_playq_cursor_top },
 	{ GUI_FOCUS_PLAYQ, 'j',		gui_playq_cursor_down },
 	{ GUI_FOCUS_PLAYQ, 'k',		gui_playq_cursor_up },
-	{ GUI_FOCUS_PLAYQ, 0x02,	gui_playq_cursor_pageup }, /* ^B */
-	{ GUI_FOCUS_PLAYQ, 0x06,	gui_playq_cursor_pagedown }, /* ^F */
+	{ GUI_FOCUS_PLAYQ, 0x02 /* ^B */, gui_playq_cursor_pageup },
+	{ GUI_FOCUS_PLAYQ, 0x06 /* ^F */, gui_playq_cursor_pagedown },
 	{ GUI_FOCUS_PLAYQ, KEY_DOWN,	gui_playq_cursor_down },
 	{ GUI_FOCUS_PLAYQ, KEY_END,	gui_playq_cursor_bottom },
 	{ GUI_FOCUS_PLAYQ, KEY_HOME,	gui_playq_cursor_top },
