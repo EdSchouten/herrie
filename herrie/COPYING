@@ -28,13 +28,8 @@ Almost all sourcecode in this package is subject to the following license:
 
 Some of the libraries used by this application are licensed under the
 GNU GPL, namely libmad, libid3tag and libao. This means that a compiled
-executable of Herrie with MP3 support or AO audio output (OS X, Alsa,
-Cygwin, etc) is subject to the GNU GPL.
-
-Thanks to the people at Dispuut Interlink (http://www.il.fontys.nl/) for
-their testing and hosting services. I would like to thank Martijn van
-den Dungen <martijn@il.fontys.nl> for contributing code to Herrie in the
-past.
+executable of Herrie with MP3 support or AO audio output is subject to
+the GNU GPL.
 
 This application also includes source code for the MD5 message-digest
 algorithm. Its license is as follows:
@@ -63,3 +58,8 @@ algorithm. Its license is as follows:
  * These notices must be retained in any copies of any part of this
  * documentation and/or software.
  */
+
+Thanks to the people at Dispuut Interlink (http://www.il.fontys.nl/) for
+their testing and hosting services. I would like to thank Martijn van
+den Dungen <martijn@il.fontys.nl> for contributing code to Herrie in the
+past.
