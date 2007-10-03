@@ -287,16 +287,16 @@ scrobbler_hash(time_t t, char out[32])
 {
 	char tstr[16];
 	unsigned char bin_res[16];
-	MD5_CTX ctx;
+	struct md5_context ctx;
 
 	/*
 	 * Generate the new MD5 value
 	 */
-	MD5Init(&ctx);
-	MD5Update(&ctx, config_getopt("scrobbler.password"), 32);
+	md5_init(&ctx);
+	md5_update(&ctx, config_getopt("scrobbler.password"), 32);
 	sprintf(tstr, "%u", (unsigned int)t);
-	MD5Update(&ctx, tstr, strlen(tstr));
-	MD5Final(bin_res, &ctx);
+	md5_update(&ctx, tstr, strlen(tstr));
+	md5_final(&ctx, bin_res);
 
 	/*
 	 * Convert the result back to hexadecimal string

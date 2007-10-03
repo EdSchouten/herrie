@@ -1,4 +1,4 @@
-Almost all sourcecode in this package is subject to the following license:
+All sourcecode in this package is subject to the following license:
 
 /*
  * Copyright (c) 2006-2007 Ed Schouten <ed@fxq.nl>
@@ -30,34 +30,6 @@ Some of the libraries used by this application are licensed under the
 GNU GPL, namely libmad, libid3tag and libao. This means that a compiled
 executable of Herrie with MP3 support or AO audio output is subject to
 the GNU GPL.
-
-This application also includes source code for the MD5 message-digest
-algorithm. Its license is as follows:
-
-/*
- * MD5.h - RSA Data Security, Inc., MD5 message-digest algorithm
- *
- * Copyright (C) 1991-2, RSA Data Security, Inc. Created 1991. All
- * rights reserved.
- *
- * License to copy and use this software is granted provided that it
- * is identified as the "RSA Data Security, Inc. MD5 Message-Digest
- * Algorithm" in all material mentioning or referencing this software
- * or this function.
- *
- * License is also granted to make and use derivative works provided
- * that such works are identified as "derived from the RSA Data
- * Security, Inc. MD5 Message-Digest Algorithm" in all material
- * mentioning or referencing the derived work.
- *
- * RSA Data Security, Inc. makes no representations concerning either
- * the merchantability of this software or the suitability of this
- * software for any particular purpose. It is provided "as is"
- * without express or implied warranty of any kind.
- *
- * These notices must be retained in any copies of any part of this
- * documentation and/or software.
- */
 
 Thanks to the people at Dispuut Interlink (http://www.il.fontys.nl/) for
 their testing and hosting services. I would like to thank Martijn van

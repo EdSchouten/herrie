@@ -49,9 +49,6 @@
 #include <sys/ioctl.h>
 #include OSS_HEADER
 #endif /* BUILD_OSS */
-#if defined(BUILD_SCROBBLER) && !defined(BUILD_MD5_INTERNAL)
-#include <md5.h>
-#endif /* BUILD_SCROBBLER && !BUILD_MD5_INTERNAL */
 #ifdef BUILD_SNDFILE
 #include <sndfile.h>
 #endif /* BUILD_SNDFILE */
