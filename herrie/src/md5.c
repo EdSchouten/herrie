@@ -41,6 +41,7 @@ md5_encode(uint32_t *dst, const uint32_t *src)
 {
 	size_t i;
 
+	/* Convert data to little endian */
 	for (i = 0; i < 4; i++)
 		dst[i] = GUINT32_TO_LE(src[i]);
 }
