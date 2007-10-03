@@ -31,14 +31,35 @@
 #ifndef _MD5_H_
 #define _MD5_H_
 
+/**
+ * @brief Internal state of the MD5 hash calculation.
+ */
 struct md5_context {
+	/**
+	 * @brief Buffer to store partial 64 byte frames.
+	 */
 	uint32_t buf[16];
+	/**
+	 * @brief MD5 hash of the partially hashed stream.
+	 */
 	uint32_t state[4];
+	/**
+	 * @brief Amount of bytes that have been hashed.
+	 */
 	uint64_t count;
 };
 
+/**
+ * @brief Initialize the MD5 hash state structure.
+ */
 void md5_init(struct md5_context *m);
+/**
+ * @brief Update the hash value by appending a buffer.
+ */
 void md5_update(struct md5_context *m, const void *buf, size_t len);
+/**
+ * @brief Finalize the hash value and return its hash value.
+ */
 void md5_final(struct md5_context *m, unsigned char out[16]);
 
 #endif /* !_MD5_H_ */

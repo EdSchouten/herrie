@@ -69,6 +69,9 @@ md5_decode(uint32_t *dst, const uint32_t *src)
 	w += x;					\
 } while(0)
 
+/**
+ * @brief Hash a 64 byte chunk and add it to the old hash value.
+ */
 static void
 md5_transform(uint32_t state[4], const uint32_t buf[16])
 {
