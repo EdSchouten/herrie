@@ -173,13 +173,14 @@ md5_init(struct md5_context *m)
 void
 md5_update(struct md5_context *m, const void *buf, size_t len)
 {
-	unsigned char *b;
+	unsigned char *b, *ib;
 	size_t blen, left, clen;
 
 	/* Store how many bytes we process and obtain the buffer length */
 	b = (unsigned char *)m->buf;
 	blen = m->count & 0x3f;
 	m->count += len;
+	ib = (unsigned char *)buf;
 
 	/* Finish off an incomplete chunk first if we must */
 	if (blen != 0) {
@@ -188,7 +189,7 @@ md5_update(struct md5_context *m, const void *buf, size_t len)
 		/* How many bytes we're going to copy */
 		clen = MIN(left, len);
 
-		memcpy(b + blen, buf, clen);
+		memcpy(b + blen, ib, clen);
 		/* This still doesn't make up for a full block */
 		if (len < left)
 			return;
@@ -197,25 +198,25 @@ md5_update(struct md5_context *m, const void *buf, size_t len)
 		md5_decode(m->buf, m->buf);
 #endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 		md5_transform(m->state, m->buf);
-		buf += clen;
+		ib += clen;
 		len -= clen;
 	}
 
 	/* Handle the data in 64 byte chunks */
 	while (len >= 64) {
 #if G_BYTE_ORDER == G_LITTLE_ENDIAN
-		md5_transform(m->state, buf);
+		md5_transform(m->state, ib);
 #else /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
-		md5_decode(m->buf, buf);
+		md5_decode(m->buf, (uint32_t *)ib);
 		md5_transform(m->state, m->buf);
 #endif /* G_BYTE_ORDER == G_LITTLE_ENDIAN */
-		buf += 64;
+		ib += 64;
 		len -= 64;
 	}
 
 	/* Copy in the last partial frame */
 	g_assert(len < 64);
-	memcpy(m->buf, buf, len);
+	memcpy(m->buf, ib, len);
 }
 
 void
