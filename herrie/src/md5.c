@@ -64,8 +64,8 @@ md5_decode(uint32_t *buf)
 #endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 }
 
-#define md5_f(x, y, z)	((x & y) | (~x & z))
-#define md5_g(x, y, z)	((x & z) | (y & ~z))
+#define md5_f(x, y, z)	(z ^ (x & (y ^ z)))
+#define md5_g(x, y, z)	(y ^ (z & (x ^ y)))
 #define md5_h(x, y, z)	(x ^ y ^ z)
 #define md5_i(x, y, z)	(y ^ (x | ~z))
 #define md5_step(f, w, x, y, z, d, s) do {	\
