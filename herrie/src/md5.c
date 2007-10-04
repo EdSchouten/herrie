@@ -36,7 +36,7 @@
  * @brief Encode data from native byte ordering.
  */
 static inline void
-md5_encode(uint32_t *dst, const uint32_t *src)
+md5_encode(uint32_t dst[4], const uint32_t src[4])
 {
 #if G_BYTE_ORDER == G_LITTLE_ENDIAN
 	memcpy(dst, src, 16);
@@ -53,7 +53,7 @@ md5_encode(uint32_t *dst, const uint32_t *src)
  * @brief Decode data to native byte ordering.
  */
 static inline void
-md5_decode(uint32_t *buf)
+md5_decode(uint32_t buf[16])
 {
 #if G_BYTE_ORDER != G_LITTLE_ENDIAN
 	size_t i;
