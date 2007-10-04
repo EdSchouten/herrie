@@ -32,33 +32,37 @@
 
 #include "md5.h"
 
-#if G_BYTE_ORDER != G_LITTLE_ENDIAN
 /**
  * @brief Encode data from native byte ordering.
  */
 static inline void
 md5_encode(uint32_t *dst, const uint32_t *src)
 {
+#if G_BYTE_ORDER == G_LITTLE_ENDIAN
+	memcpy(dst, src, 16);
+#else /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 	size_t i;
 
 	/* Convert data to little endian */
 	for (i = 0; i < 4; i++)
 		dst[i] = GUINT32_TO_LE(src[i]);
+#endif /* G_BYTE_ORDER == G_LITTLE_ENDIAN */
 }
 
 /**
  * @brief Decode data to native byte ordering.
  */
 static inline void
-md5_decode(uint32_t *dst, const uint32_t *src)
+md5_decode(uint32_t *buf)
 {
+#if G_BYTE_ORDER != G_LITTLE_ENDIAN
 	size_t i;
 
 	/* Convert data from little endian */
 	for (i = 0; i < 16; i++)
-		dst[i] = GUINT32_FROM_LE(src[i]);
-}
+		buf[i] = GUINT32_FROM_LE(buf[i]);
 #endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
+}
 
 #define md5_f(x, y, z)	((x & y) | (~x & z))
 #define md5_g(x, y, z)	((x & z) | (y & ~z))
@@ -194,9 +198,7 @@ md5_update(struct md5_context *m, const void *buf, size_t len)
 		if (len < left)
 			return;
 
-#if G_BYTE_ORDER != G_LITTLE_ENDIAN
-		md5_decode(m->buf, m->buf);
-#endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
+		md5_decode(m->buf);
 		md5_transform(m->state, m->buf);
 		ib += clen;
 		len -= clen;
@@ -204,18 +206,14 @@ md5_update(struct md5_context *m, const void *buf, size_t len)
 
 	/* Handle the data in 64 byte chunks */
 	while (len >= 64) {
-#if G_BYTE_ORDER == G_LITTLE_ENDIAN
-		md5_transform(m->state, (uint32_t *)ib);
-#else /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
-		md5_decode(m->buf, (uint32_t *)ib);
+		memcpy(m->buf, ib, 64);
+		md5_decode(m->buf);
 		md5_transform(m->state, m->buf);
-#endif /* G_BYTE_ORDER == G_LITTLE_ENDIAN */
 		ib += 64;
 		len -= 64;
 	}
 
 	/* Copy in the last partial frame */
-	g_assert(len < 64);
 	memcpy(m->buf, ib, len);
 }
 
@@ -233,9 +231,7 @@ md5_final(struct md5_context *m, unsigned char out[16])
 	if (blen > 56) {
 		/* We can't fit the length. Allocate an extra block. */
 		memset(b + blen, 0, 64 - blen);
-#if G_BYTE_ORDER != G_LITTLE_ENDIAN
-		md5_decode(m->buf, m->buf);
-#endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
+		md5_decode(m->buf);
 		md5_transform(m->state, m->buf);
 
 		/* Add a new zero-block */
@@ -243,9 +239,7 @@ md5_final(struct md5_context *m, unsigned char out[16])
 	} else {
 		/* The length will fit */
 		memset(b + blen, 0, 56 - blen);
-#if G_BYTE_ORDER != G_LITTLE_ENDIAN
-		md5_decode(m->buf, m->buf);
-#endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
+		md5_decode(m->buf);
 	}
 
 	/* Store the length in bits in the hash as well */
@@ -254,10 +248,6 @@ md5_final(struct md5_context *m, unsigned char out[16])
 	md5_transform(m->state, m->buf);
 
 	/* Copy out the hash and zero our internal storage */
-#if G_BYTE_ORDER == G_LITTLE_ENDIAN
-	memcpy(out, m->state, 16);
-#else /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 	md5_encode((uint32_t *)out, m->state);
-#endif /* G_BYTE_ORDER == G_LITTLE_ENDIAN */
 	memset(m, 0, sizeof(struct md5_context));
 }
