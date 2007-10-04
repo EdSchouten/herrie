@@ -205,7 +205,7 @@ md5_update(struct md5_context *m, const void *buf, size_t len)
 	/* Handle the data in 64 byte chunks */
 	while (len >= 64) {
 #if G_BYTE_ORDER == G_LITTLE_ENDIAN
-		md5_transform(m->state, ib);
+		md5_transform(m->state, (uint32_t *)ib);
 #else /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 		md5_decode(m->buf, (uint32_t *)ib);
 		md5_transform(m->state, m->buf);
