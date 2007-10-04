@@ -527,6 +527,7 @@ scrobbler_runner_thread(void *unused)
 	}
 	
 	/* NOTREACHED */
+	return (NULL);
 }
 
 void
