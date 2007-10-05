@@ -66,10 +66,9 @@ Herrie:
 - ncursesw, ncurses or pdcurses (`XCurses')
 - pulseaudio (optional)
 
-Please note that some dependencies can be disabled. OpenSSL and cURL are
-only needed when compiling with AudioScrobbler or HTTP support. LibAO
-and PulseAudio are only needed when building the `ao' or `pulse' audio
-output driver.
+Please note that some dependencies can be disabled. cURL is only needed
+when compiling with AudioScrobbler or HTTP support. LibAO and PulseAudio
+are only needed when building the `ao' or `pulse' audio output driver.
 
 How do I compile and install Herrie?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
