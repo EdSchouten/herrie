@@ -30,7 +30,7 @@ APP_VERSION=1.8.4
 APP_LINGUAS='de ga nl pl ru sv tr vi'
 
 # Default compilation switches
-CFG_AO=ao
+CFG_AO=oss
 unset CFG_BINEXT
 CFG_CURSES_HEADER=ncurses
 CFG_CURSES_LIB=ncursesw
@@ -52,7 +52,8 @@ DOIT=@
 # Operating system defaults
 [ "$OS" != "" ] || OS=`uname`
 case $OS in
-CYGWIN*)
+CYGWIN*|Windows_*)
+	CFG_BINEXT=.exe
 	unset CFG_HTTP
 	unset CFG_RES_INIT
 	[ "$CONFDIR" = "" ] && CONFDIR=/etc
@@ -64,7 +65,6 @@ Darwin)
 	[ "$PREFIX" = "" ] && PREFIX=/opt/local
 	;;
 FreeBSD)
-	CFG_AO=oss
 	CFG_SETPROCTITLE=yes
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
@@ -75,17 +75,16 @@ Linux)
 	[ "$PREFIX" = "" ] && PREFIX=/usr
 	;;
 NetBSD)
-	CFG_AO=oss
 	CFG_SETPROCTITLE=yes
 	[ "$PREFIX" = "" ] && PREFIX=/usr/pkg
 	;;
 OpenBSD)
-	CFG_AO=oss
 	CFG_SETPROCTITLE=yes
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
 	;;
 SunOS)
+	CFG_AO=ao
 	unset CFG_HTTP
 	[ "$PREFIX" = "" ] && PREFIX=/opt/sfw
 	LDFLAGS="$LDFLAGS -lresolv"
@@ -103,6 +102,7 @@ Windows)
 	;;
 *)
 	echo "Warning: unknown operating system"
+	CFG_AO=ao
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 esac
 SRCDIR=`dirname $0`
