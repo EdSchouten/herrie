@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-25 07:00+0200\n"
-"PO-Revision-Date: 2007-06-21 11:06+0200\n"
+"PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -128,12 +128,12 @@ msgstr "Låten är redan i slutet av spellistan."
 
 #: gui_playq.c:491
 msgid "Failed to adjust the volume."
-msgstr ""
+msgstr "Misslyckades med att justera volymen."
 
 #: gui_playq.c:493
 #, c-format
 msgid "Volume: %d%%"
-msgstr ""
+msgstr "Volym: %d%%"
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
