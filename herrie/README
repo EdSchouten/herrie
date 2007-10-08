@@ -52,23 +52,23 @@ library. It also uses some libraries for audio decompression and such.
 Below is a list of libraries you should install prior to compiling
 Herrie:
 
-- gettext
+- gettext (NLS, optional)
 - glib
 - libasound (ALSA, optional)
-- libao (optional)
-- libcurl
-- libid3tag
-- libmad
-- libmodplug
-- libsndfile
-- libspiff (0.6.3 or higher - optional)
-- libvorbisfile
+- libao (AO, optional)
+- libcurl (HTTP and AudioScrobbler, optional)
+- libid3tag (MP3, optional)
+- libmad (MP3, optional)
+- libmodplug (optional)
+- libsndfile (optional)
+- libspiff (XSPF support, requires 0.6.3 or higher, optional)
+- libvorbisfile (optional)
 - ncursesw, ncurses or pdcurses (`XCurses')
 - pulseaudio (optional)
 
-Please note that some dependencies can be disabled. cURL is only needed
-when compiling with AudioScrobbler or HTTP support. LibAO and PulseAudio
-are only needed when building the `ao' or `pulse' audio output driver.
+All optional dependencies can be disabled using the corresponding
+switches below. On Debian-like systems, make sure to install all the
+appropriate -dev packages.
 
 How do I compile and install Herrie?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
