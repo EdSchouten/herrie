@@ -287,12 +287,11 @@ scrobbler_hash(time_t t, char out[32])
 {
 	char tstr[16];
 	unsigned char bin_res[16];
-	struct md5_context ctx;
+	struct md5_context ctx = MD5CONTEXT_INITIALIZER;
 
 	/*
 	 * Generate the new MD5 value
 	 */
-	md5_init(&ctx);
 	md5_update(&ctx, config_getopt("scrobbler.password"), 32);
 	sprintf(tstr, "%u", (unsigned int)t);
 	md5_update(&ctx, tstr, strlen(tstr));

@@ -50,9 +50,10 @@ struct md5_context {
 };
 
 /**
- * @brief Initialize the MD5 hash state structure.
+ * @brief Contents of an initialized MD5 context.
  */
-void md5_init(struct md5_context *m);
+#define MD5CONTEXT_INITIALIZER \
+	{ { 0 }, { 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476 }, 0 }
 /**
  * @brief Update the hash value by appending a buffer.
  */

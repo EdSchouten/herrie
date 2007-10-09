@@ -162,19 +162,6 @@ md5_transform(uint32_t state[4], const uint32_t buf[16])
 }
 
 void
-md5_init(struct md5_context *m)
-{
-	/* Initialize the state with our magic constants */
-	m->state[0] = 0x67452301;
-	m->state[1] = 0xefcdab89;
-	m->state[2] = 0x98badcfe;
-	m->state[3] = 0x10325476;
-
-	/* We start with nothing */
-	m->count = 0;
-}
-
-void
 md5_update(struct md5_context *m, const void *buf, size_t len)
 {
 	unsigned char *b, *ib;
