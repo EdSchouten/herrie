@@ -254,7 +254,7 @@ fi
 # Remove all broken translations
 unset CFG_LINGUAS
 unset MOS
-for i in $LINGUAS
+for i in `echo $LINGUAS | xargs -n 1 | sort | uniq`
 do
 	for j in $APP_LINGUAS
 	do
