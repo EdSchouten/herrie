@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-25 07:00+0200\n"
-"PO-Revision-Date: 2007-06-12 07:53-0500\n"
+"PO-Revision-Date: 2007-09-29 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -127,12 +127,12 @@ msgstr "Tá an t-amhrán ag bun an tseinmliosta cheana."
 
 #: gui_playq.c:491
 msgid "Failed to adjust the volume."
-msgstr ""
+msgstr "Theip ar an airde a athrú."
 
 #: gui_playq.c:493
 #, c-format
 msgid "Volume: %d%%"
-msgstr ""
+msgstr "Airde: %d%%"
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
