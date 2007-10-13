@@ -1,12 +1,14 @@
-# 
+# translation of tr.po by
+#
+# Eren Türkay <turkay.eren@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: herrie\n"
+"Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-25 07:00+0200\n"
-"PO-Revision-Date: 2007-06-19 12:41+0200\n"
+"PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
-"Language-Team: Turkish <turkce@pardus.org.tr>\n"
+"Language-Team:  <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -123,12 +125,12 @@ msgstr "Parça zaten parça listesinin en altında."
 
 #: gui_playq.c:491
 msgid "Failed to adjust the volume."
-msgstr ""
+msgstr "Ses ayarlanamadı"
 
 #: gui_playq.c:493
 #, c-format
 msgid "Volume: %d%%"
-msgstr ""
+msgstr "Ses: %d%%"
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
