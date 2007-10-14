@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-25 07:00+0200\n"
-"PO-Revision-Date: 2007-06-21 01:46+0200\n"
+"PO-Revision-Date: 2007-10-14 09:14+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
 "MIME-Version: 1.0\n"
@@ -122,12 +122,12 @@ msgstr "Dieses Lied ist bereits ganz am Ende."
 
 #: gui_playq.c:491
 msgid "Failed to adjust the volume."
-msgstr ""
+msgstr "Ändern der Lautstärke fehlgeschlagen."
 
 #: gui_playq.c:493
 #, c-format
 msgid "Volume: %d%%"
-msgstr ""
+msgstr "Lautstärke: %d%%"
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
