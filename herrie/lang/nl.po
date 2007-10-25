@@ -125,6 +125,7 @@ msgid "Failed to adjust the volume."
 msgstr "Bijstellen van het volume mislukt."
 
 #: gui_playq.c:493
+#, c-format
 msgid "Volume: %d%%"
 msgstr "Volume: %d%%"
 
