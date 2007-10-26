@@ -178,8 +178,8 @@ done
 [ "$CFLAGS" = "" ] && CFLAGS="-O"
 CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
     -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
-    -I$PREFIX/include -I$PREFIX/include/ncurses \
-    -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\>"
+    -I$PREFIX/include -I$PREFIX/include/ncursesw \
+    -I$PREFIX/include/ncurses -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\>"
 if [ $? -ne 0 ]
 then
 	echo "Error: Glib not found"
