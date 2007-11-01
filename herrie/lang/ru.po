@@ -1,3 +1,5 @@
+# translation of ru.po to
+# Moroz Sergey L. <se.seam@gmail.com>, 2007.
 # translation of herrie.pot to Russian
 # Copyright (C) 2007 Moroz Sergey L. <se.seam@gmail.com>
 # This file is distributed under the same license as the herrie package.
@@ -6,9 +8,9 @@ msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-25 07:00+0200\n"
-"PO-Revision-Date: 2007-07-01 22:48+0300\n"
+"PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
-"Language-Team: Russian translation project <ru@li.org>\n"
+"Language-Team:  <se.seam@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -125,12 +127,12 @@ msgstr "Композиция уже в конце списка."
 
 #: gui_playq.c:491
 msgid "Failed to adjust the volume."
-msgstr ""
+msgstr "Невозможно прибавить громкость."
 
 #: gui_playq.c:493
 #, c-format
 msgid "Volume: %d%%"
-msgstr ""
+msgstr "Громкость: %d%%"
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
