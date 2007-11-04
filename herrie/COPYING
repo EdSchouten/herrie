@@ -28,8 +28,9 @@ All sourcecode in this package is subject to the following license:
 
 Some of the libraries used by this application are licensed under the
 GNU GPL, namely libmad, libid3tag and libao. This means that a compiled
-executable of Herrie with MP3 support or AO audio output is subject to
-the GNU GPL.
+executable of Herrie with MP3 support, libsndfile support or AO audio
+output could be subject to the GNU GPL. Please run `herrie -v' to obtain
+the applicable license.
 
 Thanks to the people at Dispuut Interlink (http://www.il.fontys.nl/) for
 their testing and hosting services. I would like to thank Martijn van
