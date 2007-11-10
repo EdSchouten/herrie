@@ -50,21 +50,21 @@
  * @brief Flag indicating if the AudioScrobbler thread has already been
  *        launched, causing the submission queue to be filled.
  */
-static char scrobbler_enabled = 0;
+static char	scrobbler_enabled = 0;
 
 /**
  * @brief Lock used to provide safe access to the AudioScrobbler queue.
  */
-static GMutex 			*scrobbler_lock;
+static GMutex 	*scrobbler_lock;
 /**
  * @brief Conditional variable used to notify the avaiability of new
  *        tracks ready for submission to AudioScrobbler.
  */
-static GCond			*scrobbler_avail;
+static GCond	*scrobbler_avail;
 /**
  * @brief Reference to AudioScrobbler submission thread.
  */
-static GThread			*scrobbler_runner;
+static GThread	*scrobbler_runner;
 
 /**
  * @brief An entry in the AudioScrobbler queue, ready to be submitted to
