@@ -108,6 +108,10 @@ static GCond		*playq_wakeup;
  */
 static GThread		*playq_runner;
 /**
+ * @brief Randomizer used for shuffling the playlist.
+ */
+static GRand		*playq_rand;
+/**
  * @brief Quit the playback thread.
  */
 #define PF_QUIT		0x01
@@ -238,6 +242,7 @@ playq_init(int xmms)
 
 	playq_mtx = g_mutex_new();
 	playq_wakeup = g_cond_new();
+	playq_rand = g_rand_new(); /* XXX: /dev/urandom in chroot() */
 
 	if (xmms || config_getopt_bool("playq.xmms")) {
 		funcs = &xmms_funcs;
@@ -541,7 +546,7 @@ playq_song_randomize(void)
 
 	do {
 		/* Pick a random item from the beginning */
-		idx = g_random_int_range(0, remaining);
+		idx = g_rand_int_range(playq_rand, 0, remaining);
 		
 		/* Add it to the list */
 		vfs_list_insert_tail(&playq_list, vrlist[idx]);
