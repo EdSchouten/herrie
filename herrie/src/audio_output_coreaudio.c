@@ -57,6 +57,14 @@ AudioDeviceID			adid;
  * @brief The stream format used by the CoreAudio device.
  */
 AudioStreamBasicDescription	afmt;
+#ifdef MAC_OS_X_VERSION_10_5
+/**
+ * @brief The IO-process ID.
+ */
+AudioDeviceIOProcID		aprocid;
+#else /* !MAC_OS_X_VERSION_10_5 */
+#define aprocid			audio_output_ioproc
+#endif /* MAC_OS_X_VERSION_10_5 */
 
 /**
  * @brief The buffer that will be played when the current buffer is
@@ -110,7 +118,7 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 	/* Stop the IOProc handling if we're going idle */
 	len = g_atomic_int_get(&abufulen);
 	if (len == 0)
-		AudioDeviceStop(adid, audio_output_ioproc);
+		AudioDeviceStop(adid, aprocid);
 
 	/* Convert the data to floats */
 	for (i = 0; i < len; i++)
@@ -178,7 +186,12 @@ audio_output_open(void)
 	abufdrained = g_cond_new();
 
 	/* Add our own I/O handling routine */
+#ifdef MAC_OS_X_VERSION_10_5
+	if (AudioDeviceCreateIOProcID(adid, audio_output_ioproc, NULL,
+	    &aprocid) != 0)
+#else /* !MAC_OS_X_VERSION_10_5 */
 	if (AudioDeviceAddIOProc(adid, audio_output_ioproc, NULL) != 0)
+#endif /* MAC_OS_X_VERSION_10_5 */
 		goto error;
 
 	return (0);
@@ -230,7 +243,7 @@ audio_output_play(struct audio_file *fd)
 	g_atomic_int_set(&abufulen, len);
 
 	/* Start processing of the data */
-	AudioDeviceStart(adid, audio_output_ioproc);
+	AudioDeviceStart(adid, aprocid);
 
 	return (0);
 }
@@ -238,8 +251,12 @@ audio_output_play(struct audio_file *fd)
 void
 audio_output_close(void)
 {
-	AudioDeviceStop(adid, audio_output_ioproc);
-	AudioDeviceRemoveIOProc(adid, audio_output_ioproc);
+	AudioDeviceStop(adid, aprocid);
+#ifdef MAC_OS_X_VERSION_10_5
+	AudioDeviceDestroyIOProcID(adid, aprocid);
+#else /* !MAC_OS_X_VERSION_10_5 */
+	AudioDeviceRemoveIOProc(adid, aprocid);
+#endif /* MAC_OS_X_VERSION_10_5 */
 
 	g_free(abufnew);
 	g_free(abufcur);
