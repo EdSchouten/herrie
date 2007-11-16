@@ -1,7 +1,7 @@
 ????-??-?? -- Herrie 1.9:
  * Added: Support for changing the volume
  * Improved: Make license of MD5 code in sync with the rest
- * Improved: Remove deprecated CoreAudio calls on Leopard
+ * Improved: Avoid deprecated CoreAudio calls on Leopard
 
 2007-09-23 -- Herrie 1.8.4:
  * Improved: Support for the new AudioScrobbler protocol
