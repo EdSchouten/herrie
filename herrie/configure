@@ -378,6 +378,8 @@ clean:
 distclean: clean
 	# Removing Makefile
 	${DOIT}rm -f Makefile
+Makefile: $0
+	# WARNING: Your Makefile is older than $0!
 install: all
 	# Installing \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
 	${DOIT}mkdir -p \$(DESTDIR)$BINDIR
