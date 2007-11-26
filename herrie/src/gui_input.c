@@ -67,6 +67,11 @@ static regex_t cursearchregex;
  * @brief The last seek string that has been entered.
  */
 static char *curseek = NULL;
+/**
+ * @brief Determine if we're already trying to shut down, to prevent
+ *        multiple signals being handled while quitting.
+ */
+static int shutting_down = 0;
 
 static void gui_input_search(void);
 
@@ -207,6 +212,8 @@ gui_input_search(void)
 static void
 gui_input_quit(void)
 {
+	shutting_down = 1;
+
 	playq_shutdown();
 #ifdef BUILD_SCROBBLER
 	scrobbler_shutdown();
@@ -451,6 +458,9 @@ gui_input_sigmask(void)
 static void
 gui_input_sighandler(int signal)
 {
+	if (shutting_down)
+		return;
+
 	switch (signal) {
 	case SIGUSR1:
 		playq_cursong_pause();
