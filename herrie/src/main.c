@@ -200,6 +200,6 @@ main(int argc, char *argv[])
 
 	/* And off we go! */
 	gui_input_loop();
-	/* NOTREACHED */
+	g_assert_not_reached();
 	return (1);
 }

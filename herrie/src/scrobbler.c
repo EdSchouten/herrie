@@ -525,7 +525,7 @@ scrobbler_runner_thread(void *unused)
 		g_usleep(interval * 1000000);
 	}
 	
-	/* NOTREACHED */
+	g_assert_not_reached();
 	return (NULL);
 }
 
