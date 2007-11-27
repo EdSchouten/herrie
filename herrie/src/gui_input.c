@@ -81,31 +81,40 @@ static void gui_input_search(void);
 
 /**
  * @brief Fetch a character from the keyboard, already processing
- *        terminal resizes.
+ *        terminal resizes and awkward bugs.
  */
 static int
 gui_input_getch(void)
 {
 	int ch;
 
-	do {
+	for (;;) {
 		ch = getch();
-		/* Redraw everything when we get KEY_RESIZE or ^L */
-		if (ch == KEY_RESIZE || ch == CTRL('L')) {
+
+		switch (ch) {
+		/* Redraw everything when resizing */
+		case KEY_RESIZE:
+		case CTRL('L'):
 			gui_draw_resize();
-			ch = ERR;
+			continue;
+
+		/* Catch backspace button */
+		case CTRL('H'):
+		case CTRL('?'):
+			return (KEY_BACKSPACE);
+
+		/* FreeBSD returns KEY_SELECT instead of KEY_END */
+		case KEY_SELECT:
+			return (KEY_END);
+
+		/* Try again */
+		case ERR:
+			continue;
 		}
-	} while (ch == ERR);
 
-	/* End-key on xBSD is select? */
-	if (ch == KEY_SELECT)
-		return (KEY_END);
+		break;
+	}
 
-	/* ^H or ^? backspace */
-	if (ch == CTRL('H') || ch == CTRL('?'))
-		return (KEY_BACKSPACE);
-	
-	/* Valid character */
 	return (ch);
 }
 
@@ -478,7 +487,7 @@ gui_input_sighandler(int signal)
 	case SIGQUIT:
 	case SIGTERM:
 		gui_input_quit();
-		/* NOTREACHED */
+		g_assert_not_reached();
 	}
 }
 #endif /* G_OS_UNIX */
