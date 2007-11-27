@@ -72,6 +72,10 @@ static char *curseek = NULL;
  *        multiple signals being handled while quitting.
  */
 static int shutting_down = 0;
+/**
+ * @brief Add the Ctrl modifier to a character.
+ */
+#define CTRL(x) (((x) - 'A' + 1) & 0x7f)
 
 static void gui_input_search(void);
 
@@ -87,7 +91,7 @@ gui_input_getch(void)
 	do {
 		ch = getch();
 		/* Redraw everything when we get KEY_RESIZE or ^L */
-		if (ch == KEY_RESIZE || ch == 0x0c) {
+		if (ch == KEY_RESIZE || ch == CTRL('L')) {
 			gui_draw_resize();
 			ch = ERR;
 		}
@@ -98,7 +102,7 @@ gui_input_getch(void)
 		return (KEY_END);
 
 	/* ^H or ^? backspace */
-	if (ch == 0x08 || ch == 0x7f)
+	if (ch == CTRL('H') || ch == CTRL('?'))
 		return (KEY_BACKSPACE);
 	
 	/* Valid character */
@@ -387,7 +391,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, '[',			gui_playq_song_moveup },
 	{ -1, ']',			gui_playq_song_movedown },
 	{ -1, '\t', 			gui_input_switchfocus },
-	{ -1, 0x17, 			gui_input_switchfocus }, /* ^W */
+	{ -1, CTRL('W'),		gui_input_switchfocus },
 	{ -1, '/',			gui_input_search },
 	{ -1, 'n',			gui_input_searchnext },
 	{ -1, KEY_LEFT,			gui_browser_dir_parent },
@@ -400,8 +404,8 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_BROWSER, 'g',	gui_browser_cursor_top },
 	{ GUI_FOCUS_BROWSER, 'j',	gui_browser_cursor_down },
 	{ GUI_FOCUS_BROWSER, 'k',	gui_browser_cursor_up },
-	{ GUI_FOCUS_BROWSER, 0x02 /* ^B */, gui_browser_cursor_pageup },
-	{ GUI_FOCUS_BROWSER, 0x06 /* ^F */, gui_browser_cursor_pagedown },
+	{ GUI_FOCUS_BROWSER, CTRL('B'), gui_browser_cursor_pageup },
+	{ GUI_FOCUS_BROWSER, CTRL('F'), gui_browser_cursor_pagedown },
 	{ GUI_FOCUS_BROWSER, KEY_DOWN,	gui_browser_cursor_down },
 	{ GUI_FOCUS_BROWSER, KEY_END,	gui_browser_cursor_bottom },
 	{ GUI_FOCUS_BROWSER, KEY_HOME,	gui_browser_cursor_top },
@@ -416,8 +420,8 @@ static struct gui_binding kbdbindings[] = {
 	{ GUI_FOCUS_PLAYQ, 'g',		gui_playq_cursor_top },
 	{ GUI_FOCUS_PLAYQ, 'j',		gui_playq_cursor_down },
 	{ GUI_FOCUS_PLAYQ, 'k',		gui_playq_cursor_up },
-	{ GUI_FOCUS_PLAYQ, 0x02 /* ^B */, gui_playq_cursor_pageup },
-	{ GUI_FOCUS_PLAYQ, 0x06 /* ^F */, gui_playq_cursor_pagedown },
+	{ GUI_FOCUS_PLAYQ, CTRL('B'),	gui_playq_cursor_pageup },
+	{ GUI_FOCUS_PLAYQ, CTRL('F'),	gui_playq_cursor_pagedown },
 	{ GUI_FOCUS_PLAYQ, KEY_DOWN,	gui_playq_cursor_down },
 	{ GUI_FOCUS_PLAYQ, KEY_END,	gui_playq_cursor_bottom },
 	{ GUI_FOCUS_PLAYQ, KEY_HOME,	gui_playq_cursor_top },
@@ -552,7 +556,7 @@ gui_input_askyesno(const char *question)
 			goto done;
 		case 'n':
 		case 'N':
-		case 0x03: /* ^C */
+		case CTRL('C'):
 			ret = -1;
 			goto done;
 		}
@@ -627,14 +631,14 @@ gui_input_askstring(const char *question, const char *defstr,
 				g_string_truncate(msg, msg->len - 1);
 			}
 			break;
-		case 0x03: /* ^C */
+		case CTRL('C'):
 			/* Just empty the return */
 			g_string_truncate(msg, origlen);
 			goto done;
-		case 0x15: /* ^U */
+		case CTRL('U'):
 			g_string_truncate(msg, origlen);
 			break;
-		case 0x17: /* ^W */
+		case CTRL('W'):
 			clearfirst = 0;
 			newlen = gui_input_trimword(msg);
 			g_string_truncate(msg, MAX(newlen, origlen));
