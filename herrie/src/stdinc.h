@@ -45,8 +45,9 @@
 #include <time.h>
 #include <unistd.h>
 
-/* We can now live with this */
+#ifndef BUILD_DEBUG
 #define G_DISABLE_ASSERT
+#endif /* !BUILD_DEBUG */
 
 #include <glib.h>
 #ifdef BUILD_NLS

@@ -146,7 +146,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 		}
 
 		/* Sanity check */
-		g_assert(vr != gv->vr_selected || idx == gv->idx_selected);
+		g_assert((vr == gv->vr_selected) == (idx == gv->idx_selected));
 
 		if (vr == gv->vr_selected && gv->winfocused)
 			/* Selected */

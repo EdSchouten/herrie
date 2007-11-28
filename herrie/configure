@@ -43,6 +43,7 @@ CFG_RES_INIT=yes
 CFG_SCROBBLER=yes
 unset CFG_SETPROCTITLE
 CFG_SNDFILE=yes
+unset CFG_DEBUG
 unset CFG_STRICT
 CFG_STRIP=-s
 CFG_VORBIS=yes
@@ -151,6 +152,10 @@ do
 	no_strip)
 		unset CFG_STRIP
 		;;
+	debug)
+		CFG_DEBUG=yes
+		unset CFG_STRIP
+		;;
 	strict)
 		CFG_STRICT=yes
 		;;
@@ -250,6 +255,7 @@ then
 fi
 # Strict compilation
 [ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
+[ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -g -DBUILD_DEBUG"
 # Translation support
 # Remove all broken translations
 unset CFG_LINGUAS
