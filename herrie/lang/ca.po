@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-29 15:14+0100\n"
 "PO-Revision-Date: 2007-11-29 15:14+0100\n"
@@ -121,14 +121,13 @@ msgid "The song is already at the bottom of the playlist."
 msgstr "La cançó ja està baix de la llista de reproducció."
 
 #: gui_playq.c:491
-#, fuzzy
 msgid "Failed to adjust the volume."
-msgstr "Fallada en l'autorització a l'AudioScrobbler."
+msgstr "Fallada en l'ajust de volum."
 
 #: gui_playq.c:493
 #, c-format
 msgid "Volume: %d%%"
-msgstr ""
+msgstr "Volum: %d%%"
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
