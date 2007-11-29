@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-25 07:00+0200\n"
+"POT-Creation-Date: 2007-11-29 15:14+0100\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
@@ -13,11 +13,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:182
+#: audio_output_alsa.c:103 audio_output_coreaudio.c:199
 msgid "Cannot open the audio device.\n"
 msgstr "Ses aygıtı açılamıyor.\n"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:209 audio_output_oss.c:115
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Örnekleme oranı ya da kanal sayısı desteklenmiyor"
 
@@ -25,7 +25,7 @@ msgstr "Örnekleme oranı ya da kanal sayısı desteklenmiyor"
 msgid "Cannot open the audio device."
 msgstr "Ses aygıtı açılamıyor."
 
-#: audio_output_oss.c:66
+#: audio_output_oss.c:68
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ses aygıtı \"%s\" açılamadı.\n"
@@ -58,40 +58,40 @@ msgstr "Parça listesini dosyaya yaz"
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
-#: gui_input.c:156
+#: gui_input.c:174
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: gui_input.c:178
+#: gui_input.c:196
 msgid "Search for"
 msgstr "Ara"
 
-#: gui_input.c:185
+#: gui_input.c:203
 msgid "Bad pattern."
 msgstr "Hatalı ifade"
 
-#: gui_input.c:230
+#: gui_input.c:250
 msgid "Use kill(1) to quit."
 msgstr "Çıkmak için kill(1) kullanın."
 
-#: gui_input.c:234
+#: gui_input.c:254
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:271
+#: gui_input.c:291
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:328
+#: gui_input.c:348
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:514 main.c:70 main.c:76 main.c:82
+#: gui_input.c:537 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:515 main.c:72 main.c:78 main.c:84
+#: gui_input.c:538 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "hayır"
 
@@ -152,74 +152,74 @@ msgstr "Arama üste kaydırıldı."
 msgid "Full pathname"
 msgstr "Tam dosya yolu"
 
-#: main.c:66
+#: main.c:72
 msgid "Global configuration file"
 msgstr "Genel ayar dosyası"
 
-#: main.c:67
+#: main.c:73
 msgid "Audio output"
 msgstr "Ses çıkışı"
 
-#: main.c:68
+#: main.c:74
 msgid "Support for AudioScrobbler"
 msgstr "AudioScrobbler desteği"
 
-#: main.c:74
+#: main.c:80
 msgid "Support for HTTP streams"
 msgstr "HTTP akımları desteği"
 
-#: main.c:80
+#: main.c:86
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "XSPF parca listesi destegi (`spiff`)"
 
-#: main.c:86
+#: main.c:92
 msgid "Supported audio file formats"
 msgstr "Desteklenen ses dosyası biçimleri"
 
-#: main.c:98
+#: main.c:104
 msgid "usage"
 msgstr "kullanım"
 
-#: playq.c:184
+#: playq.c:188
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "\"%s\" çalınamadı."
 
-#: playq.c:405
+#: playq.c:410
 #, c-format
 msgid "Repeat: %s"
 msgstr "Tekrarla: %s"
 
-#: playq.c:406
+#: playq.c:411
 msgid "on"
 msgstr "açık"
 
-#: playq.c:406
+#: playq.c:411
 msgid "off"
 msgstr "kapalı"
 
-#: scrobbler.c:482
+#: scrobbler.c:481
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "AudioScrobbler'de yetkilendirme başarısız."
 
-#: scrobbler.c:486
+#: scrobbler.c:485
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Geçersiz AudioScrobbler kullanıcı adı/şifresi"
 
-#: scrobbler.c:491
+#: scrobbler.c:490
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "AudioScrobbler'de başarıyla yetkilendirildi."
 
-#: scrobbler.c:508
+#: scrobbler.c:507
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "1 parça başarıyla AudioScrobbler'e gönderildi."
 
-#: scrobbler.c:512
+#: scrobbler.c:511
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "%d parça başarıyla AudioScrobbler'e gönerildi."
 
-#: scrobbler.c:518
+#: scrobbler.c:517
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Parçalar AudioScrobbler'e gönderilemedi."
 

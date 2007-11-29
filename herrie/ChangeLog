@@ -3,6 +3,7 @@
  * Improved: Make license of MD5 code in sync with the rest
  * Improved: Avoid deprecated CoreAudio calls on Leopard
  * Fixed: Stop processing of signals during shutdown
+ * Added: Spanish and Catalan translations - Xavier Blas
 
 2007-09-23 -- Herrie 1.8.4:
  * Improved: Support for the new AudioScrobbler protocol
