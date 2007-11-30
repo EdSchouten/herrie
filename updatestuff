@@ -13,8 +13,8 @@ make -C ../../misc cdepcalc
 xgettext -k_ *.c
 for i in ca de es ga nl pl ru sv tr vi
 do
-	msgmerge ../lang/$i.po messages.po > tmp.po
-	mv tmp.po ../lang/$i.po
+	msgmerge ../po/$i.po messages.po > tmp.po
+	mv tmp.po ../po/$i.po
 done
 
-mv messages.po ../lang/herrie.pot
+mv messages.po ../po/herrie.pot

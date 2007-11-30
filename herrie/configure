@@ -431,9 +431,9 @@ do
 done
 for i in $CFG_LINGUAS
 do
-	echo "$i.mo: $SRCDIR/lang/$i.po"
+	echo "$i.mo: $SRCDIR/po/$i.po"
 	echo "	# Generating translation $i.mo"
-	echo "	${DOIT}msgfmt -o $i.mo $SRCDIR/lang/$i.po"
+	echo "	${DOIT}msgfmt -o $i.mo $SRCDIR/po/$i.po"
 done) > Makefile
 
 echo "Run \`make' to compile $APP_NAME"
