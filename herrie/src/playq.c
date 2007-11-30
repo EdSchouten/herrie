@@ -491,6 +491,35 @@ playq_song_fast_movedown(struct vfsref *vr, unsigned int index)
 	vfs_list_insert_before(&playq_list, nvr, vr);
 	gui_playq_notify_post_insertion(index);
 	gui_playq_notify_done();
+
+}
+
+void
+playq_song_fast_movetop(struct vfsref *vr, unsigned int index)
+{
+	/* Remove the current item */
+	gui_playq_notify_pre_removal(index);
+	vfs_list_remove(&playq_list, vr);
+
+	/* Add it to the top */
+	vfs_list_insert_head(&playq_list, vr);
+	gui_playq_notify_post_insertion(1);
+
+	/* No refreshing - the cursor will still be manipulated */
+}
+
+void
+playq_song_fast_movebottom(struct vfsref *vr, unsigned int index)
+{
+	/* Remove the current item */
+	gui_playq_notify_pre_removal(index);
+	vfs_list_remove(&playq_list, vr);
+
+	/* Add it to the bottom */
+	vfs_list_insert_tail(&playq_list, vr);
+	gui_playq_notify_post_insertion(vfs_list_items(&playq_list));
+	
+	/* No refreshing - the cursor will still be manipulated */
 }
 
 void

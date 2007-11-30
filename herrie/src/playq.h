@@ -147,6 +147,14 @@ void playq_song_fast_moveup(struct vfsref *vr, unsigned int index);
  */
 void playq_song_fast_movedown(struct vfsref *vr, unsigned int index);
 /**
+ * @brief Move the specified song to the top.
+ */
+void playq_song_fast_movetop(struct vfsref *vr, unsigned int index);
+/**
+ * @brief Move the specified song to the bottom.
+ */
+void playq_song_fast_movebottom(struct vfsref *vr, unsigned int index);
+/**
  * @brief Switch playback to a specific song.
  */
 void playq_song_fast_select(struct vfsref *vr, unsigned int index);

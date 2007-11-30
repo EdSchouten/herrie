@@ -439,6 +439,47 @@ gui_playq_song_movedown(void)
 }
 
 void
+gui_playq_song_movetop(void)
+{
+	struct vfsref *vr_selected;
+
+	playq_lock();
+	if (!gui_vfslist_warn_isempty(win_playq)) {
+		vr_selected = gui_vfslist_getselected(win_playq);
+		if (vr_selected == vfs_list_first(&playq_list)) {
+			gui_msgbar_warn(_("The song is already at the "
+			    "top of the playlist."));
+		} else {
+			playq_song_fast_movetop(vr_selected,
+			    gui_vfslist_getselectedidx(win_playq));
+			gui_vfslist_setselected(win_playq, vr_selected, 1);
+		}
+	}
+	playq_unlock();
+}
+
+void
+gui_playq_song_movebottom(void)
+{
+	struct vfsref *vr_selected;
+
+	playq_lock();
+	if (!gui_vfslist_warn_isempty(win_playq)) {
+		vr_selected = gui_vfslist_getselected(win_playq);
+		if (vr_selected == vfs_list_last(&playq_list)) {
+			gui_msgbar_warn(_("The song is already at the "
+			    "bottom of the playlist."));
+		} else {
+			playq_song_fast_movebottom(vr_selected,
+			    gui_vfslist_getselectedidx(win_playq));
+			gui_vfslist_setselected(win_playq, vr_selected,
+			    vfs_list_items(&playq_list));
+		}
+	}
+	playq_unlock();
+}
+
+void
 gui_playq_song_select(void)
 {
 	playq_lock();

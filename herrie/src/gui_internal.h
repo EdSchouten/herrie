@@ -234,6 +234,15 @@ void gui_playq_song_moveup(void);
  */
 void gui_playq_song_movedown(void);
 /**
+ * @brief Move the currently selected song to the top of the playlist.
+ */
+void gui_playq_song_movetop(void);
+/**
+ * @brief Move the currently selected song to the bottom of the
+ *        playlist.
+ */
+void gui_playq_song_movebottom(void);
+/**
  * @brief Start playback on the currently selected song.
  */
 void gui_playq_song_select(void);
