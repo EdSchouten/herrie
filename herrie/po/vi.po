@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-25 07:00+0200\n"
+"POT-Creation-Date: 2007-11-30 12:52+0100\n"
 "PO-Revision-Date: 2007-10-10 18:27+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -15,19 +15,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:182
-msgid "Cannot open the audio device.\n"
-msgstr "Không thể mở thiết bị âm thanh.\n"
-
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:209 audio_output_oss.c:115
-msgid "Sample rate or amount of channels not supported."
-msgstr "Không hỗ trợ tần số lấy mẫu hay tổng số kênh."
-
-#: audio_output_ao.c:116 audio_output_pulse.c:77
+#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Không thể mở thiết bị âm thanh."
 
-#: audio_output_oss.c:66
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
+msgid "Sample rate or amount of channels not supported."
+msgstr "Không hỗ trợ tần số lấy mẫu hay tổng số kênh."
+
+#: audio_output_oss.c:68
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Không thể mở thiết bị âm thanh « %s ».\n"
@@ -60,40 +57,40 @@ msgstr "Ghi danh mục nhạc vào tập tin"
 msgid "Unable to write playlist."
 msgstr "Không thể ghi danh mục nhạc."
 
-#: gui_input.c:156
+#: gui_input.c:174
 msgid "Not found."
 msgstr "Không tìm thấy."
 
-#: gui_input.c:178
+#: gui_input.c:196
 msgid "Search for"
 msgstr "Tìm kiếm"
 
-#: gui_input.c:185
+#: gui_input.c:203
 msgid "Bad pattern."
 msgstr "Sai mẫu."
 
-#: gui_input.c:230
+#: gui_input.c:250
 msgid "Use kill(1) to quit."
 msgstr "Hãy dùng kill(1) để thoát."
 
-#: gui_input.c:234
+#: gui_input.c:254
 #, c-format
 msgid "Quit %s?"
 msgstr "Thoát khỏi %s không?"
 
-#: gui_input.c:271
+#: gui_input.c:291
 msgid "Jump to position"
 msgstr "Nhảy tới vị trí"
 
-#: gui_input.c:328
+#: gui_input.c:348
 msgid "Bad time format."
 msgstr "Sai định dạng thời gian."
 
-#: gui_input.c:514 main.c:70 main.c:76 main.c:82
+#: gui_input.c:537 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "có"
 
-#: gui_input.c:515 main.c:72 main.c:78 main.c:84
+#: gui_input.c:538 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "không"
 
@@ -154,74 +151,74 @@ msgstr "Việc tìm kiếm cuộn về đầu."
 msgid "Full pathname"
 msgstr "Tên đường dẫn đầy đủ"
 
-#: main.c:66
+#: main.c:72
 msgid "Global configuration file"
 msgstr "Tập tin cấu hình toàn cục"
 
-#: main.c:67
+#: main.c:73
 msgid "Audio output"
 msgstr "Kết xuất âm thanh"
 
-#: main.c:68
+#: main.c:74
 msgid "Support for AudioScrobbler"
 msgstr "Hỗ trợ Audioscrobbler"
 
-#: main.c:74
+#: main.c:80
 msgid "Support for HTTP streams"
 msgstr "Hỗ trợ luồng HTTP"
 
-#: main.c:80
+#: main.c:86
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Hỗ trợ danh mục nhạc XSPF (`spiff')"
 
-#: main.c:86
+#: main.c:92
 msgid "Supported audio file formats"
 msgstr "Định dạng tập tin âm thanh được hỗ trợ"
 
-#: main.c:98
+#: main.c:104
 msgid "usage"
 msgstr "cách sử dụng"
 
-#: playq.c:184
+#: playq.c:188
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Lỗi mở « %s » để phát lại."
 
-#: playq.c:405
+#: playq.c:410
 #, c-format
 msgid "Repeat: %s"
 msgstr "Lặp lại: %s"
 
-#: playq.c:406
+#: playq.c:411
 msgid "on"
 msgstr "bật"
 
-#: playq.c:406
+#: playq.c:411
 msgid "off"
 msgstr "tắt"
 
-#: scrobbler.c:482
+#: scrobbler.c:481
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Lỗi xác thực ở AudioScrobbler."
 
-#: scrobbler.c:486
+#: scrobbler.c:485
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Tên người dùng hay mật khẩu AudioScrobbler không hợp lệ."
 
-#: scrobbler.c:491
+#: scrobbler.c:490
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Mới xác thực được ở AudioScrobbler."
 
-#: scrobbler.c:508
+#: scrobbler.c:507
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "1 bài hát đã được gửi cho AudioScrobbler."
 
-#: scrobbler.c:512
+#: scrobbler.c:511
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "%d bài hát đã được gửi cho AudioScrobbler."
 
-#: scrobbler.c:518
+#: scrobbler.c:517
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Lỗi gửi bài hát cho AudioScrobbler."
 

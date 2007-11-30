@@ -1,0 +1,243 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: herrie\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-11-30 12:52+0100\n"
+"PO-Revision-Date: 2007-11-29 15:14+0100\n"
+"Last-Translator: Xavier de Blas <xaviblas@gmail.com>\n"
+"Language-Team: Catalan <xaviblas@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
+msgid "Cannot open the audio device."
+msgstr "No es pot obrir la sortida d'àudio."
+
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
+msgid "Sample rate or amount of channels not supported."
+msgstr "No està permesa aquesta freqüència de sampleig o nombre de canals."
+
+#: audio_output_oss.c:68
+#, c-format
+msgid "Cannot open audio device \"%s\".\n"
+msgstr "No es pot obrir la sortida d'àudio \"%s\".\n"
+
+#: gui_browser.c:116
+msgid "Unable to open initial directory."
+msgstr "No es pot obrir la carpeta inicial."
+
+#: gui_browser.c:221
+msgid "Unable to enter the parent directory."
+msgstr "No es pot entrar a la carpeta pare."
+
+#: gui_browser.c:236
+msgid "Unable to enter the selected directory."
+msgstr "No es pot entrar a la carpeta seleccionada."
+
+#: gui_browser.c:320
+msgid "Change directory"
+msgstr "Canvia carpeta"
+
+#: gui_browser.c:358
+msgid "Unable to display the file or directory."
+msgstr "No es por mostrar l'arxiu o carpeta."
+
+#: gui_browser.c:375
+msgid "Write playlist to file"
+msgstr "Escriu la llista de reproducció a un arxiu."
+
+#: gui_browser.c:384
+msgid "Unable to write playlist."
+msgstr "No es pot escriure la llista de reproducció."
+
+#: gui_input.c:174
+msgid "Not found."
+msgstr "No trobat."
+
+#: gui_input.c:196
+msgid "Search for"
+msgstr "Cerca"
+
+#: gui_input.c:203
+msgid "Bad pattern."
+msgstr "Cerca incorrecta."
+
+#: gui_input.c:250
+msgid "Use kill(1) to quit."
+msgstr "Usar kill(1) per a sortir."
+
+#: gui_input.c:254
+#, c-format
+msgid "Quit %s?"
+msgstr "Surt de %s?"
+
+#: gui_input.c:291
+msgid "Jump to position"
+msgstr "Salta a la posició"
+
+#: gui_input.c:348
+msgid "Bad time format."
+msgstr "Format de data incorrecte."
+
+#: gui_input.c:537 main.c:76 main.c:82 main.c:88
+msgid "yes"
+msgstr "sí"
+
+#: gui_input.c:538 main.c:78 main.c:84 main.c:90
+msgid "no"
+msgstr "no"
+
+#: gui_playq.c:109
+msgid "Idle"
+msgstr "Aturat"
+
+#: gui_playq.c:112
+msgid "Paused"
+msgstr "Pausat"
+
+#: gui_playq.c:114
+msgid "Playing"
+msgstr "Reproduint"
+
+#: gui_playq.c:352
+msgid "Remove all songs from the playlist?"
+msgstr "Esborrar totes les cançons de la llista de reproducció?"
+
+#: gui_playq.c:363
+msgid "Randomize the playlist?"
+msgstr "Aleatoritzar la llista de reproducció?"
+
+#: gui_playq.c:412
+msgid "The song is already at the top of the playlist."
+msgstr "La cançó ja està a dalt de la llista de reproducció."
+
+#: gui_playq.c:431
+msgid "The song is already at the bottom of the playlist."
+msgstr "La cançó ja està baix de la llista de reproducció."
+
+#: gui_playq.c:491
+msgid "Failed to adjust the volume."
+msgstr "Fallada en l'ajust de volum."
+
+#: gui_playq.c:493
+#, c-format
+msgid "Volume: %d%%"
+msgstr "Volum: %d%%"
+
+#: gui_vfslist.c:234
+msgid "There are no songs."
+msgstr "No hi ha cançons."
+
+#: gui_vfslist.c:300
+msgid "You are at the first song."
+msgstr "Situat a la primera cançó."
+
+#: gui_vfslist.c:319
+msgid "You are at the last song."
+msgstr "Situat a la darrera cançó."
+
+#: gui_vfslist.c:577
+msgid "Search wrapped to top."
+msgstr "Recerca completa, continuant a l'inici."
+
+#: gui_vfslist.c:601
+msgid "Full pathname"
+msgstr "Escriu la ruta completa"
+
+#: main.c:72
+msgid "Global configuration file"
+msgstr "Arxiu global de configuració"
+
+#: main.c:73
+msgid "Audio output"
+msgstr "Sortida d'àudio"
+
+#: main.c:74
+msgid "Support for AudioScrobbler"
+msgstr "Suport per l'AudioScrobbler"
+
+#: main.c:80
+msgid "Support for HTTP streams"
+msgstr "Suport per a fluxe HTTP"
+
+#: main.c:86
+msgid "Support for XSPF playlists (`spiff')"
+msgstr "Suport per llistes de reproducció XSPF (`spiff')"
+
+#: main.c:92
+msgid "Supported audio file formats"
+msgstr "Formats d'àudio permesos"
+
+#: main.c:104
+msgid "usage"
+msgstr "ús"
+
+#: playq.c:188
+#, c-format
+msgid "Failed to open \"%s\" for playback."
+msgstr "No s'ha pogut reproduir \"%s\"."
+
+#: playq.c:410
+#, c-format
+msgid "Repeat: %s"
+msgstr "Repetir: %s"
+
+#: playq.c:411
+msgid "on"
+msgstr "encès"
+
+#: playq.c:411
+msgid "off"
+msgstr "apagat"
+
+#: scrobbler.c:481
+msgid "Failed to authorize at AudioScrobbler."
+msgstr "Fallada en l'autorització a l'AudioScrobbler."
+
+#: scrobbler.c:485
+msgid "Invalid AudioScrobbler username/password."
+msgstr "Identificació incorrecta a l'AudioScobbler."
+
+#: scrobbler.c:490
+msgid "Successfully authorized at AudioScrobbler."
+msgstr "Autoritzat correctament a l'AudioScrobbler."
+
+#: scrobbler.c:507
+msgid "Successfully sent 1 song to AudioScrobbler."
+msgstr "S'ha enviat satisfactòriament 1 cançó a l'AudioScrobbler."
+
+#: scrobbler.c:511
+#, c-format
+msgid "Successfully sent %d songs to AudioScrobbler."
+msgstr "S'ha enviat satisfactòriament %d cançons a l'AudioScrobbler."
+
+#: scrobbler.c:517
+msgid "Failed to submit songs to AudioScrobbler."
+msgstr "Errada en l'enviament de cançons a l'AudioScrobbler."
+
+#: vfs.c:109
+#, c-format
+msgid "Unknown user: %s\n"
+msgstr "Usuario: %s desconegut\n"
+
+#: vfs.c:121
+#, c-format
+msgid "Unable to chroot in %s\n"
+msgstr "No es pot fer chroot a %s\n"
+
+#: vfs.c:129
+#, c-format
+msgid "Unable to change to group %d\n"
+msgstr "No es pot canviar al grup %s\n"
+
+#: vfs.c:133
+#, c-format
+msgid "Unable to change to user %d\n"
+msgstr "No es pot canviar a l'usuari %d\n"
+
+#: vfs_http.c:146
+#, c-format
+msgid "Connection with \"%s\" lost."
+msgstr "S'ha perdut la connexió amb \"%s\"."

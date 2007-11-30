@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-25 07:00+0200\n"
+"POT-Creation-Date: 2007-11-30 12:52+0100\n"
 "PO-Revision-Date: 2007-06-21 12:47+0200\n"
 "Last-Translator: Piotr Budny <vip@pld-linux.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -12,19 +12,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:182
-msgid "Cannot open the audio device.\n"
-msgstr "Nie można otworzyć urządzenia.\n"
-
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:209 audio_output_oss.c:115
-msgid "Sample rate or amount of channels not supported."
-msgstr "Częstotliwość próbkowania lub liczba kanałów nie jest wspierana."
-
-#: audio_output_ao.c:116 audio_output_pulse.c:77
+#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Nie można otworzyć urządzenia"
 
-#: audio_output_oss.c:66
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
+msgid "Sample rate or amount of channels not supported."
+msgstr "Częstotliwość próbkowania lub liczba kanałów nie jest wspierana."
+
+#: audio_output_oss.c:68
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Nie można utworzyć urządzenia \"%s\".\n"
@@ -57,40 +54,40 @@ msgstr "Zapisz playlistę do pliku"
 msgid "Unable to write playlist."
 msgstr "Nie można zapisac playlisty."
 
-#: gui_input.c:156
+#: gui_input.c:174
 msgid "Not found."
 msgstr "Nie znaleziono"
 
-#: gui_input.c:178
+#: gui_input.c:196
 msgid "Search for"
 msgstr "Szukaj"
 
-#: gui_input.c:185
+#: gui_input.c:203
 msgid "Bad pattern."
 msgstr "Zła próbka."
 
-#: gui_input.c:230
+#: gui_input.c:250
 msgid "Use kill(1) to quit."
 msgstr "Użyj kill(1) aby wyjść."
 
-#: gui_input.c:234
+#: gui_input.c:254
 #, c-format
 msgid "Quit %s?"
 msgstr "Zamknij %s?"
 
-#: gui_input.c:271
+#: gui_input.c:291
 msgid "Jump to position"
 msgstr "Skocz do pozycji"
 
-#: gui_input.c:328
+#: gui_input.c:348
 msgid "Bad time format."
 msgstr "Zły format czasu."
 
-#: gui_input.c:514 main.c:70 main.c:76 main.c:82
+#: gui_input.c:537 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "tak"
 
-#: gui_input.c:515 main.c:72 main.c:78 main.c:84
+#: gui_input.c:538 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "nie"
 
@@ -151,74 +148,74 @@ msgstr "Przeszukiwanie wznowione od początku."
 msgid "Full pathname"
 msgstr "Pełna ścieżka"
 
-#: main.c:66
+#: main.c:72
 msgid "Global configuration file"
 msgstr "Globalny plik konfiguracyjny"
 
-#: main.c:67
+#: main.c:73
 msgid "Audio output"
 msgstr "Wyjście audio"
 
-#: main.c:68
+#: main.c:74
 msgid "Support for AudioScrobbler"
 msgstr "Wsparcie dla AudioScrobblera"
 
-#: main.c:74
+#: main.c:80
 msgid "Support for HTTP streams"
 msgstr "Wsparcie dla strumienie HTTP"
 
-#: main.c:80
+#: main.c:86
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Wsparcie dla plylist XSPF ('spiff')"
 
-#: main.c:86
+#: main.c:92
 msgid "Supported audio file formats"
 msgstr "Wspierane formaty plików audio"
 
-#: main.c:98
+#: main.c:104
 msgid "usage"
 msgstr "użycie"
 
-#: playq.c:184
+#: playq.c:188
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Nie udało się otworzyć \"%s\" do odtworzenia."
 
-#: playq.c:405
+#: playq.c:410
 #, c-format
 msgid "Repeat: %s"
 msgstr "Powtórz: %s"
 
-#: playq.c:406
+#: playq.c:411
 msgid "on"
 msgstr "włączony"
 
-#: playq.c:406
+#: playq.c:411
 msgid "off"
 msgstr "wyłączony"
 
-#: scrobbler.c:482
+#: scrobbler.c:481
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Nie udało się zautoryzować w AudioScrobbler."
 
-#: scrobbler.c:486
+#: scrobbler.c:485
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Nieprawidłowa nazwa użytkownika/hasło w AudioScrobbler."
 
-#: scrobbler.c:491
+#: scrobbler.c:490
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Pomyślnie zautoryzowany w AudioScrobbler."
 
-#: scrobbler.c:508
+#: scrobbler.c:507
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Pomyślnie wysłano utwór do AudioScrobbler."
 
-#: scrobbler.c:512
+#: scrobbler.c:511
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Pomyslnie wysłano %d utworów do AudioScrobbler."
 
-#: scrobbler.c:518
+#: scrobbler.c:517
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nie udało się wysłać utworów do AudioScrobbler."
 

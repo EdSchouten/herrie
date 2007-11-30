@@ -27,7 +27,7 @@
 
 APP_NAME=herrie
 APP_VERSION=1.8.4
-APP_LINGUAS='de ga nl pl ru sv tr vi'
+APP_LINGUAS='ca de es ga nl pl ru sv tr vi'
 
 # Default compilation switches
 CFG_AO=oss
@@ -43,6 +43,7 @@ CFG_RES_INIT=yes
 CFG_SCROBBLER=yes
 unset CFG_SETPROCTITLE
 CFG_SNDFILE=yes
+unset CFG_DEBUG
 unset CFG_STRICT
 CFG_STRIP=-s
 CFG_VORBIS=yes
@@ -151,6 +152,10 @@ do
 	no_strip)
 		unset CFG_STRIP
 		;;
+	debug)
+		CFG_DEBUG=yes
+		unset CFG_STRIP
+		;;
 	strict)
 		CFG_STRICT=yes
 		;;
@@ -250,6 +255,7 @@ then
 fi
 # Strict compilation
 [ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
+[ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -g -DBUILD_DEBUG"
 # Translation support
 # Remove all broken translations
 unset CFG_LINGUAS
@@ -425,9 +431,9 @@ do
 done
 for i in $CFG_LINGUAS
 do
-	echo "$i.mo: $SRCDIR/lang/$i.po"
+	echo "$i.mo: $SRCDIR/po/$i.po"
 	echo "	# Generating translation $i.mo"
-	echo "	${DOIT}msgfmt -o $i.mo $SRCDIR/lang/$i.po"
+	echo "	${DOIT}msgfmt -o $i.mo $SRCDIR/po/$i.po"
 done) > Makefile
 
 echo "Run \`make' to compile $APP_NAME"
