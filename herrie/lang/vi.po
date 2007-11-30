@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-29 15:14+0100\n"
+"POT-Creation-Date: 2007-11-30 12:52+0100\n"
 "PO-Revision-Date: 2007-10-10 18:27+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -15,17 +15,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:199
-msgid "Cannot open the audio device.\n"
-msgstr "Không thể mở thiết bị âm thanh.\n"
+#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
+msgid "Cannot open the audio device."
+msgstr "Không thể mở thiết bị âm thanh."
 
 #: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Không hỗ trợ tần số lấy mẫu hay tổng số kênh."
-
-#: audio_output_ao.c:116 audio_output_pulse.c:77
-msgid "Cannot open the audio device."
-msgstr "Không thể mở thiết bị âm thanh."
 
 #: audio_output_oss.c:68
 #, c-format

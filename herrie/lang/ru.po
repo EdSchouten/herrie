@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-29 15:14+0100\n"
+"POT-Creation-Date: 2007-11-30 12:52+0100\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team:  <se.seam@gmail.com>\n"
@@ -15,17 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:199
-msgid "Cannot open the audio device.\n"
-msgstr "Невозможно открыть звуковое устройство.\n"
+#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
+msgid "Cannot open the audio device."
+msgstr "Невозможно открыть звуковое устройство."
 
 #: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Частота сэмпла или число каналов не поддерживаются."
-
-#: audio_output_ao.c:116 audio_output_pulse.c:77
-msgid "Cannot open the audio device."
-msgstr "Невозможно открыть звуковое устройство."
 
 #: audio_output_oss.c:68
 #, c-format

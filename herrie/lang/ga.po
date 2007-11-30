@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-29 15:14+0100\n"
+"POT-Creation-Date: 2007-11-30 12:52+0100\n"
 "PO-Revision-Date: 2007-09-29 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -15,17 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:199
-msgid "Cannot open the audio device.\n"
-msgstr "Ní féidir an gléas fuaime a oscailt.\n"
+#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
+msgid "Cannot open the audio device."
+msgstr "Ní féidir an gléas fuaime a oscailt."
 
 #: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
-
-#: audio_output_ao.c:116 audio_output_pulse.c:77
-msgid "Cannot open the audio device."
-msgstr "Ní féidir an gléas fuaime a oscailt."
 
 #: audio_output_oss.c:68
 #, c-format

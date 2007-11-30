@@ -100,7 +100,7 @@ audio_output_open(void)
 
 	return (0);
 error:
-	g_printerr(_("Cannot open the audio device.\n"));
+	g_printerr("%s\n", _("Cannot open the audio device."));
 	return (-1);
 }
 

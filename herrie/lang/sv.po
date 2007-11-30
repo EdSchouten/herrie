@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-29 15:14+0100\n"
+"POT-Creation-Date: 2007-11-30 12:52+0100\n"
 "PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -15,17 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_coreaudio.c:199
-msgid "Cannot open the audio device.\n"
-msgstr "Kan inte öppna ljudenheten.\n"
+#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
+msgid "Cannot open the audio device."
+msgstr "Kan inte öppna ljudenheten."
 
 #: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Samlingsfrekvensen eller antalet kanaler stöds inte."
-
-#: audio_output_ao.c:116 audio_output_pulse.c:77
-msgid "Cannot open the audio device."
-msgstr "Kan inte öppna ljudenheten."
 
 #: audio_output_oss.c:68
 #, c-format
