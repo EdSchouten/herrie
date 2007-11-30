@@ -316,8 +316,9 @@ vfs_dup(const struct vfsref *vr)
 	ve = vr->ent;
 	g_atomic_int_inc(&ve->refcount);
 
-	rvr = g_slice_new0(struct vfsref);
+	rvr = g_slice_new(struct vfsref);
 	rvr->ent = ve;
+	rvr->marked = 0;
 
 	return (rvr);
 }
