@@ -321,7 +321,7 @@ gui_vfslist_cursor_down(struct gui_vfslist *gv, int silent)
 }
 
 void
-gui_vfslist_cursor_top(struct gui_vfslist *gv)
+gui_vfslist_cursor_head(struct gui_vfslist *gv)
 {
 	if (gui_vfslist_warn_isempty(gv))
 		return;
@@ -333,7 +333,7 @@ gui_vfslist_cursor_top(struct gui_vfslist *gv)
 }
 
 void
-gui_vfslist_cursor_bottom(struct gui_vfslist *gv)
+gui_vfslist_cursor_tail(struct gui_vfslist *gv)
 {
 	if (gui_vfslist_warn_isempty(gv))
 		return;
@@ -402,7 +402,7 @@ gui_vfslist_cursor_pagedown(struct gui_vfslist *gv)
 		 * This action had no effect. We've reached the bottom,
 		 * so move the cursor to the bottom then.
 		 */
-		gui_vfslist_cursor_bottom(gv);
+		gui_vfslist_cursor_tail(gv);
 	} else {
 		gui_vfslist_refresh(gv);
 	}

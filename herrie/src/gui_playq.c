@@ -313,18 +313,18 @@ gui_playq_cursor_pagedown(void)
 }
 
 void
-gui_playq_cursor_top(void)
+gui_playq_cursor_head(void)
 {
 	playq_lock();
-	gui_vfslist_cursor_top(win_playq);
+	gui_vfslist_cursor_head(win_playq);
 	playq_unlock();
 }
 
 void
-gui_playq_cursor_bottom(void)
+gui_playq_cursor_tail(void)
 {
 	playq_lock();
-	gui_vfslist_cursor_bottom(win_playq);
+	gui_vfslist_cursor_tail(win_playq);
 	playq_unlock();
 }
 
@@ -452,7 +452,7 @@ gui_playq_song_move_head(void)
 		} else {
 			playq_song_fast_move_head(vr_selected,
 			    gui_vfslist_getselectedidx(win_playq));
-			gui_vfslist_setselected(win_playq, vr_selected, 1);
+			gui_vfslist_cursor_head(win_playq);
 		}
 	}
 	playq_unlock();
@@ -472,8 +472,7 @@ gui_playq_song_move_tail(void)
 		} else {
 			playq_song_fast_move_tail(vr_selected,
 			    gui_vfslist_getselectedidx(win_playq));
-			gui_vfslist_setselected(win_playq, vr_selected,
-			    vfs_list_items(&playq_list));
+			gui_vfslist_cursor_tail(win_playq);
 		}
 	}
 	playq_unlock();

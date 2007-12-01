@@ -196,12 +196,12 @@ void gui_playq_cursor_pagedown(void);
  * @brief Move the cursor and the viewport of the playlist to the top of
  *        the playlist.
  */
-void gui_playq_cursor_top(void);
+void gui_playq_cursor_head(void);
 /**
  * @brief Move the cursor and the viewport of the playlist to the bottom
  *        of the playlist.
  */
-void gui_playq_cursor_bottom(void);
+void gui_playq_cursor_tail(void);
 /**
  * @brief Remove the currently selected song from the playlist.
  */
@@ -309,12 +309,12 @@ void gui_browser_cursor_pagedown(void);
  * @brief Move the cursor and the viewport of the filebrowser to the top
  *        of the current directory.
  */
-void gui_browser_cursor_top(void);
+void gui_browser_cursor_head(void);
 /**
  * @brief Move the cursor and the viewport of the filebrowser to the
  *        bottom of the current directory.
  */
-void gui_browser_cursor_bottom(void);
+void gui_browser_cursor_tail(void);
 /**
  * @brief Change the current working directory of the filebrowser to the
  *        parent directory.

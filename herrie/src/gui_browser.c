@@ -170,15 +170,15 @@ gui_browser_cursor_pagedown(void)
 }
 
 void
-gui_browser_cursor_top(void)
+gui_browser_cursor_head(void)
 {
-	gui_vfslist_cursor_top(win_browser);
+	gui_vfslist_cursor_head(win_browser);
 }
 
 void
-gui_browser_cursor_bottom(void)
+gui_browser_cursor_tail(void)
 {
-	gui_vfslist_cursor_bottom(win_browser);
+	gui_vfslist_cursor_tail(win_browser);
 }
 
 /*

@@ -151,11 +151,11 @@ void gui_vfslist_cursor_down(struct gui_vfslist *gv, int silent);
 /**
  * @brief Move the cursor to the top of the list.
  */
-void gui_vfslist_cursor_top(struct gui_vfslist *gv);
+void gui_vfslist_cursor_head(struct gui_vfslist *gv);
 /**
  * @brief Move the cursor to the bottom of the list.
  */
-void gui_vfslist_cursor_bottom(struct gui_vfslist *gv);
+void gui_vfslist_cursor_tail(struct gui_vfslist *gv);
 /**
  * @brief Move the cursor one page up.
  */
