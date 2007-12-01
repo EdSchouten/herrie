@@ -462,7 +462,7 @@ playq_song_fast_add_after(struct vfsref *nvr, struct vfsref *lvr,
 }
 
 void
-playq_song_fast_moveup(struct vfsref *vr, unsigned int index)
+playq_song_fast_move_up(struct vfsref *vr, unsigned int index)
 {
 	struct vfsref *pvr;
 	
@@ -478,7 +478,7 @@ playq_song_fast_moveup(struct vfsref *vr, unsigned int index)
 }
 
 void
-playq_song_fast_movedown(struct vfsref *vr, unsigned int index)
+playq_song_fast_move_down(struct vfsref *vr, unsigned int index)
 {
 	struct vfsref *nvr;
 
@@ -495,7 +495,7 @@ playq_song_fast_movedown(struct vfsref *vr, unsigned int index)
 }
 
 void
-playq_song_fast_movetop(struct vfsref *vr, unsigned int index)
+playq_song_fast_move_head(struct vfsref *vr, unsigned int index)
 {
 	/* Remove the current item */
 	gui_playq_notify_pre_removal(index);
@@ -509,7 +509,7 @@ playq_song_fast_movetop(struct vfsref *vr, unsigned int index)
 }
 
 void
-playq_song_fast_movebottom(struct vfsref *vr, unsigned int index)
+playq_song_fast_move_tail(struct vfsref *vr, unsigned int index)
 {
 	/* Remove the current item */
 	gui_playq_notify_pre_removal(index);

@@ -228,20 +228,20 @@ void gui_playq_song_add_after(struct vfsref *ve);
 /**
  * @brief Move the currently selected song one up.
  */
-void gui_playq_song_moveup(void);
+void gui_playq_song_move_up(void);
 /**
  * @brief Move the currently selected song one down.
  */
-void gui_playq_song_movedown(void);
+void gui_playq_song_move_down(void);
 /**
  * @brief Move the currently selected song to the top of the playlist.
  */
-void gui_playq_song_movetop(void);
+void gui_playq_song_move_head(void);
 /**
  * @brief Move the currently selected song to the bottom of the
  *        playlist.
  */
-void gui_playq_song_movebottom(void);
+void gui_playq_song_move_tail(void);
 /**
  * @brief Start playback on the currently selected song.
  */

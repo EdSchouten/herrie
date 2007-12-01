@@ -401,7 +401,7 @@ gui_playq_song_add_after(struct vfsref *vr)
 }
 
 void
-gui_playq_song_moveup(void)
+gui_playq_song_move_up(void)
 {
 	struct vfsref *vr_selected;
 
@@ -412,7 +412,7 @@ gui_playq_song_moveup(void)
 			gui_msgbar_warn(_("The song is already at the "
 			    "top of the playlist."));
 		} else {
-			playq_song_fast_moveup(vr_selected,
+			playq_song_fast_move_up(vr_selected,
 			    gui_vfslist_getselectedidx(win_playq));
 		}
 	}
@@ -420,7 +420,7 @@ gui_playq_song_moveup(void)
 }
 
 void
-gui_playq_song_movedown(void)
+gui_playq_song_move_down(void)
 {
 	struct vfsref *vr_selected;
 
@@ -431,7 +431,7 @@ gui_playq_song_movedown(void)
 			gui_msgbar_warn(_("The song is already at the "
 			    "bottom of the playlist."));
 		} else {
-			playq_song_fast_movedown(vr_selected,
+			playq_song_fast_move_down(vr_selected,
 			    gui_vfslist_getselectedidx(win_playq));
 		}
 	}
@@ -439,7 +439,7 @@ gui_playq_song_movedown(void)
 }
 
 void
-gui_playq_song_movetop(void)
+gui_playq_song_move_head(void)
 {
 	struct vfsref *vr_selected;
 
@@ -450,7 +450,7 @@ gui_playq_song_movetop(void)
 			gui_msgbar_warn(_("The song is already at the "
 			    "top of the playlist."));
 		} else {
-			playq_song_fast_movetop(vr_selected,
+			playq_song_fast_move_head(vr_selected,
 			    gui_vfslist_getselectedidx(win_playq));
 			gui_vfslist_setselected(win_playq, vr_selected, 1);
 		}
@@ -459,7 +459,7 @@ gui_playq_song_movetop(void)
 }
 
 void
-gui_playq_song_movebottom(void)
+gui_playq_song_move_tail(void)
 {
 	struct vfsref *vr_selected;
 
@@ -470,7 +470,7 @@ gui_playq_song_movebottom(void)
 			gui_msgbar_warn(_("The song is already at the "
 			    "bottom of the playlist."));
 		} else {
-			playq_song_fast_movebottom(vr_selected,
+			playq_song_fast_move_tail(vr_selected,
 			    gui_vfslist_getselectedidx(win_playq));
 			gui_vfslist_setselected(win_playq, vr_selected,
 			    vfs_list_items(&playq_list));
