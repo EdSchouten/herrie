@@ -504,8 +504,7 @@ playq_song_fast_move_head(struct vfsref *vr, unsigned int index)
 	/* Add it to the top */
 	vfs_list_insert_head(&playq_list, vr);
 	gui_playq_notify_post_insertion(1);
-
-	/* No refreshing - the cursor will still be manipulated */
+	gui_playq_notify_done();
 }
 
 void
@@ -518,8 +517,7 @@ playq_song_fast_move_tail(struct vfsref *vr, unsigned int index)
 	/* Add it to the bottom */
 	vfs_list_insert_tail(&playq_list, vr);
 	gui_playq_notify_post_insertion(vfs_list_items(&playq_list));
-	
-	/* No refreshing - the cursor will still be manipulated */
+	gui_playq_notify_done();
 }
 
 void

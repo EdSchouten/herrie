@@ -452,7 +452,6 @@ gui_playq_song_move_head(void)
 		} else {
 			playq_song_fast_move_head(vr_selected,
 			    gui_vfslist_getselectedidx(win_playq));
-			gui_vfslist_cursor_head(win_playq);
 		}
 	}
 	playq_unlock();
@@ -472,7 +471,6 @@ gui_playq_song_move_tail(void)
 		} else {
 			playq_song_fast_move_tail(vr_selected,
 			    gui_vfslist_getselectedidx(win_playq));
-			gui_vfslist_cursor_tail(win_playq);
 		}
 	}
 	playq_unlock();
