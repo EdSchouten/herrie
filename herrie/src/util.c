@@ -55,15 +55,6 @@ hex_encode(unsigned char *bin, char *hex, size_t len)
 }
 #endif /* BUILD_SCROBBLER */
 
-inline void
-hex_decode(char *hex, unsigned char *bin, size_t len)
-{
-	while (len-- > 0) {
-		*bin = g_ascii_xdigit_value(*hex++) << 4;
-		*bin++ |= g_ascii_xdigit_value(*hex++);
-	}
-}
-
 char *
 http_escape(const char *str, const char *prepend)
 {
@@ -109,7 +100,8 @@ http_unescape(char *r, char *w)
 		if (r[0] == '%' &&
 		    g_ascii_isxdigit(r[1]) && g_ascii_isxdigit(r[2])) {
 			/* Character needs to be unescaped */
-			hex_decode(&r[1], (unsigned char *)w, 1);
+			*w = g_ascii_xdigit_value(r[1]) << 4;
+			*w |= g_ascii_xdigit_value(r[2]);
 			/* Move two bytes more */
 			r += 2;
 		} else if (*r == '+') {

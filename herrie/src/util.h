@@ -39,11 +39,6 @@
  */
 void hex_encode(unsigned char *bin, char *hex, size_t len);
 #endif /* BUILD_SCROBBLER */
-/**
- * @brief Convert a hexadecimal string to binary data. The len parameter
- *        is the length of the binary buffer.
- */
-void hex_decode(char *hex, unsigned char *bin, size_t len);
 
 /**
  * @brief Escape a string according to HTTP/1.1. A string can be
