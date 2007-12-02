@@ -357,11 +357,16 @@ vfs_populate(const struct vfsref *vr)
 }
 
 void
-vfs_unfold(struct vfslist *vl, const struct vfsref *vr)
+vfs_unfold(struct vfslist *vl, const struct vfsref *vr,
+    const regex_t *match)
 {
 	struct vfsref *cvr;
 
 	if (vfs_playable(vr)) {
+		/* Ignore non-matching items, if there's a match */
+		if (match != NULL && !vfs_match(vr, match))
+			return;
+		
 		/* Single item - add it to the list */
 		vfs_list_insert_tail(vl, vfs_dup(vr));
 	} else {
@@ -369,7 +374,7 @@ vfs_unfold(struct vfslist *vl, const struct vfsref *vr)
 		vfs_populate(vr);
 		VFS_LIST_FOREACH(&vr->ent->population, cvr) {
 			if (vfs_recurse(cvr))
-				vfs_unfold(vl, cvr);
+				vfs_unfold(vl, cvr, match);
 		}
 	}
 }
@@ -471,7 +476,7 @@ vfs_fgets(char *str, size_t size, FILE *fp)
  *        string.
  */
 int
-vfs_match(struct vfsref *vr, const regex_t *match)
+vfs_match(const struct vfsref *vr, const regex_t *match)
 {
 #ifdef BUILD_REGEX
 	return (regexec(match, vfs_name(vr), 0, NULL, 0) == 0);
