@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-30 12:52+0100\n"
+"POT-Creation-Date: 2007-12-02 16:08+0100\n"
 "PO-Revision-Date: 2007-09-25 07:00+0200\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
@@ -81,11 +81,11 @@ msgstr "Spring naar positie"
 msgid "Bad time format."
 msgstr "Ongeldig tijdformaat."
 
-#: gui_input.c:537 main.c:76 main.c:82 main.c:88
+#: gui_input.c:539 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:538 main.c:78 main.c:84 main.c:90
+#: gui_input.c:540 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "nee"
 
@@ -109,19 +109,19 @@ msgstr "Alle nummers uit de afspeellijst verwijderen?"
 msgid "Randomize the playlist?"
 msgstr "De afspeellijst willekeurig sorteren?"
 
-#: gui_playq.c:412
+#: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
 msgstr "Het nummer is al aan de bovenkant van de afspeellijst."
 
-#: gui_playq.c:431
+#: gui_playq.c:431 gui_playq.c:469
 msgid "The song is already at the bottom of the playlist."
 msgstr "Het nummer is al aan de onderkant van de afspeellijst."
 
-#: gui_playq.c:491
+#: gui_playq.c:529
 msgid "Failed to adjust the volume."
 msgstr "Bijstellen van het volume mislukt."
 
-#: gui_playq.c:493
+#: gui_playq.c:531
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Volume: %d%%"

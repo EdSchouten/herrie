@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-30 12:52+0100\n"
+"POT-Creation-Date: 2007-12-02 16:08+0100\n"
 "PO-Revision-Date: 2007-10-10 18:27+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -86,11 +86,11 @@ msgstr "Nhảy tới vị trí"
 msgid "Bad time format."
 msgstr "Sai định dạng thời gian."
 
-#: gui_input.c:537 main.c:76 main.c:82 main.c:88
+#: gui_input.c:539 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "có"
 
-#: gui_input.c:538 main.c:78 main.c:84 main.c:90
+#: gui_input.c:540 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "không"
 
@@ -114,19 +114,19 @@ msgstr "Gỡ bỏ mọi bài hát khỏi danh mục nhạc không?"
 msgid "Randomize the playlist?"
 msgstr "Ngẫu nhiên hoá danh mục nhạc không?"
 
-#: gui_playq.c:412
+#: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
 msgstr "Bài hát này đã ở đầu của danh mục nhạc."
 
-#: gui_playq.c:431
+#: gui_playq.c:431 gui_playq.c:469
 msgid "The song is already at the bottom of the playlist."
 msgstr "Bài hát này đã ở cuối của danh mục nhạc."
 
-#: gui_playq.c:491
+#: gui_playq.c:529
 msgid "Failed to adjust the volume."
 msgstr "Lỗi điều chỉnh âm lượng."
 
-#: gui_playq.c:493
+#: gui_playq.c:531
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Âm: %d%%"

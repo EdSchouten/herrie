@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-30 12:52+0100\n"
+"POT-Creation-Date: 2007-12-02 16:08+0100\n"
 "PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -86,11 +86,11 @@ msgstr "Hoppa till position"
 msgid "Bad time format."
 msgstr "Felaktigt tidsformat."
 
-#: gui_input.c:537 main.c:76 main.c:82 main.c:88
+#: gui_input.c:539 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:538 main.c:78 main.c:84 main.c:90
+#: gui_input.c:540 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "nej"
 
@@ -115,19 +115,19 @@ msgstr "Ta bort alla låtar från spellistan?"
 msgid "Randomize the playlist?"
 msgstr "Slumpa spellistan?"
 
-#: gui_playq.c:412
+#: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
 msgstr "Låten är redan överst i spellistan."
 
-#: gui_playq.c:431
+#: gui_playq.c:431 gui_playq.c:469
 msgid "The song is already at the bottom of the playlist."
 msgstr "Låten är redan i slutet av spellistan."
 
-#: gui_playq.c:491
+#: gui_playq.c:529
 msgid "Failed to adjust the volume."
 msgstr "Misslyckades med att justera volymen."
 
-#: gui_playq.c:493
+#: gui_playq.c:531
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Volym: %d%%"

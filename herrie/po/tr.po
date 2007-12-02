@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-30 12:52+0100\n"
+"POT-Creation-Date: 2007-12-02 16:08+0100\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
@@ -84,11 +84,11 @@ msgstr "Konuma git"
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:537 main.c:76 main.c:82 main.c:88
+#: gui_input.c:539 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:538 main.c:78 main.c:84 main.c:90
+#: gui_input.c:540 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "hayır"
 
@@ -112,19 +112,19 @@ msgstr "Tüm parçaları listeden sil?"
 msgid "Randomize the playlist?"
 msgstr "Parça listesini karıştır?"
 
-#: gui_playq.c:412
+#: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
 msgstr "Parça zaten parça listesinin en üstünde."
 
-#: gui_playq.c:431
+#: gui_playq.c:431 gui_playq.c:469
 msgid "The song is already at the bottom of the playlist."
 msgstr "Parça zaten parça listesinin en altında."
 
-#: gui_playq.c:491
+#: gui_playq.c:529
 msgid "Failed to adjust the volume."
 msgstr "Ses ayarlanamadı"
 
-#: gui_playq.c:493
+#: gui_playq.c:531
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Ses: %d%%"
