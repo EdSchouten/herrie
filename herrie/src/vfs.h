@@ -389,6 +389,17 @@ FILE		*vfs_fopen(const char *filename, const char *mode);
  * @brief fgets()-like routine that performs newline-stripping.
  */
 int		vfs_fgets(char *str, size_t size, FILE *fp);
+/**
+ * @brief Match a VFS reference with a regular expression.
+ */
+int		vfs_match(const struct vfsref *vr, const regex_t *match);
+/**
+ * @brief Recursively search through a VFS reference and add all
+ *        matching objects to a list. The VFS reference itself will be
+ *        excluded from the results.
+ */
+void		vfs_find(struct vfslist *vl, const struct vfsref *vr,
+    const regex_t *match);
 
 /**
  * @brief Get the friendly name of the current VFS reference.

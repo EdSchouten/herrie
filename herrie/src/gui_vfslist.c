@@ -519,38 +519,6 @@ gui_vfslist_notify_done(struct gui_vfslist *gv)
 	gui_vfslist_refresh(gv);
 }
 
-/**
- * @brief Match a VFS reference's name to the globally defined search
- *        string.
- */
-static int
-gui_vfslist_searchmatch(struct vfsref *vr, const regex_t *match)
-{
-#ifdef BUILD_REGEX
-	if (regexec(match, vfs_name(vr), 0, NULL, 0) == 0)
-		return (1);
-#else /* !BUILD_REGEX */
-	size_t len;
-	const char *name;
-	char first;
-
-	name = vfs_name(vr);
-	len = strlen(match);
-
-	/* strcasestr()-like string comparison */
-	if ((first = tolower(match[0])) == '\0')
-		return (0);
-	while (name[0] != '\0') {
-		if (tolower(name[0]) == first)
-			if (strncasecmp(name, match, len) == 0)
-				return (1);
-		name++;
-	}
-#endif /* BUILD_REGEX */
-
-	return (0);
-}
-
 int
 gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)
 {
@@ -565,7 +533,7 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)
 	/* Step 1: search from selection to end */
 	for (vr = vfs_list_next(gv->vr_selected), idx = gv->idx_selected + 1;
 	    vr != NULL; vr = vfs_list_next(vr), idx++) {
-		if (gui_vfslist_searchmatch(vr, match))
+		if (vfs_match(vr, match))
 			goto found;
 	}
 
@@ -573,7 +541,7 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)
 	for (vr = vfs_list_first(gv->list), idx = 1;
 	    vr != vfs_list_next(gv->vr_selected);
 	    vr = vfs_list_next(vr), idx++) {
-		if (gui_vfslist_searchmatch(vr, match)) {
+		if (vfs_match(vr, match)) {
 			gui_msgbar_warn(_("Search wrapped to top."));
 			goto found;
 		}

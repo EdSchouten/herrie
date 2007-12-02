@@ -465,3 +465,51 @@ vfs_fgets(char *str, size_t size, FILE *fp)
 
 	return (0);
 }
+
+/**
+ * @brief Match a VFS reference's name to the globally defined search
+ *        string.
+ */
+int
+vfs_match(const struct vfsref *vr, const regex_t *match)
+{
+#ifdef BUILD_REGEX
+	return (regexec(match, vfs_name(vr), 0, NULL, 0) == 0);
+#else /* !BUILD_REGEX */
+	size_t len;
+	const char *name;
+	char first;
+
+	name = vfs_name(vr);
+	len = strlen(match);
+
+	/* strcasestr()-like string comparison */
+	if ((first = tolower(match[0])) == '\0')
+		return (0);
+	while (name[0] != '\0') {
+		if (tolower(name[0]) == first)
+			if (strncasecmp(name, match, len) == 0)
+				return (1);
+		name++;
+	}
+
+	return (0);
+#endif /* BUILD_REGEX */
+}
+
+void
+vfs_find(struct vfslist *vl, const struct vfsref *vr,
+    const regex_t *match)
+{
+	struct vfsref *cvr;
+
+	vfs_populate(vr);
+	VFS_LIST_FOREACH(&vr->ent->population, cvr) {
+		/* Add matching objects to the results */
+		if (vfs_match(vr, match))
+			vfs_list_insert_tail(vl, vfs_dup(vr));
+		/* Also search through its children */
+		if (vfs_recurse(cvr))
+			vfs_find(vl, cvr, match);
+	}
+}
