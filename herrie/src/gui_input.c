@@ -133,6 +133,43 @@ gui_input_switchfocus(void)
 }
 
 /**
+ * @brief Ask the user to enter a new search string.
+ */
+static int
+gui_input_asksearch(void)
+{
+	char *str;
+#ifdef BUILD_REGEX
+	regex_t match;
+#endif /* BUILD_REGEX */
+
+	/* Allow the user to enter a search string */
+	str = gui_input_askstring(_("Search for"), cursearch, NULL);
+	if (str == NULL)
+		return (-1);
+	
+#ifdef BUILD_REGEX
+	/* Compile the new expression */
+	if (regcomp(&match, str, REG_EXTENDED|REG_ICASE) != 0) {
+		gui_msgbar_warn(_("Bad pattern."));
+		g_free(str);
+		return (-1);
+	}
+
+	/* Copy the compiled expression over the original one */
+	if (cursearch != NULL)
+		regfree(&cursearchregex);
+	memcpy(&cursearchregex, &match, sizeof match);
+#endif /* BUILD_REGEX */
+
+	/* Replace our search string */
+	g_free(cursearch);
+	cursearch = str;
+
+	return (0);
+}
+
+/**
  * @brief Ask the user to enter a search string when none was given and
  *        search for the next item matching the search string.
  */
@@ -148,8 +185,8 @@ gui_input_searchnext(void)
 
 	if (cursearch == NULL) {
 		/* No search string yet */
-		gui_input_search();
-		return;
+		if (gui_input_asksearch() != 0)
+			return;
 	}
 
 	/*
@@ -187,34 +224,11 @@ found:	/* Focus the window with the match and redraw them. */
 static void
 gui_input_search(void)
 {
-	char *str;
-#ifdef BUILD_REGEX
-	regex_t match;
-#endif /* BUILD_REGEX */
-
-	/* Allow the user to enter a search string */
-	str = gui_input_askstring(_("Search for"), cursearch, NULL);
-	if (str == NULL)
+	/* Always ask for a search string */
+	if (gui_input_asksearch() != 0)
 		return;
-	
-#ifdef BUILD_REGEX
-	/* Compile the new expression */
-	if (regcomp(&match, str, REG_EXTENDED|REG_ICASE) != 0) {
-		gui_msgbar_warn(_("Bad pattern."));
-		g_free(str);
-		return;
-	}
 
-	/* Copy the compiled expression over the original one */
-	if (cursearch != NULL)
-		regfree(&cursearchregex);
-	memcpy(&cursearchregex, &match, sizeof match);
-#endif /* BUILD_REGEX */
-
-	/* Replace our search string */
-	g_free(cursearch);
-	cursearch = str;
-
+	/* Just simulate a 'n' button */
 	gui_input_searchnext();
 }
 
