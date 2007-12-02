@@ -368,12 +368,10 @@ void		vfs_close(struct vfsref *vr);
  */
 int		vfs_populate(const struct vfsref *vr);
 /**
- * @brief Recursively expand a VFS reference to all their usable,
- *        and optionally matching, children and append them to the specified
- *        list.
+ * @brief Recursively expand a VFS reference to all their usable
+ *        children and append them to the specified list.
  */
-void		vfs_unfold(struct vfslist *vl, const struct vfsref *vr,
-    const regex_t *match);
+void		vfs_unfold(struct vfslist *vl, const struct vfsref *vr);
 /**
  * @brief Write a VFS list to a PLS file on disk.
  */
@@ -395,6 +393,13 @@ int		vfs_fgets(char *str, size_t size, FILE *fp);
  * @brief Match a VFS reference with a regular expression.
  */
 int		vfs_match(const struct vfsref *vr, const regex_t *match);
+/**
+ * @brief Recursively search through a VFS reference and add all
+ *        matching objects to a list. The VFS reference itself will be
+ *        excluded from the results.
+ */
+void		vfs_find(struct vfslist *vl, const struct vfsref *vr,
+    const regex_t *match);
 
 /**
  * @brief Get the friendly name of the current VFS reference.
