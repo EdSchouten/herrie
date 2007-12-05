@@ -520,12 +520,12 @@ gui_vfslist_notify_done(struct gui_vfslist *gv)
 }
 
 int
-gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)
+gui_vfslist_searchnext(struct gui_vfslist *gv, const struct vfsmatch *vm)
 {
 	struct vfsref *vr;
 	unsigned int idx;
 
-	g_assert(match != NULL);
+	g_assert(vm != NULL);
 
 	if (gv->vr_selected == NULL)
 		return (-1);
@@ -533,7 +533,7 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)
 	/* Step 1: search from selection to end */
 	for (vr = vfs_list_next(gv->vr_selected), idx = gv->idx_selected + 1;
 	    vr != NULL; vr = vfs_list_next(vr), idx++) {
-		if (vfs_match(vr, match))
+		if (vfs_match_compare(vm, vr))
 			goto found;
 	}
 
@@ -541,7 +541,7 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match)
 	for (vr = vfs_list_first(gv->list), idx = 1;
 	    vr != vfs_list_next(gv->vr_selected);
 	    vr = vfs_list_next(vr), idx++) {
-		if (vfs_match(vr, match)) {
+		if (vfs_match_compare(vm, vr)) {
 			gui_msgbar_warn(_("Search wrapped to top."));
 			goto found;
 		}

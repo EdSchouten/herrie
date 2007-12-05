@@ -154,6 +154,16 @@ struct vfsref {
 };
 
 /**
+ * @brief Compiled regular expression or string matching data.
+ */
+struct vfsmatch {
+#ifdef BUILD_REGEX
+	regex_t		regex;
+#endif /* BUILD_REGEX */
+	char		*string;
+};
+
+/**
  * @brief Contents of an empty VFS list structure.
  */
 #define VFSLIST_INITIALIZER { NULL, NULL, 0 }
@@ -373,6 +383,13 @@ int		vfs_populate(const struct vfsref *vr);
  */
 void		vfs_unfold(struct vfslist *vl, const struct vfsref *vr);
 /**
+ * @brief Recursively search through a VFS reference and add all
+ *        matching objects to a list. The VFS reference itself will be
+ *        excluded from the results.
+ */
+void		vfs_find(struct vfslist *vl, const struct vfsref *vr,
+    const struct vfsmatch *vm);
+/**
  * @brief Write a VFS list to a PLS file on disk.
  */
 struct vfsref	*vfs_write_playlist(const struct vfslist *vl,
@@ -389,17 +406,6 @@ FILE		*vfs_fopen(const char *filename, const char *mode);
  * @brief fgets()-like routine that performs newline-stripping.
  */
 int		vfs_fgets(char *str, size_t size, FILE *fp);
-/**
- * @brief Match a VFS reference with a regular expression.
- */
-int		vfs_match(const struct vfsref *vr, const regex_t *match);
-/**
- * @brief Recursively search through a VFS reference and add all
- *        matching objects to a list. The VFS reference itself will be
- *        excluded from the results.
- */
-void		vfs_find(struct vfslist *vl, const struct vfsref *vr,
-    const regex_t *match);
 
 /**
  * @brief Get the friendly name of the current VFS reference.
@@ -508,6 +514,26 @@ static inline void
 vfs_unmark(struct vfsref *vr)
 {
 	vr->marked = 0;
+}
+
+/**
+ * @brief Compile a regular expression for matching.
+ */
+struct vfsmatch	*vfs_match_new(const char *str);
+/**
+ * @brief Deallocate a compiled regular expression.
+ */
+void		vfs_match_free(struct vfsmatch *vm);
+/**
+ * @brief Match a VFS reference with a regular expression.
+ */
+int		vfs_match_compare(const struct vfsmatch *vm,
+    const struct vfsref *vr);
+
+static inline const char *
+vfs_match_value(const struct vfsmatch *vm)
+{
+	return (vm->string);
 }
 
 #endif /* !_VFS_H_ */

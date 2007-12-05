@@ -489,12 +489,12 @@ gui_playq_song_select(void)
 }
 
 int
-gui_playq_searchnext(const regex_t *match)
+gui_playq_searchnext(const struct vfsmatch *vm)
 {
 	int ret;
 
 	playq_lock();
-	ret = gui_vfslist_searchnext(win_playq, match);
+	ret = gui_vfslist_searchnext(win_playq, vm);
 	playq_unlock();
 	
 	return (ret);

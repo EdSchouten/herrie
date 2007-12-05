@@ -80,8 +80,6 @@
 
 #ifdef BUILD_REGEX
 #include <regex.h>
-#else /* !BUILD_REGEX */
-typedef char regex_t;
 #endif /* BUILD_REGEX */
 
 #define CONFHOMEDIR "~" G_DIR_SEPARATOR_S "." APP_NAME G_DIR_SEPARATOR_S

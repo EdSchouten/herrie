@@ -374,6 +374,23 @@ vfs_unfold(struct vfslist *vl, const struct vfsref *vr)
 	}
 }
 
+void
+vfs_find(struct vfslist *vl, const struct vfsref *vr,
+    const struct vfsmatch *vm)
+{
+	struct vfsref *cvr;
+
+	vfs_populate(vr);
+	VFS_LIST_FOREACH(&vr->ent->population, cvr) {
+		/* Add matching objects to the results */
+		if (vfs_match_compare(vm, vr))
+			vfs_list_insert_tail(vl, vfs_dup(vr));
+		/* Also search through its children */
+		if (vfs_recurse(cvr))
+			vfs_find(vl, cvr, vm);
+	}
+}
+
 struct vfsref *
 vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
     const char *filename)
@@ -466,50 +483,57 @@ vfs_fgets(char *str, size_t size, FILE *fp)
 	return (0);
 }
 
-/**
- * @brief Match a VFS reference's name to the globally defined search
- *        string.
- */
-int
-vfs_match(const struct vfsref *vr, const regex_t *match)
+struct vfsmatch	*
+vfs_match_new(const char *str)
+{
+	struct vfsmatch *vm;
+
+	vm = g_slice_new0(struct vfsmatch);
+
+#ifdef BUILD_REGEX
+	if (regcomp(&vm->regex, str, REG_EXTENDED|REG_ICASE) != 0) {
+		g_slice_free(struct vfsmatch, vm);
+		return (NULL);
+	}
+#endif /* BUILD_REGEX */
+	vm->string = g_strdup(str);
+	
+	return (vm);
+}
+
+void
+vfs_match_free(struct vfsmatch *vm)
 {
 #ifdef BUILD_REGEX
-	return (regexec(match, vfs_name(vr), 0, NULL, 0) == 0);
+	regfree(&vm->regex);
+#endif /* BUILD_REGEX */
+	g_free(vm->string);
+	g_slice_free(struct vfsmatch, vm);
+}
+
+int
+vfs_match_compare(const struct vfsmatch * vm, const struct vfsref *vr)
+{
+#ifdef BUILD_REGEX
+	return (regexec(&vm->regex, vfs_name(vr), 0, NULL, 0) == 0);
 #else /* !BUILD_REGEX */
 	size_t len;
 	const char *name;
 	char first;
 
 	name = vfs_name(vr);
-	len = strlen(match);
+	len = strlen(vm->string);
 
 	/* strcasestr()-like string comparison */
-	if ((first = tolower(match[0])) == '\0')
+	if ((first = tolower(vm->string[0])) == '\0')
 		return (0);
 	while (name[0] != '\0') {
 		if (tolower(name[0]) == first)
-			if (strncasecmp(name, match, len) == 0)
+			if (strncasecmp(name, vm->string, len) == 0)
 				return (1);
 		name++;
 	}
 
 	return (0);
 #endif /* BUILD_REGEX */
-}
-
-void
-vfs_find(struct vfslist *vl, const struct vfsref *vr,
-    const regex_t *match)
-{
-	struct vfsref *cvr;
-
-	vfs_populate(vr);
-	VFS_LIST_FOREACH(&vr->ent->population, cvr) {
-		/* Add matching objects to the results */
-		if (vfs_match(vr, match))
-			vfs_list_insert_tail(vl, vfs_dup(vr));
-		/* Also search through its children */
-		if (vfs_recurse(cvr))
-			vfs_find(vl, cvr, match);
-	}
 }

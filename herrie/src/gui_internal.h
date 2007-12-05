@@ -34,6 +34,7 @@
 #include CURSES_HEADER
 
 struct vfsref;
+struct vfsmatch;
 
 /**
  * @brief Determine whether our terminal is black or white or color.
@@ -250,7 +251,7 @@ void gui_playq_song_select(void);
  * @brief Search for the next item matching gui_input_cursearch in the
  *        playlist.
  */
-int gui_playq_searchnext(const regex_t *str);
+int gui_playq_searchnext(const struct vfsmatch *vm);
 /**
  * @brief Focus or unfocus the playlist.
  */
@@ -347,7 +348,7 @@ void gui_browser_playq_add_before(void);
  * @brief Search for the next item matching gui_input_cursearch in the
  *        file browser.
  */
-int gui_browser_searchnext(const regex_t *str);
+int gui_browser_searchnext(const struct vfsmatch *vm);
 /**
  * @brief Change to a specified directory.
  */

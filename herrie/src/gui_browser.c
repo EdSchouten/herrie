@@ -302,9 +302,9 @@ gui_browser_playq_add_before(void)
 }
 
 int
-gui_browser_searchnext(const regex_t *match)
+gui_browser_searchnext(const struct vfsmatch *vm)
 {
-	return gui_vfslist_searchnext(win_browser, match);
+	return gui_vfslist_searchnext(win_browser, vm);
 }
 
 void

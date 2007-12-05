@@ -36,6 +36,7 @@
 #include "gui_internal.h"
 #include "playq.h"
 #include "scrobbler.h"
+#include "vfs.h"
 
 /**
  * @brief The focus is on the browser.
@@ -56,13 +57,7 @@ static int gui_input_curfocus = GUI_FOCUS_BROWSER;
 /**
  * @brief Indicator of the current search string.
  */
-static char *cursearch = NULL;
-#ifdef BUILD_REGEX
-/**
- * @brief Compiled regular expression of the current search string.
- */
-static regex_t cursearchregex;
-#endif /* BUILD_REGEX */
+static struct vfsmatch *cursearch = NULL;
 /**
  * @brief The last seek string that has been entered.
  */
@@ -76,8 +71,6 @@ static int shutting_down = 0;
  * @brief Add the Ctrl modifier to a character.
  */
 #define CTRL(x) (((x) - 'A' + 1) & 0x7f)
-
-static void gui_input_search(void);
 
 /**
  * @brief Fetch a character from the keyboard, already processing
@@ -139,32 +132,29 @@ static int
 gui_input_asksearch(void)
 {
 	char *str;
-#ifdef BUILD_REGEX
-	regex_t match;
-#endif /* BUILD_REGEX */
+	const char *old = NULL;
+	struct vfsmatch *vm;
+
+	/* Show the previous value if we have one */
+	if (cursearch != NULL)
+		old = vfs_match_value(cursearch);
 
 	/* Allow the user to enter a search string */
-	str = gui_input_askstring(_("Search for"), cursearch, NULL);
+	str = gui_input_askstring(_("Search for"), old, NULL);
 	if (str == NULL)
 		return (-1);
 	
-#ifdef BUILD_REGEX
-	/* Compile the new expression */
-	if (regcomp(&match, str, REG_EXTENDED|REG_ICASE) != 0) {
+	vm = vfs_match_new(str);
+	if (vm == NULL) {
 		gui_msgbar_warn(_("Bad pattern."));
 		g_free(str);
 		return (-1);
 	}
 
-	/* Copy the compiled expression over the original one */
-	if (cursearch != NULL)
-		regfree(&cursearchregex);
-	memcpy(&cursearchregex, &match, sizeof match);
-#endif /* BUILD_REGEX */
-
 	/* Replace our search string */
-	g_free(cursearch);
-	cursearch = str;
+	if (cursearch != NULL)
+		vfs_match_free(cursearch);
+	cursearch = vm;
 
 	return (0);
 }
@@ -177,11 +167,6 @@ static void
 gui_input_searchnext(void)
 {
 	int nfocus = GUI_FOCUS_PLAYQ;
-#ifdef BUILD_REGEX
-	const regex_t *match = &cursearchregex;
-#else /* !BUILD_REGEX */
-	const char *match = cursearch;
-#endif /* BUILD_REGEX */
 
 	if (cursearch == NULL) {
 		/* No search string yet */
@@ -197,13 +182,13 @@ gui_input_searchnext(void)
 	 * last two.
 	 */
 	if (gui_input_curfocus == GUI_FOCUS_PLAYQ &&
-	    gui_playq_searchnext(match) == 0) {
+	    gui_playq_searchnext(cursearch) == 0) {
 		goto found;
-	} else if (gui_browser_searchnext(match) == 0) {
+	} else if (gui_browser_searchnext(cursearch) == 0) {
 		nfocus = GUI_FOCUS_BROWSER;
 		goto found;
 	} else if (gui_input_curfocus != GUI_FOCUS_PLAYQ &&
-	    gui_playq_searchnext(match) == 0) {
+	    gui_playq_searchnext(cursearch) == 0) {
 		goto found;
 	}
 

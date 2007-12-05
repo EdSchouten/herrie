@@ -35,6 +35,7 @@
 
 struct vfslist;
 struct vfsref;
+struct vfsmatch;
 
 /**
  * @brief Graphical presentation of a vfslist.
@@ -198,7 +199,7 @@ void gui_vfslist_notify_post_insertion(struct gui_vfslist *gv,
 /**
  * @brief Notify the gui_vfslist that the list has been randomized.
  */
-void gui_vfslist_notify_post_randomization( struct gui_vfslist *gv);
+void gui_vfslist_notify_post_randomization(struct gui_vfslist *gv);
 /**
  * @brief Notify the gui_vfslist that all changes to the list itself are
  *        finished. This causes the list to be redrawn.
@@ -208,7 +209,7 @@ void gui_vfslist_notify_done(struct gui_vfslist *gv);
  * @brief Change the selection to the first item that matches the
  *        globally defined search string gui_input_cursearch.
  */
-int gui_vfslist_searchnext(struct gui_vfslist *gv, const regex_t *match);
+int gui_vfslist_searchnext(struct gui_vfslist *gv, const struct vfsmatch *vm);
 /**
  * @brief Show the full pathname of the selected entry in the message
  *        bar.
