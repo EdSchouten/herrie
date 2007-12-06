@@ -530,6 +530,9 @@ void		vfs_match_free(struct vfsmatch *vm);
 int		vfs_match_compare(const struct vfsmatch *vm,
     const struct vfsref *vr);
 
+/**
+ * @brief Return the search string that the user has entered.
+ */
 static inline const char *
 vfs_match_value(const struct vfsmatch *vm)
 {
