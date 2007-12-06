@@ -445,6 +445,10 @@ gui_browser_locate(const struct vfsmatch *vm)
 		return (-1);
 
 	if (vm == NULL) {
+		/* There was no filter */
+		if (locatestr == NULL)
+			return (0);
+
 		/* Show the original contents again */
 		gui_browser_cleanup_flist();
 		gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
