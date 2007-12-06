@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-02 16:08+0100\n"
+"POT-Creation-Date: 2007-12-06 20:28+0100\n"
 "PO-Revision-Date: 2007-11-29 15:14+0100\n"
 "Last-Translator: Xavier de Blas <xaviblas@gmail.com>\n"
 "Language-Team: Spanish <xaviblas@gmail.com>\n"
@@ -24,68 +24,72 @@ msgstr "No se permite esta frecuencia de sampleo o nombre de canales."
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "No se puede abrir la salida de audio \"%s\".\n"
 
-#: gui_browser.c:116
+#: gui_browser.c:78
+msgid " (filter: "
+msgstr ""
+
+#: gui_browser.c:143
 msgid "Unable to open initial directory."
 msgstr "No se puede abrir la carpeta inicial."
 
-#: gui_browser.c:221
+#: gui_browser.c:253
 msgid "Unable to enter the parent directory."
 msgstr "No se puede acceder a la carpeta padre."
 
-#: gui_browser.c:236
+#: gui_browser.c:268
 msgid "Unable to enter the selected directory."
 msgstr "No se puede acceder a la carpeta seleccionada."
 
-#: gui_browser.c:320
+#: gui_browser.c:354
 msgid "Change directory"
 msgstr "Cambiar carpeta"
 
-#: gui_browser.c:358
+#: gui_browser.c:393
 msgid "Unable to display the file or directory."
 msgstr "No se puede mostrar el archivo o carpeta."
 
-#: gui_browser.c:375
+#: gui_browser.c:410
 msgid "Write playlist to file"
 msgstr "Escribir la lista de reproducción a un archivo."
 
-#: gui_browser.c:384
+#: gui_browser.c:419
 msgid "Unable to write playlist."
 msgstr "No se puede escribir la lista de reproducción."
 
-#: gui_input.c:174
-msgid "Not found."
-msgstr "No encontrado."
-
-#: gui_input.c:196
+#: gui_input.c:143
 msgid "Search for"
 msgstr "Buscar"
 
-#: gui_input.c:203
+#: gui_input.c:149
 msgid "Bad pattern."
 msgstr "Búsqueda incorrecta."
 
-#: gui_input.c:250
+#: gui_input.c:196 gui_input.c:232
+msgid "Not found."
+msgstr "No encontrado."
+
+#: gui_input.c:264
 msgid "Use kill(1) to quit."
 msgstr "Usar kill(1) para salir."
 
-#: gui_input.c:254
+#: gui_input.c:268
 #, c-format
 msgid "Quit %s?"
 msgstr "¿Salir de %s?"
 
-#: gui_input.c:291
+#: gui_input.c:305
 msgid "Jump to position"
 msgstr "Saltar a la posición"
 
-#: gui_input.c:348
+#: gui_input.c:362
 msgid "Bad time format."
 msgstr "Formato de fecha incorrecto."
 
-#: gui_input.c:539 main.c:76 main.c:82 main.c:88
+#: gui_input.c:554 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "sí"
 
-#: gui_input.c:540 main.c:78 main.c:84 main.c:90
+#: gui_input.c:555 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "no"
 
@@ -138,11 +142,11 @@ msgstr "Situado en la primera canción."
 msgid "You are at the last song."
 msgstr "Situado en la última canción."
 
-#: gui_vfslist.c:577
+#: gui_vfslist.c:545
 msgid "Search wrapped to top."
 msgstr "Búsqueda completa, continuando en el inicio."
 
-#: gui_vfslist.c:601
+#: gui_vfslist.c:569
 msgid "Full pathname"
 msgstr "Escribir la ruta completa"
 

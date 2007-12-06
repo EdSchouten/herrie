@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-02 16:08+0100\n"
+"POT-Creation-Date: 2007-12-06 20:28+0100\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team:  <se.seam@gmail.com>\n"
@@ -29,68 +29,72 @@ msgstr "Частота сэмпла или число каналов не под
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Невозможно открыть звуковое устройство \"%s\".\n"
 
-#: gui_browser.c:116
+#: gui_browser.c:78
+msgid " (filter: "
+msgstr ""
+
+#: gui_browser.c:143
 msgid "Unable to open initial directory."
 msgstr "Нет доступа к исходному каталогу."
 
-#: gui_browser.c:221
+#: gui_browser.c:253
 msgid "Unable to enter the parent directory."
 msgstr "Нет доступа к родительскому каталогу."
 
-#: gui_browser.c:236
+#: gui_browser.c:268
 msgid "Unable to enter the selected directory."
 msgstr "Нет доступа к выбранному каталогу."
 
-#: gui_browser.c:320
+#: gui_browser.c:354
 msgid "Change directory"
 msgstr "Сменить каталог"
 
-#: gui_browser.c:358
+#: gui_browser.c:393
 msgid "Unable to display the file or directory."
 msgstr "Невозможно отобразить файл или каталог."
 
-#: gui_browser.c:375
+#: gui_browser.c:410
 msgid "Write playlist to file"
 msgstr "Записать список воспроизведения в файл"
 
-#: gui_browser.c:384
+#: gui_browser.c:419
 msgid "Unable to write playlist."
 msgstr "Невозможно записать список воспроизведения."
 
-#: gui_input.c:174
-msgid "Not found."
-msgstr "Не найден."
-
-#: gui_input.c:196
+#: gui_input.c:143
 msgid "Search for"
 msgstr "Поиск"
 
-#: gui_input.c:203
+#: gui_input.c:149
 msgid "Bad pattern."
 msgstr "Неверный шаблон."
 
-#: gui_input.c:250
+#: gui_input.c:196 gui_input.c:232
+msgid "Not found."
+msgstr "Не найден."
+
+#: gui_input.c:264
 msgid "Use kill(1) to quit."
 msgstr "Используйте kill(1) для выхода."
 
-#: gui_input.c:254
+#: gui_input.c:268
 #, c-format
 msgid "Quit %s?"
 msgstr "Покинуть %s?"
 
-#: gui_input.c:291
+#: gui_input.c:305
 msgid "Jump to position"
 msgstr "Перейти к позиции"
 
-#: gui_input.c:348
+#: gui_input.c:362
 msgid "Bad time format."
 msgstr "Неверный формат времени."
 
-#: gui_input.c:539 main.c:76 main.c:82 main.c:88
+#: gui_input.c:554 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "да"
 
-#: gui_input.c:540 main.c:78 main.c:84 main.c:90
+#: gui_input.c:555 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "нет"
 
@@ -143,11 +147,11 @@ msgstr "Вы на первой композиции."
 msgid "You are at the last song."
 msgstr "Вы на последней композиции."
 
-#: gui_vfslist.c:577
+#: gui_vfslist.c:545
 msgid "Search wrapped to top."
 msgstr "Поиск достиг начала."
 
-#: gui_vfslist.c:601
+#: gui_vfslist.c:569
 msgid "Full pathname"
 msgstr "Полный путь"
 

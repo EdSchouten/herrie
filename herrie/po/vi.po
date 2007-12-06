@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-02 16:08+0100\n"
+"POT-Creation-Date: 2007-12-06 20:28+0100\n"
 "PO-Revision-Date: 2007-10-10 18:27+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -29,68 +29,72 @@ msgstr "Không hỗ trợ tần số lấy mẫu hay tổng số kênh."
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Không thể mở thiết bị âm thanh « %s ».\n"
 
-#: gui_browser.c:116
+#: gui_browser.c:78
+msgid " (filter: "
+msgstr ""
+
+#: gui_browser.c:143
 msgid "Unable to open initial directory."
 msgstr "Không thể mở thư mục đầu tiên."
 
-#: gui_browser.c:221
+#: gui_browser.c:253
 msgid "Unable to enter the parent directory."
 msgstr "Không thể vào thư mục cha."
 
-#: gui_browser.c:236
+#: gui_browser.c:268
 msgid "Unable to enter the selected directory."
 msgstr "Không thể vào thư mục đã chọn."
 
-#: gui_browser.c:320
+#: gui_browser.c:354
 msgid "Change directory"
 msgstr "Đổi thư mục"
 
-#: gui_browser.c:358
+#: gui_browser.c:393
 msgid "Unable to display the file or directory."
 msgstr "Không thể hiển thị tập tin hay thư mục."
 
-#: gui_browser.c:375
+#: gui_browser.c:410
 msgid "Write playlist to file"
 msgstr "Ghi danh mục nhạc vào tập tin"
 
-#: gui_browser.c:384
+#: gui_browser.c:419
 msgid "Unable to write playlist."
 msgstr "Không thể ghi danh mục nhạc."
 
-#: gui_input.c:174
-msgid "Not found."
-msgstr "Không tìm thấy."
-
-#: gui_input.c:196
+#: gui_input.c:143
 msgid "Search for"
 msgstr "Tìm kiếm"
 
-#: gui_input.c:203
+#: gui_input.c:149
 msgid "Bad pattern."
 msgstr "Sai mẫu."
 
-#: gui_input.c:250
+#: gui_input.c:196 gui_input.c:232
+msgid "Not found."
+msgstr "Không tìm thấy."
+
+#: gui_input.c:264
 msgid "Use kill(1) to quit."
 msgstr "Hãy dùng kill(1) để thoát."
 
-#: gui_input.c:254
+#: gui_input.c:268
 #, c-format
 msgid "Quit %s?"
 msgstr "Thoát khỏi %s không?"
 
-#: gui_input.c:291
+#: gui_input.c:305
 msgid "Jump to position"
 msgstr "Nhảy tới vị trí"
 
-#: gui_input.c:348
+#: gui_input.c:362
 msgid "Bad time format."
 msgstr "Sai định dạng thời gian."
 
-#: gui_input.c:539 main.c:76 main.c:82 main.c:88
+#: gui_input.c:554 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "có"
 
-#: gui_input.c:540 main.c:78 main.c:84 main.c:90
+#: gui_input.c:555 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "không"
 
@@ -143,11 +147,11 @@ msgstr "Bạn ở bài hát đầu."
 msgid "You are at the last song."
 msgstr "Bạn ở bài hát cuối."
 
-#: gui_vfslist.c:577
+#: gui_vfslist.c:545
 msgid "Search wrapped to top."
 msgstr "Việc tìm kiếm cuộn về đầu."
 
-#: gui_vfslist.c:601
+#: gui_vfslist.c:569
 msgid "Full pathname"
 msgstr "Tên đường dẫn đầy đủ"
 
