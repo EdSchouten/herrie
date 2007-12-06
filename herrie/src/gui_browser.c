@@ -77,7 +77,7 @@ gui_browser_dirname_refresh(void)
 		if (locatestr != NULL) {
 			waddstr(win_dirname, _(" (filter: "));
 			waddstr(win_dirname, locatestr);
-			waddstr(win_dirname, _(")"));
+			waddstr(win_dirname, ")");
 		}
 	}
 
