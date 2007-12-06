@@ -430,13 +430,20 @@ gui_browser_locate(const struct vfsmatch *vm)
 	if (vr_curdir == NULL)
 		return (-1);
 
-	vfs_locate(&vl, vr_curdir, vm);
-	if (vfs_list_empty(&vl))
-		return (-1);
-	
-	gui_browser_cleanup_flist();
-	memcpy(&vl_flist, &vl, sizeof vl);
-	gui_vfslist_setlist(win_browser, &vl_flist);
+	if (vm == NULL) {
+		/* Show the original contents again */
+		gui_browser_cleanup_flist();
+		gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
+	} else {
+		/* Perform a search on the query */
+		vfs_locate(&vl, vr_curdir, vm);
+		if (vfs_list_empty(&vl))
+			return (-1);
+		
+		gui_browser_cleanup_flist();
+		memcpy(&vl_flist, &vl, sizeof vl);
+		gui_vfslist_setlist(win_browser, &vl_flist);
+	}
 
 	return (0);
 }

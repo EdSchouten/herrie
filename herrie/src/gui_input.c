@@ -221,8 +221,10 @@ static void
 gui_input_locate(void)
 {
 	if (gui_input_asksearch() != 0)
-		return;
-	if (gui_browser_locate(cursearch) != 0)
+		/* Show the original contents */
+		gui_browser_locate(NULL);
+	else if (gui_browser_locate(cursearch) != 0)
+		/* Nothing found */
 		gui_msgbar_warn(_("Not found."));
 }
 
