@@ -382,7 +382,6 @@ gui_browser_chdir(void)
 			    vfs_population(vr));
 		} else {
 			/* Create a fake directory */
-			vfs_list_init(&vl_flist);
 			vfs_list_insert_tail(&vl_flist, vfs_dup(vr));
 			gui_vfslist_setlist(win_browser, &vl_flist);
 		}
