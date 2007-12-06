@@ -49,7 +49,9 @@ vfs_file_handle(struct vfsent *ve)
 int
 vfs_dir_open(struct vfsent *ve, int isdir)
 {
+#ifdef S_ISLNK
 	struct stat fs;
+#endif /* S_ISLNK */
 
 	if (!isdir)
 		return (-1);
