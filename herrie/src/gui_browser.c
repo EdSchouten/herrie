@@ -449,6 +449,9 @@ gui_browser_locate(const struct vfsmatch *vm)
 		if (locatestr == NULL)
 			return (0);
 
+		/* This couldn't have matched anything */
+		g_assert(vfs_populatable(vr_curdir));
+
 		/* Show the original contents again */
 		gui_browser_cleanup_flist();
 		gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
