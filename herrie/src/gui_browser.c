@@ -54,6 +54,10 @@ static struct vfslist vl_flist = VFSLIST_INITIALIZER;
  * @brief Reference to window used as the file browser.
  */
 static struct gui_vfslist *win_browser;
+/**
+ * @brief The current filtering string that's being applied.
+ */
+static char *locatestr;
 
 /**
  * @brief Refresh the bar above the filebrowser to contain the proper
@@ -70,6 +74,11 @@ gui_browser_dirname_refresh(void)
 	werase(win_dirname);
 	if (vr_curdir != NULL) {
 		mvwaddstr(win_dirname, 0, 1, vfs_filename(vr_curdir));
+		if (locatestr != NULL) {
+			waddstr(win_dirname, _(" (filter: "));
+			waddstr(win_dirname, locatestr);
+			waddstr(win_dirname, _(")"));
+		}
 	}
 
 	percent = gui_vfslist_getpercentage(win_browser);
@@ -90,6 +99,9 @@ gui_browser_cleanup_flist(void)
 		vfs_list_remove(&vl_flist, vr);
 		vfs_close(vr);
 	}
+
+	g_free(locatestr);
+	locatestr = NULL;
 }
 
 void
@@ -441,7 +453,8 @@ gui_browser_locate(const struct vfsmatch *vm)
 			return (-1);
 		
 		gui_browser_cleanup_flist();
-		memcpy(&vl_flist, &vl, sizeof vl);
+		locatestr = g_strdup(vfs_match_value(vm));
+		memcpy(&vl_flist, &vl, sizeof vl); /* XXX */
 		gui_vfslist_setlist(win_browser, &vl_flist);
 	}
 
