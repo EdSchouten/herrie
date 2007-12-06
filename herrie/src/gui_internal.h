@@ -366,6 +366,9 @@ void gui_browser_write_playlist(void);
  *        bar.
  */
 void gui_browser_fullpath(void);
+/**
+ * @brief Apply a recursive search filter on the current directory.
+ */
 int gui_browser_locate(const struct vfsmatch *vm);
 
 #endif /* !_GUI_INTERNAL_H_ */

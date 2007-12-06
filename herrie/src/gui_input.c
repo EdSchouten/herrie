@@ -217,6 +217,10 @@ gui_input_search(void)
 	gui_input_searchnext();
 }
 
+/**
+ * @brief Ask for a search string and filter matching files in the file
+ *        browser.
+ */
 static void
 gui_input_locate(void)
 {

@@ -157,8 +157,14 @@ struct vfsref {
  */
 struct vfsmatch {
 #ifdef BUILD_REGEX
+	/**
+	 * @brief Regular expression pattern.
+	 */
 	regex_t		regex;
 #endif /* BUILD_REGEX */
+	/**
+	 * @brief Original user input.
+	 */
 	char		*string;
 };
 

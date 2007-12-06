@@ -89,6 +89,9 @@ gui_browser_dirname_refresh(void)
 	gui_unlock();
 }
 
+/**
+ * @brief Clean up our pseudo-directory data.
+ */
 static void
 gui_browser_cleanup_flist(void)
 {
