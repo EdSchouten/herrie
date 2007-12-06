@@ -477,15 +477,6 @@ vfs_sortorder(const struct vfsref *vr)
 }
 
 /**
- * @brief Determine if we should recurse this object.
- */
-static inline char
-vfs_recurse(const struct vfsref *vr)
-{
-	return (vr->ent->recurse);
-}
-
-/**
  * @brief Return a pointer to the VFS list inside the VFS reference.
  */
 static inline const struct vfslist *

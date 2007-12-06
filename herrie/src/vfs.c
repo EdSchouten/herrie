@@ -370,7 +370,7 @@ vfs_unfold(struct vfslist *vl, const struct vfsref *vr)
 		/* See if we can recurse it */
 		vfs_populate(vr);
 		VFS_LIST_FOREACH(&vr->ent->population, cvr) {
-			if (vfs_recurse(cvr))
+			if (cvr->ent->recurse)
 				vfs_unfold(vl, cvr);
 		}
 	}
@@ -389,7 +389,7 @@ vfs_locate(struct vfslist *vl, const struct vfsref *vr,
 		    vfs_match_compare(vm, vfs_filename(cvr)))
 			vfs_list_insert_tail(vl, vfs_dup(cvr));
 		/* Also search through its children */
-		if (vfs_recurse(cvr))
+		if (cvr->ent->recurse)
 			vfs_locate(vl, cvr, vm);
 	}
 }
