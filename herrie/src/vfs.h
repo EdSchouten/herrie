@@ -83,11 +83,6 @@ struct vfsmodule {
 	char	pseudo;
 
 	/**
-	 * @brief Recurse through this object when the parent is recursed
-	 */
-	char	recurse;
-
-	/**
 	 * @brief Order in which files should be sorted in vfs_dir
 	 */
 	unsigned char sortorder;
@@ -128,6 +123,10 @@ struct vfsent {
 	 * @brief References to its children
 	 */
 	struct vfslist population;
+	/**
+	 * @brief Whether or not we should recurse down this object
+	 */
+	int	recurse;
 };
 
 /**
@@ -387,7 +386,7 @@ void		vfs_unfold(struct vfslist *vl, const struct vfsref *vr);
  *        matching objects to a list. The VFS reference itself will be
  *        excluded from the results.
  */
-void		vfs_find(struct vfslist *vl, const struct vfsref *vr,
+void		vfs_locate(struct vfslist *vl, const struct vfsref *vr,
     const struct vfsmatch *vm);
 /**
  * @brief Write a VFS list to a PLS file on disk.
@@ -477,7 +476,7 @@ vfs_sortorder(const struct vfsref *vr)
 static inline char
 vfs_recurse(const struct vfsref *vr)
 {
-	return (vr->ent->vmod->recurse);
+	return (vr->ent->recurse);
 }
 
 /**
@@ -527,8 +526,7 @@ void		vfs_match_free(struct vfsmatch *vm);
 /**
  * @brief Match a VFS reference with a regular expression.
  */
-int		vfs_match_compare(const struct vfsmatch *vm,
-    const struct vfsref *vr);
+int		vfs_match_compare(const struct vfsmatch *vm, const char *str);
 
 /**
  * @brief Return the search string that the user has entered.

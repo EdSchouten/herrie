@@ -49,7 +49,20 @@ vfs_file_handle(struct vfsent *ve)
 int
 vfs_dir_open(struct vfsent *ve, int isdir)
 {
-	return (!isdir);
+	struct stat fs;
+
+	if (!isdir)
+		return (-1);
+	
+#ifdef S_ISLNK
+	/* Disallow recursing on symlinked directories */
+	if (lstat(ve->filename, &fs) != 0)
+		return (-1);
+	if (S_ISLNK(fs.st_mode))
+		ve->recurse = 0;
+#endif /* S_ISLNK */
+
+	return (0);
 }
 
 int

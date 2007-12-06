@@ -43,6 +43,7 @@ vfs_xspf_open(struct vfsent *ve, int isdir)
 	if (isdir || !g_str_has_suffix(ve->name, ".xspf"))
 		return (-1);
 
+	ve->recurse = 0;
 	return (0);
 }
 

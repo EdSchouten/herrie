@@ -217,6 +217,15 @@ gui_input_search(void)
 	gui_input_searchnext();
 }
 
+static void
+gui_input_locate(void)
+{
+	if (gui_input_asksearch() != 0)
+		return;
+	if (gui_browser_locate(cursearch) != 0)
+		gui_msgbar_warn(_("Not found."));
+}
+
 /**
  * @brief Properly shutdown the application by stopping playback and
  *        destroying the GUI.
@@ -389,6 +398,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, 'I',			gui_browser_playq_add_head },
 	{ -1, 'J',			gui_input_cursong_seek_jump },
 	{ -1, 'l',			gui_browser_dir_enter },
+	{ -1, 'L',			gui_input_locate },
 	{ -1, 'q',			gui_input_askquit },
 	{ -1, 'r',			playq_repeat_toggle },
 	{ -1, 'R',			gui_playq_song_randomize },

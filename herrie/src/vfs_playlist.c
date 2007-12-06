@@ -62,7 +62,8 @@ vfs_pls_open(struct vfsent *ve, int isdir)
 	/* In order to speed up the process, we only match *.pls */
 	if (isdir || !g_str_has_suffix(ve->name, ".pls"))
 		return (-1);
-
+	
+	ve->recurse = 0;
 	return (0);
 }
 
@@ -180,6 +181,7 @@ vfs_m3u_open(struct vfsent *ve, int isdir)
 	if (isdir || !g_str_has_suffix(ve->name, ".m3u"))
 		return (-1);
 
+	ve->recurse = 0;
 	return (0);
 }
 

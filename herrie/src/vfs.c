@@ -40,19 +40,19 @@
  */
 static struct vfsmodule modules[] = {
 #ifdef BUILD_HTTP
-	{ vfs_http_open, NULL, vfs_http_handle, 1, 1, 1, '^' },
+	{ vfs_http_open, NULL, vfs_http_handle, 1, 1, '^' },
 #endif /* BUILD_HTTP */
-	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, 0, 1, '@' },
-	{ vfs_pls_open, vfs_pls_populate, NULL, 0, 0, 1, '@' },
+	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, 1, '@' },
+	{ vfs_pls_open, vfs_pls_populate, NULL, 0, 1, '@' },
 #ifdef BUILD_XSPF
-	{ vfs_xspf_open, vfs_xspf_populate, NULL, 0, 0, 1, '@' },
+	{ vfs_xspf_open, vfs_xspf_populate, NULL, 0, 1, '@' },
 #endif /* BUILD_XSPF */
 	/*
 	 * Leave these two rules at the bottom of the list. They have
 	 * the weakest matching rules.
 	 */
-	{ vfs_dir_open, vfs_dir_populate, NULL, 0, 1, 0, G_DIR_SEPARATOR },
-	{ vfs_file_open, NULL, vfs_file_handle, 0, 1, 1, '\0' },
+	{ vfs_dir_open, vfs_dir_populate, NULL, 0, 0, G_DIR_SEPARATOR },
+	{ vfs_file_open, NULL, vfs_file_handle, 0, 1, '\0' },
 };
 /**
  * @brief The number of virtual file system modules currently available
@@ -270,6 +270,7 @@ vfs_open(const char *filename, const char *name, const char *basepath,
 	/* Initialize our new VFS structure with minimal properties */
 	ve = g_slice_new0(struct vfsent);
 	ve->filename = fn;
+	ve->recurse = 1;
 	vfs_list_init(&ve->population);
 
 	/* The name argument */
@@ -286,20 +287,21 @@ vfs_open(const char *filename, const char *name, const char *basepath,
 
 	/* Try to find a matching VFS module */
 	for (i = 0; i < NUM_MODULES; i++) {
+		/* Only allow pseudo-filenames when module supports it */
 		if (pseudo && !modules[i].pseudo)
 			continue;
-		if (modules[i].vopen(ve, S_ISDIR(fs.st_mode)) == 0) {
-			ve->vmod = &modules[i];
-			break;
-		}
+
+		/* Try to attach the module */
+		ve->vmod = &modules[i];
+		if (ve->vmod->vopen(ve, S_ISDIR(fs.st_mode)) == 0)
+			goto found;
 	}
 
 	/* No matching VFS module */
-	if (ve->vmod == NULL) {
-		vfs_dealloc(ve);
-		return (NULL);
-	}
+	vfs_dealloc(ve);
+	return (NULL);
 
+found:
 	/* Return reference object */
 	ve->refcount = 1;
 	vr = g_slice_new0(struct vfsref);
@@ -375,7 +377,7 @@ vfs_unfold(struct vfslist *vl, const struct vfsref *vr)
 }
 
 void
-vfs_find(struct vfslist *vl, const struct vfsref *vr,
+vfs_locate(struct vfslist *vl, const struct vfsref *vr,
     const struct vfsmatch *vm)
 {
 	struct vfsref *cvr;
@@ -383,11 +385,12 @@ vfs_find(struct vfslist *vl, const struct vfsref *vr,
 	vfs_populate(vr);
 	VFS_LIST_FOREACH(&vr->ent->population, cvr) {
 		/* Add matching objects to the results */
-		if (vfs_match_compare(vm, vr))
-			vfs_list_insert_tail(vl, vfs_dup(vr));
+		if (vfs_playable(cvr) &&
+		    vfs_match_compare(vm, vfs_filename(cvr)))
+			vfs_list_insert_tail(vl, vfs_dup(cvr));
 		/* Also search through its children */
 		if (vfs_recurse(cvr))
-			vfs_find(vl, cvr, vm);
+			vfs_locate(vl, cvr, vm);
 	}
 }
 
@@ -512,16 +515,14 @@ vfs_match_free(struct vfsmatch *vm)
 }
 
 int
-vfs_match_compare(const struct vfsmatch * vm, const struct vfsref *vr)
+vfs_match_compare(const struct vfsmatch *vm, const char *name)
 {
 #ifdef BUILD_REGEX
-	return (regexec(&vm->regex, vfs_name(vr), 0, NULL, 0) == 0);
+	return (regexec(&vm->regex, name, 0, NULL, 0) == 0);
 #else /* !BUILD_REGEX */
 	size_t len;
-	const char *name;
 	char first;
 
-	name = vfs_name(vr);
 	len = strlen(vm->string);
 
 	/* strcasestr()-like string comparison */

@@ -49,7 +49,7 @@ static struct vfsref *vr_curdir = NULL;
  * @brief List we use when displaying a file instead of a directory,
  *        containing only the file itself.
  */
-static struct vfslist vl_flist;
+static struct vfslist vl_flist = VFSLIST_INITIALIZER;
 /**
  * @brief Reference to window used as the file browser.
  */
@@ -78,6 +78,18 @@ gui_browser_dirname_refresh(void)
 	wnoutrefresh(win_dirname);
 
 	gui_unlock();
+}
+
+static void
+gui_browser_cleanup_flist(void)
+{
+	struct vfsref *vr;
+
+	/* Close our fake view */
+	while ((vr = vfs_list_first(&vl_flist)) != NULL) {
+		vfs_list_remove(&vl_flist, vr);
+		vfs_close(vr);
+	}
 }
 
 void
@@ -124,6 +136,9 @@ gui_browser_destroy(void)
 {
 	delwin(win_dirname);
 	gui_vfslist_destroy(win_browser);
+
+	/* Clean up our mess */
+	gui_browser_cleanup_flist();
 	if (vr_curdir != NULL)
 		vfs_close(vr_curdir);
 }
@@ -209,6 +224,8 @@ gui_browser_dir_parent(void)
 			break;
 	}
 
+	/* Change the directory */
+	gui_browser_cleanup_flist();
 	vfs_close(vr_curdir);
 	vr_curdir = vr;
 	gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
@@ -240,6 +257,8 @@ gui_browser_dir_enter(void)
 		return;
 	}
 
+	/* Change the directory */
+	gui_browser_cleanup_flist();
 	vfs_close(vr_curdir);
 	vr_curdir = vr;
 	gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
@@ -337,6 +356,7 @@ gui_browser_chdir(void)
 			goto bad;
 
 		/* Replace old directory */
+		gui_browser_cleanup_flist();
 		if (vr_curdir != NULL)
 			vfs_close(vr_curdir);
 		vr_curdir = vr;
@@ -348,7 +368,7 @@ gui_browser_chdir(void)
 		} else {
 			/* Create a fake directory */
 			vfs_list_init(&vl_flist);
-			vfs_list_insert_tail(&vl_flist, vr);
+			vfs_list_insert_tail(&vl_flist, vfs_dup(vr));
 			gui_vfslist_setlist(win_browser, &vl_flist);
 		}
 
@@ -387,6 +407,7 @@ gui_browser_write_playlist(void)
 	vfs_populate(vr);
 
 	/* Replace old directory */
+	gui_browser_cleanup_flist();
 	if (vr_curdir != NULL)
 		vfs_close(vr_curdir);
 	vr_curdir = vr;
@@ -399,4 +420,23 @@ void
 gui_browser_fullpath(void)
 {
 	gui_vfslist_fullpath(win_browser);
+}
+
+int
+gui_browser_locate(const struct vfsmatch *vm)
+{
+	struct vfslist vl = VFSLIST_INITIALIZER;
+
+	if (vr_curdir == NULL)
+		return (-1);
+
+	vfs_locate(&vl, vr_curdir, vm);
+	if (vfs_list_empty(&vl))
+		return (-1);
+	
+	gui_browser_cleanup_flist();
+	memcpy(&vl_flist, &vl, sizeof vl);
+	gui_vfslist_setlist(win_browser, &vl_flist);
+
+	return (0);
 }
