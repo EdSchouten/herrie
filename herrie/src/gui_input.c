@@ -580,6 +580,7 @@ gui_input_askyesno(const char *question)
 		case '\r':
 			ret = 0;
 			goto done;
+		case CTRL('['):
 		case 'n':
 		case 'N':
 		case CTRL('C'):
@@ -658,6 +659,7 @@ gui_input_askstring(const char *question, const char *defstr,
 			}
 			break;
 		case CTRL('C'):
+		case CTRL('['):
 			/* Just empty the return */
 			g_string_truncate(msg, origlen);
 			goto done;
