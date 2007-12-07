@@ -12,7 +12,8 @@ Graphical user interface:
 - Make startup-configuration of repeat-switch configurable
 
 Audio abstraction:
-- Add support for volume control for non-OSS
+- Add support for volume control for ALSA
+- Implement better buffering schemes for ALSA and CoreAudio
 - Fully implement more audio file formats
   - Apple Lossless
   - WMA
