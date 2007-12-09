@@ -223,6 +223,13 @@ gui_browser_dir_parent(void)
 
 	if (vr_curdir == NULL)
 		return;
+	
+	if (locatestr != NULL) {
+		/* First unset the filter if we have one */
+		gui_browser_cleanup_flist();
+		gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
+		return;
+	}
 
 	if ((vr = vfs_open("..", NULL, vfs_filename(vr_curdir), 1)) == NULL)
 		goto bad;
