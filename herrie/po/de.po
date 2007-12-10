@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-06 20:28+0100\n"
+"POT-Creation-Date: 2007-12-10 11:22+0100\n"
 "PO-Revision-Date: 2007-10-14 09:14+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
@@ -24,35 +24,35 @@ msgstr "Abtastrate oder Kanalanzahl nicht unterstützt"
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Gerät \"%s\" kann nicht geöffnet werden.\n"
 
-#: gui_browser.c:78
-msgid " (filter: "
+#: gui_browser.c:79
+msgid "filter"
 msgstr ""
 
-#: gui_browser.c:143
+#: gui_browser.c:145
 msgid "Unable to open initial directory."
 msgstr "Fehler beim Öffnen des Start-Verzeichnisses."
 
-#: gui_browser.c:253
+#: gui_browser.c:262
 msgid "Unable to enter the parent directory."
 msgstr "Fehler beim Öffnen des übergeordneten Verzeichnisses."
 
-#: gui_browser.c:268
+#: gui_browser.c:277
 msgid "Unable to enter the selected directory."
 msgstr "Fehler beim Öffnen des gewählten Verzeichnisses."
 
-#: gui_browser.c:354
+#: gui_browser.c:363
 msgid "Change directory"
 msgstr "Verzeichnis wechseln"
 
-#: gui_browser.c:393
+#: gui_browser.c:401
 msgid "Unable to display the file or directory."
 msgstr "Datei oder Verzeichnis kann nicht angezeigt werden."
 
-#: gui_browser.c:410
+#: gui_browser.c:418
 msgid "Write playlist to file"
 msgstr "Playlist in Datei speichern"
 
-#: gui_browser.c:419
+#: gui_browser.c:427
 msgid "Unable to write playlist."
 msgstr "Fehler beim Schreiben der Playlist."
 

@@ -75,7 +75,9 @@ gui_browser_dirname_refresh(void)
 	if (vr_curdir != NULL) {
 		mvwaddstr(win_dirname, 0, 1, vfs_filename(vr_curdir));
 		if (locatestr != NULL) {
-			waddstr(win_dirname, _(" (filter: "));
+			waddstr(win_dirname, " (");
+			waddstr(win_dirname, _("filter"));
+			waddstr(win_dirname, ": ");
 			waddstr(win_dirname, locatestr);
 			waddstr(win_dirname, ")");
 		}

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-06 20:28+0100\n"
+"POT-Creation-Date: 2007-12-10 11:22+0100\n"
 "PO-Revision-Date: 2007-10-10 18:27+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -29,35 +29,35 @@ msgstr "Không hỗ trợ tần số lấy mẫu hay tổng số kênh."
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Không thể mở thiết bị âm thanh « %s ».\n"
 
-#: gui_browser.c:78
-msgid " (filter: "
+#: gui_browser.c:79
+msgid "filter"
 msgstr ""
 
-#: gui_browser.c:143
+#: gui_browser.c:145
 msgid "Unable to open initial directory."
 msgstr "Không thể mở thư mục đầu tiên."
 
-#: gui_browser.c:253
+#: gui_browser.c:262
 msgid "Unable to enter the parent directory."
 msgstr "Không thể vào thư mục cha."
 
-#: gui_browser.c:268
+#: gui_browser.c:277
 msgid "Unable to enter the selected directory."
 msgstr "Không thể vào thư mục đã chọn."
 
-#: gui_browser.c:354
+#: gui_browser.c:363
 msgid "Change directory"
 msgstr "Đổi thư mục"
 
-#: gui_browser.c:393
+#: gui_browser.c:401
 msgid "Unable to display the file or directory."
 msgstr "Không thể hiển thị tập tin hay thư mục."
 
-#: gui_browser.c:410
+#: gui_browser.c:418
 msgid "Write playlist to file"
 msgstr "Ghi danh mục nhạc vào tập tin"
 
-#: gui_browser.c:419
+#: gui_browser.c:427
 msgid "Unable to write playlist."
 msgstr "Không thể ghi danh mục nhạc."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-06 20:28+0100\n"
+"POT-Creation-Date: 2007-12-10 11:22+0100\n"
 "PO-Revision-Date: 2007-09-29 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -29,35 +29,35 @@ msgstr "Ní thacaítear leis an ráta samplála seo nó le líon na gcainéal."
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ní féidir gléas fuaime \"%s\" a oscailt.\n"
 
-#: gui_browser.c:78
-msgid " (filter: "
+#: gui_browser.c:79
+msgid "filter"
 msgstr ""
 
-#: gui_browser.c:143
+#: gui_browser.c:145
 msgid "Unable to open initial directory."
 msgstr "Ní féidir an chomhadlann tosaigh a oscailt."
 
-#: gui_browser.c:253
+#: gui_browser.c:262
 msgid "Unable to enter the parent directory."
 msgstr "Ní féidir dul isteach sa mháthairchomhadlann."
 
-#: gui_browser.c:268
+#: gui_browser.c:277
 msgid "Unable to enter the selected directory."
 msgstr "Ní féidir dul isteach sa chomhadlann roghnaithe."
 
-#: gui_browser.c:354
+#: gui_browser.c:363
 msgid "Change directory"
 msgstr "Athraigh an chomhadlann"
 
-#: gui_browser.c:393
+#: gui_browser.c:401
 msgid "Unable to display the file or directory."
 msgstr "Ní féidir an comhad nó comhadlann a thaispeáint."
 
-#: gui_browser.c:410
+#: gui_browser.c:418
 msgid "Write playlist to file"
 msgstr "Scríobh an seinmliosta i gcomhad"
 
-#: gui_browser.c:419
+#: gui_browser.c:427
 msgid "Unable to write playlist."
 msgstr "Ní féidir an seinmliosta a scríobh."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-06 20:28+0100\n"
+"POT-Creation-Date: 2007-12-10 11:22+0100\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team:  <se.seam@gmail.com>\n"
@@ -29,35 +29,35 @@ msgstr "Частота сэмпла или число каналов не под
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Невозможно открыть звуковое устройство \"%s\".\n"
 
-#: gui_browser.c:78
-msgid " (filter: "
+#: gui_browser.c:79
+msgid "filter"
 msgstr ""
 
-#: gui_browser.c:143
+#: gui_browser.c:145
 msgid "Unable to open initial directory."
 msgstr "Нет доступа к исходному каталогу."
 
-#: gui_browser.c:253
+#: gui_browser.c:262
 msgid "Unable to enter the parent directory."
 msgstr "Нет доступа к родительскому каталогу."
 
-#: gui_browser.c:268
+#: gui_browser.c:277
 msgid "Unable to enter the selected directory."
 msgstr "Нет доступа к выбранному каталогу."
 
-#: gui_browser.c:354
+#: gui_browser.c:363
 msgid "Change directory"
 msgstr "Сменить каталог"
 
-#: gui_browser.c:393
+#: gui_browser.c:401
 msgid "Unable to display the file or directory."
 msgstr "Невозможно отобразить файл или каталог."
 
-#: gui_browser.c:410
+#: gui_browser.c:418
 msgid "Write playlist to file"
 msgstr "Записать список воспроизведения в файл"
 
-#: gui_browser.c:419
+#: gui_browser.c:427
 msgid "Unable to write playlist."
 msgstr "Невозможно записать список воспроизведения."
 

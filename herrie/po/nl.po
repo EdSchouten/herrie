@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-06 20:28+0100\n"
+"POT-Creation-Date: 2007-12-10 11:22+0100\n"
 "PO-Revision-Date: 2007-12-06 20:28+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
@@ -24,35 +24,35 @@ msgstr "Sample rate of aantal kanalen wordt niet ondersteund."
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Kan geluidsapparaat \"%s\" niet openen.\n"
 
-#: gui_browser.c:78
-msgid " (filter: "
-msgstr " (filter: "
+#: gui_browser.c:79
+msgid "filter"
+msgstr "filter"
 
-#: gui_browser.c:143
+#: gui_browser.c:145
 msgid "Unable to open initial directory."
 msgstr "Opstartmap openen mislukt."
 
-#: gui_browser.c:253
+#: gui_browser.c:262
 msgid "Unable to enter the parent directory."
 msgstr "Naar een hogere map gaan mislukt."
 
-#: gui_browser.c:268
+#: gui_browser.c:277
 msgid "Unable to enter the selected directory."
 msgstr "Naar de geselecteerde map gaan mislukt."
 
-#: gui_browser.c:354
+#: gui_browser.c:363
 msgid "Change directory"
 msgstr "Verplaats van map"
 
-#: gui_browser.c:393
+#: gui_browser.c:401
 msgid "Unable to display the file or directory."
 msgstr "Het weergeven van het bestand of de map mislukt."
 
-#: gui_browser.c:410
+#: gui_browser.c:418
 msgid "Write playlist to file"
 msgstr "Schrijf afspeellijst naar bestand"
 
-#: gui_browser.c:419
+#: gui_browser.c:427
 msgid "Unable to write playlist."
 msgstr "Het wegschrijven van de afspeellijst mislukt."
 
