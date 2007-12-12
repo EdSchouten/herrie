@@ -6,7 +6,6 @@ Graphical user interface:
 - Allow numeric multipliers just like vi
 - Add copy/paste functionality to playlist
 - Use different colors for files, playlists and directories
-- Add filtering feature instead of searching, just like Mutt has
 - Recursive searching
 - Show whether repeat is turned on
 - Make startup-configuration of repeat-switch configurable
