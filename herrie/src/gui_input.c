@@ -224,11 +224,12 @@ gui_input_search(void)
 static void
 gui_input_locate(void)
 {
+	/* Always ask for a search string */
 	if (gui_input_asksearch() != 0)
-		/* Show the original contents */
-		gui_browser_locate(NULL);
-	else if (gui_browser_locate(cursearch) != 0)
-		/* Nothing found */
+		return;
+
+	/* Perform the serach */
+	if (gui_browser_locate(cursearch) != 0)
 		gui_msgbar_warn(_("Not found."));
 }
 
