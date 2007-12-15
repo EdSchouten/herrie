@@ -486,7 +486,7 @@ vfs_fgets(char *str, size_t size, FILE *fp)
 	return (0);
 }
 
-struct vfsmatch	*
+struct vfsmatch *
 vfs_match_new(const char *str)
 {
 	struct vfsmatch *vm;
