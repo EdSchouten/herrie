@@ -460,7 +460,7 @@ gui_browser_locate(const struct vfsmatch *vm)
 	
 	gui_browser_cleanup_flist();
 	locatestr = g_strdup(vfs_match_value(vm));
-	memcpy(&vl_flist, &vl, sizeof vl); /* XXX */
+	vfs_list_move(&vl_flist, &vl);
 	gui_vfslist_setlist(win_browser, &vl_flist);
 
 	return (0);
