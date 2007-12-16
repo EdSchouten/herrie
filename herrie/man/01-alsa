@@ -1,0 +1,3 @@
+.TP
+.B audio.output.alsa.device=default
+The name of the ALSA device that should be used for audio playback.

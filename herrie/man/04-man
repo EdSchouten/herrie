@@ -1,0 +1,166 @@
+.TP
+.B vfs.dir.hide_dotfiles=yes
+Hide files in directories with a filename starting with a dot.
+.TP
+.B vfs.lockup.chroot=
+Lock the application's filebrowser in a directory. Please note that
+.B herrie
+must be launched as
+.I root
+for this switch to work. It is advised to set
+.B vfs.lockup.user
+as well.
+.TP
+.B vfs.lockup.user=
+Change the effective user of the application to the specified user.
+.SH KEYBOARD BINDINGS
+Both the file browser and the playlist share some common keyboard
+bindings:
+.TP
+.B j or down arrow
+Move the selection one entry down.
+.TP
+.B k or up arrow
+Move the selection one entry up.
+.TP
+.B ^F, page down or spacebar
+Move the selection one page down.
+.TP
+.B ^B or page up
+Move the selection one page up.
+.TP
+.B f
+Show the full pathname of the selected song.
+.TP
+.B g or home
+Move the selection to the top.
+.TP
+.B G or end
+Move the selection to the bottom.
+.TP
+.B /
+Search the entries for a specified regular expression and select the
+first matching entry below the current selection. If no match is found,
+the search will continue at the top of the list. As a final attempt, the
+other window is searched as well.
+.TP
+.B n
+Perform another search for the last entered search string.
+.PP
+There are also some bindings that only apply to the playlist:
+.TP
+.B d
+Remove the currently selected song from the playlist.
+.TP
+.B D
+Remove all songs from the playlist.
+.TP
+.B R
+Randomize the playlist.
+.TP
+.B [
+Move the currently selected song upward.
+.TP
+.B ]
+Move the currently selected song downward.
+.TP
+.B {
+Move the currently selected song to the top of the playlist.
+.TP
+.B }
+Move the currently selected song to the bottom of the playlist.
+.PP
+The file browser also has some bindings that allow you to traverse the
+file system or add files, directories or playlists (M3U and PLS) to the
+playlist:
+.TP
+.B a
+Add items after the current selected item in the playlist.
+.TP
+.B A
+Add items at the end of the playlist.
+.TP
+.B i
+Add items before the current selected item in the playlist.
+.TP
+.B I
+Add items at the beginning of the playlist.
+.TP
+.B h or left arrow
+Go one directory up.
+.TP
+.B l or right arrow
+Enter the selected directory.
+.TP
+.B L
+Locate all files in the current and underlying directories matching a
+search string. When finished, all matching files will be showed in a
+list. To remove an existing filter, go one directory up.
+.TP
+.B C
+Change the current directory by entering a pathname. This pathname may
+be relative to the current directory. When the address refers to a file
+or web location, it will be displayed as well.
+.PP
+And last but not least, there are also some general keyboard bindings:
+.TP
+.B (
+Decrease the volume. This option is only available on systems where
+there is support for volume setting.
+.TP
+.B )
+Increase the volume.
+.TP
+.B <
+Seek 5 seconds backward.
+.TP
+.B >
+Seek 5 seconds forward.
+.TP
+.B b
+Go to the next song. Sending the signal
+.B SIGUSR2
+to the application will do the same.
+.TP
+.B c
+Pause the current song. When
+.B c
+is pressed again, playback is resumed. Sending the signal
+.B SIGUSR1
+to the application will do the same.
+.TP
+.B J
+Seek to a specific position. When the inserted time is prepended with a + or
+-, the seek is performed relative.
+.TP
+.B q
+Quit the application.
+.TP
+.B r
+Switch repeat on and off. When this option is enabled, songs that have
+been successfully opened will be added to the end of the playlist,
+causing the playlist to repeat.
+.TP
+.B v
+Stop playback.
+.TP
+.B w
+Write the current playlist to a PLS file.
+.TP
+.B x
+When in XMMS mode, it starts the selected song. In party mode, this song
+will always start playback of the first song in the list.
+.TP
+.B z
+Go to the previous song.
+.TP
+.B ^L
+Force the application to redraw itself.
+.TP
+.B ^W or tab
+Switch the focus from the playlist to the file browser or vice versa.
+.SH AUTHORS
+.B herrie
+is maintained by Ed Schouten <ed@fxq.nl>. Please visit
+.I http://herrie.info/
+for more information, documentation and developer notes.

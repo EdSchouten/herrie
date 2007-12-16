@@ -115,6 +115,8 @@ CONFFILE=$CONFDIR/$APP_NAME.conf
 TRANSDIR=$PREFIX/share/locale
 [ "$CC" = "" ] && CC=cc
 [ "$INSTALL" = "" ] && INSTALL=install
+MANPARTS="00-man 02-man 04-man"
+MANREGEX="-e 's|%%CONFFILE%%|$CONFFILE|'"
 
 # Command line options
 while [ $# -gt 0 ]
@@ -212,6 +214,7 @@ then
 	then
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
 		SRCS="$SRCS md5 scrobbler util"
+		MANPARTS="$MANPARTS 03-scrobbler"
 	fi
 	CFLAGS="$CFLAGS `curl-config --cflags`"
 	if [ $? -ne 0 ]
@@ -299,31 +302,36 @@ case $CFG_AO in
 alsa)
 	CFLAGS="$CFLAGS -DBUILD_ALSA"
 	LDFLAGS="$LDFLAGS -lasound"
+	MANPARTS="$MANPARTS 01-alsa"
 	;;
 ao)
 	CFLAGS="$CFLAGS -DBUILD_AO"
 	CFLAGS_main="$CFLAGS_main -DCLOSE_STDERR"
 	LDFLAGS="$LDFLAGS -lao"
+	MANPARTS="$MANPARTS 01-ao"
 	;;
 coreaudio)
 	CFLAGS="$CFLAGS -DBUILD_VOLUME"
 	LDFLAGS="$LDFLAGS -framework CoreAudio"
 	;;
 oss)
-	CFLAGS="$CFLAGS -DBUILD_OSS -DBUILD_VOLUME"
 	case $OS in
 	NetBSD|OpenBSD)
 		CFLAGS="$CFLAGS -DOSS_HEADER=\\<soundcard.h\\>"
-		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/audio\\\""
 		LDFLAGS="$LDFLAGS -lossaudio"
+		OSSDEVICE="/dev/audio"
 		;;
 	*)
 		# The OSS-through-ALSA compat may generate noise
 		[ "$OS" = "Linux" ] && CFLAGS_main="$CFLAGS_main -DCLOSE_STDERR"
 		CFLAGS="$CFLAGS -DOSS_HEADER=\\<sys/soundcard.h\\>"
-		CFLAGS_config="-DOSS_DEVICE=\\\"/dev/dsp\\\""
+		OSSDEVICE="/dev/dsp"
 		;;
 	esac
+	CFLAGS="$CFLAGS -DBUILD_OSS -DBUILD_VOLUME"
+	CFLAGS_config="-DOSS_DEVICE=\\\"$OSSDEVICE\\\""
+	MANPARTS="$MANPARTS 01-oss"
+	MANREGEX="$MANREGEX -e 's|%%OSSDEVICE%%|$OSSDEVICE|'"
 	;;
 pulse)
 	CFLAGS="$CFLAGS -DBUILD_PULSE"
@@ -371,15 +379,20 @@ for i in $SRCS
 do
 	OBJS="$OBJS $i.o"
 done
+unset MANFILES
+for i in `echo $MANPARTS | xargs -n 1 | sort | uniq`
+do
+	MANFILES="$MANFILES $SRCDIR/man/$i"
+done
 
 (cat << EOF
 all: $APP_NAME$CFG_BINEXT $APP_NAME.1.gz $SRCDIR/$APP_NAME.conf.sample $MOS
 $APP_NAME$CFG_BINEXT: $OBJS
 	# Linking $APP_NAME$CFG_BINEXT
 	$DOIT$CC $OBJS $LDFLAGS -o $APP_NAME$CFG_BINEXT
-$APP_NAME.1.gz: $SRCDIR/$APP_NAME.1 Makefile
+$APP_NAME.1.gz: $MANFILES Makefile
 	# Generating manual page $APP_NAME.1.gz
-	${DOIT}sed -e 's|%%CONFFILE%%|$CONFFILE|' $SRCDIR/$APP_NAME.1 | gzip -9 > $APP_NAME.1.gz
+	${DOIT}sed $MANREGEX $MANFILES | gzip -9 > $APP_NAME.1.gz
 clean:
 	# Removing $APP_NAME$CFG_BINEXT $APP_NAME.1.gz *.mo *.o
 	${DOIT}rm -f $APP_NAME$CFG_BINEXT $APP_NAME.1.gz *.mo *.o
