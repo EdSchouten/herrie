@@ -46,6 +46,7 @@ CFG_SNDFILE=yes
 unset CFG_DEBUG
 unset CFG_STRICT
 CFG_STRIP=-s
+unset CFG_VOLUME
 CFG_VORBIS=yes
 CFG_XSPF=yes
 DOIT=@
@@ -115,7 +116,7 @@ CONFFILE=$CONFDIR/$APP_NAME.conf
 TRANSDIR=$PREFIX/share/locale
 [ "$CC" = "" ] && CC=cc
 [ "$INSTALL" = "" ] && INSTALL=install
-MANPARTS="00-man 02-man 04-man"
+MANPARTS="00-man 02-man 04-man 06-man"
 MANREGEX="-e 's|%%CONFFILE%%|$CONFFILE|'"
 
 # Command line options
@@ -316,7 +317,7 @@ ao)
 	MANPARTS="$MANPARTS 01-ao"
 	;;
 coreaudio)
-	CFLAGS="$CFLAGS -DBUILD_VOLUME"
+	CFG_VOLUME=yes
 	LDFLAGS="$LDFLAGS -framework CoreAudio"
 	;;
 oss)
@@ -333,7 +334,8 @@ oss)
 		OSS_DEVICE="/dev/dsp"
 		;;
 	esac
-	CFLAGS="$CFLAGS -DBUILD_OSS -DBUILD_VOLUME"
+	CFG_VOLUME=yes
+	CFLAGS="$CFLAGS -DBUILD_OSS"
 	CFLAGS_config="-DOSS_DEVICE=\\\"$OSS_DEVICE\\\""
 	MANPARTS="$MANPARTS 01-oss"
 	MANREGEX="$MANREGEX -e 's|%%OSS_DEVICE%%|$OSS_DEVICE|'"
@@ -349,6 +351,12 @@ pulse)
 	LDFLAGS="$LDFLAGS `pkg-config --libs libpulse-simple`"
 	;;
 esac
+
+if [ "$CFG_VOLUME" != "" ]
+then
+	CFLAGS="$CFLAGS -DBUILD_VOLUME"
+	MANPARTS="$MANPARTS 05-volume"
+fi
 
 echo "Configuration:"
 echo "- Installing $APP_NAME$CFG_BINEXT in $BINDIR"

@@ -1,0 +1,6 @@
+.TP
+.B (
+Decrease the volume.
+.TP
+.B )
+Increase the volume.
