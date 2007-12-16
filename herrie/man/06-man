@@ -33,7 +33,7 @@ causing the playlist to repeat.
 Stop playback.
 .TP
 .B w
-Write the current playlist to a PLS file.
+Write the current playlist to a playlist file.
 .TP
 .B x
 When in XMMS mode, it starts the selected song. In party mode, this song
