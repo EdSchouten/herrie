@@ -1,7 +1,9 @@
 #!/bin/sh
 
+GIT='git --git-dir=/home/ed/.repos/public-git/herrie'
+
 printf 'Content-Type: text/plain\n\r\n'
-for i in `git --git-dir=/home/ed/.repos/public-git/herrie ls-tree HEAD herrie/man/ | awk '{print $3}'`
+for i in `$GIT ls-tree HEAD herrie/man/ | awk '{print $3}'`
 do
-	git --git-dir=/home/ed/.repos/public-git/herrie cat-file blob $i
+	$GIT cat-file blob $i
 done | tbl | groff -S -Wall -mtty-char -man -Tascii | col -b
