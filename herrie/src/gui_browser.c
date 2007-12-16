@@ -57,7 +57,7 @@ static struct gui_vfslist *win_browser;
 /**
  * @brief The current filtering string that's being applied.
  */
-static char *locatestr;
+static char *locatestr = NULL;
 
 /**
  * @brief Refresh the bar above the filebrowser to contain the proper
