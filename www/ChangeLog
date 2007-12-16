@@ -1,5 +1,6 @@
 #!/bin/sh
 
+GIT='git --git-dir=/home/ed/.repos/public-git/herrie'
+
 printf 'Content-Type: text/plain\n\r\n'
-git --git-dir=/home/ed/.repos/public-git/herrie cat-file blob \
-	`git --git-dir=/home/ed/.repos/public-git/herrie ls-tree HEAD herrie/ChangeLog | cut -f 3 -d ' ' | cut -f 1`
+$GIT cat-file blob `$GIT ls-tree HEAD herrie/ChangeLog | awk '{print $3}'`
