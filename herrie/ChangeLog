@@ -1,6 +1,8 @@
 ????-??-?? -- Herrie 1.9.1:
  * Added: 'L' button to locate files in the current directory
  * Fixed: Remove almost endless recursion by not recursing on symlinks
+ * Added: Input can also be canceled pressing the escape button
+ * Improved: Manual content now matches installed configuration
 
 2007-12-02 -- Herrie 1.9:
  * Added: Support for changing the volume
