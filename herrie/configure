@@ -300,7 +300,7 @@ then
 else
 	PLAYQ_DUMPFILE="autosave.pls"
 fi
-CFLAGS="$CFLAGS -DPLAYQ_DUMPFILE=\\\"$PLAYQ_DUMPFILE\\\""
+CFLAGS_config="$CFLAGS_config -DPLAYQ_DUMPFILE=\\\"$PLAYQ_DUMPFILE\\\""
 MANREGEX="$MANREGEX -e 's|%%PLAYQ_DUMPFILE%%|$PLAYQ_DUMPFILE|'"
 
 # Audio output options
@@ -336,7 +336,7 @@ oss)
 	esac
 	CFG_VOLUME=yes
 	CFLAGS="$CFLAGS -DBUILD_OSS"
-	CFLAGS_config="-DOSS_DEVICE=\\\"$OSS_DEVICE\\\""
+	CFLAGS_config="$CFLAGS_config -DOSS_DEVICE=\\\"$OSS_DEVICE\\\""
 	MANPARTS="$MANPARTS 01-oss"
 	MANREGEX="$MANREGEX -e 's|%%OSS_DEVICE%%|$OSS_DEVICE|'"
 	;;
