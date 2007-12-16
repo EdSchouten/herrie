@@ -477,15 +477,6 @@ vfs_marking(const struct vfsref *vr)
 }
 
 /**
- * @brief Get the sorting priority of the current object.
- */
-static inline unsigned char
-vfs_sortorder(const struct vfsref *vr)
-{
-	return (vr->ent->vmod->sortorder);
-}
-
-/**
  * @brief Return a pointer to the VFS list inside the VFS reference.
  */
 static inline const struct vfslist *

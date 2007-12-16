@@ -93,9 +93,9 @@ vfs_dir_populate(struct vfsent *ve)
 		 */
 		VFS_LIST_FOREACH(&ve->population, svr) {
 			/* Store the file if the sorting priority is lower */
-			if (vfs_sortorder(nvr) < vfs_sortorder(svr) ||
+			if (nvr->ent->vmod->sortorder < svr->ent->vmod->sortorder ||
 			    /* Or if they are the same and the filename is lower */
-			    (vfs_sortorder(nvr) == vfs_sortorder(svr) &&
+			    (nvr->ent->vmod->sortorder == svr->ent->vmod->sortorder &&
 			    strcasecmp(vfs_name(nvr), vfs_name(svr)) < 0)) {
 				vfs_list_insert_before(&ve->population, nvr, svr);
 				break;
