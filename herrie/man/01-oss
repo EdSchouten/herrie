@@ -1,0 +1,6 @@
+.TP
+.B audio.output.oss.device=%%OSS_DEVICE%%
+The OSS DSP device, used for audio playback.
+.TP
+.B audio.output.oss.mixer=/dev/mixer
+The OSS mixer device, used to change the volume.

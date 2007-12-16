@@ -1,0 +1,17 @@
+.TP
+.B scrobbler.dumpfile=~/.herrie/scrobbler.queue
+The file that is used to store tracks that have not been submitted to
+AudioScrobbler yet. When set to empty, this feature is disabled, causing
+all unsubmitted tracks to be discarded.
+.TP
+.B scrobbler.password=
+The password the Audioscrobbler client uses when authenticating. Make
+sure your configuration file isn't world readable when specifying this
+switch in your configuration file. Please note that this switch
+.I must
+contain an MD5 hash. Use the following command to generate such a hash:
+.B
+echo -n 'p4ssw0rd' | md5
+.TP
+.B scrobbler.username=
+The username the AudioScrobbler client uses when authenticating.

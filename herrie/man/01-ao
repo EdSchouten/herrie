@@ -1,0 +1,11 @@
+.TP
+.B audio.output.ao.driver=
+The name of the driver that LibAO should use for audio playback.
+.TP
+.B audio.output.ao.host=
+The hostname that LibAO should use to transmit the sound to (only
+applicable to Esound). When set to
+.B env_ssh
+the application will use the IP-address in the
+.B SSH_CLIENT
+environment variable.
