@@ -1,6 +1,7 @@
 #!/bin/sh
 
 printf 'Content-Type: text/plain\n\r\n'
-git --git-dir=/home/ed/.repos/public-git/herrie cat-file blob \
-	`git --git-dir=/home/ed/.repos/public-git/herrie ls-tree HEAD herrie/herrie.1 | cut -f 3 -d ' ' | cut -f 1` |
-	tbl | groff -S -Wall -mtty-char -man -Tascii | col -b
+for i in `git --git-dir=/home/ed/.repos/public-git/herrie ls-tree HEAD herrie/man/ | awk '{print $3}'`
+do
+	git --git-dir=/home/ed/.repos/public-git/herrie cat-file blob $i
+done | tbl | groff -S -Wall -mtty-char -man -Tascii | col -b
