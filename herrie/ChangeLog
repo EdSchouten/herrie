@@ -3,6 +3,7 @@
  * Fixed: Remove almost endless recursion by not recursing on symlinks
  * Added: Input can be aborted pressing the escape button - Pieter-Paul Spiertz
  * Improved: Manual content now matches installed configuration
+ * Fixed: Don't autoload the playlist when files are passed on the cmdline
 
 2007-12-02 -- Herrie 1.9:
  * Added: Support for changing the volume

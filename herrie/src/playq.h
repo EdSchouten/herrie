@@ -36,7 +36,7 @@ struct vfsref;
 /**
  * @brief Initialize the playlist locking.
  */
-void playq_init(int xmms);
+void playq_init(int xmms, int load_dumpfile);
 /**
  * @brief Spawn the playback thread.
  */
