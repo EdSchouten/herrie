@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-10 11:22+0100\n"
+"POT-Creation-Date: 2007-12-17 16:58+0100\n"
 "PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -69,32 +69,32 @@ msgstr "Sök efter"
 msgid "Bad pattern."
 msgstr "Felaktigt mönster."
 
-#: gui_input.c:196 gui_input.c:232
+#: gui_input.c:196 gui_input.c:233
 msgid "Not found."
 msgstr "Hittades inte."
 
-#: gui_input.c:264
+#: gui_input.c:265
 msgid "Use kill(1) to quit."
 msgstr "Använd kill(1) för att avsluta."
 
-#: gui_input.c:268
+#: gui_input.c:269
 #, c-format
 msgid "Quit %s?"
 msgstr "Avsluta %s?"
 
-#: gui_input.c:305
+#: gui_input.c:306
 msgid "Jump to position"
 msgstr "Hoppa till position"
 
-#: gui_input.c:362
+#: gui_input.c:363
 msgid "Bad time format."
 msgstr "Felaktigt tidsformat."
 
-#: gui_input.c:554 main.c:76 main.c:82 main.c:88
+#: gui_input.c:555 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:555 main.c:78 main.c:84 main.c:90
+#: gui_input.c:556 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "nej"
 

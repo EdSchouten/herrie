@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 1.9.1:
+2007-12-17 -- Herrie 1.9.1:
  * Added: 'L' button to locate files in the current directory
  * Fixed: Remove almost endless recursion by not recursing on symlinks
  * Added: Input can be aborted pressing the escape button - Pieter-Paul Spiertz
