@@ -9,6 +9,7 @@ Graphical user interface:
 - Recursive searching
 - Show whether repeat is turned on
 - Make startup-configuration of repeat-switch configurable
+- Allow Herrie to be controlled outside the interface through /tmp
 
 Audio abstraction:
 - Add support for volume control for ALSA
