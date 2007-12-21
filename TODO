@@ -3,6 +3,8 @@ sourcecode. Feel free to implement them. Patches are, as always, very
 welcome.
 
 Graphical user interface:
+- Add some kind of small help to the application, for people that are
+  unwilling to read the man page
 - Allow numeric multipliers just like vi
 - Add copy/paste functionality to playlist
 - Use different colors for files, playlists and directories
