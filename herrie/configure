@@ -184,9 +184,22 @@ do
 	shift
 done
 
+test_pkgconfig()
+{
+	PKG_CFLAGS="`pkg-config --cflags $2 2> /dev/null`"
+	if [ $? -ne 0 ]
+	then
+		echo "Error: $1 not found"
+		exit 1
+	fi
+	eval CFLAGS$3="\"\$CFLAGS$3 \$PKG_CFLAGS\""
+
+	LDFLAGS="$LDFLAGS `pkg-config --libs $2`"
+}
+
 [ "$CFLAGS" = "" ] && CFLAGS="-O"
-CFLAGS="$CFLAGS `pkg-config --cflags glib-2.0 gthread-2.0` \
-    -DAPP_NAME=\\\"$APP_NAME\\\" -DAPP_VERSION=\\\"$APP_VERSION\\\" \
+CFLAGS="$CFLAGS -DAPP_NAME=\\\"$APP_NAME\\\" \
+     -DAPP_VERSION=\\\"$APP_VERSION\\\" \
     -I$PREFIX/include -I$PREFIX/include/ncursesw \
     -I$PREFIX/include/ncurses -DCURSES_HEADER=\\<$CFG_CURSES_HEADER.h\\>"
 if [ $? -ne 0 ]
@@ -195,11 +208,14 @@ then
 	exit 1
 fi
 CFLAGS_main="-DAUDIO_OUTPUT=\\\"$CFG_AO\\\" -DCONFFILE=\\\"$CONFFILE\\\""
-LDFLAGS="$LDFLAGS `pkg-config --libs glib-2.0 gthread-2.0` \
-    -L$PREFIX/lib -l$CFG_CURSES_LIB"
+LDFLAGS="$LDFLAGS -L$PREFIX/lib -l$CFG_CURSES_LIB"
 SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
     gui_input gui_msgbar gui_playq gui_vfslist main playq playq_party \
     playq_xmms vfs vfs_playlist vfs_regular"
+
+# We always use glib
+test_pkgconfig "GLib" "glib-2.0" ""
+test_pkgconfig "GLib threading library" "gthread-2.0" ""
 
 # ftello() usage
 [ "$CFG_FTELLO" != "" ] && CFLAGS="$CFLAGS -DBUILD_FTELLO"
@@ -217,44 +233,21 @@ then
 		SRCS="$SRCS md5 scrobbler util"
 		MANPARTS="$MANPARTS 03-scrobbler"
 	fi
-	CFLAGS="$CFLAGS `pkg-config --cflags libcurl`"
-	if [ $? -ne 0 ]
-	then
-		echo "Error: cURL not found"
-		exit 1
-	fi
-	LDFLAGS="$LDFLAGS `pkg-config --libs libcurl`"
+	test_pkgconfig "cURL" "libcurl" ""
 fi
 # Modplug support
 if [ "$CFG_MODPLUG" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_MODPLUG"
-	CFLAGS_audio_format_modplug="`pkg-config --cflags libmodplug`"
-	if [ $? -ne 0 ]
-	then
-		echo "Error: libmodplug not found"
-		exit 1
-	fi
-	LDFLAGS="$LDFLAGS `pkg-config --libs libmodplug`"
+	test_pkgconfig "libmodplug" "libmodplug" "_audio_format_modplug"
 	SRCS="$SRCS audio_format_modplug"
 fi
 # MP3 support
 if [ "$CFG_MP3" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_MP3"
-	CFLAGS_audio_format_mp3="`pkg-config --cflags mad`"
-	if [ $? -ne 0 ]
-	then
-		echo "Error: libmad not found"
-		exit 1
-	fi
-	CFLAGS_audio_format_mp3="`pkg-config --cflags id3tag`"
-	if [ $? -ne 0 ]
-	then
-		echo "Error: libid3tag not found"
-		exit 1
-	fi
-	LDFLAGS="$LDFLAGS `pkg-config --libs mad id3tag`"
+	test_pkgconfig "libmad" "mad" "_audio_format_mp3"
+	test_pkgconfig "libid3tag" "id3tag" "_audio_format_mp3"
 	SRCS="$SRCS audio_format_mp3"
 fi
 # regcomp()/regexec() usage
@@ -354,13 +347,7 @@ oss)
 	;;
 pulse)
 	CFLAGS="$CFLAGS -DBUILD_PULSE"
-	CFLAGS_audio_output_pulse="`pkg-config --cflags libpulse-simple`"
-	if [ $? -ne 0 ]
-	then
-		echo "Error: PulseAudio not found"
-		exit 1
-	fi
-	LDFLAGS="$LDFLAGS `pkg-config --libs libpulse-simple`"
+	test_pkgconfig "PulseAudio" "libpulse-simple" "_audio_output_pulse"
 	;;
 esac
 
