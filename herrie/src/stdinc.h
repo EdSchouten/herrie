@@ -38,6 +38,7 @@
 #ifdef BUILD_NLS
 #include <locale.h>
 #endif /* BUILD_NLS */
+#include <regex.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -73,13 +74,5 @@
 #include <resolv.h>
 #endif /* BUILD_RES_INIT */
 #endif /* G_OS_UNIX */
-
-#ifndef BUILD_FTELLO
-#define ftello(stream)		ftell(stream)
-#endif /* !BUILD_FTELLO */
-
-#ifdef BUILD_REGEX
-#include <regex.h>
-#endif /* BUILD_REGEX */
 
 #define CONFHOMEDIR "~" G_DIR_SEPARATOR_S "." APP_NAME G_DIR_SEPARATOR_S

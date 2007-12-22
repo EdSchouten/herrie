@@ -34,11 +34,9 @@ CFG_AO=oss
 unset CFG_BINEXT
 CFG_CURSES_HEADER=ncurses
 CFG_CURSES_LIB=ncursesw
-CFG_FTELLO=yes
 CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
-CFG_REGEX=yes
 CFG_RES_INIT=yes
 CFG_SCROBBLER=yes
 unset CFG_SETPROCTITLE
@@ -91,16 +89,6 @@ SunOS)
 	[ "$PREFIX" = "" ] && PREFIX=/opt/sfw
 	LDFLAGS="$LDFLAGS -lresolv"
 	[ "$INSTALL" = "" ] && INSTALL=ginstall
-	;;
-Windows)
-	CFG_AO=null
-	CFG_BINEXT=.exe
-	unset CFG_FTELLO
-	unset CFG_HTTP
-	unset CFG_MODPLUG
-	unset CFG_REGEX
-	CFG_CURSES_HEADER=curses
-	CFG_CURSES_LIB=pdcurses
 	;;
 *)
 	echo "Warning: unknown operating system"
@@ -217,8 +205,6 @@ SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
 test_pkgconfig "GLib" "glib-2.0" ""
 test_pkgconfig "GLib threading library" "gthread-2.0" ""
 
-# ftello() usage
-[ "$CFG_FTELLO" != "" ] && CFLAGS="$CFLAGS -DBUILD_FTELLO"
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
 then
@@ -250,8 +236,6 @@ then
 	test_pkgconfig "libid3tag" "id3tag" "_audio_format_mp3"
 	SRCS="$SRCS audio_format_mp3"
 fi
-# regcomp()/regexec() usage
-[ "$CFG_REGEX" != "" ] && CFLAGS="$CFLAGS -DBUILD_REGEX"
 # res_init() usage
 [ "$CFG_RES_INIT" != "" ] && CFLAGS="$CFLAGS -DBUILD_RES_INIT"
 # setproctitle() usage

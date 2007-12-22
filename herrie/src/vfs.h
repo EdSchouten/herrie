@@ -156,12 +156,10 @@ struct vfsref {
  * @brief Compiled regular expression or string matching data.
  */
 struct vfsmatch {
-#ifdef BUILD_REGEX
 	/**
 	 * @brief Regular expression pattern.
 	 */
 	regex_t		regex;
-#endif /* BUILD_REGEX */
 	/**
 	 * @brief Original user input.
 	 */
@@ -520,10 +518,15 @@ struct vfsmatch	*vfs_match_new(const char *str);
  * @brief Deallocate a compiled regular expression.
  */
 void		vfs_match_free(struct vfsmatch *vm);
+
 /**
  * @brief Match a VFS reference with a regular expression.
  */
-int		vfs_match_compare(const struct vfsmatch *vm, const char *str);
+static inline int
+vfs_match_compare(const struct vfsmatch *vm, const char *name)
+{
+	return (regexec(&vm->regex, name, 0, NULL, 0) == 0);
+}
 
 /**
  * @brief Return the search string that the user has entered.

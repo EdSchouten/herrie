@@ -493,12 +493,10 @@ vfs_match_new(const char *str)
 
 	vm = g_slice_new0(struct vfsmatch);
 
-#ifdef BUILD_REGEX
 	if (regcomp(&vm->regex, str, REG_EXTENDED|REG_ICASE) != 0) {
 		g_slice_free(struct vfsmatch, vm);
 		return (NULL);
 	}
-#endif /* BUILD_REGEX */
 	vm->string = g_strdup(str);
 	
 	return (vm);
@@ -507,34 +505,7 @@ vfs_match_new(const char *str)
 void
 vfs_match_free(struct vfsmatch *vm)
 {
-#ifdef BUILD_REGEX
 	regfree(&vm->regex);
-#endif /* BUILD_REGEX */
 	g_free(vm->string);
 	g_slice_free(struct vfsmatch, vm);
-}
-
-int
-vfs_match_compare(const struct vfsmatch *vm, const char *name)
-{
-#ifdef BUILD_REGEX
-	return (regexec(&vm->regex, name, 0, NULL, 0) == 0);
-#else /* !BUILD_REGEX */
-	size_t len;
-	char first;
-
-	len = strlen(vm->string);
-
-	/* strcasestr()-like string comparison */
-	if ((first = tolower(vm->string[0])) == '\0')
-		return (0);
-	while (name[0] != '\0') {
-		if (tolower(name[0]) == first)
-			if (strncasecmp(name, vm->string, len) == 0)
-				return (1);
-		name++;
-	}
-
-	return (0);
-#endif /* BUILD_REGEX */
 }
