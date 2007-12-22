@@ -217,13 +217,13 @@ then
 		SRCS="$SRCS md5 scrobbler util"
 		MANPARTS="$MANPARTS 03-scrobbler"
 	fi
-	CFLAGS="$CFLAGS `curl-config --cflags`"
+	CFLAGS="$CFLAGS `pkg-config --cflags libcurl`"
 	if [ $? -ne 0 ]
 	then
 		echo "Error: cURL not found"
 		exit 1
 	fi
-	LDFLAGS="$LDFLAGS `curl-config --libs`"
+	LDFLAGS="$LDFLAGS `pkg-config --libs libcurl`"
 fi
 # Modplug support
 if [ "$CFG_MODPLUG" != "" ]
@@ -242,7 +242,19 @@ fi
 if [ "$CFG_MP3" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_MP3"
-	LDFLAGS="$LDFLAGS -lmad -lid3tag"
+	CFLAGS_audio_format_mp3="`pkg-config --cflags mad`"
+	if [ $? -ne 0 ]
+	then
+		echo "Error: libmad not found"
+		exit 1
+	fi
+	CFLAGS_audio_format_mp3="`pkg-config --cflags id3tag`"
+	if [ $? -ne 0 ]
+	then
+		echo "Error: libid3tag not found"
+		exit 1
+	fi
+	LDFLAGS="$LDFLAGS `pkg-config --libs mad id3tag`"
 	SRCS="$SRCS audio_format_mp3"
 fi
 # regcomp()/regexec() usage
