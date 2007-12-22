@@ -241,7 +241,7 @@ fi
 if [ "$CFG_MP3" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_MP3"
-	LDFLAGS="$LDFLAGS -lmad -lid3tag -lz"
+	LDFLAGS="$LDFLAGS -lmad -lid3tag"
 	SRCS="$SRCS audio_format_mp3"
 fi
 # regcomp()/regexec() usage
@@ -286,7 +286,7 @@ fi
 if [ "$CFG_VORBIS" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_VORBIS"
-	LDFLAGS="$LDFLAGS -lvorbisfile -lvorbis -logg"
+	LDFLAGS="$LDFLAGS -lvorbisfile"
 	SRCS="$SRCS audio_format_vorbis"
 fi
 # XSPF support
