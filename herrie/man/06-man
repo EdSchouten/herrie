@@ -1,0 +1,54 @@
+.TP
+.B <
+Seek 5 seconds backward.
+.TP
+.B >
+Seek 5 seconds forward.
+.TP
+.B b
+Go to the next song. Sending the signal
+.B SIGUSR2
+to the application will do the same.
+.TP
+.B c
+Pause the current song. When
+.B c
+is pressed again, playback is resumed. Sending the signal
+.B SIGUSR1
+to the application will do the same.
+.TP
+.B J
+Seek to a specific position. When the inserted time is prepended with a + or
+-, the seek is performed relative.
+.TP
+.B q
+Quit the application.
+.TP
+.B r
+Switch repeat on and off. When this option is enabled, songs that have
+been successfully opened will be added to the end of the playlist,
+causing the playlist to repeat.
+.TP
+.B v
+Stop playback.
+.TP
+.B w
+Write the current playlist to a playlist file.
+.TP
+.B x
+When in XMMS mode, it starts the selected song. In party mode, this song
+will always start playback of the first song in the list.
+.TP
+.B z
+Go to the previous song.
+.TP
+.B ^L
+Force the application to redraw itself.
+.TP
+.B ^W or tab
+Switch the focus from the playlist to the file browser or vice versa.
+.SH AUTHORS
+.B herrie
+is maintained by Ed Schouten <ed@fxq.nl>. Please visit
+.I http://herrie.info/
+for more information, documentation and developer notes.

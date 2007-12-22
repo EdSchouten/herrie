@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-10 11:22+0100\n"
+"POT-Creation-Date: 2007-12-17 16:58+0100\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
@@ -67,32 +67,32 @@ msgstr "Ara"
 msgid "Bad pattern."
 msgstr "Hatalı ifade"
 
-#: gui_input.c:196 gui_input.c:232
+#: gui_input.c:196 gui_input.c:233
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: gui_input.c:264
+#: gui_input.c:265
 msgid "Use kill(1) to quit."
 msgstr "Çıkmak için kill(1) kullanın."
 
-#: gui_input.c:268
+#: gui_input.c:269
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:305
+#: gui_input.c:306
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:362
+#: gui_input.c:363
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:554 main.c:76 main.c:82 main.c:88
+#: gui_input.c:555 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:555 main.c:78 main.c:84 main.c:90
+#: gui_input.c:556 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "hayır"
 

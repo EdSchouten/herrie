@@ -171,7 +171,7 @@ main(int argc, char *argv[])
 #ifdef BUILD_SCROBBLER
 	scrobbler_init();
 #endif /* BUILD_SCROBBLER */
-	playq_init(xmms);
+	playq_init(xmms, (argc == 0));
 
 	/* Draw all the windows */
 	gui_draw_init_post();

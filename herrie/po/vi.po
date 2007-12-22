@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-10 11:22+0100\n"
+"POT-Creation-Date: 2007-12-17 16:58+0100\n"
 "PO-Revision-Date: 2007-10-10 18:27+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -69,32 +69,32 @@ msgstr "Tìm kiếm"
 msgid "Bad pattern."
 msgstr "Sai mẫu."
 
-#: gui_input.c:196 gui_input.c:232
+#: gui_input.c:196 gui_input.c:233
 msgid "Not found."
 msgstr "Không tìm thấy."
 
-#: gui_input.c:264
+#: gui_input.c:265
 msgid "Use kill(1) to quit."
 msgstr "Hãy dùng kill(1) để thoát."
 
-#: gui_input.c:268
+#: gui_input.c:269
 #, c-format
 msgid "Quit %s?"
 msgstr "Thoát khỏi %s không?"
 
-#: gui_input.c:305
+#: gui_input.c:306
 msgid "Jump to position"
 msgstr "Nhảy tới vị trí"
 
-#: gui_input.c:362
+#: gui_input.c:363
 msgid "Bad time format."
 msgstr "Sai định dạng thời gian."
 
-#: gui_input.c:554 main.c:76 main.c:82 main.c:88
+#: gui_input.c:555 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "có"
 
-#: gui_input.c:555 main.c:78 main.c:84 main.c:90
+#: gui_input.c:556 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "không"
 

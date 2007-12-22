@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-10 11:22+0100\n"
+"POT-Creation-Date: 2007-12-17 16:58+0100\n"
 "PO-Revision-Date: 2007-12-01 16:48+0100\n"
 "Last-Translator: Piotr Budny <vip@pld-linux.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -66,32 +66,32 @@ msgstr "Szukaj"
 msgid "Bad pattern."
 msgstr "Zła próbka."
 
-#: gui_input.c:196 gui_input.c:232
+#: gui_input.c:196 gui_input.c:233
 msgid "Not found."
 msgstr "Nie znaleziono"
 
-#: gui_input.c:264
+#: gui_input.c:265
 msgid "Use kill(1) to quit."
 msgstr "Użyj kill(1) aby wyjść."
 
-#: gui_input.c:268
+#: gui_input.c:269
 #, c-format
 msgid "Quit %s?"
 msgstr "Zamknij %s?"
 
-#: gui_input.c:305
+#: gui_input.c:306
 msgid "Jump to position"
 msgstr "Skocz do pozycji"
 
-#: gui_input.c:362
+#: gui_input.c:363
 msgid "Bad time format."
 msgstr "Zły format czasu."
 
-#: gui_input.c:554 main.c:76 main.c:82 main.c:88
+#: gui_input.c:555 main.c:76 main.c:82 main.c:88
 msgid "yes"
 msgstr "tak"
 
-#: gui_input.c:555 main.c:78 main.c:84 main.c:90
+#: gui_input.c:556 main.c:78 main.c:84 main.c:90
 msgid "no"
 msgstr "nie"
 

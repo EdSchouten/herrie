@@ -52,9 +52,13 @@ using the
 .B q
 button.
 .TP
-.B playq.dumpfile=~/.herrie/autosave.xspf
+.B playq.dumpfile=~/.herrie/%%PLAYQ_DUMPFILE%%
 The filename used to automatically save the playlist at shutdown and
-load at startup. When empty, this feature will be disabled.
+load at startup. When empty, this feature will be disabled. This feature
+will also be disabled when the directory
+.I ~/.herrie/
+does not exist. The application will not create this directory by
+itself.
 .TP
 .B playq.xmms=no
 Always start

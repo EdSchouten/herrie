@@ -235,7 +235,7 @@ done:
 }
 
 void
-playq_init(int xmms)
+playq_init(int xmms, int load_dumpfile)
 {
 	const char *filename;
 	struct vfsref *vr;
@@ -250,7 +250,7 @@ playq_init(int xmms)
 	}
 
 	filename = config_getopt("playq.dumpfile");
-	if (filename[0] != '\0') {
+	if (load_dumpfile && filename[0] != '\0') {
 		/* Autoload playlist */
 		vr = vfs_open(filename, NULL, NULL, 0);
 		if (vr != NULL) {
