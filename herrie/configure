@@ -232,8 +232,9 @@ fi
 if [ "$CFG_MP3" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_MP3"
-	test_pkgconfig "libmad" "mad" "_audio_format_mp3"
-	test_pkgconfig "libid3tag" "id3tag" "_audio_format_mp3"
+	LDFLAGS="$LDFLAGS -lmad -lid3tag"
+	#test_pkgconfig "libmad" "mad" "_audio_format_mp3"
+	#test_pkgconfig "libid3tag" "id3tag" "_audio_format_mp3"
 	SRCS="$SRCS audio_format_mp3"
 fi
 # res_init() usage
