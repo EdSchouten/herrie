@@ -12,6 +12,7 @@ Graphical user interface:
 - Show whether repeat is turned on
 - Make startup-configuration of repeat-switch configurable
 - Allow Herrie to be controlled outside the interface through /tmp
+- Add the ability to show the filename of the song that's currently playing
 
 Audio abstraction:
 - Add support for volume control for ALSA
