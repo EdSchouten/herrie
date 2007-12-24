@@ -43,11 +43,10 @@
 static void
 version(void)
 {
-	g_printerr(APP_NAME " " APP_VERSION " ("
+	g_printerr(APP_NAME " " APP_VERSION
+		" (Two-clause BSD license"
 #if defined(BUILD_AO) || defined(BUILD_MP3) || defined(BUILD_SNDFILE)
-		"GNU GPL"
-#else /* !BUILD_AO && !BUILD_MP3 && !BUILD_SNDFILE */
-		"BSD"
+		", using GNU GPL licensed libraries"
 #endif /* BUILD_AO || BUILD_MP3 || BUILD_SNDFILE */
 		")\n\n"
 		"%s: " CONFFILE "\n"
