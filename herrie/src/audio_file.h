@@ -28,9 +28,6 @@
  * @brief Generic access and decoding of audio file formats.
  */
 
-#ifndef _AUDIO_FILE_H_
-#define _AUDIO_FILE_H_
-
 struct audio_format;
 struct vfsref;
 
@@ -122,5 +119,3 @@ size_t audio_file_read(struct audio_file *fd, int16_t *buf, size_t len);
  * @brief Call the seek function in the audio_file struct.
  */
 void audio_file_seek(struct audio_file *fd, int len, int rel);
-
-#endif /* !_AUDIO_FILE_H_ */

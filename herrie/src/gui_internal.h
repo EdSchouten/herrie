@@ -28,9 +28,6 @@
  * @brief Internal textual user interface routines.
  */
 
-#ifndef _GUI_INTERNAL_H_
-#define _GUI_INTERNAL_H_
-
 #include CURSES_HEADER
 
 struct vfsref;
@@ -370,5 +367,3 @@ void gui_browser_fullpath(void);
  * @brief Apply a recursive search filter on the current directory.
  */
 int gui_browser_locate(const struct vfsmatch *vm);
-
-#endif /* !_GUI_INTERNAL_H_ */

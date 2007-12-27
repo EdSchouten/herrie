@@ -28,9 +28,6 @@
  * @brief Configuration file handling.
  */
 
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
-
 /**
  * @brief Load the configuration from disk
  */
@@ -48,5 +45,3 @@ int		config_getopt_bool(const char *val);
  * @brief Return a value translated to curses color code
  */
 int		config_getopt_color(const char *val);
-
-#endif /* !_CONFIG_H_ */

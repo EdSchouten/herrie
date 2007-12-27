@@ -28,9 +28,6 @@
  * @brief Virtual filesystem access modules.
  */
 
-#ifndef _VFS_MODULES_H_
-#define _VFS_MODULES_H_
-
 struct vfsent;
 struct vfslist;
 
@@ -112,5 +109,3 @@ int	vfs_xspf_populate(struct vfsent *ve);
  */
 int	vfs_xspf_write(const struct vfslist *vl, const char *filename);
 #endif /* BUILD_XSPF */
-
-#endif /* !_VFS_MODULES_H_ */

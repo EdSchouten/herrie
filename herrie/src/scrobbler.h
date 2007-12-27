@@ -28,9 +28,6 @@
  * @brief AudioScrobbler submission.
  */
 
-#ifndef _SCROBBLER_H_
-#define _SCROBBLER_H_
-
 struct audio_file;
 
 #ifdef BUILD_SCROBBLER
@@ -57,5 +54,3 @@ void scrobbler_notify_read(struct audio_file *fd, int eof);
  */
 void scrobbler_notify_seek(struct audio_file *fd);
 #endif /* BUILD_SCROBBLER */
-
-#endif /* !_SCROBBLER_H_ */

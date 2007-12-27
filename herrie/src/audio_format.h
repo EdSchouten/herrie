@@ -28,9 +28,6 @@
  * @brief Audio file format specific decompression routines.
  */
 
-#ifndef _AUDIO_FORMAT_H_
-#define _AUDIO_FORMAT_H_
-
 struct audio_file;
 
 #ifdef BUILD_MODPLUG
@@ -108,5 +105,3 @@ size_t vorbis_read(struct audio_file *fd, int16_t *buf, size_t len);
  */
 void vorbis_seek(struct audio_file *fd, int len, int rel);
 #endif /* BUILD_VORBIS */
-
-#endif /* !_AUDIO_FORMAT_H_ */

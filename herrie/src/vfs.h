@@ -28,9 +28,6 @@
  * @brief Virtual filesystem.
  */
 
-#ifndef _VFS_H_
-#define _VFS_H_
-
 /*
  * All structures mentioned in this file are only directly dereferenced
  * in the VFS itself, so we could remove their declaration to a private
@@ -536,5 +533,3 @@ vfs_match_value(const struct vfsmatch *vm)
 {
 	return (vm->string);
 }
-
-#endif /* !_VFS_H_ */

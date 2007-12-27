@@ -28,9 +28,6 @@
  * @brief Generic directory/playlist display for textual user interface.
  */
 
-#ifndef _GUI_VFSLIST_H_
-#define _GUI_VFSLIST_H_
-
 #include CURSES_HEADER
 
 struct vfslist;
@@ -215,5 +212,3 @@ int gui_vfslist_searchnext(struct gui_vfslist *gv, const struct vfsmatch *vm);
  *        bar.
  */
 void gui_vfslist_fullpath(struct gui_vfslist *gv);
-
-#endif /* !_GUI_VFSLIST_H_ */

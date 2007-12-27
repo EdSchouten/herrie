@@ -28,9 +28,6 @@
  * @brief Custom playlist behaviour routines.
  */
 
-#ifndef _PLAYQ_MODULES_H_
-#define _PLAYQ_MODULES_H_
-
 struct vfsref;
 
 /**
@@ -90,5 +87,3 @@ int playq_xmms_prev(void);
  * @brief XMMS-like notification that a song is about to be deleted.
  */
 void playq_xmms_notify_pre_removal(struct vfsref *vr);
-
-#endif /* !_PLAYQ_MODULES_H_ */

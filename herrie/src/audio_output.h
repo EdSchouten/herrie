@@ -28,9 +28,6 @@
  * @brief Audio output abstraction.
  */
 
-#ifndef _AUDIO_OUTPUT_H_
-#define _AUDIO_OUTPUT_H_
-
 struct audio_file;
 
 /**
@@ -56,5 +53,3 @@ int audio_output_volume_up(void);
  */
 int audio_output_volume_down(void);
 #endif /* BUILD_VOLUME */
-
-#endif /* !_AUDIO_OUTPUT_H_ */

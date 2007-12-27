@@ -28,9 +28,6 @@
  * @brief Public textual user interface control routines.
  */
 
-#ifndef _GUI_H_
-#define _GUI_H_
-
 struct audio_file;
 
 /**
@@ -96,5 +93,3 @@ void gui_playq_notify_post_randomization(void);
  *        finished.
  */
 void gui_playq_notify_done(void);
-
-#endif /* !_GUI_H_ */

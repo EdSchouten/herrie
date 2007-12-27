@@ -28,9 +28,6 @@
  * @brief General utility functions
  */
 
-#ifndef _UTIL_H_
-#define _UTIL_H_
-
 #ifdef BUILD_SCROBBLER
 /**
  * @brief Convert a binary buffer to a hexadecimal string. The len
@@ -58,5 +55,3 @@ char *url_escape(const char *str);
  */
 char *url_unescape(char *str);
 #endif /* BUILD_XSPF */
-
-#endif /* !_GUI_H_ */

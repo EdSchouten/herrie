@@ -28,9 +28,6 @@
  * @brief MD5 hashing.
  */
 
-#ifndef _MD5_H_
-#define _MD5_H_
-
 /**
  * @brief Internal state of the MD5 hash calculation.
  */
@@ -62,5 +59,3 @@ void md5_update(struct md5_context *m, const void *buf, size_t len);
  * @brief Finalize the hash value and return its hash value.
  */
 void md5_final(struct md5_context *m, unsigned char out[16]);
-
-#endif /* !_MD5_H_ */
