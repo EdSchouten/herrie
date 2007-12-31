@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 Ed Schouten <ed@fxq.nl>
+ * Copyright (c) 2006-2008 Ed Schouten <ed@fxq.nl>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
