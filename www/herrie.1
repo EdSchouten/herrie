@@ -1,6 +1,6 @@
 #!/bin/sh
 
-GIT='git --git-dir=/home/ed/.repos/public-git/herrie'
+GIT='git --git-dir=/export/git/public/herrie'
 
 printf 'Content-Type: text/plain\n\r\n'
 for i in `$GIT ls-tree HEAD herrie/man/ | awk '{print $3}'`
