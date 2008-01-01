@@ -1,52 +1,18 @@
 .TP
-.B <
-Seek 5 seconds backward.
+.B vfs.dir.hide_dotfiles=yes
+Hide files in directories with a filename starting with a dot.
 .TP
-.B >
-Seek 5 seconds forward.
+.B vfs.lockup.chroot=
+Lock the application's filebrowser in a directory. Please note that
+.B herrie
+must be launched as
+.I root
+for this switch to work. It is advised to set
+.B vfs.lockup.user
+as well.
 .TP
-.B b
-Go to the next song. Sending the signal
-.B SIGUSR2
-to the application will do the same.
-.TP
-.B c
-Pause the current song. When
-.B c
-is pressed again, playback is resumed. Sending the signal
-.B SIGUSR1
-to the application will do the same.
-.TP
-.B J
-Seek to a specific position. When the inserted time is prepended with a + or
--, the seek is performed relative.
-.TP
-.B q
-Quit the application.
-.TP
-.B r
-Switch repeat on and off. When this option is enabled, songs that have
-been successfully opened will be added to the end of the playlist,
-causing the playlist to repeat.
-.TP
-.B v
-Stop playback.
-.TP
-.B w
-Write the current playlist to a playlist file.
-.TP
-.B x
-When in XMMS mode, it starts the selected song. In party mode, this song
-will always start playback of the first song in the list.
-.TP
-.B z
-Go to the previous song.
-.TP
-.B ^L
-Force the application to redraw itself.
-.TP
-.B ^W or tab
-Switch the focus from the playlist to the file browser or vice versa.
+.B vfs.lockup.user=
+Change the effective user of the application to the specified user.
 .SH AUTHORS
 .B herrie
 is maintained by Ed Schouten <ed@fxq.nl>. Please visit

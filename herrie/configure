@@ -217,7 +217,7 @@ then
 	then
 		CFLAGS="$CFLAGS -DBUILD_SCROBBLER"
 		SRCS="$SRCS md5 scrobbler util"
-		MANPARTS="$MANPARTS 03-scrobbler"
+		MANPARTS="$MANPARTS 05-scrobbler"
 	fi
 	test_pkgconfig "cURL" "libcurl" ""
 fi
@@ -298,13 +298,13 @@ case $CFG_AO in
 alsa)
 	CFLAGS="$CFLAGS -DBUILD_ALSA"
 	LDFLAGS="$LDFLAGS -lasound"
-	MANPARTS="$MANPARTS 01-alsa"
+	MANPARTS="$MANPARTS 03-alsa"
 	;;
 ao)
 	CFLAGS="$CFLAGS -DBUILD_AO"
 	CFLAGS_main="$CFLAGS_main -DCLOSE_STDERR"
 	LDFLAGS="$LDFLAGS -lao"
-	MANPARTS="$MANPARTS 01-ao"
+	MANPARTS="$MANPARTS 03-ao"
 	;;
 coreaudio)
 	CFG_VOLUME=yes
@@ -327,7 +327,7 @@ oss)
 	CFG_VOLUME=yes
 	CFLAGS="$CFLAGS -DBUILD_OSS"
 	CFLAGS_config="$CFLAGS_config -DOSS_DEVICE=\\\"$OSS_DEVICE\\\""
-	MANPARTS="$MANPARTS 01-oss"
+	MANPARTS="$MANPARTS 03-oss"
 	MANREGEX="$MANREGEX -e 's|%%OSS_DEVICE%%|$OSS_DEVICE|'"
 	;;
 pulse)
@@ -339,7 +339,7 @@ esac
 if [ "$CFG_VOLUME" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_VOLUME"
-	MANPARTS="$MANPARTS 05-volume"
+	MANPARTS="$MANPARTS 01-volume"
 fi
 
 echo "Configuration:"

@@ -1,66 +1,57 @@
 .TP
-.B gui.browser.defaultpath=
-On startup, the current directory is shown in the file browser. When
-this option is set, it tries to open that specific directory first.
+.B <
+Seek 5 seconds backward.
 .TP
-.B gui.color.bar.bg=blue
-The background color of the bars (the status bar at the top of the
-screen and the directory name bar in the middle). Valid colors are
-black, red, green, yellow, blue, magenta, cyan, white and default. The
-latter is the terminal's default color (e.g. black on white).
+.B >
+Seek 5 seconds forward.
 .TP
-.B gui.color.bar.fg=white
-The foreground color of the bars.
+.B b
+Go to the next song. Sending the signal
+.B SIGUSR2
+to the application will do the same.
 .TP
-.B gui.color.block.bg=black
-The background color of the blocks (the playlist, the file browser and
-the message prompt at the bottom).
+.B c
+Pause the current song. When
+.B c
+is pressed again, playback is resumed. Sending the signal
+.B SIGUSR1
+to the application will do the same.
 .TP
-.B gui.color.block.fg=white
-The foreground color of the blocks.
+.B J
+Seek to a specific position. When the inserted time is prepended with a + or
+-, the seek is performed relative.
 .TP
-.B gui.color.deselect.bg=white
-The background color of a selected item of an inactive window (the
-background color of a selection in the file browser when the playlist is
-selected, for example).
-.TP
-.B gui.color.deselect.fg=black
-The foreground color of a selected item of an inactive window.
-.TP
-.B gui.color.enabled=yes
-Draw the application using colors when the terminal supports it. When
-disabled, the application is forced to draw itself as if it were used
-with a monochrome terminal.
-.TP
-.B gui.color.marked.fg=black
-The foreground color of the item that is currenty played. It is not
-used when in party mode.
-.TP
-.B gui.color.marked.bg=red
-The background color of the item that is currenty played. It is not
-used when in party mode.
-.TP
-.B gui.color.select.bg=cyan
-The background color of a selected item of an active window.
-.TP
-.B gui.color.select.fg=black
-The foreground color of a selected item of an active window.
-.TP
-.B gui.input.may_quit=yes
-When disabled, the user of the application may not quit the application
-using the
 .B q
-button.
+Quit the application.
 .TP
-.B playq.dumpfile=~/.herrie/%%PLAYQ_DUMPFILE%%
-The filename used to automatically save the playlist at shutdown and
-load at startup. When empty, this feature will be disabled. This feature
-will also be disabled when the directory
-.I ~/.herrie/
-does not exist. The application will not create this directory by
-itself.
+.B r
+Switch repeat on and off. When this option is enabled, songs that have
+been successfully opened will be added to the end of the playlist,
+causing the playlist to repeat.
 .TP
-.B playq.xmms=no
-Always start
-.B herrie
-in XMMS mode.
+.B v
+Stop playback.
+.TP
+.B w
+Write the current playlist to a playlist file.
+.TP
+.B x
+When in XMMS mode, it starts the selected song. In party mode, this song
+will always start playback of the first song in the list.
+.TP
+.B z
+Go to the previous song.
+.TP
+.B ^L
+Force the application to redraw itself.
+.TP
+.B ^W or tab
+Switch the focus from the playlist to the file browser or vice versa.
+.SH CONFIGURATION SWITCHES
+.b herrie
+may be configured by storing options in a configuration file. Options
+must be stored in the following format:
+.TP
+.B key=value
+.PP
+Below is a list of switches, including their default values:
