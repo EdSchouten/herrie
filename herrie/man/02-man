@@ -48,7 +48,7 @@ Force the application to redraw itself.
 .B ^W or tab
 Switch the focus from the playlist to the file browser or vice versa.
 .SH CONFIGURATION SWITCHES
-.b herrie
+.B herrie
 may be configured by storing options in a configuration file. Options
 must be stored in the following format:
 .TP
