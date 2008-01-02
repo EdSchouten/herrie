@@ -1,14 +1,14 @@
-# translation of herrie-1.8.91.pot to Finnish
+# translation of herrie-1.9.1.pot to Finnish
 # Copyright (C) 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the herrie package.
 #
 # Jorma Karvonen <karvjorm@users.sf.net>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: herrie\n"
+"Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-01-02 16:43+0100\n"
-"PO-Revision-Date: 2008-01-02 16:52+0200\n"
+"PO-Revision-Date: 2008-01-03 00:46+0200\n"
 "Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Audiolaitetta ”%s” ei voida avata.\n"
 
 #: gui_browser.c:79
 msgid "filter"
-msgstr ""
+msgstr "suodatin"
 
 #: gui_browser.c:145
 msgid "Unable to open initial directory."
