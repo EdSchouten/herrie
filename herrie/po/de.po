@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-17 16:58+0100\n"
+"POT-Creation-Date: 2008-01-02 16:43+0100\n"
 "PO-Revision-Date: 2007-10-14 09:14+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
@@ -85,11 +85,11 @@ msgstr "Zu Position springen"
 msgid "Bad time format."
 msgstr "Ungültiges Zeit-Format."
 
-#: gui_input.c:555 main.c:76 main.c:82 main.c:88
+#: gui_input.c:555 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:556 main.c:78 main.c:84 main.c:90
+#: gui_input.c:556 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "nein"
 
@@ -150,31 +150,31 @@ msgstr "Suche am Ende angelagt, Fortsetzung am Anfang."
 msgid "Full pathname"
 msgstr "Vollständiger Pfad"
 
-#: main.c:72
+#: main.c:71
 msgid "Global configuration file"
 msgstr "Globale Konfigurations-Datei"
 
-#: main.c:73
+#: main.c:72
 msgid "Audio output"
 msgstr "Audio-Ausgabe"
 
-#: main.c:74
+#: main.c:73
 msgid "Support for AudioScrobbler"
 msgstr "Unterstützung für AudioScrobbler"
 
-#: main.c:80
+#: main.c:79
 msgid "Support for HTTP streams"
 msgstr "Unterstützung für HTTP-Streams"
 
-#: main.c:86
+#: main.c:85
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Unterstützung für XSPF Wiedergabelisten"
 
-#: main.c:92
+#: main.c:91
 msgid "Supported audio file formats"
 msgstr "Unterstützte Audio-Formate"
 
-#: main.c:104
+#: main.c:103
 msgid "usage"
 msgstr "Benutzung"
 

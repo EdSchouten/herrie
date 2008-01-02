@@ -1,6 +1,7 @@
-????-??-?? -- Herrie 1.10:
+????-??-?? -- Herrie 1.9.2:
  * Removed: Native Windows support - it was incomplete anyway
  * Improved: Manpage reorganized to make more sense - Marcela Tiznado
+ * Added: Finish translation - Jorma Karvonen
 
 2007-12-17 -- Herrie 1.9.1:
  * Added: 'L' button to locate files in the current directory

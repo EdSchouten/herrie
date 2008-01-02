@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-17 16:58+0100\n"
+"POT-Creation-Date: 2008-01-02 16:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,11 +91,11 @@ msgstr ""
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:555 main.c:76 main.c:82 main.c:88
+#: gui_input.c:555 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:556 main.c:78 main.c:84 main.c:90
+#: gui_input.c:556 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr ""
 
@@ -156,31 +156,31 @@ msgstr ""
 msgid "Full pathname"
 msgstr ""
 
-#: main.c:72
+#: main.c:71
 msgid "Global configuration file"
 msgstr ""
 
-#: main.c:73
+#: main.c:72
 msgid "Audio output"
 msgstr ""
 
-#: main.c:74
+#: main.c:73
 msgid "Support for AudioScrobbler"
 msgstr ""
 
-#: main.c:80
+#: main.c:79
 msgid "Support for HTTP streams"
 msgstr ""
 
-#: main.c:86
+#: main.c:85
 msgid "Support for XSPF playlists (`spiff')"
 msgstr ""
 
-#: main.c:92
+#: main.c:91
 msgid "Supported audio file formats"
 msgstr ""
 
-#: main.c:104
+#: main.c:103
 msgid "usage"
 msgstr ""
 

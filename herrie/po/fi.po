@@ -1,11 +1,16 @@
+# translation of herrie-1.8.91.pot to Finnish
+# Copyright (C) 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the herrie package.
+#
+# Jorma Karvonen <karvjorm@users.sf.net>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-01-02 16:43+0100\n"
-"PO-Revision-Date: 2007-11-29 15:14+0100\n"
-"Last-Translator: Xavier de Blas <xaviblas@gmail.com>\n"
-"Language-Team: Spanish <xaviblas@gmail.com>\n"
+"PO-Revision-Date: 2008-01-02 16:52+0200\n"
+"Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
+"Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,16 +18,16 @@ msgstr ""
 #: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
-msgstr "No se puede abrir la salida de audio."
+msgstr "Audiolaitetta ei voida avata."
 
 #: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
-msgstr "No se permite esta frecuencia de sampleo o nombre de canales."
+msgstr "Näytetaajuutta tai kanavien lukumäärää ei tueta."
 
 #: audio_output_oss.c:68
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "No se puede abrir la salida de audio \"%s\".\n"
+msgstr "Audiolaitetta ”%s” ei voida avata.\n"
 
 #: gui_browser.c:79
 msgid "filter"
@@ -30,218 +35,218 @@ msgstr ""
 
 #: gui_browser.c:145
 msgid "Unable to open initial directory."
-msgstr "No se puede abrir la carpeta inicial."
+msgstr "Alkukansiota ei voida avata."
 
 #: gui_browser.c:262
 msgid "Unable to enter the parent directory."
-msgstr "No se puede acceder a la carpeta padre."
+msgstr "Ei voida siirtyä yläkansioon."
 
 #: gui_browser.c:277
 msgid "Unable to enter the selected directory."
-msgstr "No se puede acceder a la carpeta seleccionada."
+msgstr "Ei voida siirtyä valittuun kansioon."
 
 #: gui_browser.c:363
 msgid "Change directory"
-msgstr "Cambiar carpeta"
+msgstr "Vaihda kansiota"
 
 #: gui_browser.c:401
 msgid "Unable to display the file or directory."
-msgstr "No se puede mostrar el archivo o carpeta."
+msgstr "Tiedostoa tai kansiota ei voida näyttää."
 
 #: gui_browser.c:418
 msgid "Write playlist to file"
-msgstr "Escribir la lista de reproducción a un archivo."
+msgstr "Kirjoita soittolista tiedostoon"
 
 #: gui_browser.c:427
 msgid "Unable to write playlist."
-msgstr "No se puede escribir la lista de reproducción."
+msgstr "Soittolistaa ei voida kirjoittaa."
 
 #: gui_input.c:143
 msgid "Search for"
-msgstr "Buscar"
+msgstr "Etsitään"
 
 #: gui_input.c:149
 msgid "Bad pattern."
-msgstr "Búsqueda incorrecta."
+msgstr "Virheellinen malli."
 
 #: gui_input.c:196 gui_input.c:233
 msgid "Not found."
-msgstr "No encontrado."
+msgstr "Ei löytynyt."
 
 #: gui_input.c:265
 msgid "Use kill(1) to quit."
-msgstr "Usar kill(1) para salir."
+msgstr "Poistu käyttämällä käskyä kill(1)."
 
 #: gui_input.c:269
 #, c-format
 msgid "Quit %s?"
-msgstr "¿Salir de %s?"
+msgstr "Poistutaanko %s?"
 
 #: gui_input.c:306
 msgid "Jump to position"
-msgstr "Saltar a la posición"
+msgstr "Hyppää paikkaan"
 
 #: gui_input.c:363
 msgid "Bad time format."
-msgstr "Formato de fecha incorrecto."
+msgstr "Virheellinen aikamuoto."
 
 #: gui_input.c:555 main.c:75 main.c:81 main.c:87
 msgid "yes"
-msgstr "sí"
+msgstr "kyllä"
 
 #: gui_input.c:556 main.c:77 main.c:83 main.c:89
 msgid "no"
-msgstr "no"
+msgstr "ei"
 
 #: gui_playq.c:109
 msgid "Idle"
-msgstr "A la espera"
+msgstr "Jouten"
 
 #: gui_playq.c:112
 msgid "Paused"
-msgstr "Pausa"
+msgstr "Tauolla"
 
 #: gui_playq.c:114
 msgid "Playing"
-msgstr "Reproduciendo"
+msgstr "Soitetaan"
 
 #: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
-msgstr "¿Borrar todas las canciones de la lista de reproducción?"
+msgstr "Poistetaanko kaikki kappaleet soittoluettelosta?"
 
 #: gui_playq.c:363
 msgid "Randomize the playlist?"
-msgstr "¿Aleatorizar la lista de reproducción?"
+msgstr "Järjestetäänkö soittoluettelo satunnaisesti?"
 
 #: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
-msgstr "La canción ya está arriba de la lista de reproducción."
+msgstr "Kappale on jo soittoluettelon ensimmäisenä."
 
 #: gui_playq.c:431 gui_playq.c:469
 msgid "The song is already at the bottom of the playlist."
-msgstr "La canción ya está abajo de la lista de reproducción."
+msgstr "Kappale on jo soittoluettelon viimeisenä."
 
 #: gui_playq.c:529
 msgid "Failed to adjust the volume."
-msgstr "Fallo en el ajuste de volumen."
+msgstr "Äänenvoimakkuuden säätäminen ei onnistunut."
 
 #: gui_playq.c:531
 #, c-format
 msgid "Volume: %d%%"
-msgstr "Volumen: %d%%"
+msgstr "Äänenvoimakkuus: %d%%"
 
 #: gui_vfslist.c:234
 msgid "There are no songs."
-msgstr "No hay canciones."
+msgstr "Ei yhtään kappaletta."
 
 #: gui_vfslist.c:300
 msgid "You are at the first song."
-msgstr "Situado en la primera canción."
+msgstr "Soitat ensimmäistä kappaletta."
 
 #: gui_vfslist.c:319
 msgid "You are at the last song."
-msgstr "Situado en la última canción."
+msgstr "Soitat viimeistä kappaletta."
 
 #: gui_vfslist.c:545
 msgid "Search wrapped to top."
-msgstr "Búsqueda completa, continuando en el inicio."
+msgstr "Haku palautuu alkuun."
 
 #: gui_vfslist.c:569
 msgid "Full pathname"
-msgstr "Escribir la ruta completa"
+msgstr "Täysi polkunimi"
 
 #: main.c:71
 msgid "Global configuration file"
-msgstr "Archivo global de configuración"
+msgstr "Yleinen asetustiedosto"
 
 #: main.c:72
 msgid "Audio output"
-msgstr "Salida de audio"
+msgstr "Audiolähtö"
 
 #: main.c:73
 msgid "Support for AudioScrobbler"
-msgstr "Soporte para AudioScrobbler"
+msgstr "Tuki AudioScrobblerille"
 
 #: main.c:79
 msgid "Support for HTTP streams"
-msgstr "Soporte para flujo HTTP"
+msgstr "Tuki HTTP-suoratoistolle"
 
 #: main.c:85
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "Soport para listas de reproducción XSPF (`spiff')"
+msgstr "Tuki XSPF-soittoluetteloille (”spiff”)"
 
 #: main.c:91
 msgid "Supported audio file formats"
-msgstr "Formatos de audio permitidos"
+msgstr "Tuetut audiotiedostomuodot"
 
 #: main.c:103
 msgid "usage"
-msgstr "uso"
+msgstr "käyttö"
 
 #: playq.c:188
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "No se ha podido reproducir \"%s\"."
+msgstr "Tiedostoa ”%s” ei onnistuttu avaamaan soitettavaksi."
 
 #: playq.c:410
 #, c-format
 msgid "Repeat: %s"
-msgstr "Repetir: %s"
+msgstr "Toistaa: %s"
 
 #: playq.c:411
 msgid "on"
-msgstr "encendido"
+msgstr "päällä"
 
 #: playq.c:411
 msgid "off"
-msgstr "apagado"
+msgstr "pois päältä"
 
 #: scrobbler.c:481
 msgid "Failed to authorize at AudioScrobbler."
-msgstr "Fallo en la autorización con AudioScrobbler."
+msgstr "Ei onnistunut valtuuttaa AudioScrobblerilla."
 
 #: scrobbler.c:485
 msgid "Invalid AudioScrobbler username/password."
-msgstr "Identificación incorrecta con AudioScobbler."
+msgstr "Virheellinen AudioScrobbler-käyttäjänimi tai -salasana."
 
 #: scrobbler.c:490
 msgid "Successfully authorized at AudioScrobbler."
-msgstr "Autorizado correctament en AudioScrobbler."
+msgstr "Valtuutettu AudioScrobblerilla onnistuneesti."
 
 #: scrobbler.c:507
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr "Se ha enviado satisfactoriamente 1 canción a AudioScrobbler."
+msgstr "Yksi kappale on lähetetty onnistuneesti AudioScrobbleriin."
 
 #: scrobbler.c:511
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr "Se han enviado satisfactoriamente %d canciones a AudioScrobbler."
+msgstr "Onnistuneesti lähetetty %d kappaletta AudioScrobbleriin."
 
 #: scrobbler.c:517
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr "Fallo en el envío de canciones a AudioScrobbler."
+msgstr "Ei onnistuttu lähettämään kappaleita AudioScrobbleriin."
 
 #: vfs.c:109
 #, c-format
 msgid "Unknown user: %s\n"
-msgstr "Usuario: %s desconocido\n"
+msgstr "Tuntematon käyttäjä: %s\n"
 
 #: vfs.c:121
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr "No se puede hacer chroot a %s\n"
+msgstr "Ei voida suorittaa chroot-toimintoa hakemistossa %s\n"
 
 #: vfs.c:129
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr "No se puede cambiar al grup %s\n"
+msgstr "Ei voida vaihtaa ryhmään %d\n"
 
 #: vfs.c:133
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr "No se puede cambiar al usuario %s\n"
+msgstr "Ei voida vaihtaa käyttäjäksi %d\n"
 
 #: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "Se ha perdido la conexión con \"%s\"."
+msgstr "Yhteys kohteeseen ”%s” katkesi."
