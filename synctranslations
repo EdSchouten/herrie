@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -Lrtvz  translationproject.org::tp/latest/herrie/  `dirname $0`/herrie/po

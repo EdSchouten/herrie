@@ -1,5 +1,4 @@
-# translation of tr.po by
-#
+# Translation of herrie to Turkish. 
 # Eren Türkay <turkay.eren@gmail.com>, 2007.
 msgid ""
 msgstr ""

@@ -1,8 +1,7 @@
-# translation of ru.po to
-# Moroz Sergey L. <se.seam@gmail.com>, 2007.
 # translation of herrie.pot to Russian
-# Copyright (C) 2007 Moroz Sergey L. <se.seam@gmail.com>
 # This file is distributed under the same license as the herrie package.
+# Copyright (C) 2007 Moroz Sergey L. <se.seam@gmail.com>
+# Moroz Sergey L. <se.seam@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
