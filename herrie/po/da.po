@@ -1,0 +1,262 @@
+# Herrie: Danish translation.
+# Copyright (C) 2008 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Joe Hansen <joedalton2@yahoo.dk>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Herrie 1.9.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-02 16:43+0100\n"
+"PO-Revision-Date: 2008-01-03 13:13+0100\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
+msgid "Cannot open the audio device."
+msgstr "Kan ikke åbne lydenhed."
+
+# Sample rate kan også være samplingfrekvens eller samplefrekvens
+# ordet er ikke på ordlisten.
+#: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
+msgid "Sample rate or amount of channels not supported."
+msgstr "Samplingsfrekvens eller antal kanaler er ikke understøttet."
+
+#: audio_output_oss.c:68
+#, c-format
+msgid "Cannot open audio device \"%s\".\n"
+msgstr "Kan ikke åbne lydenhed \"%s\".\n"
+
+#: gui_browser.c:79
+msgid "filter"
+msgstr "filter"
+
+#: gui_browser.c:145
+msgid "Unable to open initial directory."
+msgstr "Kan ikke åbne opstartsmappen."
+
+#: gui_browser.c:262
+msgid "Unable to enter the parent directory."
+msgstr "Kan ikke tilgå hovedmappen."
+
+#: gui_browser.c:277
+msgid "Unable to enter the selected directory."
+msgstr "Kan ikke tilgå den valgte mappe."
+
+#: gui_browser.c:363
+msgid "Change directory"
+msgstr "Skift mappe"
+
+#: gui_browser.c:401
+msgid "Unable to display the file or directory."
+msgstr "Kan ikke vise filen eller mappen."
+
+# playlist er på ordlisten
+#: gui_browser.c:418
+msgid "Write playlist to file"
+msgstr "Skriv spilleliste til fil"
+
+#: gui_browser.c:427
+msgid "Unable to write playlist."
+msgstr "Kan ikke skrive spilleliste."
+
+#: gui_input.c:143
+msgid "Search for"
+msgstr "Søg efter"
+
+#: gui_input.c:149
+msgid "Bad pattern."
+msgstr "Dårligt mønster."
+
+#: gui_input.c:196 gui_input.c:233
+msgid "Not found."
+msgstr "Ikke fundet."
+
+# måske stop for quit ?
+#: gui_input.c:265
+msgid "Use kill(1) to quit."
+msgstr "Brug kill(1) for afslut."
+
+# måske stop for quit ?
+#: gui_input.c:269
+#, c-format
+msgid "Quit %s?"
+msgstr "Afslut %s?"
+
+#: gui_input.c:306
+msgid "Jump to position"
+msgstr "Flyt til position"
+
+#: gui_input.c:363
+msgid "Bad time format."
+msgstr "Ugyldigt tidsformat."
+
+#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+msgid "yes"
+msgstr "ja"
+
+#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+msgid "no"
+msgstr "nej"
+
+# stjerne ved tomgang på ordliste.
+#: gui_playq.c:109
+msgid "Idle"
+msgstr "Ledig"
+
+#: gui_playq.c:112
+msgid "Paused"
+msgstr "Pause"
+
+#: gui_playq.c:114
+msgid "Playing"
+msgstr "Spiller"
+
+#: gui_playq.c:352
+msgid "Remove all songs from the playlist?"
+msgstr "Fjern alle sange fra spillelisten?"
+
+#: gui_playq.c:363
+msgid "Randomize the playlist?"
+msgstr "Gør spillelisten tilfældig?"
+
+#: gui_playq.c:412 gui_playq.c:450
+msgid "The song is already at the top of the playlist."
+msgstr "Sangen er allerede øverst på spillelisten."
+
+#: gui_playq.c:431 gui_playq.c:469
+msgid "The song is already at the bottom of the playlist."
+msgstr "Sangen er allerede i bunden af spillelisten."
+
+#: gui_playq.c:529
+msgid "Failed to adjust the volume."
+msgstr "Justering af lydstyrken mislykkedes."
+
+#: gui_playq.c:531
+#, c-format
+msgid "Volume: %d%%"
+msgstr "Lydstyrke: %d%%"
+
+#: gui_vfslist.c:234
+msgid "There are no songs."
+msgstr "Der er ingen sange."
+
+#: gui_vfslist.c:300
+msgid "You are at the first song."
+msgstr "Du er ved den første sang."
+
+#: gui_vfslist.c:319
+msgid "You are at the last song."
+msgstr "Du er ved den sidste sang."
+
+#: gui_vfslist.c:545
+msgid "Search wrapped to top."
+msgstr "Søgning ombrudt til toppen."
+
+#: gui_vfslist.c:569
+msgid "Full pathname"
+msgstr "Hele stien"
+
+# måske indstillingsfil, konfigurationsfil
+#: main.c:71
+msgid "Global configuration file"
+msgstr "Global konfigureringsfil"
+
+# Er det nødvendigt at oversætte output her?
+#: main.c:72
+msgid "Audio output"
+msgstr "Lyd"
+
+#: main.c:73
+msgid "Support for AudioScrobbler"
+msgstr "Understøttelse af AudioScrobbler"
+
+#: main.c:79
+msgid "Support for HTTP streams"
+msgstr "Understøttelse af HTTP-strømme"
+
+#: main.c:85
+msgid "Support for XSPF playlists (`spiff')"
+msgstr "Undersøttelse af XSPF-spillelister (`spiff')"
+
+#: main.c:91
+msgid "Supported audio file formats"
+msgstr "Understøttede lydfilformater"
+
+#: main.c:103
+msgid "usage"
+msgstr "brug"
+
+#: playq.c:188
+#, c-format
+msgid "Failed to open \"%s\" for playback."
+msgstr "Kan ikke afspille \"%s\"."
+
+#: playq.c:410
+#, c-format
+msgid "Repeat: %s"
+msgstr "Gentag: %s"
+
+#: playq.c:411
+msgid "on"
+msgstr "tænd"
+
+#: playq.c:411
+msgid "off"
+msgstr "sluk"
+
+#: scrobbler.c:481
+msgid "Failed to authorize at AudioScrobbler."
+msgstr "Fik ikke adgang til AudioScrobbler."
+
+#: scrobbler.c:485
+msgid "Invalid AudioScrobbler username/password."
+msgstr "Ugyldig AudioScrobbler brugernavn/adgangskode."
+
+#: scrobbler.c:490
+msgid "Successfully authorized at AudioScrobbler."
+msgstr "Adgang godkendt hos AudioScrobbler."
+
+#: scrobbler.c:507
+msgid "Successfully sent 1 song to AudioScrobbler."
+msgstr "Sendte med succes 1 sang til AudioScrobbler."
+
+#: scrobbler.c:511
+#, c-format
+msgid "Successfully sent %d songs to AudioScrobbler."
+msgstr "Sendte med succes %d sange til AudioScrobbler."
+
+#: scrobbler.c:517
+msgid "Failed to submit songs to AudioScrobbler."
+msgstr "Kunne ikke sende sange til AudioScrobbler."
+
+#: vfs.c:109
+#, c-format
+msgid "Unknown user: %s\n"
+msgstr "Ukendt bruger: %s\n"
+
+# chroot: The UNIX command to make the root directory (/) become something 
+# other than its default for the lifetime of the current process.
+#: vfs.c:121
+#, c-format
+msgid "Unable to chroot in %s\n"
+msgstr "Kan ikke gøre %s til chroot\n"
+
+#: vfs.c:129
+#, c-format
+msgid "Unable to change to group %d\n"
+msgstr "Kan ikke skifte til gruppe %d\n"
+
+#: vfs.c:133
+#, c-format
+msgid "Unable to change to user %d\n"
+msgstr "Kan ikke skifte til bruger %d\n"
+
+#: vfs_http.c:146
+#, c-format
+msgid "Connection with \"%s\" lost."
+msgstr "Forbindelsen med \"%s\" blev tabt."
