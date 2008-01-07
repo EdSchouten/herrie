@@ -1,4 +1,5 @@
 *.core
+*.dSYM
 *.mo
 *.o
 .DS_Store
