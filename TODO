@@ -21,12 +21,14 @@ Audio abstraction:
   - Apple Lossless
   - WMA
   - AAC
+  - WavPack
 - CD playback
   - CDDB
 - 5.1 support?
 - Make ALSA buffer size configurable
 - Tag information on internet streams
 - Add DBus hooks
+- Add support for CUE files
 
 AudioScrobbler:
 - Implement `Now playing' feature
