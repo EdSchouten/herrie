@@ -48,41 +48,36 @@ gui_vfslist_cursor_adjust(struct gui_vfslist *gv)
 	if (gv->vr_selected == NULL)
 		return;
 
+	/* Three possible cases here */
 	if (gv->idx_top > gv->idx_selected) {
 		/*
-		 * Move viewport up. This is very cheap, because we just
-		 * want to snap the entry to the top. Just copy the
-		 * position of the cursor.
+		 * The entry is above the viewport. Move the viewport up
+		 * so we can see it.
 		 */
 		gv->vr_top = gv->vr_selected;
 		gv->idx_top = gv->idx_selected;
-	} else {
-		if (gv->idx_top + gv->winheight - 1 < gv->idx_selected) {
-			/*
-			 * Move viewport down until the entry is in
-			 * sight. We do this by going to the entry and
-			 * move back upwards. This guarantees that the
-			 * entire action is O(h), where h is the height
-			 * of the screen. If we would start from the
-			 * current position, it could take very long
-			 * when a user presses the `end' button.
-			 */
-			gv->vr_top = gv->vr_selected;
-			gv->idx_top = gv->idx_selected;
-			do {
-				vr = vfs_list_prev(gv->vr_top);
-				if (vr == NULL)
-					break;
-				gv->vr_top = vr;
-				gv->idx_top--;
-			} while (gv->idx_top + gv->winheight - 1 > gv->idx_selected);
-		}
-
+	} else if (gv->idx_top + gv->winheight - 1 < gv->idx_selected) {
 		/*
-		 * Move it back up to remove whitespace. It would be a
-		 * pity when we would show whitespace at the bottom,
-		 * while we could scroll it up a little to fill the
-		 * screen.
+		 * The entry is below the viewport. Start counting
+		 * backward from the selected entry, so we can keep it
+		 * just in screen. This is faster than counting forward,
+		 * because there could be a lot of items in between.
+		 */
+		gv->vr_top = gv->vr_selected;
+		gv->idx_top = gv->idx_selected;
+		do {
+			vr = vfs_list_prev(gv->vr_top);
+			if (vr == NULL)
+				break;
+			gv->vr_top = vr;
+			gv->idx_top--;
+		} while (gv->idx_top + gv->winheight - 1 > gv->idx_selected);
+	} else {
+		/*
+		 * The item is in reach, but it could be possible that
+		 * there is some blank space at the bottom. Move the
+		 * viewport up, so we fill the terminal as much as
+		 * possible.
 		 */
 		while (gv->idx_top + gv->winheight - 1 > vfs_list_items(gv->list)) {
 			vr = vfs_list_prev(gv->vr_top);
