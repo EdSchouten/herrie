@@ -4,6 +4,7 @@
  * Added: Finnish translation - Jorma Karvonen
  * Added: Danish translation - Joe Hansen
  * Improved: GUI scrolling performance when dealing with big playlists
+ * Added: Switch to scroll pages up and down when selection goes out of sight
 
 2007-12-17 -- Herrie 1.9.1:
  * Added: 'L' button to locate files in the current directory
