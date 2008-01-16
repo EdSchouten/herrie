@@ -3,6 +3,7 @@
  * Improved: Manpage reorganized to make more sense - Marcela Tiznado
  * Added: Finnish translation - Jorma Karvonen
  * Added: Danish translation - Joe Hansen
+ * Improved: GUI scrolling performance when dealing with big playlists
 
 2007-12-17 -- Herrie 1.9.1:
  * Added: 'L' button to locate files in the current directory
