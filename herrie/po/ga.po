@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: herrie\n"
+"Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-01-02 16:43+0100\n"
-"PO-Revision-Date: 2007-09-29 07:53-0500\n"
+"PO-Revision-Date: 2008-01-13 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Ní féidir gléas fuaime \"%s\" a oscailt.\n"
 
 #: gui_browser.c:79
 msgid "filter"
-msgstr ""
+msgstr "scagaire"
 
 #: gui_browser.c:145
 msgid "Unable to open initial directory."
@@ -249,4 +249,4 @@ msgstr "Ní féidir an t-úsáideoir a athrú go %d\n"
 #: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "Cailleadh an nasc le \"%s\"."
+msgstr "Cailleadh an ceangal le \"%s\"."
