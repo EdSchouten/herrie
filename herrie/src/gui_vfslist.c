@@ -44,6 +44,10 @@ gui_vfslist_cursor_adjust(struct gui_vfslist *gv)
 {
 	struct vfsref *vr;
 
+	/* Shortcut - nothing to adjust when the list is empty */
+	if (gv->vr_selected == NULL)
+		return;
+
 	if (gv->idx_top > gv->idx_selected) {
 		/*
 		 * Move viewport up. This is very cheap, because we just
@@ -80,12 +84,10 @@ gui_vfslist_cursor_adjust(struct gui_vfslist *gv)
 		 * while we could scroll it up a little to fill the
 		 * screen.
 		 */
-		while (gv->vr_top != NULL &&
-		    gv->idx_top + (gv->winheight - 1) > vfs_list_items(gv->list)) {
+		while (gv->idx_top + gv->winheight - 1 > vfs_list_items(gv->list)) {
 			vr = vfs_list_prev(gv->vr_top);
 			if (vr == NULL)
 				break;
-
 			gv->vr_top = vr;
 			gv->idx_top--;
 		}
