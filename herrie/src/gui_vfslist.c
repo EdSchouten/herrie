@@ -49,7 +49,12 @@ gui_vfslist_cursor_adjust(struct gui_vfslist *gv)
 		gv->vr_top = gv->vr_selected;
 		gv->idx_top = gv->idx_selected;
 	} else {
-		/* Move viewport down */
+		/*
+		 * Move viewport down
+		 * XXX: This is currently O(n), where n is the amount of
+		 * lines that are scrolled down. We can make this O(h)
+		 * where h is the height of the window!
+		 */
 		while (gv->idx_top + (gv->winheight - 1) < gv->idx_selected) {
 			gv->vr_top = vfs_list_next(gv->vr_top);
 			gv->idx_top++;
