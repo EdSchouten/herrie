@@ -30,10 +30,17 @@
 
 #include "stdinc.h"
 
+#include "config.h"
 #include "gui.h"
 #include "gui_internal.h"
 #include "gui_vfslist.h"
 #include "vfs.h"
+
+/**
+ * @brief Whether or not we want to scroll entire pages instead of
+ * single lines when the selection gets out of sight.
+ */
+static int scrollpages;
 
 /**
  * @brief Make sure the cursor resides inside the viewport. Move the
@@ -223,6 +230,8 @@ struct gui_vfslist *
 gui_vfslist_new(int shownumbers)
 {
 	struct gui_vfslist *ret;
+
+	scrollpages = config_getopt_bool("gui.vfslist.scrollpages");
 	
 	ret = g_slice_new0(struct gui_vfslist);
 	ret->shownumbers = shownumbers;
@@ -316,6 +325,11 @@ gui_vfslist_cursor_up(struct gui_vfslist *gv)
 		gv->vr_selected = vr;
 		gv->idx_selected--;
 
+		if (scrollpages && gv->idx_top > gv->idx_selected) {
+			gv->vr_top = vfs_list_first(gv->list);
+			gv->idx_top = 1;
+		}
+
 		gui_vfslist_refresh(gv);
 	} else {
 		gui_msgbar_warn(_("You are at the first song."));
@@ -334,6 +348,12 @@ gui_vfslist_cursor_down(struct gui_vfslist *gv, int silent)
 	if (vr != NULL) {
 		gv->vr_selected = vr;
 		gv->idx_selected++;
+
+		g_assert(gv->idx_top + gv->winheight >= gv->idx_selected);
+		if (scrollpages && gv->idx_top + gv->winheight == gv->idx_selected) {
+			gv->vr_top = gv->vr_selected;
+			gv->idx_top = gv->idx_selected;
+		}
 
 		gui_vfslist_refresh(gv);
 	} else if (!silent) {

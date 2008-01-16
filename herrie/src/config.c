@@ -158,6 +158,7 @@ static struct config_entry configlist[] = {
 	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
 	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
 	{ "gui.input.may_quit",		"yes",		valid_bool,	NULL },
+	{ "gui.vfslist.scrollpages",	"no",		valid_bool,	NULL },
 	{ "playq.dumpfile",		CONFHOMEDIR PLAYQ_DUMPFILE, NULL, NULL },
 	{ "playq.xmms",			"no",		valid_bool,	NULL },
 #ifdef BUILD_SCROBBLER

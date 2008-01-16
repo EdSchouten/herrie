@@ -52,6 +52,10 @@ using the
 .B q
 button.
 .TP
+.B gui.vfslist.scrollpages=no
+When enabled, the file browser and the playlist will scroll an entire
+page up or down when the selection goes out of sight.
+.TP
 .B playq.dumpfile=~/.herrie/%%PLAYQ_DUMPFILE%%
 The filename used to automatically save the playlist at shutdown and
 load at startup. When empty, this feature will be disabled. This feature
