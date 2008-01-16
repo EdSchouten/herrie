@@ -45,22 +45,41 @@ gui_vfslist_cursor_adjust(struct gui_vfslist *gv)
 	struct vfsref *vr;
 
 	if (gv->idx_top > gv->idx_selected) {
-		/* Move viewport up */
+		/*
+		 * Move viewport up. This is very cheap, because we just
+		 * want to snap the entry to the top. Just copy the
+		 * position of the cursor.
+		 */
 		gv->vr_top = gv->vr_selected;
 		gv->idx_top = gv->idx_selected;
 	} else {
-		/*
-		 * Move viewport down
-		 * XXX: This is currently O(n), where n is the amount of
-		 * lines that are scrolled down. We can make this O(h)
-		 * where h is the height of the window!
-		 */
-		while (gv->idx_top + (gv->winheight - 1) < gv->idx_selected) {
-			gv->vr_top = vfs_list_next(gv->vr_top);
-			gv->idx_top++;
+		if (gv->idx_top + gv->winheight - 1 < gv->idx_selected) {
+			/*
+			 * Move viewport down until the entry is in
+			 * sight. We do this by going to the entry and
+			 * move back upwards. This guarantees that the
+			 * entire action is O(h), where h is the height
+			 * of the screen. If we would start from the
+			 * current position, it could take very long
+			 * when a user presses the `end' button.
+			 */
+			gv->vr_top = gv->vr_selected;
+			gv->idx_top = gv->idx_selected;
+			do {
+				vr = vfs_list_prev(gv->vr_top);
+				if (vr == NULL)
+					break;
+				gv->vr_top = vr;
+				gv->idx_top--;
+			} while (gv->idx_top + gv->winheight - 1 > gv->idx_selected);
 		}
 
-		/* Move it back up to remove whitespace */
+		/*
+		 * Move it back up to remove whitespace. It would be a
+		 * pity when we would show whitespace at the bottom,
+		 * while we could scroll it up a little to fill the
+		 * screen.
+		 */
 		while (gv->vr_top != NULL &&
 		    gv->idx_top + (gv->winheight - 1) > vfs_list_items(gv->list)) {
 			vr = vfs_list_prev(gv->vr_top);
