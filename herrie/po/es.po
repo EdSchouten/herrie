@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-02 16:43+0100\n"
+"POT-Creation-Date: 2008-01-19 14:38+0100\n"
 "PO-Revision-Date: 2007-11-29 15:14+0100\n"
 "Last-Translator: Xavier de Blas <xaviblas@gmail.com>\n"
 "Language-Team: Spanish <xaviblas@gmail.com>\n"
@@ -130,23 +130,23 @@ msgstr "Fallo en el ajuste de volumen."
 msgid "Volume: %d%%"
 msgstr "Volumen: %d%%"
 
-#: gui_vfslist.c:234
+#: gui_vfslist.c:264
 msgid "There are no songs."
 msgstr "No hay canciones."
 
-#: gui_vfslist.c:300
+#: gui_vfslist.c:335
 msgid "You are at the first song."
 msgstr "Situado en la primera canción."
 
-#: gui_vfslist.c:319
+#: gui_vfslist.c:360
 msgid "You are at the last song."
 msgstr "Situado en la última canción."
 
-#: gui_vfslist.c:545
+#: gui_vfslist.c:586
 msgid "Search wrapped to top."
 msgstr "Búsqueda completa, continuando en el inicio."
 
-#: gui_vfslist.c:569
+#: gui_vfslist.c:610
 msgid "Full pathname"
 msgstr "Escribir la ruta completa"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-02 16:43+0100\n"
+"POT-Creation-Date: 2008-01-19 14:38+0100\n"
 "PO-Revision-Date: 2007-12-01 16:48+0100\n"
 "Last-Translator: Piotr Budny <vip@pld-linux.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -132,23 +132,23 @@ msgstr "Nie udało się wyregulować głośności."
 msgid "Volume: %d%%"
 msgstr "Głośność: %d%%"
 
-#: gui_vfslist.c:234
+#: gui_vfslist.c:264
 msgid "There are no songs."
 msgstr "Brak utworów."
 
-#: gui_vfslist.c:300
+#: gui_vfslist.c:335
 msgid "You are at the first song."
 msgstr "To jest pierwszy utwór."
 
-#: gui_vfslist.c:319
+#: gui_vfslist.c:360
 msgid "You are at the last song."
 msgstr "To jest ostati utwór."
 
-#: gui_vfslist.c:545
+#: gui_vfslist.c:586
 msgid "Search wrapped to top."
 msgstr "Przeszukiwanie wznowione od początku."
 
-#: gui_vfslist.c:569
+#: gui_vfslist.c:610
 msgid "Full pathname"
 msgstr "Pełna ścieżka"
 

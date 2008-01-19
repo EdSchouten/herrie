@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-02 16:43+0100\n"
+"POT-Creation-Date: 2008-01-19 14:38+0100\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
@@ -132,23 +132,23 @@ msgstr "Ses ayarlanamadı"
 msgid "Volume: %d%%"
 msgstr "Ses: %d%%"
 
-#: gui_vfslist.c:234
+#: gui_vfslist.c:264
 msgid "There are no songs."
 msgstr "Hiç parça yok"
 
-#: gui_vfslist.c:300
+#: gui_vfslist.c:335
 msgid "You are at the first song."
 msgstr "İlk parçadasınız."
 
-#: gui_vfslist.c:319
+#: gui_vfslist.c:360
 msgid "You are at the last song."
 msgstr "Son parçadasınız."
 
-#: gui_vfslist.c:545
+#: gui_vfslist.c:586
 msgid "Search wrapped to top."
 msgstr "Arama üste kaydırıldı."
 
-#: gui_vfslist.c:569
+#: gui_vfslist.c:610
 msgid "Full pathname"
 msgstr "Tam dosya yolu"
 

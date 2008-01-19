@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-02 16:43+0100\n"
+"POT-Creation-Date: 2008-01-19 14:38+0100\n"
 "PO-Revision-Date: 2007-10-14 09:14+0200\n"
 "Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
 "Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
@@ -130,23 +130,23 @@ msgstr "Ändern der Lautstärke fehlgeschlagen."
 msgid "Volume: %d%%"
 msgstr "Lautstärke: %d%%"
 
-#: gui_vfslist.c:234
+#: gui_vfslist.c:264
 msgid "There are no songs."
 msgstr "Die Liste ist leer."
 
-#: gui_vfslist.c:300
+#: gui_vfslist.c:335
 msgid "You are at the first song."
 msgstr "Du bist am Anfang der Liste."
 
-#: gui_vfslist.c:319
+#: gui_vfslist.c:360
 msgid "You are at the last song."
 msgstr "Du bist am Ende der Liste."
 
-#: gui_vfslist.c:545
+#: gui_vfslist.c:586
 msgid "Search wrapped to top."
 msgstr "Suche am Ende angelagt, Fortsetzung am Anfang."
 
-#: gui_vfslist.c:569
+#: gui_vfslist.c:610
 msgid "Full pathname"
 msgstr "Vollständiger Pfad"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-02 16:43+0100\n"
+"POT-Creation-Date: 2008-01-19 14:38+0100\n"
 "PO-Revision-Date: 2007-12-06 20:28+0100\n"
 "Last-Translator: Ed Schouten <ed@fxq.nl>\n"
 "Language-Team: Ed Schouten <ed@fxq.nl>\n"
@@ -130,23 +130,23 @@ msgstr "Bijstellen van het volume mislukt."
 msgid "Volume: %d%%"
 msgstr "Volume: %d%%"
 
-#: gui_vfslist.c:234
+#: gui_vfslist.c:264
 msgid "There are no songs."
 msgstr "Er zijn geen nummers."
 
-#: gui_vfslist.c:300
+#: gui_vfslist.c:335
 msgid "You are at the first song."
 msgstr "Je bent bij het eerste nummer."
 
-#: gui_vfslist.c:319
+#: gui_vfslist.c:360
 msgid "You are at the last song."
 msgstr "Je bent bij het laatste nummer."
 
-#: gui_vfslist.c:545
+#: gui_vfslist.c:586
 msgid "Search wrapped to top."
 msgstr "Zoekopdracht naar boven verplaatst."
 
-#: gui_vfslist.c:569
+#: gui_vfslist.c:610
 msgid "Full pathname"
 msgstr "Volledige bestandsnaam"
 
