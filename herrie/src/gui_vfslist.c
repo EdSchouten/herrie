@@ -63,7 +63,7 @@ gui_vfslist_cursor_adjust(struct gui_vfslist *gv)
 		 */
 		gv->vr_top = gv->vr_selected;
 		gv->idx_top = gv->idx_selected;
-	} else if (gv->idx_top + gv->winheight - 1 < gv->idx_selected) {
+	} else if (gv->idx_top + gv->winheight <= gv->idx_selected) {
 		/*
 		 * The entry is below the viewport. Start counting
 		 * backward from the selected entry, so we can keep it
