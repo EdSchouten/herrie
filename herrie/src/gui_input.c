@@ -575,7 +575,7 @@ gui_input_askyesno(const char *question)
 #endif /* BUILD_NLS */
 
 		/* Default y/n behaviour */
-		switch(input) {
+		switch (input) {
 		case 'y':
 		case 'Y':
 		case '\r':
@@ -649,7 +649,7 @@ gui_input_askstring(const char *question, const char *defstr,
 	for(;;) {
 		gui_msgbar_ask(msg->str);
 
-		switch(c = gui_input_getch()) {
+		switch (c = gui_input_getch()) {
 		case '\r':
 			goto done;
 		case KEY_BACKSPACE:
