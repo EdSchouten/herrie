@@ -69,6 +69,10 @@ FreeBSD)
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 	[ "$MANDIR" = "" ] && MANDIR=$PREFIX/man
 	;;
+GNU/kFreeBSD)
+	[ "$CONFDIR" = "" ] && CONFDIR=/etc
+	[ "$PREFIX" = "" ] && PREFIX=/usr
+	;;
 Linux)
 	CFG_AO=alsa
 	[ "$CONFDIR" = "" ] && CONFDIR=/etc
