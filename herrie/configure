@@ -95,7 +95,7 @@ SunOS)
 	[ "$INSTALL" = "" ] && INSTALL=ginstall
 	;;
 *)
-	echo "Warning: unknown operating system"
+	echo "Warning: unknown operating system: $OS"
 	CFG_AO=ao
 	[ "$PREFIX" = "" ] && PREFIX=/usr/local
 esac
