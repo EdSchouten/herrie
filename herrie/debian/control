@@ -26,4 +26,3 @@ Description: Minimalistic audio player built upon Ncurses
  .
  Herrie also has some more exotic features, including support for
  AudioScrobbler and the ability to chroot() itself into a directory.
-
