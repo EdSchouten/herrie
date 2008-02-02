@@ -1,0 +1,25 @@
+# Herrie core
+audio/mpegurl; herrie '%s'; description="M3U playlist (*.m3u)"
+audio/x-mpegurl; herrie '%s'; description="M3U playlist (*.m3u)"
+
+# libmodplug
+audio/x-mod; herrie '%s'; description="Tracker audio"
+
+# libmad
+audio/mpeg; herrie '%s'; description="MPEG audio (*.mpa;*.mpg;*.mpga;*.m2a;*.mp2)"
+audio/x-mpeg; herrie '%s'; description="MPEG audio (*.mp2)"
+audio/mpeg3; herrie '%s'; description="MP3 audio (*.mp3)"
+audio/x-mpeg-3; herrie '%s'; description="MP3 audio (*.mp3)"
+audio/x-mp3; herrie '%s'; description="MP3 audio (*.mp3)"
+
+# libsndfile
+audio/x-aiff; herrie '%s'; description="AIFF audio (*.aif;*.aiff;*.aifc)"
+audio/x-wav; herrie '%s'; description="WAVE audio (*.wav)"
+application/x-flac; herrie '%s'; description="FLAC audio (*.flac)"
+
+# libvorbis
+application/ogg; herrie '%s'; description="Ogg Media (*.ogg)"
+application/x-ogg; herrie '%s'; description="Ogg Media (*.ogg)"
+
+# libspiff
+application/xspf+xml; herrie '%s'; description="XSPF playlist (*.xspf)"

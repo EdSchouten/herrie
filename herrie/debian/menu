@@ -1,0 +1,6 @@
+?package(herrie):\
+  needs="text"\
+  section="Applications/Sound"\
+  title="Herrie"\
+  command="/usr/bin/herrie"
+

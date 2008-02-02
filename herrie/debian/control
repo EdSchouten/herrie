@@ -1,0 +1,29 @@
+Source: herrie
+Section: sound
+Priority: optional
+Maintainer: Sebastian Pipping <webmaster@hartwork.org>
+Build-Depends: debhelper (>= 5), autotools-dev,
+ libglib2.0-dev, libncursesw5-dev, libcurl3-dev, libmodplug-dev,
+ libmad0-dev, libid3tag0-dev, zlib1g-dev, libsndfile1-dev,
+ libvorbis-dev, libspiff-dev,
+ libasound2-dev [!kfreebsd-amd64 !kfreebsd-i386 !hurd-i386]
+Standards-Version: 3.7.3
+Uploaders: Marcela Tiznado <mlt@debian.org>
+Homepage: http://herrie.info/
+
+Package: herrie
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Minimalistic audio player built upon Ncurses
+ Herrie is a minimalistic music player that uses the command line. It is
+ written to support a variety of operating systems, audio subsystems and
+ file formats, including playlists.
+ .
+ Herrie has a split-screen user interface, with a playlist at the top of
+ the screen and a file browser at the bottom. When tracks are added to
+ the playlist, Herrie automatically consumes them one by one. It is thus
+ an application that allows you to batch music for playback.
+ .
+ Herrie also has some more exotic features, including support for
+ AudioScrobbler and the ability to chroot() itself into a directory.
+
