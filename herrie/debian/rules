@@ -35,7 +35,7 @@ install: build
 	DESTDIR="$(CURDIR)/debian/herrie" $(MAKE) install
 
 	# Transform config sample into commented out config file
-	sed -r 's/^([^#])/#\1/' $(CURDIR)/debian/herrie/etc/herrie.conf.sample > $(CURDIR)/debian/herrie/etc/herrie.conf
+	sed 's|^[^#]|#&|' $(CURDIR)/debian/herrie/etc/herrie.conf.sample > $(CURDIR)/debian/herrie/etc/herrie.conf
 	rm -f $(CURDIR)/debian/herrie/etc/herrie.conf.sample
 
 
