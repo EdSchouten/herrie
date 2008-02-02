@@ -1,5 +1,6 @@
 ????-??-?? -- Herrie 1.9.3:
  * Added: Support for Debian GNU/kFreeBSD
+ * Added: Debian package infrastructure
 
 2008-01-19 -- Herrie 1.9.2:
  * Removed: Native Windows support - it was incomplete anyway
