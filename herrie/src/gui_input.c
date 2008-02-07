@@ -143,12 +143,15 @@ gui_input_getch(void)
 
 		/* Error condition */
 		case ERR:
-			/* Signal delivery */
-			if (errno == EINTR)
+			switch (errno) {
+			case 0:
+			case EINTR:
+				/* Signal delivery */
 				continue;
-
-			/* We've lost stdin */
-			gui_input_quit();
+			default:
+				/* We've lost stdin */
+				gui_input_quit();
+			}
 		}
 
 		break;
