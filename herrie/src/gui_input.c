@@ -73,6 +73,47 @@ static int shutting_down = 0;
 #define CTRL(x) (((x) - 'A' + 1) & 0x7f)
 
 /**
+ * @brief Properly shutdown the application by stopping playback and
+ *        destroying the GUI.
+ */
+static void
+gui_input_quit(void)
+{
+	shutting_down = 1;
+
+	playq_shutdown();
+#ifdef BUILD_SCROBBLER
+	scrobbler_shutdown();
+#endif /* BUILD_SCROBBLER */
+	audio_output_close();
+	gui_draw_destroy();
+	exit(0);
+}
+
+/**
+ * @brief Prompt the user with a message to confirm termination of the
+ *        application.
+ */
+static void
+gui_input_askquit(void)
+{
+	int ret;
+	char *msg;
+
+	if (!config_getopt_bool("gui.input.may_quit")) {
+		gui_msgbar_warn(_("Use kill(1) to quit."));
+		return;
+	}
+
+	msg = g_strdup_printf(_("Quit %s?"), APP_NAME);
+	ret = gui_input_askyesno(msg);
+	g_free(msg);
+
+	if (ret == 0)
+		gui_input_quit();
+}
+
+/**
  * @brief Fetch a character from the keyboard, already processing
  *        terminal resizes and awkward bugs.
  */
@@ -100,9 +141,14 @@ gui_input_getch(void)
 		case KEY_SELECT:
 			return (KEY_END);
 
-		/* Try again */
+		/* Error condition */
 		case ERR:
-			continue;
+			/* Signal delivery */
+			if (errno == EINTR || errno == 0)
+				continue;
+
+			/* We've lost stdin */
+			gui_input_quit();
 		}
 
 		break;
@@ -231,47 +277,6 @@ gui_input_locate(void)
 	/* Perform the serach */
 	if (gui_browser_locate(cursearch) != 0)
 		gui_msgbar_warn(_("Not found."));
-}
-
-/**
- * @brief Properly shutdown the application by stopping playback and
- *        destroying the GUI.
- */
-static void
-gui_input_quit(void)
-{
-	shutting_down = 1;
-
-	playq_shutdown();
-#ifdef BUILD_SCROBBLER
-	scrobbler_shutdown();
-#endif /* BUILD_SCROBBLER */
-	audio_output_close();
-	gui_draw_destroy();
-	exit(0);
-}
-
-/**
- * @brief Prompt the user with a message to confirm termination of the
- *        application.
- */
-static void
-gui_input_askquit(void)
-{
-	int ret;
-	char *msg;
-
-	if (!config_getopt_bool("gui.input.may_quit")) {
-		gui_msgbar_warn(_("Use kill(1) to quit."));
-		return;
-	}
-
-	msg = g_strdup_printf(_("Quit %s?"), APP_NAME);
-	ret = gui_input_askyesno(msg);
-	g_free(msg);
-
-	if (ret == 0)
-		gui_input_quit();
 }
 
 /**

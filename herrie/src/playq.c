@@ -166,18 +166,25 @@ playq_runner_thread(void *unused)
 	do {
 		/* Wait until there's a song available */
 		playq_lock();
-		while (playq_flags & PF_STOP ||
-		    (nvr = funcs->give()) == NULL) {
-			/* Change the current status to idle */
-			playq_flags |= PF_STOP;
-			funcs->idle();
-			gui_playq_song_update(NULL, 0, 0);
-
-			g_cond_wait(playq_wakeup, playq_mtx);
+		for (;;) {
+			/* Shut down when the user wants to */
 			if (playq_flags & PF_QUIT) {
 				playq_unlock();
 				goto done;
 			}
+
+			/* Try to start a new song when we're not stopped */
+			if (!(playq_flags & PF_STOP) &&
+			    (nvr = funcs->give()) != NULL) {
+				/* We've got work to do */
+				break;
+			}
+
+			/* Wait for new events to occur */
+			playq_flags |= PF_STOP;
+			funcs->idle();
+			gui_playq_song_update(NULL, 0, 0);
+			g_cond_wait(playq_wakeup, playq_mtx);
 		}
 		playq_unlock();
 
