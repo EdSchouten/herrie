@@ -144,7 +144,9 @@ gui_input_getch(void)
 		/* Error condition */
 		case ERR:
 			switch (errno) {
+#ifndef __APPLE__
 			case 0:
+#endif /* !__APPLE__ */
 			case EINTR:
 				/* Signal delivery */
 				continue;
