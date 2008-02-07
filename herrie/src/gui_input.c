@@ -144,7 +144,7 @@ gui_input_getch(void)
 		/* Error condition */
 		case ERR:
 			/* Signal delivery */
-			if (errno == EINTR || errno == 0)
+			if (errno == EINTR)
 				continue;
 
 			/* We've lost stdin */
