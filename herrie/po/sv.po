@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-19 14:38+0100\n"
+"POT-Creation-Date: 2008-02-11 09:30+0100\n"
 "PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -61,40 +61,40 @@ msgstr "Skriv spellista till fil"
 msgid "Unable to write playlist."
 msgstr "Kunde inte skriva spellista."
 
-#: gui_input.c:143
-msgid "Search for"
-msgstr "Sök efter"
-
-#: gui_input.c:149
-msgid "Bad pattern."
-msgstr "Felaktigt mönster."
-
-#: gui_input.c:196 gui_input.c:233
-msgid "Not found."
-msgstr "Hittades inte."
-
-#: gui_input.c:265
+#: gui_input.c:104
 msgid "Use kill(1) to quit."
 msgstr "Använd kill(1) för att avsluta."
 
-#: gui_input.c:269
+#: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
 msgstr "Avsluta %s?"
 
-#: gui_input.c:306
+#: gui_input.c:192
+msgid "Search for"
+msgstr "Sök efter"
+
+#: gui_input.c:198
+msgid "Bad pattern."
+msgstr "Felaktigt mönster."
+
+#: gui_input.c:245 gui_input.c:282
+msgid "Not found."
+msgstr "Hittades inte."
+
+#: gui_input.c:314
 msgid "Jump to position"
 msgstr "Hoppa till position"
 
-#: gui_input.c:363
+#: gui_input.c:371
 msgid "Bad time format."
 msgstr "Felaktigt tidsformat."
 
-#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+#: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+#: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "nej"
 
@@ -184,21 +184,21 @@ msgstr "Ljudfilformat som stöds"
 msgid "usage"
 msgstr "användning"
 
-#: playq.c:188
+#: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Misslyckades med att öppna \"%s\" för uppspelning."
 
-#: playq.c:410
+#: playq.c:417
 #, c-format
 msgid "Repeat: %s"
 msgstr "Upprepa: %s"
 
-#: playq.c:411
+#: playq.c:418
 msgid "on"
 msgstr "på"
 
-#: playq.c:411
+#: playq.c:418
 msgid "off"
 msgstr "av"
 

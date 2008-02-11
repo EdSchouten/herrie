@@ -2,6 +2,7 @@
  * Added: Support for Debian GNU/kFreeBSD
  * Added: Debian package infrastructure
  * Fixed: Shut down the application when we lose TTY input
+ * Added: Chinese translation - Ji ZhengYu
 
 2008-01-19 -- Herrie 1.9.2:
  * Removed: Native Windows support - it was incomplete anyway

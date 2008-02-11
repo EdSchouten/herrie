@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-19 14:38+0100\n"
+"POT-Creation-Date: 2008-02-11 09:30+0100\n"
 "PO-Revision-Date: 2007-12-01 16:48+0100\n"
 "Last-Translator: Piotr Budny <vip@pld-linux.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -58,40 +58,40 @@ msgstr "Zapisz playlistę do pliku"
 msgid "Unable to write playlist."
 msgstr "Nie można zapisac playlisty."
 
-#: gui_input.c:143
-msgid "Search for"
-msgstr "Szukaj"
-
-#: gui_input.c:149
-msgid "Bad pattern."
-msgstr "Zła próbka."
-
-#: gui_input.c:196 gui_input.c:233
-msgid "Not found."
-msgstr "Nie znaleziono"
-
-#: gui_input.c:265
+#: gui_input.c:104
 msgid "Use kill(1) to quit."
 msgstr "Użyj kill(1) aby wyjść."
 
-#: gui_input.c:269
+#: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
 msgstr "Zamknij %s?"
 
-#: gui_input.c:306
+#: gui_input.c:192
+msgid "Search for"
+msgstr "Szukaj"
+
+#: gui_input.c:198
+msgid "Bad pattern."
+msgstr "Zła próbka."
+
+#: gui_input.c:245 gui_input.c:282
+msgid "Not found."
+msgstr "Nie znaleziono"
+
+#: gui_input.c:314
 msgid "Jump to position"
 msgstr "Skocz do pozycji"
 
-#: gui_input.c:363
+#: gui_input.c:371
 msgid "Bad time format."
 msgstr "Zły format czasu."
 
-#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+#: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "tak"
 
-#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+#: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "nie"
 
@@ -180,21 +180,21 @@ msgstr "Wspierane formaty plików audio"
 msgid "usage"
 msgstr "użycie"
 
-#: playq.c:188
+#: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Nie udało się otworzyć \"%s\" do odtworzenia."
 
-#: playq.c:410
+#: playq.c:417
 #, c-format
 msgid "Repeat: %s"
 msgstr "Powtórz: %s"
 
-#: playq.c:411
+#: playq.c:418
 msgid "on"
 msgstr "włączony"
 
-#: playq.c:411
+#: playq.c:418
 msgid "off"
 msgstr "wyłączony"
 

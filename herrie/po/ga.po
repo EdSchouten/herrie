@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-19 14:38+0100\n"
+"POT-Creation-Date: 2008-02-11 09:30+0100\n"
 "PO-Revision-Date: 2008-01-13 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -61,40 +61,40 @@ msgstr "Scríobh an seinmliosta i gcomhad"
 msgid "Unable to write playlist."
 msgstr "Ní féidir an seinmliosta a scríobh."
 
-#: gui_input.c:143
-msgid "Search for"
-msgstr "Déan cuardach ar"
-
-#: gui_input.c:149
-msgid "Bad pattern."
-msgstr "Drochphatrún."
-
-#: gui_input.c:196 gui_input.c:233
-msgid "Not found."
-msgstr "Ar iarraidh."
-
-#: gui_input.c:265
+#: gui_input.c:104
 msgid "Use kill(1) to quit."
 msgstr "Bain úsáid as kill(1) chun scor."
 
-#: gui_input.c:269
+#: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
 msgstr "Scoir ó %s?"
 
-#: gui_input.c:306
+#: gui_input.c:192
+msgid "Search for"
+msgstr "Déan cuardach ar"
+
+#: gui_input.c:198
+msgid "Bad pattern."
+msgstr "Drochphatrún."
+
+#: gui_input.c:245 gui_input.c:282
+msgid "Not found."
+msgstr "Ar iarraidh."
+
+#: gui_input.c:314
 msgid "Jump to position"
 msgstr "Léim go"
 
-#: gui_input.c:363
+#: gui_input.c:371
 msgid "Bad time format."
 msgstr "Drochfhormáid ama."
 
-#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+#: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "tá"
 
-#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+#: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "níl"
 
@@ -183,21 +183,21 @@ msgstr "Formáidí fuaime a dtacaítear leo"
 msgid "usage"
 msgstr "úsáid"
 
-#: playq.c:188
+#: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Theip ar \"%s\" a oscailt chun é a sheinm ar ais."
 
-#: playq.c:410
+#: playq.c:417
 #, c-format
 msgid "Repeat: %s"
 msgstr "Athsheinm: %s"
 
-#: playq.c:411
+#: playq.c:418
 msgid "on"
 msgstr "ann"
 
-#: playq.c:411
+#: playq.c:418
 msgid "off"
 msgstr "as"
 
@@ -250,3 +250,9 @@ msgstr "Ní féidir an t-úsáideoir a athrú go %d\n"
 #, c-format
 msgid "Connection with \"%s\" lost."
 msgstr "Cailleadh an ceangal le \"%s\"."
+
+#~ msgid "Cannot open the audio device.\n"
+#~ msgstr "Ní féidir an gléas fuaime a oscailt.\n"
+
+#~ msgid "Cannot initialize SDL audio subsystem.\n"
+#~ msgstr "Ní féidir fochóras fuaime SDL a thúsú.\n"

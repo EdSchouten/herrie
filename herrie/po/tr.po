@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-19 14:38+0100\n"
+"POT-Creation-Date: 2008-02-11 09:30+0100\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
@@ -58,40 +58,40 @@ msgstr "Parça listesini dosyaya yaz"
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
-#: gui_input.c:143
-msgid "Search for"
-msgstr "Ara"
-
-#: gui_input.c:149
-msgid "Bad pattern."
-msgstr "Hatalı ifade"
-
-#: gui_input.c:196 gui_input.c:233
-msgid "Not found."
-msgstr "Bulunamadı"
-
-#: gui_input.c:265
+#: gui_input.c:104
 msgid "Use kill(1) to quit."
 msgstr "Çıkmak için kill(1) kullanın."
 
-#: gui_input.c:269
+#: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:306
+#: gui_input.c:192
+msgid "Search for"
+msgstr "Ara"
+
+#: gui_input.c:198
+msgid "Bad pattern."
+msgstr "Hatalı ifade"
+
+#: gui_input.c:245 gui_input.c:282
+msgid "Not found."
+msgstr "Bulunamadı"
+
+#: gui_input.c:314
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:363
+#: gui_input.c:371
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+#: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+#: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "hayır"
 
@@ -180,21 +180,21 @@ msgstr "Desteklenen ses dosyası biçimleri"
 msgid "usage"
 msgstr "kullanım"
 
-#: playq.c:188
+#: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "\"%s\" çalınamadı."
 
-#: playq.c:410
+#: playq.c:417
 #, c-format
 msgid "Repeat: %s"
 msgstr "Tekrarla: %s"
 
-#: playq.c:411
+#: playq.c:418
 msgid "on"
 msgstr "açık"
 
-#: playq.c:411
+#: playq.c:418
 msgid "off"
 msgstr "kapalı"
 

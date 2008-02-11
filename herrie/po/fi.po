@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-19 14:38+0100\n"
+"POT-Creation-Date: 2008-02-11 09:30+0100\n"
 "PO-Revision-Date: 2008-01-03 00:46+0200\n"
 "Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -61,40 +61,40 @@ msgstr "Kirjoita soittolista tiedostoon"
 msgid "Unable to write playlist."
 msgstr "Soittolistaa ei voida kirjoittaa."
 
-#: gui_input.c:143
-msgid "Search for"
-msgstr "Etsitään"
-
-#: gui_input.c:149
-msgid "Bad pattern."
-msgstr "Virheellinen malli."
-
-#: gui_input.c:196 gui_input.c:233
-msgid "Not found."
-msgstr "Ei löytynyt."
-
-#: gui_input.c:265
+#: gui_input.c:104
 msgid "Use kill(1) to quit."
 msgstr "Poistu käyttämällä käskyä kill(1)."
 
-#: gui_input.c:269
+#: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
 msgstr "Poistutaanko %s?"
 
-#: gui_input.c:306
+#: gui_input.c:192
+msgid "Search for"
+msgstr "Etsitään"
+
+#: gui_input.c:198
+msgid "Bad pattern."
+msgstr "Virheellinen malli."
+
+#: gui_input.c:245 gui_input.c:282
+msgid "Not found."
+msgstr "Ei löytynyt."
+
+#: gui_input.c:314
 msgid "Jump to position"
 msgstr "Hyppää paikkaan"
 
-#: gui_input.c:363
+#: gui_input.c:371
 msgid "Bad time format."
 msgstr "Virheellinen aikamuoto."
 
-#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+#: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "kyllä"
 
-#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+#: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "ei"
 
@@ -183,21 +183,21 @@ msgstr "Tuetut audiotiedostomuodot"
 msgid "usage"
 msgstr "käyttö"
 
-#: playq.c:188
+#: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Tiedostoa ”%s” ei onnistuttu avaamaan soitettavaksi."
 
-#: playq.c:410
+#: playq.c:417
 #, c-format
 msgid "Repeat: %s"
 msgstr "Toistaa: %s"
 
-#: playq.c:411
+#: playq.c:418
 msgid "on"
 msgstr "päällä"
 
-#: playq.c:411
+#: playq.c:418
 msgid "off"
 msgstr "pois päältä"
 

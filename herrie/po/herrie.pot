@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-19 14:38+0100\n"
+"POT-Creation-Date: 2008-02-11 09:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,40 +62,40 @@ msgstr ""
 msgid "Unable to write playlist."
 msgstr ""
 
-#: gui_input.c:143
-msgid "Search for"
-msgstr ""
-
-#: gui_input.c:149
-msgid "Bad pattern."
-msgstr ""
-
-#: gui_input.c:196 gui_input.c:233
-msgid "Not found."
-msgstr ""
-
-#: gui_input.c:265
+#: gui_input.c:104
 msgid "Use kill(1) to quit."
 msgstr ""
 
-#: gui_input.c:269
+#: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
 msgstr ""
 
-#: gui_input.c:306
+#: gui_input.c:192
+msgid "Search for"
+msgstr ""
+
+#: gui_input.c:198
+msgid "Bad pattern."
+msgstr ""
+
+#: gui_input.c:245 gui_input.c:282
+msgid "Not found."
+msgstr ""
+
+#: gui_input.c:314
 msgid "Jump to position"
 msgstr ""
 
-#: gui_input.c:363
+#: gui_input.c:371
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+#: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+#: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr ""
 
@@ -184,21 +184,21 @@ msgstr ""
 msgid "usage"
 msgstr ""
 
-#: playq.c:188
+#: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr ""
 
-#: playq.c:410
+#: playq.c:417
 #, c-format
 msgid "Repeat: %s"
 msgstr ""
 
-#: playq.c:411
+#: playq.c:418
 msgid "on"
 msgstr ""
 
-#: playq.c:411
+#: playq.c:418
 msgid "off"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-19 14:38+0100\n"
+"POT-Creation-Date: 2008-02-11 09:30+0100\n"
 "PO-Revision-Date: 2008-01-03 13:13+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -64,42 +64,42 @@ msgstr "Skriv spilleliste til fil"
 msgid "Unable to write playlist."
 msgstr "Kan ikke skrive spilleliste."
 
-#: gui_input.c:143
-msgid "Search for"
-msgstr "Søg efter"
-
-#: gui_input.c:149
-msgid "Bad pattern."
-msgstr "Dårligt mønster."
-
-#: gui_input.c:196 gui_input.c:233
-msgid "Not found."
-msgstr "Ikke fundet."
-
 # måske stop for quit ?
-#: gui_input.c:265
+#: gui_input.c:104
 msgid "Use kill(1) to quit."
 msgstr "Brug kill(1) for afslut."
 
 # måske stop for quit ?
-#: gui_input.c:269
+#: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
 msgstr "Afslut %s?"
 
-#: gui_input.c:306
+#: gui_input.c:192
+msgid "Search for"
+msgstr "Søg efter"
+
+#: gui_input.c:198
+msgid "Bad pattern."
+msgstr "Dårligt mønster."
+
+#: gui_input.c:245 gui_input.c:282
+msgid "Not found."
+msgstr "Ikke fundet."
+
+#: gui_input.c:314
 msgid "Jump to position"
 msgstr "Flyt til position"
 
-#: gui_input.c:363
+#: gui_input.c:371
 msgid "Bad time format."
 msgstr "Ugyldigt tidsformat."
 
-#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+#: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+#: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "nej"
 
@@ -191,21 +191,21 @@ msgstr "Understøttede lydfilformater"
 msgid "usage"
 msgstr "brug"
 
-#: playq.c:188
+#: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Kan ikke afspille \"%s\"."
 
-#: playq.c:410
+#: playq.c:417
 #, c-format
 msgid "Repeat: %s"
 msgstr "Gentag: %s"
 
-#: playq.c:411
+#: playq.c:418
 msgid "on"
 msgstr "tænd"
 
-#: playq.c:411
+#: playq.c:418
 msgid "off"
 msgstr "sluk"
 

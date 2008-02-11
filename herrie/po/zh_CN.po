@@ -1,253 +1,254 @@
-# Vietnamese translation for Herrie.
-# Copyright © 2008 Free Software Foundation, Inc.
+# Chinese translations for herrie package
+# herrie 软件包的简体中文翻译.
+# Copyright (C) 2008 THE herrie'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the herrie package.
-# Clytie Siddall <clytie@riverland.net.au>, 2007-2008.
+# Ji ZhengYu <zhengyuji@gmail.com>, 2008.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-11 09:30+0100\n"
-"PO-Revision-Date: 2008-01-03 21:39+1030\n"
-"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
-"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"PO-Revision-Date: 2008-02-07 18:04+0800\n"
+"Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
+"Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
+"sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: LocFactoryEditor 1.7b1\n"
 
 #: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
-msgstr "Không thể mở thiết bị âm thanh."
+msgstr "无法打开音频设备"
 
 #: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
-msgstr "Không hỗ trợ tần số lấy mẫu hay tổng số kênh."
+msgstr "采样率或声道数不可支持"
 
 #: audio_output_oss.c:68
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "Không thể mở thiết bị âm thanh « %s ».\n"
+msgstr "无法打开音频设备 “%s”\n"
 
 #: gui_browser.c:79
 msgid "filter"
-msgstr "lọc"
+msgstr "滤件"
 
 #: gui_browser.c:145
 msgid "Unable to open initial directory."
-msgstr "Không thể mở thư mục đầu tiên."
+msgstr "无法打开起始目录"
 
 #: gui_browser.c:262
 msgid "Unable to enter the parent directory."
-msgstr "Không thể vào thư mục cha."
+msgstr "无法进入上层目录"
 
 #: gui_browser.c:277
 msgid "Unable to enter the selected directory."
-msgstr "Không thể vào thư mục đã chọn."
+msgstr "无法进入选定目录"
 
 #: gui_browser.c:363
 msgid "Change directory"
-msgstr "Đổi thư mục"
+msgstr "更改目录"
 
 #: gui_browser.c:401
 msgid "Unable to display the file or directory."
-msgstr "Không thể hiển thị tập tin hay thư mục."
+msgstr "无法显示文件或目录"
 
 #: gui_browser.c:418
 msgid "Write playlist to file"
-msgstr "Ghi danh mục nhạc vào tập tin"
+msgstr "将播放列表写入文件"
 
 #: gui_browser.c:427
 msgid "Unable to write playlist."
-msgstr "Không thể ghi danh mục nhạc."
+msgstr "无法写入播放列表"
 
 #: gui_input.c:104
 msgid "Use kill(1) to quit."
-msgstr "Hãy dùng kill(1) để thoát."
+msgstr "用 kill(1) 退出"
 
 #: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
-msgstr "Thoát khỏi %s không?"
+msgstr "退出 %s ？"
 
 #: gui_input.c:192
 msgid "Search for"
-msgstr "Tìm kiếm"
+msgstr "查找"
 
 #: gui_input.c:198
 msgid "Bad pattern."
-msgstr "Sai mẫu."
+msgstr "模式错误"
 
 #: gui_input.c:245 gui_input.c:282
 msgid "Not found."
-msgstr "Không tìm thấy."
+msgstr "未找到"
 
 #: gui_input.c:314
 msgid "Jump to position"
-msgstr "Nhảy tới vị trí"
+msgstr "跳至位置"
 
 #: gui_input.c:371
 msgid "Bad time format."
-msgstr "Sai định dạng thời gian."
+msgstr "错误的时间格式"
 
 #: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
-msgstr "có"
+msgstr "是"
 
 #: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
-msgstr "không"
+msgstr "否"
 
 #: gui_playq.c:109
 msgid "Idle"
-msgstr "Nghỉ"
+msgstr "闲置"
 
 #: gui_playq.c:112
 msgid "Paused"
-msgstr "Đã tạm ngừng"
+msgstr "已暂停"
 
 #: gui_playq.c:114
 msgid "Playing"
-msgstr "Đang phát"
+msgstr "正在播放"
 
 #: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
-msgstr "Gỡ bỏ mọi bài hát khỏi danh mục nhạc không?"
+msgstr "从播放列表中删除所有歌曲？"
 
 #: gui_playq.c:363
 msgid "Randomize the playlist?"
-msgstr "Ngẫu nhiên hoá danh mục nhạc không?"
+msgstr "随机播放列表？"
 
 #: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
-msgstr "Bài hát này đã ở đầu của danh mục nhạc."
+msgstr "此曲已位于播放列表的顶部"
 
 #: gui_playq.c:431 gui_playq.c:469
 msgid "The song is already at the bottom of the playlist."
-msgstr "Bài hát này đã ở cuối của danh mục nhạc."
+msgstr "此曲已位于播放列表的底部"
 
 #: gui_playq.c:529
 msgid "Failed to adjust the volume."
-msgstr "Lỗi điều chỉnh âm lượng."
+msgstr "调整音量失败"
 
 #: gui_playq.c:531
 #, c-format
 msgid "Volume: %d%%"
-msgstr "Âm: %d%%"
+msgstr "音量: %d%%"
 
 #: gui_vfslist.c:264
 msgid "There are no songs."
-msgstr "Không có bài hát."
+msgstr "无歌曲"
 
 #: gui_vfslist.c:335
 msgid "You are at the first song."
-msgstr "Bạn ở bài hát đầu."
+msgstr "您位于第一首曲子"
 
 #: gui_vfslist.c:360
 msgid "You are at the last song."
-msgstr "Bạn ở bài hát cuối."
+msgstr "您位于最后一首曲子"
 
 #: gui_vfslist.c:586
 msgid "Search wrapped to top."
-msgstr "Việc tìm kiếm cuộn về đầu."
+msgstr "再从顶部开始查找"
 
 #: gui_vfslist.c:610
 msgid "Full pathname"
-msgstr "Tên đường dẫn đầy đủ"
+msgstr "完整的目录名"
 
 #: main.c:71
 msgid "Global configuration file"
-msgstr "Tập tin cấu hình toàn cục"
+msgstr "全局配置文件"
 
 #: main.c:72
 msgid "Audio output"
-msgstr "Kết xuất âm thanh"
+msgstr "音频输出"
 
 #: main.c:73
 msgid "Support for AudioScrobbler"
-msgstr "Hỗ trợ Audioscrobbler"
+msgstr "支持 AudioScrobbler"
 
 #: main.c:79
 msgid "Support for HTTP streams"
-msgstr "Hỗ trợ luồng HTTP"
+msgstr "支持 HTTP 流"
 
 #: main.c:85
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "Hỗ trợ danh mục nhạc XSPF (`spiff')"
+msgstr "支持 XSPF 播放列表(‘spiff’)"
 
 #: main.c:91
 msgid "Supported audio file formats"
-msgstr "Định dạng tập tin âm thanh được hỗ trợ"
+msgstr "支持的音频文件格式"
 
 #: main.c:103
 msgid "usage"
-msgstr "cách sử dụng"
+msgstr "用法"
 
 #: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "Lỗi mở « %s » để phát lại."
+msgstr "打开 “%s” 播放时失败"
 
 #: playq.c:417
 #, c-format
 msgid "Repeat: %s"
-msgstr "Lặp lại: %s"
+msgstr "重复: %s"
 
 #: playq.c:418
 msgid "on"
-msgstr "bật"
+msgstr "开"
 
 #: playq.c:418
 msgid "off"
-msgstr "tắt"
+msgstr "关"
 
 #: scrobbler.c:481
 msgid "Failed to authorize at AudioScrobbler."
-msgstr "Lỗi xác thực ở AudioScrobbler."
+msgstr "AudioScrobbler 登录失败"
 
 #: scrobbler.c:485
 msgid "Invalid AudioScrobbler username/password."
-msgstr "Tên người dùng hay mật khẩu AudioScrobbler không hợp lệ."
+msgstr "无效的 AudioScrobbler 用户名/密码"
 
 #: scrobbler.c:490
 msgid "Successfully authorized at AudioScrobbler."
-msgstr "Mới xác thực được ở AudioScrobbler."
+msgstr "AudioScrobbler 登录成功"
 
 #: scrobbler.c:507
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr "1 bài hát đã được gửi cho AudioScrobbler."
+msgstr "成功地发送了 1 首歌至 AudioScrobbler"
 
 #: scrobbler.c:511
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr "%d bài hát đã được gửi cho AudioScrobbler."
+msgstr "成功地发送了 %d 首歌至 AudioScrobbler"
 
 #: scrobbler.c:517
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr "Lỗi gửi bài hát cho AudioScrobbler."
+msgstr "提交歌曲至 AudioScrobbler 时失败"
 
 #: vfs.c:109
 #, c-format
 msgid "Unknown user: %s\n"
-msgstr "Người dùng lạ: %s\n"
+msgstr "未知用户: %s\n"
 
 #: vfs.c:121
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr "Không thể chroot vào %s\n"
+msgstr "无法在 %s 中 chroot\n"
 
 #: vfs.c:129
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr "Không thể chuyển đổi sang nhóm %d\n"
+msgstr "无法改成 %d 组\n"
 
 #: vfs.c:133
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr "Không thể chuyển đổi sang người dùng %d\n"
+msgstr "无法改成 %d 用户\n"
 
 #: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "Kết nối với « %s » bị mất."
+msgstr "与 “%s” 的连接失败"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-19 14:38+0100\n"
+"POT-Creation-Date: 2008-02-11 09:30+0100\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team:  <se.seam@gmail.com>\n"
@@ -60,40 +60,40 @@ msgstr "Записать список воспроизведения в файл
 msgid "Unable to write playlist."
 msgstr "Невозможно записать список воспроизведения."
 
-#: gui_input.c:143
-msgid "Search for"
-msgstr "Поиск"
-
-#: gui_input.c:149
-msgid "Bad pattern."
-msgstr "Неверный шаблон."
-
-#: gui_input.c:196 gui_input.c:233
-msgid "Not found."
-msgstr "Не найден."
-
-#: gui_input.c:265
+#: gui_input.c:104
 msgid "Use kill(1) to quit."
 msgstr "Используйте kill(1) для выхода."
 
-#: gui_input.c:269
+#: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
 msgstr "Покинуть %s?"
 
-#: gui_input.c:306
+#: gui_input.c:192
+msgid "Search for"
+msgstr "Поиск"
+
+#: gui_input.c:198
+msgid "Bad pattern."
+msgstr "Неверный шаблон."
+
+#: gui_input.c:245 gui_input.c:282
+msgid "Not found."
+msgstr "Не найден."
+
+#: gui_input.c:314
 msgid "Jump to position"
 msgstr "Перейти к позиции"
 
-#: gui_input.c:363
+#: gui_input.c:371
 msgid "Bad time format."
 msgstr "Неверный формат времени."
 
-#: gui_input.c:555 main.c:75 main.c:81 main.c:87
+#: gui_input.c:563 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "да"
 
-#: gui_input.c:556 main.c:77 main.c:83 main.c:89
+#: gui_input.c:564 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "нет"
 
@@ -182,21 +182,21 @@ msgstr "Поддерживаемые форматы звуковых файло�
 msgid "usage"
 msgstr "использование"
 
-#: playq.c:188
+#: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
 msgstr "Невозможно открыть \"%s\" для воспроизведения"
 
-#: playq.c:410
+#: playq.c:417
 #, c-format
 msgid "Repeat: %s"
 msgstr "Повтор %s"
 
-#: playq.c:411
+#: playq.c:418
 msgid "on"
 msgstr "вкл"
 
-#: playq.c:411
+#: playq.c:418
 msgid "off"
 msgstr "выкл"
 
