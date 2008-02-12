@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 1.9.3:
+2008-02-12 -- Herrie 1.9.3:
  * Added: Support for Debian GNU/kFreeBSD
  * Added: Debian package infrastructure
  * Fixed: Shut down the application when we lose TTY input
