@@ -11,10 +11,11 @@ make -C ../../misc cdepcalc
 
 # Update translations
 xgettext -k_ *.c
-for i in ../po/*.po
+mv messages.po ../po/herrie.pot
+
+cd ../po
+for i in *.po
 do
-	msgmerge $i messages.po > tmp.po
+	msgmerge $i herrie.pot > tmp.po
 	mv tmp.po $i
 done
-
-mv messages.po ../po/herrie.pot
