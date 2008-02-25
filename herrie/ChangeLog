@@ -1,5 +1,6 @@
 ????-??-?? -- Herrie 1.9.4:
  * Added: Brasilian Portuguese translation - Eros Carvalho
+ * Fixed: Make vfs.lockup.chroot expand ~/ and ~user/
 
 2008-02-12 -- Herrie 1.9.3:
  * Added: Support for Debian GNU/kFreeBSD

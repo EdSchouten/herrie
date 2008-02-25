@@ -93,62 +93,6 @@ static struct vfswriter writers[] = {
  */
 #define NUM_WRITERS (sizeof(writers) / sizeof(struct vfswriter))
 
-const char *
-vfs_lockup(void)
-{
-#ifdef G_OS_UNIX
-	const char *root;
-	const char *user;
-	struct passwd *pw = NULL;
-
-	user = config_getopt("vfs.lockup.user");
-	if (user[0] != '\0') {
-		pw = getpwnam(user);
-		if (pw == NULL)
-			return g_strdup_printf(
-			    _("Unknown user: %s\n"), user);
-	}
-
-	root = config_getopt("vfs.lockup.chroot");
-	if (root[0] != '\0') {
-#ifdef BUILD_RES_INIT
-		/* Already load the resolv.conf */
-		res_init();
-#endif /* BUILD_RES_INIT */
-		/* Try to lock ourselves in */
-		if (chroot(root) != 0)
-			return g_strdup_printf(
-			    _("Unable to chroot in %s\n"), root);
-
-		chdir("/");
-	}
-
-	if (pw != NULL) {
-		if (setgid(pw->pw_gid) != 0)
-			return g_strdup_printf(
-			    _("Unable to change to group %d\n"),
-			    (int)pw->pw_gid);
-		if (setuid(pw->pw_uid) != 0)
-			return g_strdup_printf(
-			    _("Unable to change to user %d\n"),
-			    (int)pw->pw_uid);
-	}
-#endif /* G_OS_UNIX */
-
-	return (NULL);
-}
-
-/**
- * @brief Deallocates the data structures for a VFS entity
- */
-static void
-vfs_dealloc(struct vfsent *ve)
-{
-	g_free(ve->name);
-	g_free(ve->filename);
-	g_slice_free(struct vfsent, ve);
-}
-
 /**
  * @brief Concatenate a path- and filename. The resulting filename will
  *        not contain /./'s and /../'s.
@@ -239,6 +183,66 @@ vfs_path_concat(const char *dir, const char *file, int strict)
 		g_string_assign(npath, G_DIR_SEPARATOR_S);
 
 	return g_string_free(npath, FALSE);
+}
+
+const char *
+vfs_lockup(void)
+{
+#ifdef G_OS_UNIX
+	const char *root;
+	const char *user;
+	char *rootpath;
+	struct passwd *pw = NULL;
+
+	user = config_getopt("vfs.lockup.user");
+	if (user[0] != '\0') {
+		pw = getpwnam(user);
+		if (pw == NULL)
+			return g_strdup_printf(
+			    _("Unknown user: %s\n"), user);
+	}
+
+	root = config_getopt("vfs.lockup.chroot");
+	if (root[0] != '\0') {
+#ifdef BUILD_RES_INIT
+		/* Already load the resolv.conf */
+		res_init();
+#endif /* BUILD_RES_INIT */
+
+		/* Try to lock ourselves in */
+		rootpath = vfs_path_concat(NULL, root, 0);
+		if (rootpath == NULL || chroot(rootpath) != 0)
+			return g_strdup_printf(
+			    _("Unable to chroot in %s\n"),
+			    rootpath != NULL ? rootpath : root);
+
+		chdir("/");
+	}
+
+	if (pw != NULL) {
+		if (setgid(pw->pw_gid) != 0)
+			return g_strdup_printf(
+			    _("Unable to change to group %d\n"),
+			    (int)pw->pw_gid);
+		if (setuid(pw->pw_uid) != 0)
+			return g_strdup_printf(
+			    _("Unable to change to user %d\n"),
+			    (int)pw->pw_uid);
+	}
+#endif /* G_OS_UNIX */
+
+	return (NULL);
+}
+
+/**
+ * @brief Deallocates the data structures for a VFS entity
+ */
+static void
+vfs_dealloc(struct vfsent *ve)
+{
+	g_free(ve->name);
+	g_free(ve->filename);
+	g_slice_free(struct vfsent, ve);
 }
 
 struct vfsref *
