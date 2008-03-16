@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 1.9.4:
+2008-03-16 -- Herrie 2.0:
  * Added: Brasilian Portuguese translation - Eros Carvalho
  * Fixed: Make vfs.lockup.chroot expand ~/ and ~user/
  * Changed: Maintainer email address
