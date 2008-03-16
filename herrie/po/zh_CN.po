@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 09:30+0100\n"
+"POT-Creation-Date: 2008-03-16 14:03+0100\n"
 "PO-Revision-Date: 2008-02-07 18:04+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -228,22 +228,22 @@ msgstr "成功地发送了 %d 首歌至 AudioScrobbler"
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "提交歌曲至 AudioScrobbler 时失败"
 
-#: vfs.c:109
+#: vfs.c:202
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "未知用户: %s\n"
 
-#: vfs.c:121
+#: vfs.c:216
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "无法在 %s 中 chroot\n"
 
-#: vfs.c:129
+#: vfs.c:225
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "无法改成 %d 组\n"
 
-#: vfs.c:133
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "无法改成 %d 用户\n"

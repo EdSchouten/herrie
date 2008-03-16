@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 09:30+0100\n"
+"POT-Creation-Date: 2008-03-16 14:03+0100\n"
 "PO-Revision-Date: 2007-12-06 20:28+0100\n"
 "Last-Translator: Ed Schouten <ed@80386.nl>\n"
 "Language-Team: Ed Schouten <ed@80386.nl>\n"
@@ -221,22 +221,22 @@ msgstr "Succesvol %d nummers opgestuurd naar AudioScrobbler."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 
-#: vfs.c:109
+#: vfs.c:202
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Onbekende gebruiker: %s\n"
 
-#: vfs.c:121
+#: vfs.c:216
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Onmogelijk om te chroot'en naar %s\n"
 
-#: vfs.c:129
+#: vfs.c:225
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Onmogelijk om naar groep %d te veranderen\n"
 
-#: vfs.c:133
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Onmogelijk om naar gebruiker %d te veranderen\n"

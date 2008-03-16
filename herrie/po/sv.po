@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 09:30+0100\n"
+"POT-Creation-Date: 2008-03-16 14:03+0100\n"
 "PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -227,22 +227,22 @@ msgstr "Insändning av %d låtar till AudioScrobbler lyckades."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Misslyckades med att skicka in låtar till AudioScrobbler."
 
-#: vfs.c:109
+#: vfs.c:202
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Okänd användare: %s\n"
 
-#: vfs.c:121
+#: vfs.c:216
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Kunde inte göra chroot till %s\n"
 
-#: vfs.c:129
+#: vfs.c:225
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Kunde inte byta till gruppen %d\n"
 
-#: vfs.c:133
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Kunde inte byta till användaren %d\n"

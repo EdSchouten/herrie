@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 09:30+0100\n"
+"POT-Creation-Date: 2008-03-16 14:03+0100\n"
 "PO-Revision-Date: 2008-01-03 00:46+0200\n"
 "Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -226,22 +226,22 @@ msgstr "Onnistuneesti lähetetty %d kappaletta AudioScrobbleriin."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Ei onnistuttu lähettämään kappaleita AudioScrobbleriin."
 
-#: vfs.c:109
+#: vfs.c:202
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Tuntematon käyttäjä: %s\n"
 
-#: vfs.c:121
+#: vfs.c:216
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Ei voida suorittaa chroot-toimintoa hakemistossa %s\n"
 
-#: vfs.c:129
+#: vfs.c:225
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Ei voida vaihtaa ryhmään %d\n"
 
-#: vfs.c:133
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Ei voida vaihtaa käyttäjäksi %d\n"

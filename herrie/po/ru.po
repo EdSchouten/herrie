@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 09:30+0100\n"
+"POT-Creation-Date: 2008-03-16 14:03+0100\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team:  <se.seam@gmail.com>\n"
@@ -225,22 +225,22 @@ msgstr "Успешно отослано %d композиций на AudioScrobb
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Невозможно передать композиции на AudioScrobbler."
 
-#: vfs.c:109
+#: vfs.c:202
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Неизвестный пользователь: %s\n"
 
-#: vfs.c:121
+#: vfs.c:216
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Невозможно chroot в %s\n"
 
-#: vfs.c:129
+#: vfs.c:225
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Невозможно сменить на группу %d\n"
 
-#: vfs.c:133
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Невозможно сменить на пользователя %d\n"

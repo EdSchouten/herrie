@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 09:30+0100\n"
+"POT-Creation-Date: 2008-03-16 14:03+0100\n"
 "PO-Revision-Date: 2008-01-03 13:13+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -234,24 +234,24 @@ msgstr "Sendte med succes %d sange til AudioScrobbler."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Kunne ikke sende sange til AudioScrobbler."
 
-#: vfs.c:109
+#: vfs.c:202
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Ukendt bruger: %s\n"
 
 # chroot: The UNIX command to make the root directory (/) become something 
 # other than its default for the lifetime of the current process.
-#: vfs.c:121
+#: vfs.c:216
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Kan ikke gøre %s til chroot\n"
 
-#: vfs.c:129
+#: vfs.c:225
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Kan ikke skifte til gruppe %d\n"
 
-#: vfs.c:133
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Kan ikke skifte til bruger %d\n"
