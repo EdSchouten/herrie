@@ -125,13 +125,13 @@ main(int argc, char *argv[])
 #endif /* BUILD_NLS */
 
 	/* Global and local configuration files */
-	config_load(CONFFILE);
-	config_load(CONFHOMEDIR "config");
+	config_load(CONFFILE, 1);
+	config_load(CONFHOMEDIR "config", 1);
 
 	while ((ch = getopt(argc, argv, "c:vx")) != -1) {
 		switch (ch) {
 		case 'c':
-			config_load(optarg);
+			config_load(optarg, 0);
 			break;
 		case 'x':
 			xmms = 1;

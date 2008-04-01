@@ -239,13 +239,16 @@ config_setopt(const char *opt, char *val)
  */
 
 void
-config_load(const char *file)
+config_load(const char *file, int expand)
 {
 	FILE *fio;
 	char fbuf[512]; /* Should be long enough */
 	char *split;
 
-	fio = vfs_fopen(file, "r");
+	if (expand)
+		fio = vfs_fopen(file, "r");
+	else
+		fio = fopen(file, "r");
 	if (fio == NULL)
 		return;
 

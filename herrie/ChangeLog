@@ -1,5 +1,6 @@
 ????-??-?? -- Herrie 2.1:
  * Added: ALSA volume support - Steve Jothen
+ * Fixed: Don't expand pathnames passed with the -c switch.
 
 2008-03-16 -- Herrie 2.0:
  * Added: Brasilian Portuguese translation - Eros Carvalho

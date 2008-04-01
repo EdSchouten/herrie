@@ -31,7 +31,7 @@
 /**
  * @brief Load the configuration from disk
  */
-void		config_load(const char *file);
+void		config_load(const char *file, int expand);
 
 /**
  * @brief Return the value of a configuration switch
