@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-16 14:03+0100\n"
+"POT-Creation-Date: 2008-04-01 21:36+0200\n"
 "PO-Revision-Date: 2008-01-03 21:39+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: LocFactoryEditor 1.7b1\n"
 
-#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_alsa.c:147 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Không thể mở thiết bị âm thanh."
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:165 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Không hỗ trợ tần số lấy mẫu hay tổng số kênh."
 

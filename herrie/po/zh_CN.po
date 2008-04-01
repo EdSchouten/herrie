@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-16 14:03+0100\n"
+"POT-Creation-Date: 2008-04-01 21:36+0200\n"
 "PO-Revision-Date: 2008-02-07 18:04+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_alsa.c:147 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "无法打开音频设备"
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:165 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "采样率或声道数不可支持"
 

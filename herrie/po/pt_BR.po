@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-16 14:03+0100\n"
+"POT-Creation-Date: 2008-04-01 21:36+0200\n"
 "PO-Revision-Date: 2008-01-01 15:14+0100\n"
 "Last-Translator: Eros Moreira de Carvalho <erosmc@gmail.com>\n"
 "Language-Team: Portuguese <erosmc@gmail.com>\n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:103 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_alsa.c:147 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Não foi possível abrir o dispositivo de audio."
 
-#: audio_output_alsa.c:121 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:165 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Freqüência de audio ou quantidade de canais não suportados."
 
