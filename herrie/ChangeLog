@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 2.1:
+2008-04-01 -- Herrie 2.0.1:
  * Added: ALSA volume support - Steve Jothen
  * Fixed: Don't expand pathnames passed with the -c switch.
 
