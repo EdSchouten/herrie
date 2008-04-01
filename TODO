@@ -15,7 +15,6 @@ Graphical user interface:
 - Add the ability to show the filename of the song that's currently playing
 
 Audio abstraction:
-- Add support for volume control for ALSA
 - Implement better buffering schemes for ALSA and CoreAudio
 - Fully implement more audio file formats
   - Apple Lossless

@@ -300,6 +300,7 @@ MANREGEX="$MANREGEX -e 's|%%PLAYQ_DUMPFILE%%|$PLAYQ_DUMPFILE|'"
 # Audio output options
 case $CFG_AO in
 alsa)
+	CFG_VOLUME=yes
 	CFLAGS="$CFLAGS -DBUILD_ALSA"
 	LDFLAGS="$LDFLAGS -lasound"
 	MANPARTS="$MANPARTS 03-alsa"

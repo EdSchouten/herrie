@@ -133,11 +133,14 @@ struct config_entry {
  */
 static struct config_entry configlist[] = {
 #ifdef BUILD_ALSA
-	{ "audio.output.alsa.device",	"default",	NULL, 		NULL },
+	{ "audio.output.alsa.device",	"default",	NULL,		NULL },
+#ifdef BUILD_VOLUME
+	{ "audio.output.alsa.mixer",	"PCM",		NULL,		NULL },
+#endif /* BUILD_VOLUME */
 #endif /* BUILD_ALSA */
 #ifdef BUILD_AO
-	{ "audio.output.ao.driver",	"",		NULL, 		NULL },
-	{ "audio.output.ao.host",	"",		NULL, 		NULL },
+	{ "audio.output.ao.driver",	"",		NULL,		NULL },
+	{ "audio.output.ao.host",	"",		NULL,		NULL },
 #endif /* BUILD_AO */
 #ifdef BUILD_OSS
 	{ "audio.output.oss.device",	OSS_DEVICE,	NULL,		NULL },

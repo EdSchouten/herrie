@@ -49,6 +49,16 @@ static unsigned int		channels = 0;
  * @brief the sample rate that is currently used for playback.
  */
 static unsigned int		srate = 0;
+#ifdef BUILD_VOLUME
+/**
+ * @brief Handle to the ALSA mixer.
+ */
+static snd_mixer_t *mixhnd = NULL;
+/**
+ * @brief ALSA mixer element for the audio device.
+ */
+static snd_mixer_elem_t *elem;
+#endif /* BUILD_VOLUME */
 
 /**
  * @brief Alter the audio output parameters of the audio output device.
@@ -90,6 +100,36 @@ audio_output_apply_hwparams(void)
 	return (0);
 }
 
+#ifdef BUILD_VOLUME
+static void
+audio_output_volume_open(void)
+{
+	snd_mixer_selem_id_t *mixer;
+
+	/* Open mixer device */
+	if (snd_mixer_open(&mixhnd, 0) != 0)
+		return;
+	if (snd_mixer_attach(mixhnd,
+	    config_getopt("audio.output.alsa.device")) != 0)
+		goto bad;
+	if (snd_mixer_selem_register(mixhnd, NULL, NULL) < 0)
+		goto bad;
+	if (snd_mixer_load(mixhnd) < 0)
+		goto bad;
+
+	/* Obtain mixer element */
+	snd_mixer_selem_id_alloca(&mixer);
+	snd_mixer_selem_id_set_name(mixer, config_getopt("audio.output.alsa.mixer"));
+
+	elem = snd_mixer_find_selem(mixhnd, mixer);
+	if (elem != NULL)
+		return;
+bad:
+	snd_mixer_close(mixhnd);
+	mixhnd = NULL;
+}
+#endif /* BUILD_VOLUME */
+
 int
 audio_output_open(void)
 {
@@ -97,6 +137,10 @@ audio_output_open(void)
 	if (snd_pcm_open(&devhnd, config_getopt("audio.output.alsa.device"),
 	    SND_PCM_STREAM_PLAYBACK, 0) != 0)
 		goto error;
+
+#ifdef BUILD_VOLUME
+	audio_output_volume_open();
+#endif /* BUILD_VOLUME */
 
 	return (0);
 error:
@@ -151,4 +195,65 @@ void
 audio_output_close(void)
 {
 	snd_pcm_close(devhnd);
+#ifdef BUILD_VOLUME
+	if (mixhnd != NULL)
+		snd_mixer_close(mixhnd);
+#endif /* BUILD_VOLUME */
 }
+
+#ifdef BUILD_VOLUME
+static int
+audio_output_volume_adjust(int delta)
+{
+	long min, max;
+	long right, left;
+
+	if (mixhnd == NULL)
+		return (-1);
+
+	/* Obtain volume range boundaries */
+	if (snd_mixer_selem_get_playback_volume_range(elem, &min, &max) != 0)
+		return (-1);
+	if (min >= max)
+		return (-1);
+
+	/* Convert delta from percent to steps */
+	delta *= (max - min) / 100;
+
+	/* Obtain current volume */
+	if (snd_mixer_selem_get_playback_volume(elem,
+	    SND_MIXER_SCHN_FRONT_LEFT, &left) != 0)
+		return (-1);
+	if (snd_mixer_selem_get_playback_volume(elem,
+	    SND_MIXER_SCHN_FRONT_RIGHT, &right) != 0)
+		return (-1);
+
+	left = left + delta;
+	left = CLAMP(left, min, max);
+	right = right + delta;
+	right = CLAMP(right, min, max);
+
+	/* Set new volume */
+	if (snd_mixer_selem_set_playback_volume(elem,
+	    SND_MIXER_SCHN_FRONT_LEFT, left) != 0)
+		return (-1);
+	if (snd_mixer_selem_set_playback_volume(elem,
+	    SND_MIXER_SCHN_FRONT_RIGHT, right) != 0)
+		return (-1);
+
+	/* Convert volume back to a percentage */
+	return (((left + right) / 2 - min) * 100) / (max - min);
+}
+
+int
+audio_output_volume_up(void)
+{
+	return audio_output_volume_adjust(4);
+}
+
+int
+audio_output_volume_down(void)
+{
+	return audio_output_volume_adjust(-4);
+}
+#endif /* BUILD_VOLUME */

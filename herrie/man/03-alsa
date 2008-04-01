@@ -1,3 +1,7 @@
 .TP
 .B audio.output.alsa.device=default
 The name of the ALSA device that should be used for audio playback.
+.TP
+.B audio.output.alsa.mixer=PCM
+The name of the ALSA mixer channel that should be used to adjust the
+playback volume.
