@@ -203,8 +203,9 @@ audio_output_close(void)
 
 #ifdef BUILD_VOLUME
 static int
-audio_output_volume_adjust(int delta)
+audio_output_volume_adjust(int n)
 {
+	int delta;
 	long min, max;
 	long right, left;
 
@@ -218,7 +219,9 @@ audio_output_volume_adjust(int delta)
 		return (-1);
 
 	/* Convert delta from percent to steps */
-	delta *= (max - min) / 100;
+	delta = (n * (max - min)) / 100;
+	if (delta == 0)
+		delta = n > 0 ? 1 : -1;
 
 	/* Obtain current volume */
 	if (snd_mixer_selem_get_playback_volume(elem,
