@@ -212,6 +212,9 @@ audio_output_volume_adjust(int n)
 	if (mixhnd == NULL)
 		return (-1);
 
+	/* Allow other applications to change mixer */
+	snd_mixer_handle_events(mixhnd);
+
 	/* Obtain volume range boundaries */
 	if (snd_mixer_selem_get_playback_volume_range(elem, &min, &max) != 0)
 		return (-1);
