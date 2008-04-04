@@ -101,6 +101,10 @@ audio_output_apply_hwparams(void)
 }
 
 #ifdef BUILD_VOLUME
+/**
+ * @brief Open the ALSA mixer device, making it possible to adjust the
+ *        volume.
+ */
 static void
 audio_output_volume_open(void)
 {
@@ -202,6 +206,10 @@ audio_output_close(void)
 }
 
 #ifdef BUILD_VOLUME
+/**
+ * @brief Adjust the audio output by a certain percentage and return the
+ *        new value.
+ */
 static int
 audio_output_volume_adjust(int n)
 {
