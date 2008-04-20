@@ -124,7 +124,7 @@ modplug_open(struct audio_file *fd, const char *ext)
 		fd->time_len = ModPlug_GetLength(data->modplug) / 1000;
 		title = ModPlug_GetName(data->modplug);
 		if (title != NULL && title[0] != '\0')
-			fd->tag.title = g_strdup(title);
+			fd->title = g_strdup(title);
 		return (0);
 	}
 

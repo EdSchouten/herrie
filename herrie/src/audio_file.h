@@ -74,22 +74,17 @@ struct audio_file {
 	int stream;
 
 	/**
-	 * @brief Information about the song acquired from the file.
+	 * @brief Name of the artist, stored in UTF-8.
 	 */
-	struct {
-		/**
-		 * @brief Name of the artist, stored in UTF-8.
-		 */
-		char *artist;
-		/**
-		 * @brief Name of the song, stored in UTF-8.
-		 */
-		char *title;
-		/**
-		 * @brief Name of the album, stored in UTF-8.
-		 */
-		char *album;
-	} tag;
+	char *artist;
+	/**
+	 * @brief Name of the song, stored in UTF-8.
+	 */
+	char *title;
+	/**
+	 * @brief Name of the album, stored in UTF-8.
+	 */
+	char *album;
 
 #ifdef BUILD_SCROBBLER
 	/**

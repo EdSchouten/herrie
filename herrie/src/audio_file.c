@@ -124,8 +124,8 @@ audio_file_open(const struct vfsref *vr)
 	}
 
 	/* No tag - just use the display name then */
-	if (out->tag.title == NULL)
-		out->tag.title = g_strdup(vfs_name(vr));
+	if (out->title == NULL)
+		out->title = g_strdup(vfs_name(vr));
 
 	return (out);
 
@@ -141,9 +141,9 @@ audio_file_close(struct audio_file *fd)
 	if (fd->fp != NULL)
 		fclose(fd->fp);
 
-	g_free(fd->tag.artist);
-	g_free(fd->tag.title);
-	g_free(fd->tag.album);
+	g_free(fd->artist);
+	g_free(fd->title);
+	g_free(fd->album);
 	g_slice_free(struct audio_file, fd);
 }
 

@@ -178,15 +178,14 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 	fd->_scrobbler_done = 1;
 
 	/* We must have a title and an artist or an album */
-	if (fd->tag.title == NULL ||
-	    (fd->tag.artist == NULL && fd->tag.album == NULL))
+	if (fd->title == NULL || (fd->artist == NULL && fd->album == NULL))
 		return;
 
 	/* Place the track in our queue */
 	nse = g_slice_new(struct scrobbler_entry);
-	nse->artist = http_escape(fd->tag.artist, NULL);
-	nse->title = http_escape(fd->tag.title, NULL);
-	nse->album = http_escape(fd->tag.album, NULL);
+	nse->artist = http_escape(fd->artist, NULL);
+	nse->title = http_escape(fd->title, NULL);
+	nse->album = http_escape(fd->album, NULL);
 	nse->length = len;
 	nse->time = time(NULL);
 

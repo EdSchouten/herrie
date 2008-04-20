@@ -74,23 +74,23 @@ gui_playq_statbar_song(struct audio_file *fd)
 		g_string_assign(str_song, "");
 	} else {
 		/* Smash strings down to the correct charset */
-		g_assert(fd->tag.title != NULL);
-		title = g_convert_with_fallback(fd->tag.title,
+		g_assert(fd->title != NULL);
+		title = g_convert_with_fallback(fd->title,
 		    -1, "", "UTF-8", "?", NULL, NULL, NULL);
 		if (title == NULL)
 			/* Conversion error - don't convert charset */
-			title = g_strdup(fd->tag.title);
+			title = g_strdup(fd->title);
 
-		if (fd->tag.artist == NULL) {
+		if (fd->artist == NULL) {
 			/* Only show the title */
 			g_string_assign(str_song, title);
 		} else {
 			/* Print artist and title */
-			artist = g_convert_with_fallback(fd->tag.artist,
+			artist = g_convert_with_fallback(fd->artist,
 			    -1, "", "UTF-8", "?", NULL, NULL, NULL);
 			if (artist == NULL)
 				/* Conversion error */
-				artist = g_strdup(fd->tag.artist);
+				artist = g_strdup(fd->artist);
 			g_string_printf(str_song, "%s - %s",
 			    artist, title);
 			g_free(artist);

@@ -145,11 +145,11 @@ mp3_readtags(struct audio_file *fd)
 
 	for (i = 0; i < tag->nframes; i++) {
 		if (strncmp("TPE1", tag->frames[i]->id, 4) == 0) {
-			dst = &fd->tag.artist;
+			dst = &fd->artist;
 		} else if (strncmp("TIT2", tag->frames[i]->id, 4) == 0) {
-			dst = &fd->tag.title;
+			dst = &fd->title;
 		} else if (strncmp("TALB", tag->frames[i]->id, 4) == 0) {
-			dst = &fd->tag.album;
+			dst = &fd->album;
 		} else {
 			continue;
 		}

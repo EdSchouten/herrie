@@ -56,11 +56,11 @@ vorbis_read_comments(struct audio_file *fd)
 		tag = cmt->user_comments[i];
 
 		if (g_ascii_strncasecmp(tag, "artist=", 7) == 0)
-			fd->tag.artist = g_strdup(tag + 7);
+			fd->artist = g_strdup(tag + 7);
 		else if (g_ascii_strncasecmp(tag, "title=", 6) == 0)
-			fd->tag.title = g_strdup(tag + 6);
+			fd->title = g_strdup(tag + 6);
 		else if (g_ascii_strncasecmp(tag, "album=", 6) == 0)
-			fd->tag.album = g_strdup(tag + 6);
+			fd->album = g_strdup(tag + 6);
 	}
 }
 
