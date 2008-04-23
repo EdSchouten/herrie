@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 21:36+0200\n"
+"POT-Creation-Date: 2008-04-23 21:28+0200\n"
 "PO-Revision-Date: 2008-01-03 13:13+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -15,14 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:147 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_alsa.c:151 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Kan ikke åbne lydenhed."
 
 # Sample rate kan også være samplingfrekvens eller samplefrekvens
 # ordet er ikke på ordlisten.
-#: audio_output_alsa.c:165 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Samplingsfrekvens eller antal kanaler er ikke understøttet."
 
@@ -209,28 +209,28 @@ msgstr "tænd"
 msgid "off"
 msgstr "sluk"
 
-#: scrobbler.c:481
+#: scrobbler.c:480
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Fik ikke adgang til AudioScrobbler."
 
-#: scrobbler.c:485
+#: scrobbler.c:484
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ugyldig AudioScrobbler brugernavn/adgangskode."
 
-#: scrobbler.c:490
+#: scrobbler.c:489
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Adgang godkendt hos AudioScrobbler."
 
-#: scrobbler.c:507
+#: scrobbler.c:506
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Sendte med succes 1 sang til AudioScrobbler."
 
-#: scrobbler.c:511
+#: scrobbler.c:510
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Sendte med succes %d sange til AudioScrobbler."
 
-#: scrobbler.c:517
+#: scrobbler.c:516
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Kunne ikke sende sange til AudioScrobbler."
 

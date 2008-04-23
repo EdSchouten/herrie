@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 21:36+0200\n"
+"POT-Creation-Date: 2008-04-23 21:28+0200\n"
 "PO-Revision-Date: 2008-01-03 00:46+0200\n"
 "Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:147 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_alsa.c:151 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Audiolaitetta ei voida avata."
 
-#: audio_output_alsa.c:165 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Näytetaajuutta tai kanavien lukumäärää ei tueta."
 
@@ -201,28 +201,28 @@ msgstr "päällä"
 msgid "off"
 msgstr "pois päältä"
 
-#: scrobbler.c:481
+#: scrobbler.c:480
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Ei onnistunut valtuuttaa AudioScrobblerilla."
 
-#: scrobbler.c:485
+#: scrobbler.c:484
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Virheellinen AudioScrobbler-käyttäjänimi tai -salasana."
 
-#: scrobbler.c:490
+#: scrobbler.c:489
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Valtuutettu AudioScrobblerilla onnistuneesti."
 
-#: scrobbler.c:507
+#: scrobbler.c:506
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Yksi kappale on lähetetty onnistuneesti AudioScrobbleriin."
 
-#: scrobbler.c:511
+#: scrobbler.c:510
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Onnistuneesti lähetetty %d kappaletta AudioScrobbleriin."
 
-#: scrobbler.c:517
+#: scrobbler.c:516
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Ei onnistuttu lähettämään kappaleita AudioScrobbleriin."
 

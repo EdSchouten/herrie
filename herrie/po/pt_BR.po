@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 21:36+0200\n"
+"POT-Creation-Date: 2008-04-23 21:28+0200\n"
 "PO-Revision-Date: 2008-01-01 15:14+0100\n"
 "Last-Translator: Eros Moreira de Carvalho <erosmc@gmail.com>\n"
 "Language-Team: Portuguese <erosmc@gmail.com>\n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:147 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_alsa.c:151 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Não foi possível abrir o dispositivo de audio."
 
-#: audio_output_alsa.c:165 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Freqüência de audio ou quantidade de canais não suportados."
 
@@ -200,28 +200,28 @@ msgstr "ligado"
 msgid "off"
 msgstr "apagado"
 
-#: scrobbler.c:481
+#: scrobbler.c:480
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Falhou em autorizar com AudioScrobbler."
 
-#: scrobbler.c:485
+#: scrobbler.c:484
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Identificação incorreta no AudioScobbler."
 
-#: scrobbler.c:490
+#: scrobbler.c:489
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Autorizado corretamente no AudioScrobbler."
 
-#: scrobbler.c:507
+#: scrobbler.c:506
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Envio bem-sucedido de uma música para o AudioScrobbler."
 
-#: scrobbler.c:511
+#: scrobbler.c:510
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Envio bem-sucedido de %d músicas para o AudioScrobbler."
 
-#: scrobbler.c:517
+#: scrobbler.c:516
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Falhou em enviar músicas para o AudioScrobbler."
 

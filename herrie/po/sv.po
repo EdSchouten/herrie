@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 21:36+0200\n"
+"POT-Creation-Date: 2008-04-23 21:28+0200\n"
 "PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: audio_output_alsa.c:147 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_alsa.c:151 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
 msgstr "Kan inte öppna ljudenheten."
 
-#: audio_output_alsa.c:165 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
 msgid "Sample rate or amount of channels not supported."
 msgstr "Samlingsfrekvensen eller antalet kanaler stöds inte."
 
@@ -202,28 +202,28 @@ msgstr "på"
 msgid "off"
 msgstr "av"
 
-#: scrobbler.c:481
+#: scrobbler.c:480
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Behörighetskontroll på AudioScrobbler misslyckades."
 
-#: scrobbler.c:485
+#: scrobbler.c:484
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ogiltigt användarnamn/lösenord för AudioScrobbler."
 
-#: scrobbler.c:490
+#: scrobbler.c:489
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Behörighetskontroll på AudioScrobbler lyckades."
 
-#: scrobbler.c:507
+#: scrobbler.c:506
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Insändning av en låt till AudioScrobbler lyckades."
 
-#: scrobbler.c:511
+#: scrobbler.c:510
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Insändning av %d låtar till AudioScrobbler lyckades."
 
-#: scrobbler.c:517
+#: scrobbler.c:516
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Misslyckades med att skicka in låtar till AudioScrobbler."
 
