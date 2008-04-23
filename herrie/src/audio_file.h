@@ -81,12 +81,12 @@ struct audio_file {
 	 * @brief Name of the song, stored in UTF-8.
 	 */
 	char *title;
+
+#ifdef BUILD_SCROBBLER
 	/**
 	 * @brief Name of the album, stored in UTF-8.
 	 */
 	char *album;
-
-#ifdef BUILD_SCROBBLER
 	/**
 	 * @brief Indicator whether the scrobbler code is done with the
 	 *        song.

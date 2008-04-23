@@ -148,8 +148,10 @@ mp3_readtags(struct audio_file *fd)
 			dst = &fd->artist;
 		} else if (strncmp("TIT2", tag->frames[i]->id, 4) == 0) {
 			dst = &fd->title;
+#ifdef BUILD_SCROBBLER
 		} else if (strncmp("TALB", tag->frames[i]->id, 4) == 0) {
 			dst = &fd->album;
+#endif /* BUILD_SCROBBLER */
 		} else {
 			continue;
 		}
