@@ -408,7 +408,7 @@ struct vfsref	*vfs_write_playlist(const struct vfslist *vl,
  */
 int		vfs_delete(const char *filename);
 /**
- * @brief fopen()-like routine that uses VFS path expansino.
+ * @brief fopen()-like routine that uses VFS path expansion.
  */
 FILE		*vfs_fopen(const char *filename, const char *mode);
 /**
