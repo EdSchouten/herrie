@@ -143,7 +143,9 @@ audio_file_close(struct audio_file *fd)
 
 	g_free(fd->artist);
 	g_free(fd->title);
+#ifdef BUILD_SCROBBLER
 	g_free(fd->album);
+#endif /* BUILD_SCROBBLER */
 	g_slice_free(struct audio_file, fd);
 }
 

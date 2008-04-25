@@ -59,8 +59,10 @@ vorbis_read_comments(struct audio_file *fd)
 			fd->artist = g_strdup(tag + 7);
 		else if (g_ascii_strncasecmp(tag, "title=", 6) == 0)
 			fd->title = g_strdup(tag + 6);
+#ifdef BUILD_SCROBBLER
 		else if (g_ascii_strncasecmp(tag, "album=", 6) == 0)
 			fd->album = g_strdup(tag + 6);
+#endif /* BUILD_SCROBBLER */
 	}
 }
 
