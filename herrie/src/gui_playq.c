@@ -480,11 +480,8 @@ void
 gui_playq_song_select(void)
 {
 	playq_lock();
-	if (!gui_vfslist_warn_isempty(win_playq)) {
-		playq_song_fast_select(
-		    gui_vfslist_getselected(win_playq),
-		    gui_vfslist_getselectedidx(win_playq));
-	}
+	if (!gui_vfslist_warn_isempty(win_playq))
+		playq_song_fast_select(gui_vfslist_getselected(win_playq));
 	playq_unlock();
 }
 

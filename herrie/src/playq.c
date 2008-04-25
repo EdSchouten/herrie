@@ -528,7 +528,7 @@ playq_song_fast_move_tail(struct vfsref *vr, unsigned int index)
 }
 
 void
-playq_song_fast_select(struct vfsref *vr, unsigned int index)
+playq_song_fast_select(struct vfsref *vr)
 {
 	if (funcs->select(vr) != 0)
 		return;

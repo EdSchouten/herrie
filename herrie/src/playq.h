@@ -154,4 +154,4 @@ void playq_song_fast_move_tail(struct vfsref *vr, unsigned int index);
 /**
  * @brief Switch playback to a specific song.
  */
-void playq_song_fast_select(struct vfsref *vr, unsigned int index);
+void playq_song_fast_select(struct vfsref *vr);
