@@ -1,3 +1,6 @@
+????-??-?? -- Herrie 2.0.3:
+ * Added: -p switch to start playback on startup - Phillip Warner
+
 2008-04-23 -- Herrie 2.0.2:
  * Improved: ALSA volume adjustment precision
  * Fixed: ALSA inter-process event handling - Steve Jothen

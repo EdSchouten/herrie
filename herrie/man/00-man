@@ -28,7 +28,7 @@
 herrie \- interactive music playlist player
 .SH SYNOPSIS
 .B herrie
-.RB [ -vx ]
+.RB [ -pvx ]
 .RB [ -c
 .IR configfile ] 
 .RI [ file
@@ -60,6 +60,9 @@ or in the system wide global configuration file
 for options. The
 .B -c
 options allows you to load additional configuration files.
+.TP
+.B -p
+Automatically start playback on startup.
 .TP
 .B -v
 Display version information and a list of supported file formats.

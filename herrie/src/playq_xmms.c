@@ -63,6 +63,8 @@ playq_xmms_give(void)
 		/* We've reached the end */
 		if (cursong == NULL && playq_repeat)
 			cursong = vfs_list_first(&playq_list);
+	} else {
+		cursong = vfs_list_first(&playq_list);
 	}
 
 	if (cursong != NULL) {

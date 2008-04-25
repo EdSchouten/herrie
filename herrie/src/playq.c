@@ -242,7 +242,7 @@ done:
 }
 
 void
-playq_init(int xmms, int load_dumpfile)
+playq_init(int autoplay, int xmms, int load_dumpfile)
 {
 	const char *filename;
 	struct vfsref *vr;
@@ -250,6 +250,9 @@ playq_init(int xmms, int load_dumpfile)
 	playq_mtx = g_mutex_new();
 	playq_wakeup = g_cond_new();
 	playq_rand = g_rand_new(); /* XXX: /dev/urandom in chroot() */
+
+	if (autoplay || config_getopt_bool("playq.autoplay"))
+		playq_flags &= ~PF_STOP;
 
 	if (xmms || config_getopt_bool("playq.xmms")) {
 		funcs = &xmms_funcs;

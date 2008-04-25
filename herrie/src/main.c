@@ -99,7 +99,7 @@ version(void)
 static void
 usage(void)
 {
-	g_printerr("%s: " APP_NAME " [-vx] [-c configfile] "
+	g_printerr("%s: " APP_NAME " [-pvx] [-c configfile] "
 	    "[file ...]\n", _("usage"));
 	exit(1);
 }
@@ -110,7 +110,7 @@ usage(void)
 int
 main(int argc, char *argv[])
 {
-	int ch, i, show_version = 0, xmms = 0;
+	int ch, i, show_version = 0, autoplay = 0, xmms = 0;
 	char *cwd;
 	const char *errmsg;
 	struct vfsref *vr;
@@ -128,16 +128,19 @@ main(int argc, char *argv[])
 	config_load(CONFFILE, 1);
 	config_load(CONFHOMEDIR "config", 1);
 
-	while ((ch = getopt(argc, argv, "c:vx")) != -1) {
+	while ((ch = getopt(argc, argv, "c:pvx")) != -1) {
 		switch (ch) {
 		case 'c':
 			config_load(optarg, 0);
 			break;
-		case 'x':
-			xmms = 1;
+		case 'p':
+			autoplay = 1;
 			break;
 		case 'v':
 			show_version = 1;
+			break;
+		case 'x':
+			xmms = 1;
 			break;
 		default:
 			usage();
@@ -170,7 +173,7 @@ main(int argc, char *argv[])
 #ifdef BUILD_SCROBBLER
 	scrobbler_init();
 #endif /* BUILD_SCROBBLER */
-	playq_init(xmms, (argc == 0));
+	playq_init(autoplay, xmms, (argc == 0));
 
 	/* Draw all the windows */
 	gui_draw_init_post();

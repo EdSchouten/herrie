@@ -64,6 +64,9 @@ will also be disabled when the directory
 does not exist. The application will not create this directory by
 itself.
 .TP
+.B playq.autoplay=no
+Automatically start playback on startup.
+.TP
 .B playq.xmms=no
 Always start
 .B herrie
