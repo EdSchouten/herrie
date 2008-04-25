@@ -178,7 +178,7 @@ main(int argc, char *argv[])
 	cwd = g_get_current_dir();
 	for (i = 0; i < argc; i++) {
 		/* Shell will expand ~ */
-		if ((vr = vfs_open(argv[i], NULL, cwd, 1)) != NULL) {
+		if ((vr = vfs_lookup(argv[i], NULL, cwd, 1)) != NULL) {
 			playq_song_add_tail(vr);
 			vfs_close(vr);
 		}

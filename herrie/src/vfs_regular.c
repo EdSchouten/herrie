@@ -35,19 +35,19 @@
 #include "vfs_modules.h"
 
 int
-vfs_file_open(struct vfsent *ve, int isdir)
+vfs_file_match(struct vfsent *ve, int isdir)
 {
 	return (isdir);
 }
 
 FILE *
-vfs_file_handle(struct vfsent *ve)
+vfs_file_open(struct vfsent *ve)
 {
 	return fopen(ve->filename, "rb");
 }
 
 int
-vfs_dir_open(struct vfsent *ve, int isdir)
+vfs_dir_match(struct vfsent *ve, int isdir)
 {
 #ifdef S_ISLNK
 	struct stat fs;
@@ -85,7 +85,7 @@ vfs_dir_populate(struct vfsent *ve)
 		if (hide_dotfiles && sfn[0] == '.')
 			continue;
 
-		if ((nvr = vfs_open(sfn, NULL, ve->filename, 1)) == NULL)
+		if ((nvr = vfs_lookup(sfn, NULL, ve->filename, 1)) == NULL)
 			continue;
 
 		/*

@@ -259,7 +259,7 @@ playq_init(int xmms, int load_dumpfile)
 	filename = config_getopt("playq.dumpfile");
 	if (load_dumpfile && filename[0] != '\0') {
 		/* Autoload playlist */
-		vr = vfs_open(filename, NULL, NULL, 0);
+		vr = vfs_lookup(filename, NULL, NULL, 0);
 		if (vr != NULL) {
 			vfs_unfold(&playq_list, vr);
 			vfs_close(vr);

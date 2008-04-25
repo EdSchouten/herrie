@@ -34,7 +34,7 @@ struct vfslist;
 /**
  * @brief Open a directory.
  */
-int	vfs_dir_open(struct vfsent *ve, int isdir);
+int	vfs_dir_match(struct vfsent *ve, int isdir);
 /**
  * @brief Read the contents of a directory and add them to the
  *        population of the current node. This function honours the sort
@@ -46,27 +46,27 @@ int	vfs_dir_populate(struct vfsent *ve);
  * @brief A fallback module that matches all files on disk (possibly
  *        audio files?)
  */
-int	vfs_file_open(struct vfsent *ve, int isdir);
+int	vfs_file_match(struct vfsent *ve, int isdir);
 /**
  * @brief Create a file handle to the file
  */
-FILE	*vfs_file_handle(struct vfsent *ve);
+FILE	*vfs_file_open(struct vfsent *ve);
 
 #ifdef BUILD_HTTP
 /**
  * @brief Test whether the current node contains a HTTP address.
  */
-int	vfs_http_open(struct vfsent *ve, int isdir);
+int	vfs_http_match(struct vfsent *ve, int isdir);
 /**
  * @brief Return a filehandle to a HTTP audio stream.
  */
-FILE	*vfs_http_handle(struct vfsent *ve);
+FILE	*vfs_http_open(struct vfsent *ve);
 #endif /* BUILD_HTTP */
 
 /**
  * @brief Test whether the current node is an M3U file.
  */
-int	vfs_m3u_open(struct vfsent *ve, int isdir);
+int	vfs_m3u_match(struct vfsent *ve, int isdir);
 /**
  * @brief Add all items in the M3U file to the population of the current
  *        node.
@@ -81,7 +81,7 @@ int	vfs_m3u_write(const struct vfslist *vl, const char *filename);
 /**
  * @brief Test whether the current node is an PLS file.
  */
-int	vfs_pls_open(struct vfsent *ve, int isdir);
+int	vfs_pls_match(struct vfsent *ve, int isdir);
 /**
  * @brief Add all items in the PLS file to the population of the current
  *        node.
@@ -97,7 +97,7 @@ int	vfs_pls_write(const struct vfslist *vl, const char *filename);
 /**
  * @brief Test whether the current node is an XSPF file.
  */
-int	vfs_xspf_open(struct vfsent *ve, int isdir);
+int	vfs_xspf_match(struct vfsent *ve, int isdir);
 /**
  * @brief Add all items in the XSPF file to the population of the
  *        current node.

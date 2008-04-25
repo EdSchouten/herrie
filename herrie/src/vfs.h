@@ -64,15 +64,15 @@ struct vfsmodule {
 	/**
 	 * @brief Attach the VFS module to a VFS entity
 	 */
-	int	(*vopen)(struct vfsent *ve, int isdir);
+	int	(*match)(struct vfsent *ve, int isdir);
 	/**
 	 * @brief Populate the VFS entity with its childs
 	 */
-	int	(*vpopulate)(struct vfsent *ve);
+	int	(*populate)(struct vfsent *ve);
 	/**
 	 * @brief Return a FILE* to the file on disk
 	 */
-	FILE	*(*vhandle)(struct vfsent *ve);
+	FILE	*(*open)(struct vfsent *ve);
 
 	/**
 	 * @brief Does not need an on-disk file
@@ -370,7 +370,7 @@ const char	*vfs_lockup(void);
  *        strict pathnames, application-implemented features like ~ are
  *        discarded.
  */
-struct vfsref	*vfs_open(const char *filename, const char *name,
+struct vfsref	*vfs_lookup(const char *filename, const char *name,
     const char *basepath, int strict);
 /**
  * @brief Duplicate the reference by increasing the reference count.
@@ -440,16 +440,16 @@ vfs_filename(const struct vfsref *vr)
 static inline int
 vfs_playable(const struct vfsref *vr)
 {
-	return (vr->ent->vmod->vhandle != NULL);
+	return (vr->ent->vmod->open != NULL);
 }
 
 /**
  * @brief Open a new filehandle to the entity.
  */
 static inline FILE *
-vfs_handle(const struct vfsref *vr)
+vfs_open(const struct vfsref *vr)
 {
-	return vr->ent->vmod->vhandle(vr->ent);
+	return vr->ent->vmod->open(vr->ent);
 }
 
 /**
@@ -458,7 +458,7 @@ vfs_handle(const struct vfsref *vr)
 static inline int
 vfs_populatable(const struct vfsref *vr)
 {
-	return (vr->ent->vmod->vpopulate != NULL);
+	return (vr->ent->vmod->populate != NULL);
 }
 
 /**

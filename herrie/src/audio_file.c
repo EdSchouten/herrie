@@ -98,7 +98,7 @@ audio_file_open(const struct vfsref *vr)
 
 	out = g_slice_new0(struct audio_file);
 	
-	out->fp = vfs_handle(vr);
+	out->fp = vfs_open(vr);
 	if (out->fp == NULL)
 		goto bad;
 

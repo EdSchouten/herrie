@@ -170,13 +170,13 @@ vfs_http_closefn(void *cookie)
  */
 
 int
-vfs_http_open(struct vfsent *ve, int isdir)
+vfs_http_match(struct vfsent *ve, int isdir)
 {
 	return strncmp(ve->filename, "http://", 7);
 }
 
 FILE *
-vfs_http_handle(struct vfsent *ve)
+vfs_http_open(struct vfsent *ve)
 {
 	struct httpstream *hs;
 	FILE *ret;

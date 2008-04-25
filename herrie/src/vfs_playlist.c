@@ -46,7 +46,7 @@ vfs_playlist_add_tail(struct vfsent *ve, char *fn, char *title, char *dirname)
 	/* Convert to proper separator */
 	g_strdelimit(fn, "\\", G_DIR_SEPARATOR);
 #endif
-	nvr = vfs_open(fn, title, dirname, 0);
+	nvr = vfs_lookup(fn, title, dirname, 0);
 
 	if (nvr != NULL)
 		vfs_list_insert_tail(&ve->population, nvr);
@@ -57,7 +57,7 @@ vfs_playlist_add_tail(struct vfsent *ve, char *fn, char *title, char *dirname)
  */
 
 int
-vfs_pls_open(struct vfsent *ve, int isdir)
+vfs_pls_match(struct vfsent *ve, int isdir)
 {
 	/* In order to speed up the process, we only match *.pls */
 	if (isdir || !g_str_has_suffix(ve->name, ".pls"))
@@ -175,7 +175,7 @@ vfs_pls_write(const struct vfslist *vl, const char *filename)
  */
 
 int
-vfs_m3u_open(struct vfsent *ve, int isdir)
+vfs_m3u_match(struct vfsent *ve, int isdir)
 {
 	/* In order to speed up the process, we only match *.m3u */
 	if (isdir || !g_str_has_suffix(ve->name, ".m3u"))

@@ -37,7 +37,7 @@
 #include "vfs_modules.h"
 
 int
-vfs_xspf_open(struct vfsent *ve, int isdir)
+vfs_xspf_match(struct vfsent *ve, int isdir)
 {
 	/* In order to speed up the process, we only match *.xspf */
 	if (isdir || !g_str_has_suffix(ve->name, ".xspf"))
@@ -68,7 +68,7 @@ vfs_xspf_populate(struct vfsent *ve)
 			filename = url_unescape(sloc->value);
 
 			/* Add it to the list */
-			vr = vfs_open(filename, strack->title, dirname, 1);
+			vr = vfs_lookup(filename, strack->title, dirname, 1);
 			if (vr != NULL)
 				vfs_list_insert_tail(&ve->population, vr);
 		}

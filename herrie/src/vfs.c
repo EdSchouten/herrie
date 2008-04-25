@@ -40,19 +40,19 @@
  */
 static struct vfsmodule modules[] = {
 #ifdef BUILD_HTTP
-	{ vfs_http_open, NULL, vfs_http_handle, 1, 1, '^' },
+	{ vfs_http_match, NULL, vfs_http_open, 1, 1, '^' },
 #endif /* BUILD_HTTP */
-	{ vfs_m3u_open, vfs_m3u_populate, NULL, 0, 1, '@' },
-	{ vfs_pls_open, vfs_pls_populate, NULL, 0, 1, '@' },
+	{ vfs_m3u_match, vfs_m3u_populate, NULL, 0, 1, '@' },
+	{ vfs_pls_match, vfs_pls_populate, NULL, 0, 1, '@' },
 #ifdef BUILD_XSPF
-	{ vfs_xspf_open, vfs_xspf_populate, NULL, 0, 1, '@' },
+	{ vfs_xspf_match, vfs_xspf_populate, NULL, 0, 1, '@' },
 #endif /* BUILD_XSPF */
 	/*
 	 * Leave these two rules at the bottom of the list. They have
 	 * the weakest matching rules.
 	 */
-	{ vfs_dir_open, vfs_dir_populate, NULL, 0, 0, G_DIR_SEPARATOR },
-	{ vfs_file_open, NULL, vfs_file_handle, 0, 1, '\0' },
+	{ vfs_dir_match, vfs_dir_populate, NULL, 0, 0, G_DIR_SEPARATOR },
+	{ vfs_file_match, NULL, vfs_file_open, 0, 1, '\0' },
 };
 /**
  * @brief The number of virtual file system modules currently available
@@ -246,7 +246,7 @@ vfs_dealloc(struct vfsent *ve)
 }
 
 struct vfsref *
-vfs_open(const char *filename, const char *name, const char *basepath,
+vfs_lookup(const char *filename, const char *name, const char *basepath,
     int strict)
 {
 	char *fn;
@@ -297,7 +297,7 @@ vfs_open(const char *filename, const char *name, const char *basepath,
 
 		/* Try to attach the module */
 		ve->vmod = &modules[i];
-		if (ve->vmod->vopen(ve, S_ISDIR(fs.st_mode)) == 0)
+		if (ve->vmod->match(ve, S_ISDIR(fs.st_mode)) == 0)
 			goto found;
 	}
 
@@ -359,7 +359,7 @@ vfs_populate(const struct vfsref *vr)
 	if (!vfs_list_empty(vfs_population(vr)))
 		return (0);
 
-	return vr->ent->vmod->vpopulate(vr->ent);
+	return vr->ent->vmod->populate(vr->ent);
 }
 
 void
@@ -430,7 +430,7 @@ vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
 match:
 	/* Write the playlist to disk */
 	if (wr->write(vl, fn) == 0)
-		rvr = vfs_open(fn, NULL, NULL, 0);
+		rvr = vfs_lookup(fn, NULL, NULL, 0);
 
 	g_free(fn);
 	return (rvr);
