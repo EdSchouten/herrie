@@ -395,7 +395,7 @@ scrobbler_send_handshake(char *key, char **url)
 	/* Make sure the checksum is there */
 	if (lines[1] == NULL || strlen(lines[1]) != 32)
 		goto done;
-	strncpy(key, lines[1], 32);
+	memcpy(key, lines[1], 32);
 
 	/* Copy the submission URL */
 	if (lines[3] == NULL)
