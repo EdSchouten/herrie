@@ -206,7 +206,7 @@ scrobbler_notify_seek(struct audio_file *fd)
  *        (at most 10), generate a HTTP/1.1 POST string for submission
  *        and return the amount of tracks described in the POST string.
  */
-static int
+static unsigned int
 scrobbler_queue_fetch(const char key[32], char **poststr)
 {
 	struct scrobbler_entry *ent;
@@ -264,7 +264,7 @@ scrobbler_queue_item_free(struct scrobbler_entry *ent)
  *        submission queue.
  */
 static void
-scrobbler_queue_remove(int amount)
+scrobbler_queue_remove(unsigned int amount)
 {
 	int i;
 	struct scrobbler_entry *ent;
@@ -464,7 +464,7 @@ done:
 static void *
 scrobbler_runner_thread(void *unused)
 {
-	int amount, interval;
+	unsigned int amount, interval;
 	char key[32] = "";
 	char *poststr, *msg, *url = NULL;
 
