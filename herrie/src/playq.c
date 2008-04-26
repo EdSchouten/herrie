@@ -310,9 +310,12 @@ playq_shutdown(void)
 void
 playq_song_add_head(struct vfsref *vr)
 {
-	/* Recursively expand the item */
 	struct vfslist newlist = VFSLIST_INITIALIZER;
+
+	/* Recursively expand the item */
 	vfs_unfold(&newlist, vr);
+	if (vfs_list_empty(&newlist))
+		return;
 
 	playq_lock();
 	/* Copy the expanded contents to the playlist */
@@ -330,9 +333,12 @@ playq_song_add_head(struct vfsref *vr)
 void
 playq_song_add_tail(struct vfsref *vr)
 {
-	/* Recursively expand the item */
 	struct vfslist newlist = VFSLIST_INITIALIZER;
+
+	/* Recursively expand the item */
 	vfs_unfold(&newlist, vr);
+	if (vfs_list_empty(&newlist))
+		return;
 
 	playq_lock();
 	/* Copy the expanded contents to the playlist */
@@ -437,9 +443,12 @@ void
 playq_song_fast_add_before(struct vfsref *nvr, struct vfsref *lvr,
     unsigned int index)
 {
-	/* Recursively expand the item */
 	struct vfslist newlist = VFSLIST_INITIALIZER;
+
+	/* Recursively expand the item */
 	vfs_unfold(&newlist, nvr);
+	if (vfs_list_empty(&newlist))
+		return;
 
 	/* Copy the expanded contents to the playlist */
 	while ((nvr = vfs_list_first(&newlist)) != NULL) {
@@ -456,9 +465,12 @@ void
 playq_song_fast_add_after(struct vfsref *nvr, struct vfsref *lvr,
     unsigned int index)
 {
-	/* Recursively expand the item */
 	struct vfslist newlist = VFSLIST_INITIALIZER;
+
+	/* Recursively expand the item */
 	vfs_unfold(&newlist, nvr);
+	if (vfs_list_empty(&newlist))
+		return;
 
 	/* Copy the expanded contents to the playlist */
 	while ((nvr = vfs_list_last(&newlist)) != NULL) {
