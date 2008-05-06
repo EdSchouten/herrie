@@ -123,7 +123,7 @@ int gui_input_askyesno(const char *question);
  *        and return the user response.
  */
 char *gui_input_askstring(const char *question, const char *defstr,
-    const char *allowed);
+    int (*validator)(const char *str, char c));
 
 /*
  *  gui_msgbar

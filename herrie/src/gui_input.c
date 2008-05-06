@@ -303,6 +303,50 @@ gui_input_cursong_seek_forward(void)
 }
 
 /**
+ * @brief Approve input string format for the seeking option.
+ */
+static int
+gui_input_cursong_seek_validator(const char *str, char c)
+{
+	const char *s;
+
+	if (c == '+' || c == '-') {
+		/* Only allow + and - at the beginning of the statement */
+		if (str[0] != '\0')
+			return (-1);
+	} else if (c == ':') {
+		/* Don't allow : before a digit has been inserted */
+		if (strpbrk(str, "0123456789") == NULL)
+			return (-1);
+
+		s = strrchr(str, ':');
+		if (s != NULL) {
+			/* Only allow colon after two decimals */
+			if (strlen(s + 1) != 2)
+				return (-1);
+			/* Only allow two : characters in the string */
+			if (s - strchr(str, ':') == 3)
+				return (-1);
+		}
+	} else if (g_ascii_isdigit(c)) {
+		s = strrchr(str, ':');
+		if (s != NULL) {
+			/* Only allow up to two decimals after a colon */
+			if (strlen(s + 1) == 2)
+				return (-1);
+			/* Only allow '0' to '5' as the first digit */
+			if (s[1] == '\0' && c > '5')
+				return (-1);
+		}
+	} else {
+		/* Don't allow any other characters */
+		return (-1);
+	}
+
+	return (0);
+}
+
+/**
  * @brief Ask the user to specify a position to seek the current song to.
  */
 static void
@@ -312,7 +356,7 @@ gui_input_cursong_seek_jump(void)
 	int total = 0, split = 0, digit = 0, value, relative = 0;
 
 	t = str = gui_input_askstring(_("Jump to position"),
-	    curseek, "1234567890:+-");
+	    curseek, gui_input_cursong_seek_validator);
 	if (str == NULL)
 		return;
 
@@ -324,43 +368,42 @@ gui_input_cursong_seek_jump(void)
 			 * digit. :'s must be interleaved with two
 			 * digits.
 			 */
-			if (split > 1 || digit == 0 ||
-			    (split > 0 && digit != 2))
-				goto bad;
+			g_assert(split <= 1 && digit != 0);
+			g_assert(split == 0 || digit == 2);
 			split++;
 			digit = 0;
 			break;
 		case '+':
 			/* Must be at the beginning */
-			if (t != str)
-				goto bad;
+			g_assert(t == str);
 			relative = 1;
 			break;
 		case '-':
 			/* Must be at the beginning */
-			if (t != str)
-				goto bad;
+			g_assert(t == str);
 			relative = -1;
 			break;
 		default:
 			/* Regular digit */
 			value = g_ascii_digit_value(*t);
 			g_assert(value != -1);
-			/* Only allow 0-5 to be used for the first digit. */
-			if (split > 0 && digit == 0 && value > 5)
-				goto bad;
+			g_assert(split == 0 || digit != 0 || value <= 5);
+
 			total *= (digit == 0) ? 6 : 10;
 			total += value;
 			digit++;
 		}
 	}
 
-	/* Too many trailing digits */
+	/* Not enough trailing digits */
 	if (split > 0 && digit != 2)
 		goto bad;
 
-	if (relative != 0)
+	if (relative != 0) {
 		total *= relative;
+		if (total == 0)
+			goto bad;
+	}
 	playq_cursong_seek(total, relative);
 
 	/* Show the string the next time as well */
@@ -639,12 +682,12 @@ gui_input_trimword(GString *gs)
 
 char *
 gui_input_askstring(const char *question, const char *defstr,
-    const char *allowed)
+    int (*validator)(const char *str, char c))
 {
 	GString *msg;
 	unsigned int origlen, newlen;
 	int c, clearfirst = 0;
-	char *ret = NULL;
+	char *ret = NULL, *vstr;
 
 	msg = g_string_new(question);
 	g_string_append(msg, ": ");
@@ -681,10 +724,16 @@ gui_input_askstring(const char *question, const char *defstr,
 			g_string_truncate(msg, MAX(newlen, origlen));
 			break;
 		default:
-			if ((allowed != NULL && strchr(allowed, c) == NULL) ||
-			    g_ascii_iscntrl(c)) {
-				/* Character is not allowed */
+			/* Control characters are not allowed */
+			if (g_ascii_iscntrl(c))
 				break;
+
+			if (validator != NULL) {
+				vstr = clearfirst ? "" : msg->str + origlen;
+				if (validator(vstr, c) != 0) {
+					beep();
+					break;
+				}
 			}
 			if (clearfirst) {
 				g_string_truncate(msg, origlen);
