@@ -730,10 +730,8 @@ gui_input_askstring(const char *question, const char *defstr,
 
 			if (validator != NULL) {
 				vstr = clearfirst ? "" : msg->str + origlen;
-				if (validator(vstr, c) != 0) {
-					beep();
+				if (validator(vstr, c) != 0)
 					break;
-				}
 			}
 			if (clearfirst) {
 				g_string_truncate(msg, origlen);
