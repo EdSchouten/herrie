@@ -1,5 +1,6 @@
 ????-??-?? -- Herrie 2.0.3:
  * Added: -p switch to start playback on startup - Phillip Warner
+ * Fixed: Crash in seek time format parsing
 
 2008-04-23 -- Herrie 2.0.2:
  * Improved: ALSA volume adjustment precision
