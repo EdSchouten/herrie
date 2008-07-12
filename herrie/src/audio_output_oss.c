@@ -38,16 +38,20 @@
 #include "config.h"
 #include "gui.h"
 
+#ifndef SNDCTL_DSP_GETPLAYVOL
+#define BUILD_OSS3_MIXER
+#endif /* !SNDCTL_DSP_GETPLAYVOL */
+
 /**
  * @brief File descriptor of the audio device handle.
  */
 static int dev_fd;
-#ifdef BUILD_VOLUME
+#if defined(BUILD_VOLUME) && defined(BUILD_OSS3_MIXER)
 /**
  * @brief File descriptor of the mixer device.
  */
 static int mix_fd;
-#endif /* BUILD_VOLUME */
+#endif /* BUILD_VOLUME && BUILD_OSS3_MIXER */
 /**
  * @brief Sample rate of the audio device handle.
  */
@@ -69,11 +73,11 @@ audio_output_open(void)
 		return (-1);
 	}
 
-#ifdef BUILD_VOLUME
+#if defined(BUILD_VOLUME) && defined(BUILD_OSS3_MIXER)
 	/* Open the mixer device */
 	dev = config_getopt("audio.output.oss.mixer");
 	mix_fd = open(dev, O_RDWR);
-#endif /* BUILD_VOLUME */
+#endif /* BUILD_VOLUME && BUILD_OSS3_MIXER */
 
 	return (0);
 }
@@ -138,11 +142,12 @@ audio_output_volume_adjust(int n)
 {
 	int vol, out;
 
-	/* We can't use the mixer */
-	if (mix_fd < 0)
-		return (-1);
-
-	if (ioctl(mix_fd, MIXER_READ(SOUND_MIXER_VOLUME), &vol) == -1)
+#ifdef BUILD_OSS3_MIXER
+	if (mix_fd < 0 ||
+	    ioctl(mix_fd, MIXER_READ(SOUND_MIXER_VOLUME), &vol) == -1)
+#else
+	if (ioctl(dev_fd, SNDCTL_DSP_GETPLAYVOL, &vol) == -1)
+#endif
 		return (-1);
 	
 	/* XXX: Merge left and right */
@@ -150,7 +155,11 @@ audio_output_volume_adjust(int n)
 	vol = CLAMP(vol + n, 0, 100);
 	out = (vol << 8) | vol;
 
+#ifdef BUILD_OSS3_MIXER
 	if (ioctl(mix_fd, MIXER_WRITE(SOUND_MIXER_VOLUME), &out) == -1)
+#else
+	if (ioctl(dev_fd, SNDCTL_DSP_SETPLAYVOL, &out) == -1)
+#endif
 		return (-1);
 
 	return (vol);
