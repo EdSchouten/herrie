@@ -93,6 +93,9 @@ Move the selection one page up.
 .B f
 Show the full pathname of the selected song.
 .TP
+.B F
+Jump to the selected file in the file browser.
+.TP
 .B g or home
 Move the selection to the top.
 .TP

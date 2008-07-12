@@ -218,40 +218,30 @@ gui_browser_cursor_tail(void)
  */
 
 void
-gui_browser_dir_parent(void)
+gui_browser_gotofile(struct vfsref *vr)
 {
-	struct vfsref *vr, *vrn;
+	struct vfsref *vrp, *vrn;
 	unsigned int idx;
 
-	if (vr_curdir == NULL)
-		return;
-	
-	if (locatestr != NULL) {
-		/* First unset the filter if we have one */
-		gui_browser_cleanup_flist();
-		gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
-		return;
-	}
-
-	if ((vr = vfs_lookup("..", NULL, vfs_filename(vr_curdir), 1)) == NULL)
+	if ((vrp = vfs_lookup("..", NULL, vfs_filename(vr), 1)) == NULL)
 		goto bad;
-	if (vfs_populate(vr) != 0) {
+	if (vfs_populate(vrp) != 0) {
 		/* Permission denied? */
-		vfs_close(vr);
+		vfs_close(vrp);
 		goto bad;
 	}
 	
-	for (vrn = vfs_list_first(vfs_population(vr)), idx = 1;
+	for (vrn = vfs_list_first(vfs_population(vrp)), idx = 1;
 	    vrn != NULL; vrn = vfs_list_next(vrn), idx++) {
 		/* Select the previous directory */
-		if (strcmp(vfs_name(vr_curdir), vfs_name(vrn)) == 0)
+		if (strcmp(vfs_name(vr), vfs_name(vrn)) == 0)
 			break;
 	}
 
 	/* Change the directory */
 	gui_browser_cleanup_flist();
 	vfs_close(vr_curdir);
-	vr_curdir = vr;
+	vr_curdir = vrp;
 	gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
 
 	if (vrn != NULL)
@@ -263,14 +253,31 @@ bad:
 }
 
 void
+gui_browser_dir_parent(void)
+{
+
+	if (vr_curdir == NULL)
+		return;
+	
+	if (locatestr != NULL) {
+		/* First unset the filter if we have one */
+		gui_browser_cleanup_flist();
+		gui_vfslist_setlist(win_browser, vfs_population(vr_curdir));
+		return;
+	}
+
+	gui_browser_gotofile(vr_curdir);
+}
+
+void
 gui_browser_dir_enter(void)
 {
 	struct vfsref *vr;
 
-	if ((vr = gui_vfslist_getselected(win_browser)) == NULL)
+	if (gui_vfslist_warn_isempty(win_browser))
 		return;
 
-	vr = vfs_dup(vr);
+	vr = vfs_dup(gui_vfslist_getselected(win_browser));
 	if (vfs_populate(vr) != 0) {
 		if (vfs_populatable(vr)) {
 			/* Permission denied? */
@@ -464,4 +471,14 @@ gui_browser_locate(const struct vfsmatch *vm)
 	gui_vfslist_setlist(win_browser, &vl_flist);
 
 	return (0);
+}
+
+void
+gui_browser_gotofolder(void)
+{
+
+	if (gui_vfslist_warn_isempty(win_browser))
+		return;
+
+	gui_browser_gotofile(gui_vfslist_getselected(win_browser));
 }

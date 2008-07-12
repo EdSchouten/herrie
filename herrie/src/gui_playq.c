@@ -549,3 +549,19 @@ gui_playq_volume_down(void)
 	gui_playq_volume_show(new);
 }
 #endif /* BUILD_VOLUME */
+
+void
+gui_playq_gotofolder(void)
+{
+	struct vfsref *vr;
+
+	playq_lock();
+	if (gui_vfslist_warn_isempty(win_playq)) {
+		playq_unlock();
+	} else {
+		vr = gui_vfslist_getselected(win_playq);
+		playq_unlock();
+
+		gui_browser_gotofile(vr);
+	}
+}

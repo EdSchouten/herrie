@@ -268,6 +268,15 @@ void gui_playq_volume_up(void);
  */
 void gui_playq_volume_down(void);
 #endif /* BUILD_VOLUME */
+/**
+ * @brief Go to the directory containing the selected item.
+ */
+void gui_playq_gotofolder(void);
+/**
+ * @brief Go to the parent directory of the VFS reference and select the
+ *        item which shares the same filename.
+ */
+void gui_browser_gotofile(struct vfsref *vr);
 
 /*
  * gui_browser
@@ -367,3 +376,7 @@ void gui_browser_fullpath(void);
  * @brief Apply a recursive search filter on the current directory.
  */
 int gui_browser_locate(const struct vfsmatch *vm);
+/**
+ * @brief Go to the directory containing the selected item.
+ */
+void gui_browser_gotofolder(void);
