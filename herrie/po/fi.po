@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-23 21:28+0200\n"
+"POT-Creation-Date: 2008-07-15 17:58+0200\n"
 "PO-Revision-Date: 2008-01-03 00:46+0200\n"
 "Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -20,11 +20,11 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr "Audiolaitetta ei voida avata."
 
-#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
 msgstr "Näytetaajuutta tai kanavien lukumäärää ei tueta."
 
-#: audio_output_oss.c:68
+#: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Audiolaitetta ”%s” ei voida avata.\n"
@@ -37,27 +37,27 @@ msgstr "suodatin"
 msgid "Unable to open initial directory."
 msgstr "Alkukansiota ei voida avata."
 
-#: gui_browser.c:262
+#: gui_browser.c:252
 msgid "Unable to enter the parent directory."
 msgstr "Ei voida siirtyä yläkansioon."
 
-#: gui_browser.c:277
+#: gui_browser.c:284
 msgid "Unable to enter the selected directory."
 msgstr "Ei voida siirtyä valittuun kansioon."
 
-#: gui_browser.c:363
+#: gui_browser.c:370
 msgid "Change directory"
 msgstr "Vaihda kansiota"
 
-#: gui_browser.c:401
+#: gui_browser.c:408
 msgid "Unable to display the file or directory."
 msgstr "Tiedostoa tai kansiota ei voida näyttää."
 
-#: gui_browser.c:418
+#: gui_browser.c:425
 msgid "Write playlist to file"
 msgstr "Kirjoita soittolista tiedostoon"
 
-#: gui_browser.c:427
+#: gui_browser.c:434
 msgid "Unable to write playlist."
 msgstr "Soittolistaa ei voida kirjoittaa."
 
@@ -82,19 +82,19 @@ msgstr "Virheellinen malli."
 msgid "Not found."
 msgstr "Ei löytynyt."
 
-#: gui_input.c:314
+#: gui_input.c:358
 msgid "Jump to position"
 msgstr "Hyppää paikkaan"
 
-#: gui_input.c:371
+#: gui_input.c:414
 msgid "Bad time format."
 msgstr "Virheellinen aikamuoto."
 
-#: gui_input.c:563 main.c:75 main.c:81 main.c:87
+#: gui_input.c:608 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "kyllä"
 
-#: gui_input.c:564 main.c:77 main.c:83 main.c:89
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "ei"
 
@@ -126,11 +126,11 @@ msgstr "Kappale on jo soittoluettelon ensimmäisenä."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Kappale on jo soittoluettelon viimeisenä."
 
-#: gui_playq.c:529
+#: gui_playq.c:526
 msgid "Failed to adjust the volume."
 msgstr "Äänenvoimakkuuden säätäminen ei onnistunut."
 
-#: gui_playq.c:531
+#: gui_playq.c:528
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Äänenvoimakkuus: %d%%"
@@ -188,16 +188,16 @@ msgstr "käyttö"
 msgid "Failed to open \"%s\" for playback."
 msgstr "Tiedostoa ”%s” ei onnistuttu avaamaan soitettavaksi."
 
-#: playq.c:417
+#: playq.c:426
 #, c-format
 msgid "Repeat: %s"
 msgstr "Toistaa: %s"
 
-#: playq.c:418
+#: playq.c:427
 msgid "on"
 msgstr "päällä"
 
-#: playq.c:418
+#: playq.c:427
 msgid "off"
 msgstr "pois päältä"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-23 21:28+0200\n"
+"POT-Creation-Date: 2008-07-15 17:58+0200\n"
 "PO-Revision-Date: 2007-12-01 16:48+0100\n"
 "Last-Translator: Piotr Budny <vip@pld-linux.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr "Nie można otworzyć urządzenia"
 
-#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
 msgstr "Częstotliwość próbkowania lub liczba kanałów nie jest wspierana."
 
-#: audio_output_oss.c:68
+#: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Nie można utworzyć urządzenia \"%s\".\n"
@@ -34,27 +34,27 @@ msgstr ""
 msgid "Unable to open initial directory."
 msgstr "Nie można otworzyć katalogu."
 
-#: gui_browser.c:262
+#: gui_browser.c:252
 msgid "Unable to enter the parent directory."
 msgstr "Nie można wejść do katalogu nadrzędnego."
 
-#: gui_browser.c:277
+#: gui_browser.c:284
 msgid "Unable to enter the selected directory."
 msgstr "Nie można wejść do wskazanego katalogu."
 
-#: gui_browser.c:363
+#: gui_browser.c:370
 msgid "Change directory"
 msgstr "Zmień katalog"
 
-#: gui_browser.c:401
+#: gui_browser.c:408
 msgid "Unable to display the file or directory."
 msgstr "Nie można wyświetlić pliku lub katalogu"
 
-#: gui_browser.c:418
+#: gui_browser.c:425
 msgid "Write playlist to file"
 msgstr "Zapisz playlistę do pliku"
 
-#: gui_browser.c:427
+#: gui_browser.c:434
 msgid "Unable to write playlist."
 msgstr "Nie można zapisac playlisty."
 
@@ -79,19 +79,19 @@ msgstr "Zła próbka."
 msgid "Not found."
 msgstr "Nie znaleziono"
 
-#: gui_input.c:314
+#: gui_input.c:358
 msgid "Jump to position"
 msgstr "Skocz do pozycji"
 
-#: gui_input.c:371
+#: gui_input.c:414
 msgid "Bad time format."
 msgstr "Zły format czasu."
 
-#: gui_input.c:563 main.c:75 main.c:81 main.c:87
+#: gui_input.c:608 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "tak"
 
-#: gui_input.c:564 main.c:77 main.c:83 main.c:89
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "nie"
 
@@ -123,11 +123,11 @@ msgstr "Utwór już jest na szczycie playlisty."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Uwtór już jest na dole playlisty."
 
-#: gui_playq.c:529
+#: gui_playq.c:526
 msgid "Failed to adjust the volume."
 msgstr "Nie udało się wyregulować głośności."
 
-#: gui_playq.c:531
+#: gui_playq.c:528
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Głośność: %d%%"
@@ -185,16 +185,16 @@ msgstr "użycie"
 msgid "Failed to open \"%s\" for playback."
 msgstr "Nie udało się otworzyć \"%s\" do odtworzenia."
 
-#: playq.c:417
+#: playq.c:426
 #, c-format
 msgid "Repeat: %s"
 msgstr "Powtórz: %s"
 
-#: playq.c:418
+#: playq.c:427
 msgid "on"
 msgstr "włączony"
 
-#: playq.c:418
+#: playq.c:427
 msgid "off"
 msgstr "wyłączony"
 

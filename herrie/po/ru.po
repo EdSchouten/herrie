@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-23 21:28+0200\n"
+"POT-Creation-Date: 2008-07-15 17:58+0200\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team:  <se.seam@gmail.com>\n"
@@ -19,11 +19,11 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr "Невозможно открыть звуковое устройство."
 
-#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
 msgstr "Частота сэмпла или число каналов не поддерживаются."
 
-#: audio_output_oss.c:68
+#: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Невозможно открыть звуковое устройство \"%s\".\n"
@@ -36,27 +36,27 @@ msgstr ""
 msgid "Unable to open initial directory."
 msgstr "Нет доступа к исходному каталогу."
 
-#: gui_browser.c:262
+#: gui_browser.c:252
 msgid "Unable to enter the parent directory."
 msgstr "Нет доступа к родительскому каталогу."
 
-#: gui_browser.c:277
+#: gui_browser.c:284
 msgid "Unable to enter the selected directory."
 msgstr "Нет доступа к выбранному каталогу."
 
-#: gui_browser.c:363
+#: gui_browser.c:370
 msgid "Change directory"
 msgstr "Сменить каталог"
 
-#: gui_browser.c:401
+#: gui_browser.c:408
 msgid "Unable to display the file or directory."
 msgstr "Невозможно отобразить файл или каталог."
 
-#: gui_browser.c:418
+#: gui_browser.c:425
 msgid "Write playlist to file"
 msgstr "Записать список воспроизведения в файл"
 
-#: gui_browser.c:427
+#: gui_browser.c:434
 msgid "Unable to write playlist."
 msgstr "Невозможно записать список воспроизведения."
 
@@ -81,19 +81,19 @@ msgstr "Неверный шаблон."
 msgid "Not found."
 msgstr "Не найден."
 
-#: gui_input.c:314
+#: gui_input.c:358
 msgid "Jump to position"
 msgstr "Перейти к позиции"
 
-#: gui_input.c:371
+#: gui_input.c:414
 msgid "Bad time format."
 msgstr "Неверный формат времени."
 
-#: gui_input.c:563 main.c:75 main.c:81 main.c:87
+#: gui_input.c:608 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "да"
 
-#: gui_input.c:564 main.c:77 main.c:83 main.c:89
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "нет"
 
@@ -125,11 +125,11 @@ msgstr "Композиция уже в начале списка."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Композиция уже в конце списка."
 
-#: gui_playq.c:529
+#: gui_playq.c:526
 msgid "Failed to adjust the volume."
 msgstr "Невозможно прибавить громкость."
 
-#: gui_playq.c:531
+#: gui_playq.c:528
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Громкость: %d%%"
@@ -187,16 +187,16 @@ msgstr "использование"
 msgid "Failed to open \"%s\" for playback."
 msgstr "Невозможно открыть \"%s\" для воспроизведения"
 
-#: playq.c:417
+#: playq.c:426
 #, c-format
 msgid "Repeat: %s"
 msgstr "Повтор %s"
 
-#: playq.c:418
+#: playq.c:427
 msgid "on"
 msgstr "вкл"
 
-#: playq.c:418
+#: playq.c:427
 msgid "off"
 msgstr "выкл"
 

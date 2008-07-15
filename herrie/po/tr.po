@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-23 21:28+0200\n"
+"POT-Creation-Date: 2008-07-15 17:58+0200\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
@@ -17,11 +17,11 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr "Ses aygıtı açılamıyor."
 
-#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
 msgstr "Örnekleme oranı ya da kanal sayısı desteklenmiyor"
 
-#: audio_output_oss.c:68
+#: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "Ses aygıtı \"%s\" açılamadı.\n"
@@ -34,27 +34,27 @@ msgstr ""
 msgid "Unable to open initial directory."
 msgstr "Başlangıç dizini açılamıyor."
 
-#: gui_browser.c:262
+#: gui_browser.c:252
 msgid "Unable to enter the parent directory."
 msgstr "Üst dizine girilemiyor."
 
-#: gui_browser.c:277
+#: gui_browser.c:284
 msgid "Unable to enter the selected directory."
 msgstr "Seçilen dizine girilemiyor."
 
-#: gui_browser.c:363
+#: gui_browser.c:370
 msgid "Change directory"
 msgstr "Dizin değiştir"
 
-#: gui_browser.c:401
+#: gui_browser.c:408
 msgid "Unable to display the file or directory."
 msgstr "Dosya veya dizin gösterilemiyor"
 
-#: gui_browser.c:418
+#: gui_browser.c:425
 msgid "Write playlist to file"
 msgstr "Parça listesini dosyaya yaz"
 
-#: gui_browser.c:427
+#: gui_browser.c:434
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
@@ -79,19 +79,19 @@ msgstr "Hatalı ifade"
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: gui_input.c:314
+#: gui_input.c:358
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:371
+#: gui_input.c:414
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:563 main.c:75 main.c:81 main.c:87
+#: gui_input.c:608 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:564 main.c:77 main.c:83 main.c:89
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "hayır"
 
@@ -123,11 +123,11 @@ msgstr "Parça zaten parça listesinin en üstünde."
 msgid "The song is already at the bottom of the playlist."
 msgstr "Parça zaten parça listesinin en altında."
 
-#: gui_playq.c:529
+#: gui_playq.c:526
 msgid "Failed to adjust the volume."
 msgstr "Ses ayarlanamadı"
 
-#: gui_playq.c:531
+#: gui_playq.c:528
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Ses: %d%%"
@@ -185,16 +185,16 @@ msgstr "kullanım"
 msgid "Failed to open \"%s\" for playback."
 msgstr "\"%s\" çalınamadı."
 
-#: playq.c:417
+#: playq.c:426
 #, c-format
 msgid "Repeat: %s"
 msgstr "Tekrarla: %s"
 
-#: playq.c:418
+#: playq.c:427
 msgid "on"
 msgstr "açık"
 
-#: playq.c:418
+#: playq.c:427
 msgid "off"
 msgstr "kapalı"
 

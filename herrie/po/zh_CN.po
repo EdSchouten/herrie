@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-23 21:28+0200\n"
+"POT-Creation-Date: 2008-07-15 17:58+0200\n"
 "PO-Revision-Date: 2008-02-07 18:04+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Cannot open the audio device."
 msgstr "无法打开音频设备"
 
-#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:119
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
 msgstr "采样率或声道数不可支持"
 
-#: audio_output_oss.c:68
+#: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
 msgstr "无法打开音频设备 “%s”\n"
@@ -39,27 +39,27 @@ msgstr "滤件"
 msgid "Unable to open initial directory."
 msgstr "无法打开起始目录"
 
-#: gui_browser.c:262
+#: gui_browser.c:252
 msgid "Unable to enter the parent directory."
 msgstr "无法进入上层目录"
 
-#: gui_browser.c:277
+#: gui_browser.c:284
 msgid "Unable to enter the selected directory."
 msgstr "无法进入选定目录"
 
-#: gui_browser.c:363
+#: gui_browser.c:370
 msgid "Change directory"
 msgstr "更改目录"
 
-#: gui_browser.c:401
+#: gui_browser.c:408
 msgid "Unable to display the file or directory."
 msgstr "无法显示文件或目录"
 
-#: gui_browser.c:418
+#: gui_browser.c:425
 msgid "Write playlist to file"
 msgstr "将播放列表写入文件"
 
-#: gui_browser.c:427
+#: gui_browser.c:434
 msgid "Unable to write playlist."
 msgstr "无法写入播放列表"
 
@@ -84,19 +84,19 @@ msgstr "模式错误"
 msgid "Not found."
 msgstr "未找到"
 
-#: gui_input.c:314
+#: gui_input.c:358
 msgid "Jump to position"
 msgstr "跳至位置"
 
-#: gui_input.c:371
+#: gui_input.c:414
 msgid "Bad time format."
 msgstr "错误的时间格式"
 
-#: gui_input.c:563 main.c:75 main.c:81 main.c:87
+#: gui_input.c:608 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "是"
 
-#: gui_input.c:564 main.c:77 main.c:83 main.c:89
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "否"
 
@@ -128,11 +128,11 @@ msgstr "此曲已位于播放列表的顶部"
 msgid "The song is already at the bottom of the playlist."
 msgstr "此曲已位于播放列表的底部"
 
-#: gui_playq.c:529
+#: gui_playq.c:526
 msgid "Failed to adjust the volume."
 msgstr "调整音量失败"
 
-#: gui_playq.c:531
+#: gui_playq.c:528
 #, c-format
 msgid "Volume: %d%%"
 msgstr "音量: %d%%"
@@ -190,16 +190,16 @@ msgstr "用法"
 msgid "Failed to open \"%s\" for playback."
 msgstr "打开 “%s” 播放时失败"
 
-#: playq.c:417
+#: playq.c:426
 #, c-format
 msgid "Repeat: %s"
 msgstr "重复: %s"
 
-#: playq.c:418
+#: playq.c:427
 msgid "on"
 msgstr "开"
 
-#: playq.c:418
+#: playq.c:427
 msgid "off"
 msgstr "关"
 
