@@ -1,4 +1,4 @@
-????-??-?? -- Herrie 2.0.3:
+2008-07-15 -- Herrie 2.1:
  * Added: -p switch to start playback on startup - Phillip Warner
  * Fixed: Crash in seek time format parsing
  * Added: 'F' button to jump to files in the file browser
