@@ -330,7 +330,7 @@ oss)
 		;;
 	esac
 	CFG_VOLUME=yes
-	CFLAGS="$CFLAGS -DBUILD_OSS -I/usr/lib/oss/include"
+	CFLAGS="$CFLAGS -DBUILD_OSS -I$PREFIX/lib/oss/include"
 	CFLAGS_config="$CFLAGS_config -DOSS_DEVICE=\\\"$OSS_DEVICE\\\""
 	MANPARTS="$MANPARTS 03-oss"
 	MANREGEX="$MANREGEX -e 's|%%OSS_DEVICE%%|$OSS_DEVICE|'"
