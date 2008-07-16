@@ -12,9 +12,9 @@ gui.color.bar.bg=red
 gui.browser.defaultpath=/vol/music
 
 # Enable AudioScrobbler song submission. Make sure you generate the
-# password with `echo -n p4ssw0rd | md5'. It's probably not a good idea
-# to place these switches in the public config file. You'd better stick
-# these switches in ~/.herrie/config, with 0600 permissions:
+# password with `printf %s p4ssw0rd | md5'. It's probably not a good
+# idea to place these switches in the public config file. You'd better
+# stick these switches in ~/.herrie/config, with 0600 permissions:
 scrobbler.username=SomeUser
 scrobbler.password=0011223344556677889900aabbccddeeff
 
