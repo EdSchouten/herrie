@@ -11,7 +11,7 @@ switch in your configuration file. Please note that this switch
 .I must
 contain an MD5 hash. Use the following command to generate such a hash:
 .B
-echo -n 'p4ssw0rd' | md5
+printf %s p4ssw0rd | md5
 .TP
 .B scrobbler.username=
 The username the AudioScrobbler client uses when authenticating.

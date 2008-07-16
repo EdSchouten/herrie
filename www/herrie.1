@@ -6,4 +6,7 @@ printf 'Content-Type: text/plain\n\r\n'
 for i in `$GIT ls-tree HEAD herrie/man/ | awk '{print $3}'`
 do
 	$GIT cat-file blob $i
-done | tbl | groff -S -Wall -mtty-char -man -Tascii | col -b
+done | sed -e 's|%%CONFFILE%%|/usr/local/etc/herrie.conf|' \
+	-e 's|%%OSS_DEVICE%%|/dev/dsp|' \
+	-e 's|%%PLAYQ_DUMPFILE%%|autosave.xspf|' |
+	tbl | groff -S -Wall -mtty-char -man -Tascii | col -b
