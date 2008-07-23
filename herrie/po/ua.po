@@ -1,11 +1,15 @@
+# translation of herrie.pot to Ukrainian
+# This file is distributed under the same license as the herrie package.
+# Copyright (C) 2007 Viacheslav Chumushuk <viacheslav88@gmail.com>
+# Viacheslav Chumushuk <viacheslav88@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-23 10:18+0200\n"
-"PO-Revision-Date: 2007-10-14 09:14+0200\n"
-"Last-Translator: Sebastian Pipping <webmaster@hartwork.org>\n"
-"Language-Team: Sebastian Pipping <webmaster@hartwork.org>\n"
+"PO-Revision-Date: 2007-11-01 22:32+0200\n"
+"Last-Translator: Viacheslav Chumushuk <viacheslav88@gmail.com>\n"
+"Language-Team:  <viacheslav88@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,235 +17,235 @@ msgstr ""
 #: audio_output_alsa.c:151 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
-msgstr "Gerät kann nicht geöffnet werden."
+msgstr "Неможливо відкрити звуковий пристрій."
 
 #: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
-msgstr "Abtastrate oder Kanalanzahl nicht unterstützt"
+msgstr "Частота семплу або число каналів не підтримується."
 
 #: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "Gerät \"%s\" kann nicht geöffnet werden.\n"
+msgstr "Неможливо відкрити звуковий пристрій \"%s\".\n"
 
 #: gui_browser.c:79
 msgid "filter"
-msgstr ""
+msgstr "фільтр"
 
 #: gui_browser.c:145
 msgid "Unable to open initial directory."
-msgstr "Fehler beim Öffnen des Start-Verzeichnisses."
+msgstr "Неможливо відкрити стартовий каталог."
 
 #: gui_browser.c:252
 msgid "Unable to enter the parent directory."
-msgstr "Fehler beim Öffnen des übergeordneten Verzeichnisses."
+msgstr "Неможливо відкрити батьківський каталог."
 
 #: gui_browser.c:284
 msgid "Unable to enter the selected directory."
-msgstr "Fehler beim Öffnen des gewählten Verzeichnisses."
+msgstr "Неможливо відкрити вибраний каталог."
 
 #: gui_browser.c:370
 msgid "Change directory"
-msgstr "Verzeichnis wechseln"
+msgstr "Змінити каталог"
 
 #: gui_browser.c:408
 msgid "Unable to display the file or directory."
-msgstr "Datei oder Verzeichnis kann nicht angezeigt werden."
+msgstr "Неможливо відобразити файл чи каталог."
 
 #: gui_browser.c:425
 msgid "Write playlist to file"
-msgstr "Playlist in Datei speichern"
+msgstr "Записати список програвання у файл"
 
 #: gui_browser.c:434
 msgid "Unable to write playlist."
-msgstr "Fehler beim Schreiben der Playlist."
+msgstr "Неможливо записати список програвання."
 
 #: gui_input.c:104
 msgid "Use kill(1) to quit."
-msgstr "Zum Beenden kill(1) benutzen."
+msgstr "Використовуйте команду kill(1) для виходу."
 
 #: gui_input.c:108
 #, c-format
 msgid "Quit %s?"
-msgstr "%s beenden?"
+msgstr "Вийти %s?"
 
 #: gui_input.c:192
 msgid "Search for"
-msgstr "Suchen"
+msgstr "Пошук"
 
 #: gui_input.c:198
 msgid "Bad pattern."
-msgstr "Ungültiger regulärer Ausdruck"
+msgstr "Невірний шаблон."
 
 #: gui_input.c:245 gui_input.c:282
 msgid "Not found."
-msgstr "Nicht gefunden."
+msgstr "Не знайдений."
 
 #: gui_input.c:358
 msgid "Jump to position"
-msgstr "Zu Position springen"
+msgstr "Перейти до позиції"
 
 #: gui_input.c:414
 msgid "Bad time format."
-msgstr "Ungültiges Zeit-Format."
+msgstr "Невірний форат часу."
 
 #: gui_input.c:608 main.c:75 main.c:81 main.c:87
 msgid "yes"
-msgstr "ja"
+msgstr "так"
 
 #: gui_input.c:609 main.c:77 main.c:83 main.c:89
 msgid "no"
-msgstr "nein"
+msgstr "ні"
 
 #: gui_playq.c:109
 msgid "Idle"
-msgstr "Inaktiv"
+msgstr "Затримка"
 
 #: gui_playq.c:112
 msgid "Paused"
-msgstr "Pausiert"
+msgstr "Пауза"
 
 #: gui_playq.c:114
 msgid "Playing"
-msgstr "Aktiv"
+msgstr "Програвання"
 
 #: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
-msgstr "Alle Lieder aus der Playlist entfernen?"
+msgstr "Видалити всі пісні із списку?"
 
 #: gui_playq.c:363
 msgid "Randomize the playlist?"
-msgstr "Playlist zufällig anordnen?"
+msgstr "Перемішати список?"
 
 #: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
-msgstr "Dieses Lied ist bereits ganz oben."
+msgstr "Пісня уже на початку списку."
 
 #: gui_playq.c:431 gui_playq.c:469
 msgid "The song is already at the bottom of the playlist."
-msgstr "Dieses Lied ist bereits ganz am Ende."
+msgstr "Пісня уже в кінці списку."
 
 #: gui_playq.c:526
 msgid "Failed to adjust the volume."
-msgstr "Ändern der Lautstärke fehlgeschlagen."
+msgstr "Неможливо додати гучності."
 
 #: gui_playq.c:528
 #, c-format
 msgid "Volume: %d%%"
-msgstr "Lautstärke: %d%%"
+msgstr "Гучність: %d%%"
 
 #: gui_vfslist.c:264
 msgid "There are no songs."
-msgstr "Die Liste ist leer."
+msgstr "Композиції відсутні."
 
 #: gui_vfslist.c:335
 msgid "You are at the first song."
-msgstr "Du bist am Anfang der Liste."
+msgstr "Ви на першій композиції."
 
 #: gui_vfslist.c:360
 msgid "You are at the last song."
-msgstr "Du bist am Ende der Liste."
+msgstr "Ви на останій композиції."
 
 #: gui_vfslist.c:586
 msgid "Search wrapped to top."
-msgstr "Suche am Ende angelagt, Fortsetzung am Anfang."
+msgstr "Досягнуто початку пошуку."
 
 #: gui_vfslist.c:610
 msgid "Full pathname"
-msgstr "Vollständiger Pfad"
+msgstr "Повний шлях"
 
 #: main.c:71
 msgid "Global configuration file"
-msgstr "Globale Konfigurations-Datei"
+msgstr "Глобальний конфігураційний файл."
 
 #: main.c:72
 msgid "Audio output"
-msgstr "Audio-Ausgabe"
+msgstr "Аудіо-вихід"
 
 #: main.c:73
 msgid "Support for AudioScrobbler"
-msgstr "Unterstützung für AudioScrobbler"
+msgstr "Підтримка AudioScrobbler'а"
 
 #: main.c:79
 msgid "Support for HTTP streams"
-msgstr "Unterstützung für HTTP-Streams"
+msgstr "Підтримка HTTP-потоків"
 
 #: main.c:85
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "Unterstützung für XSPF Wiedergabelisten"
+msgstr "Підтримка XSPF-списків (`spiff')"
 
 #: main.c:91
 msgid "Supported audio file formats"
-msgstr "Unterstützte Audio-Formate"
+msgstr "Підтримуванні формати звукових фалів"
 
 #: main.c:103
 msgid "usage"
-msgstr "Benutzung"
+msgstr "використання"
 
 #: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "\"%s\" konnte nicht zum Abspielen geöffnet werden."
+msgstr "Неможливо відкрити \"%s\" для програвання"
 
 #: playq.c:426
 #, c-format
 msgid "Repeat: %s"
-msgstr "Wiederholen: %s"
+msgstr "Повтор %s"
 
 #: playq.c:427
 msgid "on"
-msgstr "an"
+msgstr "ввімкнено"
 
 #: playq.c:427
 msgid "off"
-msgstr "aus"
+msgstr "вимкнено"
 
 #: scrobbler.c:480
 msgid "Failed to authorize at AudioScrobbler."
-msgstr "AudioScrobbler-Login fehlgeschlagen."
+msgstr "Неможливо авторизуватися на AudioScrobbler."
 
 #: scrobbler.c:484
 msgid "Invalid AudioScrobbler username/password."
-msgstr "Benutzername oder Passwort für AudioScrobbler ungültig."
+msgstr "Невірний логін/пароль AudioScrobbler."
 
 #: scrobbler.c:489
 msgid "Successfully authorized at AudioScrobbler."
-msgstr "AudioScrobbler-Login erfolgreich."
+msgstr "Вдало авторизований на AudioScrobbler."
 
 #: scrobbler.c:506
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr "Ein Lied an AudioScrobbler gesendet."
+msgstr "Вдало відісланно 1 композицію на AudioScrobbler."
 
 #: scrobbler.c:510
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr "%d Lieder an AudioScrobbler gesendet."
+msgstr "Вдало відісланно %d композицій на AudioScrobbler."
 
 #: scrobbler.c:516
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr "Fehler bei der Übertragung zu AudioScrobbler."
+msgstr "Неможливо передати композиції на AudioScrobbler."
 
 #: vfs.c:202
 #, c-format
 msgid "Unknown user: %s\n"
-msgstr "Unbekannter Benutzer: %s\n"
+msgstr "Невідомий користувач: %s\n"
 
 #: vfs.c:216
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr "Fehler beim chroot'en nach %s\n"
+msgstr "Неможливо chroot в %s\n"
 
 #: vfs.c:225
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr "Fehler beim Wechseln zu Gruppe %d\n"
+msgstr "Неможливо змінити групу на %d\n"
 
 #: vfs.c:229
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr "Fehler beim Wechseln zu Benutzer %d\n"
+msgstr "Неможливо змінити користувача на %d\n"
 
 #: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "Verbindung zu \"%s\" verloren."
+msgstr "Зв\"язок з \"%s\" втраченно."
