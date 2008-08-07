@@ -605,6 +605,10 @@ gui_input_askyesno(const char *question)
 	const char *yes, *no;
 	int ret;
 
+	/* Skip the question if the user really wants so */
+	if (!config_getopt_bool("gui.input.confirm"))
+		return (0);
+
 	yes = _("yes");
 	no = _("no");
 

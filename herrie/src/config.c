@@ -160,6 +160,7 @@ static struct config_entry configlist[] = {
 	{ "gui.color.marked.fg",	"black",	valid_color,	NULL },
 	{ "gui.color.select.bg",	"cyan",		valid_color,	NULL },
 	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
+	{ "gui.input.confirm",		"yes",		valid_bool,	NULL },
 	{ "gui.input.may_quit",		"yes",		valid_bool,	NULL },
 	{ "gui.vfslist.scrollpages",	"no",		valid_bool,	NULL },
 	{ "playq.autoplay",		"no",		valid_bool,	NULL },
