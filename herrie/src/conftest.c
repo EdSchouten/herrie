@@ -64,7 +64,7 @@ int
 main(int argc, char *argv[])
 {
 #ifdef BUILD_XSPF
-	spiff_write(NULL, NULL);
+	spiff_write(NULL, NULL, NULL);
 #endif /* BUILD_XSPF */
 
 	return (0);

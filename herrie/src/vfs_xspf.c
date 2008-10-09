@@ -56,7 +56,7 @@ vfs_xspf_populate(struct vfsent *ve)
 	char *dirname, *filename;
 	struct vfsref *vr;
 
-	slist = spiff_parse(ve->filename);
+	slist = spiff_parse(ve->filename, "file:///");
 	if (slist == NULL)
 		return (-1);
 
@@ -102,7 +102,7 @@ vfs_xspf_write(const struct vfslist *vl, const char *filename)
 		g_free(fn);
 	}
 
-	ret = spiff_write(list, filename);
+	ret = spiff_write(list, filename, "file:///");
 	spiff_free(list);
 
 	return (ret);
