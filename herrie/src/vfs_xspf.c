@@ -47,18 +47,6 @@ vfs_xspf_match(struct vfsent *ve, int isdir)
 	return (0);
 }
 
-static char *
-vfs_xspf_get_baseuri(const char *dirname)
-{
-	char *url, *baseuri;
-
-	url = url_escape(dirname);
-	baseuri = g_strdup_printf("%s/", url);
-	g_free(url);
-
-	return (baseuri);
-}
-
 int
 vfs_xspf_populate(struct vfsent *ve)
 {
@@ -68,15 +56,13 @@ vfs_xspf_populate(struct vfsent *ve)
 	char *dirname, *baseuri, *filename;
 	struct vfsref *vr;
 
-	dirname = g_path_get_dirname(ve->filename);
-	baseuri = vfs_xspf_get_baseuri(dirname);
-
+	baseuri = url_escape(ve->filename);
 	slist = spiff_parse(ve->filename, baseuri);
 	g_free(baseuri);
-	if (slist == NULL) {
-		g_free(dirname);
+	if (slist == NULL)
 		return (-1);
-	}
+
+	dirname = g_path_get_dirname(ve->filename);
 
 	SPIFF_LIST_FOREACH_TRACK(slist, strack) {
 		SPIFF_TRACK_FOREACH_LOCATION(strack, sloc) {
@@ -101,7 +87,7 @@ vfs_xspf_write(const struct vfslist *vl, const char *filename)
 	struct spiff_list *list;
 	struct spiff_track *track;
 	struct spiff_mvalue *location;
-	char *fn, *dirname, *baseuri;
+	char *fn, *baseuri;
 	struct vfsref *vr;
 	int ret;
 
@@ -121,9 +107,7 @@ vfs_xspf_write(const struct vfslist *vl, const char *filename)
 		g_free(fn);
 	}
 
-	dirname = g_path_get_dirname(filename);
-	baseuri = vfs_xspf_get_baseuri(dirname);
-	g_free(dirname);
+	baseuri = url_escape(filename);
 	ret = spiff_write(list, filename, baseuri);
 	g_free(baseuri);
 	spiff_free(list);
