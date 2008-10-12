@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-23 10:18+0200\n"
+"POT-Creation-Date: 2008-10-12 10:00+0200\n"
 "PO-Revision-Date: 2007-11-29 15:14+0100\n"
 "Last-Translator: Xavier de Blas <xaviblas@gmail.com>\n"
 "Language-Team: Spanish <xaviblas@gmail.com>\n"
@@ -85,11 +85,11 @@ msgstr "Saltar a la posición"
 msgid "Bad time format."
 msgstr "Formato de fecha incorrecto."
 
-#: gui_input.c:608 main.c:75 main.c:81 main.c:87
+#: gui_input.c:612 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "sí"
 
-#: gui_input.c:609 main.c:77 main.c:83 main.c:89
+#: gui_input.c:613 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "no"
 

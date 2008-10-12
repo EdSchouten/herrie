@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-23 10:18+0200\n"
+"POT-Creation-Date: 2008-10-12 10:00+0200\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team:  <se.seam@gmail.com>\n"
@@ -89,11 +89,11 @@ msgstr "Перейти к позиции"
 msgid "Bad time format."
 msgstr "Неверный формат времени."
 
-#: gui_input.c:608 main.c:75 main.c:81 main.c:87
+#: gui_input.c:612 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "да"
 
-#: gui_input.c:609 main.c:77 main.c:83 main.c:89
+#: gui_input.c:613 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "нет"
 

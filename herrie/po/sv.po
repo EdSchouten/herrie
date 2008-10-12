@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-23 10:18+0200\n"
+"POT-Creation-Date: 2008-10-12 10:00+0200\n"
 "PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -90,11 +90,11 @@ msgstr "Hoppa till position"
 msgid "Bad time format."
 msgstr "Felaktigt tidsformat."
 
-#: gui_input.c:608 main.c:75 main.c:81 main.c:87
+#: gui_input.c:612 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:609 main.c:77 main.c:83 main.c:89
+#: gui_input.c:613 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "nej"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-23 10:18+0200\n"
+"POT-Creation-Date: 2008-10-12 10:00+0200\n"
 "PO-Revision-Date: 2008-01-03 21:39+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -91,11 +91,11 @@ msgstr "Nhảy tới vị trí"
 msgid "Bad time format."
 msgstr "Sai định dạng thời gian."
 
-#: gui_input.c:608 main.c:75 main.c:81 main.c:87
+#: gui_input.c:612 main.c:75 main.c:81 main.c:87
 msgid "yes"
 msgstr "có"
 
-#: gui_input.c:609 main.c:77 main.c:83 main.c:89
+#: gui_input.c:613 main.c:77 main.c:83 main.c:89
 msgid "no"
 msgstr "không"
 
