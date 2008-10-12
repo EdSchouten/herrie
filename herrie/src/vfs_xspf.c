@@ -110,7 +110,10 @@ vfs_xspf_write(const struct vfslist *vl, const char *filename)
 	VFS_LIST_FOREACH_REVERSE(vl, vr) {
 		/* Add a new track to the beginning of the list */
 		track = spiff_new_track_before(&list->tracks);
-		spiff_setvalue(&track->title, vfs_name(vr));
+
+		/* Make sure we don't write non-UTF-8 titles to disk */
+		if (g_utf8_validate(vfs_name(vr), -1, NULL))
+			spiff_setvalue(&track->title, vfs_name(vr));
 
 		location = spiff_new_mvalue_before(&track->locations);
 		fn = url_escape(vfs_filename(vr));

@@ -2,6 +2,7 @@
  * Added: Ukranian translation - Viacheslav Chumushuk
  * Added: Option to disable yes/no questions - Viacheslav Chumushuk
  * Fixed: Add support for libSpiff 1.0.0 relative pathname support
+ * Fixed: Don't write non-UTF-8 titles to disk - Peter Koeleman
 
 2008-07-15 -- Herrie 2.1:
  * Added: -p switch to start playback on startup - Phillip Warner
