@@ -132,6 +132,9 @@ scrobbler_queue_insert_tail(struct scrobbler_entry *se)
 	scrobbler_queue_last = se;
 }
 
+/**
+ * @brief Iterate through all entries in the Scrobbler queue.
+ */
 #define SCROBBLER_QUEUE_FOREACH(se) \
 	for (se = scrobbler_queue_first; se != NULL; se = se->next)
 

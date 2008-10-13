@@ -64,10 +64,26 @@ md5_decode(uint32_t buf[16])
 #endif /* G_BYTE_ORDER != G_LITTLE_ENDIAN */
 }
 
+/**
+ * @brief First of the four MD5 calculation steps.
+ */
 #define md5_f(x, y, z)	(z ^ (x & (y ^ z)))
+/**
+ * @brief Second of the four MD5 calculation steps.
+ */
 #define md5_g(x, y, z)	(y ^ (z & (x ^ y)))
+/**
+ * @brief Third of the four MD5 calculation steps.
+ */
 #define md5_h(x, y, z)	(x ^ y ^ z)
+/**
+ * @brief Fourth of the four MD5 calculation steps.
+ */
 #define md5_i(x, y, z)	(y ^ (x | ~z))
+/**
+ * @brief Perform a single MD5 calculation step, including the rotation
+ *        and addition steps.
+ */
 #define md5_step(f, w, x, y, z, d, s) do {	\
 	w += f(x, y, z) + d;			\
 	w = (w << s) | (w >> (32 - s));		\
