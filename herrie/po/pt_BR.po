@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 10:00+0200\n"
+"POT-Creation-Date: 2008-10-14 18:16+0200\n"
 "PO-Revision-Date: 2008-01-01 15:14+0100\n"
 "Last-Translator: Eros Moreira de Carvalho <erosmc@gmail.com>\n"
 "Language-Team: Portuguese <erosmc@gmail.com>\n"
@@ -200,28 +200,28 @@ msgstr "ligado"
 msgid "off"
 msgstr "apagado"
 
-#: scrobbler.c:480
+#: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Falhou em autorizar com AudioScrobbler."
 
-#: scrobbler.c:484
+#: scrobbler.c:487
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Identificação incorreta no AudioScobbler."
 
-#: scrobbler.c:489
+#: scrobbler.c:492
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Autorizado corretamente no AudioScrobbler."
 
-#: scrobbler.c:506
+#: scrobbler.c:509
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Envio bem-sucedido de uma música para o AudioScrobbler."
 
-#: scrobbler.c:510
+#: scrobbler.c:513
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Envio bem-sucedido de %d músicas para o AudioScrobbler."
 
-#: scrobbler.c:516
+#: scrobbler.c:519
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Falhou em enviar músicas para o AudioScrobbler."
 

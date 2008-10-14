@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 10:00+0200\n"
+"POT-Creation-Date: 2008-10-14 18:16+0200\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
@@ -198,28 +198,28 @@ msgstr "açık"
 msgid "off"
 msgstr "kapalı"
 
-#: scrobbler.c:480
+#: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "AudioScrobbler'de yetkilendirme başarısız."
 
-#: scrobbler.c:484
+#: scrobbler.c:487
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Geçersiz AudioScrobbler kullanıcı adı/şifresi"
 
-#: scrobbler.c:489
+#: scrobbler.c:492
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "AudioScrobbler'de başarıyla yetkilendirildi."
 
-#: scrobbler.c:506
+#: scrobbler.c:509
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "1 parça başarıyla AudioScrobbler'e gönderildi."
 
-#: scrobbler.c:510
+#: scrobbler.c:513
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "%d parça başarıyla AudioScrobbler'e gönerildi."
 
-#: scrobbler.c:516
+#: scrobbler.c:519
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Parçalar AudioScrobbler'e gönderilemedi."
 

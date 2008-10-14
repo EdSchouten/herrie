@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 10:00+0200\n"
+"POT-Creation-Date: 2008-10-14 18:16+0200\n"
 "PO-Revision-Date: 2008-02-07 18:04+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -203,28 +203,28 @@ msgstr "开"
 msgid "off"
 msgstr "关"
 
-#: scrobbler.c:480
+#: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "AudioScrobbler 登录失败"
 
-#: scrobbler.c:484
+#: scrobbler.c:487
 msgid "Invalid AudioScrobbler username/password."
 msgstr "无效的 AudioScrobbler 用户名/密码"
 
-#: scrobbler.c:489
+#: scrobbler.c:492
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "AudioScrobbler 登录成功"
 
-#: scrobbler.c:506
+#: scrobbler.c:509
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "成功地发送了 1 首歌至 AudioScrobbler"
 
-#: scrobbler.c:510
+#: scrobbler.c:513
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "成功地发送了 %d 首歌至 AudioScrobbler"
 
-#: scrobbler.c:516
+#: scrobbler.c:519
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "提交歌曲至 AudioScrobbler 时失败"
 

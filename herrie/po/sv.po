@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 10:00+0200\n"
+"POT-Creation-Date: 2008-10-14 18:16+0200\n"
 "PO-Revision-Date: 2007-10-08 22:02+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -202,28 +202,28 @@ msgstr "på"
 msgid "off"
 msgstr "av"
 
-#: scrobbler.c:480
+#: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Behörighetskontroll på AudioScrobbler misslyckades."
 
-#: scrobbler.c:484
+#: scrobbler.c:487
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ogiltigt användarnamn/lösenord för AudioScrobbler."
 
-#: scrobbler.c:489
+#: scrobbler.c:492
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Behörighetskontroll på AudioScrobbler lyckades."
 
-#: scrobbler.c:506
+#: scrobbler.c:509
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Insändning av en låt till AudioScrobbler lyckades."
 
-#: scrobbler.c:510
+#: scrobbler.c:513
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Insändning av %d låtar till AudioScrobbler lyckades."
 
-#: scrobbler.c:516
+#: scrobbler.c:519
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Misslyckades med att skicka in låtar till AudioScrobbler."
 

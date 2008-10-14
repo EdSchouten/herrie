@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 10:00+0200\n"
+"POT-Creation-Date: 2008-10-14 18:16+0200\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Viacheslav Chumushuk <viacheslav88@gmail.com>\n"
 "Language-Team:  <viacheslav88@gmail.com>\n"
@@ -200,28 +200,28 @@ msgstr "ввімкнено"
 msgid "off"
 msgstr "вимкнено"
 
-#: scrobbler.c:480
+#: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Неможливо авторизуватися на AudioScrobbler."
 
-#: scrobbler.c:484
+#: scrobbler.c:487
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Невірний логін/пароль AudioScrobbler."
 
-#: scrobbler.c:489
+#: scrobbler.c:492
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Вдало авторизований на AudioScrobbler."
 
-#: scrobbler.c:506
+#: scrobbler.c:509
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Вдало відісланно 1 композицію на AudioScrobbler."
 
-#: scrobbler.c:510
+#: scrobbler.c:513
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Вдало відісланно %d композицій на AudioScrobbler."
 
-#: scrobbler.c:516
+#: scrobbler.c:519
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Неможливо передати композиції на AudioScrobbler."
 

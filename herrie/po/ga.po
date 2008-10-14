@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 10:00+0200\n"
+"POT-Creation-Date: 2008-10-14 18:16+0200\n"
 "PO-Revision-Date: 2008-01-13 07:53-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -201,28 +201,28 @@ msgstr "ann"
 msgid "off"
 msgstr "as"
 
-#: scrobbler.c:480
+#: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Theip ar údarú ag AudioScrobbler."
 
-#: scrobbler.c:484
+#: scrobbler.c:487
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ainm úsáideora/Focal faire neamhbhailí do AudioScrobbler."
 
-#: scrobbler.c:489
+#: scrobbler.c:492
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "D'éirigh le húdarú ag AudioScrobbler."
 
-#: scrobbler.c:506
+#: scrobbler.c:509
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "D'éirigh le seoladh amhrán amháin chuig AudioScrobbler."
 
-#: scrobbler.c:510
+#: scrobbler.c:513
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "D'éirigh le seoladh %d amhrán chuig AudioScrobbler."
 
-#: scrobbler.c:516
+#: scrobbler.c:519
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Theip ar sheoladh amhráin chuig AudioScrobbler."
 

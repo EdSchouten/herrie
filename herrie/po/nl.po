@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 10:00+0200\n"
+"POT-Creation-Date: 2008-10-14 18:16+0200\n"
 "PO-Revision-Date: 2007-12-06 20:28+0100\n"
 "Last-Translator: Ed Schouten <ed@80386.nl>\n"
 "Language-Team: Ed Schouten <ed@80386.nl>\n"
@@ -196,28 +196,28 @@ msgstr "aan"
 msgid "off"
 msgstr "uit"
 
-#: scrobbler.c:480
+#: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Authoriseren bij AudioScrobbler mislukt."
 
-#: scrobbler.c:484
+#: scrobbler.c:487
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ongeldige AudioScrobbler gebruikersnaam/wachtwoord."
 
-#: scrobbler.c:489
+#: scrobbler.c:492
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Succesvol geauthoriseerd bij AudioScrobbler."
 
-#: scrobbler.c:506
+#: scrobbler.c:509
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Succesvol 1 nummer opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:510
+#: scrobbler.c:513
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Succesvol %d nummers opgestuurd naar AudioScrobbler."
 
-#: scrobbler.c:516
+#: scrobbler.c:519
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nummers opsturen naar AudioScrobbler mislukt."
 

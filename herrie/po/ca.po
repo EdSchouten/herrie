@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 10:00+0200\n"
+"POT-Creation-Date: 2008-10-14 18:16+0200\n"
 "PO-Revision-Date: 2007-11-29 15:14+0100\n"
 "Last-Translator: Xavier de Blas <xaviblas@gmail.com>\n"
 "Language-Team: Catalan <xaviblas@gmail.com>\n"
@@ -196,28 +196,28 @@ msgstr "encès"
 msgid "off"
 msgstr "apagat"
 
-#: scrobbler.c:480
+#: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Fallada en l'autorització a l'AudioScrobbler."
 
-#: scrobbler.c:484
+#: scrobbler.c:487
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Identificació incorrecta a l'AudioScobbler."
 
-#: scrobbler.c:489
+#: scrobbler.c:492
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Autoritzat correctament a l'AudioScrobbler."
 
-#: scrobbler.c:506
+#: scrobbler.c:509
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "S'ha enviat satisfactòriament 1 cançó a l'AudioScrobbler."
 
-#: scrobbler.c:510
+#: scrobbler.c:513
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "S'ha enviat satisfactòriament %d cançons a l'AudioScrobbler."
 
-#: scrobbler.c:516
+#: scrobbler.c:519
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Errada en l'enviament de cançons a l'AudioScrobbler."
 
