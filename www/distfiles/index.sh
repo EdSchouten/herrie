@@ -13,7 +13,7 @@ cat << EOF
 		<ul>
 EOF
 
-for i in herrie-*.bz2
+for i in `ls -t herrie-*.bz2`
 do
 	printf '\t\t\t<li><a href="%s">%s</a></li>\n' $i $i
 done
@@ -25,7 +25,7 @@ cat << EOF
 		<ul>
 EOF
 
-for i in herrie-*.gz
+for i in `ls -t herrie-*.gz`
 do
 	printf '\t\t\t<li><a href="%s">%s</a></li>\n' $i $i
 done
