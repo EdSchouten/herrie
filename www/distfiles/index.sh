@@ -7,6 +7,12 @@ cat << EOF
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Herrie - distfiles</title>
+		<style type="text/css">
+			body, html {
+				font-size: 11pt;
+				font-family: Verdana, 'Bitstream Vera Sans', 'Lucida Grande', sans-serif;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>Tarballs - bzip2</h1>
@@ -15,7 +21,7 @@ EOF
 
 for i in `ls -t herrie-*.bz2`
 do
-	printf '\t\t\t<li><a href="%s">%s</a></li>\n' $i $i
+	stat -f "<li><a href=\"%N\">%N</a> (%z bytes)</li>" $i
 done
 
 cat << EOF
@@ -27,7 +33,7 @@ EOF
 
 for i in `ls -t herrie-*.gz`
 do
-	printf '\t\t\t<li><a href="%s">%s</a></li>\n' $i $i
+	stat -f "<li><a href=\"%N\">%N</a> (%z bytes)</li>" $i
 done
 
 cat << EOF
