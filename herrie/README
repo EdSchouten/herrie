@@ -52,6 +52,7 @@ library. It also uses some libraries for audio decompression and such.
 Below is a list of libraries you should install prior to compiling
 Herrie:
 
+- dbus and dbus-glib (optional)
 - gettext (NLS, optional)
 - glib
 - libasound (ALSA, optional)
@@ -76,6 +77,7 @@ Herrie ships with a shellscript called `configure' which generates a
 Makefile for your specific system. Arguments can be passed to the
 configure script to change certain parameters:
 
+- no_dbus       Disable DBus integration
 - no_http       Disable support for HTTP audio streams
 - no_modplug    Disable libmodplug linkage
 - no_mp3        Disable MP3 audio file support
