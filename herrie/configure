@@ -254,7 +254,7 @@ then
 fi
 # Strict compilation
 [ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
-[ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -g -DBUILD_DEBUG"
+[ "$CFG_DEBUG" != "" ] && CFLAGS="$CFLAGS -g -DBUILD_DEBUG"
 # Translation support
 # Remove all broken translations
 unset CFG_LINGUAS
