@@ -32,6 +32,7 @@
 
 #include "audio_output.h"
 #include "config.h"
+#include "dbus.h"
 #include "gui.h"
 #include "gui_internal.h"
 #include "playq.h"
@@ -589,8 +590,14 @@ gui_input_loop(void)
 			    (kbdbindings[i].focus != -1 &&
 			     kbdbindings[i].focus != gui_input_curfocus))
 				continue;
-			
+
+#ifdef BUILD_DBUS
+			dbus_lock();
 			kbdbindings[i].func();
+			dbus_unlock();
+#else /* !BUILD_DBUS */
+			kbdbindings[i].func();
+#endif /* BUILD_DBUS */
 			break;
 		}
 

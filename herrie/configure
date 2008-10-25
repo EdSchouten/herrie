@@ -34,6 +34,7 @@ CFG_AO=oss
 unset CFG_BINEXT
 CFG_CURSES_HEADER=ncurses
 CFG_CURSES_LIB=ncursesw
+CFG_DBUS=yes
 CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
@@ -115,6 +116,9 @@ MANREGEX="-e 's|%%CONFFILE%%|$CONFFILE|'"
 while [ $# -gt 0 ]
 do
 	case $1 in
+	no_dbus)
+		unset CFG_DBUS
+		;;
 	no_http)
 		unset CFG_HTTP
 		;;
@@ -208,6 +212,15 @@ SRCS="audio_file audio_output_$CFG_AO config gui_browser gui_draw \
 # We always use glib
 test_pkgconfig "GLib" "glib-2.0" ""
 test_pkgconfig "GLib threading library" "gthread-2.0" ""
+
+# DBus integration
+if [ "$CFG_DBUS" != "" ]
+then
+	test_pkgconfig "dbus-glib" "dbus-glib-1" ""
+	CFLAGS="$CFLAGS -DBUILD_DBUS -I."
+	SRCS="$SRCS dbus"
+	DEPENDS_EXTRA_dbus="dbus_binding.h"
+fi
 
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
@@ -396,14 +409,17 @@ $APP_NAME.1.gz: $MANFILES Makefile
 	# Generating manual page $APP_NAME.1.gz
 	${DOIT}sed $MANREGEX $MANFILES | gzip -9 > $APP_NAME.1.gz
 clean:
-	# Removing $APP_NAME$CFG_BINEXT $APP_NAME.1.gz *.dSYM *.mo *.o
-	${DOIT}rm -f $APP_NAME$CFG_BINEXT $APP_NAME.1.gz *.mo *.o
+	# Removing $APP_NAME$CFG_BINEXT $APP_NAME.1.gz dbus_binding.h *.dSYM *.mo *.o
+	${DOIT}rm -f $APP_NAME$CFG_BINEXT $APP_NAME.1.gz dbus_binding.h *.mo *.o
 	${DOIT}rm -Rf *.dSYM
 distclean: clean
 	# Removing Makefile
 	${DOIT}rm -f Makefile
 Makefile: $0 `dirname $0`/depends
 	# WARNING: Your Makefile is outdated. Please re-run $0!
+dbus_binding.h: Makefile $SRCDIR/src/dbus.xml
+	# Generating dbus_binding.h
+	${DOIT}dbus-binding-tool --mode=glib-server --prefix=dbus_server --output=dbus_binding.h $SRCDIR/src/dbus.xml
 install: all
 	# Installing \$(DESTDIR)$BINDIR/$APP_NAME$CFG_BINEXT
 	${DOIT}mkdir -p \$(DESTDIR)$BINDIR
@@ -443,7 +459,7 @@ do
 	do
 		DEPS="$DEPS $SRCDIR/src/$j.h"
 	done
-	echo "$i.o: Makefile $SRCDIR/src/$i.c $SRCDIR/src/stdinc.h $DEPS"
+	echo "$i.o: Makefile $SRCDIR/src/$i.c $SRCDIR/src/stdinc.h $DEPS `eval echo \\\$DEPENDS_EXTRA_\$i`"
 	echo "	# Compiling $i.o"
 	echo "	$DOIT$CC -c $SRCDIR/src/$i.c $CFLAGS `eval echo \\\$CFLAGS_\$i` -o $i.o"
 done

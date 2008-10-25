@@ -32,6 +32,7 @@
 
 #include "audio_output.h"
 #include "config.h"
+#include "dbus.h"
 #include "gui.h"
 #include "playq.h"
 #include "scrobbler.h"
@@ -170,6 +171,9 @@ main(int argc, char *argv[])
 	}
 
 	/* Initialize the locks */
+#ifdef BUILD_DBUS
+	dbus_init();
+#endif /* BUILD_DBUS */
 #ifdef BUILD_SCROBBLER
 	scrobbler_init();
 #endif /* BUILD_SCROBBLER */
@@ -196,6 +200,9 @@ main(int argc, char *argv[])
 
 	/* All set and done - spawn our threads */
 	playq_spawn();
+#ifdef BUILD_DBUS
+	dbus_spawn();
+#endif /* BUILD_DBUS */
 #ifdef BUILD_SCROBBLER
 	scrobbler_spawn();
 #endif /* BUILD_SCROBBLER */
