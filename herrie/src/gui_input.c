@@ -522,8 +522,6 @@ gui_input_sigmask(void)
 	sigset_t sset;
 
 	sigemptyset(&sset);
-	sigaddset(&sset, SIGUSR1);
-	sigaddset(&sset, SIGUSR2);
 	sigaddset(&sset, SIGHUP);
 	sigaddset(&sset, SIGINT);
 	sigaddset(&sset, SIGPIPE);
@@ -547,12 +545,6 @@ gui_input_sighandler(int signal)
 		return;
 
 	switch (signal) {
-	case SIGUSR1:
-		playq_cursong_pause();
-		break;
-	case SIGUSR2:
-		playq_cursong_next();
-		break;
 	case SIGHUP:
 	case SIGINT:
 	case SIGPIPE:
@@ -571,8 +563,6 @@ gui_input_loop(void)
 	unsigned int i;
 
 #ifdef G_OS_UNIX
-	signal(SIGUSR1, gui_input_sighandler);
-	signal(SIGUSR2, gui_input_sighandler);
 	signal(SIGHUP, gui_input_sighandler);
 	signal(SIGINT, gui_input_sighandler);
 	signal(SIGPIPE, gui_input_sighandler);

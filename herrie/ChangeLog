@@ -1,5 +1,6 @@
 ????-??-?? -- Herrie ?.?:
  * Added: DBus support - Steve Jothen
+ * Removed: SIGUSR1 and SIGUSR2 control signals
 
 2008-10-14 -- Herrie 2.2:
  * Added: Ukranian translation - Viacheslav Chumushuk
