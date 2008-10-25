@@ -55,6 +55,7 @@ version(void)
 		"%s: %s\n"
 		"%s: %s\n"
 		"%s: %s\n"
+		"%s: %s\n"
 		"%s:\n"
 #ifdef BUILD_VORBIS
 		"- Ogg Vorbis\n"
@@ -77,6 +78,12 @@ version(void)
 #else /* !BUILD_SCROBBLER */
 		_("no"),
 #endif /* BUILD_SCROBBLER */
+		_("Support for DBus integration"),
+#ifdef BUILD_DBUS
+		_("yes"),
+#else /* !BUILD_DBUS */
+		_("no"),
+#endif /* BUILD_DBUS */
 		_("Support for HTTP streams"),
 #ifdef BUILD_HTTP
 		_("yes"),
