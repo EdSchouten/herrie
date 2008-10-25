@@ -13,6 +13,7 @@ Graphical user interface:
 - Make startup-configuration of repeat-switch configurable
 - Allow Herrie to be controlled outside the interface through /tmp
 - Add the ability to show the filename of the song that's currently playing
+- Allow randomized playback in XMMS mode without shuffling the list
 
 Audio abstraction:
 - Implement better buffering schemes for ALSA and CoreAudio
