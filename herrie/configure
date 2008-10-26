@@ -385,7 +385,8 @@ then
 	echo "See the README file for a list of dependencies"
 	exit 1
 fi
-rm conftest$CFG_BINEXT
+rm -f conftest$CFG_BINEXT
+rm -Rf conftest.dSYM
 
 # Don't generate duplicate rules
 SRCS=`echo $SRCS | xargs -n 1 | sort | uniq`
@@ -410,9 +411,8 @@ $APP_NAME.1.gz: $MANFILES Makefile
 	# Generating manual page $APP_NAME.1.gz
 	${DOIT}sed $MANREGEX $MANFILES | gzip -9 > $APP_NAME.1.gz
 clean:
-	# Removing $APP_NAME$CFG_BINEXT $APP_NAME.1.gz dbus_binding.h *.dSYM *.mo *.o
+	# Removing $APP_NAME$CFG_BINEXT $APP_NAME.1.gz dbus_binding.h *.mo *.o
 	${DOIT}rm -f $APP_NAME$CFG_BINEXT $APP_NAME.1.gz dbus_binding.h *.mo *.o
-	${DOIT}rm -Rf *.dSYM
 distclean: clean
 	# Removing Makefile
 	${DOIT}rm -f Makefile

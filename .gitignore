@@ -1,7 +1,6 @@
 .DS_Store
 dbus_binding.h
 herrie/*.core
-herrie/*.dSYM
 herrie/*.mo
 herrie/*.o
 herrie/.gdb_history
