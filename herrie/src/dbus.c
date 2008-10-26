@@ -39,27 +39,44 @@
 #include "playq.h"
 #include "gui_internal.h"
 
-#define	TYPE_DBUS_SERVER	(dbus_server_get_type())
-#define	DBUS_SERVER(obj)	\
-	(G_TYPE_CHECK_INSTANCE_CAST((obj), TYPE_DBUS_SERVER, DBusServer)
+/**
+ * @brief Obtain the type ID of the DBusServer object.
+ */
+GType dbus_server_get_type(void);
 
+/**
+ * @Brief Per-DBusServer instance private data.
+ */
 typedef struct {
 	GObject parent;
 } DBusServer;
 
+/**
+ * @brief DBusServer class private data.
+ */
 typedef struct {
 	GObjectClass parent_class;
 } DBusServerClass;
 
-#define HERRIE_BUS_NAME "info.herrie.Herrie"
-#define HERRIE_PATH_NAME "/info/herrie/Herrie"
-
-GType dbus_server_get_type(void);
-
+/**
+ * @brief Class registration for DBusServer.
+ */
 G_DEFINE_TYPE(DBusServer, dbus_server, G_TYPE_OBJECT);
 
 GMutex *dbus_mtx;
 
+/**
+ * @brief DBus bus name used by this application.
+ */
+#define HERRIE_BUS_NAME "info.herrie.Herrie"
+/**
+ * @brief DBus path name used by this application.
+ */
+#define HERRIE_PATH_NAME "/info/herrie/Herrie"
+
+/**
+ * @brief Main loop to process incoming DBus events.
+ */
 static void *
 dbus_runner_thread(void *unused)
 {
@@ -70,7 +87,7 @@ dbus_runner_thread(void *unused)
 	guint ret;
   
 	g_type_init();
-	ds = g_object_new(TYPE_DBUS_SERVER, NULL);
+	ds = g_object_new(dbus_server_get_type(), NULL);
 	loop = g_main_loop_new(NULL, FALSE);
 
 	/* Connect to the session bus. */
@@ -104,6 +121,9 @@ done:	g_main_loop_unref(loop);
 	return (NULL);
 }
 
+/**
+ * @brief Initialize the lock used by DBus.
+ */
 void
 dbus_init(void)
 {
@@ -111,12 +131,18 @@ dbus_init(void)
 	dbus_mtx = g_mutex_new();
 }
 
+/**
+ * @brief Spawn the thread to process DBus events.
+ */
 void
 dbus_spawn(void)
 {
 	g_thread_create(dbus_runner_thread, NULL, 0, NULL);
 }
 
+/**
+ * @brief DBus event to skip to the next track.
+ */
 static gboolean
 dbus_server_next(DBusServer *self, GError **error)
 {
@@ -127,6 +153,9 @@ dbus_server_next(DBusServer *self, GError **error)
 	return (TRUE);
 }
 
+/**
+ * @brief DBus event to pause the current track.
+ */
 static gboolean
 dbus_server_pause(DBusServer *self, GError **error)
 {
@@ -137,6 +166,9 @@ dbus_server_pause(DBusServer *self, GError **error)
 	return (TRUE);
 }
 
+/**
+ * @brief DBus event to start playback.
+ */
 static gboolean
 dbus_server_play(DBusServer *self, GError **error)
 {
@@ -147,6 +179,9 @@ dbus_server_play(DBusServer *self, GError **error)
 	return (TRUE);
 }
 
+/**
+ * @brief DBus event to stop playback.
+ */
 static gboolean
 dbus_server_stop(DBusServer *self, GError **error)
 {
@@ -157,6 +192,9 @@ dbus_server_stop(DBusServer *self, GError **error)
 	return (TRUE);
 }
 
+/**
+ * @brief DBus event to adjust the volume upwards.
+ */
 static gboolean
 dbus_server_volume_down(DBusServer *self, GError **error)
 {
@@ -167,6 +205,9 @@ dbus_server_volume_down(DBusServer *self, GError **error)
 	return (TRUE);
 }
 
+/**
+ * @brief DBus event to adjust the volume downwards.
+ */
 static gboolean
 dbus_server_volume_up(DBusServer *self, GError **error)
 {
@@ -179,14 +220,20 @@ dbus_server_volume_up(DBusServer *self, GError **error)
 
 #include <dbus_binding.h>
 
+/**
+ * @brief Per-DBusServer instance constructor.
+ */
 static void
 dbus_server_init(DBusServer *self)
 {
 }
 
+/**
+ * @brief DBusServer class constructor.
+ */
 static void
 dbus_server_class_init(DBusServerClass *klass)
 {
-	dbus_g_object_type_install_info(TYPE_DBUS_SERVER,
+	dbus_g_object_type_install_info(dbus_server_get_type(),
 	    &dbus_glib_dbus_server_object_info);
 }
