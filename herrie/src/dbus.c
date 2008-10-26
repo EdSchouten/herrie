@@ -206,9 +206,11 @@ dbus_server_stop(DBusServer *self, GError **error)
 static gboolean
 dbus_server_volume_down(DBusServer *self, GError **error)
 {
+#ifdef BUILD_VOLUME
 	dbus_lock();
 	gui_playq_volume_down();
 	dbus_unlock();
+#endif /* BUILD_VOLUME */
 
 	return (TRUE);
 }
@@ -219,9 +221,11 @@ dbus_server_volume_down(DBusServer *self, GError **error)
 static gboolean
 dbus_server_volume_up(DBusServer *self, GError **error)
 {
+#ifdef BUILD_VOLUME
 	dbus_lock();
 	gui_playq_volume_up();
 	dbus_unlock();
+#endif /* BUILD_VOLUME */
 
 	return (TRUE);
 }
