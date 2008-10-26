@@ -86,7 +86,7 @@ dbus_runner_thread(void *unused)
 	    DBUS_PATH_DBUS, DBUS_INTERFACE_DBUS);
 
 	/* Register our bus name with DBus. */
-	if(org_freedesktop_DBus_request_name(proxy, HERRIE_BUS_NAME,
+	if (org_freedesktop_DBus_request_name(proxy, HERRIE_BUS_NAME,
 	    0, &ret, NULL) == 0)
 		goto done;
 
