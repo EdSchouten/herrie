@@ -37,8 +37,6 @@
 
 #include "dbus.h"
 #include "playq.h"
-#include "gui.h"
-/* XXX */
 #include "gui_internal.h"
 
 #define	TYPE_DBUS_SERVER	(dbus_server_get_type())
@@ -65,59 +63,45 @@ GMutex *dbus_mtx;
 static void *
 dbus_runner_thread(void *unused)
 {
-	DBusServer *controller;
-	DBusGConnection *conn;
+	DBusServer *ds;
+	DBusGConnection *dc;
 	GMainLoop *loop;
 	DBusGProxy *proxy;
-	GError *err = NULL;
 	guint ret;
   
 	g_type_init();
-	controller = g_object_new(TYPE_DBUS_SERVER, NULL);
+	ds = g_object_new(TYPE_DBUS_SERVER, NULL);
 	loop = g_main_loop_new(NULL, FALSE);
 
-	/* Connect to the session bus */
-	conn = dbus_g_bus_get(DBUS_BUS_SESSION, &err);
+	/* Connect to the session bus. */
+	dc = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+	if (dc == NULL)
+		goto done;
 
-	if(conn == NULL) {
-		gui_msgbar_warn(_("Error getting DBus session bus."));
-		goto error;
-	}
+	/* Register the controller object with DBus. */
+	dbus_g_connection_register_g_object(dc, HERRIE_PATH_NAME,
+	    G_OBJECT(ds));
 
-	/* Register the controller object with DBus */
-	dbus_g_connection_register_g_object(conn,
-		HERRIE_PATH_NAME, G_OBJECT(controller));
+	proxy = dbus_g_proxy_new_for_name(dc, DBUS_SERVICE_DBUS,
+	    DBUS_PATH_DBUS, DBUS_INTERFACE_DBUS);
 
-	proxy = dbus_g_proxy_new_for_name(conn,
-		DBUS_SERVICE_DBUS,
-		DBUS_PATH_DBUS,
-		DBUS_INTERFACE_DBUS);
+	/* Register our bus name with DBus. */
+	if(org_freedesktop_DBus_request_name(proxy, HERRIE_BUS_NAME,
+	    0, &ret, NULL) == 0)
+		goto done;
 
-	err = NULL;
-
-	/* Register our bus name with DBus */
-	if(!org_freedesktop_DBus_request_name(proxy,
-		HERRIE_BUS_NAME, 0, &ret, &err)) {
-		gui_msgbar_warn(_("Error requesting DBus bus name."));
-		goto error;
-	}
-
-	/* Another process is using our DBus path, probably another herrie */
-	if(ret != DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER) {
-		gui_msgbar_warn(_("DBus path already in use."));
-		goto error;
-	}
-
-	gui_msgbar_warn("Here we go!");
+	/*
+	 * Another process is using our DBus path, probably another
+	 * instance of the application.
+	 */
+	if (ret != DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER)
+		goto done;
 
 	g_main_loop_run(loop);
 
-	gui_msgbar_warn("Bye bye!");
-
-error:
-	g_main_loop_unref(loop);
-	g_object_unref(controller);
-	return NULL;
+done:	g_main_loop_unref(loop);
+	g_object_unref(ds);
+	return (NULL);
 }
 
 void
