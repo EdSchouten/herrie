@@ -40,14 +40,19 @@
 #include "gui_internal.h"
 
 /**
- * @brief Obtain the type ID of the DBusServer object.
+ * @brief Obtain the type ID of the DBusServer object. This should
+ *        actually be static, but G_DEFINE_TYPE does not allow us to
+ *        mark it that way.
  */
 GType dbus_server_get_type(void);
 
 /**
- * @Brief Per-DBusServer instance private data.
+ * @brief Per-DBusServer instance private data.
  */
 typedef struct {
+	/**
+	 * @brief Parent class data.
+	 */
 	GObject parent;
 } DBusServer;
 
@@ -55,6 +60,9 @@ typedef struct {
  * @brief DBusServer class private data.
  */
 typedef struct {
+	/**
+	 * @brief Parent class data.
+	 */
 	GObjectClass parent_class;
 } DBusServerClass;
 
