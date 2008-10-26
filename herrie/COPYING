@@ -36,3 +36,5 @@ Thanks to the people at Dispuut Interlink (http://www.il.fontys.nl/) for
 their testing and hosting services. I would like to thank Martijn van
 den Dungen <martijn@il.fontys.nl> for contributing code to Herrie in the
 past.
+
+The DBus integration code is based on a patch supplied by Steve Jothen.
