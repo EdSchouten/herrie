@@ -38,6 +38,9 @@
 #ifdef BUILD_AO
 #include <ao/ao.h>
 #endif /* BUILD_AO */
+#ifdef BUILD_DBUS
+#include <dbus/dbus-glib-bindings.h>
+#endif /* BUILD_DBUS */
 #ifdef BUILD_MODPLUG
 #include <sys/mman.h>
 #endif /* BUILD_MODPLUG */
