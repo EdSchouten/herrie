@@ -5,11 +5,7 @@
 		<method name="pause"/>
 		<method name="play"/>
 		<method name="stop"/>
-		<method name="volumeDown">
-			<arg type="u" name="volume" direction="out"/>
-		</method>
-		<method name="volumeUp">
-			<arg type="u" name="volume" direction="out"/>
-		</method>
+		<method name="volumeDown"/>
+		<method name="volumeUp"/>
 	</interface>
 </node>
