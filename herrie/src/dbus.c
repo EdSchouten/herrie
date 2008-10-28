@@ -37,6 +37,7 @@
 
 #include "dbus.h"
 #include "playq.h"
+#include "gui.h"
 #include "gui_internal.h"
 
 /**
@@ -93,6 +94,8 @@ dbus_runner_thread(void *unused)
 	GMainLoop *loop;
 	DBusGProxy *proxy;
 	guint ret;
+
+	gui_input_sigmask();
   
 	g_type_init();
 	ds = g_object_new(dbus_server_get_type(), NULL);
