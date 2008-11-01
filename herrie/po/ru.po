@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 18:16+0200\n"
+"POT-Creation-Date: 2008-11-01 15:59+0100\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Moroz Sergey L. <se.seam@gmail.com>\n"
 "Language-Team:  <se.seam@gmail.com>\n"
@@ -60,40 +60,40 @@ msgstr "Записать список воспроизведения в файл
 msgid "Unable to write playlist."
 msgstr "Невозможно записать список воспроизведения."
 
-#: gui_input.c:104
+#: gui_input.c:105
 msgid "Use kill(1) to quit."
 msgstr "Используйте kill(1) для выхода."
 
-#: gui_input.c:108
+#: gui_input.c:109
 #, c-format
 msgid "Quit %s?"
 msgstr "Покинуть %s?"
 
-#: gui_input.c:192
+#: gui_input.c:193
 msgid "Search for"
 msgstr "Поиск"
 
-#: gui_input.c:198
+#: gui_input.c:199
 msgid "Bad pattern."
 msgstr "Неверный шаблон."
 
-#: gui_input.c:245 gui_input.c:282
+#: gui_input.c:246 gui_input.c:283
 msgid "Not found."
 msgstr "Не найден."
 
-#: gui_input.c:358
+#: gui_input.c:359
 msgid "Jump to position"
 msgstr "Перейти к позиции"
 
-#: gui_input.c:414
+#: gui_input.c:415
 msgid "Bad time format."
 msgstr "Неверный формат времени."
 
-#: gui_input.c:612 main.c:75 main.c:81 main.c:87
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "да"
 
-#: gui_input.c:613 main.c:77 main.c:83 main.c:89
+#: gui_input.c:610 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "нет"
 
@@ -154,31 +154,35 @@ msgstr "Поиск достиг начала."
 msgid "Full pathname"
 msgstr "Полный путь"
 
-#: main.c:71
+#: main.c:73
 msgid "Global configuration file"
 msgstr "Файл глобальной конфигурации"
 
-#: main.c:72
+#: main.c:74
 msgid "Audio output"
 msgstr "Аудио-выход"
 
-#: main.c:73
+#: main.c:75
 msgid "Support for AudioScrobbler"
 msgstr "Поддержка AudioScrobbler"
 
-#: main.c:79
+#: main.c:81
+msgid "Support for DBus integration"
+msgstr ""
+
+#: main.c:87
 msgid "Support for HTTP streams"
 msgstr "Поддержка HTTP-потоков"
 
-#: main.c:85
+#: main.c:93
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Поддержка XSPF-списков (`spiff')"
 
-#: main.c:91
+#: main.c:99
 msgid "Supported audio file formats"
 msgstr "Поддерживаемые форматы звуковых файлов"
 
-#: main.c:103
+#: main.c:111
 msgid "usage"
 msgstr "использование"
 

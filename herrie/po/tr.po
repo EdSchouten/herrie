@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 18:16+0200\n"
+"POT-Creation-Date: 2008-11-01 15:59+0100\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
@@ -58,40 +58,40 @@ msgstr "Parça listesini dosyaya yaz"
 msgid "Unable to write playlist."
 msgstr "Parça listesini yazma başarısız"
 
-#: gui_input.c:104
+#: gui_input.c:105
 msgid "Use kill(1) to quit."
 msgstr "Çıkmak için kill(1) kullanın."
 
-#: gui_input.c:108
+#: gui_input.c:109
 #, c-format
 msgid "Quit %s?"
 msgstr "%s uygulamasından çık?"
 
-#: gui_input.c:192
+#: gui_input.c:193
 msgid "Search for"
 msgstr "Ara"
 
-#: gui_input.c:198
+#: gui_input.c:199
 msgid "Bad pattern."
 msgstr "Hatalı ifade"
 
-#: gui_input.c:245 gui_input.c:282
+#: gui_input.c:246 gui_input.c:283
 msgid "Not found."
 msgstr "Bulunamadı"
 
-#: gui_input.c:358
+#: gui_input.c:359
 msgid "Jump to position"
 msgstr "Konuma git"
 
-#: gui_input.c:414
+#: gui_input.c:415
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:612 main.c:75 main.c:81 main.c:87
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:613 main.c:77 main.c:83 main.c:89
+#: gui_input.c:610 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "hayır"
 
@@ -152,31 +152,35 @@ msgstr "Arama üste kaydırıldı."
 msgid "Full pathname"
 msgstr "Tam dosya yolu"
 
-#: main.c:71
+#: main.c:73
 msgid "Global configuration file"
 msgstr "Genel ayar dosyası"
 
-#: main.c:72
+#: main.c:74
 msgid "Audio output"
 msgstr "Ses çıkışı"
 
-#: main.c:73
+#: main.c:75
 msgid "Support for AudioScrobbler"
 msgstr "AudioScrobbler desteği"
 
-#: main.c:79
+#: main.c:81
+msgid "Support for DBus integration"
+msgstr ""
+
+#: main.c:87
 msgid "Support for HTTP streams"
 msgstr "HTTP akımları desteği"
 
-#: main.c:85
+#: main.c:93
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "XSPF parca listesi destegi (`spiff`)"
 
-#: main.c:91
+#: main.c:99
 msgid "Supported audio file formats"
 msgstr "Desteklenen ses dosyası biçimleri"
 
-#: main.c:103
+#: main.c:111
 msgid "usage"
 msgstr "kullanım"
 

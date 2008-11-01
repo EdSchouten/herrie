@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 18:16+0200\n"
+"POT-Creation-Date: 2008-11-01 16:00+0100\n"
 "PO-Revision-Date: 2007-12-01 16:48+0100\n"
 "Last-Translator: Piotr Budny <vip@pld-linux.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -58,40 +58,40 @@ msgstr "Zapisz playlistę do pliku"
 msgid "Unable to write playlist."
 msgstr "Nie można zapisac playlisty."
 
-#: gui_input.c:104
+#: gui_input.c:105
 msgid "Use kill(1) to quit."
 msgstr "Użyj kill(1) aby wyjść."
 
-#: gui_input.c:108
+#: gui_input.c:109
 #, c-format
 msgid "Quit %s?"
 msgstr "Zamknij %s?"
 
-#: gui_input.c:192
+#: gui_input.c:193
 msgid "Search for"
 msgstr "Szukaj"
 
-#: gui_input.c:198
+#: gui_input.c:199
 msgid "Bad pattern."
 msgstr "Zła próbka."
 
-#: gui_input.c:245 gui_input.c:282
+#: gui_input.c:246 gui_input.c:283
 msgid "Not found."
 msgstr "Nie znaleziono"
 
-#: gui_input.c:358
+#: gui_input.c:359
 msgid "Jump to position"
 msgstr "Skocz do pozycji"
 
-#: gui_input.c:414
+#: gui_input.c:415
 msgid "Bad time format."
 msgstr "Zły format czasu."
 
-#: gui_input.c:612 main.c:75 main.c:81 main.c:87
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "tak"
 
-#: gui_input.c:613 main.c:77 main.c:83 main.c:89
+#: gui_input.c:610 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "nie"
 
@@ -152,31 +152,35 @@ msgstr "Przeszukiwanie wznowione od początku."
 msgid "Full pathname"
 msgstr "Pełna ścieżka"
 
-#: main.c:71
+#: main.c:73
 msgid "Global configuration file"
 msgstr "Globalny plik konfiguracyjny"
 
-#: main.c:72
+#: main.c:74
 msgid "Audio output"
 msgstr "Wyjście audio"
 
-#: main.c:73
+#: main.c:75
 msgid "Support for AudioScrobbler"
 msgstr "Wsparcie dla AudioScrobblera"
 
-#: main.c:79
+#: main.c:81
+msgid "Support for DBus integration"
+msgstr ""
+
+#: main.c:87
 msgid "Support for HTTP streams"
 msgstr "Wsparcie dla strumienie HTTP"
 
-#: main.c:85
+#: main.c:93
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Wsparcie dla plylist XSPF ('spiff')"
 
-#: main.c:91
+#: main.c:99
 msgid "Supported audio file formats"
 msgstr "Wspierane formaty plików audio"
 
-#: main.c:103
+#: main.c:111
 msgid "usage"
 msgstr "użycie"
 

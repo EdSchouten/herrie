@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 18:16+0200\n"
+"POT-Creation-Date: 2008-11-01 16:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,40 +62,40 @@ msgstr ""
 msgid "Unable to write playlist."
 msgstr ""
 
-#: gui_input.c:104
+#: gui_input.c:105
 msgid "Use kill(1) to quit."
 msgstr ""
 
-#: gui_input.c:108
+#: gui_input.c:109
 #, c-format
 msgid "Quit %s?"
 msgstr ""
 
-#: gui_input.c:192
+#: gui_input.c:193
 msgid "Search for"
 msgstr ""
 
-#: gui_input.c:198
+#: gui_input.c:199
 msgid "Bad pattern."
 msgstr ""
 
-#: gui_input.c:245 gui_input.c:282
+#: gui_input.c:246 gui_input.c:283
 msgid "Not found."
 msgstr ""
 
-#: gui_input.c:358
+#: gui_input.c:359
 msgid "Jump to position"
 msgstr ""
 
-#: gui_input.c:414
+#: gui_input.c:415
 msgid "Bad time format."
 msgstr ""
 
-#: gui_input.c:612 main.c:75 main.c:81 main.c:87
+#: gui_input.c:609 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr ""
 
-#: gui_input.c:613 main.c:77 main.c:83 main.c:89
+#: gui_input.c:610 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr ""
 
@@ -156,31 +156,35 @@ msgstr ""
 msgid "Full pathname"
 msgstr ""
 
-#: main.c:71
+#: main.c:73
 msgid "Global configuration file"
 msgstr ""
 
-#: main.c:72
+#: main.c:74
 msgid "Audio output"
 msgstr ""
 
-#: main.c:73
+#: main.c:75
 msgid "Support for AudioScrobbler"
 msgstr ""
 
-#: main.c:79
+#: main.c:81
+msgid "Support for DBus integration"
+msgstr ""
+
+#: main.c:87
 msgid "Support for HTTP streams"
 msgstr ""
 
-#: main.c:85
+#: main.c:93
 msgid "Support for XSPF playlists (`spiff')"
 msgstr ""
 
-#: main.c:91
+#: main.c:99
 msgid "Supported audio file formats"
 msgstr ""
 
-#: main.c:103
+#: main.c:111
 msgid "usage"
 msgstr ""
 
