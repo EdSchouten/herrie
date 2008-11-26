@@ -173,7 +173,7 @@ main(int argc, char *argv[])
 #endif /* CLOSE_STDERR */
 	if ((errmsg = vfs_lockup()) != NULL) {
 		gui_draw_init_abort();
-		g_printerr(errmsg);
+		g_printerr("%s", errmsg);
 		return (1);
 	}
 
