@@ -206,6 +206,11 @@ gui_input_asksearch(void)
 		vfs_match_free(cursearch);
 	cursearch = vm;
 
+	str = g_strdup_printf(_("Searching for \"%s\"..."),
+	    vfs_match_value(vm));
+	gui_msgbar_warn(str);
+	g_free(str);
+
 	return (0);
 }
 
@@ -250,6 +255,7 @@ found:	/* Focus the window with the match and redraw them. */
 	gui_input_curfocus = nfocus;
 	gui_playq_setfocus(gui_input_curfocus == GUI_FOCUS_PLAYQ);
 	gui_browser_setfocus(gui_input_curfocus == GUI_FOCUS_BROWSER);
+	gui_msgbar_flush();
 }
 
 /**
@@ -281,6 +287,8 @@ gui_input_locate(void)
 	/* Perform the serach */
 	if (gui_browser_locate(cursearch) != 0)
 		gui_msgbar_warn(_("Not found."));
+	else
+		gui_msgbar_flush();
 }
 
 /**
