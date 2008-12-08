@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-01 15:59+0100\n"
+"POT-Creation-Date: 2008-12-08 19:35+0100\n"
 "PO-Revision-Date: 2008-01-03 21:39+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -79,23 +79,28 @@ msgstr "Tìm kiếm"
 msgid "Bad pattern."
 msgstr "Sai mẫu."
 
-#: gui_input.c:246 gui_input.c:283
+#: gui_input.c:209
+#, fuzzy, c-format
+msgid "Searching for \"%s\"..."
+msgstr "Tìm kiếm"
+
+#: gui_input.c:251 gui_input.c:289
 msgid "Not found."
 msgstr "Không tìm thấy."
 
-#: gui_input.c:359
+#: gui_input.c:367
 msgid "Jump to position"
 msgstr "Nhảy tới vị trí"
 
-#: gui_input.c:415
+#: gui_input.c:423
 msgid "Bad time format."
 msgstr "Sai định dạng thời gian."
 
-#: gui_input.c:609 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:617 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "có"
 
-#: gui_input.c:610 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:618 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "không"
 
