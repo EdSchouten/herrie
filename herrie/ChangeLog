@@ -1,6 +1,7 @@
 ????-??-?? -- Herrie ?.?:
  * Added: DBus support - Steve Jothen
  * Removed: SIGUSR1 and SIGUSR2 control signals
+ * Added: Simple progress message during search and locate - Ruud Althuizen
 
 2008-10-14 -- Herrie 2.2:
  * Added: Ukranian translation - Viacheslav Chumushuk
