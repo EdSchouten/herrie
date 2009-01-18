@@ -255,7 +255,7 @@ config_load(const char *file, int expand)
 		return;
 
 	while (vfs_fgets(fbuf, sizeof fbuf, fio) == 0) {
-		/* Split at the : and set the option */
+		/* Split at the = and set the option */
 		split = strchr(fbuf, '=');
 		if (split != NULL) {
 			/* Split the option and value */
