@@ -61,7 +61,7 @@ Herrie:
 - libid3tag (MP3, optional)
 - libmad (MP3, optional)
 - libmodplug (optional)
-- libsndfile (optional)
+- libsndfile (requires 1.0.18, optional)
 - libspiff (XSPF support, requires 1.0.0 or higher, optional)
 - libvorbisfile (optional)
 - ncursesw, ncurses or pdcurses (`XCurses')
