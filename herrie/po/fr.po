@@ -133,7 +133,7 @@ msgstr "Impossible de changer le volume."
 #: gui_playq.c:528
 #, c-format
 msgid "Volume: %d%%"
-msgstr ""
+msgstr "Volume: %d%%"
 
 #: gui_vfslist.c:264
 msgid "There are no songs."
@@ -199,11 +199,11 @@ msgstr "Répète: %s"
 
 #: playq.c:427
 msgid "on"
-msgstr ""
+msgstr "activé"
 
 #: playq.c:427
 msgid "off"
-msgstr ""
+msgstr "désactivé"
 
 #: scrobbler.c:483
 msgid "Failed to authorize at AudioScrobbler."
