@@ -92,8 +92,10 @@ modplug_open(struct audio_file *fd, const char *ext)
 	/* libmodplug doesn't have good magic. Match by extension */
 	if (ext == NULL)
 		return (-1);
-	if (strcmp(ext, "mod") != 0 && strcmp(ext, "s3m") != 0 &&
-	    strcmp(ext, "it") != 0 && strcmp(ext, "xm") != 0)
+	if (g_ascii_strcasecmp(ext, "mod") != 0 &&
+	    g_ascii_strcasecmp(ext, "s3m") != 0 &&
+	    g_ascii_strcasecmp(ext, "it") != 0 &&
+	    g_ascii_strcasecmp(ext, "xm") != 0)
 		return (-1);
 
 	/* If only we could memory map the internet... */
