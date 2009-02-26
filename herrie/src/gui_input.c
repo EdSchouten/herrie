@@ -364,8 +364,8 @@ gui_input_cursong_seek_jump(void)
 	char *str, *t;
 	int total = 0, split = 0, digit = 0, value, relative = 0;
 
-	t = str = gui_input_askstring(_("Jump to position"),
-	    curseek, gui_input_cursong_seek_validator);
+	str = gui_input_askstring(_("Jump to position"), curseek,
+	    gui_input_cursong_seek_validator);
 	if (str == NULL)
 		return;
 
