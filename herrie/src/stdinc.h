@@ -58,13 +58,6 @@
 #define _(str) str
 #endif /* BUILD_NLS */
 
-/* Older Glib's don't have GSlice yet */
-#ifndef g_slice_new
-#define g_slice_new(type)	g_malloc(sizeof(type))
-#define g_slice_new0(type)	g_malloc0(sizeof(type))
-#define g_slice_free(type,obj)	g_free(obj)
-#endif /* !g_slice_new */
-
 #ifdef G_THREADS_IMPL_POSIX
 #include <pthread.h>
 #endif /* G_THREADS_IMPL_POSIX */
