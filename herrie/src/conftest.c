@@ -59,9 +59,6 @@
 #include <vorbis/codec.h>
 #include <vorbis/vorbisfile.h>
 #endif /* BUILD_VORBIS */
-#ifdef BUILD_XSPF
-#include <spiff/spiff_c.h>
-#endif /* BUILD_XSPF */
 
 int
 main(int argc, char *argv[])
@@ -70,9 +67,6 @@ main(int argc, char *argv[])
 #ifdef BUILD_SNDFILE
 	sf_get_string(NULL, SF_STR_ALBUM);
 #endif /* BUILD_SNDFILE */
-#ifdef BUILD_XSPF
-	spiff_write(NULL, NULL, NULL);
-#endif /* BUILD_XSPF */
 
 	return (0);
 }

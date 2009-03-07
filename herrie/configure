@@ -301,7 +301,7 @@ fi
 if [ "$CFG_XSPF" != "" ]
 then
 	CFLAGS="$CFLAGS -DBUILD_XSPF"
-	LDFLAGS="$LDFLAGS -lspiff"
+	test_pkgconfig "libxspf" "xspf" "_vfs_xspf"
 	SRCS="$SRCS util vfs_xspf"
 	PLAYQ_DUMPFILE="autosave.xspf"
 else
