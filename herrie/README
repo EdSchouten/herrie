@@ -54,7 +54,7 @@ Herrie:
 
 - dbus and dbus-glib (optional)
 - gettext (NLS, optional)
-- glib
+- glib (requires 2.10)
 - libasound (ALSA, optional)
 - libao (AO, optional)
 - libcurl (HTTP and AudioScrobbler, optional)
