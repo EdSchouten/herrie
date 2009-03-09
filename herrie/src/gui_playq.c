@@ -518,14 +518,14 @@ gui_playq_fullpath(void)
  * @brief Show the result of the volume setting routines.
  */
 static void
-gui_playq_volume_show(int new)
+gui_playq_volume_show(int nval)
 {
 	char *str;
 
-	if (new < 0) {
+	if (nval < 0) {
 		gui_msgbar_warn(_("Failed to adjust the volume."));
 	} else {
-		str = g_strdup_printf(_("Volume: %d%%"), new);
+		str = g_strdup_printf(_("Volume: %d%%"), nval);
 		gui_msgbar_warn(str);
 		g_free(str);
 	}
@@ -534,19 +534,19 @@ gui_playq_volume_show(int new)
 void
 gui_playq_volume_up(void)
 {
-	int new;
+	int nval;
 
-	new = audio_output_volume_up();
-	gui_playq_volume_show(new);
+	nval = audio_output_volume_up();
+	gui_playq_volume_show(nval);
 }
 
 void
 gui_playq_volume_down(void)
 {
-	int new;
+	int nval;
 
-	new = audio_output_volume_down();
-	gui_playq_volume_show(new);
+	nval = audio_output_volume_down();
+	gui_playq_volume_show(nval);
 }
 #endif /* BUILD_VOLUME */
 
