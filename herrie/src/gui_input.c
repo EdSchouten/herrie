@@ -698,7 +698,8 @@ gui_input_askstring(const char *question, const char *defstr,
 	GString *msg;
 	unsigned int origlen, newlen;
 	int c, clearfirst = 0;
-	char *ret = NULL, *vstr;
+	char *ret = NULL;
+	const char *vstr;
 
 	msg = g_string_new(question);
 	g_string_append(msg, ": ");
