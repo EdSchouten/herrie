@@ -62,8 +62,8 @@ Herrie:
 - libmad (MP3, optional)
 - libmodplug (optional)
 - libsndfile (requires 1.0.18, optional)
-- libxspf (optional)
 - libvorbisfile (optional)
+- libxspf (optional)
 - ncursesw, ncurses or pdcurses (`XCurses')
 - pulseaudio (optional)
 
