@@ -167,7 +167,8 @@ static struct config_entry configlist[] = {
 	{ "playq.dumpfile",		CONFHOMEDIR PLAYQ_DUMPFILE, NULL, NULL },
 	{ "playq.xmms",			"no",		valid_bool,	NULL },
 #ifdef BUILD_SCROBBLER
-	{ "scrobbler.dumpfile",		CONFHOMEDIR "scrobbler.queue",	NULL, NULL },
+	{ "scrobbler.dumpfile",		CONFHOMEDIR "scrobbler.queue", NULL, NULL },
+	{ "scrobbler.hostname",		"post.audioscrobbler.com", NULL, NULL },
 	{ "scrobbler.password",		"",		valid_md5,	NULL },
 	{ "scrobbler.username",		"",		NULL,		NULL },
 #endif /* BUILD_SCROBBLER */

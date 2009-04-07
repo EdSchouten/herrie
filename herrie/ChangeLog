@@ -5,6 +5,7 @@
  * Added: French translation - Bertrand Janin
  * Fixed: Case insensitive extension matching for Modplug - Hampus
  * Changed: Migrated to libxspf, instead of libSpiff
+ * Added: scrobbler.hostname - Clint Adams
 
 2008-10-14 -- Herrie 2.2:
  * Added: Ukranian translation - Viacheslav Chumushuk

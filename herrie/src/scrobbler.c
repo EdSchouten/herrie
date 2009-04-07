@@ -44,7 +44,7 @@
 /**
  *@ brief The URL format used for the initial handshake.
  */
-#define SCROBBLER_URL "http://post.audioscrobbler.com/?hs=true&p=1.2&c=her&v=0.1&u=%s&t=%u&a=%s"
+#define SCROBBLER_URL "http://%s/?hs=true&p=1.2&c=her&v=0.1&u=%s&t=%u&a=%s"
 
 /**
  * @brief Flag indicating if the AudioScrobbler thread has already been
@@ -367,7 +367,9 @@ scrobbler_send_handshake(char *key, char **url)
 	hstime = time(NULL);
 	scrobbler_hash(hstime, hskey);
 	hskey[32] = '\0';
-	hsurl = g_strdup_printf(SCROBBLER_URL, config_getopt("scrobbler.username"),
+	hsurl = g_strdup_printf(SCROBBLER_URL,
+	    config_getopt("scrobbler.hostname"),
+	    config_getopt("scrobbler.username"),
 	    (unsigned int)hstime, hskey);
 	curl_easy_setopt(con, CURLOPT_URL, hsurl);
 	curl_easy_setopt(con, CURLOPT_USERAGENT, APP_NAME "/" APP_VERSION);
