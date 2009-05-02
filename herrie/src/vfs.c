@@ -103,6 +103,7 @@ vfs_path_concat(const char *dir, const char *file, int strict)
 	GString *npath;
 	char *tmp, *off;
 #ifdef G_OS_UNIX
+	const char *uend;
 	struct passwd *pw;
 #endif /* G_OS_UNIX */
 
@@ -114,21 +115,23 @@ vfs_path_concat(const char *dir, const char *file, int strict)
 #ifdef G_OS_UNIX
 	} else if (!strict && file[0] == '~') {
 		/* Expand ~username - UNIX only */
-		off = strchr(file, G_DIR_SEPARATOR);
+		uend = strchr(file + 1, G_DIR_SEPARATOR);
 
 		/* Temporarily split the string and resolve the username */
-		if (off != NULL)
-			*off = '\0';
-		pw = getpwnam(file + 1);
-		if (off != NULL)
-			*off = G_DIR_SEPARATOR;
+		if (uend != NULL) {
+			tmp = g_strndup(file + 1, uend - (file + 1));
+			pw = getpwnam(tmp);
+			g_free(tmp);
+		} else {
+			pw = getpwnam(file + 1);
+		}
 		if (pw == NULL)
 			return (NULL);
 
 		/* Create the new pathname */
 		npath = g_string_new(pw->pw_dir);
-		if (off != NULL)
-			g_string_append(npath, off);
+		if (uend != NULL)
+			g_string_append(npath, uend);
 #endif /* G_OS_UNIX */
 	} else if (g_path_is_absolute(file)) {
 		/* We already have an absolute path */
