@@ -58,7 +58,7 @@ static struct vfsmodule modules[] = {
  * @brief The number of virtual file system modules currently available
  *        in the application.
  */
-#define NUM_MODULES (sizeof(modules) / sizeof(struct vfsmodule))
+#define NUM_MODULES (sizeof modules / sizeof(struct vfsmodule))
 
 /**
  * @brief Playlist writing module object. Matching is performed by
@@ -91,7 +91,7 @@ static struct vfswriter writers[] = {
  * @brief The number of VFS writing modules currently available in the
  *        application.
  */
-#define NUM_WRITERS (sizeof(writers) / sizeof(struct vfswriter))
+#define NUM_WRITERS (sizeof writers / sizeof(struct vfswriter))
 
 /**
  * @brief Concatenate a path- and filename. The resulting filename will
