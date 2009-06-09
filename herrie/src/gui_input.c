@@ -477,6 +477,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, ']',			gui_playq_song_move_down },
 	{ -1, '{',			gui_playq_song_move_head },
 	{ -1, '}',			gui_playq_song_move_tail },
+	{ -1, '~',			gui_browser_gotohome },
 	{ -1, '\t', 			gui_input_switchfocus },
 	{ -1, CTRL('W'),		gui_input_switchfocus },
 	{ -1, '/',			gui_input_search },

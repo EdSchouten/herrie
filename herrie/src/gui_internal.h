@@ -273,6 +273,10 @@ void gui_playq_volume_down(void);
  */
 void gui_playq_gotofolder(void);
 /**
+ * @brief Go to the current user's home directory.
+ */
+void gui_browser_gotohome(void);
+/**
  * @brief Go to the parent directory of the VFS reference and select the
  *        item which shares the same filename.
  */
@@ -356,7 +360,7 @@ void gui_browser_playq_add_before(void);
  */
 int gui_browser_searchnext(const struct vfsmatch *vm);
 /**
- * @brief Change to a specified directory.
+ * @brief Change to a directory, filled in by the user.
  */
 void gui_browser_chdir(void);
 /**

@@ -357,19 +357,14 @@ gui_browser_searchnext(const struct vfsmatch *vm)
 	return gui_vfslist_searchnext(win_browser, vm);
 }
 
-void
-gui_browser_chdir(void)
+/**
+ * @brief Change to a specified directory.
+ */
+static void
+gui_browser_do_chdir(const char *path)
 {
-	char *path;
-	const char *curwd = NULL;
 	int dir = 0;
 	struct vfsref *vr;
-
-	if (vr_curdir != NULL)
-		curwd = vfs_filename(vr_curdir);
-	path = gui_input_askstring(_("Change directory"), curwd, NULL);
-	if (path == NULL)
-		return;
 
 	if (vr_curdir != NULL) {
 		/* Relative to the current node */
@@ -378,7 +373,6 @@ gui_browser_chdir(void)
 		/* Relative to the root */
 		vr = vfs_lookup(path, NULL, NULL, 0);
 	}
-	g_free(path);
 
 	if (vr != NULL) {
 		if (vfs_populate(vr) == 0)
@@ -408,6 +402,23 @@ gui_browser_chdir(void)
 bad:	gui_msgbar_warn(_("Unable to display the file or directory."));
 	if (vr != NULL)
 		vfs_close(vr);
+}
+
+void
+gui_browser_chdir(void)
+{
+	char *path;
+	const char *curwd = NULL;
+
+	if (vr_curdir != NULL)
+		curwd = vfs_filename(vr_curdir);
+
+	path = gui_input_askstring(_("Change directory"), curwd, NULL);
+	if (path == NULL)
+		return;
+
+	gui_browser_do_chdir(path);
+	g_free(path);
 }
 
 void
@@ -481,4 +492,10 @@ gui_browser_gotofolder(void)
 		return;
 
 	gui_browser_gotofile(gui_vfslist_getselected(win_browser));
+}
+
+void
+gui_browser_gotohome(void)
+{
+	gui_browser_do_chdir("~");
 }
