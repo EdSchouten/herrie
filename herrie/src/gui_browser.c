@@ -497,5 +497,10 @@ gui_browser_gotofolder(void)
 void
 gui_browser_gotohome(void)
 {
-	gui_browser_do_chdir("~");
+	const char *defdir;
+
+	defdir = config_getopt("gui.browser.defaultpath");
+	if (defdir[0] == '\0')
+		return;
+	gui_browser_do_chdir(defdir);
 }
