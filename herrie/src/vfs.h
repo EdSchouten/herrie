@@ -182,7 +182,7 @@ vfs_list_init(struct vfslist *vl)
  * @brief Move the contents of one list to another.
  */
 static inline void
-vfs_list_move(struct vfslist *vdst, struct vfslist *vsrc)
+vfs_list_move(struct vfslist *vdst, const struct vfslist *vsrc)
 {
 	memcpy(vdst, vsrc, sizeof(struct vfslist));
 }
