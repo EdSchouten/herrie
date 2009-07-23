@@ -255,7 +255,6 @@ found:	/* Focus the window with the match and redraw them. */
 	gui_input_curfocus = nfocus;
 	gui_playq_setfocus(gui_input_curfocus == GUI_FOCUS_PLAYQ);
 	gui_browser_setfocus(gui_input_curfocus == GUI_FOCUS_BROWSER);
-	gui_msgbar_flush();
 }
 
 /**

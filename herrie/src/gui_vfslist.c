@@ -574,8 +574,10 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const struct vfsmatch *vm)
 	/* Step 1: search from selection to end */
 	for (vr = vfs_list_next(gv->vr_selected), idx = gv->idx_selected + 1;
 	    vr != NULL; vr = vfs_list_next(vr), idx++) {
-		if (vfs_match_compare(vm, vfs_name(vr)))
+		if (vfs_match_compare(vm, vfs_name(vr))) {
+			gui_msgbar_flush();
 			goto found;
+		}
 	}
 
 	/* Step 2: search from beginning to selection */
