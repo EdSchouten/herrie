@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: herrie 2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-11-23 17:26+0100\n"
-"PO-Revision-Date: 2009-11-23 13:49+0200\n"
+"PO-Revision-Date: 2009-11-23 22:54+0200\n"
 "Last-Translator: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
 "Language-Team: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #: audio_output_alsa.c:151 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
-msgstr "Heliseadet ei saa avada"
+msgstr "Audioseadet ei saa avada."
 
 #: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
@@ -27,7 +27,7 @@ msgstr "Mittetoetatud diskreetimissagedus või kanalite arv."
 #: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "Heliseadet „%s” ei saa avada.\n"
+msgstr "Audioseadet \"%s\" ei saa avada.\n"
 
 #: gui_browser.c:79
 msgid "filter"
@@ -55,7 +55,7 @@ msgstr "Vaheta kataloog"
 
 #: gui_browser.c:436
 msgid "Write playlist to file"
-msgstr "Kirjuta esitusnimekiri faili."
+msgstr "Kirjuta esitusnimekiri faili"
 
 #: gui_browser.c:445
 msgid "Unable to write playlist."
@@ -79,9 +79,9 @@ msgid "Bad pattern."
 msgstr "Vigane muster."
 
 #: gui_input.c:209
-#, c-format
+#, c-format, fuzzy
 msgid "Searching for \"%s\"..."
-msgstr ""
+msgstr "Otsin \"%s\"..."
 
 #: gui_input.c:251 gui_input.c:288
 msgid "Not found."
@@ -128,6 +128,7 @@ msgid "The song is already at the top of the playlist."
 msgstr "Lugu on juba esitusnimekirja esimene."
 
 #: gui_playq.c:431 gui_playq.c:469
+#, fuzzy
 msgid "The song is already at the bottom of the playlist."
 msgstr "Lugu on juba esitusnimekirja viimane."
 
@@ -174,7 +175,7 @@ msgstr "AudioScrobbler'i toetus"
 
 #: main.c:81
 msgid "Support for DBus integration"
-msgstr ""
+msgstr "Integreeritud DBUS toetus"
 
 #: main.c:87
 msgid "Support for HTTP streams"
@@ -182,7 +183,7 @@ msgstr "HTTP-striimingu toetus"
 
 #: main.c:93
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "XSPF-esitusnimekirjade („spiff”) toetus"
+msgstr "XSPF-esitusnimekirjade (\"spiff\") toetus"
 
 #: main.c:99
 msgid "Supported audio file formats"
@@ -195,7 +196,7 @@ msgstr "kasutamine"
 #: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "Ei õnnestunud lugude esitamiseks avada kausta „%s” ."
+msgstr "Faili \"%s\" ei õnnestunud mängimiseks avada."
 
 #: playq.c:426
 #, c-format
@@ -258,4 +259,4 @@ msgstr "Vahetus kasutajaks %d ebaõnnestus\n"
 #: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "Ühendus „%s”-ga katkes."
+msgstr "Ühendus \"%s\"-ga katkes."
