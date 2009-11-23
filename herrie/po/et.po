@@ -1,15 +1,16 @@
-# translation of herrie.pot to Ukrainian
+# translation of herrie-2.2.pot to Estonian
+# Copyright (C) 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the herrie package.
-# Copyright (C) 2007 Viacheslav Chumushuk <viacheslav88@gmail.com>
-# Viacheslav Chumushuk <viacheslav88@gmail.com>, 2007.
+#
+# Kaupo Palo <kaupo.palo@osa.pri.ee>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: herrie\n"
+"Project-Id-Version: herrie 2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-11-23 13:23+0100\n"
-"PO-Revision-Date: 2007-11-01 22:32+0200\n"
-"Last-Translator: Viacheslav Chumushuk <viacheslav88@gmail.com>\n"
-"Language-Team:  <viacheslav88@gmail.com>\n"
+"PO-Revision-Date: 2009-11-23 13:49+0200\n"
+"Last-Translator: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
+"Language-Team: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,65 +18,65 @@ msgstr ""
 #: audio_output_alsa.c:151 audio_output_ao.c:116 audio_output_coreaudio.c:199
 #: audio_output_pulse.c:77
 msgid "Cannot open the audio device."
-msgstr "Неможливо відкрити звуковий пристрій."
+msgstr "Heliseadet ei saa avada"
 
 #: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
-msgstr "Частота семплу або число каналів не підтримується."
+msgstr "Mittetoetatud diskreetimissagedus v??i kanalite arv."
 
 #: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "Неможливо відкрити звуковий пристрій \"%s\".\n"
+msgstr "Heliseadet ???%s??? ei saa avada.\n"
 
 #: gui_browser.c:79
 msgid "filter"
-msgstr "фільтр"
+msgstr "filter"
 
 #: gui_browser.c:145
 msgid "Unable to open initial directory."
-msgstr "Неможливо відкрити стартовий каталог."
+msgstr "Ei saa avada l??htekataloogi."
 
 #: gui_browser.c:252
 msgid "Unable to enter the parent directory."
-msgstr "Неможливо відкрити батьківський каталог."
+msgstr "Ei saa minna emakataloogi."
 
 #: gui_browser.c:284
 msgid "Unable to enter the selected directory."
-msgstr "Неможливо відкрити вибраний каталог."
+msgstr "Ei saa minna valitud kataloogi."
 
 #: gui_browser.c:402
 msgid "Unable to display the file or directory."
-msgstr "Неможливо відобразити файл чи каталог."
+msgstr "Ei saa kuvada faili v??i kataloogi."
 
 #: gui_browser.c:416
 msgid "Change directory"
-msgstr "Змінити каталог"
+msgstr "Vaheta kataloog"
 
 #: gui_browser.c:436
 msgid "Write playlist to file"
-msgstr "Записати список програвання у файл"
+msgstr "Kirjuta esitusnimekiri faili."
 
 #: gui_browser.c:445
 msgid "Unable to write playlist."
-msgstr "Неможливо записати список програвання."
+msgstr "Esitusnimekirja salvestamine eba??nnestus."
 
 #: gui_input.c:105
 msgid "Use kill(1) to quit."
-msgstr "Використовуйте команду kill(1) для виходу."
+msgstr "V??lju kasutades k??sku kill(1)."
 
 #: gui_input.c:109
 #, c-format
 msgid "Quit %s?"
-msgstr "Вийти %s?"
+msgstr "Kas v??ljun %s-st?"
 
 #: gui_input.c:193
 msgid "Search for"
-msgstr "Пошук"
+msgstr "Otsi"
 
 #: gui_input.c:199
 msgid "Bad pattern."
-msgstr "Невірний шаблон."
+msgstr "Vigane muster."
 
 #: gui_input.c:209
 #, c-format
@@ -84,92 +85,92 @@ msgstr ""
 
 #: gui_input.c:251 gui_input.c:288
 msgid "Not found."
-msgstr "Не знайдений."
+msgstr "Ei leidunud."
 
 #: gui_input.c:366
 msgid "Jump to position"
-msgstr "Перейти до позиції"
+msgstr "Siirdu positsioonile"
 
 #: gui_input.c:422
 msgid "Bad time format."
-msgstr "Невірний форат часу."
+msgstr "Vigane ajavormindus."
 
 #: gui_input.c:617 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
-msgstr "так"
+msgstr "jah"
 
 #: gui_input.c:618 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
-msgstr "ні"
+msgstr "ei"
 
 #: gui_playq.c:109
 msgid "Idle"
-msgstr "Затримка"
+msgstr "J??ude"
 
 #: gui_playq.c:112
 msgid "Paused"
-msgstr "Пауза"
+msgstr "Peatatud"
 
 #: gui_playq.c:114
 msgid "Playing"
-msgstr "Програвання"
+msgstr "M??ngib"
 
 #: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
-msgstr "Видалити всі пісні із списку?"
+msgstr "Kas k??rvaldan k??ik lood esitusnimekirjast?"
 
 #: gui_playq.c:363
 msgid "Randomize the playlist?"
-msgstr "Перемішати список?"
+msgstr "Kas j??rjestan esitusnimekirja juhuslikult?"
 
 #: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
-msgstr "Пісня уже на початку списку."
+msgstr "Lugu on juba esitusnimekirja esimene."
 
 #: gui_playq.c:431 gui_playq.c:469
 msgid "The song is already at the bottom of the playlist."
-msgstr "Пісня уже в кінці списку."
+msgstr "Lugu on juba esitusnimekirja viimane."
 
 #: gui_playq.c:526
 msgid "Failed to adjust the volume."
-msgstr "Неможливо додати гучності."
+msgstr "Helitugevuse seadmine eba??nnestus."
 
 #: gui_playq.c:528
 #, c-format
 msgid "Volume: %d%%"
-msgstr "Гучність: %d%%"
+msgstr "Helitugevus: %d%%"
 
 #: gui_vfslist.c:264
 msgid "There are no songs."
-msgstr "Композиції відсутні."
+msgstr "Ei ole ??htegi lugu."
 
 #: gui_vfslist.c:335
 msgid "You are at the first song."
-msgstr "Ви на першій композиції."
+msgstr "M??ngid esimest lugu."
 
 #: gui_vfslist.c:360
 msgid "You are at the last song."
-msgstr "Ви на останій композиції."
+msgstr "M??ngid viimast lugu."
 
 #: gui_vfslist.c:588
 msgid "Search wrapped to top."
-msgstr "Досягнуто початку пошуку."
+msgstr "Otsing p????rdus tagasi algusesse."
 
 #: gui_vfslist.c:612
 msgid "Full pathname"
-msgstr "Повний шлях"
+msgstr "T??ielik asukoht"
 
 #: main.c:73
 msgid "Global configuration file"
-msgstr "Глобальний конфігураційний файл."
+msgstr "??ldine h????lestusfail"
 
 #: main.c:74
 msgid "Audio output"
-msgstr "Аудіо-вихід"
+msgstr "Audiov??ljund"
 
 #: main.c:75
 msgid "Support for AudioScrobbler"
-msgstr "Підтримка AudioScrobbler'а"
+msgstr "AudioScrobbler'i toetus"
 
 #: main.c:81
 msgid "Support for DBus integration"
@@ -177,84 +178,84 @@ msgstr ""
 
 #: main.c:87
 msgid "Support for HTTP streams"
-msgstr "Підтримка HTTP-потоків"
+msgstr "HTTP-striimingu toetus"
 
 #: main.c:93
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "Підтримка XSPF-списків (`spiff')"
+msgstr "XSPF-esitusnimekirjade (???spiff???) toetus"
 
 #: main.c:99
 msgid "Supported audio file formats"
-msgstr "Підтримуванні формати звукових фалів"
+msgstr "Toetatud audiofailivormingud"
 
 #: main.c:111
 msgid "usage"
-msgstr "використання"
+msgstr "kasutamine"
 
 #: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "Неможливо відкрити \"%s\" для програвання"
+msgstr "Ei ??nnestunud lugude esitamiseks avada kausta ???%s??? ."
 
 #: playq.c:426
 #, c-format
 msgid "Repeat: %s"
-msgstr "Повтор %s"
+msgstr "Korda: %s"
 
 #: playq.c:427
 msgid "on"
-msgstr "ввімкнено"
+msgstr "sees"
 
 #: playq.c:427
 msgid "off"
-msgstr "вимкнено"
+msgstr "v??ljas"
 
 #: scrobbler.c:485
 msgid "Failed to authorize at AudioScrobbler."
-msgstr "Неможливо авторизуватися на AudioScrobbler."
+msgstr "Autentimine AudioScrobbleriga eba??nnestus."
 
 #: scrobbler.c:489
 msgid "Invalid AudioScrobbler username/password."
-msgstr "Невірний логін/пароль AudioScrobbler."
+msgstr "Vigane AudioScrobbler'i kasutajanimi v??i salas??na."
 
 #: scrobbler.c:494
 msgid "Successfully authorized at AudioScrobbler."
-msgstr "Вдало авторизований на AudioScrobbler."
+msgstr "Autentimine AudioScrobbler'iga ??nnestus."
 
 #: scrobbler.c:511
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr "Вдало відісланно 1 композицію на AudioScrobbler."
+msgstr "??nnestus saata ??ks lugu AudioScrobbler'isse."
 
 #: scrobbler.c:515
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr "Вдало відісланно %d композицій на AudioScrobbler."
+msgstr "??nnestus saata %d lugu AudioScrobbler'isse."
 
 #: scrobbler.c:521
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr "Неможливо передати композиції на AudioScrobbler."
+msgstr "Lugude saatmine AudioScrobbler'isse eba??nnestus."
 
 #: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
-msgstr "Невідомий користувач: %s\n"
+msgstr "Tundmatu kasutaja: %s\n"
 
 #: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr "Неможливо chroot в %s\n"
+msgstr "chroot-operatsioon kataloogi %s eba??nnestus\n"
 
 #: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr "Неможливо змінити групу на %d\n"
+msgstr "Vahetus r??hmaks %d eba??nnestus\n"
 
 #: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr "Неможливо змінити користувача на %d\n"
+msgstr "Vahetus kasutajaks %d eba??nnestus\n"
 
 #: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "Зв\"язок з \"%s\" втраченно."
+msgstr "??hendus ???%s???-ga katkes."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 17:32+0100\n"
+"POT-Creation-Date: 2009-11-23 13:23+0100\n"
 "PO-Revision-Date: 2008-01-03 21:39+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -46,19 +46,19 @@ msgstr "Không thể vào thư mục cha."
 msgid "Unable to enter the selected directory."
 msgstr "Không thể vào thư mục đã chọn."
 
-#: gui_browser.c:370
-msgid "Change directory"
-msgstr "Đổi thư mục"
-
-#: gui_browser.c:408
+#: gui_browser.c:402
 msgid "Unable to display the file or directory."
 msgstr "Không thể hiển thị tập tin hay thư mục."
 
-#: gui_browser.c:425
+#: gui_browser.c:416
+msgid "Change directory"
+msgstr "Đổi thư mục"
+
+#: gui_browser.c:436
 msgid "Write playlist to file"
 msgstr "Ghi danh mục nhạc vào tập tin"
 
-#: gui_browser.c:434
+#: gui_browser.c:445
 msgid "Unable to write playlist."
 msgstr "Không thể ghi danh mục nhạc."
 
@@ -80,19 +80,19 @@ msgid "Bad pattern."
 msgstr "Sai mẫu."
 
 #: gui_input.c:209
-#, fuzzy, c-format
+#, c-format
 msgid "Searching for \"%s\"..."
-msgstr "Tìm kiếm"
+msgstr ""
 
-#: gui_input.c:251 gui_input.c:289
+#: gui_input.c:251 gui_input.c:288
 msgid "Not found."
 msgstr "Không tìm thấy."
 
-#: gui_input.c:367
+#: gui_input.c:366
 msgid "Jump to position"
 msgstr "Nhảy tới vị trí"
 
-#: gui_input.c:423
+#: gui_input.c:422
 msgid "Bad time format."
 msgstr "Sai định dạng thời gian."
 
@@ -153,11 +153,11 @@ msgstr "Bạn ở bài hát đầu."
 msgid "You are at the last song."
 msgstr "Bạn ở bài hát cuối."
 
-#: gui_vfslist.c:586
+#: gui_vfslist.c:588
 msgid "Search wrapped to top."
 msgstr "Việc tìm kiếm cuộn về đầu."
 
-#: gui_vfslist.c:610
+#: gui_vfslist.c:612
 msgid "Full pathname"
 msgstr "Tên đường dẫn đầy đủ"
 
@@ -211,47 +211,47 @@ msgstr "bật"
 msgid "off"
 msgstr "tắt"
 
-#: scrobbler.c:483
+#: scrobbler.c:485
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Lỗi xác thực ở AudioScrobbler."
 
-#: scrobbler.c:487
+#: scrobbler.c:489
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Tên người dùng hay mật khẩu AudioScrobbler không hợp lệ."
 
-#: scrobbler.c:492
+#: scrobbler.c:494
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Mới xác thực được ở AudioScrobbler."
 
-#: scrobbler.c:509
+#: scrobbler.c:511
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "1 bài hát đã được gửi cho AudioScrobbler."
 
-#: scrobbler.c:513
+#: scrobbler.c:515
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "%d bài hát đã được gửi cho AudioScrobbler."
 
-#: scrobbler.c:519
+#: scrobbler.c:521
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Lỗi gửi bài hát cho AudioScrobbler."
 
-#: vfs.c:202
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Người dùng lạ: %s\n"
 
-#: vfs.c:216
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Không thể chroot vào %s\n"
 
-#: vfs.c:225
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Không thể chuyển đổi sang nhóm %d\n"
 
-#: vfs.c:229
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Không thể chuyển đổi sang người dùng %d\n"

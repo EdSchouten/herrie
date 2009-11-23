@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 17:32+0100\n"
+"POT-Creation-Date: 2009-11-23 13:23+0100\n"
 "PO-Revision-Date: 2008-01-03 13:13+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -47,20 +47,20 @@ msgstr "Kan ikke tilgå hovedmappen."
 msgid "Unable to enter the selected directory."
 msgstr "Kan ikke tilgå den valgte mappe."
 
-#: gui_browser.c:370
-msgid "Change directory"
-msgstr "Skift mappe"
-
-#: gui_browser.c:408
+#: gui_browser.c:402
 msgid "Unable to display the file or directory."
 msgstr "Kan ikke vise filen eller mappen."
 
+#: gui_browser.c:416
+msgid "Change directory"
+msgstr "Skift mappe"
+
 # playlist er på ordlisten
-#: gui_browser.c:425
+#: gui_browser.c:436
 msgid "Write playlist to file"
 msgstr "Skriv spilleliste til fil"
 
-#: gui_browser.c:434
+#: gui_browser.c:445
 msgid "Unable to write playlist."
 msgstr "Kan ikke skrive spilleliste."
 
@@ -84,19 +84,19 @@ msgid "Bad pattern."
 msgstr "Dårligt mønster."
 
 #: gui_input.c:209
-#, fuzzy, c-format
+#, c-format
 msgid "Searching for \"%s\"..."
-msgstr "Søg efter"
+msgstr ""
 
-#: gui_input.c:251 gui_input.c:289
+#: gui_input.c:251 gui_input.c:288
 msgid "Not found."
 msgstr "Ikke fundet."
 
-#: gui_input.c:367
+#: gui_input.c:366
 msgid "Jump to position"
 msgstr "Flyt til position"
 
-#: gui_input.c:423
+#: gui_input.c:422
 msgid "Bad time format."
 msgstr "Ugyldigt tidsformat."
 
@@ -158,11 +158,11 @@ msgstr "Du er ved den første sang."
 msgid "You are at the last song."
 msgstr "Du er ved den sidste sang."
 
-#: gui_vfslist.c:586
+#: gui_vfslist.c:588
 msgid "Search wrapped to top."
 msgstr "Søgning ombrudt til toppen."
 
-#: gui_vfslist.c:610
+#: gui_vfslist.c:612
 msgid "Full pathname"
 msgstr "Hele stien"
 
@@ -218,49 +218,49 @@ msgstr "tænd"
 msgid "off"
 msgstr "sluk"
 
-#: scrobbler.c:483
+#: scrobbler.c:485
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Fik ikke adgang til AudioScrobbler."
 
-#: scrobbler.c:487
+#: scrobbler.c:489
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Ugyldig AudioScrobbler brugernavn/adgangskode."
 
-#: scrobbler.c:492
+#: scrobbler.c:494
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Adgang godkendt hos AudioScrobbler."
 
-#: scrobbler.c:509
+#: scrobbler.c:511
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Sendte med succes 1 sang til AudioScrobbler."
 
-#: scrobbler.c:513
+#: scrobbler.c:515
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Sendte med succes %d sange til AudioScrobbler."
 
-#: scrobbler.c:519
+#: scrobbler.c:521
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Kunne ikke sende sange til AudioScrobbler."
 
-#: vfs.c:202
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Ukendt bruger: %s\n"
 
 # chroot: The UNIX command to make the root directory (/) become something 
 # other than its default for the lifetime of the current process.
-#: vfs.c:216
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Kan ikke gøre %s til chroot\n"
 
-#: vfs.c:225
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Kan ikke skifte til gruppe %d\n"
 
-#: vfs.c:229
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Kan ikke skifte til bruger %d\n"
