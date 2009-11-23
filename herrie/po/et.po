@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 13:23+0100\n"
+"POT-Creation-Date: 2009-11-23 17:26+0100\n"
 "PO-Revision-Date: 2009-11-23 13:49+0200\n"
 "Last-Translator: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
 "Language-Team: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
@@ -22,12 +22,12 @@ msgstr "Heliseadet ei saa avada"
 
 #: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
 msgid "Sample rate or amount of channels not supported."
-msgstr "Mittetoetatud diskreetimissagedus v??i kanalite arv."
+msgstr "Mittetoetatud diskreetimissagedus või kanalite arv."
 
 #: audio_output_oss.c:72
 #, c-format
 msgid "Cannot open audio device \"%s\".\n"
-msgstr "Heliseadet ???%s??? ei saa avada.\n"
+msgstr "Heliseadet „%s” ei saa avada.\n"
 
 #: gui_browser.c:79
 msgid "filter"
@@ -35,7 +35,7 @@ msgstr "filter"
 
 #: gui_browser.c:145
 msgid "Unable to open initial directory."
-msgstr "Ei saa avada l??htekataloogi."
+msgstr "Ei saa avada lähtekataloogi."
 
 #: gui_browser.c:252
 msgid "Unable to enter the parent directory."
@@ -47,7 +47,7 @@ msgstr "Ei saa minna valitud kataloogi."
 
 #: gui_browser.c:402
 msgid "Unable to display the file or directory."
-msgstr "Ei saa kuvada faili v??i kataloogi."
+msgstr "Ei saa kuvada faili või kataloogi."
 
 #: gui_browser.c:416
 msgid "Change directory"
@@ -59,16 +59,16 @@ msgstr "Kirjuta esitusnimekiri faili."
 
 #: gui_browser.c:445
 msgid "Unable to write playlist."
-msgstr "Esitusnimekirja salvestamine eba??nnestus."
+msgstr "Esitusnimekirja salvestamine ebaõnnestus."
 
 #: gui_input.c:105
 msgid "Use kill(1) to quit."
-msgstr "V??lju kasutades k??sku kill(1)."
+msgstr "Välju kasutades käsku kill(1)."
 
 #: gui_input.c:109
 #, c-format
 msgid "Quit %s?"
-msgstr "Kas v??ljun %s-st?"
+msgstr "Kas väljun %s-st?"
 
 #: gui_input.c:193
 msgid "Search for"
@@ -105,7 +105,7 @@ msgstr "ei"
 
 #: gui_playq.c:109
 msgid "Idle"
-msgstr "J??ude"
+msgstr "Jõude"
 
 #: gui_playq.c:112
 msgid "Paused"
@@ -113,15 +113,15 @@ msgstr "Peatatud"
 
 #: gui_playq.c:114
 msgid "Playing"
-msgstr "M??ngib"
+msgstr "Mängib"
 
 #: gui_playq.c:352
 msgid "Remove all songs from the playlist?"
-msgstr "Kas k??rvaldan k??ik lood esitusnimekirjast?"
+msgstr "Kas kõrvaldan kõik lood esitusnimekirjast?"
 
 #: gui_playq.c:363
 msgid "Randomize the playlist?"
-msgstr "Kas j??rjestan esitusnimekirja juhuslikult?"
+msgstr "Kas järjestan esitusnimekirja juhuslikult?"
 
 #: gui_playq.c:412 gui_playq.c:450
 msgid "The song is already at the top of the playlist."
@@ -133,7 +133,7 @@ msgstr "Lugu on juba esitusnimekirja viimane."
 
 #: gui_playq.c:526
 msgid "Failed to adjust the volume."
-msgstr "Helitugevuse seadmine eba??nnestus."
+msgstr "Helitugevuse seadmine ebaõnnestus."
 
 #: gui_playq.c:528
 #, c-format
@@ -142,31 +142,31 @@ msgstr "Helitugevus: %d%%"
 
 #: gui_vfslist.c:264
 msgid "There are no songs."
-msgstr "Ei ole ??htegi lugu."
+msgstr "Ei ole ühtegi lugu."
 
 #: gui_vfslist.c:335
 msgid "You are at the first song."
-msgstr "M??ngid esimest lugu."
+msgstr "Mängid esimest lugu."
 
 #: gui_vfslist.c:360
 msgid "You are at the last song."
-msgstr "M??ngid viimast lugu."
+msgstr "Mängid viimast lugu."
 
 #: gui_vfslist.c:588
 msgid "Search wrapped to top."
-msgstr "Otsing p????rdus tagasi algusesse."
+msgstr "Otsing pöördus tagasi algusesse."
 
 #: gui_vfslist.c:612
 msgid "Full pathname"
-msgstr "T??ielik asukoht"
+msgstr "Täielik asukoht"
 
 #: main.c:73
 msgid "Global configuration file"
-msgstr "??ldine h????lestusfail"
+msgstr "Üldine häälestusfail"
 
 #: main.c:74
 msgid "Audio output"
-msgstr "Audiov??ljund"
+msgstr "Audioväljund"
 
 #: main.c:75
 msgid "Support for AudioScrobbler"
@@ -182,7 +182,7 @@ msgstr "HTTP-striimingu toetus"
 
 #: main.c:93
 msgid "Support for XSPF playlists (`spiff')"
-msgstr "XSPF-esitusnimekirjade (???spiff???) toetus"
+msgstr "XSPF-esitusnimekirjade („spiff”) toetus"
 
 #: main.c:99
 msgid "Supported audio file formats"
@@ -195,7 +195,7 @@ msgstr "kasutamine"
 #: playq.c:195
 #, c-format
 msgid "Failed to open \"%s\" for playback."
-msgstr "Ei ??nnestunud lugude esitamiseks avada kausta ???%s??? ."
+msgstr "Ei õnnestunud lugude esitamiseks avada kausta „%s” ."
 
 #: playq.c:426
 #, c-format
@@ -208,32 +208,32 @@ msgstr "sees"
 
 #: playq.c:427
 msgid "off"
-msgstr "v??ljas"
+msgstr "väljas"
 
 #: scrobbler.c:485
 msgid "Failed to authorize at AudioScrobbler."
-msgstr "Autentimine AudioScrobbleriga eba??nnestus."
+msgstr "Autentimine AudioScrobbleriga ebaõnnestus."
 
 #: scrobbler.c:489
 msgid "Invalid AudioScrobbler username/password."
-msgstr "Vigane AudioScrobbler'i kasutajanimi v??i salas??na."
+msgstr "Vigane AudioScrobbler'i kasutajanimi või salasõna."
 
 #: scrobbler.c:494
 msgid "Successfully authorized at AudioScrobbler."
-msgstr "Autentimine AudioScrobbler'iga ??nnestus."
+msgstr "Autentimine AudioScrobbler'iga õnnestus."
 
 #: scrobbler.c:511
 msgid "Successfully sent 1 song to AudioScrobbler."
-msgstr "??nnestus saata ??ks lugu AudioScrobbler'isse."
+msgstr "Õnnestus saata üks lugu AudioScrobbler'isse."
 
 #: scrobbler.c:515
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
-msgstr "??nnestus saata %d lugu AudioScrobbler'isse."
+msgstr "Õnnestus saata %d lugu AudioScrobbler'isse."
 
 #: scrobbler.c:521
 msgid "Failed to submit songs to AudioScrobbler."
-msgstr "Lugude saatmine AudioScrobbler'isse eba??nnestus."
+msgstr "Lugude saatmine AudioScrobbler'isse ebaõnnestus."
 
 #: vfs.c:205
 #, c-format
@@ -243,19 +243,19 @@ msgstr "Tundmatu kasutaja: %s\n"
 #: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
-msgstr "chroot-operatsioon kataloogi %s eba??nnestus\n"
+msgstr "chroot-operatsioon kataloogi %s ebaõnnestus\n"
 
 #: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
-msgstr "Vahetus r??hmaks %d eba??nnestus\n"
+msgstr "Vahetus rühmaks %d ebaõnnestus\n"
 
 #: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
-msgstr "Vahetus kasutajaks %d eba??nnestus\n"
+msgstr "Vahetus kasutajaks %d ebaõnnestus\n"
 
 #: vfs_http.c:146
 #, c-format
 msgid "Connection with \"%s\" lost."
-msgstr "??hendus ???%s???-ga katkes."
+msgstr "Ühendus „%s”-ga katkes."
