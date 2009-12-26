@@ -38,6 +38,10 @@ struct vfsmatch;
  */
 extern int gui_draw_colors;
 /**
+ * @brief Height percentage of the playlist.
+ */
+extern int gui_draw_ratio;
+/**
  * @brief Refresh the curses GUI after a terminal resize.
  */
 void gui_draw_resize(void);
@@ -72,7 +76,7 @@ gui_unlock(void)
 /**
  * @brief Height of playlist window.
  */
-#define GUI_SIZE_PLAYQ_HEIGHT		((LINES / 2) - 1)
+#define GUI_SIZE_PLAYQ_HEIGHT		(((LINES * gui_draw_ratio) / 100) - 1)
 /**
  * @brief Offset of the window containing the filebrowser's directory
  *        name.

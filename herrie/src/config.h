@@ -45,3 +45,7 @@ int		config_getopt_bool(const char *val);
  * @brief Return a value translated to curses color code
  */
 int		config_getopt_color(const char *val);
+/**
+ * @brief Return a value translated to a percentage
+ */
+int		config_getopt_percentage(const char *val);

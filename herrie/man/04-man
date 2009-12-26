@@ -56,6 +56,9 @@ using the
 .B q
 button.
 .TP
+.B gui.ratio=50
+The percentage of the height of the playlist.
+.TP
 .B gui.vfslist.scrollpages=no
 When enabled, the file browser and the playlist will scroll an entire
 page up or down when the selection goes out of sight.

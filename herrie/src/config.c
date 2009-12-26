@@ -70,6 +70,19 @@ valid_color(char *val)
 	return (gui_draw_color_number(val) < -1);
 }
 
+/**
+ * @brief Determine if a percentage string is valid
+ */
+static int
+valid_percentage(char *val)
+{
+	unsigned long pct;
+	char *end = NULL;
+
+	pct = strtol(val, &end, 10);
+	return (pct > 100 || end == NULL || *end != '\0');
+}
+
 #ifdef BUILD_SCROBBLER
 /**
  * @brief Determine if a string containing an MD5 hash is valid
@@ -162,6 +175,7 @@ static struct config_entry configlist[] = {
 	{ "gui.color.select.fg",	"black",	valid_color,	NULL },
 	{ "gui.input.confirm",		"yes",		valid_bool,	NULL },
 	{ "gui.input.may_quit",		"yes",		valid_bool,	NULL },
+	{ "gui.ratio",			"50",		valid_percentage, NULL },
 	{ "gui.vfslist.scrollpages",	"no",		valid_bool,	NULL },
 	{ "playq.autoplay",		"no",		valid_bool,	NULL },
 	{ "playq.dumpfile",		CONFHOMEDIR PLAYQ_DUMPFILE, NULL, NULL },
@@ -298,4 +312,10 @@ config_getopt_color(const char *val)
 	col = gui_draw_color_number(config_getopt(val));
 	g_assert(col >= -1);
 	return (col);
+}
+
+int
+config_getopt_percentage(const char *val)
+{
+	return strtoul(config_getopt(val), NULL, 10);
 }

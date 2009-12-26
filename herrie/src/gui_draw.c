@@ -36,6 +36,7 @@
 
 GMutex *gui_mtx;
 int gui_draw_colors;
+int gui_draw_ratio;
 
 void
 gui_draw_init_pre(void)
@@ -62,6 +63,7 @@ gui_draw_init_post(void)
 
 	gui_draw_colors =
 	    config_getopt_bool("gui.color.enabled") && has_colors();
+	gui_draw_ratio = config_getopt_percentage("gui.ratio");
 
 	if (gui_draw_colors) {
 		start_color();
