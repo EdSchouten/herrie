@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 17:32+0100\n"
+"POT-Creation-Date: 2009-11-23 17:26+0100\n"
 "PO-Revision-Date: 2008-02-07 18:04+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -47,19 +47,19 @@ msgstr "无法进入上层目录"
 msgid "Unable to enter the selected directory."
 msgstr "无法进入选定目录"
 
-#: gui_browser.c:370
-msgid "Change directory"
-msgstr "更改目录"
-
-#: gui_browser.c:408
+#: gui_browser.c:402
 msgid "Unable to display the file or directory."
 msgstr "无法显示文件或目录"
 
-#: gui_browser.c:425
+#: gui_browser.c:416
+msgid "Change directory"
+msgstr "更改目录"
+
+#: gui_browser.c:436
 msgid "Write playlist to file"
 msgstr "将播放列表写入文件"
 
-#: gui_browser.c:434
+#: gui_browser.c:445
 msgid "Unable to write playlist."
 msgstr "无法写入播放列表"
 
@@ -81,19 +81,19 @@ msgid "Bad pattern."
 msgstr "模式错误"
 
 #: gui_input.c:209
-#, fuzzy, c-format
+#, c-format
 msgid "Searching for \"%s\"..."
-msgstr "查找"
+msgstr ""
 
-#: gui_input.c:251 gui_input.c:289
+#: gui_input.c:251 gui_input.c:288
 msgid "Not found."
 msgstr "未找到"
 
-#: gui_input.c:367
+#: gui_input.c:366
 msgid "Jump to position"
 msgstr "跳至位置"
 
-#: gui_input.c:423
+#: gui_input.c:422
 msgid "Bad time format."
 msgstr "错误的时间格式"
 
@@ -154,11 +154,11 @@ msgstr "您位于第一首曲子"
 msgid "You are at the last song."
 msgstr "您位于最后一首曲子"
 
-#: gui_vfslist.c:586
+#: gui_vfslist.c:588
 msgid "Search wrapped to top."
 msgstr "再从顶部开始查找"
 
-#: gui_vfslist.c:610
+#: gui_vfslist.c:612
 msgid "Full pathname"
 msgstr "完整的目录名"
 
@@ -212,47 +212,47 @@ msgstr "开"
 msgid "off"
 msgstr "关"
 
-#: scrobbler.c:483
+#: scrobbler.c:485
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "AudioScrobbler 登录失败"
 
-#: scrobbler.c:487
+#: scrobbler.c:489
 msgid "Invalid AudioScrobbler username/password."
 msgstr "无效的 AudioScrobbler 用户名/密码"
 
-#: scrobbler.c:492
+#: scrobbler.c:494
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "AudioScrobbler 登录成功"
 
-#: scrobbler.c:509
+#: scrobbler.c:511
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "成功地发送了 1 首歌至 AudioScrobbler"
 
-#: scrobbler.c:513
+#: scrobbler.c:515
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "成功地发送了 %d 首歌至 AudioScrobbler"
 
-#: scrobbler.c:519
+#: scrobbler.c:521
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "提交歌曲至 AudioScrobbler 时失败"
 
-#: vfs.c:202
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "未知用户: %s\n"
 
-#: vfs.c:216
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "无法在 %s 中 chroot\n"
 
-#: vfs.c:225
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "无法改成 %d 组\n"
 
-#: vfs.c:229
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "无法改成 %d 用户\n"

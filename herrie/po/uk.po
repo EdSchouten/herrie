@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 17:32+0100\n"
+"POT-Creation-Date: 2009-11-23 17:26+0100\n"
 "PO-Revision-Date: 2007-11-01 22:32+0200\n"
 "Last-Translator: Viacheslav Chumushuk <viacheslav88@gmail.com>\n"
 "Language-Team:  <viacheslav88@gmail.com>\n"
@@ -44,19 +44,19 @@ msgstr "Неможливо відкрити батьківський катал�
 msgid "Unable to enter the selected directory."
 msgstr "Неможливо відкрити вибраний каталог."
 
-#: gui_browser.c:370
-msgid "Change directory"
-msgstr "Змінити каталог"
-
-#: gui_browser.c:408
+#: gui_browser.c:402
 msgid "Unable to display the file or directory."
 msgstr "Неможливо відобразити файл чи каталог."
 
-#: gui_browser.c:425
+#: gui_browser.c:416
+msgid "Change directory"
+msgstr "Змінити каталог"
+
+#: gui_browser.c:436
 msgid "Write playlist to file"
 msgstr "Записати список програвання у файл"
 
-#: gui_browser.c:434
+#: gui_browser.c:445
 msgid "Unable to write playlist."
 msgstr "Неможливо записати список програвання."
 
@@ -78,19 +78,19 @@ msgid "Bad pattern."
 msgstr "Невірний шаблон."
 
 #: gui_input.c:209
-#, fuzzy, c-format
+#, c-format
 msgid "Searching for \"%s\"..."
-msgstr "Пошук"
+msgstr ""
 
-#: gui_input.c:251 gui_input.c:289
+#: gui_input.c:251 gui_input.c:288
 msgid "Not found."
 msgstr "Не знайдений."
 
-#: gui_input.c:367
+#: gui_input.c:366
 msgid "Jump to position"
 msgstr "Перейти до позиції"
 
-#: gui_input.c:423
+#: gui_input.c:422
 msgid "Bad time format."
 msgstr "Невірний форат часу."
 
@@ -151,11 +151,11 @@ msgstr "Ви на першій композиції."
 msgid "You are at the last song."
 msgstr "Ви на останій композиції."
 
-#: gui_vfslist.c:586
+#: gui_vfslist.c:588
 msgid "Search wrapped to top."
 msgstr "Досягнуто початку пошуку."
 
-#: gui_vfslist.c:610
+#: gui_vfslist.c:612
 msgid "Full pathname"
 msgstr "Повний шлях"
 
@@ -209,47 +209,47 @@ msgstr "ввімкнено"
 msgid "off"
 msgstr "вимкнено"
 
-#: scrobbler.c:483
+#: scrobbler.c:485
 msgid "Failed to authorize at AudioScrobbler."
 msgstr "Неможливо авторизуватися на AudioScrobbler."
 
-#: scrobbler.c:487
+#: scrobbler.c:489
 msgid "Invalid AudioScrobbler username/password."
 msgstr "Невірний логін/пароль AudioScrobbler."
 
-#: scrobbler.c:492
+#: scrobbler.c:494
 msgid "Successfully authorized at AudioScrobbler."
 msgstr "Вдало авторизований на AudioScrobbler."
 
-#: scrobbler.c:509
+#: scrobbler.c:511
 msgid "Successfully sent 1 song to AudioScrobbler."
 msgstr "Вдало відісланно 1 композицію на AudioScrobbler."
 
-#: scrobbler.c:513
+#: scrobbler.c:515
 #, c-format
 msgid "Successfully sent %d songs to AudioScrobbler."
 msgstr "Вдало відісланно %d композицій на AudioScrobbler."
 
-#: scrobbler.c:519
+#: scrobbler.c:521
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Неможливо передати композиції на AudioScrobbler."
 
-#: vfs.c:202
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Невідомий користувач: %s\n"
 
-#: vfs.c:216
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Неможливо chroot в %s\n"
 
-#: vfs.c:225
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Неможливо змінити групу на %d\n"
 
-#: vfs.c:229
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Неможливо змінити користувача на %d\n"
