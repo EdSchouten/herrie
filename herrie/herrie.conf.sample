@@ -1,5 +1,10 @@
 # This is the sample configuration file for herrie. Please refer to the
 # herrie(1) manual page for a complete list of configuration switches.
+#
+# This file only acts as a reference and should *NOT* be used as a
+# template for a suitable herrie.conf. Package maintainers, this also
+# includes you! Let's keep herrie's behaviour consistent across
+# different platforms, okay?
 
 # Use this line to change the behaviour of the playlist to be like
 # players like WinAmp, XMMS and AmaroK:
