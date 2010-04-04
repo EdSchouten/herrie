@@ -1,6 +1,6 @@
 #!/bin/sh
 
-GIT='git --git-dir=/export/git/public/herrie'
+GIT='git --git-dir=/export/git/herrie'
 
 printf 'Content-Type: text/plain\n\r\n'
 $GIT cat-file blob `$GIT ls-tree HEAD herrie/ChangeLog | awk '{print $3}'`

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-GIT='git --git-dir=/export/git/public/herrie'
+GIT='git --git-dir=/export/git/herrie'
 
 printf 'Content-Type: application/octet-stream\r\n\r\n'
 $GIT archive --format=tar --prefix=herrie-snapshot/ HEAD:herrie | gzip -9c
