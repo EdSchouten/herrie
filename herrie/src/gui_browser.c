@@ -501,6 +501,6 @@ gui_browser_gotohome(void)
 
 	defdir = config_getopt("gui.browser.defaultpath");
 	if (defdir[0] == '\0')
-		return;
+		defdir = "~";
 	gui_browser_do_chdir(defdir);
 }
