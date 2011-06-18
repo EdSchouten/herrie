@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:26+0100\n"
+"POT-Creation-Date: 2011-06-18 23:07+0200\n"
 "PO-Revision-Date: 2008-01-03 00:46+0200\n"
 "Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -95,11 +96,11 @@ msgstr "Hyppää paikkaan"
 msgid "Bad time format."
 msgstr "Virheellinen aikamuoto."
 
-#: gui_input.c:617 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "kyllä"
 
-#: gui_input.c:618 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "ei"
 
@@ -235,25 +236,29 @@ msgstr "Onnistuneesti lähetetty %d kappaletta AudioScrobbleriin."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Ei onnistuttu lähettämään kappaleita AudioScrobbleriin."
 
-#: vfs.c:205
+#: vfs.c:206
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Tuntematon käyttäjä: %s\n"
 
-#: vfs.c:219
+#: vfs.c:220
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Ei voida suorittaa chroot-toimintoa hakemistossa %s\n"
 
-#: vfs.c:228
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Ei voida vaihtaa ryhmään %d\n"
 
-#: vfs.c:232
+#: vfs.c:233
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Ei voida vaihtaa käyttäjäksi %d\n"
+
+#: vfs_cache.c:61
+msgid "VFS cache purged."
+msgstr ""
 
 #: vfs_http.c:146
 #, c-format

@@ -8,11 +8,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:26+0100\n"
+"POT-Creation-Date: 2011-06-18 23:07+0200\n"
 "PO-Revision-Date: 2008-02-07 18:04+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
 "sourceforge.net>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -97,11 +98,11 @@ msgstr "跳至位置"
 msgid "Bad time format."
 msgstr "错误的时间格式"
 
-#: gui_input.c:617 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "是"
 
-#: gui_input.c:618 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "否"
 
@@ -237,25 +238,29 @@ msgstr "成功地发送了 %d 首歌至 AudioScrobbler"
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "提交歌曲至 AudioScrobbler 时失败"
 
-#: vfs.c:205
+#: vfs.c:206
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "未知用户: %s\n"
 
-#: vfs.c:219
+#: vfs.c:220
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "无法在 %s 中 chroot\n"
 
-#: vfs.c:228
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "无法改成 %d 组\n"
 
-#: vfs.c:232
+#: vfs.c:233
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "无法改成 %d 用户\n"
+
+#: vfs_cache.c:61
+msgid "VFS cache purged."
+msgstr ""
 
 #: vfs_http.c:146
 #, c-format

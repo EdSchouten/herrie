@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2009 Ed Schouten <ed@80386.nl>
+ * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -465,6 +465,7 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, 'J',			gui_input_cursong_seek_jump },
 	{ -1, 'l',			gui_browser_dir_enter },
 	{ -1, 'L',			gui_input_locate },
+	{ -1, 'P',			vfs_cache_purge },
 	{ -1, 'q',			gui_input_askquit },
 	{ -1, 'r',			playq_repeat_toggle },
 	{ -1, 'R',			gui_playq_song_randomize },

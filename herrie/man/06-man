@@ -1,4 +1,11 @@
 .TP
+.B vfs.cache=no
+Cache file system entries to reduce disk I/O. This option is disabled by
+default, since it increases memory footprint and requires you to press
+.B P
+to purge the cache manually, in case files are created and deleted in
+the background.
+.TP
 .B vfs.dir.hide_dotfiles=yes
 Hide files in directories with a filename starting with a dot.
 .TP

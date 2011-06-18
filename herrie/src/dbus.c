@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2009 Ed Schouten <ed@80386.nl>
+ * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
  *
  * Copyright (c) 2008 Steve Jothen <sjothen@gmail.com>

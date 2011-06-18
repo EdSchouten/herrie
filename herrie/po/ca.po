@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:26+0100\n"
+"POT-Creation-Date: 2011-06-18 23:07+0200\n"
 "PO-Revision-Date: 2007-11-29 15:14+0100\n"
 "Last-Translator: Xavier de Blas <xaviblas@gmail.com>\n"
 "Language-Team: Catalan <xaviblas@gmail.com>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -90,11 +91,11 @@ msgstr "Salta a la posició"
 msgid "Bad time format."
 msgstr "Format de data incorrecte."
 
-#: gui_input.c:617 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "sí"
 
-#: gui_input.c:618 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "no"
 
@@ -230,25 +231,29 @@ msgstr "S'ha enviat satisfactòriament %d cançons a l'AudioScrobbler."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Errada en l'enviament de cançons a l'AudioScrobbler."
 
-#: vfs.c:205
+#: vfs.c:206
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Usuario: %s desconegut\n"
 
-#: vfs.c:219
+#: vfs.c:220
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "No es pot fer chroot a %s\n"
 
-#: vfs.c:228
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "No es pot canviar al grup %d\n"
 
-#: vfs.c:232
+#: vfs.c:233
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "No es pot canviar a l'usuari %d\n"
+
+#: vfs_cache.c:61
+msgid "VFS cache purged."
+msgstr ""
 
 #: vfs_http.c:146
 #, c-format

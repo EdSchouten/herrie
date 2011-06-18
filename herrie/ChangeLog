@@ -10,6 +10,7 @@
  * Added: Estonian translation - Kaupo Palo
  * Added: gui.ratio to change the screen ratio
  * Changed: Go to home directory when pressing ~ when defaultpath is unset
+ * Added: vfs.cache to cache file system entries
 
 2008-10-14 -- Herrie 2.2:
  * Added: Ukranian translation - Viacheslav Chumushuk

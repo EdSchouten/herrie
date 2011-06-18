@@ -4,10 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:26+0100\n"
+"POT-Creation-Date: 2011-06-18 23:07+0200\n"
 "PO-Revision-Date: 2007-10-13 18:31+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team:  <turkce@pardus.org.tr>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -92,11 +93,11 @@ msgstr "Konuma git"
 msgid "Bad time format."
 msgstr "Kötü zaman biçimi."
 
-#: gui_input.c:617 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "evet"
 
-#: gui_input.c:618 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "hayır"
 
@@ -232,25 +233,29 @@ msgstr "%d parça başarıyla AudioScrobbler'e gönerildi."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Parçalar AudioScrobbler'e gönderilemedi."
 
-#: vfs.c:205
+#: vfs.c:206
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Geçersiz kullanıcı: %s\n"
 
-#: vfs.c:219
+#: vfs.c:220
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "%s içerisinde chroot başarısız\n"
 
-#: vfs.c:228
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "%d grubuna değiştirme başarısız\n"
 
-#: vfs.c:232
+#: vfs.c:233
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "%d kullanıcısına değiştirme başarısız\n"
+
+#: vfs_cache.c:61
+msgid "VFS cache purged."
+msgstr ""
 
 #: vfs_http.c:146
 #, c-format

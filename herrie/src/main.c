@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2009 Ed Schouten <ed@80386.nl>
+ * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -176,6 +176,8 @@ main(int argc, char *argv[])
 		g_printerr("%s", errmsg);
 		return (1);
 	}
+
+	vfs_cache_init();
 
 	/* Initialize the locks */
 #ifdef BUILD_DBUS

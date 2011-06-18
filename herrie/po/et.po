@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:26+0100\n"
+"POT-Creation-Date: 2011-06-18 23:07+0200\n"
 "PO-Revision-Date: 2009-11-23 22:54+0200\n"
 "Last-Translator: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
 "Language-Team: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -79,7 +80,7 @@ msgid "Bad pattern."
 msgstr "Vigane muster."
 
 #: gui_input.c:209
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Searching for \"%s\"..."
 msgstr "Otsin \"%s\"..."
 
@@ -95,11 +96,11 @@ msgstr "Siirdu positsioonile"
 msgid "Bad time format."
 msgstr "Vigane ajavormindus."
 
-#: gui_input.c:617 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
 msgid "yes"
 msgstr "jah"
 
-#: gui_input.c:618 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
 msgid "no"
 msgstr "ei"
 
@@ -236,25 +237,29 @@ msgstr "Õnnestus saata %d lugu AudioScrobbler'isse."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Lugude saatmine AudioScrobbler'isse ebaõnnestus."
 
-#: vfs.c:205
+#: vfs.c:206
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Tundmatu kasutaja: %s\n"
 
-#: vfs.c:219
+#: vfs.c:220
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "chroot-operatsioon kataloogi %s ebaõnnestus\n"
 
-#: vfs.c:228
+#: vfs.c:229
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Vahetus rühmaks %d ebaõnnestus\n"
 
-#: vfs.c:232
+#: vfs.c:233
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Vahetus kasutajaks %d ebaõnnestus\n"
+
+#: vfs_cache.c:61
+msgid "VFS cache purged."
+msgstr ""
 
 #: vfs_http.c:146
 #, c-format

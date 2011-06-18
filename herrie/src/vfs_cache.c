@@ -24,67 +24,64 @@
  * SUCH DAMAGE.
  */
 /**
- * @file playq_party.c
- * @brief Party-mode playlist handling.
+ * @file vfs_cache.c
+ * @brief Virtual filesystem cache.
  */
 
 #include "stdinc.h"
 
+#include "config.h"
 #include "gui.h"
-#include "playq.h"
-#include "playq_modules.h"
 #include "vfs.h"
 
-struct vfsref *
-playq_party_give(void)
+static GHashTable *refcache = NULL;
+
+static void
+vfs_cache_destroyvalue(gpointer data)
 {
-	struct vfsref *vr, *nvr;
+	struct vfsref *vr = data;
 
-	/* Fetch the first song in the list */
-	vr = vfs_list_first(&playq_list);
-	if (vr == NULL)
-		return (NULL);
+	vfs_close(vr);
+}
 
-	/* Remove it from the list */
-	nvr = vfs_dup(vr);
-	gui_playq_notify_pre_removal(1);
-	vfs_list_remove(&playq_list, vr);
-	if (playq_repeat) {
-		/* Add it back to the tail */
-		vfs_list_insert_tail(&playq_list, vr);
-		gui_playq_notify_post_insertion(vfs_list_items(&playq_list));
-	} else {
-		vfs_close(vr);
+void
+vfs_cache_init(void)
+{
+	if (!config_getopt_bool("vfs.cache"))
+		return;
+	refcache = g_hash_table_new_full(g_str_hash, g_str_equal, NULL,
+	    vfs_cache_destroyvalue);
+}
+
+void
+vfs_cache_purge(void)
+{
+	if (refcache != NULL) {
+		g_hash_table_remove_all(refcache);
+		gui_msgbar_warn(_("VFS cache purged."));
 	}
-	gui_playq_notify_done();
-
-	return (nvr);
 }
 
 void
-playq_party_idle(void)
+vfs_cache_add(const struct vfsref *nvr)
 {
+	struct vfsref *vr;
+
+	if (refcache != NULL) {
+		vr = vfs_dup(nvr);
+		g_hash_table_replace(refcache, vr->ent->filename, vr);
+	}
 }
 
-int
-playq_party_select(struct vfsref *vr)
+struct vfsref *
+vfs_cache_lookup(const char *filename)
 {
-	return (0);
-}
+	struct vfsref *vr;
 
-int
-playq_party_next(void)
-{
-	return (0);
-}
-
-int
-playq_party_prev(void)
-{
-	return (-1);
-}
-
-void
-playq_party_notify_pre_removal(struct vfsref *vr)
-{
+	if (refcache != NULL) {
+		vr = g_hash_table_lookup(refcache, filename);
+		if (vr != NULL)
+			return vfs_dup(vr);
+	}
+	return (NULL);
 }

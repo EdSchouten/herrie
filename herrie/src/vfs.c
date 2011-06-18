@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2009 Ed Schouten <ed@80386.nl>
+ * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -260,6 +260,8 @@ vfs_lookup(const char *filename, const char *name, const char *basepath,
 	int pseudo = 0;
 
 	fn = vfs_path_concat(basepath, filename, strict);
+	if (fn != NULL && (vr = vfs_cache_lookup(fn)) != NULL)
+		return (vr);
 
 	/* We only allow files and directories */
 	if (fn == NULL || stat(fn, &fs) != 0) {
@@ -313,6 +315,7 @@ found:
 	ve->refcount = 1;
 	vr = g_slice_new0(struct vfsref);
 	vr->ent = ve;
+	vfs_cache_add(vr);
 	return (vr);
 }
 

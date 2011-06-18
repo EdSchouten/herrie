@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2009 Ed Schouten <ed@80386.nl>
+ * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -186,6 +186,7 @@ static struct config_entry configlist[] = {
 	{ "scrobbler.password",		"",		valid_md5,	NULL },
 	{ "scrobbler.username",		"",		NULL,		NULL },
 #endif /* BUILD_SCROBBLER */
+	{ "vfs.cache",			"no",		valid_bool,	NULL },
 	{ "vfs.dir.hide_dotfiles",	"yes",		valid_bool,	NULL },
 #ifdef G_OS_UNIX
 	{ "vfs.lockup.chroot",		"",		NULL,		NULL },

@@ -17,6 +17,10 @@ is pressed again, playback is resumed.
 Seek to a specific position. When the inserted time is prepended with a + or
 -, the seek is performed relative.
 .TP
+.B P
+Purge the file system cache, if enabled with
+.B vfs.cache .
+.TP
 .B q
 Quit the application.
 .TP
