@@ -205,7 +205,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 			waddstr(gv->win, vfs_name(vr));
 		}
 
-                /* Marking character for dirs and such */
+		/* Marking character for dirs and such */
 		mark = vfs_marking(vr);
 		if (mark != '\0')
 			waddch(gv->win, mark);

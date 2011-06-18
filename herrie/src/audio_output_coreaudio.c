@@ -218,7 +218,7 @@ audio_output_play(struct audio_file *fd)
 
 		if (AudioDeviceSetProperty(adid, 0, 0, 0,
 		    kAudioDevicePropertyStreamFormat, sizeof afmt, &afmt) != 0) {
-		    	/* Get current settings back */
+			/* Get current settings back */
 			size = sizeof afmt;
 			AudioDeviceGetProperty(adid, 0, false,
 			    kAudioDevicePropertyStreamFormat, &size, &afmt);

@@ -153,7 +153,7 @@ vfs_path_concat(const char *dir, const char *file, int strict)
 	/* Remove /./ and /../ */
 	for (off = npath->str;
 	    (off = strchr(off, G_DIR_SEPARATOR)) != NULL;) {
-	    	if (off[1] == '\0' || off[1] == G_DIR_SEPARATOR) {
+		if (off[1] == '\0' || off[1] == G_DIR_SEPARATOR) {
 			/* /foo//bar -> /foo/bar */
 			g_string_erase(npath, off - npath->str, 1);
 		} else if (off[1] == '.' &&
