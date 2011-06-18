@@ -315,7 +315,8 @@ found:
 	ve->refcount = 1;
 	vr = g_slice_new0(struct vfsref);
 	vr->ent = ve;
-	vfs_cache_add(vr);
+	if (!pseudo)
+		vfs_cache_add(vr);
 	return (vr);
 }
 
