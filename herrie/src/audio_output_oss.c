@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -117,7 +117,7 @@ audio_output_play(struct audio_file *fd)
 	len *= sizeof(int16_t);
 	if (write(dev_fd, buf, len) != len)
 		return (-1);
-	
+
 	return (0);
 bad:
 	gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
@@ -149,7 +149,7 @@ audio_output_volume_adjust(int n)
 	if (ioctl(dev_fd, SNDCTL_DSP_GETPLAYVOL, &vol) == -1)
 #endif
 		return (-1);
-	
+
 	/* XXX: Merge left and right */
 	vol = ((vol & 0x7f) + ((vol >> 8) & 0x7f)) / 2;
 	vol = CLAMP(vol + n, 0, 100);

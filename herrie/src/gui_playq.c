@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -237,7 +237,7 @@ gui_playq_song_update(struct audio_file *fd, int paused, int timeonly)
 	/* Print same message in ps(1) */
 	setproctitle("%s %s%s", str_status, str_song->str, str_time->str);
 #endif /* BUILD_SETPROCTITLE */
-	
+
 	gui_playq_statbar_refresh();
 	gui_draw_done();
 }
@@ -249,7 +249,7 @@ gui_playq_resize(void)
 	wresize(win_statbar, 1, COLS);
 	clearok(win_statbar, TRUE);
 	gui_unlock();
-	
+
 	playq_lock();
 	gui_vfslist_move(win_playq, 0, 1, COLS, GUI_SIZE_PLAYQ_HEIGHT);
 	playq_unlock();
@@ -493,7 +493,7 @@ gui_playq_searchnext(const struct vfsmatch *vm)
 	playq_lock();
 	ret = gui_vfslist_searchnext(win_playq, vm);
 	playq_unlock();
-	
+
 	return (ret);
 }
 

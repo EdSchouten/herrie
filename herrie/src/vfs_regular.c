@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -55,7 +55,7 @@ vfs_dir_match(struct vfsent *ve, int isdir)
 
 	if (!isdir)
 		return (-1);
-	
+
 #ifdef S_ISLNK
 	/* Disallow recursing on symlinked directories */
 	if (lstat(ve->filename, &fs) != 0)
@@ -79,7 +79,7 @@ vfs_dir_populate(struct vfsent *ve)
 
 	if ((dir = g_dir_open(ve->filename, 0, NULL)) == NULL)
 		return (-1);
-	
+
 	while ((sfn = g_dir_read_name(dir)) != NULL) {
 		/* Hide dotted files */
 		if (hide_dotfiles && sfn[0] == '.')

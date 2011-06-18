@@ -249,7 +249,7 @@ msgstr "Kunne ikke sende sange til AudioScrobbler."
 msgid "Unknown user: %s\n"
 msgstr "Ukendt bruger: %s\n"
 
-# chroot: The UNIX command to make the root directory (/) become something 
+# chroot: The UNIX command to make the root directory (/) become something
 # other than its default for the lifetime of the current process.
 #: vfs.c:220
 #, c-format

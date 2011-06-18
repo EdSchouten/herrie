@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -62,7 +62,7 @@ vfs_pls_match(struct vfsent *ve, int isdir)
 	/* In order to speed up the process, we only match *.pls */
 	if (isdir || !g_str_has_suffix(ve->name, ".pls"))
 		return (-1);
-	
+
 	ve->recurse = 0;
 	return (0);
 }
@@ -130,7 +130,7 @@ vfs_pls_populate(struct vfsent *ve)
 
 	fclose(fio);
 	g_free(dn);
-	
+
 	return (0);
 }
 
@@ -146,7 +146,7 @@ vfs_pls_write(const struct vfslist *vl, const char *filename)
 	fio = fopen(filename, "w");
 	if (fio == NULL)
 		return (-1);
-	
+
 	/* Directory name length of .pls filename */
 	base = strrchr(filename, G_DIR_SEPARATOR);
 	g_assert(base != NULL);
@@ -235,7 +235,7 @@ vfs_m3u_write(const struct vfslist *vl, const char *filename)
 	fio = fopen(filename, "w");
 	if (fio == NULL)
 		return (-1);
-	
+
 	/* Directory name length of .meu filename */
 	base = strrchr(filename, G_DIR_SEPARATOR);
 	g_assert(base != NULL);

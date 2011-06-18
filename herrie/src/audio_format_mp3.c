@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -97,11 +97,11 @@ mp3_match(FILE *fp, const char *ext)
 		ret = -1;
 		goto done;
 	}
-	
+
 	/* Match 1: first twelve bits high */
 	if (buf[0] == 0xff && (buf[1] & 0xf0) == 0xf0)
 		goto done;
-	
+
 	/* Match 2: ID3 header */
 	if (buf[0] == 'I' && buf[1] == 'D' && buf[2] == '3')
 		goto done;
@@ -130,14 +130,14 @@ mp3_readtags(struct audio_file *fd)
 	tmpfd = dup(fileno(fd->fp));
 	if (tmpfd < 0)
 		return;
-	
+
 	/* Backing up the original offset */
 	orig_off = lseek(tmpfd, 0, SEEK_CUR);
 
 	id3f = id3_file_fdopen(tmpfd, ID3_FILE_MODE_READONLY);
 	if (id3f == NULL)
 		goto bad;
-	
+
 	/* Here we go */
 	tag = id3_file_tag(id3f);
 	if (tag == NULL)
@@ -161,7 +161,7 @@ mp3_readtags(struct audio_file *fd)
 				*dst = (char*)id3_ucs4_utf8duplicate(str);
 		}
 	}
-	
+
 done:
 	id3_file_close(id3f);
 bad:
@@ -248,7 +248,7 @@ mp3_read_frame(struct audio_file *fd)
 			data->mframe.header = data->mheader;
 			return (0);
 		}
-	
+
 		if (!MAD_RECOVERABLE(data->mstream.error) &&
 		    (data->mstream.error != MAD_ERROR_BUFLEN)) {
 			/* Unrecoverable error - bail out */
@@ -345,7 +345,7 @@ mp3_open(struct audio_file *fd, const char *ext)
 	mp3_rewind(fd);
 	if (!fd->stream)
 		mp3_calc_length(fd);
-	
+
 	return (0);
 }
 
@@ -353,7 +353,7 @@ void
 mp3_close(struct audio_file *fd)
 {
 	struct mp3_drv_data *data = fd->drv_data;
-	
+
 	mad_frame_finish(&data->mframe);
 	mad_stream_finish(&data->mstream);
 	mad_synth_finish(&data->msynth);
@@ -418,7 +418,7 @@ mp3_seek(struct audio_file *fd, int len, int rel)
 	/* Calculate the new relative position */
 	len = CLAMP(len, 0, (int)fd->time_len);
 	newpos = ((double)len / fd->time_len) * data->flen;
-	
+
 	/* Seek to the new position */
 	mp3_rewind(fd);
 	fseek(fd->fp, newpos, SEEK_SET);
