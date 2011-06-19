@@ -35,6 +35,7 @@ unset CFG_BINEXT
 CFG_CURSES_HEADER=ncurses
 CFG_CURSES_LIB=ncursesw
 CFG_DBUS=yes
+unset CFG_GST
 CFG_HTTP=yes
 CFG_MODPLUG=yes
 CFG_MP3=yes
@@ -118,6 +119,9 @@ do
 	case $1 in
 	no_dbus)
 		unset CFG_DBUS
+		;;
+	gst)
+		CFG_GST=yes
 		;;
 	no_http)
 		unset CFG_HTTP
@@ -221,7 +225,14 @@ then
 	SRCS="$SRCS dbus"
 	DEPENDS_EXTRA_dbus="dbus_binding.h"
 fi
-
+# GST support
+if [ "$CFG_GST" != "" ]
+then
+	CFLAGS="$CFLAGS -DBUILD_GST"
+	SRCS="$SRCS audio_format_gst"
+	test_pkgconfig "GStreamer" "gstreamer-0.10" ""
+	test_pkgconfig "GStreamer App" "gstreamer-app-0.10" ""
+fi
 # HTTP and Scrobbler code need cURL
 if [ "$CFG_HTTP" != "" -o "$CFG_SCROBBLER" != "" ]
 then
@@ -368,6 +379,7 @@ echo "- Using $CONFFILE configuration file"
 echo "- Using -l$CFG_CURSES_LIB and <$CFG_CURSES_HEADER.h>"
 echo "- Using $CFG_AO audio output"
 [ "$CFG_DBUS" != "" ] && echo "- Support for DBus integration"
+[ "$CFG_GST" != "" ] && echo "- Support for GStreamer decoding"
 [ "$CFG_HTTP" != "" ] && echo "- Support for HTTP streams"
 [ "$CFG_MODPLUG" != "" ] && echo "- Support for libmodplug"
 [ "$CFG_MP3" != "" ] && echo "- Support for MP3"

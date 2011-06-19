@@ -36,16 +36,22 @@
  * @brief Initialize DBus locking.
  */
 void dbus_init(void);
-/**
- * @brief Spawn DBus thread.
- */
-void dbus_spawn(void);
 
 /**
  * @brief DBus mutex to provide exclusion between the user input and
  *        DBus event paths.
  */
 extern GMutex *dbus_mtx;
+
+/**
+ * @brief Called before entering the gmainloop
+ */
+void dbus_before_mainloop(void);
+
+/**
+ * @brief Called after exiting the gmainloop
+ */
+void dbus_after_mainloop(void);
 
 /**
  * @brief Acquire a lock on DBus.

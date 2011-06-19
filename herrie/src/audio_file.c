@@ -67,6 +67,9 @@ struct audio_format {
  * @brief List of audio formats.
  */
 static struct audio_format formats[] = {
+#ifdef BUILD_GST
+	{ gst_open, gst_close, gst_read, gst_seek },
+#endif /* !BUILD_GST */
 #ifdef BUILD_VORBIS
 	{ vorbis_open, vorbis_close, vorbis_read, vorbis_seek },
 #endif /* !BUILD_VORBIS */

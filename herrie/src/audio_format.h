@@ -68,6 +68,25 @@ size_t mp3_read(struct audio_file *fd, int16_t *buf, size_t len);
 void mp3_seek(struct audio_file *fd, int len, int rel);
 #endif /* BUILD_MP3 */
 
+#ifdef BUILD_GST
+/**
+ * @brief Open an GST file.
+ */
+int gst_open(struct audio_file *fd, const char *ext);
+/**
+ * @brief Close and clean up the GST file.
+ */
+void gst_close(struct audio_file *fd);
+/**
+ * @brief Read data from the GST file and place it in buf.
+ */
+size_t gst_read(struct audio_file *fd, int16_t *buf, size_t len);
+/**
+ * @brief Seek the GST file a relatime amount of seconds.
+ */
+void gst_seek(struct audio_file *fd, int len, int rel);
+#endif /* BUILD_GST */
+
 #ifdef BUILD_SNDFILE
 /**
  * @brief Open a soundfile.

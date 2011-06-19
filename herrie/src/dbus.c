@@ -73,6 +73,7 @@ typedef struct {
 G_DEFINE_TYPE(DBusServer, dbus_server, G_TYPE_OBJECT);
 
 GMutex *dbus_mtx;
+static DBusServer *ds = NULL;
 
 /**
  * @brief DBus bus name used by this application.
@@ -84,55 +85,6 @@ GMutex *dbus_mtx;
 #define HERRIE_PATH_NAME "/info/herrie/Herrie"
 
 /**
- * @brief Main loop to process incoming DBus events.
- */
-static void *
-dbus_runner_thread(void *unused)
-{
-	DBusServer *ds;
-	DBusGConnection *dc;
-	GMainLoop *loop;
-	DBusGProxy *proxy;
-	guint ret;
-
-	gui_input_sigmask();
-
-	g_type_init();
-	ds = g_object_new(dbus_server_get_type(), NULL);
-	loop = g_main_loop_new(NULL, FALSE);
-
-	/* Connect to the session bus. */
-	dc = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
-	if (dc == NULL)
-		goto done;
-
-	/* Register the controller object with DBus. */
-	dbus_g_connection_register_g_object(dc, HERRIE_PATH_NAME,
-	    G_OBJECT(ds));
-
-	proxy = dbus_g_proxy_new_for_name(dc, DBUS_SERVICE_DBUS,
-	    DBUS_PATH_DBUS, DBUS_INTERFACE_DBUS);
-
-	/* Register our bus name with DBus. */
-	if (org_freedesktop_DBus_request_name(proxy, HERRIE_BUS_NAME,
-	    0, &ret, NULL) == 0)
-		goto done;
-
-	/*
-	 * Another process is using our DBus path, probably another
-	 * instance of the application.
-	 */
-	if (ret != DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER)
-		goto done;
-
-	g_main_loop_run(loop);
-
-done:	g_main_loop_unref(loop);
-	g_object_unref(ds);
-	return (NULL);
-}
-
-/**
  * @brief Initialize the lock used by DBus.
  */
 void
@@ -140,15 +92,6 @@ dbus_init(void)
 {
 	g_type_init();
 	dbus_mtx = g_mutex_new();
-}
-
-/**
- * @brief Spawn the thread to process DBus events.
- */
-void
-dbus_spawn(void)
-{
-	g_thread_create(dbus_runner_thread, NULL, 0, NULL);
 }
 
 /**
@@ -251,4 +194,56 @@ dbus_server_class_init(DBusServerClass *klass)
 {
 	dbus_g_object_type_install_info(dbus_server_get_type(),
 	    &dbus_glib_dbus_server_object_info);
+}
+
+/**
+ * @brief Called before entering the gmainloop
+ */
+void
+dbus_before_mainloop(void)
+{
+	DBusGConnection *dc;
+	DBusGProxy *proxy;
+	guint ret;
+
+	g_type_init();
+	ds = g_object_new(dbus_server_get_type(), NULL);
+
+	/* Connect to the session bus. */
+	dc = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+	if (dc == NULL)
+		goto done;
+
+	/* Register the controller object with DBus. */
+	dbus_g_connection_register_g_object(dc, HERRIE_PATH_NAME,
+	    G_OBJECT(ds));
+
+	proxy = dbus_g_proxy_new_for_name(dc, DBUS_SERVICE_DBUS,
+	    DBUS_PATH_DBUS, DBUS_INTERFACE_DBUS);
+
+	/* Register our bus name with DBus. */
+	if (org_freedesktop_DBus_request_name(proxy, HERRIE_BUS_NAME,
+	    0, &ret, NULL) == 0)
+		goto done;
+
+	/*
+	 * Another process is using our DBus path, probably another
+	 * instance of the application.
+	 */
+	if (ret != DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER)
+		goto done;
+
+	return;
+done:	dbus_after_mainloop();
+}
+
+/**
+ * @brief Called after exiting the gmainloop
+ */
+void
+dbus_after_mainloop(void)
+{
+	if (ds != NULL)
+		g_object_unref(ds);
+	ds = NULL;
 }

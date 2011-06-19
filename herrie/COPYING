@@ -38,3 +38,5 @@ den Dungen <martijn@il.fontys.nl> for contributing code to Herrie in the
 past.
 
 The DBus integration code is based on a patch supplied by Steve Jothen.
+
+The GStreamer format support is written by Bas Westerbaan.

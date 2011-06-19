@@ -78,6 +78,7 @@ Makefile for your specific system. Arguments can be passed to the
 configure script to change certain parameters:
 
 - no_dbus       Disable DBus integration
+- gst           Enable GStreamer format support
 - no_http       Disable support for HTTP audio streams
 - no_modplug    Disable libmodplug linkage
 - no_mp3        Disable MP3 audio file support
