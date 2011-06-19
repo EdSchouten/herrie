@@ -37,7 +37,7 @@
 static GHashTable *refcache = NULL;
 
 static void
-vfs_cache_destroyvalue(gpointer data)
+vfs_cache_destroyvalue(void *data)
 {
 	struct vfsref *vr = data;
 
