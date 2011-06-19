@@ -10,35 +10,35 @@
 				margin: 0px;
 				color: black;
 			}
-			
+
 			a {
 				color: #029;
 			}
-			
+
 			a:hover {
 				color: #04F;
 			}
-			
+
 			/* The header section */
 			div#header {
 				background-color: #05a;
 				padding: 10px;
 			}
-			
+
 			div#header span#title {
 				font-family: monospace;
 				font-size: 30px;
 				font-weight: bold;
 				color: white;
 			}
-			
+
 			div#header span#subtitle {
 				margin-left: 10px;
 				font-weight: bold;
 				font-style: italic;
 				color: #ccc;
 			}
-			
+
 			/* The menu section */
 			div#menu {
 				width: 250px;
@@ -48,7 +48,7 @@
 				background-color: white;
 				float: left;
 			}
-			
+
 			/* The main section */
 			div#main {
 				margin-left: 310px;
@@ -57,11 +57,11 @@
 				padding: 30px;
 				background-color: white;
 			}
-			
+
 			div#main h2 {
 				margin-left: 10px;
 			}
-			
+
 			div#main p,ul,pre {
 				margin-left: 10px;
 			}
@@ -77,7 +77,7 @@
 			<span id="title">Herrie</span>
 			<span id="subtitle">a minimalistic music player</span>
 		</div>
-		
+
 		<div id="menu">
 			<ul style="padding-left: 15px">
 				<li><a href="#screenshots">Screenshots</a></li>
@@ -97,18 +97,18 @@
 				</li>
 			</ul>
 		</div>
-		
+
 		<div id="main">
 			<p>Herrie is a minimalistic music player that uses the command
 			line. It is written to support a variety of operating systems,
 			audio subsystems and file formats, including playlists.</p>
-		
+
 			<p>Herrie has a split-screen user interface, with a playlist at
 			the top of the screen and a file browser at the bottom. When
 			tracks are added to the playlist, Herrie consumes them from the
 			top one by one. It is thus an application that allows you to
 			batch music for playback.</p>
-		
+
 			<p>Herrie also has some more exotic features, including support
 			for <a href="http://www.last.fm/group/Herrie">AudioScrobbler</a>
 			and the ability to <tt>chroot()</tt> itself into a
@@ -121,9 +121,9 @@
 			href="trophees-du-libre.pdf">published online</a>.</p>
 
 			<h1><a id="screenshots">Screenshots</a></h1>
-		
+
 			<p>Below are a couple of screenshots of the application in action.</p>
-		
+
 			<div style="text-align: center">
 				<img src="screenshot1.png" alt="Herrie on FreeBSD, playing a CD from Deftones."/>
 				<p>Herrie on FreeBSD, playing a CD from <a href="http://en.wikipedia.org/wiki/Deftones">Deftones</a>.</p>
@@ -134,14 +134,14 @@
 				<img src="screenshot3.png" alt="Herrie through Cygwin on Windows Vista, playing the background music from NeverBall."/>
 				<p>Herrie through <a href="http://www.cygwin.com/">Cygwin</a> on Windows Vista, playing the background music from <a href="http://icculus.org/neverball/">NeverBall</a>.</p>
 			</div>
-		
+
 			<h1><a id="obtaining">Obtaining Herrie</a></h1>
-		
+
 			<h2><a id="source">Source tarballs</a></h2>
-		
+
 			<p>Herrie 2.2 is available for download at one of the three
 			following locations:</p>
-		
+
 			<ul>
 				<li>herrie.info:
 					<a href="http://herrie.info/distfiles/herrie-2.2.tar.bz2">bzip2</a>
@@ -152,9 +152,9 @@
 					<a href="http://www.stack.nl/~ed/projects/herrie/distfiles/herrie-2.2.tar.gz">gzip</a>
 				</li>
 			</ul>
-		
+
 			<p>Below are the checksums for the tarball:</p>
-		
+
 			<pre>MD5    (herrie-2.2.tar.bz2) = 88832b10298ab89473730eb0c93b6ddf
 SHA256 (herrie-2.2.tar.bz2) = 142341072920f86b6eb570b8f13bf5fd87c06cf801543dc7d1a819e39eb9fb2b
 SIZE   (herrie-2.2.tar.bz2) = 71596
@@ -175,12 +175,12 @@ SIZE   (herrie-2.2.tar.gz ) = 84843</pre>
 
 			<p>A history of changes between releases can be found in the <a
 			href="http://herrie.info/ChangeLog">ChangeLog</a>.</p>
-		
+
 			<h2><a id="packages">Package managers</a></h2>
-		
+
 			<p>The following operating systems or distributions include
 			Herrie in their package manager:</p>
-		
+
 			<ul>
 				<li><a href="http://sisyphus.ru/srpm/herrie">ALT Linux</a></li>
 				<li><a href="http://aur.archlinux.org/packages.php?do_Details=1&amp;ID=11623">Arch Linux</a></li>
@@ -196,30 +196,30 @@ SIZE   (herrie-2.2.tar.gz ) = 84843</pre>
 				<li><a href="http://slackbuilds.org/result/?sv=&amp;search=herrie">Slackware</a></li>
 				<li><a href="http://packages.ubuntu.com/herrie">Ubuntu Linux</a></li>
 			</ul>
-		
+
 			<h2><a id="repository">Anonymous repository access</a></h2>
-		
+
 			<p>Herrie's latest sourcecode can be downloaded using
 			Git. The following command downloads the latest
 			sourcecode:</p>
-		
+
 			<pre>git clone git://git.80386.nl/herrie</pre>
-		
+
 			<p>It is also possible to <a
 			href="http://git.80386.nl/cgit/herrie/">take
 			a look at the sourcecode using CGit</a>.</p>
-		
+
 			<h1><a id="using">Using Herrie</a></h1>
-		
+
 			<p>After installation, a new manual page is available. Just run
 			<tt>man herrie</tt> for a list of configuration switches and
 			keyboard bindings. An <a href="herrie.1">online manual page</a> is
 			also available.</p>
-		
+
 			<p>Developers can take a look at the <a href="doxygen/">source
 			code documentation</a> generated by <a
 			href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a>.</p>
-		
+
 			<h1><a id="contact">Contacting the author</a></h1>
 
 			<p>The author of Herrie, Ed Schouten, can be emailed at <a

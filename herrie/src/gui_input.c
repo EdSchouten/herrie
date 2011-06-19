@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -193,7 +193,7 @@ gui_input_asksearch(void)
 	str = gui_input_askstring(_("Search for"), old, NULL);
 	if (str == NULL)
 		return (-1);
-	
+
 	vm = vfs_match_new(str);
 	if (vm == NULL) {
 		gui_msgbar_warn(_("Bad pattern."));
@@ -432,7 +432,7 @@ struct gui_binding {
 	 */
 	int focus;
 	/**
-	 * @brief The character that should be pressed. 
+	 * @brief The character that should be pressed.
 	 */
 	int input;
 	/**

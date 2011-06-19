@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -160,7 +160,7 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 	/* Don't accept streams or submit songs twice */
 	if (!scrobbler_enabled || fd->stream || fd->_scrobbler_done)
 		return;
-	
+
 	if (eof) {
 		/* Just take the position - catches formats without seeking */
 		len = fd->time_cur;
@@ -176,7 +176,7 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 	/* Track was too short */
 	if (len < 30)
 		return;
-	
+
 	/* Mark it as processed */
 	fd->_scrobbler_done = 1;
 
@@ -222,7 +222,7 @@ scrobbler_queue_fetch(const char key[32], char **poststr)
 
 	str = g_string_new("s=");
 	g_string_append_len(str, key, 32);
-	
+
 	/* We can submit 50 tracks at a time */
 	for (len = 0; (len < 50) && (ent != NULL); len++) {
 		g_string_append_printf(str,
@@ -362,7 +362,7 @@ scrobbler_send_handshake(char *key, char **url)
 	con = curl_easy_init();
 	if (con == NULL)
 		return (-1);
-	
+
 	/* Generate the connection URL, including the password key */
 	hstime = time(NULL);
 	scrobbler_hash(hstime, hskey);
@@ -429,7 +429,7 @@ scrobbler_send_tracks(char *key, const char *url, const char *poststr)
 	con = curl_easy_init();
 	if (con == NULL)
 		return (-1);
-	
+
 	curl_easy_setopt(con, CURLOPT_URL, url);
 	curl_easy_setopt(con, CURLOPT_POSTFIELDS, poststr);
 	curl_easy_setopt(con, CURLOPT_USERAGENT, APP_NAME "/" APP_VERSION);
@@ -528,7 +528,7 @@ scrobbler_runner_thread(void *unused)
 		/* Make sure we don't transmit too fast */
 		g_usleep(interval * 1000000);
 	}
-	
+
 	g_assert_not_reached();
 	return (NULL);
 }
@@ -553,13 +553,13 @@ scrobbler_queue_dump(void)
 	filename = config_getopt("scrobbler.dumpfile");
 	if (filename[0] == '\0')
 		return;
-	
+
 	/* Nothing to be stored - remove queue */
 	if (scrobbler_queue_first == NULL) {
 		vfs_delete(filename);
 		return;
 	}
-	
+
 	/* Write list to queue file */
 	fp = vfs_fopen(filename, "w");
 	if (fp == NULL)
@@ -586,7 +586,7 @@ scrobbler_queue_restore(void)
 	filename = config_getopt("scrobbler.dumpfile");
 	if (filename[0] == '\0')
 		return;
-	
+
 	if ((fio = vfs_fopen(filename, "r")) == NULL)
 		return;
 
@@ -612,7 +612,7 @@ scrobbler_queue_restore(void)
 			goto bad;
 		(*nse)->length = strtoul(s1, NULL, 10);
 		(*nse)->time = strtol(++s2, NULL, 10);
-		
+
 		/* Properly fix up the list */
 		scrobbler_queue_last = *nse;
 		nse = &(*nse)->next;
@@ -636,7 +636,7 @@ scrobbler_spawn(void)
 
 	/* Restore unsubmitted tracks */
 	scrobbler_queue_restore();
-	
+
 	scrobbler_runner = g_thread_create(scrobbler_runner_thread,
 	    NULL, 0, NULL);
 	scrobbler_enabled = 1;

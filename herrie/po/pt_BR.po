@@ -1,5 +1,5 @@
 # Portuguese translation for Herrie.
-# Copyright (C) 2008 Free Software Foundation, Inc. 
+# Copyright (C) 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the herrie package.
 # Eros Carvalho <erosmc@gmail.com>, 2007.
 msgid ""

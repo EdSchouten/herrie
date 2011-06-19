@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -51,7 +51,7 @@ vorbis_read_comments(struct audio_file *fd)
 
 	if ((cmt = ov_comment(vfp, -1)) == NULL)
 		return;
-	
+
 	for (i = 0; i < cmt->comments; i++) {
 		tag = cmt->user_comments[i];
 
@@ -91,7 +91,7 @@ vorbis_open(struct audio_file *fd, const char *ext)
 	fd->time_len = ov_time_total(vfp, -1);
 
 	vorbis_read_comments(fd);
-	
+
 	return (0);
 }
 
@@ -114,7 +114,7 @@ vorbis_read(struct audio_file *fd, int16_t *buf, size_t len)
 	size_t ret = 0;
 	long rlen;
 	char *out = (char *)buf;
-	
+
 	len *= sizeof(int16_t);
 
 	/* Return 16 bits signed native endian */

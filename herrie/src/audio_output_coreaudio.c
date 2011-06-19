@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -131,7 +131,7 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 	/* Fill the trailer with zero's */
 	for (; i < abuflen; i++)
 		ob[i] = 0.0;
-	
+
 	return (0);
 }
 
@@ -143,7 +143,7 @@ audio_output_open(void)
 	/* Obtain the audio device ID */
 	size = sizeof adid;
 	if (AudioHardwareGetProperty(
-	    kAudioHardwarePropertyDefaultOutputDevice, 
+	    kAudioHardwarePropertyDefaultOutputDevice,
 	    &size, &adid) != 0 || adid == kAudioDeviceUnknown)
 		goto error;
 
@@ -205,7 +205,7 @@ audio_output_play(struct audio_file *fd)
 {
 	UInt32 len, size;
 	int16_t *tmp;
-	
+
 	/* Read data in our temporary buffer */
 	if ((len = audio_file_read(fd, abufnew, abuflen)) == 0)
 		return (-1);
@@ -218,7 +218,7 @@ audio_output_play(struct audio_file *fd)
 
 		if (AudioDeviceSetProperty(adid, 0, 0, 0,
 		    kAudioDevicePropertyStreamFormat, sizeof afmt, &afmt) != 0) {
-		    	/* Get current settings back */
+			/* Get current settings back */
 			size = sizeof afmt;
 			AudioDeviceGetProperty(adid, 0, false,
 			    kAudioDevicePropertyStreamFormat, &size, &afmt);
@@ -233,7 +233,7 @@ audio_output_play(struct audio_file *fd)
 	while (g_atomic_int_get(&abufulen) != 0)
 		g_cond_wait(abufdrained, abuflock);
 	g_mutex_unlock(abuflock);
-	
+
 	/* Toggle the buffers */
 	tmp = abufcur;
 	abufcur = abufnew;

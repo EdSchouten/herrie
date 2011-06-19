@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -94,7 +94,7 @@ valid_md5(char *val)
 
 	if (val[0] == '\0')
 		return (0);
-	
+
 	for (i = 0; i < 32; i++) {
 		/* Silently convert hash to lowercase */
 		val[i] = g_ascii_tolower(val[i]);
@@ -196,7 +196,7 @@ static struct config_entry configlist[] = {
 /**
  * @brief The amount of configuration switches available.
  */
-#define NUM_SWITCHES (sizeof configlist / sizeof(struct config_entry)) 
+#define NUM_SWITCHES (sizeof configlist / sizeof(struct config_entry))
 
 /**
  * @brief Search for an entry in the configlist by name.
@@ -233,7 +233,7 @@ config_setopt(const char *opt, char *val)
 
 	if ((ent = config_search(opt)) == NULL)
 		return (-1);
-	
+
 	if (strcmp(val, ent->defval) != 0) {
 		/* Just unset the value when it's the default */
 
@@ -287,10 +287,10 @@ const char *
 config_getopt(const char *opt)
 {
 	struct config_entry *ent;
-	
+
 	ent = config_search(opt);
 	g_assert(ent != NULL);
-	
+
 	/* Return the default if it is unset */
 	return (ent->curval ? ent->curval : ent->defval);
 }
@@ -299,7 +299,7 @@ int
 config_getopt_bool(const char *val)
 {
 	int bval;
-	
+
 	bval = string_to_bool(config_getopt(val));
 	g_assert(bval != -1);
 	return (bval);
@@ -309,7 +309,7 @@ int
 config_getopt_color(const char *val)
 {
 	int col;
-	
+
 	col = gui_draw_color_number(config_getopt(val));
 	g_assert(col >= -1);
 	return (col);

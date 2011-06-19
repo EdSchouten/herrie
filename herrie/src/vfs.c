@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -153,7 +153,7 @@ vfs_path_concat(const char *dir, const char *file, int strict)
 	/* Remove /./ and /../ */
 	for (off = npath->str;
 	    (off = strchr(off, G_DIR_SEPARATOR)) != NULL;) {
-	    	if (off[1] == '\0' || off[1] == G_DIR_SEPARATOR) {
+		if (off[1] == '\0' || off[1] == G_DIR_SEPARATOR) {
 			/* /foo//bar -> /foo/bar */
 			g_string_erase(npath, off - npath->str, 1);
 		} else if (off[1] == '.' &&
@@ -347,10 +347,10 @@ vfs_close(struct vfsref *vr)
 			vfs_list_remove(&vr->ent->population, cur);
 			vfs_close(cur);
 		}
-		
+
 		vfs_dealloc(vr->ent);
 	}
-	
+
 	/* Deallocate the reference to it */
 	g_slice_free(struct vfsref, vr);
 }
@@ -420,7 +420,7 @@ vfs_write_playlist(const struct vfslist *vl, const struct vfsref *vr,
 	fn = vfs_path_concat(base, filename, 0);
 	if (fn == NULL)
 		return (NULL);
-	
+
 	/* Search for a matching extension */
 	for (i = 0; i < NUM_WRITERS; i++) {
 		if (g_str_has_suffix(fn, writers[i].ext)) {
@@ -452,7 +452,7 @@ vfs_delete(const char *filename)
 	fn = vfs_path_concat(NULL, filename, 0);
 	if (fn == NULL)
 		return (-1);
-	
+
 	ret = unlink(fn);
 	g_free(fn);
 
@@ -468,7 +468,7 @@ vfs_fopen(const char *filename, const char *mode)
 	fn = vfs_path_concat(NULL, filename, 0);
 	if (fn == NULL)
 		return (NULL);
-	
+
 	ret = fopen(fn, mode);
 	g_free(fn);
 
@@ -482,7 +482,7 @@ vfs_fgets(char *str, size_t size, FILE *fp)
 
 	if (fgets(str, size, fp) == NULL)
 		return (-1);
-	
+
 	eol = strchr(str, '\0');
 	g_assert(eol != NULL);
 
@@ -509,7 +509,7 @@ vfs_match_new(const char *str)
 		return (NULL);
 	}
 	vm->string = g_strdup(str);
-	
+
 	return (vm);
 }
 

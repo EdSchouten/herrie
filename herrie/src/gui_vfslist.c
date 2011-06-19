@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -205,7 +205,7 @@ gui_vfslist_refresh(struct gui_vfslist *gv)
 			waddstr(gv->win, vfs_name(vr));
 		}
 
-                /* Marking character for dirs and such */
+		/* Marking character for dirs and such */
 		mark = vfs_marking(vr);
 		if (mark != '\0')
 			waddch(gv->win, mark);
@@ -232,7 +232,7 @@ gui_vfslist_new(int shownumbers)
 	struct gui_vfslist *ret;
 
 	scrollpages = config_getopt_bool("gui.vfslist.scrollpages");
-	
+
 	ret = g_slice_new0(struct gui_vfslist);
 	ret->shownumbers = shownumbers;
 
@@ -340,7 +340,7 @@ void
 gui_vfslist_cursor_down(struct gui_vfslist *gv, int silent)
 {
 	struct vfsref *vr;
-	
+
 	if (gui_vfslist_warn_isempty(gv))
 		return;
 
@@ -411,7 +411,7 @@ gui_vfslist_cursor_pageup(struct gui_vfslist *gv)
 		gv->vr_selected = gv->vr_top;
 		gv->idx_selected = gv->idx_top;
 	}
-	
+
 	gui_vfslist_refresh(gv);
 }
 
@@ -429,7 +429,7 @@ gui_vfslist_cursor_pagedown(struct gui_vfslist *gv)
 		gv->vr_top = vfs_list_next(gv->vr_top);
 		gv->idx_top++;
 	}
-	
+
 	if (gv->vr_top == NULL) {
 		gv->vr_top = vfs_list_last(gv->list);
 		gv->idx_top = vfs_list_items(gv->list);
@@ -607,7 +607,7 @@ gui_vfslist_fullpath(struct gui_vfslist *gv)
 
 	if (gui_vfslist_warn_isempty(gv))
 		return;
-	
+
 	msg = g_strdup_printf("%s: %s",
 	    _("Full pathname"), vfs_filename(gv->vr_selected));
 	gui_msgbar_warn(msg);

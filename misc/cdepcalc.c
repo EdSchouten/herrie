@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2008 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -197,7 +197,7 @@ main(int argc, char *argv[])
 		file_scan(fent->d_name);
 	}
 	closedir(srcdir);
-	
+
 	out = fopen("../depends", "w");
 	if (out == NULL) {
 		fprintf(stderr, "Failed to open output file\n");

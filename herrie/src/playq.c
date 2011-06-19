@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -487,7 +487,7 @@ void
 playq_song_fast_move_up(struct vfsref *vr, unsigned int index)
 {
 	struct vfsref *pvr;
-	
+
 	/* Remove the item above */
 	pvr = vfs_list_prev(vr);
 	gui_playq_notify_pre_removal(index - 1);
@@ -596,7 +596,7 @@ playq_song_randomize(void)
 	do {
 		/* Pick a random item from the beginning */
 		idx = g_rand_int_range(playq_rand, 0, remaining);
-		
+
 		/* Add it to the list */
 		vfs_list_insert_tail(&playq_list, vrlist[idx]);
 		/* Remove fragmentation  */

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2011 Ed Schouten <ed@80386.nl>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -230,7 +230,7 @@ gui_browser_gotofile(struct vfsref *vr)
 		vfs_close(vrp);
 		goto bad;
 	}
-	
+
 	for (vrn = vfs_list_first(vfs_population(vrp)), idx = 1;
 	    vrn != NULL; vrn = vfs_list_next(vrn), idx++) {
 		/* Select the previous directory */
@@ -258,7 +258,7 @@ gui_browser_dir_parent(void)
 
 	if (vr_curdir == NULL)
 		return;
-	
+
 	if (locatestr != NULL) {
 		/* First unset the filter if we have one */
 		gui_browser_cleanup_flist();
@@ -475,7 +475,7 @@ gui_browser_locate(const struct vfsmatch *vm)
 	vfs_locate(&vl, vr_curdir, vm);
 	if (vfs_list_empty(&vl))
 		return (-1);
-	
+
 	gui_browser_cleanup_flist();
 	locatestr = g_strdup(vfs_match_value(vm));
 	vfs_list_move(&vl_flist, &vl);
