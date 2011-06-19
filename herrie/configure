@@ -266,7 +266,7 @@ then
 	SRCS="$SRCS audio_format_sndfile"
 fi
 # Strict compilation
-[ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wsign-compare -Werror"
+[ "$CFG_STRICT" != "" ] && CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wstrict-prototypes -Wold-style-definition -Wsign-compare -Werror"
 [ "$CFG_DEBUG" != "" ] && CFLAGS="$CFLAGS -g -DBUILD_DEBUG"
 # Translation support
 # Remove all broken translations
