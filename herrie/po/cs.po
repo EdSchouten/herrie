@@ -1,0 +1,265 @@
+# translation of herrie.pot to Czech
+# This file is distributed under the same license as the herrie package.
+# Copyright (C) 2012 Jakub kub1x Podlaha <j.podlaha@gmail.com>
+# Jakub kub1x Podlaha <j.podlaha@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: herrie\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-18 23:07+0200\n"
+"PO-Revision-Date: 2012-03-10 09:04+0100\n"
+"Last-Translator: Jakub kub1x Podlaha <j.podlaha@gmail.com>\n"
+"Language-Team: Jakub kub1x Podlaha <j.podlaha@gmail.com>\n"
+"Language: czech\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: audio_output_alsa.c:151 audio_output_ao.c:116 audio_output_coreaudio.c:199
+#: audio_output_pulse.c:77
+msgid "Cannot open the audio device."
+msgstr "Nelze otevřít zvukové zařízení."
+
+#: audio_output_alsa.c:169 audio_output_coreaudio.c:226 audio_output_oss.c:123
+msgid "Sample rate or amount of channels not supported."
+msgstr "Počet kanálú, nebo vzorkovací frekvence není podporována."
+
+#: audio_output_oss.c:72
+#, c-format
+msgid "Cannot open audio device \"%s\".\n"
+msgstr "Nelze otevřít zvukové zažízení \"%s\".\n"
+
+#: gui_browser.c:79
+msgid "filter"
+msgstr "filtr"
+
+#: gui_browser.c:145
+msgid "Unable to open initial directory."
+msgstr "Nelze otevřít výchozí adresář."
+
+#: gui_browser.c:252
+msgid "Unable to enter the parent directory."
+msgstr "Nelze otevřít nadřazený adresář."
+
+#: gui_browser.c:284
+msgid "Unable to enter the selected directory."
+msgstr "Nelze otevřít vybraný adresář."
+
+#: gui_browser.c:402
+msgid "Unable to display the file or directory."
+msgstr "Nelze zobrazit soubor či adresář."
+
+#: gui_browser.c:416
+msgid "Change directory"
+msgstr "Změnit adresář"
+
+#: gui_browser.c:436
+msgid "Write playlist to file"
+msgstr "Zapsat seznam skladeb do souboru"
+
+#: gui_browser.c:445
+msgid "Unable to write playlist."
+msgstr "Nelze zapsat seznam skadeb."
+
+#: gui_input.c:105
+msgid "Use kill(1) to quit."
+msgstr "Použijte příkaz kill(1) pro ukončení."
+
+#: gui_input.c:109
+#, c-format
+msgid "Quit %s?"
+msgstr "Ukončit %s?"
+
+#: gui_input.c:193
+msgid "Search for"
+msgstr "Hledat"
+
+#: gui_input.c:199
+msgid "Bad pattern."
+msgstr "Chybný vzor."
+
+#: gui_input.c:209
+#, c-format
+msgid "Searching for \"%s\"..."
+msgstr "Vyhledávám \"%s\"..."
+
+#: gui_input.c:251 gui_input.c:288
+msgid "Not found."
+msgstr "Nenalezeno."
+
+#: gui_input.c:366
+msgid "Jump to position"
+msgstr "Přesun na pozici"
+
+#: gui_input.c:422
+msgid "Bad time format."
+msgstr "Chybný formát času."
+
+#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
+msgid "yes"
+msgstr "ano"
+
+#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
+msgid "no"
+msgstr "ne"
+
+#: gui_playq.c:109
+msgid "Idle"
+msgstr "Vyčkávám"
+
+#: gui_playq.c:112
+msgid "Paused"
+msgstr "Pauza"
+
+#: gui_playq.c:114
+msgid "Playing"
+msgstr "Přehrávání"
+
+#: gui_playq.c:352
+msgid "Remove all songs from the playlist?"
+msgstr "Smazat všechny písně ze seznamu skladeb?"
+
+#: gui_playq.c:363
+msgid "Randomize the playlist?"
+msgstr "Přeházet náhodně sklatby v seznamu?"
+
+#: gui_playq.c:412 gui_playq.c:450
+msgid "The song is already at the top of the playlist."
+msgstr "Písň už je na začátku seznamu skladeb."
+
+#: gui_playq.c:431 gui_playq.c:469
+msgid "The song is already at the bottom of the playlist."
+msgstr "Píseň už je na konci seznamu skladeb."
+
+#: gui_playq.c:526
+msgid "Failed to adjust the volume."
+msgstr "Nepodařilo se zvýšit hlasitost."
+
+#: gui_playq.c:528
+#, c-format
+msgid "Volume: %d%%"
+msgstr "Hlasitost: %d%%"
+
+#: gui_vfslist.c:264
+msgid "There are no songs."
+msgstr "Žádné skladby v seznamu."
+
+#: gui_vfslist.c:335
+msgid "You are at the first song."
+msgstr "Jste na začátku seznamu skladeb."
+
+#: gui_vfslist.c:360
+msgid "You are at the last song."
+msgstr "Jste na konci seznamu skladeb."
+
+#: gui_vfslist.c:588
+msgid "Search wrapped to top."
+msgstr "Vyhledávání dosáhlo počátku seznamu skladeb."
+
+#: gui_vfslist.c:612
+msgid "Full pathname"
+msgstr "Celá adresa souboru"
+
+#: main.c:73
+msgid "Global configuration file"
+msgstr "Globální konfigurační soubor."
+
+#: main.c:74
+msgid "Audio output"
+msgstr "Audio výstup"
+
+#: main.c:75
+msgid "Support for AudioScrobbler"
+msgstr "Podpora pro AudioScrobbler"
+
+#: main.c:81
+msgid "Support for DBus integration"
+msgstr "Podpora pro DBus"
+
+#: main.c:87
+msgid "Support for HTTP streams"
+msgstr "Podpora pro HTTP-streamy"
+
+#: main.c:93
+msgid "Support for XSPF playlists (`spiff')"
+msgstr "Podpora pro XSPF seznamy skladeb (`spiff')"
+
+#: main.c:99
+msgid "Supported audio file formats"
+msgstr "Podporované audio formáty"
+
+#: main.c:111
+msgid "usage"
+msgstr "použití"
+
+#: playq.c:195
+#, c-format
+msgid "Failed to open \"%s\" for playback."
+msgstr "Nepodařilo se otevřít soubor \"%s\" pro přehrání"
+
+#: playq.c:426
+#, c-format
+msgid "Repeat: %s"
+msgstr "Opakovat: %s"
+
+#: playq.c:427
+msgid "on"
+msgstr "Zapnout"
+
+#: playq.c:427
+msgid "off"
+msgstr "Vypnout"
+
+#: scrobbler.c:485
+msgid "Failed to authorize at AudioScrobbler."
+msgstr "Nepodařilo se přihlásit do služby AudioScrobbler."
+
+#: scrobbler.c:489
+msgid "Invalid AudioScrobbler username/password."
+msgstr "Neplatné jméno/heslo do služby AudioScrobbler."
+
+#: scrobbler.c:494
+msgid "Successfully authorized at AudioScrobbler."
+msgstr "Úspěšně připojen ke službe AudioScrobbler."
+
+#: scrobbler.c:511
+msgid "Successfully sent 1 song to AudioScrobbler."
+msgstr "Úspěšně odeslána 1 skladba do služby AudioScrobbler."
+
+#: scrobbler.c:515
+#, c-format
+msgid "Successfully sent %d songs to AudioScrobbler."
+msgstr "Úspěšně odesláno %d skladeb na AudioScrobbler."
+
+#: scrobbler.c:521
+msgid "Failed to submit songs to AudioScrobbler."
+msgstr "Nelze odeslad skladby na AudioScrobbler."
+
+#: vfs.c:206
+#, c-format
+msgid "Unknown user: %s\n"
+msgstr "Neznámý uživatel: %s\n"
+
+#: vfs.c:220
+#, c-format
+msgid "Unable to chroot in %s\n"
+msgstr "Nelze použít chroot do %s\n"
+
+#: vfs.c:229
+#, c-format
+msgid "Unable to change to group %d\n"
+msgstr "Nelze změnit skupinu na %d\n"
+
+#: vfs.c:233
+#, c-format
+msgid "Unable to change to user %d\n"
+msgstr "Nelze změnit uživatele na %d\n"
+
+#: vfs_cache.c:61
+msgid "VFS cache purged."
+msgstr "VFS chace byla vyprázdněna."
+
+#: vfs_http.c:146
+#, c-format
+msgid "Connection with \"%s\" lost."
+msgstr "Spojení s \"%s\" bylo ztraceno."
