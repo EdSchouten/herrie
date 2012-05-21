@@ -60,6 +60,11 @@ static int gui_input_curfocus = GUI_FOCUS_BROWSER;
  */
 static struct vfsmatch *cursearch = NULL;
 /**
+ * @brief Indicator whether the current search should be applied in
+ *        reverse.
+ */
+static int cursearch_reverse = 0;
+/**
  * @brief The last seek string that has been entered.
  */
 static char *curseek = NULL;
@@ -179,7 +184,7 @@ gui_input_switchfocus(void)
  * @brief Ask the user to enter a new search string.
  */
 static int
-gui_input_asksearch(void)
+gui_input_promptsearch(void)
 {
 	char *str;
 	const char *old = NULL;
@@ -216,34 +221,38 @@ gui_input_asksearch(void)
 
 /**
  * @brief Ask the user to enter a search string when none was given and
- *        search for the next item matching the search string.
+ *        search for the next item matching the search string in the
+ *        direction specified.
  */
 static void
-gui_input_searchnext(void)
+do_gui_input_search(int reverse)
 {
 	int nfocus = GUI_FOCUS_PLAYQ;
 
 	if (cursearch == NULL) {
 		/* No search string yet */
-		if (gui_input_asksearch() != 0)
+		if (gui_input_promptsearch() != 0)
 			return;
+		cursearch_reverse = 0;
 	}
 
+	/* Search up or down? */
+	reverse = !reverse != !cursearch_reverse;
 	/*
-	 * We want to change our search order depending on which dialog
+	 * We want to change our dialog order depending on which dialog
 	 * is currently focused. This code is quite awful, but does the
 	 * thing. When the playq is focused, it only performs the first
 	 * two searches. If the browser is focused, it only performs the
 	 * last two.
 	 */
 	if (gui_input_curfocus == GUI_FOCUS_PLAYQ &&
-	    gui_playq_searchnext(cursearch) == 0) {
+	    gui_playq_search(cursearch, reverse) == 0) {
 		goto found;
-	} else if (gui_browser_searchnext(cursearch) == 0) {
+	} else if (gui_browser_search(cursearch, reverse) == 0) {
 		nfocus = GUI_FOCUS_BROWSER;
 		goto found;
 	} else if (gui_input_curfocus != GUI_FOCUS_PLAYQ &&
-	    gui_playq_searchnext(cursearch) == 0) {
+	    gui_playq_search(cursearch, reverse) == 0) {
 		goto found;
 	}
 
@@ -258,18 +267,60 @@ found:	/* Focus the window with the match and redraw them. */
 }
 
 /**
- * @brief Ask the user to enter a new search string and perform the
- *        first search.
+ * @brief Ask the user to enter a search string when none was given and
+ *        search for the next item matching the search string.
  */
 static void
 gui_input_search(void)
 {
+	do_gui_input_search(0);
+}
+
+/**
+ * @brief Ask the user to enter a search string when none was given and
+ *        search for the next item matching the search string in the
+ *        reverse direction.
+ */
+static void
+gui_input_search_reverse(void)
+{
+	do_gui_input_search(1);
+}
+
+/**
+ * @brief Ask the user to enter a new search string and perform the
+ *        first search in the direction specified.
+ */
+static void
+do_gui_input_asksearch(int reverse)
+{
 	/* Always ask for a search string */
-	if (gui_input_asksearch() != 0)
+	if (gui_input_promptsearch() != 0)
 		return;
+	cursearch_reverse = reverse;
 
 	/* Just simulate a 'n' button */
-	gui_input_searchnext();
+	gui_input_search();
+}
+
+/**
+ * @brief Ask the user to enter a new search string and perform the
+ *        first search.
+ */
+static void
+gui_input_asksearch(void)
+{
+	do_gui_input_asksearch(0);
+}
+
+/**
+ * @brief Ask the user to enter a new search string and perform the
+ *        first search in the reverse direction.
+ */
+static void
+gui_input_asksearch_reverse(void)
+{
+	do_gui_input_asksearch(1);
 }
 
 /**
@@ -280,8 +331,9 @@ static void
 gui_input_locate(void)
 {
 	/* Always ask for a search string */
-	if (gui_input_asksearch() != 0)
+	if (gui_input_promptsearch() != 0)
 		return;
+	cursearch_reverse = 0;
 
 	/* Perform the serach */
 	if (gui_browser_locate(cursearch) != 0)
@@ -480,8 +532,10 @@ static struct gui_binding kbdbindings[] = {
 	{ -1, '~',			gui_browser_gotohome },
 	{ -1, '\t', 			gui_input_switchfocus },
 	{ -1, CTRL('W'),		gui_input_switchfocus },
-	{ -1, '/',			gui_input_search },
-	{ -1, 'n',			gui_input_searchnext },
+	{ -1, '/',			gui_input_asksearch },
+	{ -1, '?',			gui_input_asksearch_reverse },
+	{ -1, 'n',			gui_input_search },
+	{ -1, 'N',			gui_input_search_reverse },
 	{ -1, KEY_LEFT,			gui_browser_dir_parent },
 	{ -1, KEY_RIGHT,		gui_browser_dir_enter },
 

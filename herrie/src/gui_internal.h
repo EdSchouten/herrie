@@ -252,7 +252,7 @@ void gui_playq_song_select(void);
  * @brief Search for the next item matching gui_input_cursearch in the
  *        playlist.
  */
-int gui_playq_searchnext(const struct vfsmatch *vm);
+int gui_playq_search(const struct vfsmatch *vm, int reverse);
 /**
  * @brief Focus or unfocus the playlist.
  */
@@ -362,7 +362,7 @@ void gui_browser_playq_add_before(void);
  * @brief Search for the next item matching gui_input_cursearch in the
  *        file browser.
  */
-int gui_browser_searchnext(const struct vfsmatch *vm);
+int gui_browser_search(const struct vfsmatch *vm, int reverse);
 /**
  * @brief Change to a directory, filled in by the user.
  */

@@ -108,8 +108,18 @@ first matching entry below the current selection. If no match is found,
 the search will continue at the top of the list. As a final attempt, the
 other window is searched as well.
 .TP
+.B ?
+Search the entries for a specified regular expression and select the
+first matching entry above the current selection. If no match is found,
+the search will continue at the bottom of the list. As a final attempt, the
+other window is searched as well.
+.TP
 .B n
 Perform another search for the last entered search string.
+.TP
+.B N
+Perform another search for the last entered search string in the
+opposite direction.
 .PP
 There are also some bindings that only apply to the playlist:
 .TP

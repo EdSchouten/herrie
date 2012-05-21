@@ -206,7 +206,8 @@ void gui_vfslist_notify_done(struct gui_vfslist *gv);
  * @brief Change the selection to the first item that matches the
  *        globally defined search string gui_input_cursearch.
  */
-int gui_vfslist_searchnext(struct gui_vfslist *gv, const struct vfsmatch *vm);
+int gui_vfslist_search(struct gui_vfslist *gv, const struct vfsmatch *vm,
+    int reverse);
 /**
  * @brief Show the full pathname of the selected entry in the message
  *        bar.

@@ -561,7 +561,8 @@ gui_vfslist_notify_done(struct gui_vfslist *gv)
 }
 
 int
-gui_vfslist_searchnext(struct gui_vfslist *gv, const struct vfsmatch *vm)
+gui_vfslist_search(struct gui_vfslist *gv, const struct vfsmatch *vm,
+    int reverse)
 {
 	struct vfsref *vr;
 	unsigned int idx;
@@ -571,22 +572,47 @@ gui_vfslist_searchnext(struct gui_vfslist *gv, const struct vfsmatch *vm)
 	if (gv->vr_selected == NULL)
 		return (-1);
 
-	/* Step 1: search from selection to end */
-	for (vr = vfs_list_next(gv->vr_selected), idx = gv->idx_selected + 1;
-	    vr != NULL; vr = vfs_list_next(vr), idx++) {
-		if (vfs_match_compare(vm, vfs_name(vr))) {
-			gui_msgbar_flush();
-			goto found;
+	/* Search from top to bottom or vice versa? */
+	if (!reverse) {
+		/* Step 1: search from selection to end */
+		for (vr = vfs_list_next(gv->vr_selected),
+		    idx = gv->idx_selected + 1; vr != NULL;
+		    vr = vfs_list_next(vr), idx++) {
+			if (vfs_match_compare(vm, vfs_name(vr))) {
+				gui_msgbar_flush();
+				goto found;
+			}
 		}
-	}
 
-	/* Step 2: search from beginning to selection */
-	for (vr = vfs_list_first(gv->list), idx = 1;
-	    vr != vfs_list_next(gv->vr_selected);
-	    vr = vfs_list_next(vr), idx++) {
-		if (vfs_match_compare(vm, vfs_name(vr))) {
-			gui_msgbar_warn(_("Search wrapped to top."));
-			goto found;
+		/* Step 2: search from beginning to selection */
+		for (vr = vfs_list_first(gv->list), idx = 1;
+		    vr != vfs_list_next(gv->vr_selected);
+		    vr = vfs_list_next(vr), idx++) {
+			if (vfs_match_compare(vm, vfs_name(vr))) {
+				gui_msgbar_warn(_("Search wrapped to top."));
+				goto found;
+			}
+		}
+	} else {
+		/* Step 1: search from selection to beginning */
+		for (vr = vfs_list_prev(gv->vr_selected),
+		    idx = gv->idx_selected - 1; vr != NULL;
+		    vr = vfs_list_prev(vr), idx--) {
+			if (vfs_match_compare(vm, vfs_name(vr))) {
+				gui_msgbar_flush();
+				goto found;
+			}
+		}
+
+		/* Step 2: search from end to selection */
+		for (vr = vfs_list_last(gv->list),
+		    idx = vfs_list_items(gv->list);
+		    vr != vfs_list_prev(gv->vr_selected);
+		    vr = vfs_list_prev(vr), idx--) {
+			if (vfs_match_compare(vm, vfs_name(vr))) {
+				gui_msgbar_warn(_("Search wrapped to bottom."));
+				goto found;
+			}
 		}
 	}
 
