@@ -426,7 +426,7 @@ void		vfs_cache_add(const struct vfsref *vr);
 /**
  * @brief Obtain entry from the VFS cache.
  */
-struct vfsref 	*vfs_cache_lookup(const char *filename);
+struct vfsref	*vfs_cache_lookup(const char *filename);
 /**
  * @brief Purge the VFS cache.
  */

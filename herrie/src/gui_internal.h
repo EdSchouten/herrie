@@ -134,7 +134,7 @@ char *gui_input_askstring(const char *question, const char *defstr,
  */
 /**
  * @brief Create a bar at the bottom of the terminal displaying
- * 	  messages and questions.
+ *        messages and questions.
  */
 void gui_msgbar_init(void);
 /**

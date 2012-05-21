@@ -55,7 +55,7 @@ static char	scrobbler_enabled = 0;
 /**
  * @brief Lock used to provide safe access to the AudioScrobbler queue.
  */
-static GMutex 	*scrobbler_lock;
+static GMutex	*scrobbler_lock;
 /**
  * @brief Conditional variable used to notify the avaiability of new
  *        tracks ready for submission to AudioScrobbler.

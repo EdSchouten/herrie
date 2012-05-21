@@ -96,7 +96,7 @@ static struct playq_funcs xmms_funcs = {
 static struct playq_funcs *funcs = &party_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
-GMutex 			*playq_mtx;
+GMutex			*playq_mtx;
 /**
  * @brief Conditional variable used to kick the playq alive when it was
  *        waiting for a new song to be added to the playlist or when

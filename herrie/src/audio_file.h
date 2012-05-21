@@ -42,7 +42,7 @@ struct audio_file {
 
 	/**
 	 * @brief An audio format for opening, closing and reading
-	 * 	the audio file.
+	 *        the audio file.
 	 */
 	struct audio_format *drv;
 	/**
