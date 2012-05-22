@@ -12,6 +12,8 @@
  * Changed: Go to home directory when pressing ~ when defaultpath is unset
  * Added: vfs.cache to cache file system entries
  * Added: GStreamer format module - Bas Westerbaan
+ * Added: Czech translation - Jakub Podlaha
+ * Added: Reverse searching - Jille Timmermans
 
 2008-10-14 -- Herrie 2.2:
  * Added: Ukranian translation - Viacheslav Chumushuk
