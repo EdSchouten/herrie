@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-18 23:07+0200\n"
+"POT-Creation-Date: 2012-09-16 12:34+0200\n"
 "PO-Revision-Date: 2008-01-03 13:13+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -66,46 +66,46 @@ msgid "Unable to write playlist."
 msgstr "Kan ikke skrive spilleliste."
 
 # måske stop for quit ?
-#: gui_input.c:105
+#: gui_input.c:110
 msgid "Use kill(1) to quit."
 msgstr "Brug kill(1) for afslut."
 
 # måske stop for quit ?
-#: gui_input.c:109
+#: gui_input.c:114
 #, c-format
 msgid "Quit %s?"
 msgstr "Afslut %s?"
 
-#: gui_input.c:193
+#: gui_input.c:198
 msgid "Search for"
 msgstr "Søg efter"
 
-#: gui_input.c:199
+#: gui_input.c:204
 msgid "Bad pattern."
 msgstr "Dårligt mønster."
 
-#: gui_input.c:209
+#: gui_input.c:214
 #, c-format
 msgid "Searching for \"%s\"..."
 msgstr ""
 
-#: gui_input.c:251 gui_input.c:288
+#: gui_input.c:260 gui_input.c:340
 msgid "Not found."
 msgstr "Ikke fundet."
 
-#: gui_input.c:366
+#: gui_input.c:418
 msgid "Jump to position"
 msgstr "Flyt til position"
 
-#: gui_input.c:422
+#: gui_input.c:474
 msgid "Bad time format."
 msgstr "Ugyldigt tidsformat."
 
-#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:672 main.c:84 main.c:90 main.c:96 main.c:102
 msgid "yes"
 msgstr "ja"
 
-#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:673 main.c:86 main.c:92 main.c:98 main.c:104
 msgid "no"
 msgstr "nej"
 
@@ -159,45 +159,50 @@ msgstr "Du er ved den første sang."
 msgid "You are at the last song."
 msgstr "Du er ved den sidste sang."
 
-#: gui_vfslist.c:588
+#: gui_vfslist.c:592
 msgid "Search wrapped to top."
 msgstr "Søgning ombrudt til toppen."
 
-#: gui_vfslist.c:612
+#: gui_vfslist.c:613
+#, fuzzy
+msgid "Search wrapped to bottom."
+msgstr "Søgning ombrudt til toppen."
+
+#: gui_vfslist.c:638
 msgid "Full pathname"
 msgstr "Hele stien"
 
 # måske indstillingsfil, konfigurationsfil
-#: main.c:73
+#: main.c:80
 msgid "Global configuration file"
 msgstr "Global konfigureringsfil"
 
 # Er det nødvendigt at oversætte output her?
-#: main.c:74
+#: main.c:81
 msgid "Audio output"
 msgstr "Lyd"
 
-#: main.c:75
+#: main.c:82
 msgid "Support for AudioScrobbler"
 msgstr "Understøttelse af AudioScrobbler"
 
-#: main.c:81
+#: main.c:88
 msgid "Support for DBus integration"
 msgstr ""
 
-#: main.c:87
+#: main.c:94
 msgid "Support for HTTP streams"
 msgstr "Understøttelse af HTTP-strømme"
 
-#: main.c:93
+#: main.c:100
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Undersøttelse af XSPF-spillelister (`spiff')"
 
-#: main.c:99
+#: main.c:106
 msgid "Supported audio file formats"
 msgstr "Understøttede lydfilformater"
 
-#: main.c:111
+#: main.c:118
 msgid "usage"
 msgstr "brug"
 
@@ -244,24 +249,24 @@ msgstr "Sendte med succes %d sange til AudioScrobbler."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Kunne ikke sende sange til AudioScrobbler."
 
-#: vfs.c:206
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Ukendt bruger: %s\n"
 
 # chroot: The UNIX command to make the root directory (/) become something
 # other than its default for the lifetime of the current process.
-#: vfs.c:220
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Kan ikke gøre %s til chroot\n"
 
-#: vfs.c:229
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Kan ikke skifte til gruppe %d\n"
 
-#: vfs.c:233
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Kan ikke skifte til bruger %d\n"

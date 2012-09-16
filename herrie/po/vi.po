@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 1.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-18 23:07+0200\n"
+"POT-Creation-Date: 2012-09-16 12:34+0200\n"
 "PO-Revision-Date: 2008-01-03 21:39+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -63,45 +63,45 @@ msgstr "Ghi danh mục nhạc vào tập tin"
 msgid "Unable to write playlist."
 msgstr "Không thể ghi danh mục nhạc."
 
-#: gui_input.c:105
+#: gui_input.c:110
 msgid "Use kill(1) to quit."
 msgstr "Hãy dùng kill(1) để thoát."
 
-#: gui_input.c:109
+#: gui_input.c:114
 #, c-format
 msgid "Quit %s?"
 msgstr "Thoát khỏi %s không?"
 
-#: gui_input.c:193
+#: gui_input.c:198
 msgid "Search for"
 msgstr "Tìm kiếm"
 
-#: gui_input.c:199
+#: gui_input.c:204
 msgid "Bad pattern."
 msgstr "Sai mẫu."
 
-#: gui_input.c:209
+#: gui_input.c:214
 #, c-format
 msgid "Searching for \"%s\"..."
 msgstr ""
 
-#: gui_input.c:251 gui_input.c:288
+#: gui_input.c:260 gui_input.c:340
 msgid "Not found."
 msgstr "Không tìm thấy."
 
-#: gui_input.c:366
+#: gui_input.c:418
 msgid "Jump to position"
 msgstr "Nhảy tới vị trí"
 
-#: gui_input.c:422
+#: gui_input.c:474
 msgid "Bad time format."
 msgstr "Sai định dạng thời gian."
 
-#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:672 main.c:84 main.c:90 main.c:96 main.c:102
 msgid "yes"
 msgstr "có"
 
-#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:673 main.c:86 main.c:92 main.c:98 main.c:104
 msgid "no"
 msgstr "không"
 
@@ -154,43 +154,48 @@ msgstr "Bạn ở bài hát đầu."
 msgid "You are at the last song."
 msgstr "Bạn ở bài hát cuối."
 
-#: gui_vfslist.c:588
+#: gui_vfslist.c:592
 msgid "Search wrapped to top."
 msgstr "Việc tìm kiếm cuộn về đầu."
 
-#: gui_vfslist.c:612
+#: gui_vfslist.c:613
+#, fuzzy
+msgid "Search wrapped to bottom."
+msgstr "Việc tìm kiếm cuộn về đầu."
+
+#: gui_vfslist.c:638
 msgid "Full pathname"
 msgstr "Tên đường dẫn đầy đủ"
 
-#: main.c:73
+#: main.c:80
 msgid "Global configuration file"
 msgstr "Tập tin cấu hình toàn cục"
 
-#: main.c:74
+#: main.c:81
 msgid "Audio output"
 msgstr "Kết xuất âm thanh"
 
-#: main.c:75
+#: main.c:82
 msgid "Support for AudioScrobbler"
 msgstr "Hỗ trợ Audioscrobbler"
 
-#: main.c:81
+#: main.c:88
 msgid "Support for DBus integration"
 msgstr ""
 
-#: main.c:87
+#: main.c:94
 msgid "Support for HTTP streams"
 msgstr "Hỗ trợ luồng HTTP"
 
-#: main.c:93
+#: main.c:100
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Hỗ trợ danh mục nhạc XSPF (`spiff')"
 
-#: main.c:99
+#: main.c:106
 msgid "Supported audio file formats"
 msgstr "Định dạng tập tin âm thanh được hỗ trợ"
 
-#: main.c:111
+#: main.c:118
 msgid "usage"
 msgstr "cách sử dụng"
 
@@ -237,22 +242,22 @@ msgstr "%d bài hát đã được gửi cho AudioScrobbler."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Lỗi gửi bài hát cho AudioScrobbler."
 
-#: vfs.c:206
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Người dùng lạ: %s\n"
 
-#: vfs.c:220
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Không thể chroot vào %s\n"
 
-#: vfs.c:229
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Không thể chuyển đổi sang nhóm %d\n"
 
-#: vfs.c:233
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Không thể chuyển đổi sang người dùng %d\n"

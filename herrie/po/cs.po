@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-18 23:07+0200\n"
+"POT-Creation-Date: 2012-09-16 12:34+0200\n"
 "PO-Revision-Date: 2012-03-10 09:04+0100\n"
 "Last-Translator: Jakub kub1x Podlaha <j.podlaha@gmail.com>\n"
 "Language-Team: Jakub kub1x Podlaha <j.podlaha@gmail.com>\n"
@@ -61,45 +61,45 @@ msgstr "Zapsat seznam skladeb do souboru"
 msgid "Unable to write playlist."
 msgstr "Nelze zapsat seznam skadeb."
 
-#: gui_input.c:105
+#: gui_input.c:110
 msgid "Use kill(1) to quit."
 msgstr "Použijte příkaz kill(1) pro ukončení."
 
-#: gui_input.c:109
+#: gui_input.c:114
 #, c-format
 msgid "Quit %s?"
 msgstr "Ukončit %s?"
 
-#: gui_input.c:193
+#: gui_input.c:198
 msgid "Search for"
 msgstr "Hledat"
 
-#: gui_input.c:199
+#: gui_input.c:204
 msgid "Bad pattern."
 msgstr "Chybný vzor."
 
-#: gui_input.c:209
+#: gui_input.c:214
 #, c-format
 msgid "Searching for \"%s\"..."
 msgstr "Vyhledávám \"%s\"..."
 
-#: gui_input.c:251 gui_input.c:288
+#: gui_input.c:260 gui_input.c:340
 msgid "Not found."
 msgstr "Nenalezeno."
 
-#: gui_input.c:366
+#: gui_input.c:418
 msgid "Jump to position"
 msgstr "Přesun na pozici"
 
-#: gui_input.c:422
+#: gui_input.c:474
 msgid "Bad time format."
 msgstr "Chybný formát času."
 
-#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:672 main.c:84 main.c:90 main.c:96 main.c:102
 msgid "yes"
 msgstr "ano"
 
-#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:673 main.c:86 main.c:92 main.c:98 main.c:104
 msgid "no"
 msgstr "ne"
 
@@ -152,43 +152,48 @@ msgstr "Jste na začátku seznamu skladeb."
 msgid "You are at the last song."
 msgstr "Jste na konci seznamu skladeb."
 
-#: gui_vfslist.c:588
+#: gui_vfslist.c:592
 msgid "Search wrapped to top."
 msgstr "Vyhledávání dosáhlo počátku seznamu skladeb."
 
-#: gui_vfslist.c:612
+#: gui_vfslist.c:613
+#, fuzzy
+msgid "Search wrapped to bottom."
+msgstr "Vyhledávání dosáhlo počátku seznamu skladeb."
+
+#: gui_vfslist.c:638
 msgid "Full pathname"
 msgstr "Celá adresa souboru"
 
-#: main.c:73
+#: main.c:80
 msgid "Global configuration file"
 msgstr "Globální konfigurační soubor."
 
-#: main.c:74
+#: main.c:81
 msgid "Audio output"
 msgstr "Audio výstup"
 
-#: main.c:75
+#: main.c:82
 msgid "Support for AudioScrobbler"
 msgstr "Podpora pro AudioScrobbler"
 
-#: main.c:81
+#: main.c:88
 msgid "Support for DBus integration"
 msgstr "Podpora pro DBus"
 
-#: main.c:87
+#: main.c:94
 msgid "Support for HTTP streams"
 msgstr "Podpora pro HTTP-streamy"
 
-#: main.c:93
+#: main.c:100
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Podpora pro XSPF seznamy skladeb (`spiff')"
 
-#: main.c:99
+#: main.c:106
 msgid "Supported audio file formats"
 msgstr "Podporované audio formáty"
 
-#: main.c:111
+#: main.c:118
 msgid "usage"
 msgstr "použití"
 
@@ -235,22 +240,22 @@ msgstr "Úspěšně odesláno %d skladeb na AudioScrobbler."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Nelze odeslad skladby na AudioScrobbler."
 
-#: vfs.c:206
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Neznámý uživatel: %s\n"
 
-#: vfs.c:220
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Nelze použít chroot do %s\n"
 
-#: vfs.c:229
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Nelze změnit skupinu na %d\n"
 
-#: vfs.c:233
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Nelze změnit uživatele na %d\n"

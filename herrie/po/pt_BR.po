@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-18 23:07+0200\n"
+"POT-Creation-Date: 2012-09-16 12:34+0200\n"
 "PO-Revision-Date: 2008-01-01 15:14+0100\n"
 "Last-Translator: Eros Moreira de Carvalho <erosmc@gmail.com>\n"
 "Language-Team: Portuguese <erosmc@gmail.com>\n"
@@ -61,45 +61,45 @@ msgstr "Gravar a lista de reprodução em um arquivo."
 msgid "Unable to write playlist."
 msgstr "Não foi possível gravar a lista  de reprodução."
 
-#: gui_input.c:105
+#: gui_input.c:110
 msgid "Use kill(1) to quit."
 msgstr "Usar kill(1) para sair."
 
-#: gui_input.c:109
+#: gui_input.c:114
 #, c-format
 msgid "Quit %s?"
 msgstr "Sair de %s?"
 
-#: gui_input.c:193
+#: gui_input.c:198
 msgid "Search for"
 msgstr "Buscar"
 
-#: gui_input.c:199
+#: gui_input.c:204
 msgid "Bad pattern."
 msgstr "Padrão não encontrado."
 
-#: gui_input.c:209
+#: gui_input.c:214
 #, c-format
 msgid "Searching for \"%s\"..."
 msgstr ""
 
-#: gui_input.c:251 gui_input.c:288
+#: gui_input.c:260 gui_input.c:340
 msgid "Not found."
 msgstr "Não encontrado."
 
-#: gui_input.c:366
+#: gui_input.c:418
 msgid "Jump to position"
 msgstr "Saltar para a posição"
 
-#: gui_input.c:422
+#: gui_input.c:474
 msgid "Bad time format."
 msgstr "Formato de tempo incorreto."
 
-#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:672 main.c:84 main.c:90 main.c:96 main.c:102
 msgid "yes"
 msgstr "sim"
 
-#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:673 main.c:86 main.c:92 main.c:98 main.c:104
 msgid "no"
 msgstr "não"
 
@@ -152,43 +152,48 @@ msgstr "Você está na primeira música."
 msgid "You are at the last song."
 msgstr "Você está na última música."
 
-#: gui_vfslist.c:588
+#: gui_vfslist.c:592
 msgid "Search wrapped to top."
 msgstr "Busca complelta, continuando do início."
 
-#: gui_vfslist.c:612
+#: gui_vfslist.c:613
+#, fuzzy
+msgid "Search wrapped to bottom."
+msgstr "Busca complelta, continuando do início."
+
+#: gui_vfslist.c:638
 msgid "Full pathname"
 msgstr "Escrevea o caminho completo"
 
-#: main.c:73
+#: main.c:80
 msgid "Global configuration file"
 msgstr "Arquivo global de configuração"
 
-#: main.c:74
+#: main.c:81
 msgid "Audio output"
 msgstr "Saida de audio"
 
-#: main.c:75
+#: main.c:82
 msgid "Support for AudioScrobbler"
 msgstr "Suporte para AudioScrobbler"
 
-#: main.c:81
+#: main.c:88
 msgid "Support for DBus integration"
 msgstr ""
 
-#: main.c:87
+#: main.c:94
 msgid "Support for HTTP streams"
 msgstr "Suporte para fluxo HTTP"
 
-#: main.c:93
+#: main.c:100
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Suporte para listas de reprodução XSPF (`spiff')"
 
-#: main.c:99
+#: main.c:106
 msgid "Supported audio file formats"
 msgstr "Formatos de audio suportados"
 
-#: main.c:111
+#: main.c:118
 msgid "usage"
 msgstr "uso"
 
@@ -235,22 +240,22 @@ msgstr "Envio bem-sucedido de %d músicas para o AudioScrobbler."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Falhou em enviar músicas para o AudioScrobbler."
 
-#: vfs.c:206
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Usuário: %s desconhecido\n"
 
-#: vfs.c:220
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "Não foi possível fazer chroot em %s\n"
 
-#: vfs.c:229
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Não foi possível mudar para o grupo %d\n"
 
-#: vfs.c:233
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Não foi possível mudar o usuário %d\n"

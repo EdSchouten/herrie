@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-18 23:07+0200\n"
+"POT-Creation-Date: 2012-09-16 12:34+0200\n"
 "PO-Revision-Date: 2007-11-29 15:14+0100\n"
 "Last-Translator: Xavier de Blas <xaviblas@gmail.com>\n"
 "Language-Team: Catalan <xaviblas@gmail.com>\n"
@@ -57,45 +57,45 @@ msgstr "Escriu la llista de reproducció a un arxiu."
 msgid "Unable to write playlist."
 msgstr "No es pot escriure la llista de reproducció."
 
-#: gui_input.c:105
+#: gui_input.c:110
 msgid "Use kill(1) to quit."
 msgstr "Usar kill(1) per a sortir."
 
-#: gui_input.c:109
+#: gui_input.c:114
 #, c-format
 msgid "Quit %s?"
 msgstr "Surt de %s?"
 
-#: gui_input.c:193
+#: gui_input.c:198
 msgid "Search for"
 msgstr "Cerca"
 
-#: gui_input.c:199
+#: gui_input.c:204
 msgid "Bad pattern."
 msgstr "Cerca incorrecta."
 
-#: gui_input.c:209
+#: gui_input.c:214
 #, c-format
 msgid "Searching for \"%s\"..."
 msgstr ""
 
-#: gui_input.c:251 gui_input.c:288
+#: gui_input.c:260 gui_input.c:340
 msgid "Not found."
 msgstr "No trobat."
 
-#: gui_input.c:366
+#: gui_input.c:418
 msgid "Jump to position"
 msgstr "Salta a la posició"
 
-#: gui_input.c:422
+#: gui_input.c:474
 msgid "Bad time format."
 msgstr "Format de data incorrecte."
 
-#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:672 main.c:84 main.c:90 main.c:96 main.c:102
 msgid "yes"
 msgstr "sí"
 
-#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:673 main.c:86 main.c:92 main.c:98 main.c:104
 msgid "no"
 msgstr "no"
 
@@ -148,43 +148,48 @@ msgstr "Situat a la primera cançó."
 msgid "You are at the last song."
 msgstr "Situat a la darrera cançó."
 
-#: gui_vfslist.c:588
+#: gui_vfslist.c:592
 msgid "Search wrapped to top."
 msgstr "Recerca completa, continuant a l'inici."
 
-#: gui_vfslist.c:612
+#: gui_vfslist.c:613
+#, fuzzy
+msgid "Search wrapped to bottom."
+msgstr "Recerca completa, continuant a l'inici."
+
+#: gui_vfslist.c:638
 msgid "Full pathname"
 msgstr "Escriu la ruta completa"
 
-#: main.c:73
+#: main.c:80
 msgid "Global configuration file"
 msgstr "Arxiu global de configuració"
 
-#: main.c:74
+#: main.c:81
 msgid "Audio output"
 msgstr "Sortida d'àudio"
 
-#: main.c:75
+#: main.c:82
 msgid "Support for AudioScrobbler"
 msgstr "Suport per l'AudioScrobbler"
 
-#: main.c:81
+#: main.c:88
 msgid "Support for DBus integration"
 msgstr ""
 
-#: main.c:87
+#: main.c:94
 msgid "Support for HTTP streams"
 msgstr "Suport per a fluxe HTTP"
 
-#: main.c:93
+#: main.c:100
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "Suport per llistes de reproducció XSPF (`spiff')"
 
-#: main.c:99
+#: main.c:106
 msgid "Supported audio file formats"
 msgstr "Formats d'àudio permesos"
 
-#: main.c:111
+#: main.c:118
 msgid "usage"
 msgstr "ús"
 
@@ -231,22 +236,22 @@ msgstr "S'ha enviat satisfactòriament %d cançons a l'AudioScrobbler."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Errada en l'enviament de cançons a l'AudioScrobbler."
 
-#: vfs.c:206
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Usuario: %s desconegut\n"
 
-#: vfs.c:220
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "No es pot fer chroot a %s\n"
 
-#: vfs.c:229
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "No es pot canviar al grup %d\n"
 
-#: vfs.c:233
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "No es pot canviar a l'usuari %d\n"

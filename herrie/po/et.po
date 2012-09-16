@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: herrie 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-18 23:07+0200\n"
+"POT-Creation-Date: 2012-09-16 12:34+0200\n"
 "PO-Revision-Date: 2009-11-23 22:54+0200\n"
 "Last-Translator: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
 "Language-Team: Kaupo Palo <kaupo.palo@osa.pri.ee>\n"
@@ -62,45 +62,45 @@ msgstr "Kirjuta esitusnimekiri faili"
 msgid "Unable to write playlist."
 msgstr "Esitusnimekirja salvestamine ebaõnnestus."
 
-#: gui_input.c:105
+#: gui_input.c:110
 msgid "Use kill(1) to quit."
 msgstr "Välju kasutades käsku kill(1)."
 
-#: gui_input.c:109
+#: gui_input.c:114
 #, c-format
 msgid "Quit %s?"
 msgstr "Kas väljun %s-st?"
 
-#: gui_input.c:193
+#: gui_input.c:198
 msgid "Search for"
 msgstr "Otsi"
 
-#: gui_input.c:199
+#: gui_input.c:204
 msgid "Bad pattern."
 msgstr "Vigane muster."
 
-#: gui_input.c:209
+#: gui_input.c:214
 #, fuzzy, c-format
 msgid "Searching for \"%s\"..."
 msgstr "Otsin \"%s\"..."
 
-#: gui_input.c:251 gui_input.c:288
+#: gui_input.c:260 gui_input.c:340
 msgid "Not found."
 msgstr "Ei leidunud."
 
-#: gui_input.c:366
+#: gui_input.c:418
 msgid "Jump to position"
 msgstr "Siirdu positsioonile"
 
-#: gui_input.c:422
+#: gui_input.c:474
 msgid "Bad time format."
 msgstr "Vigane ajavormindus."
 
-#: gui_input.c:618 main.c:77 main.c:83 main.c:89 main.c:95
+#: gui_input.c:672 main.c:84 main.c:90 main.c:96 main.c:102
 msgid "yes"
 msgstr "jah"
 
-#: gui_input.c:619 main.c:79 main.c:85 main.c:91 main.c:97
+#: gui_input.c:673 main.c:86 main.c:92 main.c:98 main.c:104
 msgid "no"
 msgstr "ei"
 
@@ -154,43 +154,48 @@ msgstr "Mängid esimest lugu."
 msgid "You are at the last song."
 msgstr "Mängid viimast lugu."
 
-#: gui_vfslist.c:588
+#: gui_vfslist.c:592
 msgid "Search wrapped to top."
 msgstr "Otsing pöördus tagasi algusesse."
 
-#: gui_vfslist.c:612
+#: gui_vfslist.c:613
+#, fuzzy
+msgid "Search wrapped to bottom."
+msgstr "Otsing pöördus tagasi algusesse."
+
+#: gui_vfslist.c:638
 msgid "Full pathname"
 msgstr "Täielik asukoht"
 
-#: main.c:73
+#: main.c:80
 msgid "Global configuration file"
 msgstr "Üldine häälestusfail"
 
-#: main.c:74
+#: main.c:81
 msgid "Audio output"
 msgstr "Audioväljund"
 
-#: main.c:75
+#: main.c:82
 msgid "Support for AudioScrobbler"
 msgstr "AudioScrobbler'i toetus"
 
-#: main.c:81
+#: main.c:88
 msgid "Support for DBus integration"
 msgstr "Integreeritud DBUS toetus"
 
-#: main.c:87
+#: main.c:94
 msgid "Support for HTTP streams"
 msgstr "HTTP-striimingu toetus"
 
-#: main.c:93
+#: main.c:100
 msgid "Support for XSPF playlists (`spiff')"
 msgstr "XSPF-esitusnimekirjade (\"spiff\") toetus"
 
-#: main.c:99
+#: main.c:106
 msgid "Supported audio file formats"
 msgstr "Toetatud audiofailivormingud"
 
-#: main.c:111
+#: main.c:118
 msgid "usage"
 msgstr "kasutamine"
 
@@ -237,22 +242,22 @@ msgstr "Õnnestus saata %d lugu AudioScrobbler'isse."
 msgid "Failed to submit songs to AudioScrobbler."
 msgstr "Lugude saatmine AudioScrobbler'isse ebaõnnestus."
 
-#: vfs.c:206
+#: vfs.c:205
 #, c-format
 msgid "Unknown user: %s\n"
 msgstr "Tundmatu kasutaja: %s\n"
 
-#: vfs.c:220
+#: vfs.c:219
 #, c-format
 msgid "Unable to chroot in %s\n"
 msgstr "chroot-operatsioon kataloogi %s ebaõnnestus\n"
 
-#: vfs.c:229
+#: vfs.c:228
 #, c-format
 msgid "Unable to change to group %d\n"
 msgstr "Vahetus rühmaks %d ebaõnnestus\n"
 
-#: vfs.c:233
+#: vfs.c:232
 #, c-format
 msgid "Unable to change to user %d\n"
 msgstr "Vahetus kasutajaks %d ebaõnnestus\n"
