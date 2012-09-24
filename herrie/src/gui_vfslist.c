@@ -103,18 +103,20 @@ gui_vfslist_cursor_adjust(struct gui_vfslist *gv)
 static unsigned int
 gui_vfslist_idxcol_width(struct gui_vfslist *gv)
 {
-	unsigned int len, idx;
+	unsigned int len, idx, bottom;
 
 	if (gv->list == NULL)
 		return (0);
 
 	/*
-	 * Calculate the number of digits needed to print the number of
-	 * entries
+	 * Calculate the number of digits needed to print the numbers of
+	 * the entries currently shown on screen.
 	 */
-	for (len = 1, idx = vfs_list_items(gv->list);idx >= 10;
-	    len++, idx /= 10);
-
+	idx = vfs_list_items(gv->list);
+	bottom = gv->idx_top + gv->winheight - 1;
+	if (idx > bottom)
+		idx = bottom;
+	for (len = 1; idx >= 10; len++, idx /= 10);
 	return (len);
 }
 
