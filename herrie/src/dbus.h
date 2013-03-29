@@ -41,7 +41,7 @@ void dbus_init(void);
  * @brief DBus mutex to provide exclusion between the user input and
  *        DBus event paths.
  */
-extern GMutex *dbus_mtx;
+extern GMutex dbus_mtx;
 
 /**
  * @brief Called before entering the gmainloop
@@ -59,7 +59,7 @@ void dbus_after_mainloop(void);
 static inline void
 dbus_lock(void)
 {
-	g_mutex_lock(dbus_mtx);
+	g_mutex_lock(&dbus_mtx);
 }
 
 /**
@@ -68,6 +68,6 @@ dbus_lock(void)
 static inline void
 dbus_unlock(void)
 {
-	g_mutex_unlock(dbus_mtx);
+	g_mutex_unlock(&dbus_mtx);
 }
 #endif /* BUILD_DBUS */

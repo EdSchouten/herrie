@@ -34,7 +34,7 @@
 #include "gui.h"
 #include "gui_internal.h"
 
-GMutex *gui_mtx;
+GMutex gui_mtx;
 int gui_draw_colors;
 int gui_draw_ratio;
 
@@ -49,7 +49,7 @@ void
 gui_draw_init_post(void)
 {
 	/* Lock playq from main thread */
-	gui_mtx = g_mutex_new();
+	g_mutex_init(&gui_mtx);
 
 #ifdef PDCURSES
 	PDC_set_title(APP_NAME);

@@ -72,7 +72,7 @@ typedef struct {
  */
 G_DEFINE_TYPE(DBusServer, dbus_server, G_TYPE_OBJECT);
 
-GMutex *dbus_mtx;
+GMutex dbus_mtx;
 static DBusServer *ds = NULL;
 
 /**
@@ -91,7 +91,7 @@ void
 dbus_init(void)
 {
 	g_type_init();
-	dbus_mtx = g_mutex_new();
+	g_mutex_init(&dbus_mtx);
 }
 
 /**

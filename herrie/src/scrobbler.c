@@ -55,12 +55,12 @@ static char	scrobbler_enabled = 0;
 /**
  * @brief Lock used to provide safe access to the AudioScrobbler queue.
  */
-static GMutex	*scrobbler_lock;
+static GMutex	scrobbler_lock;
 /**
  * @brief Conditional variable used to notify the avaiability of new
  *        tracks ready for submission to AudioScrobbler.
  */
-static GCond	*scrobbler_avail;
+static GCond	scrobbler_avail;
 /**
  * @brief Reference to AudioScrobbler submission thread.
  */
@@ -192,10 +192,10 @@ scrobbler_notify_read(struct audio_file *fd, int eof)
 	nse->length = len;
 	nse->time = time(NULL);
 
-	g_mutex_lock(scrobbler_lock);
+	g_mutex_lock(&scrobbler_lock);
 	scrobbler_queue_insert_tail(nse);
-	g_cond_signal(scrobbler_avail);
-	g_mutex_unlock(scrobbler_lock);
+	g_cond_signal(&scrobbler_avail);
+	g_mutex_unlock(&scrobbler_lock);
 }
 
 void
@@ -216,9 +216,9 @@ scrobbler_queue_fetch(const char key[32], char **poststr)
 	unsigned int len;
 	GString *str;
 
-	g_mutex_lock(scrobbler_lock);
+	g_mutex_lock(&scrobbler_lock);
 	while ((ent = scrobbler_queue_first) == NULL)
-		g_cond_wait(scrobbler_avail, scrobbler_lock);
+		g_cond_wait(&scrobbler_avail, &scrobbler_lock);
 
 	str = g_string_new("s=");
 	g_string_append_len(str, key, 32);
@@ -241,7 +241,7 @@ scrobbler_queue_fetch(const char key[32], char **poststr)
 		ent = scrobbler_queue_next(ent);
 	}
 
-	g_mutex_unlock(scrobbler_lock);
+	g_mutex_unlock(&scrobbler_lock);
 
 	*poststr = g_string_free(str, FALSE);
 
@@ -272,13 +272,13 @@ scrobbler_queue_remove(unsigned int amount)
 	int i;
 	struct scrobbler_entry *ent;
 
-	g_mutex_lock(scrobbler_lock);
+	g_mutex_lock(&scrobbler_lock);
 	for (i = amount; i > 0; i--) {
 		ent = scrobbler_queue_first;
 		scrobbler_queue_remove_head();
 		scrobbler_queue_item_free(ent);
 	}
-	g_mutex_unlock(scrobbler_lock);
+	g_mutex_unlock(&scrobbler_lock);
 }
 
 /**
@@ -536,8 +536,8 @@ scrobbler_runner_thread(void *unused)
 void
 scrobbler_init(void)
 {
-	scrobbler_lock = g_mutex_new();
-	scrobbler_avail = g_cond_new();
+	g_mutex_init(&scrobbler_lock);
+	g_cond_init(&scrobbler_avail);
 }
 
 /**
@@ -637,8 +637,8 @@ scrobbler_spawn(void)
 	/* Restore unsubmitted tracks */
 	scrobbler_queue_restore();
 
-	scrobbler_runner = g_thread_create(scrobbler_runner_thread,
-	    NULL, 0, NULL);
+	scrobbler_runner = g_thread_new("scrobbler", scrobbler_runner_thread,
+	    NULL);
 	scrobbler_enabled = 1;
 }
 
@@ -646,7 +646,7 @@ void
 scrobbler_shutdown(void)
 {
 	/* XXX: bring down the AudioScrobbler thread */
-	g_mutex_lock(scrobbler_lock);
+	g_mutex_lock(&scrobbler_lock);
 	scrobbler_queue_dump();
-	g_mutex_unlock(scrobbler_lock);
+	g_mutex_unlock(&scrobbler_lock);
 }

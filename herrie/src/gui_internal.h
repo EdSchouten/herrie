@@ -52,7 +52,7 @@ void gui_draw_done(void);
 /**
  * @brief The mutex that locks the GUI down.
  */
-extern GMutex *gui_mtx;
+extern GMutex gui_mtx;
 
 /**
  * @brief Acquire a lock on the GUI.
@@ -60,7 +60,7 @@ extern GMutex *gui_mtx;
 static inline void
 gui_lock(void)
 {
-	g_mutex_lock(gui_mtx);
+	g_mutex_lock(&gui_mtx);
 }
 
 /**
@@ -69,7 +69,7 @@ gui_lock(void)
 static inline void
 gui_unlock(void)
 {
-	g_mutex_unlock(gui_mtx);
+	g_mutex_unlock(&gui_mtx);
 }
 
 /* Display size ratios */

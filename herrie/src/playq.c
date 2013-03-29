@@ -96,13 +96,13 @@ static struct playq_funcs xmms_funcs = {
 static struct playq_funcs *funcs = &party_funcs;
 
 struct vfslist		playq_list = VFSLIST_INITIALIZER;
-GMutex			*playq_mtx;
+GMutex			playq_mtx;
 /**
  * @brief Conditional variable used to kick the playq alive when it was
  *        waiting for a new song to be added to the playlist or when
  *        paused.
  */
-static GCond		*playq_wakeup;
+static GCond		playq_wakeup;
 /**
  * @brief Reference to playback thread.
  */
@@ -184,7 +184,7 @@ playq_runner_thread(void *unused)
 			playq_flags |= PF_STOP;
 			funcs->idle();
 			gui_playq_song_update(NULL, 0, 0);
-			g_cond_wait(playq_wakeup, playq_mtx);
+			g_cond_wait(&playq_wakeup, &playq_mtx);
 		}
 		playq_unlock();
 
@@ -216,7 +216,7 @@ playq_runner_thread(void *unused)
 
 				/* Wait to be waken up */
 				playq_lock();
-				g_cond_wait(playq_wakeup, playq_mtx);
+				g_cond_wait(&playq_wakeup, &playq_mtx);
 				playq_unlock();
 			} else {
 				gui_playq_song_update(cur, 0, 1);
@@ -247,8 +247,8 @@ playq_init(int autoplay, int xmms, int load_dumpfile)
 	const char *filename;
 	struct vfsref *vr;
 
-	playq_mtx = g_mutex_new();
-	playq_wakeup = g_cond_new();
+	g_mutex_init(&playq_mtx);
+	g_cond_init(&playq_wakeup);
 	playq_rand = g_rand_new(); /* XXX: /dev/urandom in chroot() */
 
 	if (autoplay || config_getopt_bool("playq.autoplay"))
@@ -273,8 +273,7 @@ playq_init(int autoplay, int xmms, int load_dumpfile)
 void
 playq_spawn(void)
 {
-	playq_runner = g_thread_create_full(playq_runner_thread, NULL,
-	    0, 1, TRUE, G_THREAD_PRIORITY_URGENT, NULL);
+	playq_runner = g_thread_new("playq", playq_runner_thread, NULL);
 }
 
 void
@@ -286,7 +285,7 @@ playq_shutdown(void)
 	playq_lock();
 	playq_flags = PF_QUIT;
 	playq_unlock();
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 	g_thread_join(playq_runner);
 
 	filename = config_getopt("playq.dumpfile");
@@ -326,7 +325,7 @@ playq_song_add_head(struct vfsref *vr)
 	}
 
 	gui_playq_notify_done();
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 	playq_unlock();
 }
 
@@ -349,7 +348,7 @@ playq_song_add_tail(struct vfsref *vr)
 	}
 
 	gui_playq_notify_done();
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 	playq_unlock();
 }
 
@@ -367,7 +366,7 @@ playq_cursong_seek(int len, int rel)
 	playq_seek_time = len;
 	playq_unlock();
 
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 }
 
 void
@@ -377,7 +376,7 @@ playq_cursong_next(void)
 	if (funcs->next() == 0) {
 		/* Unpause as well */
 		playq_flags |= PF_SKIP;
-		g_cond_signal(playq_wakeup);
+		g_cond_signal(&playq_wakeup);
 	}
 	playq_unlock();
 }
@@ -389,7 +388,7 @@ playq_cursong_prev(void)
 	if (funcs->prev() == 0) {
 		/* Unpause as well */
 		playq_flags |= PF_SKIP;
-		g_cond_signal(playq_wakeup);
+		g_cond_signal(&playq_wakeup);
 	}
 	playq_unlock();
 }
@@ -402,7 +401,7 @@ playq_cursong_stop(void)
 	playq_flags |= (PF_SKIP|PF_STOP);
 	playq_unlock();
 
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 }
 
 void
@@ -413,7 +412,7 @@ playq_cursong_pause(void)
 	playq_flags ^= PF_PAUSE;
 	playq_unlock();
 
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 }
 
 void
@@ -458,7 +457,7 @@ playq_song_fast_add_before(struct vfsref *nvr, struct vfsref *lvr,
 	}
 
 	gui_playq_notify_done();
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 }
 
 void
@@ -480,7 +479,7 @@ playq_song_fast_add_after(struct vfsref *nvr, struct vfsref *lvr,
 	}
 
 	gui_playq_notify_done();
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 }
 
 void
@@ -551,7 +550,7 @@ playq_song_fast_select(struct vfsref *vr)
 	/* Now go to the next song */
 	playq_flags &= ~PF_STOP;
 	playq_flags |= PF_SKIP;
-	g_cond_signal(playq_wakeup);
+	g_cond_signal(&playq_wakeup);
 }
 
 void

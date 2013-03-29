@@ -91,7 +91,7 @@ void playq_song_randomize(void);
 /**
  * @brief The mutex that locks down the playlist.
  */
-extern GMutex		*playq_mtx;
+extern GMutex		playq_mtx;
 
 /**
  * @brief Acquire the lock on the playlist.
@@ -99,7 +99,7 @@ extern GMutex		*playq_mtx;
 static inline void
 playq_lock(void)
 {
-	g_mutex_lock(playq_mtx);
+	g_mutex_lock(&playq_mtx);
 }
 
 /**
@@ -108,7 +108,7 @@ playq_lock(void)
 static inline void
 playq_unlock(void)
 {
-	g_mutex_unlock(playq_mtx);
+	g_mutex_unlock(&playq_mtx);
 }
 
 /*

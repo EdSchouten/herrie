@@ -197,8 +197,6 @@ main(int argc, char *argv[])
 	if (show_version)
 		version();
 
-	g_thread_init(NULL);
-
 	if (audio_output_open() != 0)
 		return (-1);
 
@@ -247,7 +245,7 @@ main(int argc, char *argv[])
 	/* All set and done - spawn our threads */
 	playq_spawn();
 #if defined(BUILD_DBUS) || defined(BUILD_GST)
-	g_thread_create(gmainloop_runner_thread, NULL, 0, NULL);
+	g_thread_new("gmainloop", gmainloop_runner_thread, NULL);
 #endif /* defined(BUILD_DBUS) || defined(BUILD_GST) */
 #ifdef BUILD_SCROBBLER
 	scrobbler_spawn();

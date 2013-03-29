@@ -14,6 +14,7 @@
  * Added: GStreamer format module - Bas Westerbaan
  * Added: Czech translation - Jakub Podlaha
  * Added: Reverse searching - Jille Timmermans
+ * Changed: Use new Glib threading API
 
 2008-10-14 -- Herrie 2.2:
  * Added: Ukranian translation - Viacheslav Chumushuk
