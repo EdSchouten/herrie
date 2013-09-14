@@ -90,7 +90,6 @@ static DBusServer *ds = NULL;
 void
 dbus_init(void)
 {
-	g_type_init();
 	g_mutex_init(&dbus_mtx);
 }
 
@@ -206,7 +205,6 @@ dbus_before_mainloop(void)
 	DBusGProxy *proxy;
 	guint ret;
 
-	g_type_init();
 	ds = g_object_new(dbus_server_get_type(), NULL);
 
 	/* Connect to the session bus. */
