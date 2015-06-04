@@ -395,13 +395,14 @@ vfs_locate(struct vfslist *vl, const struct vfsref *vr,
 
 	vfs_populate(vr);
 	VFS_LIST_FOREACH(&vr->ent->population, cvr) {
-		/* Add matching objects to the results */
-		if (vfs_playable(cvr) &&
-		    vfs_match_compare(vm, vfs_filename(cvr)))
+		if ((vfs_playable(cvr) || cvr->ent->recurse) &&
+		    vfs_match_compare(vm, vfs_filename(cvr))) {
+			/* Add matching objects to the results */
 			vfs_list_insert_tail(vl, vfs_dup(cvr));
-		/* Also search through its children */
-		if (cvr->ent->recurse)
+		} else if (cvr->ent->recurse) {
+			/* Search through its children */
 			vfs_locate(vl, cvr, vm);
+		}
 	}
 }
 

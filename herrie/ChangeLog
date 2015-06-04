@@ -15,6 +15,7 @@
  * Added: Czech translation - Jakub Podlaha
  * Added: Reverse searching - Jille Timmermans
  * Changed: Use new Glib threading API
+ * Added: Matching against full directories in recursive searching
 
 2008-10-14 -- Herrie 2.2:
  * Added: Ukranian translation - Viacheslav Chumushuk
