@@ -351,6 +351,13 @@ gui_browser_playq_add_before(void)
 	gui_vfslist_cursor_down(win_browser, 1);
 }
 
+void
+gui_browser_playq_replace(void)
+{
+	gui_playq_song_remove_all();
+	gui_browser_playq_add_tail();
+}
+
 int
 gui_browser_search(const struct vfsmatch *vm, int reverse)
 {

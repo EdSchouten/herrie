@@ -35,10 +35,6 @@ Stop playback.
 .B w
 Write the current playlist to a playlist file.
 .TP
-.B x
-When in XMMS mode, it starts the selected song. In party mode, this key
-will always start playback of the first song in the list.
-.TP
 .B z
 Go to the previous song.
 .TP

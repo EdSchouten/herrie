@@ -132,6 +132,10 @@ Remove all songs from the playlist.
 .B R
 Randomize the playlist.
 .TP
+.B x
+When in XMMS mode, it starts the selected song. In party mode, this key
+will always start playback of the first song in the list.
+.TP
 .B [
 Move the currently selected song upward.
 .TP
@@ -179,5 +183,8 @@ list. To remove an existing filter, go one directory up.
 Change the current directory by entering a pathname. This pathname may
 be relative to the current directory. When the address refers to a file
 or web location, it will be displayed as well.
+.TP
+.B x
+Replace the contents of the playlist with the current selection.
 .PP
 And last but not least, there are also some general keyboard bindings:

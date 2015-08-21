@@ -359,6 +359,10 @@ void gui_browser_playq_add_after(void);
  */
 void gui_browser_playq_add_before(void);
 /**
+ * @biref Replace the contents of the playlist with the current selection.
+ */
+void gui_browser_playq_replace(void);
+/**
  * @brief Search for the next item matching gui_input_cursearch in the
  *        file browser.
  */
