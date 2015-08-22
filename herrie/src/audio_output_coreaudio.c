@@ -221,13 +221,8 @@ audio_output_open(void)
 	abufcur = g_malloc(abuflen * sizeof(int16_t));
 
 	/* Locking down the buffer length */
-#if !GLIB_CHECK_VERSION(2, 32, 0)
-	abuflock = *g_mutex_new();
-	abufdrained = *g_cond_new();
-#else
 	g_mutex_init(&abuflock);
 	g_cond_init(&abufdrained);
-#endif /* GLIB_CHECK_VERSION */
 
 	/* Add our own I/O handling routine */
 #ifdef MAC_OS_X_VERSION_10_5
@@ -318,13 +313,8 @@ audio_output_close(void)
 	AudioDeviceRemoveIOProc(adid, aprocid);
 #endif /* MAC_OS_X_VERSION_10_5 */
 
-#if !GLIB_CHECK_VERSION(2, 32, 0)
-	g_mutex_free(&abuflock);
-	g_cond_free(&abufdrained);
-#else
 	g_mutex_clear(&abuflock);
 	g_cond_clear(&abufdrained);
-#endif /* GLIB_CHECK_VERSION */
 
 	g_free(abufnew);
 	g_free(abufcur);
