@@ -142,17 +142,41 @@ audio_output_open(void)
 
 	/* Obtain the audio device ID */
 	size = sizeof adid;
+#ifdef MAC_OS_X_VERSION_10_5
+	AudioObjectPropertyAddress address;
+
+	address = (AudioObjectPropertyAddress) {
+		kAudioHardwarePropertyDefaultOutputDevice,
+		kAudioObjectPropertyScopeGlobal,
+		kAudioObjectPropertyElementMaster
+	};
+
+	if (AudioObjectGetPropertyData(kAudioObjectSystemObject,
+	    &address, 0, NULL, &size, &adid) != 0 ||
+	    adid == kAudioDeviceUnknown)
+		goto error;
+#else /* !MAC_OS_X_VERSION_10_5 */
 	if (AudioHardwareGetProperty(
 	    kAudioHardwarePropertyDefaultOutputDevice,
 	    &size, &adid) != 0 || adid == kAudioDeviceUnknown)
 		goto error;
+#endif /* MAC_OS_X_VERSION_10_5 */
 
 	/* Adjust the stream format */
 	size = sizeof afmt;
+#ifdef MAC_OS_X_VERSION_10_5
+	address.mSelector = kAudioDevicePropertyStreamFormat;
+	address.mScope = kAudioDevicePropertyScopeOutput;
+
+	if (AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
+	    &afmt) != 0 || afmt.mFormatID != kAudioFormatLinearPCM)
+		goto error;
+#else /* !MAC_OS_X_VERSION_10_5 */
 	if (AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyStreamFormat, &size, &afmt) != 0 ||
 	    afmt.mFormatID != kAudioFormatLinearPCM)
 		goto error;
+#endif /* MAC_OS_X_VERSION_10_5 */
 
 	/* To be set on the first run */
 	afmt.mSampleRate = 0;
@@ -163,17 +187,32 @@ audio_output_open(void)
 	/* Decide what buffer size to use */
 	size = sizeof abuflen;
 	abuflen = 32768;
+#ifdef MAC_OS_X_VERSION_10_5
+	address.mSelector = kAudioDevicePropertyBufferSize;
+
+	AudioObjectSetPropertyData(adid, &address, 0, NULL, size, &abuflen);
+	if (AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
+	    &abuflen) != 0)
+		goto error;
+#else /* !MAC_OS_X_VERSION_10_5 */
 	AudioDeviceSetProperty(adid, 0, 0, false,
 	    kAudioDevicePropertyBufferSize, size, &abuflen);
 	if (AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyBufferSize, &size, &abuflen) != 0)
 		goto error;
+#endif /* MAC_OS_X_VERSION_10_5 */
 
 #ifdef BUILD_VOLUME
 	/* Store the audio channels */
 	size = sizeof achans;
+#ifdef MAC_OS_X_VERSION_10_5
+	address.mSelector = kAudioDevicePropertyPreferredChannelsForStereo;
+
+	AudioObjectGetPropertyData(adid, &address, 0, NULL, &size, &achans);
+#else /* !MAC_OS_X_VERSION_10_5 */
 	AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyPreferredChannelsForStereo, &size, &achans);
+#endif /* MAC_OS_X_VERSION_10_5 */
 #endif /* BUILD_VOLUME */
 
 	/* The buffer size reported is in floats */
@@ -221,12 +260,28 @@ audio_output_play(struct audio_file *fd)
 		afmt.mSampleRate = fd->srate;
 		afmt.mChannelsPerFrame = fd->channels;
 
-		if (AudioDeviceSetProperty(adid, 0, 0, 0,
-		    kAudioDevicePropertyStreamFormat, sizeof afmt, &afmt) != 0) {
+		size = sizeof afmt;
+#ifdef MAC_OS_X_VERSION_10_5
+		AudioObjectPropertyAddress address;
+
+		address = (AudioObjectPropertyAddress) {
+			kAudioDevicePropertyStreamFormat,
+			kAudioDevicePropertyScopeOutput,
+			kAudioObjectPropertyElementMaster
+		};
+
+		if (AudioObjectSetPropertyData(adid, &address, 0, NULL, size,
+		    &afmt) != 0) {
 			/* Get current settings back */
-			size = sizeof afmt;
+			AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
+			    &afmt);
+#else /* !MAC_OS_X_VERSION_10_5 */
+		if (AudioDeviceSetProperty(adid, 0, 0, 0,
+		    kAudioDevicePropertyStreamFormat, size, &afmt) != 0) {
+			/* Get current settings back */
 			AudioDeviceGetProperty(adid, 0, false,
 			    kAudioDevicePropertyStreamFormat, &size, &afmt);
+#endif /* MAC_OS_X_VERSION_10_5 */
 
 			gui_msgbar_warn(_("Sample rate or amount of channels not supported."));
 			return (-1);
@@ -292,18 +347,49 @@ audio_output_volume_adjust(Float32 n)
 	 * applet makes the sound card go unbalanced after a long amount
 	 * of time. We can prevent that over here...
 	 */
+#ifdef MAC_OS_X_VERSION_10_5
+	AudioObjectPropertyAddress address;
+	OSStatus vlstatus, vrstatus;
+
+	address = (AudioObjectPropertyAddress) {
+		kAudioDevicePropertyVolumeScalar,
+		kAudioDevicePropertyScopeOutput,
+		achans[0]
+	};
+	vlstatus = AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
+	    &vl);
+
+	address.mElement = achans[1];
+	vrstatus = AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
+	    &vr);
+
+	if (vlstatus != 0 || vrstatus != 0)
+#else /* !MAC_OS_X_VERSION_10_5 */
 	if (AudioDeviceGetProperty(adid, achans[0], false,
 	    kAudioDevicePropertyVolumeScalar, &size, &vl) != 0 ||
 	    AudioDeviceGetProperty(adid, achans[1], false,
 	    kAudioDevicePropertyVolumeScalar, &size, &vr) != 0)
+#endif /* MAC_OS_X_VERSION_10_5 */
 		return (-1);
 	vn = CLAMP((vl + vr) / 2.0 + n, 0.0, 1.0);
 
 	/* Set the new volume */
+#ifdef MAC_OS_X_VERSION_10_5
+	address.mElement = achans[0];
+	vlstatus = AudioObjectSetPropertyData(adid, &address, 0, NULL, size,
+	    &vn);
+
+	address.mElement = achans[1];
+	vrstatus = AudioObjectSetPropertyData(adid, &address, 0, NULL, size,
+	    &vn);
+
+	if (vlstatus != 0 || vrstatus != 0)
+#else /* !MAC_OS_X_VERSION_10_5 */
 	if (AudioDeviceSetProperty(adid, 0, achans[0], false,
 	    kAudioDevicePropertyVolumeScalar, size, &vn) != 0 ||
 	    AudioDeviceSetProperty(adid, 0, achans[1], false,
 	    kAudioDevicePropertyVolumeScalar, size, &vn) != 0)
+#endif /* MAC_OS_X_VERSION_10_5 */
 		return (-1);
 
 	return (vn * 100.0);
