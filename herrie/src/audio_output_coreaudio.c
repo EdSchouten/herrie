@@ -271,7 +271,7 @@ audio_output_play(struct audio_file *fd)
 			AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
 			    &afmt);
 #else /* !MAC_OS_X_VERSION_10_5 */
-		if (AudioDeviceSetProperty(adid, 0, 0, 0,
+		if (AudioDeviceSetProperty(adid, 0, 0, false,
 		    kAudioDevicePropertyStreamFormat, size, &afmt) != 0) {
 			/* Get current settings back */
 			AudioDeviceGetProperty(adid, 0, false,
@@ -329,7 +329,8 @@ static int
 audio_output_volume_adjust(Float32 n)
 {
 	Float32 vl, vr, vn;
-	UInt32 size = sizeof vl;
+	UInt32 size;
+	UInt32 mute;
 
 	/*
 	 * Merge left and right. On Mac OS X, we want to do this. My
@@ -337,6 +338,7 @@ audio_output_volume_adjust(Float32 n)
 	 * applet makes the sound card go unbalanced after a long amount
 	 * of time. We can prevent that over here...
 	 */
+	size = sizeof vl;
 #ifdef MAC_OS_X_VERSION_10_5
 	AudioObjectPropertyAddress address;
 	OSStatus vlstatus, vrstatus;
@@ -363,8 +365,29 @@ audio_output_volume_adjust(Float32 n)
 		return (-1);
 	vn = CLAMP((vl + vr) / 2.0 + n, 0.0, 1.0);
 
-	/* Set the new volume */
+	/* Mute the audio device if the volume is at the minimum. */
+	if (vn == 0.0)
+		mute = 1;
+	else
+		mute = 0;
+
+	size = sizeof mute;
 #ifdef MAC_OS_X_VERSION_10_5
+	address.mSelector = kAudioDevicePropertyMute;
+	address.mElement = kAudioObjectPropertyElementMaster;
+
+	if (AudioObjectSetPropertyData(adid, &address, 0, NULL, size,
+	    &mute) != 0)
+#else /* !MAC_OS_X_VERSION_10_5 */
+	if (AudioDeviceSetProperty(adid, 0, 0, false,
+	    kAudioDevicePropertyMute, size, &mute) != 0)
+#endif /* MAC_OS_X_VERSION_10_5 */
+		return (-1);
+
+	/* Set the new volume */
+	size = sizeof vn;
+#ifdef MAC_OS_X_VERSION_10_5
+	address.mSelector = kAudioDevicePropertyVolumeScalar;
 	address.mElement = achans[0];
 	vlstatus = AudioObjectSetPropertyData(adid, &address, 0, NULL, size,
 	    &vn);

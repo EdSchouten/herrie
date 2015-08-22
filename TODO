@@ -43,10 +43,6 @@ Documentation:
 - Write a developers guide?
 
 CoreAudio (OS X) bugs:
-- Music can still be heard when the volume is at 0 (happens only when using
-herrie's volume control).
-Solution: mute the audio device when the volume is at 0, using the
-kAudioDevicePropertyMute property.
 - Music stops playing when the default audio device changes (e.g. when
 headphones are plugged in/out).
 Solution: keep track of default audio device changes.
