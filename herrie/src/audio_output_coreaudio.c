@@ -88,12 +88,12 @@ int				abufulen = 0;
  * @brief A not really used mutex that is used for the conditional
  *        variable.
  */
-GMutex				*abuflock;
+GMutex				abuflock;
 /**
  * @brief The conditional variable that is used to inform the
  *        application that a buffer has been processed.
  */
-GCond				*abufdrained;
+GCond				abufdrained;
 #ifdef BUILD_VOLUME
 /**
  * @brief Preferred audio channels used for audio playback. We use it to
@@ -126,7 +126,7 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 
 	/* Empty the buffer and notify that we can receive new data */
 	g_atomic_int_set(&abufulen, 0);
-	g_cond_signal(abufdrained);
+	g_cond_signal(&abufdrained);
 
 	/* Fill the trailer with zero's */
 	for (; i < abuflen; i++)
@@ -182,8 +182,13 @@ audio_output_open(void)
 	abufcur = g_malloc(abuflen * sizeof(int16_t));
 
 	/* Locking down the buffer length */
-	abuflock = g_mutex_new();
-	abufdrained = g_cond_new();
+#if !GLIB_CHECK_VERSION(2, 32, 0)
+	abuflock = *g_mutex_new();
+	abufdrained = *g_cond_new();
+#else
+	g_mutex_init(&abuflock);
+	g_cond_init(&abufdrained);
+#endif /* GLIB_CHECK_VERSION */
 
 	/* Add our own I/O handling routine */
 #ifdef MAC_OS_X_VERSION_10_5
@@ -229,10 +234,10 @@ audio_output_play(struct audio_file *fd)
 	}
 
 	/* XXX: Mutex not actually needed - only for the condvar */
-	g_mutex_lock(abuflock);
+	g_mutex_lock(&abuflock);
 	while (g_atomic_int_get(&abufulen) != 0)
-		g_cond_wait(abufdrained, abuflock);
-	g_mutex_unlock(abuflock);
+		g_cond_wait(&abufdrained, &abuflock);
+	g_mutex_unlock(&abuflock);
 
 	/* Toggle the buffers */
 	tmp = abufcur;
@@ -257,6 +262,14 @@ audio_output_close(void)
 #else /* !MAC_OS_X_VERSION_10_5 */
 	AudioDeviceRemoveIOProc(adid, aprocid);
 #endif /* MAC_OS_X_VERSION_10_5 */
+
+#if !GLIB_CHECK_VERSION(2, 32, 0)
+	g_mutex_free(&abuflock);
+	g_cond_free(&abufdrained);
+#else
+	g_mutex_clear(&abuflock);
+	g_cond_clear(&abufdrained);
+#endif /* GLIB_CHECK_VERSION */
 
 	g_free(abufnew);
 	g_free(abufcur);
