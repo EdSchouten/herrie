@@ -154,13 +154,12 @@ audio_output_open(void)
 	if (AudioObjectGetPropertyData(kAudioObjectSystemObject,
 	    &address, 0, NULL, &size, &adid) != 0 ||
 	    adid == kAudioDeviceUnknown)
-		goto error;
 #else /* !MAC_OS_X_VERSION_10_5 */
 	if (AudioHardwareGetProperty(
 	    kAudioHardwarePropertyDefaultOutputDevice,
 	    &size, &adid) != 0 || adid == kAudioDeviceUnknown)
-		goto error;
 #endif /* MAC_OS_X_VERSION_10_5 */
+		goto error;
 
 	/* Adjust the stream format */
 	size = sizeof afmt;
@@ -170,13 +169,12 @@ audio_output_open(void)
 
 	if (AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
 	    &afmt) != 0 || afmt.mFormatID != kAudioFormatLinearPCM)
-		goto error;
 #else /* !MAC_OS_X_VERSION_10_5 */
 	if (AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyStreamFormat, &size, &afmt) != 0 ||
 	    afmt.mFormatID != kAudioFormatLinearPCM)
-		goto error;
 #endif /* MAC_OS_X_VERSION_10_5 */
+		goto error;
 
 	/* To be set on the first run */
 	afmt.mSampleRate = 0;
@@ -193,14 +191,13 @@ audio_output_open(void)
 	AudioObjectSetPropertyData(adid, &address, 0, NULL, size, &abuflen);
 	if (AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
 	    &abuflen) != 0)
-		goto error;
 #else /* !MAC_OS_X_VERSION_10_5 */
 	AudioDeviceSetProperty(adid, 0, 0, false,
 	    kAudioDevicePropertyBufferSize, size, &abuflen);
 	if (AudioDeviceGetProperty(adid, 0, false,
 	    kAudioDevicePropertyBufferSize, &size, &abuflen) != 0)
-		goto error;
 #endif /* MAC_OS_X_VERSION_10_5 */
+		goto error;
 
 #ifdef BUILD_VOLUME
 	/* Store the audio channels */
