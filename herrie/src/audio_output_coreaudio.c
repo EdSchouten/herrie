@@ -94,6 +94,11 @@ GMutex				abuflock;
  *        application that a buffer has been processed.
  */
 GCond				abufdrained;
+/**
+ * @brief The data source currently being used by the CoreAudio device
+ *        (headphones or speakers).
+ */
+UInt32				adscur;
 #ifdef BUILD_VOLUME
 /**
  * @brief Preferred audio channels used for audio playback. We use it to
@@ -131,6 +136,35 @@ audio_output_ioproc(AudioDeviceID inDevice, const AudioTimeStamp *inNow,
 	/* Fill the trailer with zero's */
 	for (; i < abuflen; i++)
 		ob[i] = 0.0;
+
+	return (0);
+}
+
+/**
+ * @brief Get the data source of the current CoreAudio audio device.
+ */
+static int
+audio_output_get_datasource(UInt32 *ds)
+{
+	UInt32 size;
+
+	size = sizeof *ds;
+#ifdef MAC_OS_X_VERSION_10_5
+	AudioObjectPropertyAddress address;
+
+	address = (AudioObjectPropertyAddress) {
+		kAudioDevicePropertyDataSource,
+		kAudioDevicePropertyScopeOutput,
+		kAudioObjectPropertyElementMaster
+	};
+
+	if (AudioObjectGetPropertyData(adid, &address, 0, NULL, &size,
+	    ds) != 0)
+#else /* !MAC_OS_X_VERSION_10_5 */
+	if (AudioDeviceGetProperty(adid, 0, false,
+	    kAudioDevicePropertyDataSource, &size, ds) != 0)
+#endif /* MAC_OS_X_VERSION_10_5 */
+		return (-1);
 
 	return (0);
 }
@@ -199,6 +233,10 @@ audio_output_open(void)
 #endif /* MAC_OS_X_VERSION_10_5 */
 		goto error;
 
+	/* Store the current data source */
+	if (audio_output_get_datasource(&adscur) != 0)
+		goto error;
+
 #ifdef BUILD_VOLUME
 	/* Store the audio channels */
 	size = sizeof achans;
@@ -239,7 +277,7 @@ error:
 int
 audio_output_play(struct audio_file *fd)
 {
-	UInt32 len, size;
+	UInt32 len, size, adsnew;
 	int16_t *tmp;
 
 	/* Read data in our temporary buffer */
@@ -293,6 +331,16 @@ audio_output_play(struct audio_file *fd)
 
 	/* Atomically set the usage length */
 	g_atomic_int_set(&abufulen, len);
+
+	/* Check if the data source changed */
+	if (audio_output_get_datasource(&adsnew) != 0)
+		return (-1);
+
+	if (adscur != adsnew) {
+		/* Restart the device */
+		AudioDeviceStop(adid, aprocid);
+		adscur = adsnew;
+	}
 
 	/* Start processing of the data */
 	AudioDeviceStart(adid, aprocid);

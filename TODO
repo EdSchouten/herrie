@@ -43,9 +43,10 @@ Documentation:
 - Write a developers guide?
 
 CoreAudio (OS X) bugs:
-- Music stops playing when the default audio device changes (e.g. when
-headphones are plugged in/out).
-Solution: keep track of default audio device changes.
+- Audio device properties cannot be set once the data source changes
+(e.g. if headphones are plugged in/out, the volume cannot be changed with
+herrie's controls anymore).
+Solution: ???
 - Gaps can sometimes be heard when music is playing.
 Solution: implement a better buffering scheme (maybe by using a queue with a
 few buffers?).
