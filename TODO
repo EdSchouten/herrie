@@ -16,7 +16,7 @@ Graphical user interface:
 - Allow randomized playback in XMMS mode without shuffling the list
 
 Audio abstraction:
-- Implement better buffering schemes for ALSA and CoreAudio
+- Implement better buffering scheme for ALSA
 - Fully implement more audio file formats
   - Apple Lossless
   - WMA
@@ -41,3 +41,12 @@ Virtual filesystem:
 Documentation:
 - Usage guide
 - Write a developers guide?
+
+CoreAudio (OS X) bugs:
+- Audio device properties cannot be set once the data source changes
+(e.g. if headphones are plugged in/out, the volume cannot be changed with
+herrie's controls anymore).
+Solution: ???
+- Gaps can sometimes be heard when music is playing.
+Solution: implement a better buffering scheme (maybe by using a queue with a
+few buffers?).
